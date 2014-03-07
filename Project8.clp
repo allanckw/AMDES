@@ -16,7 +16,7 @@
 (deftemplate Test-Results
 	(slot TestName (type STRING))
 	(slot DateOrdered (type STRING))
-	(slot Result (type SYMBOL) (allowed-symbols Normal Abnormal) (default NIL) )
+	(slot Result (type SYMBOL) (allowed-symbols Normal Abnormal NIL) (default NIL) )
 )
 
 ; ; Final Diagnosis ;location to store final diagnosis
@@ -33,14 +33,14 @@
 ; ; Sign of a symptom, to be asserted into KB, location to store answer 
 (deftemplate symptom
 (slot sign (type SYMBOL)) ;e.g. Amnesia,  Aphasia, etc
-(slot Question (type SYMBOL) (default NIL) ;reason = Remembering things/event that happened recently?
+(slot Question (type SYMBOL) (default NIL)) ;reason = Remembering things/event that happened recently?
 (slot Answer (type SYMBOL) (allowed-symbols Yes No Unknown)) ;ans to the reason  
 )
 
 (defrule unlikely ;base case, point A -> No, the rest dies
 	(symptom (sign Amnesia) (Answer No))
 	=>
-	(assert (diagnosis (dementia Unlikely) ))
+	(assert (diagnosis (dementia Unlikely)))
 	(printout t "Patient has a LOW likelihood of dementia")
 )
 
