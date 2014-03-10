@@ -63,8 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Data\Accessor.cs" />
+    <Compile Include="Data\Assessor.cs" />
     <Compile Include="Data\Patient.cs" />
+    <Compile Include="Data\Symptom.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
