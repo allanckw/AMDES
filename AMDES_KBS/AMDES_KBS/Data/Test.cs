@@ -15,7 +15,7 @@ namespace AMDES_KBS.Data
     class Test
     {
         private string testName;
-        private DateTime dateOrder;
+        private DateTime? dateOrder;
         private DateTime? reportDate;
 
         private TestStatus status;
@@ -23,7 +23,7 @@ namespace AMDES_KBS.Data
         Assessor doctor;
 
 
-        public readonly DateTime OrderedDate
+        public DateTime? OrderedDate
         {
             get { return this.dateOrder; }
         }

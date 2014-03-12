@@ -4,34 +4,45 @@
 	x:Class="AMDES_KBS.frmTermCondition"
 	x:Name="Window"
 	Title="frmTermCondition"
-	Width="440" Height="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+	Width="440" Height="492" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
-	<Grid x:Name="LayoutRoot">
-		<StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto">
-			<StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0">
-				<StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="430">
-					<Label VerticalAlignment="Top" Width="60" Content="Name"/>
-					<TextBox TextWrapping="Wrap" Text="TextBox" Width="360" Height="25"/>
-				</StackPanel>
-				<StackPanel x:Name="stkpnlLocation" Height="30" Orientation="Horizontal" Width="430" Margin="10,0">
-					<Label VerticalAlignment="Top" Width="60" Content="Location"/>
-					<TextBox TextWrapping="Wrap" Text="TextBox" Width="360" Height="25"/>
-				</StackPanel>
-			</StackPanel>
-			<StackPanel x:Name="stkpnlTermCondition" Height="335" Width="430">
-				<TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="24"/>
-				<RichTextBox Height="300" Width="400" VerticalScrollBarVisibility="Auto">
-					<FlowDocument>
-						<Paragraph><Run Text="BLAH BLAH BLAH"/></Paragraph>
-					</FlowDocument>
-				</RichTextBox>
-			</StackPanel>
-			<StackPanel x:Name="stkpnlAcceptDecline" Height="25" Width="450">
-				<StackPanel Height="20" Width="auto" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,0,0">
-					<Button Content="Accept" Width="100" Margin="0,0,10,0"/>
-					<Button Content="Decline" Width="100" Margin="0,0,33,0"/>
-				</StackPanel>
-			</StackPanel>
-		</StackPanel>
-	</Grid>
+    <Grid x:Name="LayoutRoot">
+        <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto">
+            <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0">
+                <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="430">
+                    <Label VerticalAlignment="Top" Width="60" Content="Name"/>
+                    <TextBox TextWrapping="Wrap" Text="" Width="360" Height="25" Name="txtName" />
+                </StackPanel>
+                <StackPanel x:Name="stkpnlLocation" Height="30" Orientation="Horizontal" Width="430" Margin="10,0">
+                    <Label VerticalAlignment="Top" Width="60" Content="Location"/>
+                    <TextBox TextWrapping="Wrap" Text="" Width="360" Height="25" Name="txtLocation" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="stkpnlTermCondition" Height="335" Width="430">
+                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="24"/>
+                <RichTextBox Height="300" Width="400" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text="Welcome to AMDES (Adaptive Medical Diagnosis Expert System) for the Early Diagnosis of Dementia"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run Text="This is an experimental proficatic expert system for the early diagnosis for dementia, by providing suggestions to detect and next course of actions based on clinical guidelines and machine learning techniques based on past patients' history" />
+                        </Paragraph>
+                        <Paragraph>
+                            <Run Text="This system serves as a guide and does not gurantee that the patient is actually suffering from dementia, the physician should exercise his own discretion based on the output provided by the system." />
+                        </Paragraph>
+                        <Paragraph>
+                            <Run Text="Credits: Medical Informatics Team from Khoo Teck Puat Hospital and National University of Singapore, School of Computing"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </StackPanel>
+            <StackPanel x:Name="stkpnlAcceptDecline" Height="25" Width="450">
+                <StackPanel Height="20" Width="auto" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,0,0">
+                    <Button Content="Accept" Width="100" Margin="0,0,10,0" Click="btnAccept_Click"/>
+                    <Button Content="Decline" Width="100" Margin="0,0,33,0" Click="btnDecline_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </Window>

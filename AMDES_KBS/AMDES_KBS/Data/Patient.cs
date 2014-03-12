@@ -15,6 +15,8 @@ namespace AMDES_KBS.Data
 
     class Patient
     {
+        public static string dataPath = @"Data\Patients.xml";
+
         private Assessor doctor;
 
         private DateTime dAssessment, dob;
@@ -81,12 +83,12 @@ namespace AMDES_KBS.Data
             set { this.status = value; }
         }
 
-        public readonly DateTime AssessmentDate
+        public  DateTime AssessmentDate
         {
             get { return dAssessment; }
         }
 
-        public readonly List<Test> TestsList
+        public List<Test> TestsList
         {
             get { return this.testsList; }
         }
@@ -111,7 +113,7 @@ namespace AMDES_KBS.Data
                 this.testsList.RemoveAt(i);
         }
 
-        public readonly List<Symptom> SymptomsList
+        public  List<Symptom> SymptomsList
         {
             get { return this.sympsList; }
         }

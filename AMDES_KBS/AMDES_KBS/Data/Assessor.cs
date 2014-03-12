@@ -7,6 +7,8 @@ namespace AMDES_KBS.Data
 {
     class Assessor
     {
+        public static string dataPath = @"Data\Assessor.xml";
+
         private string name;
 
         public string Name
@@ -21,6 +23,16 @@ namespace AMDES_KBS.Data
         {
             get { return clinicName; }
             set { clinicName = value; }
+        }
+
+        public Assessor(string name, string location)
+        {
+            this.name = name;
+            this.clinicName = location;
+        }
+
+        public Assessor()
+        {
         }
 
     }

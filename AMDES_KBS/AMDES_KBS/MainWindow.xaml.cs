@@ -23,5 +23,7 @@ namespace AMDES_KBS
         {
             InitializeComponent();
         }
+
+  
     }
 }
