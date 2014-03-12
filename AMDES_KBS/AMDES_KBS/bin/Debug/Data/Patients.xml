@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Patients xml-->
+<Patients>
+  <Patient id="s1234567D">
+    <Last_Name>tomtom</Last_Name>
+    <First_Name>tomtom</First_Name>
+    <DOB>632147264189449198</DOB>
+    <Assessor>
+      <AssessorName />Dr Miao<AssessLocation />miao clinic</Assessor>
+  </Patient>
+</Patients>

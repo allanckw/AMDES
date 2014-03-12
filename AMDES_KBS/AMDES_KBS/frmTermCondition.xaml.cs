@@ -68,5 +68,10 @@ namespace AMDES_KBS
         {
             this.Close();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //PatientController.addNewPatient(new Assessor("Dr Miao", "miao clinic"), "s1234567D", "tomtom", "tay", DateTime.Now.AddYears(-10));
+        }
     }
 }

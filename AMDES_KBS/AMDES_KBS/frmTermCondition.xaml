@@ -4,7 +4,7 @@
 	x:Class="AMDES_KBS.frmTermCondition"
 	x:Name="Window"
 	Title="frmTermCondition"
-	Width="440" Height="492" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+	Width="440" Height="492" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
 
     <Grid x:Name="LayoutRoot">
         <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto">

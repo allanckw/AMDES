@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Controllers\AssessorController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Data\Assessor.cs" />
     <Compile Include="Data\Patient.cs" />
     <Compile Include="Data\Symptom.cs" />
