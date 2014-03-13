@@ -35,10 +35,17 @@ namespace AMDES_KBS.Controllers
             IEnumerable<XElement> assessors = xelement.Elements();
 
             Assessor a = new Assessor();
-                                 
+
             a.Name = xelement.Element("Name").Value.ToString();
             a.ClinicName = xelement.Element("Location").Value.ToString();
-            
+
+            return a;
+        }
+
+        public static Assessor readAssessor(XElement x)
+        {
+            Assessor a = new Assessor(x.Element("AssessorName").Value, x.Element("AssessLocation").Value);
+
             return a;
         }
     }

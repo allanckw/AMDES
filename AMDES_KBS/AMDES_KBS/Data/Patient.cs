@@ -86,6 +86,7 @@ namespace AMDES_KBS.Data
         public  DateTime AssessmentDate
         {
             get { return dAssessment; }
+            set { this.dAssessment = value; }
         }
 
         public List<Test> TestsList

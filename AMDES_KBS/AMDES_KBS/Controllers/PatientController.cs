@@ -35,25 +35,28 @@ namespace AMDES_KBS.Controllers
             createPatientFile();
 
             Patient p = new Patient(a, nric, first, last, dob);
-           
+
+            //Search if nric exist, if yes throw exception!
+
             //load document
             XDocument document = XDocument.Load(Patient.dataPath);
 
-            document.Element("Patients").Add(
+            XElement newPat = new XElement("Patient", new XAttribute("id", p.NRIC),
+                                   new XElement("Last_Name", p.Last_Name),
+                                   new XElement("First_Name", p.First_Name),
+                                   new XElement("DOB", p.DOB.Ticks),
+                                   new XElement("AssessmentDate", DateTime.Now.Ticks),
+                                   new XElement("Status", p.Status),
+                                   new XElement("Tests"),
+                                   new XElement("Symptoms"),
 
-                 new XElement("Patient", new XAttribute("id", p.NRIC),
-                        new XElement("Last_Name", p.First_Name),
-                        new XElement("First_Name", p.First_Name),
-                        new XElement("DOB", p.DOB.Ticks),
-                        new XElement("AssessmentDate", DateTime.Now.Ticks),
-                        
-                            new XElement("Assessor",
-                                new XElement("AssessorName"), p.Doctor.Name,
-                                new XElement("AssessLocation"), p.Doctor.ClinicName)
-                        )
+                                       new XElement("Assessor",
+                                           new XElement("AssessorName", p.Doctor.Name),
+                                           new XElement("AssessLocation", p.Doctor.ClinicName)
+                                       )
+                                   );
 
-                 );
-
+            document.Element("Patients").Add(newPat);
             document.Save(Patient.dataPath);
 
             //to get back datetime from ticks, do this : 
@@ -65,23 +68,167 @@ namespace AMDES_KBS.Controllers
 
         public static void addNewPatient(Patient p)
         {
+            createPatientFile();
+            XDocument document = XDocument.Load(Patient.dataPath);
+            
+
+            XElement newPat = new XElement("Patient", new XAttribute("id", p.NRIC),
+                                    new XElement("Last_Name", p.Last_Name),
+                                    new XElement("First_Name", p.First_Name),
+                                    new XElement("DOB", p.DOB.Ticks),
+                                    new XElement("AssessmentDate", p.AssessmentDate),
+                                    new XElement("Status", p.Status),
+                                    new XElement("Tests"),
+                                    new XElement("Symptoms"),
+
+                                        new XElement("Assessor",
+                                            new XElement("AssessorName", p.Doctor.Name),
+                                            new XElement("AssessLocation", p.Doctor.ClinicName)
+                                        )
+                                    );
+
+            if (p.TestsList.Count > 0)
+            {
+                for (int i = 0; i < p.TestsList.Count; i++)
+                {
+                    Test t = p.TestsList.ElementAt(i);
+
+                    newPat.Element("Tests").Add(
+                        new XElement("Test", 
+                            new XElement("TestName", t.TestName),
+                            new XElement("Status", t.Status),
+                            new XElement("OrderedDate", t.OrderedDate.GetValueOrDefault().Ticks),
+                            new XElement("ReportDate", t.ReportDate.GetValueOrDefault().Ticks),
+                                    new XElement("Assessor",
+                                        new XElement("AssessorName", p.Doctor.Name),
+                                        new XElement("AssessLocation", p.Doctor.ClinicName)
+                                    )
+                            )
+                        );
+                }
+            }
+
+            if (p.SymptomsList.Count > 0)
+            {
+                for (int i = 0; i < p.SymptomsList.Count; i++)
+                {
+                    Symptom s = p.SymptomsList.ElementAt(i);
+                    newPat.Element("Symptoms").Add(
+                        new XElement("Symptom", new XAttribute("id", s.ID),
+                            new XElement("SymptomName", s.SymptomName),
+                            new XElement("Exist", s.SymptomPresent),
+                            new XElement("DecisionPoint", s.DecisionPoint),
+                            new XElement("DiagnosisDate", s.DiagnosisDate.Ticks)
+                                   
+                            )
+                        );
+
+                }
+            }
+            document.Element("Patients").Add(newPat);
+            document.Save(Patient.dataPath);
         }
 
         public static Patient searchPatientByNRIC(string nric)
         {
-            return null;
+            //list of names of the people below 60 years of age
+            XDocument document = XDocument.Load(Patient.dataPath);
+
+            var patients = (from pa in document.Descendants("Patient")
+                            where pa.Attribute("id").Value.ToUpper().CompareTo(nric.ToUpper()) == 0
+                            select pa).Single();
+
+            Patient p = readPatientData(patients);
+
+
+            return p;
+
+        }
+        private static Patient readPatientData(XElement x)
+        {
+            Patient p = new Patient();
+
+            p.NRIC = x.Attribute("id").Value;
+
+            p.First_Name = x.Element("First_Name").Value;
+            p.Last_Name = x.Element("Last_Name").Value;
+
+            p.Doctor = AssessorController.readAssessor(x.Element("Assessor"));
+
+
+            p.AssessmentDate = new DateTime(long.Parse(x.Element("AssessmentDate").Value));
+            p.DOB = new DateTime(long.Parse(x.Element("DOB").Value));
+
+            //TODO: TEST AND SYMPTOM LOAD
+
+            return p;
         }
 
-        public static List<Patient> searchPatientByName(string firstName, string lastName)
+        public static List<Patient> searchPatientByName(string firstName = "", string lastName = "")
         {
+            //var a = from h in xdoc.Root.Elements()
+            //where h.Element().Value.Contains("1234") // like '%1234%'
+            //select h;
+            //For the SQL-ish like '%value' you can use EndsWith, and for like 'value%' StartsWith
+            //list of names of the people below 60 years of age
+
+            XDocument document = XDocument.Load(Patient.dataPath);
             List<Patient> pList = new List<Patient>();
+
+            var patients = (from pat in document.Descendants("Patient")
+                            select pat).ToList();
+
+            if (firstName.Length > 0)
+            {
+                patients = (from pat in patients
+                            where pat.Element("First_Name").Value.Contains(firstName)
+                            select pat).ToList();
+            }
+
+            if (lastName.Length > 0)
+            {
+                patients = (from pat in patients
+                            where pat.Element("Last_Name").Value.Contains(lastName)
+                            select pat).ToList();
+            }
+
+            foreach (var x in patients)
+            {
+                pList.Add(readPatientData(x));
+            }
 
             return pList;
         }
 
-        public static void saveCurrentPatient (string nric)
+        public static List<Patient> getAllPatients()
+        {
+            List<Patient> pList = new List<Patient>();
+            XDocument document = XDocument.Load(Patient.dataPath);
+
+            var patients = (from pa in document.Descendants("Patient")
+                            select pa).ToList();
+
+            foreach (var x in patients)
+            {
+                pList.Add(readPatientData(x));
+            }
+
+            return pList;
+        }
+
+        public static void saveCurrentPatient(Patient p)
         {
             //todo search by nric, delete current record, add new record
+        }
+
+        public static void deletePatient(string nric)
+        {
+            XDocument document = XDocument.Load(Patient.dataPath);
+            (from pa in document.Descendants("Patient")
+             where pa.Attribute("id").Value.ToUpper().CompareTo(nric.ToUpper()) == 0
+             select pa).Single().Remove();
+
+            document.Save(Patient.dataPath);
         }
 
     }

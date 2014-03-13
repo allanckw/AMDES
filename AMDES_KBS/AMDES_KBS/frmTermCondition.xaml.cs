@@ -49,7 +49,7 @@ namespace AMDES_KBS
         {
             if (txtName.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Please enter your name (clinic name)", "Missing input", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("Please enter your name ", "Missing input", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 txtName.Focus();
             }
             else if (txtLocation.Text.Trim().Length == 0)
@@ -71,7 +71,13 @@ namespace AMDES_KBS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //PatientController.addNewPatient(new Assessor("Dr Miao", "miao clinic"), "s1234567D", "tomtom", "tay", DateTime.Now.AddYears(-10));
+            PatientController.addNewPatient(new Assessor("sad", "emose"), "s2345436q", "noob", "bie", DateTime.Now.AddYears(-30));
+
+            //Patient p = PatientController.searchPatientByNRIC("s2345906z");
+
+            //List<Patient> pats = PatientController.searchPatientByName("qnat", "tay");
+
+            //MessageBox.Show(pats.Count.ToString());
         }
     }
 }

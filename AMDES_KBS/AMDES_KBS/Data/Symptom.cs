@@ -15,23 +15,20 @@ namespace AMDES_KBS.Data
     class Symptom
     {
         private SymptomDecisionPoint decisionPoint;
-
-        public SymptomDecisionPoint DecisionPoint
-        {
-            get { return decisionPoint; }
-            set { decisionPoint = value; }
-        }
-
-        
+       
         private string name;
 
-        public string SymptomName
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
         private bool present;
+
+        private DateTime diaDate;
+
+        private string id;
+
+        public string ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
         public bool SymptomPresent
         {
@@ -39,5 +36,22 @@ namespace AMDES_KBS.Data
             set { present = value; }
         }
 
+        public string SymptomName
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public SymptomDecisionPoint DecisionPoint
+        {
+            get { return decisionPoint; }
+            set { decisionPoint = value; }
+        }
+
+        public DateTime DiagnosisDate
+        {
+            get { return diaDate; }
+            set { diaDate = value; }
+        }
     }
 }
