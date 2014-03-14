@@ -281,7 +281,74 @@ namespace AMDES_KBS
                 stkpnlSectionD.Children.Add(stkpnlQuestion);
             }
 
+        }
 
+        private void AddNewQuestion(StackPanel stkpnl)
+        {
+            StackPanel stkpnlQuestion = new StackPanel();
+            StackPanel stkpnlHeader = new StackPanel();
+            stkpnlHeader.Margin = new Thickness(0, 0, 0, 5);
+            stkpnlHeader.Orientation = Orientation.Horizontal;
+
+            Label lb = new Label();
+            lb.Margin = new Thickness(0, 0, 5, 5);
+            lb.Content = "New Question";
+
+            Button btn = new Button();
+            btn.Content = "Delete this question";
+            btn.Click += new RoutedEventHandler(btn_Click);
+
+            stkpnlHeader.Children.Add(lb);
+            stkpnlHeader.Children.Add(btn);
+
+            TextBox tb = new TextBox();
+            tb.AcceptsReturn = true;
+            tb.Width = 500;
+            tb.TextWrapping = TextWrapping.Wrap;
+            tb.Margin = new Thickness(0, 0, 0, 10);
+            string temp = "";
+
+            tb.Text = temp;
+
+            stkpnlQuestion.Children.Add(stkpnlHeader);
+            stkpnlQuestion.Children.Add(tb);
+            stkpnl.Children.Add(stkpnlQuestion);
+            tb.Focus();
+        }
+
+        private void btnAddNew_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int sectionSelected = tcQuestionSetting.SelectedIndex;
+                switch (sectionSelected)
+                {
+                    case 0://Section A
+                        AddNewQuestion(stkpnlSectionA);
+                        break;
+                    case 1://Section B
+                        AddNewQuestion(stkpnlSectionB);
+                        break;
+                    case 2://Secton C
+                        AddNewQuestion(stkpnlSectionC);
+                        break;
+                    case 3://Section C2
+                        AddNewQuestion(stkpnlSectionC2);
+                        break;
+                    case 4://section C3
+                        AddNewQuestion(stkpnlSectionC3);
+                        break;
+                    case 5://section D
+                        AddNewQuestion(stkpnlSectionD);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

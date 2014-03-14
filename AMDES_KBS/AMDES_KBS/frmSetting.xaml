@@ -37,8 +37,9 @@
                 </TabItem>
             </TabControl>
             <StackPanel Orientation="Horizontal" Width="570">
-                <Button Height="25" Width="100" Content="Save" Margin="360,10,10,10"/>
-                <Button Height="25" Width="100" Content="Cancel"/>
+                <Button Height="25" Width="120" Content="Add New Question" Margin="230,10,10,10" Name="btnAddNew" Click="btnAddNew_Click" />
+                <Button Height="25" Width="100" Content="Save" Margin="0,10,10,10" Name="btnSaveAllQuestion" />
+                <Button Height="25" Width="100" Content="Cancel" Name="btnCancel" />
             </StackPanel>
         </StackPanel>
     </Grid>

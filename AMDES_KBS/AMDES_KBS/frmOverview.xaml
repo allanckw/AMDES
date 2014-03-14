@@ -1,0 +1,17 @@
+﻿<src:AMDESPage xmlns:amdes="clr-namespace:AMDES_KBS.QuestionControl"  xmlns:src="clr-namespace:AMDES_KBS" x:Class="AMDES_KBS.frmOverview"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="510" d:DesignWidth="670"
+	Title="frmOverview">
+
+
+    <Grid>
+        <StackPanel x:Name="MainFrame">
+            <amdes:ucQuestion />
+            
+        </StackPanel>
+    </Grid>
+</src:AMDESPage >
