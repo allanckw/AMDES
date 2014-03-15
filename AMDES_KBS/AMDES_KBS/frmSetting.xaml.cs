@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AMDES_KBS.Controllers;
+using AMDES_KBS.Entity;
 
 namespace AMDES_KBS
 {
@@ -349,6 +351,12 @@ namespace AMDES_KBS
             {
                 throw;
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+           List<QuestionGroup> x =  QuestionController.getAllQuestionGroup();//Call this first.. to get all qn to populate listbox and update groupid
+
         }
     }
 }

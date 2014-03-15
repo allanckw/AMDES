@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using System.IO;
-using AMDES_KBS.Data;
+using AMDES_KBS.Entity;
 
 namespace AMDES_KBS.Controllers
 {
@@ -32,45 +32,49 @@ namespace AMDES_KBS.Controllers
         //http://msdn.microsoft.com/en-us/library/bb387089.aspx
         public static void addNewPatient(Assessor a, string nric, string first, string last, DateTime dob)
         {
-            createPatientFile();
+            if (PatientController.searchPatientByNRIC(nric) == null)    //Search if nric exist, if yes throw exception!
+            {
+                createPatientFile();
 
-            Patient p = new Patient(a, nric, first, last, dob);
+                Patient p = new Patient(a, nric, first, last, dob);
 
-            //Search if nric exist, if yes throw exception!
+                //load document
+                XDocument document = XDocument.Load(Patient.dataPath);
 
-            //load document
-            XDocument document = XDocument.Load(Patient.dataPath);
+                XElement newPat = new XElement("Patient", new XAttribute("id", p.NRIC),
+                                       new XElement("Last_Name", p.Last_Name),
+                                       new XElement("First_Name", p.First_Name),
+                                       new XElement("DOB", p.DOB.Ticks),
+                                       new XElement("AssessmentDate", DateTime.Now.Ticks),
+                                       new XElement("Status", p.Status),
+                                       new XElement("Tests"),
+                                       //new XElement("Symptoms"),
 
-            XElement newPat = new XElement("Patient", new XAttribute("id", p.NRIC),
-                                   new XElement("Last_Name", p.Last_Name),
-                                   new XElement("First_Name", p.First_Name),
-                                   new XElement("DOB", p.DOB.Ticks),
-                                   new XElement("AssessmentDate", DateTime.Now.Ticks),
-                                   new XElement("Status", p.Status),
-                                   new XElement("Tests"),
-                                   new XElement("Symptoms"),
+                                           new XElement("Assessor",
+                                               new XElement("AssessorName", p.Doctor.Name),
+                                               new XElement("AssessLocation", p.Doctor.ClinicName)
+                                           )
+                                       );
 
-                                       new XElement("Assessor",
-                                           new XElement("AssessorName", p.Doctor.Name),
-                                           new XElement("AssessLocation", p.Doctor.ClinicName)
-                                       )
-                                   );
+                document.Element("Patients").Add(newPat);
+                document.Save(Patient.dataPath);
 
-            document.Element("Patients").Add(newPat);
-            document.Save(Patient.dataPath);
-
-            //to get back datetime from ticks, do this : 
-            //DateTime myDate = new DateTime(numberOfTicks);
-            //String test = myDate.ToString("MMMM dd, yyyy");
-
+                //to get back datetime from ticks, do this : 
+                //DateTime myDate = new DateTime(numberOfTicks);
+                //String test = myDate.ToString("MMMM dd, yyyy");
+            }
+            else
+            {
+                throw new InvalidOperationException("Patient with ID " + "already exist!");
+            }
 
         }
 
-        public static void addNewPatient(Patient p)
+        public static void addPatient(Patient p)
         {
             createPatientFile();
             XDocument document = XDocument.Load(Patient.dataPath);
-            
+
 
             XElement newPat = new XElement("Patient", new XAttribute("id", p.NRIC),
                                     new XElement("Last_Name", p.Last_Name),
@@ -79,7 +83,7 @@ namespace AMDES_KBS.Controllers
                                     new XElement("AssessmentDate", p.AssessmentDate),
                                     new XElement("Status", p.Status),
                                     new XElement("Tests"),
-                                    new XElement("Symptoms"),
+                                    //new XElement("Symptoms"),
 
                                         new XElement("Assessor",
                                             new XElement("AssessorName", p.Doctor.Name),
@@ -94,7 +98,7 @@ namespace AMDES_KBS.Controllers
                     Test t = p.TestsList.ElementAt(i);
 
                     newPat.Element("Tests").Add(
-                        new XElement("Test", 
+                        new XElement("Test",
                             new XElement("TestName", t.TestName),
                             new XElement("Status", t.Status),
                             new XElement("OrderedDate", t.OrderedDate.GetValueOrDefault().Ticks),
@@ -108,40 +112,44 @@ namespace AMDES_KBS.Controllers
                 }
             }
 
-            if (p.SymptomsList.Count > 0)
-            {
-                for (int i = 0; i < p.SymptomsList.Count; i++)
-                {
-                    Symptom s = p.SymptomsList.ElementAt(i);
-                    newPat.Element("Symptoms").Add(
-                        new XElement("Symptom", new XAttribute("id", s.ID),
-                            new XElement("SymptomName", s.SymptomName),
-                            new XElement("Exist", s.SymptomPresent),
-                            new XElement("DecisionPoint", s.DecisionPoint),
-                            new XElement("DiagnosisDate", s.DiagnosisDate.Ticks)
-                                   
-                            )
-                        );
+            //if (p.SymptomsList.Count > 0)
+            //{
+            //    for (int i = 0; i < p.SymptomsList.Count; i++)
+            //    {
+            //        Symptom s = p.SymptomsList.ElementAt(i);
+            //        newPat.Element("Symptoms").Add(
+            //            new XElement("Symptom", new XAttribute("id", s.ID),
+            //                new XElement("SymptomName", s.SymptomName),
+            //                new XElement("Exist", s.SymptomPresent),
+            //                new XElement("DiagnosisDate", s.DiagnosisDate.Ticks)
 
-                }
-            }
+            //                )
+            //            );
+
+            //    }
+            //}
             document.Element("Patients").Add(newPat);
             document.Save(Patient.dataPath);
         }
 
         public static Patient searchPatientByNRIC(string nric)
         {
-            //list of names of the people below 60 years of age
             XDocument document = XDocument.Load(Patient.dataPath);
 
-            var patients = (from pa in document.Descendants("Patient")
-                            where pa.Attribute("id").Value.ToUpper().CompareTo(nric.ToUpper()) == 0
-                            select pa).Single();
+            try
+            {
+                var patients = (from pa in document.Descendants("Patient")
+                                where pa.Attribute("id").Value.ToUpper().CompareTo(nric.ToUpper()) == 0
+                                select pa).SingleOrDefault();
 
-            Patient p = readPatientData(patients);
+                return readPatientData(patients);
 
-
-            return p;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
 
         }
         private static Patient readPatientData(XElement x)
@@ -218,17 +226,22 @@ namespace AMDES_KBS.Controllers
 
         public static void saveCurrentPatient(Patient p)
         {
-            //todo search by nric, delete current record, add new record
+            PatientController.deletePatient(p.NRIC);
+            PatientController.addPatient(p);
         }
 
         public static void deletePatient(string nric)
         {
             XDocument document = XDocument.Load(Patient.dataPath);
-            (from pa in document.Descendants("Patient")
-             where pa.Attribute("id").Value.ToUpper().CompareTo(nric.ToUpper()) == 0
-             select pa).Single().Remove();
 
-            document.Save(Patient.dataPath);
+            if (PatientController.searchPatientByNRIC(nric) != null)
+            {
+                (from pa in document.Descendants("Patient")
+                 where pa.Attribute("id").Value.ToUpper().CompareTo(nric.ToUpper()) == 0
+                 select pa).SingleOrDefault().Remove();
+
+                document.Save(Patient.dataPath);
+            }
         }
 
     }

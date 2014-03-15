@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Questions xml-->
+<QuestionGroups>
+  <QuestionGroup id="1">
+    <Header>Amensia</Header>
+    <Description />
+    <QnType>0</QnType>
+    <Symptom>GG</Symptom>
+    <Questions>
+      <Question QID="1">Will you forgive me? </Question>
+      <Question QID="2">bleah bleah</Question>
+      <Question QID="3">x.x.x.x.x.x</Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="2">
+    <Header>Amensia</Header>
+    <Description />
+    <QnType>0</QnType>
+    <Symptom>GG</Symptom>
+    <Questions>
+      <Question QID="1">Will you forgive me? </Question>
+      <Question QID="2">please?</Question>
+      <Question QID="3">I will do anything for u :(</Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="3">
+    <Header>Amensia</Header>
+    <Description />
+    <QnType>0</QnType>
+    <Symptom>GG</Symptom>
+    <Questions>
+      <Question QID="1">Will you forgive me? </Question>
+      <Question QID="2">please?</Question>
+      <Question QID="3">I will do anything for u :(</Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="4">
+    <Header>Amensia</Header>
+    <Description />
+    <QnType>0</QnType>
+    <Symptom>GG</Symptom>
+    <Questions>
+      <Question QID="1">Will you forgive me? </Question>
+      <Question QID="2">please?</Question>
+      <Question QID="3">I will do anything for u :(</Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="5">
+    <Header>Amensia</Header>
+    <Description />
+    <QnType>0</QnType>
+    <Symptom>GG</Symptom>
+    <Questions>
+      <Question QID="1">Will you forgive me? </Question>
+      <Question QID="2">please?</Question>
+      <Question QID="3">I will do anything for u :(</Question>
+    </Questions>
+  </QuestionGroup>
+</QuestionGroups>

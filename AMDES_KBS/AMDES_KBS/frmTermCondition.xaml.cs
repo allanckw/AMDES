@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
-using AMDES_KBS.Data;
+using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
@@ -71,13 +71,27 @@ namespace AMDES_KBS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            PatientController.addNewPatient(new Assessor("sad", "emose"), "s2345436q", "noob", "bie", DateTime.Now.AddYears(-30));
+            //QuestionController.getAllQuestionGroup();
+
+            //QuestionGroup miao = new QuestionGroup();
+            //miao.GroupID = QuestionController.getNextGroupID();
+            //miao.Header = "Amensia";
+            //miao.addQuestion("Will you forgive me? ");
+            //miao.addQuestion("please?");
+            //miao.addQuestion("I will do anything for u :(");
+            //miao.Symptom = "GG";
+
+            //QuestionController.updateQuestionGroup(miao);
+
+            //PatientController.addNewPatient(new Assessor("sad", "emose"), "s2345436q", "noob", "bie", DateTime.Now.AddYears(-30));
 
             //Patient p = PatientController.searchPatientByNRIC("s2345906z");
 
-            //List<Patient> pats = PatientController.searchPatientByName("qnat", "tay");
+            //List<Patient> pats = PatientController.searchPatientByName("natalie", "tay");
 
             //MessageBox.Show(pats.Count.ToString());
+
+            
         }
     }
 }

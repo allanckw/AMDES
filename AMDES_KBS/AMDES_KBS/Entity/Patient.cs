@@ -5,7 +5,7 @@ using System.Text;
 
 //http://stackoverflow.com/questions/8417225/parse-xml-using-linq-to-xml-to-class-objects
 
-namespace AMDES_KBS.Data
+namespace AMDES_KBS.Entity
 {
     public enum PatientStatus
     {
@@ -23,7 +23,9 @@ namespace AMDES_KBS.Data
 
         private List<Test> testsList;
 
-        private List<Symptom> sympsList;
+        private List<Symptom> sympsList; 
+        //TODO: Store chain of QuestionGroupID to determine next form of action?
+        
 
         private PatientStatus status;
 
@@ -49,8 +51,8 @@ namespace AMDES_KBS.Data
 
         public string NRIC
         {
-            get { return nric; }
-            set { nric = value; }
+            get { return nric.ToUpper(); }
+            set { nric = value.ToUpper(); }
         }
 
         public Patient()
