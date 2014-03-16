@@ -14,8 +14,6 @@ namespace AMDES_KBS.Entity
 
     public class QuestionGroup 
     {
-        protected int qnCounter = 1;
-
         protected int groupID;
         protected string header;
         protected QuestionType qType;
@@ -27,14 +25,9 @@ namespace AMDES_KBS.Entity
         public static string dataPath = @"data\Questions.xml";
 
 
-        private string symptom; //if the answer to this group is true, what should it assert about the patient???
-        //e.g. Amensia, Apraxia, etc.. Clips need to know what to assert?
+        
 
-        public string Symptom
-        {
-            get { return symptom; }
-            set { symptom = value; }
-        }
+       
 
         public QuestionGroup(string header, QuestionType t, int groupID)
             : base()
@@ -88,10 +81,10 @@ namespace AMDES_KBS.Entity
             set { this.header = value; }
         }
 
-        public virtual void addQuestion(string q)
+        public virtual void addQuestion(string q, string sym)
         {
-            Question qn = new Question(this.qnCounter, q);
-            this.qnCounter++;
+            Question qn = new Question(qns.Count, q, sym);
+            
 
             if (q != null)
             {
@@ -104,14 +97,13 @@ namespace AMDES_KBS.Entity
             if (i < qns.Count)
             {
                 qns.RemoveAt(i);
-                qnCounter--;
+               
             }
         }
 
         public void clearQuestions()
         {
             qns.Clear();
-            qnCounter = 1;
         }
 
         public string Description

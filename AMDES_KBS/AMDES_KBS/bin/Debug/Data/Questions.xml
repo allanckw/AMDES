@@ -5,55 +5,19 @@
     <Header>Amensia</Header>
     <Description />
     <QnType>0</QnType>
-    <Symptom>GG</Symptom>
     <Questions>
-      <Question QID="1">Will you forgive me? </Question>
-      <Question QID="2">bleah bleah</Question>
-      <Question QID="3">x.x.x.x.x.x</Question>
-    </Questions>
-  </QuestionGroup>
-  <QuestionGroup id="2">
-    <Header>Amensia</Header>
-    <Description />
-    <QnType>0</QnType>
-    <Symptom>GG</Symptom>
-    <Questions>
-      <Question QID="1">Will you forgive me? </Question>
-      <Question QID="2">please?</Question>
-      <Question QID="3">I will do anything for u :(</Question>
-    </Questions>
-  </QuestionGroup>
-  <QuestionGroup id="3">
-    <Header>Amensia</Header>
-    <Description />
-    <QnType>0</QnType>
-    <Symptom>GG</Symptom>
-    <Questions>
-      <Question QID="1">Will you forgive me? </Question>
-      <Question QID="2">please?</Question>
-      <Question QID="3">I will do anything for u :(</Question>
-    </Questions>
-  </QuestionGroup>
-  <QuestionGroup id="4">
-    <Header>Amensia</Header>
-    <Description />
-    <QnType>0</QnType>
-    <Symptom>GG</Symptom>
-    <Questions>
-      <Question QID="1">Will you forgive me? </Question>
-      <Question QID="2">please?</Question>
-      <Question QID="3">I will do anything for u :(</Question>
-    </Questions>
-  </QuestionGroup>
-  <QuestionGroup id="5">
-    <Header>Amensia</Header>
-    <Description />
-    <QnType>0</QnType>
-    <Symptom>GG</Symptom>
-    <Questions>
-      <Question QID="1">Will you forgive me? </Question>
-      <Question QID="2">please?</Question>
-      <Question QID="3">I will do anything for u :(</Question>
+      <Question QID="0">
+        <Name>Will you forgive me? </Name>
+        <Symptom>GG</Symptom>
+      </Question>
+      <Question QID="1">
+        <Name>please?</Name>
+        <Symptom>XX</Symptom>
+      </Question>
+      <Question QID="2">
+        <Name>I will do anything for u :(</Name>
+        <Symptom>ZZ</Symptom>
+      </Question>
     </Questions>
   </QuestionGroup>
 </QuestionGroups>

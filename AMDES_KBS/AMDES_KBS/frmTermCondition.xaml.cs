@@ -71,15 +71,14 @@ namespace AMDES_KBS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //QuestionController.getAllQuestionGroup();
+            QuestionController.getAllQuestionGroup();
 
             //QuestionGroup miao = new QuestionGroup();
             //miao.GroupID = QuestionController.getNextGroupID();
             //miao.Header = "Amensia";
-            //miao.addQuestion("Will you forgive me? ");
-            //miao.addQuestion("please?");
-            //miao.addQuestion("I will do anything for u :(");
-            //miao.Symptom = "GG";
+            //miao.addQuestion("Will you forgive me? ", "GG");
+            //miao.addQuestion("please?", "XX");
+            //miao.addQuestion("I will do anything for u :(", "ZZ");
 
             //QuestionController.updateQuestionGroup(miao);
 

@@ -78,8 +78,7 @@ namespace AMDES_KBS.Controllers
                             new XElement("Description", p.Description),
                 //description of the Question QuestionGroup, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
                             new XElement("QnType", p.getQuestionType()), //type, AND / OR / COUNT
-                            new XElement("Symptom", p.Symptom),
-                //What does it assert about the patient if this is true? (i need this value in patient)
+                            
                             new XElement("Questions") //questions to ask
                             );
 
@@ -102,7 +101,10 @@ namespace AMDES_KBS.Controllers
                 {
                     Question q = p.Questions.ElementAt(j);
                     newGRP.Element("Questions").Add(
-                        new XElement("Question", new XAttribute("QID", q.ID), q.Name));
+                        new XElement("Question", new XAttribute("QID", q.ID), 
+                                        new XElement("Name", q.Name),
+                                        new XElement("Symptom", q.Symptom)));
+                //What does it assert about the patient if this is true? (i need this value in patient));
                 }
             }
 
@@ -162,7 +164,7 @@ namespace AMDES_KBS.Controllers
                     p.GroupID = int.Parse(x.Attribute("id").Value);
                     p.Header = x.Element("Header").Value;
                     p.Description = x.Element("Description").Value;
-                    p.Symptom = x.Element("Symptom").Value;
+                    
 
                     if (x.Element("NextTrueLink") != null)
                     {
@@ -173,7 +175,7 @@ namespace AMDES_KBS.Controllers
                         p.NextFalseLink = QuestionController.getGroupByID(int.Parse(x.Element("NextFalseLink").Value));
                     }
 
-                    var qns = (from pa in x.Descendants("Questions")
+                    var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                                select pa).ToList();
 
                     foreach (var q in qns)
@@ -199,7 +201,7 @@ namespace AMDES_KBS.Controllers
             p.GroupID = int.Parse(x.Attribute("id").Value);
             p.Header = x.Element("Header").Value;
             p.Description = x.Element("Description").Value;
-            p.Symptom = x.Element("Symptom").Value;
+            
 
             if (x.Element("NextTrueLink") != null)
             {
@@ -227,8 +229,9 @@ namespace AMDES_KBS.Controllers
         private static Question readQuestion(XElement x)
         {
             Question q = new Question();
-            q.ID = int.Parse(x.Element("Question").Attribute("QID").Value);
-            q.Name = x.Element("Question").Value;
+            q.ID = int.Parse(x.Attribute("QID").Value);
+            q.Name = x.Element("Name").Value;
+            q.Symptom = x.Element("Symptom").Value;
             return q;
         }
 
