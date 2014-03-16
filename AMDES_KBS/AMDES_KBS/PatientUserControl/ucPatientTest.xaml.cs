@@ -9,23 +9,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AMDES_KBS
 {
     /// <summary>
-    /// Interaction logic for frmMain.xaml
+    /// Interaction logic for ucPatientTest.xaml
     /// </summary>
-    public partial class frmMain : Window
+    public partial class ucPatientTest : UserControl
     {
-        //private Type currPageType;
-        //private AMDESPage currPage;
-
-        public frmMain()
+        public ucPatientTest()
         {
             InitializeComponent();
-            //frmSection newSection = new frmSection("A");
-            frameDisplay.Navigate(new frmRecommendation());
+        }
+
+        public void setVisbility(Visibility v)
+        {
+            stkpnlPatientTestDetail.Visibility = v;
         }
     }
 }

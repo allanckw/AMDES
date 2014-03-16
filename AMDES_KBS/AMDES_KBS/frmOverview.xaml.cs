@@ -15,6 +15,19 @@ namespace AMDES_KBS
         public frmOverview()
         {
             InitializeComponent();
+            //loadQuestion();
+            loadPatient();
         }
+
+        private void loadPatient()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                ucPatientDisplay patient = new ucPatientDisplay();
+                stkpnlPatientList.Children.Add(patient);
+            }
+        }
+
+
     }
 }
