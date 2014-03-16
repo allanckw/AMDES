@@ -5,6 +5,7 @@
     <Header>Amensia</Header>
     <Description />
     <QnType>0</QnType>
+	<Symptom/>
     <Questions>
       <Question QID="0">
         <Name>Will you forgive me? </Name>

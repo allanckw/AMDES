@@ -17,7 +17,7 @@ namespace AMDES_KBS.Entity
         //    this.name = qn;
         //}
 
-        public Question(int id, string qn, string sym)
+        public Question(int id, string qn, string sym="")
         {
             this.id = id;
             this.name = qn;
@@ -28,8 +28,10 @@ namespace AMDES_KBS.Entity
         private string name;
         private int id;
 
-        private string symptom; //if the answer to this group is true, what should it assert about the patient???
+        private string symptom; 
+        //if the answer to this group is true, what should it assert about the patient???
         //e.g. Amensia, Apraxia, etc.. Clips need to know what to assert?
+        //when i press YES, i need to send clips this thing, optional can be blank
 
         public string Symptom
         {

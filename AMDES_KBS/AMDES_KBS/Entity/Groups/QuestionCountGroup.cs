@@ -36,9 +36,9 @@ namespace AMDES_KBS.Entity
             set { maxQuestions = value; }
         }
 
-        public override void addQuestion(string q, string sym)
+        public override void addQuestion(string q, string sym = "")
         {
-            Question qn = new Question(qns.Count, q, sym);
+            Question qn = new Question(qns.Count + 1, q, sym);
 
             if (qns.Count <= maxQuestions)
             {

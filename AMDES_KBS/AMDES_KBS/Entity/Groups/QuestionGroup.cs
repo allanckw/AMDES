@@ -12,22 +12,27 @@ namespace AMDES_KBS.Entity
         COUNT
     };
 
-    public class QuestionGroup 
+    public class QuestionGroup
     {
         protected int groupID;
         protected string header;
         protected QuestionType qType;
         protected List<Question> qns;
         private string desc;
+        private string symptom;
 
         protected QuestionGroup nextTrueLink, nextFalseLink, prevLink; //the next group that will make the decision
 
         public static string dataPath = @"data\Questions.xml";
 
-
-        
-
-       
+        public string Symptom
+        {
+            get { return symptom; }
+            set { symptom = value; }
+        }
+        //if the answer to this group is true, what should it assert about the patient???
+        //e.g. Amensia, Apraxia, etc.. Clips need to know what to assert?
+        //when the group eval to true, i need to send clips this thing, optional can be blank
 
         public QuestionGroup(string header, QuestionType t, int groupID)
             : base()
@@ -81,10 +86,9 @@ namespace AMDES_KBS.Entity
             set { this.header = value; }
         }
 
-        public virtual void addQuestion(string q, string sym)
+        public virtual void addQuestion(string q, string sym = "")
         {
-            Question qn = new Question(qns.Count, q, sym);
-            
+            Question qn = new Question(qns.Count + 1, q, sym);
 
             if (q != null)
             {
@@ -97,7 +101,7 @@ namespace AMDES_KBS.Entity
             if (i < qns.Count)
             {
                 qns.RemoveAt(i);
-               
+
             }
         }
 
@@ -112,7 +116,7 @@ namespace AMDES_KBS.Entity
             set { desc = value; }
         }
 
-        public  QuestionGroup NextTrueLink
+        public QuestionGroup NextTrueLink
         {
             get { return nextTrueLink; }
             set
