@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using AMDES_KBS.Entity;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
@@ -21,9 +23,11 @@ namespace AMDES_KBS
 
         private void loadPatient()
         {
-            for (int i = 0; i < 10; i++)
+            List<Patient> pList = PatientController.getAllPatients();
+
+            for (int i = 0; i < pList.Count; i++)
             {
-                ucPatientDisplay patient = new ucPatientDisplay();
+                ucPatientDisplay patient = new ucPatientDisplay(pList.ElementAt(i));
                 stkpnlPatientList.Children.Add(patient);
             }
         }

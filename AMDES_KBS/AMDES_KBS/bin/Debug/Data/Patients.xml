@@ -1,63 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Patients xml-->
 <Patients>
-  <Patient id="s2345906z">
-    <Last_Name>tay</Last_Name>
-    <First_Name>natalie</First_Name>
-    <DOB>632148286242554818</DOB>
-    <AssessmentDate>635303614242594820</AssessmentDate>
-    <Assessor>
-      <AssessorName>sad</AssessorName>
-      <AssessLocation>emose</AssessLocation>
-    </Assessor>
-  </Patient>
-  <Patient id="s1345906z">
-    <Last_Name>chong</Last_Name>
-    <First_Name>allan</First_Name>
-    <DOB>632148286433095716</DOB>
-    <AssessmentDate>635303614433115717</AssessmentDate>
-    <Assessor>
-      <AssessorName>sad</AssessorName>
-      <AssessLocation>emose</AssessLocation>
-    </Assessor>
-  </Patient>
-  <Patient id="s2345436q">
-    <Last_Name>bie</Last_Name>
-    <First_Name>noob</First_Name>
-    <DOB>625836804882485031</DOB>
-    <AssessmentDate>635303652882515033</AssessmentDate>
-    <Status>COMPLETED</Status>
+  <Patient id="S12312321">
+    <Last_Name>asdad asdaad</Last_Name>
+    <First_Name>sdasd asdsa</First_Name>
+    <DOB>618252480000000000</DOB>
+    <AssessmentDate>635306747920914631</AssessmentDate>
+    <Status>DRAFT</Status>
     <Tests />
-    <Symptoms />
     <Assessor>
-      <AssessorName>sad</AssessorName>
-      <AssessLocation>emose</AssessLocation>
-    </Assessor>
-  </Patient>
-  <Patient id="s2345436q">
-    <Last_Name>bie</Last_Name>
-    <First_Name>noob</First_Name>
-    <DOB>625838182910208113</DOB>
-    <AssessmentDate>635305030910378123</AssessmentDate>
-    <Status>COMPLETED</Status>
-    <Tests />
-    <Symptoms />
-    <Assessor>
-      <AssessorName>sad</AssessorName>
-      <AssessLocation>emose</AssessLocation>
-    </Assessor>
-  </Patient>
-  <Patient id="s2345436q">
-    <Last_Name>bie</Last_Name>
-    <First_Name>noob</First_Name>
-    <DOB>625838183597337415</DOB>
-    <AssessmentDate>635305031597367416</AssessmentDate>
-    <Status>COMPLETED</Status>
-    <Tests />
-    <Symptoms />
-    <Assessor>
-      <AssessorName>sad</AssessorName>
-      <AssessLocation>emose</AssessLocation>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
   </Patient>
 </Patients>

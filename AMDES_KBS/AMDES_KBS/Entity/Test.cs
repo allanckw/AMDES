@@ -12,7 +12,7 @@ namespace AMDES_KBS.Entity
         PENDING_RESULT
     };
     
-    class Test
+    public class Test
     {
         private string testName;
         private DateTime? dateOrder;

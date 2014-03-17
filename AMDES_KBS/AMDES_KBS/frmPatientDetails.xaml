@@ -18,19 +18,19 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                 <Label  Width="150" Content="Patient identification no.:"/>
-                <TextBox Width="200" Height="30" />
+                <TextBox Width="200" Height="30" Name="txtNRIC" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="150"  Content="Family name/surname:" />
-                <TextBox Width="200" Height="30" />
+                <TextBox Width="200" Height="30" Name="txtSurName" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="150"  Content="Given name/ first name:" />
-                <TextBox Width="200" Height="30" />
+                <TextBox Width="200" Height="30" Name="txtLastName" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="150"  Content="Date of Birth:" />
-                <DatePicker Width="200" />
+                <DatePicker Width="200" Name="dtpDOB" />
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="stkpnlAssessorDetails">
@@ -39,21 +39,23 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                 <Label  Width="150" Content="Assessor name:"/>
-                <TextBox Width="200" Height="30" />
+                <TextBox Width="200" Height="30" Name="txtAssessorName" IsReadOnly="True" />
             </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label  Width="150" Content="Clinic / Location:"/>
-                    <TextBox Width="200" Height="30" />
+                    <TextBox Width="200" Height="30" IsReadOnly="True" Name="txtAssessorLoc" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label  Width="150" Content="Date of  Assessment:"/>
-                    <TextBox Width="200" Height="30" />
+                    <DatePicker Width="200" Name="dtpAss" IsEnabled="False" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="btnStartTest" Width="70" Height="25" Margin="150,10,0,0" Content="Start Test" Click="btnStartTest_Click" />
-                    <Button x:Name="btnSaveTest" Width="120" Height="25" Margin="10,10,0,0" Content="Saved and Exit Test" />
+                    <Button x:Name="btnSaveTest" Width="120" Height="25" Margin="10,10,0,0" Content="Saved and Exit Test" Click="btnSaveTest_Click" />
+                    <Button Content="Return to Main" Height="25" Margin="10,10,0,0" Name="btnQuit" Width="120" Click="btnQuit_Click" />
                 </StackPanel>
             </StackPanel>
+            
         </StackPanel>
     </Grid>
 </src:AMDESPage>

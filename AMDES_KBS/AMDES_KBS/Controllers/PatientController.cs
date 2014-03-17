@@ -48,7 +48,7 @@ namespace AMDES_KBS.Controllers
                                        new XElement("AssessmentDate", DateTime.Now.Ticks),
                                        new XElement("Status", p.Status),
                                        new XElement("Tests"),
-                                       //new XElement("Symptoms"),
+                    //new XElement("Symptoms"),
 
                                            new XElement("Assessor",
                                                new XElement("AssessorName", p.Doctor.Name),
@@ -80,10 +80,10 @@ namespace AMDES_KBS.Controllers
                                     new XElement("Last_Name", p.Last_Name),
                                     new XElement("First_Name", p.First_Name),
                                     new XElement("DOB", p.DOB.Ticks),
-                                    new XElement("AssessmentDate", p.AssessmentDate),
+                                    new XElement("AssessmentDate", p.AssessmentDate.Ticks),
                                     new XElement("Status", p.Status),
                                     new XElement("Tests"),
-                                    //new XElement("Symptoms"),
+                //new XElement("Symptoms"),
 
                                         new XElement("Assessor",
                                             new XElement("AssessorName", p.Doctor.Name),
@@ -211,14 +211,17 @@ namespace AMDES_KBS.Controllers
         public static List<Patient> getAllPatients()
         {
             List<Patient> pList = new List<Patient>();
-            XDocument document = XDocument.Load(Patient.dataPath);
-
-            var patients = (from pa in document.Descendants("Patient")
-                            select pa).ToList();
-
-            foreach (var x in patients)
+            if (File.Exists(Patient.dataPath))
             {
-                pList.Add(readPatientData(x));
+                XDocument document = XDocument.Load(Patient.dataPath);
+
+                var patients = (from pa in document.Descendants("Patient")
+                                select pa).ToList();
+
+                foreach (var x in patients)
+                {
+                    pList.Add(readPatientData(x));
+                }
             }
 
             return pList;

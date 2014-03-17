@@ -5,10 +5,9 @@
     <Grid>
         <StackPanel>
             <StackPanel x:Name="stkpnlMenuHeader" Height="50" Orientation="Horizontal" >
-                <Button Width="100" Height="25" Content="Menu1" Margin="5"></Button>
-                <Button Width="100" Height="25" Content="Menu2" Margin="5"></Button>
+                <Button Width="100" Height="25" Content="New Test" Margin="5" Click="btnNewTest_Click"></Button>
                 <Button Width="100" Height="25" Content="Setting" Margin="5"></Button>
-                <StackPanel x:Name="stkpnlSearchBox" Orientation="Horizontal" Margin="180,5,5,5">
+                <StackPanel x:Name="stkpnlSearchBox" Orientation="Horizontal" Margin="280,5,5,5">
                     <TextBox x:Name="txtSearchCriteria" Width="250" Height="25" ToolTip="Search by NRIC or Name">
                         <TextBox.Style>
                             <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">

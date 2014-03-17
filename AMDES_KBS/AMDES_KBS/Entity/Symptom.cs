@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AMDES_KBS.Entity
 {
-    class Symptom
+    public class Symptom
     {
        
         private string name;

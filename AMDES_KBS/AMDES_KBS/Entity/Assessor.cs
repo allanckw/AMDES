@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AMDES_KBS.Entity
 {
-    class Assessor
+   public class Assessor
     {
         public static string dataPath = @"Data\Assessor.xml";
 

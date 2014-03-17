@@ -13,7 +13,7 @@ namespace AMDES_KBS.Entity
         DRAFT
     };
 
-    class Patient
+    public class Patient
     {
         public static string dataPath = @"Data\Patients.xml";
 
@@ -71,6 +71,11 @@ namespace AMDES_KBS.Entity
             this.firstname = first;
             this.lastname = last;
             this.dob = dob;
+
+            testsList = new List<Test>();
+            sympsList = new List<Symptom>();
+            dAssessment = DateTime.Now;
+            status = PatientStatus.DRAFT;
         }
 
         public Assessor Doctor

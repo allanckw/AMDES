@@ -61,6 +61,10 @@ namespace AMDES_KBS
             {
                 Assessor a = new Assessor(txtName.Text.Trim(), txtLocation.Text.Trim());
                 AssessorController.writeAssessor(a);
+
+                var admForm = new frmMain();
+                this.Visibility = Visibility.Collapsed;
+                admForm.Show();
             }
         }
 
@@ -89,6 +93,8 @@ namespace AMDES_KBS
             //List<Patient> pats = PatientController.searchPatientByName("natalie", "tay");
 
             //MessageBox.Show(pats.Count.ToString());
+
+
 
             
         }

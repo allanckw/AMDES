@@ -26,6 +26,12 @@ namespace AMDES_KBS
             InitializeComponent();
             //frmSection newSection = new frmSection("A");
             //frameDisplay.Navigate(new frmRecommendation());
+            frameDisplay.Navigate(new frmOverview());
+        }
+
+        private void btnNewTest_Click(object sender, RoutedEventArgs e)
+        {
+            frameDisplay.Navigate(new frmPatientDetails(frameDisplay));
         }
     }
 }
