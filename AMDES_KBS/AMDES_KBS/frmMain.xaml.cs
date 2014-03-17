@@ -25,7 +25,7 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             //frmSection newSection = new frmSection("A");
-            frameDisplay.Navigate(new frmRecommendation());
+            //frameDisplay.Navigate(new frmRecommendation());
         }
     }
 }

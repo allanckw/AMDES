@@ -74,14 +74,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="frmPatientDetails.xaml.cs">
+      <DependentUpon>frmPatientDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuestionSetting.xaml.cs">
+      <DependentUpon>frmQuestionSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecommendation.xaml.cs">
+      <DependentUpon>frmRecommendation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSection.xaml.cs">
+      <DependentUpon>frmSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientUserControl\ucPatientDisplay.xaml.cs">
+      <DependentUpon>ucPatientDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientUserControl\ucPatientTest.xaml.cs">
+      <DependentUpon>ucPatientTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuestionControl\ucQuestion.xaml.cs">
       <DependentUpon>ucQuestion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RecommendataionUserControl\ucDiagnosis.xaml.cs">
+      <DependentUpon>ucDiagnosis.xaml</DependentUpon>
     </Compile>
     <Page Include="frmMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="frmOverview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPatientDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmQuestionSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmRecommendation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -124,7 +161,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="PatientUserControl\ucPatientDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientUserControl\ucPatientTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="QuestionControl\ucQuestion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RecommendataionUserControl\ucDiagnosis.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

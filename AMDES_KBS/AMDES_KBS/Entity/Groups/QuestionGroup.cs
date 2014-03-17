@@ -88,7 +88,7 @@ namespace AMDES_KBS.Entity
 
         public virtual void addQuestion(string q, string sym = "")
         {
-            Question qn = new Question(qns.Count + 1, q, sym);
+            Question qn = new Question( q, sym);
 
             if (q != null)
             {

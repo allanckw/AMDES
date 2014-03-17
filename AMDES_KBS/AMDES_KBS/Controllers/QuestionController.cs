@@ -76,7 +76,7 @@ namespace AMDES_KBS.Controllers
             XElement newGRP = new XElement("QuestionGroup", new XAttribute("id", p.GroupID),
                             new XElement("Header", p.Header), //what it should show on the tab header 
                             new XElement("Description", p.Description),
-                //description of the Question QuestionGroup, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
+                            //description of the Question QuestionGroup, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
                             new XElement("QnType", p.getQuestionType()), //type, AND / OR / COUNT
                             new XElement("Symptom", p.Symptom), 
                             //What does it assert about the patient if this is true? (i need this value in patient));
@@ -102,7 +102,7 @@ namespace AMDES_KBS.Controllers
                 {
                     Question q = p.Questions.ElementAt(j);
                     newGRP.Element("Questions").Add(
-                        new XElement("Question", new XAttribute("QID", q.ID),
+                        new XElement("Question", new XAttribute("QID", p.GroupID + ". " + j+1),
                                         new XElement("Name", q.Name),
                                         new XElement("Symptom", q.Symptom)));
                     //What does it assert about the patient if this is true? (i need this value in patient));
