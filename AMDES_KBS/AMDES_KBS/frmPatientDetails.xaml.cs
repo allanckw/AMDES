@@ -53,15 +53,15 @@ namespace AMDES_KBS
                 txtNRIC.Focus();
                 return false;
             }
-            else if (txtSurName.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Please Enter Patient's Surname / First Name!", "Missing Surname / First Name", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                txtSurName.Focus();
-                return false;
-            }
             else if (txtLastName.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Please Enter Patient's Given name / Last Name!", "Missing Given name / Last Name", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                MessageBox.Show("Please Enter Patient's Surname / Last Name!", "Missing Surname / First Name", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                txtLastName.Focus();
+                return false;
+            }
+            else if (txtFirstName.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Please Enter Patient's Given name / First Name!", "Missing Given name / Last Name", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 txtLastName.Focus();
                 return false;
             }
@@ -73,10 +73,13 @@ namespace AMDES_KBS
             }
             else
             {
-                Patient p = new Patient(a, txtNRIC.Text.Trim(), txtSurName.Text.Trim(),
+                Patient p = new Patient(a, txtNRIC.Text.Trim(), txtFirstName.Text.Trim(),
                                     txtLastName.Text.Trim(), (DateTime)dtpDOB.SelectedDate);
 
                 PatientController.addPatient(p);
+                //Dim myWindow As Window1 = TryCast(Application.Current.MainWindow, Window1)
+                frmMain myWindow = (frmMain)Application.Current.MainWindow;
+                myWindow.loadPatientList();
                 CLIPSController.CurrentPatient = p;
                 return true;
             } 

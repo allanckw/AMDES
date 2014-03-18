@@ -22,11 +22,23 @@ namespace AMDES_KBS
     public partial class ucQuestionGroup : UserControl
     {
         QuestionGroup qgData;
+        QuestionCountGroup qcgData;
+        QuestionType qType;
         bool newGroup = false;
-        public ucQuestionGroup()
+
+        public ucQuestionGroup(int questionTypeENUM)
         {
             InitializeComponent();
             newGroup = true;
+            qgData = new QuestionGroup();
+            qgData.setQuestionType(questionTypeENUM);
+
+            if (qgData.getQuestionTypeENUM()==QuestionType.COUNT)
+            {
+                qcgData = new QuestionCountGroup();
+                qcgData.setQuestionType(questionTypeENUM);
+                stkpnlCOUNT.Visibility = Visibility.Visible;
+            }
         }
 
         public ucQuestionGroup(QuestionGroup qg)
@@ -34,33 +46,72 @@ namespace AMDES_KBS
             InitializeComponent();
             this.qgData = qg;
             newGroup = false;
+            stkpnlCOUNT.Visibility = Visibility.Collapsed;
+            qType = qg.getQuestionTypeENUM();
+            loadQuestionGroupData();
+        }
+
+        public ucQuestionGroup(QuestionCountGroup qcg)
+        {
+            InitializeComponent();
+            this.qcgData = qcg;
+            newGroup = false;
+            stkpnlCOUNT.Visibility = Visibility.Visible;
+            qType = qcg.getQuestionTypeENUM();
             loadQuestionGroupData();
         }
 
         private void loadQuestionGroupData()
         {
-            txtHeader.Text=qgData.Header;
-            txtDesc.Text=qgData.Description;
-            txtSymptom.Text=qgData.Symptom;
+
+            if (this.getQuestionType() == QuestionType.COUNT)
+            {
+                txtHeader.Text = qcgData.Header;
+                txtDesc.Text = qcgData.Description.Replace("~~",Environment.NewLine);
+                txtSymptom.Text = qcgData.Symptom;
+                txtThreshold.Text = qcgData.Threshold.ToString();
+                txtMaxQn.Text = qcgData.MaxQuestions.ToString();
+            }
+            else
+            {
+                txtHeader.Text = qgData.Header;
+                txtDesc.Text = qgData.Description.Replace("~~", Environment.NewLine);
+                txtSymptom.Text = qgData.Symptom;
+            }
         }
 
         public QuestionGroup getQuestionGroup()
         {
-            QuestionGroup tempQG;
             if (newGroup)
             {
-                tempQG = new QuestionGroup();
-                tempQG.GroupID = QuestionController.getNextGroupID();
+                qgData.GroupID = QuestionController.getNextGroupID();
             }
-            else
-            {
-                tempQG = qgData;
-            }
-            tempQG.Header = txtHeader.Text;
-            tempQG.Description = txtDesc.Text.Replace(Environment.NewLine, "~~");
-            tempQG.Symptom = txtSymptom.Text;
 
-            return tempQG;
+            qgData.Header = txtHeader.Text;
+            qgData.Description = txtDesc.Text.Replace(Environment.NewLine, "~~");
+            qgData.Symptom = txtSymptom.Text;
+
+            return qgData;
+        }
+
+        public QuestionCountGroup getQuestionCountGroup()
+        {
+            if (newGroup)
+            {
+                qcgData.GroupID = QuestionController.getNextGroupID();
+            }
+
+            qcgData.Header = txtHeader.Text;
+            qcgData.Description = txtDesc.Text.Replace(Environment.NewLine, "~~");
+            qcgData.Symptom = txtSymptom.Text;
+            qcgData.Threshold = int.Parse(txtThreshold.Text.Trim());
+            qcgData.MaxQuestions = int.Parse(this.txtMaxQn.Text.Trim());
+            return qcgData;
+        }
+
+        public QuestionType getQuestionType()
+        {
+            return qType;
         }
     }
 }

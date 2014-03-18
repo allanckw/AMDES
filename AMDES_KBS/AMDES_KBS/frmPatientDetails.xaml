@@ -22,11 +22,11 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="150"  Content="Family name/surname:" />
-                <TextBox Width="200" Height="30" Name="txtSurName" />
+                <TextBox Width="200" Height="30" Name="txtLastName" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="150"  Content="Given name/ first name:" />
-                <TextBox Width="200" Height="30" Name="txtLastName" />
+                <TextBox Width="200" Height="30" Name="txtFirstName" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="150"  Content="Date of Birth:" />

@@ -48,6 +48,7 @@ namespace AMDES_KBS
         {
             WholeContent = new List<ucQuestion>();
             QuestionGroup qlist = QuestionController.getGroupByID(sectionID);
+            txtDesc.Text = qlist.Description.Replace("~~", Environment.NewLine);
             foreach (Question q in qlist.Questions)
             {
                 addQuestion(q);

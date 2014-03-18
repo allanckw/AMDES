@@ -46,7 +46,7 @@
                 <Button Height="25" Width="100" Content="Delete Section" Margin="0,0,10,0"   Name="btnDeleteSection" Click="btnDeleteSection_Click" />
                 <Button Height="25" Width="120" Content="Add New Question" Margin="0,0,10,0" Name="btnAddNew" Click="btnAddNew_Click" />
                 <Button Height="25" Width="100" Content="Save" Margin="0,0,10,0" Name="btnSaveAllQuestion" Click="btnSaveAllQuestion_Click" />
-                <Button Height="25" Width="100" Content="Cancel" Name="btnCancel" />
+                <Button Height="25" Width="100" Content="Cancel" Name="btnCancel" Click="btnCancel_Click" />
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -64,6 +64,7 @@ namespace AMDES_KBS
 
                 var admForm = new frmMain();
                 this.Visibility = Visibility.Collapsed;
+                Application.Current.MainWindow = admForm;
                 admForm.Show();
             }
         }

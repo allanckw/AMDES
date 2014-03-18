@@ -1,7 +1,7 @@
 ﻿<Window x:Class="AMDES_KBS.frmMain"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="frmMain" Height="600" Width="910" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="frmMain" Height="650" Width="910" ResizeMode="NoResize" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
             <StackPanel x:Name="stkpnlMenuHeader" Height="50" Orientation="Horizontal" >
@@ -36,22 +36,30 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="stkpnlDisplay" Orientation="Horizontal">
-                <GroupBox Header="List of Patients" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205" Height="510" Foreground="Black" FontSize="13.333" FontFamily="Stencil" Margin="5,0,0,0">
+                <GroupBox Header="List of Patients" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205" Height="560" Foreground="Black" FontSize="13.333" FontFamily="Stencil" Margin="5,0,0,0">
                     <ListBox x:Name="lstPatientList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="480" Width="188" HorizontalAlignment="Left" VerticalAlignment="Top">
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="530" Width="188" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstPatientList_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Margin="5" Orientation="Vertical">
+                                <StackPanel Orientation="Vertical">
+                                    <WrapPanel Orientation="Horizontal" >
+                                        <TextBlock Text="ID: " Foreground="DarkBlue" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding NRIC}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                    </WrapPanel>
+                                    <WrapPanel Orientation="Horizontal"  Margin="0,5,0,0">
+                                        <TextBlock Text="{Binding Last_Name}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                        <TextBlock Text=" " TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding First_Name}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                    </WrapPanel>
                                     <WrapPanel Orientation="Horizontal"  >
-                                        <TextBlock Text="Name " Foreground="DarkBlue" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                        <TextBlock Text="NIL " Visibility="Hidden" Foreground="DarkBlue" FontWeight="Bold"/>
                                     </WrapPanel>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </GroupBox>
-                <Frame x:Name="frameDisplay" Width="670" Height="510" NavigationUIVisibility="Hidden" TabIndex="1" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" SnapsToDevicePixels="False" UseLayoutRounding="True" Margin="10,0,0,0" />
+                <Frame x:Name="frameDisplay" Width="670" Height="560" NavigationUIVisibility="Hidden" TabIndex="1" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" SnapsToDevicePixels="False" UseLayoutRounding="True" Margin="10,0,0,0" />
             </StackPanel>
         </StackPanel>
     </Grid>

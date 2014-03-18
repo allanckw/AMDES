@@ -68,7 +68,16 @@ namespace AMDES_KBS
             section.Content = sv;
             tcQuestionSetting.Items.Add(section);
 
-            ucQuestionGroup ucQG = new ucQuestionGroup(qg);
+            ucQuestionGroup ucQG;
+            if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
+            {
+                QuestionCountGroup qcg = (QuestionCountGroup)qg;
+                ucQG = new ucQuestionGroup(qcg);
+            }//new ucQuestionGroup(qg);
+            else
+            {
+                ucQG = new ucQuestionGroup(qg);
+            }
             TabItem groupSection = new TabItem();
             groupSection.Visibility = Visibility.Collapsed;
             groupSection.Header = qg.Header;
@@ -82,8 +91,11 @@ namespace AMDES_KBS
         {
             try
             {
-                int sectionSelected = tcQuestionSetting.SelectedIndex;
-                TabItem sectionTab = (TabItem)tcQuestionSetting.Items.GetItemAt(tcQuestionSetting.SelectedIndex);
+                int selectedidx = tcQuestionSetting.SelectedIndex;
+                TabItem sectionTab = (TabItem)tcQuestionSetting.Items.GetItemAt(selectedidx);
+
+                TabItem tbGroup = (TabItem)tcQuestionGroupSetting.Items.GetItemAt(selectedidx);
+                ucQuestionGroup ucControlGroup = (ucQuestionGroup)tbGroup.Content;
 
                 if (sectionTab.Tag.ToString().Trim() != "")
                 {
@@ -93,6 +105,19 @@ namespace AMDES_KBS
                     {
                         QuestionCountGroup qcg = (QuestionCountGroup)qg;
                         if (NoOfQuestion(sectionTab) >= qcg.MaxQuestions)
+                        {
+                            MessageBox.Show("You have reached the maximum number of question!");
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+
+                    if (ucControlGroup.stkpnlCOUNT.Visibility==Visibility.Visible)
+                    {
+                        int NoOfQuestionAllowed = int.Parse(ucControlGroup.txtMaxQn.Text.Trim());
+                        if (NoOfQuestion(sectionTab) >= NoOfQuestionAllowed)
                         {
                             MessageBox.Show("You have reached the maximum number of question!");
                             return;
@@ -123,27 +148,55 @@ namespace AMDES_KBS
                 ucQuestionGroup groupControl = (ucQuestionGroup)groupsectionTab.Content;
                 ScrollViewer sv = (ScrollViewer)sectionTab.Content;
                 StackPanel stkpnl = (StackPanel)sv.Content;
-                QuestionGroup qg = groupControl.getQuestionGroup();
 
-                qg.Questions.Clear();
+                if (groupControl.getQuestionType() == QuestionType.COUNT)
+                {
+                    QuestionCountGroup qcg = groupControl.getQuestionCountGroup();
+
+                    qcg.Questions.Clear();
 
                     foreach (ucQuestionSetting question in stkpnl.Children)
                     {
-                        if (question.getToSaved())
+                        if (question.getToSaved(false))
+                        {
+                            qcg.Questions.Add(question.getQuestion());
+                        }
+                    }
+                    QuestionController.updateQuestionGroup(qcg);
+                }
+                else
+                {
+                    QuestionGroup qg = groupControl.getQuestionGroup();
+
+                    qg.Questions.Clear();
+
+                    foreach (ucQuestionSetting question in stkpnl.Children)
+                    {
+                        if (question.getToSaved(false))
                         {
                             qg.Questions.Add(question.getQuestion());
                         }
                     }
                     QuestionController.updateQuestionGroup(qg);
                 }
-
-
-                MessageBox.Show("Done");
-                loadAllSection();
             }
+
+            MessageBox.Show("Done");
+            loadAllSection();
+        }
 
         private void btnAddNewSection_Click(object sender, RoutedEventArgs e)
         {
+            frmQuestionGroupSetting askGroupQuestionSetting = new frmQuestionGroupSetting();
+            int questionType = -1;
+            if (askGroupQuestionSetting.ShowDialog() == true)
+                questionType = askGroupQuestionSetting.getAnswer();
+            else
+            {
+                return;
+            }
+
+            
             TabItem newSection = new TabItem();
             newSection.Tag = "";
             newSection.Header = "New";
@@ -165,7 +218,7 @@ namespace AMDES_KBS
             newGroupSection.Tag = "";
             newGroupSection.Header = "New";
             newGroupSection.Visibility = Visibility.Collapsed;
-            newGroupSection.Content = new ucQuestionGroup();
+            newGroupSection.Content = new ucQuestionGroup(questionType);
             tcQuestionGroupSetting.Items.Add(newGroupSection);
             tcQuestionSetting.SelectedIndex = tcQuestionSetting.Items.Count - 1;
         }
@@ -175,10 +228,10 @@ namespace AMDES_KBS
             int count = 0;
             ScrollViewer sv = (ScrollViewer)sectionTab.Content;
             StackPanel stkpnl = (StackPanel)sv.Content;
-            QuestionGroup gp = QuestionController.getGroupByID(int.Parse(sectionTab.Tag.ToString()));
+            //QuestionGroup gp = QuestionController.getGroupByID(int.Parse(sectionTab.Tag.ToString()));
             foreach (ucQuestionSetting question in stkpnl.Children)
             {
-                if (question.getToSaved())
+                if (question.getToSaved(true))
                 {
                     count++;
                 }
@@ -203,6 +256,7 @@ namespace AMDES_KBS
                 if (tbGroup.Tag.ToString().Trim() != "")
                 {
                     QuestionController.deleteQuestionGroup(int.Parse(tbGroup.Tag.ToString().Trim()));
+                    //QuestionController.getAllQuestionGroup();
                 }
                 tcQuestionSetting.Items.RemoveAt(selectedidx);
                 tcQuestionGroupSetting.Items.RemoveAt(selectedidx);
@@ -214,6 +268,13 @@ namespace AMDES_KBS
                 
                 throw;
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            int lastIdx = tcQuestionSetting.SelectedIndex;
+            loadAllSection();
+            tcQuestionSetting.SelectedIndex = lastIdx;
         }
     }
 }

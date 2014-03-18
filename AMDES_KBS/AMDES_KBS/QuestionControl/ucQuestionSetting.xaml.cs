@@ -56,10 +56,14 @@ namespace AMDES_KBS
             return question;
         }
 
-        public bool getToSaved()
+        public bool getToSaved(bool ignoreEmptyText)
         {
-            if (txtQuestion.Text.Trim() == "")
-                return false;
+            if (!ignoreEmptyText)
+            {
+                if (txtQuestion.Text.Trim() == "")
+                    return false;
+            }
+
             if (stkpnlQuestion.Visibility == Visibility.Collapsed)
                 return false;
 

@@ -4,32 +4,38 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="510" d:DesignWidth="670"
+      d:DesignHeight="560" d:DesignWidth="670"
 	Title="frmSection">
 
     <Grid>
         <StackPanel x:Name="MainFrame">
-            <StackPanel x:Name="stkpnlHeader" Orientation="Horizontal">
-                <StackPanel x:Name="stkpnlSectionPatientDetail" Orientation="Horizontal">
-                    <Label x:Name="lblPatientName" Content="Name of Patient" FontSize="14" FontWeight="Bold" Width="200" Margin="5,0,0,0" />
-                    <Label x:Name="lblPatientID" FontSize="14" FontWeight="Bold" Content="SXXXXXXXZ" Width="100" />
+            <StackPanel x:Name="stkpnlOverallHeader">
+                <StackPanel x:Name="stkpnlHeader" Orientation="Horizontal">
+                    <StackPanel x:Name="stkpnlSectionPatientDetail" Orientation="Horizontal">
+                        <Label x:Name="lblPatientName" Content="Name of Patient" FontSize="14" FontWeight="Bold" Width="200" Margin="5,0,0,0" />
+                        <Label x:Name="lblPatientID" FontSize="14" FontWeight="Bold" Content="SXXXXXXXZ" Width="100" />
+                    </StackPanel>
+                    <StackPanel x:Name="stkpnlSection" Orientation="Horizontal">
+                        <Label Content="Section" FontSize="14" FontWeight="Bold" Width="60" Margin="135,0,0,0" />
+                        <Label x:Name="lblSection" FontSize="14" FontWeight="Bold" Content="" Width="30" />
+                    </StackPanel>
+                    <StackPanel x:Name="stkpnlPage" Orientation="Horizontal" Margin="5,0,0,0">
+                        <Label Content="Page" FontSize="14" FontWeight="Bold" Width="45" />
+                        <Label x:Name="lblCurrPage" FontSize="14" FontWeight="Bold" Content="01" Width="30" />
+                        <Label Content="Of" FontSize="14" FontWeight="Bold" Width="30" />
+                        <Label x:Name="lblTotalPage" FontSize="14" FontWeight="Bold" Content="10" Width="30" />
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel x:Name="stkpnlSection" Orientation="Horizontal">
-                    <Label Content="Section" FontSize="14" FontWeight="Bold" Width="60" Margin="135,0,0,0" />
-                    <Label x:Name="lblSection" FontSize="14" FontWeight="Bold" Content="" Width="30" />
-                </StackPanel>
-                <StackPanel x:Name="stkpnlPage" Orientation="Horizontal" Margin="5,0,0,0">
-                    <Label Content="Page" FontSize="14" FontWeight="Bold" Width="45" />
-                    <Label x:Name="lblCurrPage" FontSize="14" FontWeight="Bold" Content="01" Width="30" />
-                    <Label Content="Of" FontSize="14" FontWeight="Bold" Width="30" />
-                    <Label x:Name="lblTotalPage" FontSize="14" FontWeight="Bold" Content="10" Width="30" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBox x:Name="txtDesc" Width="670" Height="60" IsReadOnly="True" BorderThickness="0" TextAlignment="Right" FontSize="12"/>
                 </StackPanel>
             </StackPanel>
+
             <StackPanel x:Name="QuestionFrame" Height="430">
             </StackPanel>
-            <StackPanel x:Name="ButtonFrame" Height="50" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="5" Click="btnPrev_Click" />
-                <Button x:Name="btnNext" Content="Next" Height="30" Width="100" Margin="5" Click="btnNext_Click" />
+            <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" />
+                <Button x:Name="btnNext" Content="Next" Height="30" Width="100" Margin="0,0,10,0" Click="btnNext_Click" />
                 <Button x:Name="btnSave" Content="Save" Height="30" Width="100" />
             </StackPanel>
         </StackPanel>
