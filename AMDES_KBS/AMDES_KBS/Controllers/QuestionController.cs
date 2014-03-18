@@ -74,26 +74,64 @@ namespace AMDES_KBS.Controllers
             //Not sure if i need to set NextGroupLink from outside so i can load the information to clips on load
             //(i.e. the information for : Y -> A, N -> B, < 7 -> A, > 7 -> B
             XElement newGRP = new XElement("QuestionGroup", new XAttribute("id", p.GroupID),
-                            new XElement("Header", p.Header), //what it should show on the tab header 
-                            new XElement("Description", p.Description),
-                            //description of the Question QuestionGroup, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
-                            new XElement("QnType", p.getQuestionType()), //type, AND / OR / COUNT
-                            new XElement("Symptom", p.Symptom), 
-                            //What does it assert about the patient if this is true? (i need this value in patient));
-                            new XElement("Questions") //questions to ask
-                            );
+                                new XElement("Header", p.Header), //what it should show on the tab header 
+                                new XElement("Description", p.Description),
+                //description of the Question QuestionGroup, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
+                                new XElement("QnType", p.getQuestionType()), //type, AND / OR / COUNT
+                                new XElement("Symptom", p.Symptom),
+                //What does it assert about the patient if this is true? (i need this value in patient));
+                                new XElement("Questions") //questions to ask
+                                );
 
 
 
             //i suppose the loading on startup, clips have to know where it is going to point to for next qn
-            if (p.NextFalseLink != null)// NAVEX need to know next GroupID
+            if (p.NextFalseLink != null)// NAVEX need to know next GroupID //Next False Link GoTo??
             {
-                newGRP.Add(new XElement("NextFalseLink", p.NextFalseLink.GroupID)); //Next False Link GoTo??
+                XElement falseNavex = new XElement("NextFalseLink", new XAttribute("id", p.NextFalseLink.DestGrpID),
+                            new XElement("RequireAge", p.NextFalseLink.isRequireAge),
+                            new XElement("Age", p.NextFalseLink.Age),
+                            new XElement("isConclusive", p.NextFalseLink.isConclusive),
+                            new XElement("LessThanAge", p.NextFalseLink.LessThanAge),
+                            new XElement("MoreThanEqualAge", p.NextFalseLink.MoreThanEqualAge),
+                            new XElement("Diagnoses")
+                            );
+
+                if (p.NextFalseLink.getDiagnosis().Count > 0)
+                {
+                    for (int k = 0; k < p.NextFalseLink.getDiagnosis().Count; k++)
+                    {
+                        Diagnosis d = p.NextFalseLink.getDiagnosisAt(k);
+                        falseNavex.Element("Diagnoses").Add(
+                            new XElement("Diagnosis", new XAttribute("diagID", d.RID), d.Comment)
+                            );
+                    }
+                }
+                newGRP.Add(falseNavex);
             }
 
             if (p.NextTrueLink != null)
             {
-                newGRP.Add(new XElement("NextTrueLink", p.NextTrueLink.GroupID)); //Next True Link GoTo???
+                XElement trueNavex = new XElement("NextTrueLink", new XAttribute("id", p.NextTrueLink.DestGrpID),
+                                         new XElement("RequireAge", p.NextFalseLink.isRequireAge),
+                                         new XElement("Age", p.NextTrueLink.Age),
+                                         new XElement("isConclusive", p.NextTrueLink.isConclusive),
+                                         new XElement("LessThanAge", p.NextTrueLink.LessThanAge),
+                                         new XElement("MoreThanEqualAge", p.NextTrueLink.MoreThanEqualAge),
+                                         new XElement("Diagnoses")
+                                         );
+
+                if (p.NextTrueLink.getDiagnosis().Count > 0)
+                {
+                    for (int k = 0; k < p.NextTrueLink.getDiagnosis().Count; k++)
+                    {
+                        Diagnosis d = p.NextTrueLink.getDiagnosisAt(k);
+                        trueNavex.Element("Diagnoses").Add(
+                            new XElement("Diagnosis", new XAttribute("diagID", d.RID), d.Comment)
+                            );
+                    }
+                }
+                newGRP.Add(trueNavex);
             }
 
             if (p.Questions.Count > 0)
@@ -102,7 +140,7 @@ namespace AMDES_KBS.Controllers
                 {
                     Question q = p.Questions.ElementAt(j);
                     newGRP.Element("Questions").Add(
-                        new XElement("Question", new XAttribute("QID", p.GroupID + "." + (j+1)),
+                        new XElement("Question", new XAttribute("QID", p.GroupID + "." + (j + 1)),
                                         new XElement("Name", q.Name),
                                         new XElement("Symptom", q.Symptom)));
                     //What does it assert about the patient if this is true? (i need this value in patient));
@@ -169,11 +207,11 @@ namespace AMDES_KBS.Controllers
 
                     if (x.Element("NextTrueLink") != null)
                     {
-                        p.NextTrueLink = QuestionController.getGroupByID(int.Parse(x.Element("NextTrueLink").Value));
+                        p.NextTrueLink = QuestionController.getNavigation(x.Element("NextTrueLink"));
                     }
                     if (x.Element("NextFalseLink") != null)
                     {
-                        p.NextFalseLink = QuestionController.getGroupByID(int.Parse(x.Element("NextFalseLink").Value));
+                        p.NextFalseLink = QuestionController.getNavigation(x.Element("NextFalseLink"));
                     }
 
                     var qns = (from pa in x.Descendants("Questions").Descendants("Question")
@@ -194,6 +232,46 @@ namespace AMDES_KBS.Controllers
             }
         }
 
+        private static Navigation getNavigation(XElement x)
+        {
+            Navigation nav = new Navigation();
+            
+            nav.DestGrpID = (int.Parse(x.Attribute("id").Value));
+            nav.isConclusive = bool.Parse(x.Element("isConclusive").Value);
+            nav.isRequireAge = bool.Parse(x.Element("RequireAge").Value);
+            nav.Age = (int.Parse(x.Element("Age").Value));
+
+            bool a = bool.Parse(x.Element("LessThanAge").Value);
+
+            if (a)
+            {
+                nav.setLessThanAge();
+            }
+            else
+            {
+                nav.setMoreThanEqualAge();
+            }
+
+            var diag = (from pa in x.Descendants("Diagnoses").Descendants("Diagnosis")
+                       select pa).ToList();
+
+            foreach (var d in diag)
+            {
+                nav.addDiagnosis(readDiagnosis(d));
+            }
+
+            return nav;
+        }
+
+        private static Diagnosis readDiagnosis(XElement x)
+        {
+            Diagnosis d = new Diagnosis();
+            d.RID = x.Attribute("diagID").Value;
+            d.Comment = x.Value;
+
+            return d;
+        }
+
         private static QuestionCountGroup readQnCountGroupData(XElement x)
         {
             QuestionCountGroup p = new QuestionCountGroup();
@@ -206,11 +284,11 @@ namespace AMDES_KBS.Controllers
 
             if (x.Element("NextTrueLink") != null)
             {
-                p.NextTrueLink = QuestionController.getGroupByID(int.Parse(x.Element("NextTrueLink").Value));
+                p.NextTrueLink = QuestionController.getNavigation(x.Element("NextTrueLink"));
             }
             if (x.Element("NextFalseLink") != null)
             {
-                p.NextFalseLink = QuestionController.getGroupByID(int.Parse(x.Element("NextFalseLink").Value));
+                p.NextFalseLink = QuestionController.getNavigation(x.Element("NextFalseLink"));
             }
 
             var qns = (from pa in x.Descendants("Questions").Descendants("Question")

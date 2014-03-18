@@ -21,7 +21,8 @@ namespace AMDES_KBS.Entity
         private string desc;
         private string symptom;
 
-        protected QuestionGroup nextTrueLink, nextFalseLink, prevLink; //the next group that will make the decision
+        protected Navigation nextTrueLink, nextFalseLink; //the next group that will make the decision
+
 
         public static string dataPath = @"data\Questions.xml";
 
@@ -116,36 +117,18 @@ namespace AMDES_KBS.Entity
             set { desc = value; }
         }
 
-        public QuestionGroup NextTrueLink
-        {
-            get { return nextTrueLink; }
-            set
-            {
-                if (this.GroupID == value.GroupID)
-                {
-                    throw new InvalidOperationException("Cannot point to urself!");
-                }
-                else
-                {
-                    nextTrueLink = value;
-                }
-            }
-        }
 
-        public QuestionGroup NextFalseLink
+        public Navigation NextFalseLink
         {
             get { return nextFalseLink; }
-            set
-            {
-                if (this.GroupID == value.GroupID)
-                {
-                    throw new InvalidOperationException("Cannot point to urself!");
-                }
-                else
-                {
-                    nextFalseLink = value;
-                }
-            }
+            set { nextFalseLink = value; }
         }
+
+        public Navigation NextTrueLink
+        {
+            get { return nextTrueLink; }
+            set { nextTrueLink = value; }
+        }
+
     }
 }
