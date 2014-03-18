@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AMDES_KBS.Entity;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
@@ -27,68 +29,81 @@ namespace AMDES_KBS
         Frame amdesPageFrame;
 
         List<List<ucQuestion>> PageContent = new List<List<ucQuestion>>();
+        List<ucQuestion> WholeContent = new List<ucQuestion>();
+
         bool collapseRest = false;
-        public frmSection(Frame amdesFrame, string sectionID)
+        public frmSection(Frame amdesFrame, int sectionID)
         {
             InitializeComponent();
             lblSection.Content = sectionID;
             amdesPageFrame = amdesFrame;
             heightLimit = 430;
-            loadQuestion();
+            Patient currPatient = CLIPSController.CurrentPatient;
+            lblPatientID.Content =  currPatient.NRIC;
+            lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
+            loadSection(sectionID);
         }
 
-        public void loadQuestion()
+        public void loadSection(int sectionID)
         {
-            for (int i = 0; i < 100; i++)
+            WholeContent = new List<ucQuestion>();
+            QuestionGroup qlist = QuestionController.getGroupByID(sectionID);
+            foreach (Question q in qlist.Questions)
             {
-                addQuestion((i + 1).ToString(), randomQuestion());
+                addQuestion(q);
             }
-            //q1.loadQuestion("A1",tempquestion);
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    addQuestion((i + 1).ToString(), randomQuestion());
+            //}
+            ////q1.loadQuestion("A1",tempquestion);
             sortPage();
         }
 
-        public string randomQuestion()
-        {
-            int no = new Random().Next(3);
-            string tempquestion = "";
-            switch (no)
-            {
-                case 1:
-                    tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
-                    tempquestion = tempquestion + "Compared to before, does the patient have problems remembering things/events that happened recently?\n";
-                    tempquestion = tempquestion + "Frequently misplacing his/her personal belongings?\n";
-                    tempquestion = tempquestion + "Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc)\n";
-                    tempquestion = tempquestion + "Forget where he/she keeps his/her things?\n";
-                    tempquestion = tempquestion + "Forget what he/she has come to do?\n";
-                    tempquestion = tempquestion + "Have problems finding his/her way around ?\n";
-                    tempquestion = tempquestion + "Ask repeated questions or repeat himself/herself often?\n";
-                    tempquestion = tempquestion + "Other Q:__________________________________\n";
-                    break;
-                case 2:
-                    tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
-                    tempquestion = tempquestion + "Other Q:__________________________________\n";
-                    break;
-                case 3:
-                    tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
-                    tempquestion = tempquestion + "Compared to before, does the patient have problems remembering things/events that happened recently?\n";
-                    tempquestion = tempquestion + "Frequently misplacing his/her personal belongings?\n";
-                    tempquestion = tempquestion + "Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc)\n";
-                    tempquestion = tempquestion + "Other Q:__________________________________\n";
-                    break;
-                default:
-                    tempquestion = tempquestion + "Other Q:__________________________________\n";
-                    break;
-            }
+        //public string randomQuestion()
+        //{
+        //    int no = new Random().Next(3);
+        //    string tempquestion = "";
+        //    switch (no)
+        //    {
+        //        case 1:
+        //            tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
+        //            tempquestion = tempquestion + "Compared to before, does the patient have problems remembering things/events that happened recently?\n";
+        //            tempquestion = tempquestion + "Frequently misplacing his/her personal belongings?\n";
+        //            tempquestion = tempquestion + "Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc)\n";
+        //            tempquestion = tempquestion + "Forget where he/she keeps his/her things?\n";
+        //            tempquestion = tempquestion + "Forget what he/she has come to do?\n";
+        //            tempquestion = tempquestion + "Have problems finding his/her way around ?\n";
+        //            tempquestion = tempquestion + "Ask repeated questions or repeat himself/herself often?\n";
+        //            tempquestion = tempquestion + "Other Q:__________________________________\n";
+        //            break;
+        //        case 2:
+        //            tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
+        //            tempquestion = tempquestion + "Other Q:__________________________________\n";
+        //            break;
+        //        case 3:
+        //            tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
+        //            tempquestion = tempquestion + "Compared to before, does the patient have problems remembering things/events that happened recently?\n";
+        //            tempquestion = tempquestion + "Frequently misplacing his/her personal belongings?\n";
+        //            tempquestion = tempquestion + "Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc)\n";
+        //            tempquestion = tempquestion + "Other Q:__________________________________\n";
+        //            break;
+        //        default:
+        //            tempquestion = tempquestion + "Other Q:__________________________________\n";
+        //            break;
+        //    }
 
-            return tempquestion;
-        }
-        public void addQuestion(string id, string question)
+        //    return tempquestion;
+        //}
+
+        public void addQuestion(Question q)
         {
             ucQuestion ucQ = new ucQuestion();
-            ucQ.Name="Question" + id;
-            ucQ.loadQuestion(id, question);
+            //ucQ.Name="Question" + q.ID;
+            ucQ.loadQuestion(q);
             //currHeight += Math.Ceiling(ucQ.getHeight());
             QuestionFrame.Children.Add(ucQ);
+            WholeContent.Add(ucQ);
         }
 
         private void sortPage()
@@ -147,7 +162,7 @@ namespace AMDES_KBS
             }
             else
             {
-                Navigation();
+                NavigationNext();
             }
         }
 
@@ -169,14 +184,12 @@ namespace AMDES_KBS
             }
             else
             {
-                Navigation();
+                //Navigation();
             }
         }
 
-        private void Navigation()
+        private void NavigationNext()
         {
-            frmSection SectionToNavigate = new frmSection(amdesPageFrame, "B");
-            amdesPageFrame.Navigate(SectionToNavigate);
 
         }
     }

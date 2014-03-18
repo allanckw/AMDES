@@ -14,11 +14,14 @@ namespace AMDES_KBS
     /// </summary>
     public partial class frmOverview : AMDESPage
     {
-        public frmOverview()
+        Frame amdesPageFrame;
+        public frmOverview(Frame frame)
         {
             InitializeComponent();
             //loadQuestion();
+            amdesPageFrame = frame;
             loadPatient();
+            
         }
 
         private void loadPatient()
@@ -27,7 +30,7 @@ namespace AMDES_KBS
 
             for (int i = 0; i < pList.Count; i++)
             {
-                ucPatientDisplay patient = new ucPatientDisplay(pList.ElementAt(i));
+                ucPatientDisplay patient = new ucPatientDisplay(pList.ElementAt(i), amdesPageFrame);
                 stkpnlPatientList.Children.Add(patient);
             }
         }

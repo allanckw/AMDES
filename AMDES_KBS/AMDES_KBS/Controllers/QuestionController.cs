@@ -102,7 +102,7 @@ namespace AMDES_KBS.Controllers
                 {
                     Question q = p.Questions.ElementAt(j);
                     newGRP.Element("Questions").Add(
-                        new XElement("Question", new XAttribute("QID", p.GroupID + ". " + j+1),
+                        new XElement("Question", new XAttribute("QID", p.GroupID + "." + (j+1)),
                                         new XElement("Name", q.Name),
                                         new XElement("Symptom", q.Symptom)));
                     //What does it assert about the patient if this is true? (i need this value in patient));
@@ -213,7 +213,7 @@ namespace AMDES_KBS.Controllers
                 p.NextFalseLink = QuestionController.getGroupByID(int.Parse(x.Element("NextFalseLink").Value));
             }
 
-            var qns = (from pa in x.Descendants("Questions")
+            var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                        select pa).ToList();
 
             foreach (var q in qns)
@@ -230,13 +230,11 @@ namespace AMDES_KBS.Controllers
         private static Question readQuestion(XElement x)
         {
             Question q = new Question();
-            q.ID = int.Parse(x.Attribute("QID").Value);
+            q.ID = Double.Parse(x.Attribute("QID").Value);
             q.Name = x.Element("Name").Value;
             q.Symptom = x.Element("Symptom").Value;
             return q;
         }
-
-
 
         public static QuestionGroup getGroupByID(int id)
         {

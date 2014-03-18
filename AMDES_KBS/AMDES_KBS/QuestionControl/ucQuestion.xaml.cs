@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AMDES_KBS.Entity;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
@@ -20,21 +22,22 @@ namespace AMDES_KBS
     public partial class ucQuestion : UserControl
     {
         bool questionAnswer = false;
-
+        Question question;
         public ucQuestion()
         {
             InitializeComponent();
         }
 
-        public void loadQuestion(string questionID, string question)
+        public void loadQuestion(Question q)
         {
-            question = question.Replace("\n", Environment.NewLine);
-            lblQuestion.Content = questionID;
-            txtQuestion.Text = question;
+            question = q;
+            string questionText = q.Name.Replace("~~", Environment.NewLine);
+            lblQuestion.Content = q.ID;
+            txtQuestion.Text = questionText;
             var desiredSizeOld = txtQuestion.DesiredSize;
             txtQuestion.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
             var desiredSizeNew = txtQuestion.DesiredSize;
-            txtQuestion.Height = desiredSizeNew.Height-5;
+            txtQuestion.Height = desiredSizeNew.Height+10;
             
         }
 
@@ -43,7 +46,7 @@ namespace AMDES_KBS
             // TODO: Add event handler implementation here.
             btnYes.IsEnabled = false;
             btnNo.IsEnabled = true;
-            questionAnswer = true;
+            CLIPSController.assertQuestion(question.ID, true);
             //clip to assert here or modify
         }
 
@@ -52,13 +55,18 @@ namespace AMDES_KBS
             // TODO: Add event handler implementation here.
             btnYes.IsEnabled = true;
             btnNo.IsEnabled = false;
-            questionAnswer = false;
+            CLIPSController.assertQuestion(question.ID, false);
             //clip to assert here or modify
         }
 
         public bool getAnswer()
         {
             return questionAnswer;
+        }
+
+        public Question getQuestion()
+        {
+            return question;
         }
 
         public double getHeight()

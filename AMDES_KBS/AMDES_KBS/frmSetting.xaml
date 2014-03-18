@@ -1,46 +1,18 @@
 ﻿<Window x:Class="AMDES_KBS.frmSetting"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="frmSetting" Height="630" Width="600" Loaded="Window_Loaded">
+        Title="frmSetting" Height="600" Width="800" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
-            <TabControl x:Name="tcQuestionSetting" HorizontalAlignment="Left" VerticalAlignment="Top" Width="780" Height="550">
-                <TabItem Header="Section A">
-                    <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="Auto" Width="570" HorizontalAlignment="Left">
-                        <StackPanel x:Name="stkpnlSectionA"/>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Header="Section B">
-                    <ScrollViewer x:Name="svB" VerticalScrollBarVisibility="Auto" Width="570" HorizontalAlignment="Left">
-                        <StackPanel x:Name="stkpnlSectionB"/>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Header="Section C">
-                    <ScrollViewer x:Name="svC" VerticalScrollBarVisibility="Auto" Width="570" HorizontalAlignment="Left">
-                        <StackPanel x:Name="stkpnlSectionC"/>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Header="Section C2">
-                    <ScrollViewer x:Name="svC2" VerticalScrollBarVisibility="Auto" Width="570" HorizontalAlignment="Left">
-                        <StackPanel x:Name="stkpnlSectionC2"/>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Header="Section C3">
-                    <ScrollViewer x:Name="svC3" VerticalScrollBarVisibility="Auto" Width="570" HorizontalAlignment="Left">
-                        <StackPanel x:Name="stkpnlSectionC3"/>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Header="Section D">
-                    <ScrollViewer x:Name="svD" VerticalScrollBarVisibility="Auto" Width="570" HorizontalAlignment="Left">
-                        <StackPanel x:Name="stkpnlSectionD"/>
-                    </ScrollViewer>
-                </TabItem>
-            </TabControl>
-            <StackPanel Orientation="Horizontal" Width="570">
-                <Button Height="25" Width="120" Content="Add New Question" Margin="230,10,10,10" Name="btnAddNew" Click="btnAddNew_Click" />
-                <Button Height="25" Width="100" Content="Save" Margin="0,10,10,10" Name="btnSaveAllQuestion" />
-                <Button Height="25" Width="100" Content="Cancel" Name="btnCancel" />
-            </StackPanel>
+            <GroupBox x:Name="gbSettings" Header="Settings" FontSize="15" FontWeight="Bold">
+                <StackPanel x:Name="stkpnlDivider" Orientation="Horizontal">
+                    <StackPanel x:Name="stkpnlSettingMenu">
+                        <Button x:Name="btnQuestion" Width="100" Content="Question" Margin="0,0,0,5" Click="btnQuestion_Click" />
+                        <Button x:Name="btnExitSetting" Width="100" Content="Exit" Margin="0,0,0,5" Click="btnExitSetting_Click" />
+                    </StackPanel>
+                    <Frame x:Name="SettingFrame" NavigationUIVisibility="Hidden" Width="650" Height="530" Margin="10,0,0,0" ></Frame>
+                </StackPanel>
+            </GroupBox>
         </StackPanel>
     </Grid>
 </Window>

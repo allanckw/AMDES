@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AMDES_KBS.Entity;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
@@ -21,11 +22,13 @@ namespace AMDES_KBS
     public partial class ucPatientDisplay : UserControl
     {
         Patient pat;
-        public ucPatientDisplay(Patient p)
+        Frame amdesPageFrame;
+        public ucPatientDisplay(Patient p, Frame ParentFrame)
         {
             InitializeComponent();
             loadTest();
 
+            this.amdesPageFrame = ParentFrame;
             this.pat = p;
 
             this.txtPatientID.Text = p.NRIC;
@@ -34,6 +37,8 @@ namespace AMDES_KBS
             this.txtTestTime.Text = p.AssessmentDate.ToString("dd MMM yyyy");
             this.txtAssessor.Text = p.Doctor.Name;
 
+            if (p.TestsList.Count == 0)
+                btnShowHideTest.Visibility = Visibility.Hidden;
         }
 
         private void loadTest()
@@ -62,6 +67,23 @@ namespace AMDES_KBS
                 stkpnlPatientTestList.Visibility = Visibility.Collapsed;
                 btnShowHideTest.Content = "+";
             }
+        }
+
+        private void btnContTest_Click(object sender, RoutedEventArgs e)
+        {
+            //var c = this;
+            //while (true)
+            //{
+            //    c = c.Parent;
+            //    if (c.GetType()==typeof(Frame))
+            //    {
+            //        amdesPageFrame = (Frame)c;
+            //        break;
+            //    }
+            //}
+            CLIPSController.CurrentPatient = pat;
+            frmSection TestSection = new frmSection(amdesPageFrame, 1);
+            amdesPageFrame.Navigate(TestSection);
         }
     }
 }

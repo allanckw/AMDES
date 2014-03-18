@@ -5,15 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignWidth="660">
-    <Grid>
+    <Grid x:Name="gridPatient">
         <StackPanel x:Name="stkpnlPatient" Orientation="Vertical" Margin="0,0,0,20">
             <StackPanel x:Name="stkpnlPatientDetail" Orientation="Horizontal" Margin="0">
                 <Button x:Name="btnShowHideTest" Width="20" Height="20" Content="+" Click="btnShowHideTest_Click" />
-                <TextBox x:Name="txtTestTime" Width="120" Text="12 Oct 2013 14:00" FontWeight="Bold" />
-                <TextBox x:Name="txtPatientName" Width="250" TextWrapping="Wrap" Text="Name of patients" FontWeight="Bold" />
-                <TextBox x:Name="txtPatientID" Width="90" Text="S1234567B" FontWeight="Bold" />
-                <TextBox x:Name="txtAssessor" Width="100" Text="Dr Lim LH" FontWeight="Bold" />
-                <TextBox x:Name="txtStatus" Width="80" Text="Completed" FontWeight="Bold" />
+                <TextBox x:Name="txtTestTime" IsReadOnly="True" Width="120" Text="12 Oct 2013 14:00" FontWeight="Bold" />
+                <TextBox x:Name="txtPatientName" IsReadOnly="True" Width="230" TextWrapping="Wrap" Text="Name of patients" FontWeight="Bold" />
+                <TextBox x:Name="txtPatientID" IsReadOnly="True" Width="90" Text="S1234567B" FontWeight="Bold" />
+                <TextBox x:Name="txtAssessor" IsReadOnly="True" Width="100" Text="Dr Lim LH" FontWeight="Bold" />
+                <TextBox x:Name="txtStatus" IsReadOnly="True" Width="80" Text="Completed" FontWeight="Bold" />
+                <Button x:Name="btnContTest" Width="20" Height="20" Click="btnContTest_Click" />
             </StackPanel>
             <StackPanel x:Name="stkpnlPatientTestList">
                 

@@ -27,7 +27,15 @@ namespace AMDES_KBS.Entity
         public int Threshold
         {
             get { return threshold; }
-            set { threshold = value; }
+            set { 
+                if (this.MaxQuestions >value )
+                {
+                    threshold = value;
+                }else{
+                    throw new InvalidOperationException("Threshold cannot exceed maximum no. of questions!!!");
+                }
+            }
+            
         }
 
         public int MaxQuestions

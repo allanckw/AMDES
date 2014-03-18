@@ -39,7 +39,8 @@ namespace AMDES_KBS
         {
             if (savePatient())
             {
-                frmSection TestSection = new frmSection(amdesPageFrame, "1");
+                AssertQuestions();
+                frmSection TestSection = new frmSection(amdesPageFrame, 1);
                 amdesPageFrame.Navigate(TestSection);
             }
         }
@@ -76,6 +77,7 @@ namespace AMDES_KBS
                                     txtLastName.Text.Trim(), (DateTime)dtpDOB.SelectedDate);
 
                 PatientController.addPatient(p);
+                CLIPSController.CurrentPatient = p;
                 return true;
             } 
             
@@ -86,15 +88,27 @@ namespace AMDES_KBS
         {
             if (savePatient())
             {
-                amdesPageFrame.Navigate(new frmOverview());
+                amdesPageFrame.Navigate(new frmOverview(amdesPageFrame));
 
             }
         }
 
         private void btnQuit_Click(object sender, RoutedEventArgs e)
         {
-            amdesPageFrame.Navigate(new frmOverview());
+            amdesPageFrame.Navigate(new frmOverview(amdesPageFrame));
         }
 
+        private void AssertQuestions()
+        {
+            CLIPSController.ClearandLoad();
+            CLIPSController.reset();
+
+            List<QuestionGroup> AllQuestion = QuestionController.getAllQuestionGroup();
+
+            CLIPSController.loadQuestions(AllQuestion);
+
+            //str2assert = str2assert + ")";
+            //_theEnv.AssertString(str2assert);
+        }
     }
 }

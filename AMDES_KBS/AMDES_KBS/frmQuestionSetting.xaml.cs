@@ -10,23 +10,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AMDES_KBS.Entity;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
     /// <summary>
     /// Interaction logic for frmQuestionSetting.xaml
     /// </summary>
-    public partial class frmQuestionSetting : Window
+    public partial class frmQuestionSetting : AMDESPage
     {
         public frmQuestionSetting()
         {
             InitializeComponent();
-            loadSectionA();
-            loadSectionB();
-            loadSectionC();
-            loadSectionC2();
-            loadSectionC3();
-            loadSectionD();
+            loadAllSection();
+            //loadSectionA();
+            //loadSectionB();
+            //loadSectionC();
+            //loadSectionC2();
+            //loadSectionC3();
+            //loadSectionD();
         }
 
         void btn_Click(object sender, RoutedEventArgs e)
@@ -38,282 +41,39 @@ namespace AMDES_KBS
             //throw new NotImplementedException();
         }
 
-        public void loadSectionA()
+        private void loadAllSection()
         {
-            stkpnlSectionA.Children.Clear();
-            for (int c = 0; c < 5; c++)
+            tcQuestionSetting.Items.Clear();
+            List<QuestionGroup> qgList = QuestionController.getAllQuestionGroup();
+            foreach (QuestionGroup group in qgList)
             {
-                StackPanel stkpnlQuestion = new StackPanel();
-                StackPanel stkpnlHeader = new StackPanel();
-                stkpnlHeader.Margin = new Thickness(0, 0, 0, 5);
-                stkpnlHeader.Orientation = Orientation.Horizontal;
-
-                Label lb = new Label();
-                lb.Margin = new Thickness(0, 0, 5, 5);
-                lb.Content = "Question A" + (c + 1);
-
-                Button btn = new Button();
-                btn.Content = "Delete this question";
-                btn.Click += new RoutedEventHandler(btn_Click);
-
-                stkpnlHeader.Children.Add(lb);
-                stkpnlHeader.Children.Add(btn);
-
-                TextBox tb = new TextBox();
-                tb.AcceptsReturn = true;
-                tb.Width = 500;
-                tb.TextWrapping = TextWrapping.Wrap;
-                tb.Margin = new Thickness(0, 0, 0, 10);
-                string temp = "";
-                for (int i = 0; i < 5; i++)
-                {
-                    temp = temp + i + Environment.NewLine;
-                }
-                tb.Text = temp;
-
-                stkpnlQuestion.Children.Add(stkpnlHeader);
-                stkpnlQuestion.Children.Add(tb);
-                stkpnlSectionA.Children.Add(stkpnlQuestion);
+                loadSection(group);
             }
-
-
+            tcQuestionSetting.SelectedIndex = 0;
         }
 
-        public void loadSectionB()
+        private void loadSection(QuestionGroup qg)
         {
-            stkpnlSectionB.Children.Clear();
-            for (int c = 0; c < 5; c++)
+            TabItem section = new TabItem();
+            section.Header = qg.Header;
+            section.HorizontalAlignment = HorizontalAlignment.Left;
+            section.Tag = qg.GroupID;
+            ScrollViewer sv = new ScrollViewer();
+            sv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            sv.HorizontalAlignment = HorizontalAlignment.Left;
+            sv.Width = tcQuestionSetting.Width-10;
+
+            StackPanel stkpnlSection = new StackPanel();
+
+            foreach (Question q in qg.Questions)
             {
-                StackPanel stkpnlQuestion = new StackPanel();
-                StackPanel stkpnlHeader = new StackPanel();
-                stkpnlHeader.Margin = new Thickness(0, 0, 0, 5);
-                stkpnlHeader.Orientation = Orientation.Horizontal;
-
-                Label lb = new Label();
-                lb.Margin = new Thickness(0, 0, 5, 5);
-                lb.Content = "Question B" + (c + 1);
-
-                Button btn = new Button();
-                btn.Content = "Delete this question";
-                btn.Click += new RoutedEventHandler(btn_Click);
-
-                stkpnlHeader.Children.Add(lb);
-                stkpnlHeader.Children.Add(btn);
-
-                TextBox tb = new TextBox();
-                tb.AcceptsReturn = true;
-                tb.Width = 500;
-                tb.TextWrapping = TextWrapping.Wrap;
-                tb.Margin = new Thickness(0, 0, 0, 10);
-                string temp = "";
-                for (int i = 0; i < 5; i++)
-                {
-                    temp = temp + i + Environment.NewLine;
-                }
-                tb.Text = temp;
-
-                stkpnlQuestion.Children.Add(stkpnlHeader);
-                stkpnlQuestion.Children.Add(tb);
-                stkpnlSectionB.Children.Add(stkpnlQuestion);
+                ucQuestionSetting question = new ucQuestionSetting(q);
+                question.Margin = new Thickness(0, 0, 0, 5);
+                stkpnlSection.Children.Add(question);
             }
-
-
-        }
-
-        public void loadSectionC()
-        {
-            stkpnlSectionC.Children.Clear();
-            for (int c = 0; c < 5; c++)
-            {
-                StackPanel stkpnlQuestion = new StackPanel();
-                StackPanel stkpnlHeader = new StackPanel();
-                stkpnlHeader.Margin = new Thickness(0, 0, 0, 5);
-                stkpnlHeader.Orientation = Orientation.Horizontal;
-
-                Label lb = new Label();
-                lb.Margin = new Thickness(0, 0, 5, 5);
-                lb.Content = "Question C" + (c + 1);
-
-                Button btn = new Button();
-                btn.Content = "Delete this question";
-                btn.Click += new RoutedEventHandler(btn_Click);
-
-                stkpnlHeader.Children.Add(lb);
-                stkpnlHeader.Children.Add(btn);
-
-                TextBox tb = new TextBox();
-                tb.AcceptsReturn = true;
-                tb.Width = 500;
-                tb.TextWrapping = TextWrapping.Wrap;
-                tb.Margin = new Thickness(0, 0, 0, 10);
-                string temp = "";
-                for (int i = 0; i < 5; i++)
-                {
-                    temp = temp + i + Environment.NewLine;
-                }
-                tb.Text = temp;
-
-                stkpnlQuestion.Children.Add(stkpnlHeader);
-                stkpnlQuestion.Children.Add(tb);
-                stkpnlSectionC.Children.Add(stkpnlQuestion);
-            }
-
-
-        }
-
-        public void loadSectionC2()
-        {
-            stkpnlSectionC2.Children.Clear();
-            for (int c = 0; c < 5; c++)
-            {
-                StackPanel stkpnlQuestion = new StackPanel();
-                StackPanel stkpnlHeader = new StackPanel();
-                stkpnlHeader.Margin = new Thickness(0, 0, 0, 5);
-                stkpnlHeader.Orientation = Orientation.Horizontal;
-
-                Label lb = new Label();
-                lb.Margin = new Thickness(0, 0, 5, 5);
-                lb.Content = "Question C2-" + (c + 1);
-
-                Button btn = new Button();
-                btn.Content = "Delete this question";
-                btn.Click += new RoutedEventHandler(btn_Click);
-
-                stkpnlHeader.Children.Add(lb);
-                stkpnlHeader.Children.Add(btn);
-
-                TextBox tb = new TextBox();
-                tb.AcceptsReturn = true;
-                tb.Width = 500;
-                tb.TextWrapping = TextWrapping.Wrap;
-                tb.Margin = new Thickness(0, 0, 0, 10);
-                string temp = "";
-                for (int i = 0; i < 5; i++)
-                {
-                    temp = temp + i + Environment.NewLine;
-                }
-                tb.Text = temp;
-
-                stkpnlQuestion.Children.Add(stkpnlHeader);
-                stkpnlQuestion.Children.Add(tb);
-                stkpnlSectionC2.Children.Add(stkpnlQuestion);
-            }
-
-
-        }
-
-        public void loadSectionC3()
-        {
-            stkpnlSectionC3.Children.Clear();
-            for (int c = 0; c < 5; c++)
-            {
-                StackPanel stkpnlQuestion = new StackPanel();
-                StackPanel stkpnlHeader = new StackPanel();
-                stkpnlHeader.Margin = new Thickness(0, 0, 0, 5);
-                stkpnlHeader.Orientation = Orientation.Horizontal;
-
-                Label lb = new Label();
-                lb.Margin = new Thickness(0, 0, 5, 5);
-                lb.Content = "Question C3-" + (c + 1);
-
-                Button btn = new Button();
-                btn.Content = "Delete this question";
-                btn.Click += new RoutedEventHandler(btn_Click);
-
-                stkpnlHeader.Children.Add(lb);
-                stkpnlHeader.Children.Add(btn);
-
-                TextBox tb = new TextBox();
-                tb.AcceptsReturn = true;
-                tb.Width = 500;
-                tb.TextWrapping = TextWrapping.Wrap;
-                tb.Margin = new Thickness(0, 0, 0, 10);
-                string temp = "";
-                for (int i = 0; i < 5; i++)
-                {
-                    temp = temp + i + Environment.NewLine;
-                }
-                tb.Text = temp;
-
-                stkpnlQuestion.Children.Add(stkpnlHeader);
-                stkpnlQuestion.Children.Add(tb);
-                stkpnlSectionC3.Children.Add(stkpnlQuestion);
-            }
-
-
-        }
-
-        public void loadSectionD()
-        {
-            stkpnlSectionD.Children.Clear();
-            for (int c = 0; c < 5; c++)
-            {
-                StackPanel stkpnlQuestion = new StackPanel();
-                StackPanel stkpnlHeader = new StackPanel();
-                stkpnlHeader.Margin = new Thickness(0, 0, 0, 5);
-                stkpnlHeader.Orientation = Orientation.Horizontal;
-
-                Label lb = new Label();
-                lb.Margin = new Thickness(0, 0, 5, 5);
-                lb.Content = "Question D" + (c + 1);
-
-                Button btn = new Button();
-                btn.Content = "Delete this question";
-                btn.Click += new RoutedEventHandler(btn_Click);
-
-                stkpnlHeader.Children.Add(lb);
-                stkpnlHeader.Children.Add(btn);
-
-                TextBox tb = new TextBox();
-                tb.AcceptsReturn = true;
-                tb.Width = 500;
-                tb.TextWrapping = TextWrapping.Wrap;
-                tb.Margin = new Thickness(0, 0, 0, 10);
-                string temp = "";
-                for (int i = 0; i < 5; i++)
-                {
-                    temp = temp + i + Environment.NewLine;
-                }
-                tb.Text = temp;
-
-                stkpnlQuestion.Children.Add(stkpnlHeader);
-                stkpnlQuestion.Children.Add(tb);
-                stkpnlSectionD.Children.Add(stkpnlQuestion);
-            }
-
-        }
-
-        private void AddNewQuestion(StackPanel stkpnl)
-        {
-            StackPanel stkpnlQuestion = new StackPanel();
-            StackPanel stkpnlHeader = new StackPanel();
-            stkpnlHeader.Margin = new Thickness(0, 0, 0, 5);
-            stkpnlHeader.Orientation = Orientation.Horizontal;
-
-            Label lb = new Label();
-            lb.Margin = new Thickness(0, 0, 5, 5);
-            lb.Content = "New Question";
-
-            Button btn = new Button();
-            btn.Content = "Delete this question";
-            btn.Click += new RoutedEventHandler(btn_Click);
-
-            stkpnlHeader.Children.Add(lb);
-            stkpnlHeader.Children.Add(btn);
-
-            TextBox tb = new TextBox();
-            tb.AcceptsReturn = true;
-            tb.Width = 500;
-            tb.TextWrapping = TextWrapping.Wrap;
-            tb.Margin = new Thickness(0, 0, 0, 10);
-            string temp = "";
-
-            tb.Text = temp;
-
-            stkpnlQuestion.Children.Add(stkpnlHeader);
-            stkpnlQuestion.Children.Add(tb);
-            stkpnl.Children.Add(stkpnlQuestion);
-            tb.Focus();
+            sv.Content = stkpnlSection;
+            section.Content = sv;
+            tcQuestionSetting.Items.Add(section);
         }
 
         private void btnAddNew_Click(object sender, RoutedEventArgs e)
@@ -321,34 +81,79 @@ namespace AMDES_KBS
             try
             {
                 int sectionSelected = tcQuestionSetting.SelectedIndex;
-                switch (sectionSelected)
+                TabItem sectionTab = (TabItem)tcQuestionSetting.Items.GetItemAt(tcQuestionSetting.SelectedIndex);
+                QuestionGroup qg = QuestionController.getGroupByID(int.Parse(sectionTab.Tag.ToString()));
+
+                if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
                 {
-                    case 0://Section A
-                        AddNewQuestion(stkpnlSectionA);
-                        break;
-                    case 1://Section B
-                        AddNewQuestion(stkpnlSectionB);
-                        break;
-                    case 2://Secton C
-                        AddNewQuestion(stkpnlSectionC);
-                        break;
-                    case 3://Section C2
-                        AddNewQuestion(stkpnlSectionC2);
-                        break;
-                    case 4://section C3
-                        AddNewQuestion(stkpnlSectionC3);
-                        break;
-                    case 5://section D
-                        AddNewQuestion(stkpnlSectionD);
-                        break;
-                    default:
-                        break;
+                    QuestionCountGroup qcg = (QuestionCountGroup)qg;
+                    if (NoOfQuestion(sectionTab) >= qcg.MaxQuestions)
+                    {
+                        MessageBox.Show("You have reached the maximum number of question!");
+                        return;
+                    }
                 }
+
+                ScrollViewer sv = (ScrollViewer)sectionTab.Content;
+                StackPanel stkpnl = (StackPanel)sv.Content;
+                ucQuestionSetting newQuestion = new ucQuestionSetting();
+                newQuestion.Margin = new Thickness(0, 0, 0, 5);
+                stkpnl.Children.Add(newQuestion);
+                sv.ScrollToEnd();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 throw;
             }
+        }
+
+        private void btnSaveAllQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (TabItem sectionTab in tcQuestionSetting.Items)
+            {
+                ScrollViewer sv = (ScrollViewer)sectionTab.Content;
+                StackPanel stkpnl = (StackPanel)sv.Content;
+                QuestionGroup gp = QuestionController.getGroupByID(int.Parse(sectionTab.Tag.ToString()));
+                gp.Questions.Clear();
+                foreach (ucQuestionSetting question in stkpnl.Children)
+                {
+                    if (question.getToSaved())
+                    {
+                        gp.Questions.Add(question.getQuestion());
+                    }
+                }
+                QuestionController.updateQuestionGroup(gp);
+            }
+
+            
+            MessageBox.Show("Done");
+            loadAllSection();
+        }
+
+        private void btnAddNewSection_Click(object sender, RoutedEventArgs e)
+        {
+            QuestionGroup qg = new QuestionGroup();
+            qg.GroupID = QuestionController.getNextGroupID();
+            qg.Header = "";
+            qg.Description = "";
+            qg.Symptom = "";
+        }
+
+        private int NoOfQuestion(TabItem sectionTab)
+        {
+            int count = 0;
+            ScrollViewer sv = (ScrollViewer)sectionTab.Content;
+            StackPanel stkpnl = (StackPanel)sv.Content;
+            QuestionGroup gp = QuestionController.getGroupByID(int.Parse(sectionTab.Tag.ToString()));
+            foreach (ucQuestionSetting question in stkpnl.Children)
+            {
+                if (question.getToSaved())
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
