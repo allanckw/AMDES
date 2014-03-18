@@ -3,9 +3,9 @@
 <QuestionGroups>
   <QuestionGroup id="1">
     <Header>Amensia</Header>
-    <Description />
+    <Description>Instructions: for Recall memory phase,  Tell the patient -&gt;  “37 Bukit Timah Road”~~Ask another qn. Ask to recall at the end of the test.~~</Description>
     <QnType>0</QnType>
-    <Symptom />
+    <Symptom></Symptom>
     <Questions>
       <Question QID="1.1">
         <Name>Will you forgive me? </Name>
@@ -20,61 +20,31 @@
         <Symptom>ZZ</Symptom>
       </Question>
     </Questions>
-    <NextFalseLink id="2">
-      <RequireAge>true</RequireAge>
-      <Age>65</Age>
-      <isConclusive>true</isConclusive>
-      <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>true</MoreThanEqualAge>
-      <Diagnoses>
-        <Diagnosis diagID="R1">GG liao la, going to die soon :(((</Diagnosis>
-      </Diagnoses>
-    </NextFalseLink>
-    <NextTrueLink id="2">
-      <RequireAge>true</RequireAge>
-      <Age>65</Age>
-      <isConclusive>false</isConclusive>
-      <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>true</MoreThanEqualAge>
-      <Diagnoses />
-    </NextTrueLink>
   </QuestionGroup>
   <QuestionGroup id="2">
-    <Header>Amensia</Header>
-    <Description />
-    <QnType>0</QnType>
-    <Symptom />
+    <Header>Memory Test</Header>
+    <Description></Description>
+    <QnType>2</QnType>
+    <Symptom>hahaha</Symptom>
     <Questions>
       <Question QID="2.1">
-        <Name>Will you forgive me? </Name>
-        <Symptom>GG</Symptom>
+        <Name>Where do you live?</Name>
+        <Symptom></Symptom>
       </Question>
       <Question QID="2.2">
-        <Name>please?</Name>
-        <Symptom>XX</Symptom>
+        <Name>What year is today?</Name>
+        <Symptom></Symptom>
       </Question>
       <Question QID="2.3">
-        <Name>I will do anything for u :(</Name>
-        <Symptom>ZZ</Symptom>
+        <Name>Have you eaten dinner?</Name>
+        <Symptom></Symptom>
+      </Question>
+      <Question QID="2.4">
+        <Name>Testing</Name>
+        <Symptom></Symptom>
       </Question>
     </Questions>
-    <NextFalseLink id="2">
-      <RequireAge>true</RequireAge>
-      <Age>65</Age>
-      <isConclusive>true</isConclusive>
-      <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>true</MoreThanEqualAge>
-      <Diagnoses>
-        <Diagnosis diagID="R1">GG liao la, going to die soon :(((</Diagnosis>
-      </Diagnoses>
-    </NextFalseLink>
-    <NextTrueLink id="2">
-      <RequireAge>true</RequireAge>
-      <Age>65</Age>
-      <isConclusive>false</isConclusive>
-      <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>true</MoreThanEqualAge>
-      <Diagnoses />
-    </NextTrueLink>
+    <MaxQuestions>5</MaxQuestions>
+    <Threshold>2</Threshold>
   </QuestionGroup>
 </QuestionGroups>

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Patients xml-->
 <Patients>
-  <Patient id="S12312321">
-    <Last_Name>asdad asdaad</Last_Name>
-    <First_Name>sdasd asdsa</First_Name>
-    <DOB>618252480000000000</DOB>
-    <AssessmentDate>635306747920914631</AssessmentDate>
+  <Patient id="S8834871J">
+    <Last_Name>Teo</Last_Name>
+    <First_Name>Chee Yong, Shawn</First_Name>
+    <DOB>627260544000000000</DOB>
+    <AssessmentDate>635307596215691887</AssessmentDate>
     <Status>DRAFT</Status>
     <Tests />
     <Assessor>
@@ -13,11 +13,35 @@
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
   </Patient>
-  <Patient id="S1234566D">
-    <Last_Name>Lee</Last_Name>
-    <First_Name>asdaad</First_Name>
-    <DOB>624196800000000000</DOB>
-    <AssessmentDate>635307590067746789</AssessmentDate>
+  <Patient id="S8747645Z">
+    <Last_Name>Tan</Last_Name>
+    <First_Name>Teo Lui</First_Name>
+    <DOB>626908032000000000</DOB>
+    <AssessmentDate>635307611509652725</AssessmentDate>
+    <Status>DRAFT</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+  </Patient>
+  <Patient id="S8826035Z">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Ji Kai</First_Name>
+    <DOB>627209568000000000</DOB>
+    <AssessmentDate>635307622162942058</AssessmentDate>
+    <Status>DRAFT</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+  </Patient>
+  <Patient id="S8764783D">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Kai</First_Name>
+    <DOB>627209568000000000</DOB>
+    <AssessmentDate>635307623515819438</AssessmentDate>
     <Status>DRAFT</Status>
     <Tests />
     <Assessor>
