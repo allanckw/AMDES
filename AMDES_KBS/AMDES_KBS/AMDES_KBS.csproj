@@ -96,6 +96,12 @@
     <Compile Include="QuestionControl\ucQuestion.xaml.cs">
       <DependentUpon>ucQuestion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QuestionControl\ucQuestionGroup.xaml.cs">
+      <DependentUpon>ucQuestionGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionControl\ucQuestionSetting.xaml.cs">
+      <DependentUpon>ucQuestionSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RecommendataionUserControl\ucDiagnosis.xaml.cs">
       <DependentUpon>ucDiagnosis.xaml</DependentUpon>
     </Compile>
@@ -167,6 +173,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="QuestionControl\ucQuestion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuestionControl\ucQuestionGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuestionControl\ucQuestionSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

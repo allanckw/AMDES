@@ -13,4 +13,16 @@
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
   </Patient>
+  <Patient id="S1234566D">
+    <Last_Name>Lee</Last_Name>
+    <First_Name>asdaad</First_Name>
+    <DOB>624196800000000000</DOB>
+    <AssessmentDate>635307590067746789</AssessmentDate>
+    <Status>DRAFT</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+  </Patient>
 </Patients>

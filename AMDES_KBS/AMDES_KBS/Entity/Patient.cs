@@ -13,7 +13,7 @@ namespace AMDES_KBS.Entity
         DRAFT
     };
 
-    public class Patient
+    public class Patient : IComparable<Patient>
     {
         public static string dataPath = @"Data\Patients.xml";
 
@@ -161,6 +161,9 @@ namespace AMDES_KBS.Entity
             this.status = PatientStatus.COMPLETED;
         }
 
-
+        public int CompareTo(Patient p)
+        {
+            return (p.nric.CompareTo(this.nric));
+        }
     }
 }

@@ -155,24 +155,29 @@ namespace AMDES_KBS.Controllers
         private static Patient readPatientData(XElement x)
         {
             Patient p = new Patient();
+            if (x != null)
+            {
+                p.NRIC = x.Attribute("id").Value;
 
-            p.NRIC = x.Attribute("id").Value;
+                p.First_Name = x.Element("First_Name").Value;
+                p.Last_Name = x.Element("Last_Name").Value;
 
-            p.First_Name = x.Element("First_Name").Value;
-            p.Last_Name = x.Element("Last_Name").Value;
-
-            p.Doctor = AssessorController.readAssessor(x.Element("Assessor"));
+                p.Doctor = AssessorController.readAssessor(x.Element("Assessor"));
 
 
-            p.AssessmentDate = new DateTime(long.Parse(x.Element("AssessmentDate").Value));
-            p.DOB = new DateTime(long.Parse(x.Element("DOB").Value));
+                p.AssessmentDate = new DateTime(long.Parse(x.Element("AssessmentDate").Value));
+                p.DOB = new DateTime(long.Parse(x.Element("DOB").Value));
 
-            //TODO: TEST AND SYMPTOM LOAD
-
+                //TODO: TEST AND SYMPTOM LOAD
+            }
+            else
+            {
+                return null;
+            }
             return p;
         }
 
-        public static List<Patient> searchPatientByName(string firstName = "", string lastName = "")
+        public static List<Patient> searchPatientByName(string name = "")
         {
             //var a = from h in xdoc.Root.Elements()
             //where h.Element().Value.Contains("1234") // like '%1234%'
@@ -186,23 +191,42 @@ namespace AMDES_KBS.Controllers
             var patients = (from pat in document.Descendants("Patient")
                             select pat).ToList();
 
-            if (firstName.Length > 0)
+            if (name.Length > 0)
             {
-                patients = (from pat in patients
-                            where pat.Element("First_Name").Value.Contains(firstName)
-                            select pat).ToList();
-            }
+                var first = (from pat in patients
+                             where pat.Element("First_Name").Value.ToUpper().Contains(name.ToUpper())
+                             select pat).ToList();
 
-            if (lastName.Length > 0)
-            {
-                patients = (from pat in patients
-                            where pat.Element("Last_Name").Value.Contains(lastName)
-                            select pat).ToList();
-            }
 
-            foreach (var x in patients)
+                foreach (var x in first)
+                {
+                    Patient p = readPatientData(x);
+                    if (!pList.Contains(p))
+                    {
+                        pList.Add(p);
+                    }
+                }
+
+                var last = (from pat in patients
+                            where pat.Element("Last_Name").Value.ToUpper().Contains(name.ToUpper())
+                            select pat).ToList();
+
+                foreach (var x in last)
+                {
+                    Patient p = readPatientData(x);
+                    if (!pList.Contains(p))
+                    {
+                        pList.Add(p);
+                    }
+                }
+            }
+            else
             {
-                pList.Add(readPatientData(x));
+                foreach (var x in patients)
+                {
+                    pList.Add(readPatientData(x));
+                }
+
             }
 
             return pList;

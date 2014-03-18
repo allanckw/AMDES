@@ -47,7 +47,16 @@ namespace AMDES_KBS
         {
             frmOverview patientResultDisplay;
             string criteria = txtSearchCriteria.Text.Trim();
-            if (Regex.IsMatch(criteria, @"^[a-zA-Z0-9]+$"))
+            Regex regex = new Regex(@"
+                        ^           # anchor at the start
+                       (?=.*\d)     # must contain at least one numeric character
+                       (?=.*[a-z])  # must contain one lowercase character
+                       (?=.*[A-Z])  # must contain one uppercase character
+                       .{8,10}      # From 8 to 10 characters in length
+                       \s           # allows a space 
+                       $            # anchor at the end",
+                       RegexOptions.IgnorePatternWhitespace);
+            if (regex.IsMatch(criteria))
             {
                 Patient p = PatientController.searchPatientByNRIC(criteria);
                 if (p != null)
@@ -62,7 +71,7 @@ namespace AMDES_KBS
             }
             else
             {
-                List<Patient> plist = PatientController.searchPatientByName();
+                List<Patient> plist = PatientController.searchPatientByName(criteria);
                 patientResultDisplay = new frmOverview(frameDisplay, plist);
             }
 
