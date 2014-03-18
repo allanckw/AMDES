@@ -10,6 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AMDES_KBS.Controllers;
+using System.Text.RegularExpressions;
+using AMDES_KBS.Entity;
 
 namespace AMDES_KBS
 {
@@ -38,6 +41,32 @@ namespace AMDES_KBS
         {
             frmSetting SettingForm = new frmSetting();
             SettingForm.ShowDialog();
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            frmOverview patientResultDisplay;
+            string criteria = txtSearchCriteria.Text.Trim();
+            if (Regex.IsMatch(criteria, @"^[a-zA-Z0-9]+$"))
+            {
+                Patient p = PatientController.searchPatientByNRIC(criteria);
+                if (p != null)
+                {
+                    patientResultDisplay = new frmOverview(frameDisplay, p);
+                }
+                else
+                {
+                    MessageBox.Show("No such record! Returning all patients records...", " No record found", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    patientResultDisplay = new frmOverview(frameDisplay);
+                }
+            }
+            else
+            {
+                List<Patient> plist = PatientController.searchPatientByName();
+                patientResultDisplay = new frmOverview(frameDisplay, plist);
+            }
+
+            frameDisplay.Navigate(patientResultDisplay);
         }
     }
 }

@@ -20,19 +20,53 @@ namespace AMDES_KBS
             InitializeComponent();
             //loadQuestion();
             amdesPageFrame = frame;
-            loadPatient();
-            
+            loadAllPatients();
         }
 
-        private void loadPatient()
+        public frmOverview(Frame frame, Patient p)
+        {
+            InitializeComponent();
+            //loadQuestion();
+            amdesPageFrame = frame;
+            loadPatient(p);
+
+        }
+
+
+        public frmOverview(Frame frame, List<Patient> plist)
+        {
+            InitializeComponent();
+            //loadQuestion();
+            amdesPageFrame = frame;
+            loadPatients(plist);
+
+        }
+
+        private void loadPatient(Patient p)
+        {
+            ucPatientDisplay patient = new ucPatientDisplay(p, amdesPageFrame);
+            stkpnlPatientList.Children.Add(patient);
+        }
+
+        private void loadPatients(List<Patient> pList)
+        {
+            for (int i = 0; i < pList.Count; i++)
+            {
+                Patient p = pList.ElementAt(i);
+                loadPatient(p);
+            }
+        }
+
+        private void loadAllPatients()
         {
             List<Patient> pList = PatientController.getAllPatients();
 
-            for (int i = 0; i < pList.Count; i++)
-            {
-                ucPatientDisplay patient = new ucPatientDisplay(pList.ElementAt(i), amdesPageFrame);
-                stkpnlPatientList.Children.Add(patient);
-            }
+            loadPatients(pList);
+            //for (int i = 0; i < pList.Count; i++)
+            //{
+            //    Patient p = pList.ElementAt(i);
+            //    loadPatient(p);
+            //}
         }
 
 

@@ -32,7 +32,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <Button x:Name="btnSearch" Width="100" Height="25" Content="Search" Margin="5"></Button>
+                    <Button x:Name="btnSearch" Width="100" Height="25" Content="Search" Margin="5" Click="btnSearch_Click"></Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="stkpnlDisplay" Orientation="Horizontal">
