@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="AMDES_KBS.ucQuestionGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+            d:DesignWidth="630">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <Label Width="100" Content="Header" FontSize="16" FontWeight="Bold" />
+                <Label Width="15" Content=":" />
+                <TextBox x:Name="txtHeader" Width="200" Text="" Height="25" BorderThickness="2" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <Label Width="100" Content="Description" FontSize="16" FontWeight="Bold" />
+                <Label Width="15" Content=":" />
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TextBox x:Name="txtDesc" Width="450" TextWrapping="Wrap" AcceptsReturn="True" Height="60" Text="" BorderThickness="1" MaxLength="200" />
+                </ScrollViewer>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <Label Width="100" Content="Symptom" FontSize="16" FontWeight="Bold" />
+                <Label Width="15" Content=":" />
+                <TextBox x:Name="txtSymptom" Width="200" Height="25" Text="" BorderThickness="1" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

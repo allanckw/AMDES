@@ -32,18 +32,10 @@ namespace AMDES_KBS
             //loadSectionD();
         }
 
-        void btn_Click(object sender, RoutedEventArgs e)
-        {
-            Control btn = ((Control)sender);
-            StackPanel stkpnl = (StackPanel)btn.Parent;
-            StackPanel stkpnlQuestion = (StackPanel)stkpnl.Parent;
-            stkpnlQuestion.Visibility = Visibility.Collapsed;
-            //throw new NotImplementedException();
-        }
-
         private void loadAllSection()
         {
             tcQuestionSetting.Items.Clear();
+            tcQuestionGroupSetting.Items.Clear();
             List<QuestionGroup> qgList = QuestionController.getAllQuestionGroup();
             foreach (QuestionGroup group in qgList)
             {
@@ -58,6 +50,7 @@ namespace AMDES_KBS
             section.Header = qg.Header;
             section.HorizontalAlignment = HorizontalAlignment.Left;
             section.Tag = qg.GroupID;
+
             ScrollViewer sv = new ScrollViewer();
             sv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             sv.HorizontalAlignment = HorizontalAlignment.Left;
@@ -74,6 +67,15 @@ namespace AMDES_KBS
             sv.Content = stkpnlSection;
             section.Content = sv;
             tcQuestionSetting.Items.Add(section);
+
+            ucQuestionGroup ucQG = new ucQuestionGroup(qg);
+            TabItem groupSection = new TabItem();
+            groupSection.Visibility = Visibility.Collapsed;
+            groupSection.Header = qg.Header;
+            groupSection.Tag = qg.GroupID;
+            groupSection.HorizontalAlignment = HorizontalAlignment.Left;
+            groupSection.Content = ucQG;
+            tcQuestionGroupSetting.Items.Add(groupSection);
         }
 
         private void btnAddNew_Click(object sender, RoutedEventArgs e)
@@ -82,18 +84,22 @@ namespace AMDES_KBS
             {
                 int sectionSelected = tcQuestionSetting.SelectedIndex;
                 TabItem sectionTab = (TabItem)tcQuestionSetting.Items.GetItemAt(tcQuestionSetting.SelectedIndex);
-                QuestionGroup qg = QuestionController.getGroupByID(int.Parse(sectionTab.Tag.ToString()));
 
-                if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
+                if (sectionTab.Tag.ToString().Trim() != "")
                 {
-                    QuestionCountGroup qcg = (QuestionCountGroup)qg;
-                    if (NoOfQuestion(sectionTab) >= qcg.MaxQuestions)
+                    QuestionGroup qg = QuestionController.getGroupByID(int.Parse(sectionTab.Tag.ToString()));
+
+                    if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
                     {
-                        MessageBox.Show("You have reached the maximum number of question!");
-                        return;
+                        QuestionCountGroup qcg = (QuestionCountGroup)qg;
+                        if (NoOfQuestion(sectionTab) >= qcg.MaxQuestions)
+                        {
+                            MessageBox.Show("You have reached the maximum number of question!");
+                            return;
+                        }
                     }
                 }
-
+                
                 ScrollViewer sv = (ScrollViewer)sectionTab.Content;
                 StackPanel stkpnl = (StackPanel)sv.Content;
                 ucQuestionSetting newQuestion = new ucQuestionSetting();
@@ -110,34 +116,58 @@ namespace AMDES_KBS
 
         private void btnSaveAllQuestion_Click(object sender, RoutedEventArgs e)
         {
-            foreach (TabItem sectionTab in tcQuestionSetting.Items)
+            for (int i = 0; i < tcQuestionGroupSetting.Items.Count; i++)
             {
+                TabItem sectionTab = (TabItem)tcQuestionSetting.Items.GetItemAt(i);
+                TabItem groupsectionTab = (TabItem)tcQuestionGroupSetting.Items.GetItemAt(i);
+                ucQuestionGroup groupControl = (ucQuestionGroup)groupsectionTab.Content;
                 ScrollViewer sv = (ScrollViewer)sectionTab.Content;
                 StackPanel stkpnl = (StackPanel)sv.Content;
-                QuestionGroup gp = QuestionController.getGroupByID(int.Parse(sectionTab.Tag.ToString()));
-                gp.Questions.Clear();
-                foreach (ucQuestionSetting question in stkpnl.Children)
-                {
-                    if (question.getToSaved())
-                    {
-                        gp.Questions.Add(question.getQuestion());
-                    }
-                }
-                QuestionController.updateQuestionGroup(gp);
-            }
+                QuestionGroup qg = groupControl.getQuestionGroup();
 
-            
-            MessageBox.Show("Done");
-            loadAllSection();
-        }
+                qg.Questions.Clear();
+
+                    foreach (ucQuestionSetting question in stkpnl.Children)
+                    {
+                        if (question.getToSaved())
+                        {
+                            qg.Questions.Add(question.getQuestion());
+                        }
+                    }
+                    QuestionController.updateQuestionGroup(qg);
+                }
+
+
+                MessageBox.Show("Done");
+                loadAllSection();
+            }
 
         private void btnAddNewSection_Click(object sender, RoutedEventArgs e)
         {
-            QuestionGroup qg = new QuestionGroup();
-            qg.GroupID = QuestionController.getNextGroupID();
-            qg.Header = "";
-            qg.Description = "";
-            qg.Symptom = "";
+            TabItem newSection = new TabItem();
+            newSection.Tag = "";
+            newSection.Header = "New";
+            newSection.HorizontalAlignment = HorizontalAlignment.Left;
+
+            ScrollViewer sv = new ScrollViewer();
+            sv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            sv.HorizontalAlignment = HorizontalAlignment.Left;
+            sv.Width = tcQuestionSetting.Width - 10;
+
+            StackPanel stkpnlSection = new StackPanel();
+
+            sv.Content = stkpnlSection;
+            newSection.Content = sv;
+
+            tcQuestionSetting.Items.Add(newSection);
+
+            TabItem newGroupSection = new TabItem();
+            newGroupSection.Tag = "";
+            newGroupSection.Header = "New";
+            newGroupSection.Visibility = Visibility.Collapsed;
+            newGroupSection.Content = new ucQuestionGroup();
+            tcQuestionGroupSetting.Items.Add(newGroupSection);
+            tcQuestionSetting.SelectedIndex = tcQuestionSetting.Items.Count - 1;
         }
 
         private int NoOfQuestion(TabItem sectionTab)
@@ -154,6 +184,36 @@ namespace AMDES_KBS
                 }
             }
             return count;
+        }
+
+        private void tcQuestionSetting_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (tcQuestionSetting.Items.Count>0)
+            {
+                tcQuestionGroupSetting.SelectedIndex = tcQuestionSetting.SelectedIndex;
+            }
+        }
+
+        private void btnDeleteSection_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int selectedidx=tcQuestionSetting.SelectedIndex;
+                TabItem tbGroup = (TabItem)tcQuestionSetting.Items.GetItemAt(selectedidx);
+                if (tbGroup.Tag.ToString().Trim() != "")
+                {
+                    QuestionController.deleteQuestionGroup(int.Parse(tbGroup.Tag.ToString().Trim()));
+                }
+                tcQuestionSetting.Items.RemoveAt(selectedidx);
+                tcQuestionGroupSetting.Items.RemoveAt(selectedidx);
+                tcQuestionSetting.SelectedIndex = selectedidx;
+                tcQuestionGroupSetting.SelectedIndex = selectedidx;
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
         }
     }
 }

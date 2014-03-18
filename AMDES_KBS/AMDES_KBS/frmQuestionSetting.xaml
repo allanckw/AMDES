@@ -4,8 +4,8 @@
         Title="frmSetting" Height="530" Width="650">
     <Grid>
         <StackPanel>
-            <TabControl x:Name="tcQuestionSetting" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="650" Height="485">
-                <!--<TabItem Header="Section A">
+            <TabControl x:Name="tcQuestionSetting" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="650" Height="330" SelectionChanged="tcQuestionSetting_SelectionChanged">
+                 <!--<TabItem Header="Section A">
                     <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="Auto" Width="570" HorizontalAlignment="Left">
                         <StackPanel x:Name="stkpnlSectionA"/>
                     </ScrollViewer>
@@ -36,10 +36,16 @@
                     </ScrollViewer>
                 </TabItem>-->
             </TabControl>
+            <StackPanel x:Name="stkpnlQGProperties" Height="165">
+                <TabControl x:Name="tcQuestionGroupSetting" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="650" Height="165" BorderThickness="0">
+  
+                </TabControl>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="650">
-                <Button Content="Add New Section" Height="25" Name="btnAddNewSection" Width="120" Margin="170,10,10,10" Click="btnAddNewSection_Click" />
-                <Button Height="25" Width="120" Content="Add New Question"  Name="btnAddNew" Click="btnAddNew_Click" />
-                <Button Height="25" Width="100" Content="Save" Margin="10,10,10,10" Name="btnSaveAllQuestion" Click="btnSaveAllQuestion_Click" />
+                <Button Content="Add New Section" Height="25" Name="btnAddNewSection" Width="120" Margin="68,0,10,0" Click="btnAddNewSection_Click" />
+                <Button Height="25" Width="100" Content="Delete Section" Margin="0,0,10,0"   Name="btnDeleteSection" Click="btnDeleteSection_Click" />
+                <Button Height="25" Width="120" Content="Add New Question" Margin="0,0,10,0" Name="btnAddNew" Click="btnAddNew_Click" />
+                <Button Height="25" Width="100" Content="Save" Margin="0,0,10,0" Name="btnSaveAllQuestion" Click="btnSaveAllQuestion_Click" />
                 <Button Height="25" Width="100" Content="Cancel" Name="btnCancel" />
             </StackPanel>
         </StackPanel>

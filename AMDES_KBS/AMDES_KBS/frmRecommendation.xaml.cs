@@ -41,7 +41,7 @@ namespace AMDES_KBS
             for (int i = 0; i < 7; i++)
             {
                 ucDiagnosis diagnosis = new ucDiagnosis("R" + (i+1));
-                diagnosis.addSymptons(i+1);
+                diagnosis.addSymptoms(i+1);
                 PageFrame.Children.Add(diagnosis);
             }
             sortPage();

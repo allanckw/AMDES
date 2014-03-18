@@ -40,7 +40,7 @@ namespace AMDES_KBS
             question = q;
             string questionText = q.Name.Replace("~~", Environment.NewLine);
             lblQuestion.Content = q.ID;
-            txtSympton.Text = q.Symptom;
+            txtSymptom.Text = q.Symptom;
             txtQuestion.Text = questionText;            
         }
 
@@ -52,7 +52,7 @@ namespace AMDES_KBS
         public Question getQuestion()
         {
             question.Name = txtQuestion.Text.Replace(Environment.NewLine, "~~");
-            question.Symptom = txtSympton.Text;
+            question.Symptom = txtSymptom.Text;
             return question;
         }
 
