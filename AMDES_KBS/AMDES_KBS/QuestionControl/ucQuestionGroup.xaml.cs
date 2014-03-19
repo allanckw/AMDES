@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
+using System.Text.RegularExpressions;
 
 namespace AMDES_KBS
 {
@@ -32,6 +33,7 @@ namespace AMDES_KBS
             newGroup = true;
             qgData = new QuestionGroup();
             qgData.setQuestionType(questionTypeENUM);
+            qType = qgData.getQuestionTypeENUM();
 
             if (qgData.getQuestionTypeENUM()==QuestionType.COUNT)
             {
@@ -104,7 +106,7 @@ namespace AMDES_KBS
             qcgData.Header = txtHeader.Text;
             qcgData.Description = txtDesc.Text.Replace(Environment.NewLine, "~~");
             qcgData.Symptom = txtSymptom.Text;
-            qcgData.Threshold = int.Parse(txtThreshold.Text.Trim());
+            qcgData.Threshold = int.Parse(txtThreshold.Text.ToString());
             qcgData.MaxQuestions = int.Parse(this.txtMaxQn.Text.Trim());
             return qcgData;
         }
@@ -112,6 +114,12 @@ namespace AMDES_KBS
         public QuestionType getQuestionType()
         {
             return qType;
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

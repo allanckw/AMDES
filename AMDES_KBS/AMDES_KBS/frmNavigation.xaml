@@ -12,12 +12,12 @@
             <StackPanel x:Name="stkpnlListOfGroup">
                 <Label Content="List of Group" FontWeight="Bold" Height="30" FontSize="15"/>
                 <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="480" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="480" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <WrapPanel Orientation="Horizontal" >
-                                    <TextBlock Text="ID: " Foreground="DarkBlue" FontWeight="Bold"/>
+                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
                                 </WrapPanel>
                             </StackPanel>
