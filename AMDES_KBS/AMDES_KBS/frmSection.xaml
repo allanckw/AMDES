@@ -26,7 +26,15 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBox x:Name="txtDesc" Width="670" Height="60" IsReadOnly="True" BorderThickness="0" TextAlignment="Right" FontSize="12"/>
+                    <StackPanel x:Name="stkpnlScore" Visibility="Hidden" Orientation="Vertical">
+                        <Label Content="Total Score :" />
+                        <StackPanel Orientation="Horizontal">
+                            <Label x:Name="lblCurrScore" Content="100" Width="30" />
+                            <Label Content="/" Width="20" />
+                            <Label x:Name="lblTotalScore" Content="100" Width="30"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBox x:Name="txtDesc" Width="590" Height="60" IsReadOnly="True" BorderThickness="0" TextAlignment="Right" FontSize="12"/>
                 </StackPanel>
             </StackPanel>
 

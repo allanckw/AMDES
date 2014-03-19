@@ -61,4 +61,16 @@
       <AssessLocation>emose</AssessLocation>
     </Assessor>
   </Patient>
+  <Patient id="S3848487Z">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Kai</First_Name>
+    <DOB>635294880000000000</DOB>
+    <AssessmentDate>635308575101651452</AssessmentDate>
+    <Status>DRAFT</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+  </Patient>
 </Patients>

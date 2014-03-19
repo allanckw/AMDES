@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
+using System.Threading;
 
 namespace AMDES_KBS
 {
@@ -23,21 +24,31 @@ namespace AMDES_KBS
     {
         bool questionAnswer = false;
         Question question;
+        Label scoringData;
+
         public ucQuestion()
         {
             InitializeComponent();
         }
 
-        public void loadQuestion(Question q)
+        public void loadQuestion(Question q, Label lblscore)
         {
             question = q;
             string questionText = q.Name.Replace("~~", Environment.NewLine);
+            if (q.ID==6.10)
+            {
+                int breakpoin = 0;
+            }
             lblQuestion.Content = q.ID;
             txtQuestion.Text = questionText;
             var desiredSizeOld = txtQuestion.DesiredSize;
             txtQuestion.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
             var desiredSizeNew = txtQuestion.DesiredSize;
             txtQuestion.Height = desiredSizeNew.Height+10;
+            if (lblscore != null)
+            {
+                scoringData = lblscore;
+            }
             
         }
 
@@ -47,6 +58,14 @@ namespace AMDES_KBS
             btnYes.IsEnabled = false;
             btnNo.IsEnabled = true;
             CLIPSController.assertQuestion(question.ID, true);
+            if (scoringData != null)
+            {
+                int score = int.Parse(scoringData.Content.ToString());
+                score++;
+                scoringData.Content = score;
+            }
+            questionAnswer = true;
+            Thread.Sleep(100);
             //clip to assert here or modify
         }
 
@@ -56,6 +75,17 @@ namespace AMDES_KBS
             btnYes.IsEnabled = true;
             btnNo.IsEnabled = false;
             CLIPSController.assertQuestion(question.ID, false);
+            if (scoringData != null)
+            {
+                int score = int.Parse(scoringData.Content.ToString());
+                if (questionAnswer)
+                {
+                    score--;
+                    scoringData.Content = score;
+                }
+            }
+            questionAnswer = false;
+            Thread.Sleep(100);
             //clip to assert here or modify
         }
 

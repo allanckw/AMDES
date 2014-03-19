@@ -82,8 +82,8 @@ namespace AMDES_KBS
                 myWindow.loadPatientList();
                 CLIPSController.CurrentPatient = p;
                 return true;
-            } 
-            
+            }
+
 
         }
 
@@ -103,12 +103,7 @@ namespace AMDES_KBS
 
         private void AssertQuestions()
         {
-            CLIPSController.ClearandLoad();
-            CLIPSController.reset();
-
-            List<QuestionGroup> AllQuestion = QuestionController.getAllQuestionGroup();
-
-            CLIPSController.loadQuestions(AllQuestion);
+            CLIPSController.loadQuestions();
 
             //str2assert = str2assert + ")";
             //_theEnv.AssertString(str2assert);

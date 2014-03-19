@@ -28,14 +28,17 @@ namespace AMDES_KBS.Controllers
 
         public static void reset()
         {
-            env.AssertString("(reset)");
+            env.Reset();
         }
 
-        public static void loadQuestions(List<QuestionGroup> qg)
+        public static void loadQuestions()
         {
             //to paste to load questions
+            ClearandLoad();
+            reset();
+            
             string str2assert;
-
+            List<QuestionGroup> qg = QuestionController.getAllQuestionGroup();
             foreach (QuestionGroup qG in qg)
             {
                 str2assert = "(group (GroupId _" + qG.GroupID +
@@ -60,11 +63,13 @@ namespace AMDES_KBS.Controllers
                     env.AssertString(str2assert);
                 }
             }
+            assertAge();
+            run();
         }
 
-        public static void assertAge(int age)
+        public static void assertAge()
         {
-            env.AssertString("");//todo: assert which var
+            env.AssertString("(attribute Age " + CurrentPatient.getAge() + ")");//todo: assert which var
         }
 
         public static void assertQuestion(double id, bool answer)
@@ -82,11 +87,12 @@ namespace AMDES_KBS.Controllers
             str2assert += ")";
 
             env.AssertString(str2assert);
+            run();
         }
 
         public static void run()
         {
-            env.AssertString("(run)");
+            env.Run();
         }
 
         public static void getSymptom()
