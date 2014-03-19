@@ -3,12 +3,12 @@
 <Diagnoses>
   <Diagnosis diagID="2">
     <Comment>Maybe can try noobiniser</Comment>
-    <Header>bleah</Header>
-    <Link>www.google.com.sg</Link>
+    <Header>Noob</Header>
+    <Link></Link>
   </Diagnosis>
   <Diagnosis diagID="0">
-    <Comment />
-    <Header />
-    <Link />
+    <Comment>This is a haha Comment~~Likelihood of dementia is low. If the cognitive deficit(s) has been present  for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
+    <Header>HAHAHA</Header>
+    <Link>http://google.com.sg</Link>
   </Diagnosis>
 </Diagnoses>

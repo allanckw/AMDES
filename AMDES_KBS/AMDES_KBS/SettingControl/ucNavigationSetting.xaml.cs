@@ -67,6 +67,8 @@ namespace AMDES_KBS
             radless.IsChecked = navi.LessThanAge;
             radMoreEqual.IsChecked = navi.MoreThanEqualAge;
             txtAge.Text = navi.Age.ToString();
+
+            lstDiagnosisList.ItemsSource = navi.getDiagnosis();
             //if (navi.LessThanAge==true)
             //{
             //    radless.IsChecked = true;
@@ -91,24 +93,28 @@ namespace AMDES_KBS
         private void chkConclusive_Checked(object sender, RoutedEventArgs e)
         {
                 //stkpnlDetail.IsEnabled = false;
+                //stkpnlDiagnosis.Visibility = Visibility.Visible;
+                //stkpnlDiagnosis.IsEnabled = true;
+                //btnAddDiagnosis.IsEnabled = stkpnlDiagnosis.IsEnabled;
+                //lstGroupList.IsEnabled = !stkpnlDiagnosis.IsEnabled;
+                //stkpnlLinkCriteria.Visibility = Visibility.Hidden;
+                //btnSave.Margin = new Thickness(340, 0, 0, 0);
+                stkpnlNotConclusive.Visibility = Visibility.Collapsed;
                 stkpnlDiagnosis.Visibility = Visibility.Visible;
-                stkpnlDiagnosis.IsEnabled = true;
-                btnAddDiagnosis.IsEnabled = stkpnlDiagnosis.IsEnabled;
-                lstGroupList.IsEnabled = !stkpnlDiagnosis.IsEnabled;
-                stkpnlLinkCriteria.Visibility = Visibility.Hidden;
-                btnSave.Margin = new Thickness(340, 0, 0, 0);
         }
 
 
         private void chkConclusive_Unchecked(object sender, RoutedEventArgs e)
         {
+            stkpnlNotConclusive.Visibility = Visibility.Visible;
+            stkpnlDiagnosis.Visibility = Visibility.Collapsed;
             //stkpnlDetail.IsEnabled = true;
-            stkpnlDiagnosis.Visibility = Visibility.Hidden;
-            stkpnlDiagnosis.IsEnabled = false;
-            btnAddDiagnosis.IsEnabled = stkpnlDiagnosis.IsEnabled;
-            lstGroupList.IsEnabled = !stkpnlDiagnosis.IsEnabled;
-            stkpnlLinkCriteria.Visibility = Visibility.Visible;
-            btnSave.Margin = new Thickness(170, 0, 0, 0);
+            //stkpnlDiagnosis.Visibility = Visibility.Hidden;
+            //stkpnlDiagnosis.IsEnabled = false;
+            //btnAddDiagnosis.IsEnabled = stkpnlDiagnosis.IsEnabled;
+            //lstGroupList.IsEnabled = !stkpnlDiagnosis.IsEnabled;
+            //stkpnlLinkCriteria.Visibility = Visibility.Visible;
+            //btnSave.Margin = new Thickness(170, 0, 0, 0);
         }
 
         private void lstGroupList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -225,7 +231,12 @@ namespace AMDES_KBS
 
         private void btnAddDiagnosis_Click(object sender, RoutedEventArgs e)
         {
-
+            List<Diagnosis> dList = (List<Diagnosis>)lstDiagnosisList.ItemsSource;
+            frmDiagnosisAddingToPath cDiagnosis = new frmDiagnosisAddingToPath(dList);
+            if (cDiagnosis.ShowDialog() == true)
+            {
+                lstDiagnosisList.ItemsSource = cDiagnosis.getAddedDiagnosis();
+            }
         }
 
     }

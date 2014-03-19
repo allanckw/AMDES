@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
 
-namespace AMDES_KBS.SettingControl
+namespace AMDES_KBS
 {
     /// <summary>
     /// Interaction logic for frmDiagnosisAddingToPath.xaml
@@ -27,8 +27,7 @@ namespace AMDES_KBS.SettingControl
         {
             InitializeComponent();
             AddedList = dList;
-            loadNotAddedDiagnosis();
-            loadAddedDiagnosis();
+            reloadList();
         }
 
         private void reloadList()
@@ -40,11 +39,14 @@ namespace AMDES_KBS.SettingControl
         private void loadNotAddedDiagnosis()
         {
             List<Diagnosis> dList = DiagnosisController.getAllDiagnosis();
-            foreach (Diagnosis d in dList)
+
+            for (int i = 0; i < dList.Count; i++)
             {
+                Diagnosis d = dList[i];
                 if (existsInAddedList(d))
                 {
                     dList.Remove(d);
+                    i--;
                 }
             }
 
@@ -56,11 +58,13 @@ namespace AMDES_KBS.SettingControl
         private void loadAddedDiagnosis()
         {
             List<Diagnosis> dList = DiagnosisController.getAllDiagnosis();
-            foreach (Diagnosis d in dList)
+            for (int i = 0; i < dList.Count; i++)
             {
+                Diagnosis d = dList[i];
                 if (!existsInAddedList(d))
                 {
                     dList.Remove(d);
+                    i--;
                 }
             }
 
@@ -71,6 +75,11 @@ namespace AMDES_KBS.SettingControl
 
         private bool existsInAddedList(Diagnosis d)
         {
+            if (AddedList == null)
+            {
+                return false;
+            }
+
             foreach (Diagnosis dAdded in AddedList)
             {
                 if (d.RID == dAdded.RID)
@@ -146,7 +155,7 @@ namespace AMDES_KBS.SettingControl
                 return;
             }
 
-            Diagnosis d = (Diagnosis)lstDiagnosisListAdded.Items.GetItemAt(sidx);
+            Diagnosis d = (Diagnosis)lstDiagnosisList.Items.GetItemAt(sidx);
             AddedList.Add(d);
             reloadList();
         }

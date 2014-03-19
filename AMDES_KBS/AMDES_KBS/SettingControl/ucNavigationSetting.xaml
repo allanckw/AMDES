@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="490">
+             d:DesignHeight="150" d:DesignWidth="320">
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -12,77 +12,78 @@
                 <Button x:Name="btnSave" Width="50" Margin="170,0,0,0" Content="Save" Click="btnSave_Click" />
             </StackPanel>
             <StackPanel x:Name="stkpnlDetail" Orientation="Horizontal">
-                <StackPanel x:Name="stkpnlGroupList">
-                    <Label Content="List of Group" FontWeight="Bold" />
-                    <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                <StackPanel x:Name="stkpnlNotConclusive" Orientation="Horizontal">
+                    <StackPanel x:Name="stkpnlGroupList">
+                        <Label Content="List of Group" FontWeight="Bold" />
+                        <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="115" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <WrapPanel Orientation="Horizontal" >
-                                        <TextBlock Text="ID: " Foreground="DarkBlue" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                    </WrapPanel>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
-                <StackPanel x:Name="stkpnlLinkCriteria" Visibility="Hidden" Width="200" Margin="5,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <Label x:Name="lblHeader" FontWeight="Bold" Height="30" Width="200"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="chkRequireAge" Content="Required Age?" Height="20" Checked="chkRequireAge_Checked" Unchecked="chkRequireAge_Unchecked" />
-                        </StackPanel>
-                        <StackPanel x:Name="stkpnlAgeSetting" Visibility="Hidden" Orientation="Horizontal">
-                            <StackPanel x:Name="stkpnlAgeCriteria">
-                                <RadioButton x:Name="radless" GroupName="checkAge" Content="Less than" Height="20" IsChecked="True"/>
-                                <RadioButton x:Name="radMoreEqual" GroupName="checkAge" Content="More than or equal" Height="20" Width="125" IsChecked="False"/>
-                            </StackPanel>
-                            <StackPanel Width="75" Height="40">
-                                <TextBox x:Name="txtAge" Width="40" Height="30" Margin="5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
-                                    <TextBox.Style>
-                                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                            <Style.Resources>
-                                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                                    <VisualBrush.Visual>
-                                                        <Label Content="Age" Foreground="DimGray" />
-                                                    </VisualBrush.Visual>
-                                                </VisualBrush>
-                                            </Style.Resources>
-                                            <Style.Triggers>
-                                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                                </Trigger>
-                                                <Trigger Property="Text" Value="{x:Null}">
-                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                                </Trigger>
-                                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                                    <Setter Property="Background" Value="White" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBox.Style>
-                                </TextBox>
-                            </StackPanel>
-                        </StackPanel>
-
-                        
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel x:Name="stkpnlDiagnosis" Visibility="Hidden" Orientation="Horizontal">
-                    <Button x:Name="btnAddDiagnosis" Content="=>" Height="100" VerticalAlignment="Bottom" FontSize="20" Margin="5,0,5,0" Click="btnAddDiagnosis_Click" />
-                    <StackPanel x:Name="stkpnlDiagnosisRule">
-                        <Label Content="Diagnosis Conclusion" FontWeight="Bold"  />
-                        <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
                                         <WrapPanel Orientation="Horizontal" >
                                             <TextBlock Text="ID: " Foreground="DarkBlue" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                        </WrapPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel x:Name="stkpnlLinkCriteria" Visibility="Collapsed"  Width="200" Margin="5,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Label x:Name="lblHeader" FontWeight="Bold" Height="30" Width="200"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox x:Name="chkRequireAge" Content="Required Age?" Height="20" Checked="chkRequireAge_Checked" Unchecked="chkRequireAge_Unchecked" />
+                            </StackPanel>
+                            <StackPanel x:Name="stkpnlAgeSetting" Visibility="Hidden" Orientation="Horizontal">
+                                <StackPanel x:Name="stkpnlAgeCriteria">
+                                    <RadioButton x:Name="radless" GroupName="checkAge" Content="Less than" Height="20" IsChecked="True"/>
+                                    <RadioButton x:Name="radMoreEqual" GroupName="checkAge" Content="More than or equal" Height="20" Width="125" IsChecked="False"/>
+                                </StackPanel>
+                                <StackPanel Width="75" Height="40">
+                                    <TextBox x:Name="txtAge" Width="40" Height="30" Margin="5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
+                                        <TextBox.Style>
+                                            <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                                <Style.Resources>
+                                                    <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                                        <VisualBrush.Visual>
+                                                            <Label Content="Age" Foreground="DimGray" />
+                                                        </VisualBrush.Visual>
+                                                    </VisualBrush>
+                                                </Style.Resources>
+                                                <Style.Triggers>
+                                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                    </Trigger>
+                                                    <Trigger Property="Text" Value="{x:Null}">
+                                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                                        <Setter Property="Background" Value="White" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel x:Name="stkpnlDiagnosis" Visibility="Hidden" Width="200" Orientation="Horizontal">
+                    <Button x:Name="btnAddDiagnosis" Content="=>" Height="100" VerticalAlignment="Bottom" FontSize="20" Margin="5,0,5,0" Click="btnAddDiagnosis_Click" />
+                    <StackPanel x:Name="stkpnlDiagnosisRule">
+                        <Label Content="Diagnosis Conclusion" FontWeight="Bold"  />
+                        <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="140" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <WrapPanel Orientation="Horizontal" >
+                                            <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
                                             <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
                                         </WrapPanel>
                                     </StackPanel>
