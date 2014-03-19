@@ -11,33 +11,40 @@ namespace AMDES_KBS.Controllers
     {
         public static Navigation getNavigation(XElement x)
         {
-            Navigation nav = new Navigation();
-
-            nav.DestGrpID = int.Parse(x.Element("DestGrp").Value);
-            nav.isConclusive = bool.Parse(x.Element("isConclusive").Value);
-            nav.isRequireAge = bool.Parse(x.Element("RequireAge").Value);
-            nav.Age = (int.Parse(x.Element("Age").Value));
-
-            bool a = bool.Parse(x.Element("LessThanAge").Value);
-
-            if (a)
+            if (x != null)
             {
-                nav.setLessThanAge();
+                Navigation nav = new Navigation();
+
+                nav.DestGrpID = int.Parse(x.Element("DestGrp").Value);
+                nav.isConclusive = bool.Parse(x.Element("isConclusive").Value);
+                nav.isRequireAge = bool.Parse(x.Element("RequireAge").Value);
+                nav.Age = (int.Parse(x.Element("Age").Value));
+
+                bool a = bool.Parse(x.Element("LessThanAge").Value);
+
+                if (a)
+                {
+                    nav.setLessThanAge();
+                }
+                else
+                {
+                    nav.setMoreThanEqualAge();
+                }
+
+                var diag = (from pa in x.Descendants("Diagnoses").Descendants("Diagnosis")
+                            select pa).ToList();
+
+                foreach (var d in diag)
+                {
+                    nav.addDiagnosis(DiagnosisController.readDiagnosis(d));
+                }
+
+                return nav;
             }
             else
             {
-                nav.setMoreThanEqualAge();
+                return null;
             }
-
-            var diag = (from pa in x.Descendants("Diagnoses").Descendants("Diagnosis")
-                        select pa).ToList();
-
-            foreach (var d in diag)
-            {
-                nav.addDiagnosis(DiagnosisController.readDiagnosis(d));
-            }
-
-            return nav;
         }
 
         public static XElement convertToXML(Navigation nav, string root = "Navigation")

@@ -123,8 +123,18 @@ namespace AMDES_KBS
 
             //MessageBox.Show(pats.Count.ToString());
 
+            Diagnosis d = new Diagnosis();
+            d.RID = 1;
+            d.Comment = "GG liao la, going to die soon :(((";
+            d.Link = "www.google.com.sg";
+            d.Header = "bleah";
 
+            Diagnosis d2 = new Diagnosis();
+            d.RID = 2;
+            d.Comment = "Maybe can try noobiniser";
 
+            DiagnosisController.updateDiagnosis(d);
+            DiagnosisController.updateDiagnosis(d2);
             
         }
     }

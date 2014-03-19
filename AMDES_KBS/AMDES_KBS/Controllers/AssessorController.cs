@@ -44,9 +44,16 @@ namespace AMDES_KBS.Controllers
 
         public static Assessor readAssessor(XElement x)
         {
-            Assessor a = new Assessor(x.Element("AssessorName").Value, x.Element("AssessLocation").Value);
+            if (x != null)
+            {
+                Assessor a = new Assessor(x.Element("AssessorName").Value, x.Element("AssessLocation").Value);
 
-            return a;
+                return a;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

@@ -157,9 +157,11 @@ namespace AMDES_KBS.Controllers
 
         private static QuestionGroup readQnGrpData(XElement x)
         {
-            QuestionGroup p = new QuestionGroup();
+           
             if (x != null)
             {
+                QuestionGroup p = new QuestionGroup();
+
                 p.setQuestionType(int.Parse(x.Element("QnType").Value));
 
                 if (p.getQuestionTypeENUM() == QuestionType.COUNT)
@@ -202,44 +204,58 @@ namespace AMDES_KBS.Controllers
 
         private static QuestionCountGroup readQnCountGroupData(XElement x)
         {
-            QuestionCountGroup p = new QuestionCountGroup();
-
-            p.setQuestionType(int.Parse(x.Element("QnType").Value));
-            p.GroupID = int.Parse(x.Attribute("id").Value);
-            p.Header = x.Element("Header").Value;
-            p.Description = x.Element("Description").Value;
-            p.Symptom = x.Element("Symptom").Value;
-
-            if (x.Element("NextTrueLink") != null)
+            if (x != null)
             {
-                p.NextTrueLink = NavigationController.getNavigation(x.Element("NextTrueLink"));
+                QuestionCountGroup p = new QuestionCountGroup();
+
+                p.setQuestionType(int.Parse(x.Element("QnType").Value));
+                p.GroupID = int.Parse(x.Attribute("id").Value);
+                p.Header = x.Element("Header").Value;
+                p.Description = x.Element("Description").Value;
+                p.Symptom = x.Element("Symptom").Value;
+
+                if (x.Element("NextTrueLink") != null)
+                {
+                    p.NextTrueLink = NavigationController.getNavigation(x.Element("NextTrueLink"));
+                }
+                if (x.Element("NextFalseLink") != null)
+                {
+                    p.NextFalseLink = NavigationController.getNavigation(x.Element("NextFalseLink"));
+                }
+
+                var qns = (from pa in x.Descendants("Questions").Descendants("Question")
+                           select pa).ToList();
+
+                foreach (var q in qns)
+                {
+                    p.Questions.Add(readQuestion(q));
+                }
+
+                p.MaxQuestions = int.Parse(x.Element("MaxQuestions").Value);
+                p.Threshold = int.Parse(x.Element("Threshold").Value);
+
+                return p;
             }
-            if (x.Element("NextFalseLink") != null)
+            else
             {
-                p.NextFalseLink = NavigationController.getNavigation(x.Element("NextFalseLink"));
+                return null;
             }
-
-            var qns = (from pa in x.Descendants("Questions").Descendants("Question")
-                       select pa).ToList();
-
-            foreach (var q in qns)
-            {
-                p.Questions.Add(readQuestion(q));
-            }
-
-            p.MaxQuestions = int.Parse(x.Element("MaxQuestions").Value);
-            p.Threshold = int.Parse(x.Element("Threshold").Value);
-
-            return p;
         }
 
         private static Question readQuestion(XElement x)
         {
-            Question q = new Question();
-            q.ID = Double.Parse(x.Attribute("QID").Value);
-            q.Name = x.Element("Name").Value;
-            q.Symptom = x.Element("Symptom").Value;
-            return q;
+            if (x != null)
+            {
+                Question q = new Question();
+                q.ID = Double.Parse(x.Attribute("QID").Value);
+                q.Name = x.Element("Name").Value;
+                q.Symptom = x.Element("Symptom").Value;
+                return q;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public static QuestionGroup getGroupByID(int id)

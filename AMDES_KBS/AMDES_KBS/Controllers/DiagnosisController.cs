@@ -41,7 +41,7 @@ namespace AMDES_KBS.Controllers
         {
             createDataFile();
 
-            if (QuestionController.getGroupByID(d.RID) == null)
+            if (DiagnosisController.getDiagnosisByID(d.RID) == null)
             {
                 DiagnosisController.addDiagnosis(d); //if id is not present, just add
             }
@@ -100,13 +100,20 @@ namespace AMDES_KBS.Controllers
 
         public static Diagnosis readDiagnosis(XElement x)
         {
-            Diagnosis d = new Diagnosis();
-            d.RID = int.Parse(x.Attribute("diagID").Value);
-            d.Comment = x.Element("Comment").Value;
-            d.Header = x.Element("Header").Value;
-            d.Link = x.Element("Link").Value;
+            if (x != null)
+            {
+                Diagnosis d = new Diagnosis();
+                d.RID = int.Parse(x.Attribute("diagID").Value);
+                d.Comment = x.Element("Comment").Value;
+                d.Header = x.Element("Header").Value;
+                d.Link = x.Element("Link").Value;
 
-            return d;
+                return d;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public static Diagnosis getDiagnosisByID(int id)
