@@ -61,7 +61,7 @@ namespace AMDES_KBS
             foreach (Question q in qg.Questions)
             {
                 ucQuestionSetting question = new ucQuestionSetting(q);
-                question.Margin = new Thickness(0, 0, 0, 5);
+                //question.Margin = new Thickness(0, 0, 0, 5);
                 stkpnlSection.Children.Add(question);
             }
             sv.Content = stkpnlSection;

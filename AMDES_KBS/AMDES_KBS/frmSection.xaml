@@ -16,14 +16,13 @@
                         <Label x:Name="lblPatientID" FontSize="14" FontWeight="Bold" Content="SXXXXXXXZ" Width="100" />
                     </StackPanel>
                     <StackPanel x:Name="stkpnlSection" Orientation="Horizontal">
-                        <Label Content="Section" FontSize="14" FontWeight="Bold" Width="60" Margin="135,0,0,0" />
-                        <Label x:Name="lblSection" FontSize="14" FontWeight="Bold" Content="" Width="30" />
+                        <Label x:Name="lblSection" FontSize="14" FontWeight="Bold" Content="" Width="225" />
                     </StackPanel>
                     <StackPanel x:Name="stkpnlPage" Orientation="Horizontal" Margin="5,0,0,0">
                         <Label Content="Page" FontSize="14" FontWeight="Bold" Width="45" />
                         <Label x:Name="lblCurrPage" FontSize="14" FontWeight="Bold" Content="01" Width="30" />
                         <Label Content="Of" FontSize="14" FontWeight="Bold" Width="30" />
-                        <Label x:Name="lblTotalPage" FontSize="14" FontWeight="Bold" Content="10" Width="30" />
+                        <Label x:Name="lblTotalPage" FontSize="14" FontWeight="Bold" Content="01" Width="30" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

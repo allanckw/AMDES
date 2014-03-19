@@ -14,10 +14,10 @@
                 <StackPanel x:Name="stkpnlCOUNT" Orientation="Horizontal" Visibility="Collapsed">
                     <Label Width="90" Content="Threshold" FontSize="16" FontWeight="Bold" />
                     <Label Width="15" Content=":" />
-                    <TextBox x:Name="txtThreshold" Width="40" Text="7.0" Height="25" BorderThickness="2" />
+                    <TextBox x:Name="txtThreshold" Width="40" Text="7" PreviewTextInput="NumberValidationTextBox" Height="25" BorderThickness="2" />
                     <Label Width="80" Content="Max Qn" FontSize="16" FontWeight="Bold" />
                     <Label Width="15" Content=":" />
-                    <TextBox x:Name="txtMaxQn" Width="40" Text="10" Height="25" BorderThickness="2" />
+                    <TextBox x:Name="txtMaxQn" Width="40" Text="10" PreviewTextInput="NumberValidationTextBox" Height="25" BorderThickness="2" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">

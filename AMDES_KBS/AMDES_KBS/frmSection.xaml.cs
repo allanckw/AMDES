@@ -28,6 +28,8 @@ namespace AMDES_KBS
 
         Frame amdesPageFrame;
 
+        frmSection prevPage;
+
         List<List<ucQuestion>> PageContent = new List<List<ucQuestion>>();
         List<ucQuestion> WholeContent = new List<ucQuestion>();
 
@@ -44,58 +46,29 @@ namespace AMDES_KBS
             loadSection(sectionID);
         }
 
+        public frmSection(Frame amdesFrame, int sectionID, frmSection prevSection)
+        {
+            InitializeComponent();
+            amdesPageFrame = amdesFrame;
+            heightLimit = 430;
+            Patient currPatient = CLIPSController.CurrentPatient;
+            lblPatientID.Content = currPatient.NRIC;
+            lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
+            loadSection(sectionID);
+        }
+
         public void loadSection(int sectionID)
         {
             WholeContent = new List<ucQuestion>();
             QuestionGroup qlist = QuestionController.getGroupByID(sectionID);
+            lblSection.Content = qlist.Header;
             txtDesc.Text = qlist.Description.Replace("~~", Environment.NewLine);
             foreach (Question q in qlist.Questions)
             {
                 addQuestion(q);
             }
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    addQuestion((i + 1).ToString(), randomQuestion());
-            //}
-            ////q1.loadQuestion("A1",tempquestion);
             sortPage();
         }
-
-        //public string randomQuestion()
-        //{
-        //    int no = new Random().Next(3);
-        //    string tempquestion = "";
-        //    switch (no)
-        //    {
-        //        case 1:
-        //            tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
-        //            tempquestion = tempquestion + "Compared to before, does the patient have problems remembering things/events that happened recently?\n";
-        //            tempquestion = tempquestion + "Frequently misplacing his/her personal belongings?\n";
-        //            tempquestion = tempquestion + "Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc)\n";
-        //            tempquestion = tempquestion + "Forget where he/she keeps his/her things?\n";
-        //            tempquestion = tempquestion + "Forget what he/she has come to do?\n";
-        //            tempquestion = tempquestion + "Have problems finding his/her way around ?\n";
-        //            tempquestion = tempquestion + "Ask repeated questions or repeat himself/herself often?\n";
-        //            tempquestion = tempquestion + "Other Q:__________________________________\n";
-        //            break;
-        //        case 2:
-        //            tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
-        //            tempquestion = tempquestion + "Other Q:__________________________________\n";
-        //            break;
-        //        case 3:
-        //            tempquestion = "Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both\n";
-        //            tempquestion = tempquestion + "Compared to before, does the patient have problems remembering things/events that happened recently?\n";
-        //            tempquestion = tempquestion + "Frequently misplacing his/her personal belongings?\n";
-        //            tempquestion = tempquestion + "Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc)\n";
-        //            tempquestion = tempquestion + "Other Q:__________________________________\n";
-        //            break;
-        //        default:
-        //            tempquestion = tempquestion + "Other Q:__________________________________\n";
-        //            break;
-        //    }
-
-        //    return tempquestion;
-        //}
 
         public void addQuestion(Question q)
         {
@@ -142,7 +115,7 @@ namespace AMDES_KBS
             }
 
             TotalPageNo = PageContent.Count;
-            lblTotalPage.Content = PageContent.Count.ToString();
+            lblTotalPage.Content = PageContent.Count.ToString("D2");
         }
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
@@ -159,7 +132,7 @@ namespace AMDES_KBS
                 {
                     item.setVisibility(Visibility.Visible);
                 }
-                lblCurrPage.Content = CurrPageNo.ToString();
+                lblCurrPage.Content = CurrPageNo.ToString("D2");
             }
             else
             {
@@ -181,7 +154,7 @@ namespace AMDES_KBS
                 {
                     item.setVisibility(Visibility.Visible);
                 }
-                lblCurrPage.Content = CurrPageNo.ToString();
+                lblCurrPage.Content = CurrPageNo.ToString("D2");
             }
             else
             {

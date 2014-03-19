@@ -4,24 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="320">
+             d:DesignHeight="150" d:DesignWidth="410">
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <CheckBox x:Name="chkConclusive" Content="Is Conclusive?" FontWeight="Bold" Width="100" Height="20" Checked="chkConclusive_Checked" Unchecked="chkConclusive_Unchecked" />
-                <Button x:Name="btnSave" Width="50" Margin="170,0,0,0" Content="Save" Click="btnSave_Click" />
+                <Button x:Name="btnSave" Width="50" Margin="255,0,0,0" Content="Save" Click="btnSave_Click" />
             </StackPanel>
             <StackPanel x:Name="stkpnlDetail" Orientation="Horizontal">
                 <StackPanel x:Name="stkpnlNotConclusive" Orientation="Horizontal">
                     <StackPanel x:Name="stkpnlGroupList">
                         <Label Content="List of Group" FontWeight="Bold" />
                         <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="115" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
                                         <WrapPanel Orientation="Horizontal" >
-                                            <TextBlock Text="ID: " Foreground="DarkBlue" FontWeight="Bold"/>
+                                            <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
                                             <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
                                         </WrapPanel>
                                     </StackPanel>
