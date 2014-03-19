@@ -76,7 +76,7 @@ namespace AMDES_KBS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            List<QuestionGroup> x = QuestionController.getAllQuestionGroup();
+            //List<QuestionGroup> x = QuestionController.getAllQuestionGroup();
 
             //QuestionGroup miao = new QuestionGroup();
             //miao.GroupID = QuestionController.getNextGroupID();
@@ -113,28 +113,28 @@ namespace AMDES_KBS
 
             //miao.NextTrueLink = nav1;
 
-     //       QuestionController.updateQuestionGroup(miao);
+            //QuestionController.updateQuestionGroup(miao);
 
             //PatientController.addNewPatient(new Assessor("sad", "emose"), "s2345436q", "noob", "bie", DateTime.Now.AddYears(-30));
 
             //Patient p = PatientController.searchPatientByNRIC("s2345906z");
 
-            //List<Patient> pats = PatientController.searchPatientByName("natalie", "tay");
+            //List<Patient> pats = PatientController.searchPatientByName("natalie");
 
             //MessageBox.Show(pats.Count.ToString());
 
-            Diagnosis d = new Diagnosis();
-            d.RID = 1;
-            d.Comment = "GG liao la, going to die soon :(((";
-            d.Link = "www.google.com.sg";
-            d.Header = "bleah";
+            //Diagnosis d = new Diagnosis();
+            //d.RID = 1;
+            //d.Comment = "GG liao la, going to die soon :(((";
+            //d.Link = "www.google.com.sg";
+            //d.Header = "bleah";
 
-            Diagnosis d2 = new Diagnosis();
-            d.RID = 2;
-            d.Comment = "Maybe can try noobiniser";
+            //Diagnosis d2 = new Diagnosis();
+            //d.RID = 2;
+            //d.Comment = "Maybe can try noobiniser";
 
-            DiagnosisController.updateDiagnosis(d);
-            DiagnosisController.updateDiagnosis(d2);
+            //DiagnosisController.updateDiagnosis(d);
+            //DiagnosisController.updateDiagnosis(d2);
             
         }
     }

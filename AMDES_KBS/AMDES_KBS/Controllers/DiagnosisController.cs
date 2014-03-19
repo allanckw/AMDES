@@ -58,7 +58,7 @@ namespace AMDES_KBS.Controllers
 
 
             document.Element("Diagnoses").Add(convertToXML(d));
-            document.Save(QuestionGroup.dataPath);
+            document.Save(Diagnosis.dataPath);
         }
 
         public static XElement convertToXML(Diagnosis d)
@@ -141,7 +141,7 @@ namespace AMDES_KBS.Controllers
         {
             XDocument document = XDocument.Load(Diagnosis.dataPath);
 
-            if (QuestionController.getGroupByID(id) != null)
+            if (DiagnosisController.getDiagnosisByID(id) != null)
             {
                 (from pa in document.Descendants("Diagnosis")
                  where int.Parse(pa.Attribute("diagID").Value) == id

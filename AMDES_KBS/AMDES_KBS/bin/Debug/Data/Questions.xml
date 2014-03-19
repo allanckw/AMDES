@@ -1,9 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<!--AMDES Diagnoses xml-->
-<Diagnoses>
-  <Diagnosis diagID="0">
-    <Comment />
-    <Header />
-    <Link />
-  </Diagnosis>
-</Diagnoses>
+<!--AMDES Questions xml-->
+<QuestionGroups>
+  <QuestionGroup id="1">
+    <Header>Amensia</Header>
+    <Description />
+    <QnType>0</QnType>
+    <Symptom />
+    <Questions>
+      <Question QID="1.1">
+        <Name>Will you forgive me? </Name>
+        <Symptom>GG</Symptom>
+      </Question>
+      <Question QID="1.2">
+        <Name>please?</Name>
+        <Symptom>XX</Symptom>
+      </Question>
+      <Question QID="1.3">
+        <Name>I will do anything for u :(</Name>
+        <Symptom>ZZ</Symptom>
+      </Question>
+    </Questions>
+    <NextFalseLink>
+      <DestGrp>-1</DestGrp>
+      <RequireAge>true</RequireAge>
+      <Age>65</Age>
+      <isConclusive>true</isConclusive>
+      <LessThanAge>false</LessThanAge>
+      <MoreThanEqualAge>true</MoreThanEqualAge>
+      <Diagnoses>
+        <Diagnosis diagID="2">
+          <Comment>Maybe can try noobiniser</Comment>
+          <Header />
+          <Link />
+        </Diagnosis>
+        <Diagnosis diagID="0">
+          <Comment />
+          <Header />
+          <Link />
+        </Diagnosis>
+      </Diagnoses>
+    </NextFalseLink>
+    <NextTrueLink>
+      <DestGrp>2</DestGrp>
+      <RequireAge>true</RequireAge>
+      <Age>65</Age>
+      <isConclusive>false</isConclusive>
+      <LessThanAge>false</LessThanAge>
+      <MoreThanEqualAge>true</MoreThanEqualAge>
+      <Diagnoses />
+    </NextTrueLink>
+  </QuestionGroup>
+</QuestionGroups>

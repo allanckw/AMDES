@@ -1,3 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Diagnoses xml-->
-<Diagnoses />
+<Diagnoses>
+  <Diagnosis diagID="2">
+    <Comment>Maybe can try noobiniser</Comment>
+    <Header>bleah</Header>
+    <Link>www.google.com.sg</Link>
+  </Diagnosis>
+  <Diagnosis diagID="0">
+    <Comment />
+    <Header />
+    <Link />
+  </Diagnosis>
+</Diagnoses>
