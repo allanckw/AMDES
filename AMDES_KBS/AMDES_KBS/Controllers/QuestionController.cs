@@ -247,7 +247,7 @@ namespace AMDES_KBS.Controllers
             if (x != null)
             {
                 Question q = new Question();
-                q.ID = Double.Parse(x.Attribute("QID").Value);
+                q.ID = x.Attribute("QID").Value;
                 q.Name = x.Element("Name").Value;
                 q.Symptom = x.Element("Symptom").Value;
                 return q;

@@ -35,10 +35,10 @@ namespace AMDES_KBS
         {
             question = q;
             string questionText = q.Name.Replace("~~", Environment.NewLine);
-            if (q.ID==6.10)
-            {
-                int breakpoin = 0;
-            }
+            //if (q.ID==6.10)
+            //{
+            //    int breakpoin = 0;
+            //}
             lblQuestion.Content = q.ID;
             txtQuestion.Text = questionText;
             var desiredSizeOld = txtQuestion.DesiredSize;

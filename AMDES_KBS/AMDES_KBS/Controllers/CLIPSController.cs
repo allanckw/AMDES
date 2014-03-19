@@ -72,7 +72,7 @@ namespace AMDES_KBS.Controllers
             env.AssertString("(attribute Age " + CurrentPatient.getAge() + ")");//todo: assert which var
         }
 
-        public static void assertQuestion(double id, bool answer)
+        public static void assertQuestion(string id, bool answer)
         {
             //to paste to load questions
             string str2assert="(choice _" + id + " ";

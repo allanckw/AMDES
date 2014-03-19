@@ -48,7 +48,7 @@ namespace AMDES_KBS.Entity
         {
             Question qn = new Question(q, sym);
 
-            if (qns.Count <= maxQuestions)
+            if (qns.Count == maxQuestions)
             {
                 if (q != null)
                 {
