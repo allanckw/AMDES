@@ -119,6 +119,8 @@ namespace AMDES_KBS
 
             //Patient p = PatientController.searchPatientByNRIC("s2345906z");
 
+            //PatientController.updatePatientStatus("S8747645Z", PatientStatus.COMPLETED);
+
             //List<Patient> pats = PatientController.searchPatientByName("natalie");
 
             //MessageBox.Show(pats.Count.ToString());

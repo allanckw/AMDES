@@ -70,6 +70,19 @@ namespace AMDES_KBS.Controllers
 
         }
 
+        public static void updatePatientStatus(string id, PatientStatus s)
+        {
+            XDocument document = XDocument.Load(Patient.dataPath);
+            if (PatientController.searchPatientByNRIC(id) != null)
+            {
+                (from pa in document.Descendants("Patient")
+                 where pa.Attribute("id").Value.ToUpper().CompareTo(id.ToUpper()) == 0
+                 select pa).Select(e => e.Element("Status")).Single().SetValue(s);
+
+                document.Save(Patient.dataPath);
+            }
+        }
+
         public static void addPatient(Patient p)
         {
             createPatientFile();
