@@ -78,6 +78,12 @@
     <Compile Include="Controllers\DiagnosisController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Entity\Navigation.cs" />
+    <Compile Include="frmDiagnosisSetting.xaml.cs">
+      <DependentUpon>frmDiagnosisSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmNavigation.xaml.cs">
+      <DependentUpon>frmNavigation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmPatientDetails.xaml.cs">
       <DependentUpon>frmPatientDetails.xaml</DependentUpon>
     </Compile>
@@ -111,7 +117,21 @@
     <Compile Include="RecommendataionUserControl\ucDiagnosis.xaml.cs">
       <DependentUpon>ucDiagnosis.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingControl\frmDiagnosisAddingToPath.xaml.cs">
+      <DependentUpon>frmDiagnosisAddingToPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingControl\ucNavigationSetting.xaml.cs">
+      <DependentUpon>ucNavigationSetting.xaml</DependentUpon>
+    </Compile>
+    <Page Include="frmDiagnosisSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="frmMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmNavigation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -195,6 +215,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RecommendataionUserControl\ucDiagnosis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingControl\frmDiagnosisAddingToPath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingControl\ucNavigationSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

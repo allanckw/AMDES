@@ -34,5 +34,15 @@ namespace AMDES_KBS
         {
             this.Close();
         }
+
+        private void btnNavigation_Click(object sender, RoutedEventArgs e)
+        {
+            SettingFrame.Navigate(new frmNavigation());
+        }
+
+        private void btnDiagnosis_Click(object sender, RoutedEventArgs e)
+        {
+            SettingFrame.Navigate(new frmDiagnosisSetting());
+        }
     }
 }

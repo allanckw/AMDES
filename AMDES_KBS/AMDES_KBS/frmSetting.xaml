@@ -8,9 +8,11 @@
                 <StackPanel x:Name="stkpnlDivider" Orientation="Horizontal">
                     <StackPanel x:Name="stkpnlSettingMenu">
                         <Button x:Name="btnQuestion" Width="100" Content="Question" Margin="0,0,0,5" Click="btnQuestion_Click" />
+                        <Button x:Name="btnNavigation" Width="100" Content="Navigation" Margin="0,0,0,5" Click="btnNavigation_Click" />
+                        <Button x:Name="btnDiagnosis" Width="100" Content="Diagnosis" Margin="0,0,0,5" Click="btnDiagnosis_Click" />
                         <Button x:Name="btnExitSetting" Width="100" Content="Exit" Margin="0,0,0,5" Click="btnExitSetting_Click" />
                     </StackPanel>
-                    <Frame x:Name="SettingFrame" NavigationUIVisibility="Hidden" Width="650" Height="530" Margin="10,0,0,0" ></Frame>
+                    <Frame x:Name="SettingFrame" NavigationUIVisibility="Hidden" Width="660" Height="530" Margin="10,0,0,0" ></Frame>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

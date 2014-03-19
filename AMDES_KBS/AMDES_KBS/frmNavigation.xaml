@@ -1,0 +1,41 @@
+﻿<src:AMDESPage xmlns:amdes="clr-namespace:AMDES_KBS"  xmlns:src="clr-namespace:AMDES_KBS" x:Class="AMDES_KBS.frmNavigation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+    d:DesignHeight="530" d:DesignWidth="650"
+	Title="frmNavigation">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel x:Name="stkpnlListOfGroup">
+                <Label Content="List of Group" FontWeight="Bold" Height="30" FontSize="15"/>
+                <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="480" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <WrapPanel Orientation="Horizontal" >
+                                    <TextBlock Text="ID: " Foreground="DarkBlue" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                </WrapPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel x:Name="StkpnlNavigation" Margin="10,30,0,0" Height="600">
+                <StackPanel x:Name="stkpnlTrueLink" Orientation="Vertical">
+                    <Label Content="Navigation - True" FontWeight="Bold" FontSize="18" />
+                    <amdes:ucNavigationSetting x:Name="ucNaviTrue"></amdes:ucNavigationSetting>
+                </StackPanel>
+
+                <StackPanel x:Name="stkpnlFalseLink" Margin="0,30,0,0"  Orientation="Vertical">
+                    <Label Content="Navigation - False" FontWeight="Bold" FontSize="18" />
+                    <amdes:ucNavigationSetting x:Name="ucNaviFalse"></amdes:ucNavigationSetting>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</src:AMDESPage>

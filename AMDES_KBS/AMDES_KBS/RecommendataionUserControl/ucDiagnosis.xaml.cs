@@ -42,6 +42,14 @@ namespace AMDES_KBS
             }
             //updateHeight();
         }
+        
+        public void loadComment()
+        {
+            string comment = "Likelihood of dementia is low. If the cognitive deficit(s) has been present  for a long time, do consider congenital conditions like mental retardation, cerebral palsy. " +
+                Environment.NewLine +
+                "You may consider a referral to a specialist should there be a sudden change or decline in the condition.";
+            this.txtDiagnosisMessage.Text = comment;
+        }
 
         private void updateHeight()
         {
