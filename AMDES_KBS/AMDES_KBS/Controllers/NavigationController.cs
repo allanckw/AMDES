@@ -13,7 +13,7 @@ namespace AMDES_KBS.Controllers
         {
             Navigation nav = new Navigation();
 
-            nav.DestGrpID = (int.Parse(x.Attribute("id").Value));
+            nav.DestGrpID = int.Parse(x.Element("DestGrp").Value);
             nav.isConclusive = bool.Parse(x.Element("isConclusive").Value);
             nav.isRequireAge = bool.Parse(x.Element("RequireAge").Value);
             nav.Age = (int.Parse(x.Element("Age").Value));
@@ -40,5 +40,28 @@ namespace AMDES_KBS.Controllers
             return nav;
         }
 
+        public static XElement convertToXML(Navigation nav, string root = "Navigation")
+        {
+            XElement x = new XElement(root,
+                                         new XElement("DestGrp", nav.DestGrpID),
+                                         new XElement("RequireAge", nav.isRequireAge),
+                                         new XElement("Age", nav.Age),
+                                         new XElement("isConclusive", nav.isConclusive),
+                                         new XElement("LessThanAge", nav.LessThanAge),
+                                         new XElement("MoreThanEqualAge", nav.MoreThanEqualAge),
+                                         new XElement("Diagnoses")
+                                         );
+
+            if (nav.getDiagnosis().Count > 0)
+            {
+                for (int k = 0; k < nav.getDiagnosis().Count; k++)
+                {
+                    Diagnosis d = nav.getDiagnosisAt(k);
+                    x.Element("Diagnoses").Add(DiagnosisController.convertToXML(d));
+                }
+            }
+
+            return x;
+        }
     }
 }

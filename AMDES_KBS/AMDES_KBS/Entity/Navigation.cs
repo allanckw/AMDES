@@ -7,7 +7,7 @@ namespace AMDES_KBS.Entity
 {
     public class Navigation
     {
-        private int destGrpID;
+        private int destGrpID = -1;
         private bool conclusive;
         private bool moreThanEqualAge;
         private bool requireAge;
@@ -80,7 +80,7 @@ namespace AMDES_KBS.Entity
                 }
                 else
                 {
-                    throw new InvalidOperationException("Cannot set destination when it is conculsive!");
+                    throw new InvalidOperationException("Cannot set destination when it is not conculsive!");
                 }
             }
         }

@@ -88,45 +88,15 @@ namespace AMDES_KBS.Controllers
             //i suppose the loading on startup, clips have to know where it is going to point to for next qn
             if (p.NextFalseLink != null)// NAVEX need to know next GroupID //Next False Link GoTo??
             {
-                XElement falseNavex = new XElement("NextFalseLink", new XAttribute("id", p.NextFalseLink.DestGrpID),
-                            new XElement("RequireAge", p.NextFalseLink.isRequireAge),
-                            new XElement("Age", p.NextFalseLink.Age),
-                            new XElement("isConclusive", p.NextFalseLink.isConclusive),
-                            new XElement("LessThanAge", p.NextFalseLink.LessThanAge),
-                            new XElement("MoreThanEqualAge", p.NextFalseLink.MoreThanEqualAge),
-                            new XElement("Diagnoses")
-                            );
-
-                if (p.NextFalseLink.getDiagnosis().Count > 0)
-                {
-                    for (int k = 0; k < p.NextFalseLink.getDiagnosis().Count; k++)
-                    {
-                        Diagnosis d = p.NextFalseLink.getDiagnosisAt(k);
-                        falseNavex.Element("Diagnoses").Add(DiagnosisController.convertToXML(d));
-                    }
-                }
+                Navigation nav = p.NextFalseLink;
+                XElement falseNavex = NavigationController.convertToXML(nav, "NextFalseLink");
                 newGRP.Add(falseNavex);
             }
 
             if (p.NextTrueLink != null)
             {
-                XElement trueNavex = new XElement("NextTrueLink", new XAttribute("id", p.NextTrueLink.DestGrpID),
-                                         new XElement("RequireAge", p.NextFalseLink.isRequireAge),
-                                         new XElement("Age", p.NextTrueLink.Age),
-                                         new XElement("isConclusive", p.NextTrueLink.isConclusive),
-                                         new XElement("LessThanAge", p.NextTrueLink.LessThanAge),
-                                         new XElement("MoreThanEqualAge", p.NextTrueLink.MoreThanEqualAge),
-                                         new XElement("Diagnoses")
-                                         );
-
-                if (p.NextTrueLink.getDiagnosis().Count > 0)
-                {
-                    for (int k = 0; k < p.NextTrueLink.getDiagnosis().Count; k++)
-                    {
-                        Diagnosis d = p.NextTrueLink.getDiagnosisAt(k);
-                        trueNavex.Element("Diagnoses").Add(DiagnosisController.convertToXML(d));
-                    }
-                }
+                Navigation nav = p.NextTrueLink;
+                XElement trueNavex = NavigationController.convertToXML(nav, "NextTrueLink");
                 newGRP.Add(trueNavex);
             }
 
@@ -136,9 +106,10 @@ namespace AMDES_KBS.Controllers
                 {
                     Question q = p.Questions.ElementAt(j);
                     newGRP.Element("Questions").Add(
-                        new XElement("Question", new XAttribute("QID", p.GroupID + "." + (j + 1)),
-                                        new XElement("Name", q.Name),
-                                        new XElement("Symptom", q.Symptom)));
+                                        new XElement("Question", new XAttribute("QID", p.GroupID + "." + (j + 1)),
+                                            new XElement("Name", q.Name),
+                                            new XElement("Symptom", q.Symptom))
+                                  );
                     //What does it assert about the patient if this is true? (i need this value in patient));
                 }
             }
