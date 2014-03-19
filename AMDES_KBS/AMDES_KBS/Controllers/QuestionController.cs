@@ -292,5 +292,41 @@ namespace AMDES_KBS.Controllers
                 document.Save(QuestionGroup.dataPath);
             }
         }
+
+        public static void deleteAllDiagnosisByID(int RID)
+        {
+            List<QuestionGroup> grp = new List<QuestionGroup>();
+
+            grp = QuestionController.getAllQuestionGroup();
+
+            for (int i = 0; i < grp.Count; i++)
+            {
+                QuestionGroup qg = getGroupByID(grp.ElementAt(i).GroupID);
+                if (qg.NextTrueLink != null)
+                {
+                    Navigation newNav = NavigationController.deleteDiagnosisByID(qg.NextTrueLink, RID);
+
+                    if (newNav.getDiagnosis().Count != qg.NextTrueLink.getDiagnosis().Count)
+                    {//if count is diff then update else dun care
+                        qg.NextTrueLink = newNav;
+                        QuestionController.updateQuestionGroup(qg);
+                    }
+                 
+                }
+
+                if (qg.NextFalseLink != null)
+                {
+                    Navigation newNav = NavigationController.deleteDiagnosisByID(qg.NextFalseLink, RID);
+
+                    if (newNav.getDiagnosis().Count != qg.NextFalseLink.getDiagnosis().Count)
+                    {//if count is diff then update else dun care
+                        qg.NextFalseLink = newNav;
+                        QuestionController.updateQuestionGroup(qg);
+                    }
+                }
+            }
+
+
+        }
     }
 }

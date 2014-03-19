@@ -70,5 +70,19 @@ namespace AMDES_KBS.Controllers
 
             return x;
         }
+
+        public static Navigation deleteDiagnosisByID(Navigation nav, int RID)
+        {
+            for (int i = 0; i < nav.getDiagnosis().Count; i++)
+            {
+                Diagnosis d = nav.getDiagnosisAt(i);
+                if (d.RID == RID)
+                {
+                    nav.removeDiagnosisAt(i);
+                }
+            }
+
+            return nav;
+        }
     }
 }

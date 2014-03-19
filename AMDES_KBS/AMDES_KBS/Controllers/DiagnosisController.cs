@@ -148,6 +148,8 @@ namespace AMDES_KBS.Controllers
                  select pa).SingleOrDefault().Remove();
 
                 document.Save(Diagnosis.dataPath);
+
+                QuestionController.deleteAllDiagnosisByID(id);
             }
         }
     }
