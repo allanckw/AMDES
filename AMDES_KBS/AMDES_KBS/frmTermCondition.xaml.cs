@@ -76,7 +76,7 @@ namespace AMDES_KBS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            QuestionController.getAllQuestionGroup();
+            //List<QuestionGroup> x = QuestionController.getAllQuestionGroup();
 
             //QuestionGroup miao = new QuestionGroup();
             //miao.GroupID = QuestionController.getNextGroupID();
@@ -84,6 +84,28 @@ namespace AMDES_KBS
             //miao.addQuestion("Will you forgive me? ", "GG");
             //miao.addQuestion("please?", "XX");
             //miao.addQuestion("I will do anything for u :(", "ZZ");
+
+            //Navigation nav = new Navigation();
+            //nav.isConclusive = true;
+            //nav.DestGrpID = 2;
+            //nav.isRequireAge = true;
+            //nav.setMoreThanEqualAge();
+
+            //Diagnosis d = new Diagnosis();
+            //d.RID = "R1";
+            //d.Comment = "GG liao la, going to die soon :(((";
+            //nav.addDiagnosis(d);
+
+            //miao.NextFalseLink = nav;
+
+            //Navigation nav1 = new Navigation();
+            //nav1.isConclusive = false;
+            //nav1.DestGrpID = 2;
+            //nav1.isRequireAge = true;
+            //nav1.setMoreThanEqualAge();
+
+
+            //miao.NextTrueLink = nav1;
 
             //QuestionController.updateQuestionGroup(miao);
 

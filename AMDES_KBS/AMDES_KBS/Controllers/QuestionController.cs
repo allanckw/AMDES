@@ -102,9 +102,7 @@ namespace AMDES_KBS.Controllers
                     for (int k = 0; k < p.NextFalseLink.getDiagnosis().Count; k++)
                     {
                         Diagnosis d = p.NextFalseLink.getDiagnosisAt(k);
-                        falseNavex.Element("Diagnoses").Add(
-                            new XElement("Diagnosis", new XAttribute("diagID", d.RID), d.Comment)
-                            );
+                        falseNavex.Element("Diagnoses").Add(DiagnosisController.convertToXML(d));
                     }
                 }
                 newGRP.Add(falseNavex);
@@ -126,9 +124,7 @@ namespace AMDES_KBS.Controllers
                     for (int k = 0; k < p.NextTrueLink.getDiagnosis().Count; k++)
                     {
                         Diagnosis d = p.NextTrueLink.getDiagnosisAt(k);
-                        trueNavex.Element("Diagnoses").Add(
-                            new XElement("Diagnosis", new XAttribute("diagID", d.RID), d.Comment)
-                            );
+                        trueNavex.Element("Diagnoses").Add(DiagnosisController.convertToXML(d));
                     }
                 }
                 newGRP.Add(trueNavex);
@@ -187,6 +183,7 @@ namespace AMDES_KBS.Controllers
                 return pList; // return empty list
             }
         }
+
         private static QuestionGroup readQnGrpData(XElement x)
         {
             QuestionGroup p = new QuestionGroup();
@@ -207,11 +204,11 @@ namespace AMDES_KBS.Controllers
 
                     if (x.Element("NextTrueLink") != null)
                     {
-                        p.NextTrueLink = QuestionController.getNavigation(x.Element("NextTrueLink"));
+                        p.NextTrueLink = NavigationController.getNavigation(x.Element("NextTrueLink"));
                     }
                     if (x.Element("NextFalseLink") != null)
                     {
-                        p.NextFalseLink = QuestionController.getNavigation(x.Element("NextFalseLink"));
+                        p.NextFalseLink = NavigationController.getNavigation(x.Element("NextFalseLink"));
                     }
 
                     var qns = (from pa in x.Descendants("Questions").Descendants("Question")
@@ -232,46 +229,6 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        private static Navigation getNavigation(XElement x)
-        {
-            Navigation nav = new Navigation();
-            
-            nav.DestGrpID = (int.Parse(x.Attribute("id").Value));
-            nav.isConclusive = bool.Parse(x.Element("isConclusive").Value);
-            nav.isRequireAge = bool.Parse(x.Element("RequireAge").Value);
-            nav.Age = (int.Parse(x.Element("Age").Value));
-
-            bool a = bool.Parse(x.Element("LessThanAge").Value);
-
-            if (a)
-            {
-                nav.setLessThanAge();
-            }
-            else
-            {
-                nav.setMoreThanEqualAge();
-            }
-
-            var diag = (from pa in x.Descendants("Diagnoses").Descendants("Diagnosis")
-                       select pa).ToList();
-
-            foreach (var d in diag)
-            {
-                nav.addDiagnosis(readDiagnosis(d));
-            }
-
-            return nav;
-        }
-
-        private static Diagnosis readDiagnosis(XElement x)
-        {
-            Diagnosis d = new Diagnosis();
-            d.RID = x.Attribute("diagID").Value;
-            d.Comment = x.Value;
-
-            return d;
-        }
-
         private static QuestionCountGroup readQnCountGroupData(XElement x)
         {
             QuestionCountGroup p = new QuestionCountGroup();
@@ -284,11 +241,11 @@ namespace AMDES_KBS.Controllers
 
             if (x.Element("NextTrueLink") != null)
             {
-                p.NextTrueLink = QuestionController.getNavigation(x.Element("NextTrueLink"));
+                p.NextTrueLink = NavigationController.getNavigation(x.Element("NextTrueLink"));
             }
             if (x.Element("NextFalseLink") != null)
             {
-                p.NextFalseLink = QuestionController.getNavigation(x.Element("NextFalseLink"));
+                p.NextFalseLink = NavigationController.getNavigation(x.Element("NextFalseLink"));
             }
 
             var qns = (from pa in x.Descendants("Questions").Descendants("Question")

@@ -122,14 +122,7 @@ namespace AMDES_KBS.Entity
             }
             set
             {
-                if (isRequireAge)
-                {
-                    age = value;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Cannot set age when it is not required!");
-                }
+                age = value;
             }
         }
     }

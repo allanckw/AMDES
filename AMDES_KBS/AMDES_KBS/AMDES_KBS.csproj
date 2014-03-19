@@ -75,9 +75,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\CLIPSController.cs" />
+    <Compile Include="Controllers\DiagnosisController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Entity\Navigation.cs" />
     <Compile Include="frmPatientDetails.xaml.cs">
       <DependentUpon>frmPatientDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuestionGroupSetting.xaml.cs">
+      <DependentUpon>frmQuestionGroupSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmQuestionSetting.xaml.cs">
       <DependentUpon>frmQuestionSetting.xaml</DependentUpon>
@@ -115,6 +120,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="frmPatientDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmQuestionGroupSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
