@@ -81,6 +81,9 @@
     <Compile Include="frmDiagnosisSetting.xaml.cs">
       <DependentUpon>frmDiagnosisSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frmFirstPageSetting.xaml.cs">
+      <DependentUpon>frmFirstPageSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmNavigation.xaml.cs">
       <DependentUpon>frmNavigation.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
     <Page Include="frmDiagnosisSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmFirstPageSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="frmMain.xaml">
       <Generator>MSBuild:Compile</Generator>
