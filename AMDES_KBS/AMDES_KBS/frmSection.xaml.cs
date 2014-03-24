@@ -44,8 +44,11 @@ namespace AMDES_KBS
             btnPrev.Visibility = Visibility.Collapsed;
             heightLimit = 430;
             Patient currPatient = CLIPSController.CurrentPatient;
-            lblPatientID.Content =  currPatient.NRIC;
+            lblPatientID.Content = currPatient.NRIC;
             lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
+
+
+
             loadSection(sectionID);
         }
 
@@ -136,7 +139,7 @@ namespace AMDES_KBS
             else
             {
                 //ucQ.Name="Question" + q.ID;
-                ucQ.loadQuestion(q,null);
+                ucQ.loadQuestion(q, null);
             }
             //currHeight += Math.Ceiling(ucQ.getHeight());
             QuestionFrame.Children.Add(ucQ);
@@ -172,7 +175,7 @@ namespace AMDES_KBS
                 QuestionPerPage.Add(item);
             }
 
-            if (QuestionPerPage.Count>0)
+            if (QuestionPerPage.Count > 0)
             {
                 PageContent.Add(QuestionPerPage);
             }
@@ -222,7 +225,7 @@ namespace AMDES_KBS
             else
             {
                 //Navigation();
-                if (prevPage!=null)
+                if (prevPage != null)
                 {
                     NavigationPrev();
                 }
@@ -243,7 +246,12 @@ namespace AMDES_KBS
 
         private void NavigationNext()
         {
-            frmSection nextSection = new frmSection(amdesPageFrame,QG.NextTrueLink.DestGrpID,this);
+            CLIPSController.assertNextSection();
+
+            int sectionID = CLIPSController.getCurrentQnGroupID();
+            
+            frmSection nextSection = new frmSection(amdesPageFrame, sectionID, this);
+            
             amdesPageFrame.Navigate(nextSection);
         }
 

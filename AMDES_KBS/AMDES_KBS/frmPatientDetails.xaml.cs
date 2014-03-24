@@ -40,7 +40,11 @@ namespace AMDES_KBS
             if (savePatient())
             {
                 AssertQuestions();
-                frmSection TestSection = new frmSection(amdesPageFrame, 1);
+                int sectionID = CLIPSController.getCurrentQnGroupID();
+
+                //MessageBox.Show(sectionID.ToString());
+
+                frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
                 amdesPageFrame.Navigate(TestSection);
             }
         }

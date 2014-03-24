@@ -82,8 +82,13 @@ namespace AMDES_KBS
             //    }
             //}
             CLIPSController.CurrentPatient = pat;
-            frmSection TestSection = new frmSection(amdesPageFrame, 1);
             CLIPSController.loadQuestions();
+
+            int sectionID = CLIPSController.getCurrentQnGroupID();
+
+            //MessageBox.Show(sectionID.ToString());
+
+            frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
             amdesPageFrame.Navigate(TestSection);
         }
     }
