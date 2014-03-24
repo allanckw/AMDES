@@ -28,7 +28,7 @@ namespace AMDES_KBS.Entity
         {
             get { return threshold; }
             set { 
-                if (this.MaxQuestions >value )
+                if (this.MaxQuestions >= value )
                 {
                     threshold = value;
                 }else{
