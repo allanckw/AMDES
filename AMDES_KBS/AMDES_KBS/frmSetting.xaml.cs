@@ -37,12 +37,18 @@ namespace AMDES_KBS
 
         private void btnNavigation_Click(object sender, RoutedEventArgs e)
         {
-            SettingFrame.Navigate(new frmNavigation());
+            //SettingFrame.Navigate(new frmNavigation());
+            new frmFlowToDiagnosis().ShowDialog();
         }
 
         private void btnDiagnosis_Click(object sender, RoutedEventArgs e)
         {
             SettingFrame.Navigate(new frmDiagnosisSetting());
+        }
+
+        private void btnStartPage_Click(object sender, RoutedEventArgs e)
+        {
+            new frmFirstPageSetting().ShowDialog();
         }
     }
 }

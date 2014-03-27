@@ -1,7 +1,7 @@
 ﻿<Window x:Class="AMDES_KBS.frmSetting"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="frmSetting" Height="600" Width="800" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Setting Page" FontSize="18" Height="600" Width="800" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
             <GroupBox x:Name="gbSettings" Header="Settings" FontSize="15" FontWeight="Bold">
@@ -10,6 +10,7 @@
                         <Button x:Name="btnQuestion" Width="100" Content="Question" Margin="0,0,0,5" Click="btnQuestion_Click" />
                         <Button x:Name="btnNavigation" Width="100" Content="Navigation" Margin="0,0,0,5" Click="btnNavigation_Click" />
                         <Button x:Name="btnDiagnosis" Width="100" Content="Diagnosis" Margin="0,0,0,5" Click="btnDiagnosis_Click" />
+                        <Button x:Name="btnStartPage" Width="100" Content="Start Page" Margin="0,0,0,5" Click="btnStartPage_Click" />
                         <Button x:Name="btnExitSetting" Width="100" Content="Exit" Margin="0,0,0,5" Click="btnExitSetting_Click" />
                     </StackPanel>
                     <Frame x:Name="SettingFrame" NavigationUIVisibility="Hidden" Width="660" Height="530" Margin="10,0,0,0" ></Frame>

@@ -29,6 +29,12 @@
                                 <Trigger Property="Text" Value="-">
                                     <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
                                 </Trigger>
+                                <Trigger Property="Text" Value=" ">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
                                 <Trigger Property="IsKeyboardFocused" Value="True">
                                     <Setter Property="Background" Value="White" />
                                 </Trigger>

@@ -50,67 +50,39 @@
     </Questions>
   </QuestionGroup>
   <QuestionGroup id="5">
-    <Header>Medical History</Header>
+    <Header>Section C6- C11</Header>
     <Description>Does the patient have ANY of the following background medical issues?</Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
       <Question QID="5.1">
-        <Name>Signs of acute stroke eg.one-sided weakness, babinski’s sign</Name>
-        <Symptom>acute stroke</Symptom>
-      </Question>
-      <Question QID="5.2">
-        <Name>Recent head trauma with  headache, loss of consciousness, vomiting (subdural hematoma)</Name>
-        <Symptom>subdural hematoma</Symptom>
-      </Question>
-      <Question QID="5.3">
         <Name>Parkinson’s disease</Name>
         <Symptom>Parkinson’s disease</Symptom>
       </Question>
-      <Question QID="5.4">
+      <Question QID="5.2">
         <Name>Thyroid disorders</Name>
         <Symptom>Thyroid disorders</Symptom>
       </Question>
-      <Question QID="5.5">
+      <Question QID="5.3">
         <Name>Vit B12/ Folate deficiency</Name>
         <Symptom>Folate deficiency</Symptom>
       </Question>
-      <Question QID="5.6">
+      <Question QID="5.4">
         <Name>Electrolyte imbalance – hypercalcemia, hyper/hyponatremia, advanced organ failure</Name>
         <Symptom>Electrolyte imbalance</Symptom>
       </Question>
-      <Question QID="5.7">
+      <Question QID="5.5">
         <Name>Substance or drug induced condition</Name>
         <Symptom>drug induced condition</Symptom>
       </Question>
-      <Question QID="5.8">
+      <Question QID="5.6">
         <Name>Psychiatric disorders – major depression, schzophrenia, acute delirium</Name>
         <Symptom>Psychiatric disorders</Symptom>
-      </Question>
-      <Question QID="5.9">
-        <Name>Unexplained neurological symptoms eg. new onset of severe headaches or seizures</Name>
-        <Symptom>Unexplained neurological symptoms</Symptom>
-      </Question>
-      <Question QID="5.10">
-        <Name>History of cancer, especially of a type or at a site associated with brain metastasis</Name>
-        <Symptom>History associated with brain metastasis</Symptom>
-      </Question>
-      <Question QID="5.11">
-        <Name>Use of anticoagulants or history of bleeding disorder</Name>
-        <Symptom>bleeding disorder</Symptom>
-      </Question>
-      <Question QID="5.12">
-        <Name>History of urinary incontinence and gait disturbance early in the disease </Name>
-        <Symptom>urinary incontinence and gait disturbance early</Symptom>
-      </Question>
-      <Question QID="5.13">
-        <Name>Acute onset of gait disturbance</Name>
-        <Symptom>Acute onset of gait disturbance</Symptom>
       </Question>
     </Questions>
   </QuestionGroup>
   <QuestionGroup id="6">
-    <Header>Abbreviated Mental Test Score</Header>
+    <Header>Mental Test Score</Header>
     <Description>Instructions: for Recall memory phase,  ~~Tell the patient “37 Bukit Timah Road”~~Ask another qn. Ask to recall at the end of the test.</Description>
     <QnType>2</QnType>
     <Symptom></Symptom>
@@ -160,8 +132,8 @@
     <Threshold>7</Threshold>
   </QuestionGroup>
   <QuestionGroup id="7">
-    <Header>XRay</Header>
-    <Description>X</Description>
+    <Header>Section C4,C5,C12-C16</Header>
+    <Description></Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
@@ -196,7 +168,7 @@
     </Questions>
   </QuestionGroup>
   <QuestionGroup id="1">
-    <Header>Amnesia A</Header>
+    <Header>Section A</Header>
     <Description></Description>
     <QnType>0</QnType>
     <Symptom>Amnesia</Symptom>
@@ -221,7 +193,7 @@
       <Age>65</Age>
       <isConclusive>false</isConclusive>
       <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>false</MoreThanEqualAge>
+      <MoreThanEqualAge>true</MoreThanEqualAge>
       <Diagnoses />
     </NextTrueLink>
   </QuestionGroup>
