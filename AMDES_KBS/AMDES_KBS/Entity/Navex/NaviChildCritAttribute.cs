@@ -29,13 +29,13 @@ namespace AMDES_KBS.Entity
             set { attributeValue = value; }
         }
 
-        private bool ans;
+        //private bool ans;
 
-        public bool Ans
-        {
-            get { return ans; }
-            set { ans = value; }
-        }
+        //public bool Ans
+        //{
+        //    get { return ans; }
+        //    set { ans = value; }
+        //}
 
         private AttributeCmpType type;
 
@@ -97,7 +97,7 @@ namespace AMDES_KBS.Entity
             this.navid = navID;
             this.attributeName = attrName;
             this.attributeValue = attrVal;
-            this.ans = attrAns;
+            //this.ans = attrAns;
             this.type = type;
         }
 

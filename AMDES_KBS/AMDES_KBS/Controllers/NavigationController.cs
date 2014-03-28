@@ -97,8 +97,9 @@ namespace AMDES_KBS.Controllers
                         XElement cca = new XElement("ChildCriteriaAttribute",
                                         new XElement("AttributeName", ca.AttributeName),
                                         new XElement("AttributeValue", ca.AttributeValue),
-                                        new XElement("CompareType", ca.getCompareType()),
-                                        new XElement("Answer", ca.Ans));
+                                        new XElement("CompareType", ca.getCompareType())//,
+                                        //new XElement("Answer", ca.Ans)
+                                        );
 
                         navex.Element("NavigationChildAttributes").Add(cca);
 
@@ -236,7 +237,7 @@ namespace AMDES_KBS.Controllers
                 p.AttributeName = x.Element("AttributeName").Value;
                 p.AttributeValue = x.Element("AttributeValue").Value;
                 p.setRuleType(int.Parse(x.Element("CompareType").Value));
-                p.Ans = bool.Parse(x.Element("Answer").Value);
+                //p.Ans = bool.Parse(x.Element("Answer").Value);
                 return p;
             }
             else

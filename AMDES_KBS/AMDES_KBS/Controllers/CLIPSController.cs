@@ -39,6 +39,7 @@ namespace AMDES_KBS.Controllers
             //to paste to load questions
             ClearandLoad();
             reset();
+            assertAge();
 
             string str2assert;
             List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
@@ -66,10 +67,86 @@ namespace AMDES_KBS.Controllers
                     env.AssertString(str2assert);
                 }
             }
-            assertAge();
+            
+            FirstQuestion fq = FirstQuestionController.readFirstQuestion();
+
+            env.AssertString("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID starting) )");
+
+            env.AssertString("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ") " +
+                             "(NavigationID S1_" + fq.NextGrpID + ") )");
+
+            env.AssertString("(NaviChildCritQ (NavigationID S1_" + fq.NextGrpID + ")  " +
+                             " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer Yes) )");
 
 
-            //env.AssertString("(Navigation  (DestinationGroupID _1))");
+            env.AssertString("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ")  " +
+                             "(NavigationID S2_" + fq.NextGrpID + ") )");
+
+            env.AssertString("(NaviChildCritQ (NavigationID S2_" + fq.NextGrpID +
+                             " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer No) )");
+
+
+            List<Rules> navList = NavigationController.getAllRules();
+
+            foreach (Rules r in navList)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                //TODO:
+                foreach (Navigation n in r.Navigations)
+                {
+                    sb.Append("(Navigation  (DestinationGroupID _");
+                    sb.Append(n.DestGrpID + ")");
+                    sb.Append(" (NavigationID _" + n.NavID + ") ");
+
+                    if (n.isConclusive())
+                    {
+                        sb.Append("(RID");
+                        foreach (int x in n.DiagnosesID)
+                        {
+                            sb.Append(" R" + x.ToString());
+                        }
+                        sb.Append(") ");
+                    }
+
+                    sb.Append(")");
+                    env.AssertString(sb.ToString());
+
+                    sb.Clear();
+                    foreach (NaviChildCriteriaQuestion ncq in n.ChildCriteriaQuestion)
+                    {
+                        sb.Append("(NaviChildCritQ (NavigationID _" + n.NavID + ") ");
+                        sb.Append("(CriteriaGroupID _" + ncq.CriteriaGrpID + ") ");
+                        if (ncq.Ans == false)
+                        {
+                            sb.Append("(CriteriaAnswer No)");
+                        }
+                        else
+                        {
+                            sb.Append("(CriteriaAnswer Yes)");
+                        }
+                        sb.Append(")");
+
+                        env.AssertString(sb.ToString());
+                        sb.Clear();
+                    }
+
+                    foreach (NaviChildCritAttribute ncq in n.ChildCriteriaAttributes)
+                    {
+                        //(NaviChildCritA (NavigationID GO_C) (AttributeName Age) (AttributeValue 50) (AttributeCompareType <) )
+                        sb.Append("(NaviChildCritA (NavigationID _" + n.NavID + ") ");
+                        sb.Append("(AttributeName " + ncq.AttributeName + ") ");
+                        sb.Append("(AttributeValue " + ncq.AttributeValue + ") ");
+                        sb.Append("(AttributeCompareType " + ncq.getCompareTypeString() + ") ");
+                        sb.Append(")");
+
+                        env.AssertString(sb.ToString());
+                        sb.Clear();
+                    }
+
+                }
+
+            }
 
             run();
         }
@@ -78,7 +155,7 @@ namespace AMDES_KBS.Controllers
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("(Navigation ");
-           
+
             //TODO
 
             sb.Append(")");
@@ -126,7 +203,7 @@ namespace AMDES_KBS.Controllers
 
         public static History getCurrentPatientHistory()
         {
-  
+
             List<int> navHistory = new List<int>();
             History history = new History(CurrentPatient.NRIC);
             String evalStr = " (find-all-facts((?a question)) TRUE)";
@@ -137,14 +214,14 @@ namespace AMDES_KBS.Controllers
             }
 
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
-            string x= "";
+            string x = "";
 
             foreach (FactAddressValue fv in mv)
             {
                 //question history YES ONLY
                 x = fv.GetFactSlot("GroupID").ToString();
                 //natalie :(
-                 
+
 
                 if (navHistory.Contains(int.Parse(x.Remove(0, 1))))
                 {
