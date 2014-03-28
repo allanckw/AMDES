@@ -1,7 +1,3 @@
-; ; Diagnosis Program adapted from Textbook p.97
-; ; A0077307A ang nickolas
-
-; ; QuestionQuestionQuestion
 (deftemplate mode2criteria
 (slot ID (type SYMBOL))
 (slot GroupID (type SYMBOL))
@@ -20,23 +16,28 @@
 (slot GroupID (type SYMBOL))
 )
 
+(deftemplate groupid-symtoms
+(slot GroupID (type SYMBOL))
+(slot symtom (type STRING)))
 
+(deftemplate questionid-symtoms
+(slot QuestionID (type SYMBOL))
+(slot symtom (type STRING)))
 
+(deftemplate symtoms
+(slot symtom (type STRING))
+(slot ID (type SYMBOL))
+)
 
-; ; Sign of a symptom
-(deftemplate sign
-(slot symptom (type SYMBOL))
-(slot organ (type SYMBOL) (default NIL))
-(slot site (type SYMBOL) (default NIL)))
 
 ; ; Final Diagnosis
 (deftemplate diagnosis
-(slot Conclusion (type SYMBOL))
-(slot Comment (type STRING)))
+(multislot RID (type SYMBOL))
+)
 
 ; ; Sign of a symptom
 (deftemplate NaviHistory
-(multislot ID (type SYMBOL) (default NIL)))
+(multislot ID (type SYMBOL) (default NIL END)))
 
 ; ; QuestionQuestionQuestion
 (deftemplate question
@@ -44,7 +45,6 @@
 (slot QuestionText (type STRING))
 (slot answer (type SYMBOL) (default NIL))
 (slot GroupId (type SYMBOL))
-;;(slot Flag (type SYMBOL) (default No))
 )
 
 (deftemplate group
@@ -76,30 +76,59 @@
 
 ; ; navigation
 (deftemplate Navigation
-(slot CriteriaGroupID (type SYMBOL) (default NIL))
-(slot CriteriaAnswer (type SYMBOL) (default No))
-(slot Comment (type STRING) (default ""))
-(slot Conclusion (type SYMBOL) (default NIL))
+(slot NavigationID (type SYMBOL) )
 (slot DestinationGroupID (type SYMBOL) (default NIL))
-(slot AttributeName (type SYMBOL) (default NIL))
-(slot AttributeValue (type INTEGER) (default 0))
-(slot AttributeCompareType (type SYMBOL) (default NIL))
+;;result ID
+(multislot RID (type SYMBOL) (default NIL))
 )
-;;if destinationgroupid == nil then means goal reached
-;;age>?
 
+;;Question 
+(deftemplate NaviChildCritQ
+(slot NavigationID (type SYMBOL) ) ;;NAVID
+(slot CriteriaGroupID (type SYMBOL) (default NIL)) ;;Group ID for TRUE
+(slot CriteriaAnswer (type SYMBOL) (default No)) 
+)
 
+(deftemplate NaviChildCritA
+(slot NavigationID (type SYMBOL) )
+(slot AttributeName (type SYMBOL) (default NIL))
+(slot AttributeValue)
+(slot AttributeCompareType (type SYMBOL) (default NIL)) ;;==, >=, >, <, <=, eq for string
+(slot Answer (type SYMBOL) (default No))
+)
 
+;;so the forall can work
+(deftemplate NaviChildCritASTUB
+(slot Answer (type SYMBOL) (default Yes))
+)
 
 ; ; The initial facts
-; ; i.e. Patient reports abdominal pain
 (deffacts the-facts
-
 (NaviHistory)
-
+(NaviChildCritASTUB)
 )
 
-;;A->B->END
+(defrule Pass-And
+?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType AND) (answer ~Yes))
+(not (exists
+	
+	(question (Id ?a) (QuestionText ?b) (answer No) (GroupId ?z))
+))
+=>
+;;(printout t crlf "Satisfied "?z"!" crlf)
+(modify ?CUR_Group (answer Yes))
+)
+
+(defrule Fail-And
+?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType AND) (answer Yes))
+(exists
+	
+	(question (Id ?a) (QuestionText ?b) (answer No) (GroupId ?z))
+)
+=>
+;;(printout t crlf "Satisfied "?z"!" crlf)
+(modify ?CUR_Group (answer No))
+)
 
 (defrule Pass-OR
 ?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType OR) (answer ~Yes))
@@ -110,6 +139,17 @@
 =>
 ;;(printout t crlf "Satisfied "?z"!" crlf)
 (modify ?CUR_Group (answer Yes))
+)
+
+(defrule Fail-OR
+?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType OR) (answer Yes))
+(not (exists
+	
+	(question (Id ?a) (QuestionText ?b) (answer Yes) (GroupId ?z))
+))
+=>
+;;(printout t crlf "Satisfied "?z"!" crlf)
+(modify ?CUR_Group (answer No))
 )
 
 (defrule Pass-COUNT-no-to-yes
@@ -169,235 +209,11 @@
 
 
 
-
-
-(defrule init_question
-(not (exists (Currentgroup)))
-(Navigation (CriteriaGroupID NIL) (DestinationGroupID ?z&~NIL))
-(mode 1)
-?grp<-
-(group 
-(GroupId ?z)
-(SuccessType ?a)
-(SuccessArg ?b)
-(TrueCount ?c)
-(conclusion ?d)
-(answer ?e)
-)
-?hist<-(NaviHistory (ID $?x))
-=>
-(modify ?hist (ID $?x ?z))
-(printout t crlf "init" crlf)
-(assert 
-(Currentgroup 
-(GroupId ?z)
-(SuccessType ?a)
-(SuccessArg ?b)
-(TrueCount ?c)
-(conclusion ?d)
-(answer ?e)
-)
-)
-)
-
-
-;;(slot AttributeName (type SYMBOL) (default NIL))
-;;(slot AttributeValue (type INTEGER) (default 0))
-;;(slot AttributeCompareType (type SYMBOL) (default NIL))
-
-;; change page here
-(defrule next_question
-?rmv<-(Currentgroup (GroupId ?y))
-?nxt<-(next)
-(group (GroupId ?y) (answer ?ans))
-(Navigation (CriteriaGroupID ?y&~NIL)(CriteriaAnswer ?ans)(DestinationGroupID ?z&~NIL) (AttributeName ?an) (AttributeValue ?av) (AttributeCompareType ?at))
-?att<- (attribute ?an ?attvalue)
-?hist<-(NaviHistory (ID $?x))
-?grp<-
-(group 
-(GroupId ?z)
-(SuccessType ?a)
-(SuccessArg ?b)
-(TrueCount ?c)
-(conclusion ?d)
-(answer ?e)
-
-)
-=>
-(printout t crlf " START next" crlf)
-
-(if(eq NIL ?an)
-then;;yes
-	(retract ?rmv)
-	(retract ?nxt)
-	(printout t crlf "next" crlf)
-	(assert 
-	(Currentgroup 
-	(GroupId ?z)
-	(SuccessType ?a)
-	(SuccessArg ?b)
-	(TrueCount ?c)
-	(conclusion ?d)
-	(answer ?e)
-	))
-	(modify ?hist (ID $?x ?z))
-else;;no
-
-	(switch ?at
-	(case = then 
-	
-		(if(= ?attvalue ?av)
-		then;;yes
-		(retract ?rmv)
-	(retract ?nxt)
-	(printout t crlf "next" crlf)
-	(assert 
-	(Currentgroup 
-	(GroupId ?z)
-	(SuccessType ?a)
-	(SuccessArg ?b)
-	(TrueCount ?c)
-	(conclusion ?d)
-	(answer ?e)
-	))
-	(modify ?hist (ID $?x ?z))
-		else;;no
-		
-		)
-	)
-
-	(case <= then 
-	
-		(if(<= ?attvalue ?av)
-		then;;yes
-		(retract ?rmv)
-	(retract ?nxt)
-	(printout t crlf "next" crlf)
-	(assert 
-	(Currentgroup 
-	(GroupId ?z)
-	(SuccessType ?a)
-	(SuccessArg ?b)
-	(TrueCount ?c)
-	(conclusion ?d)
-	(answer ?e)
-	))
-	(modify ?hist (ID $?x ?z))
-		else;;no
-		
-		)
-	)
-(case >= then 
-	
-		(if(>= ?attvalue ?av)
-		then;;yes
-		(retract ?rmv)
-	(retract ?nxt)
-	(printout t crlf "next" crlf)
-	(assert 
-	(Currentgroup 
-	(GroupId ?z)
-	(SuccessType ?a)
-	(SuccessArg ?b)
-	(TrueCount ?c)
-	(conclusion ?d)
-	(answer ?e)
-	))
-	(modify ?hist (ID $?x ?z))
-		else;;no
-		
-		)
-	)
-	(case > then 
-	
-		(if(> ?attvalue ?av)
-		then;;yes
-		(retract ?rmv)
-	(retract ?nxt)
-	(printout t crlf "next" crlf)
-	(assert 
-	(Currentgroup 
-	(GroupId ?z)
-	(SuccessType ?a)
-	(SuccessArg ?b)
-	(TrueCount ?c)
-	(conclusion ?d)
-	(answer ?e)
-	))
-	(modify ?hist (ID $?x ?z))
-		else;;no
-		
-		)
-	)
-
-	(case < then 
-	
-		(if(< ?attvalue ?av)
-		then;;yes
-		(retract ?rmv)
-	(retract ?nxt)
-	(printout t crlf "next" crlf)
-	(assert 
-	(Currentgroup 
-	(GroupId ?z)
-	(SuccessType ?a)
-	(SuccessArg ?b)
-	(TrueCount ?c)
-	(conclusion ?d)
-	(answer ?e)
-	))
-	(modify ?hist (ID $?x ?z))
-		else;;no
-		
-		)
-	)
-)
-
-)
-
-
-
-)
-
-;; change page here
-(defrule next_question_orig
-?rmv<-(Currentgroup (GroupId ?y))
-?nxt<-(next)
-(group (GroupId ?y) (answer ?ans))
-(Navigation (CriteriaGroupID ?y&~NIL)(CriteriaAnswer ?ans)(DestinationGroupID ?z&~NIL) (AttributeName NIL))
-?hist<-(NaviHistory (ID $?x))
-?grp<-
-(group 
-(GroupId ?z)
-(SuccessType ?a)
-(SuccessArg ?b)
-(TrueCount ?c)
-(conclusion ?d)
-(answer ?e)
-
-)
-=>
-
-	(retract ?rmv)
-	(retract ?nxt)
-	(printout t crlf "next" crlf)
-	(assert 
-	(Currentgroup 
-	(GroupId ?z)
-	(SuccessType ?a)
-	(SuccessArg ?b)
-	(TrueCount ?c)
-	(conclusion ?d)
-	(answer ?e)
-	))
-	(modify ?hist (ID $?x ?z))
-
-)
-
 ;;remove unesscary previous
+;;only 1 question in history cant previous anymore
 (defrule previous_useless
 ?prev<-(previous)
-?hist<-(NaviHistory (ID NIL ?x))
+?hist<-(NaviHistory (ID NIL ?x END))
 =>
 (retract ?prev)
 )
@@ -406,7 +222,7 @@ else;;no
 (defrule previous_question
 ?rmv<-(Currentgroup (GroupId ?y))
 ?prev<-(previous)
-?hist<-(NaviHistory (ID $?x ?p ?y))
+?hist<-(NaviHistory (ID $?x ?p ?y END))
 ?grp<-
 (group 
 (GroupId ?p)
@@ -430,27 +246,285 @@ else;;no
 (conclusion ?d)
 (answer ?e)
 ))
-(modify ?hist (ID $?x ?p))
+(modify ?hist (ID $?x ?p END))
 )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;navigate next question
 
-(defrule next_Conclusion
-(Currentgroup (GroupId ?y))
-?nxt<-(next)
-(Navigation (CriteriaGroupID ?y&~NIL) (DestinationGroupID NIL))
+;;initial question
+;; change page here
+(defrule Initial_question
+(mode 1)
+
+(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
+(forall
+(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
+(group (GroupId ?CGID) (answer ?CA))
+(NaviHistory (ID $?START ?CGID $?END))
+)
+(not (exists (Currentgroup)))
+(forall
+(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
+(NaviChildCritASTUB (Answer ?yes))
+)
+?hist<-(NaviHistory (ID $?x END))
+?grp<-
+(group 
+(GroupId ?z)
+(SuccessType ?a)
+(SuccessArg ?b)
+(TrueCount ?c)
+(conclusion ?d)
+(answer ?e)
+
+)
 =>
-(retract ?nxt)
-(printout t crlf "conclusion met" crlf)
-(assert (conclusion))
+	(assert 
+	(Currentgroup 
+	(GroupId ?z)
+	(SuccessType ?a)
+	(SuccessArg ?b)
+	(TrueCount ?c)
+	(conclusion ?d)
+	(answer ?e)
+	))
+	(modify ?hist (ID $?x ?z END))
+
+)
+
+;; change page here
+(defrule next_question
+(mode 1)
+?rmv<-(Currentgroup (GroupId ?y))
+?nxt<-(next)
+(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
+(forall
+(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
+(group (GroupId ?CGID) (answer ?CA))
+(NaviHistory (ID $?START ?CGID $?END))
+)
+
+(forall
+(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
+(NaviChildCritASTUB (Answer ?yes))
+)
+?hist<-(NaviHistory (ID $?x END))
+?grp<-
+(group 
+(GroupId ?z)
+(SuccessType ?a)
+(SuccessArg ?b)
+(TrueCount ?c)
+(conclusion ?d)
+(answer ?e)
+
+)
+=>
+
+	(retract ?rmv)
+	(retract ?nxt)
+	(printout t crlf "next" crlf)
+	(assert 
+	(Currentgroup 
+	(GroupId ?z)
+	(SuccessType ?a)
+	(SuccessArg ?b)
+	(TrueCount ?c)
+	(conclusion ?d)
+	(answer ?e)
+	))
+	(modify ?hist (ID $?x ?z END))
+
+)
+
+;; Navigation to a conclusion
+(defrule next_question
+(mode 1)
+?rmv<-(Currentgroup (GroupId ?y))
+?nxt<-(next)
+(Navigation (NavigationID ?naviID) (DestinationGroupID NIL) (RID ?diag))
+(forall
+(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
+(group (GroupId ?CGID) (answer ?CA))
+(NaviHistory (ID $?START ?CGID $?END))
+)
+
+(forall
+(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
+(NaviChildCritASTUB (Answer ?yes))
+)
+?hist<-(NaviHistory (ID $?x END))
+=>
+
+	(retract ?rmv)
+	(retract ?nxt)
+	(assert (diagnosis (RID ?diag)))
+	
+	
+
+)
+
+;;;;;;;;;self attribute assertion here
+(defrule next_question
+(attribute ?attribu ?value)
+?target<-(NaviChildCritA  (AttributeName ?attribu) (AttributeValue ?cvalue) (AttributeCompareType ?at) (Answer ?ans))
+=>
+
+
+	(switch ?at
+	(case = then 
+	
+		(if(= ?cvalue ?value)
+		then;;yes
+			
+			(switch ?ans
+				(case Yes then 
+				)
+				(case No then 	
+					(modify ?target (Answer Yes))
+				)
+			)
+
+
+		else;;no
+			(switch ?ans
+				(case Yes then 
+					(modify ?target (Answer No))
+				)
+				(case No then 	
+					
+				)
+			)
+		)
+	)
+
+	(case <= then 
+	
+		(if(<= ?cvalue ?value)
+		then;;yes
+			
+			(switch ?ans
+				(case Yes then 
+				)
+				(case No then 	
+					(modify ?target (Answer Yes))
+				)
+			)
+
+
+		else;;no
+			(switch ?ans
+				(case Yes then 
+					(modify ?target (Answer No))
+				)
+				(case No then 	
+					
+				)
+			)
+		)
+	)
+	(case >= then 
+	
+		(if(>= ?cvalue ?value)
+		then;;yes
+			
+			(switch ?ans
+				(case Yes then 
+				)
+				(case No then 	
+					(modify ?target (Answer Yes))
+				)
+			)
+
+
+		else;;no
+			(switch ?ans
+				(case Yes then 
+					(modify ?target (Answer No))
+				)
+				(case No then 	
+					
+				)
+			)
+		)
+	)
+	(case > then 
+	
+		(if(> ?cvalue ?value)
+		then;;yes
+			
+			(switch ?ans
+				(case Yes then 
+				)
+				(case No then 	
+					(modify ?target (Answer Yes))
+				)
+			)
+
+
+		else;;no
+			(switch ?ans
+				(case Yes then 
+					(modify ?target (Answer No))
+				)
+				(case No then 	
+					
+				)
+			)
+		)
+	)
+
+	(case < then 
+	
+		(if(< ?cvalue ?value)
+		then;;yes
+			
+			(switch ?ans
+				(case Yes then 
+				)
+				(case No then 	
+					(modify ?target (Answer Yes))
+				)
+			)
+
+
+		else;;no
+			(switch ?ans
+				(case Yes then 
+					(modify ?target (Answer No))
+				)
+				(case No then 	
+					
+				)
+			)
+		)
+	)
+
+
+)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defrule CurrentQuestion-retract
+(Currentgroup (GroupId ?y))
+?question<-(Currentquestion (GroupId ?x&~?y))
+=>
+(retract ?question)
 )
 
 
+(defrule CurrentQuestion-assert
+(Currentgroup (GroupId ?y))
+(question (GroupId ?y) (Id ?a) (QuestionText ?b) (answer ?c))
+(not 
 
-;;(mode 1)
-;;(defrule test_add
-;;?his<-(NaviHistory (ID $?x))
-;;=>
-;;(modify ?his (ID $?x new))
-;;)
+(exists
+ (Currentquestion (Id ?a))
+)
+)
+=>
+(assert (Currentquestion (GroupId ?y) (Id ?a) (QuestionText ?b) (answer ?c)))
+)
 
 
 (defrule Mode2-Pass
@@ -465,7 +539,7 @@ else;;no
 ))	
 =>
 (printout t crlf "Satisfied"?z"!" crlf)
-(assert (diagnosis (Comment "OMG")))
+(assert (diagnosis (RID OMG)))
 )
 
 (defrule Mode2-Attribute-Pass
@@ -495,7 +569,7 @@ else;;no
 			(modify ?crit (Answer No))
 		)
 	)
-(case >= then 
+	(case >= then 
 	
 		(if(>= ?attvalue ?av)
 		then;;yes
@@ -527,4 +601,43 @@ else;;no
 )
 
 )
+
+(defrule Add-symtoms-groupid
+(group (answer Yes) (GroupId ?id) )
+(groupid-symtoms (GroupID ?id) (symtom ?sym))
+(not (exists (symtoms (ID ?id))))
+=>
+(assert (symtoms (symtom ?sym) (ID ?id)))
+
+)
+
+(defrule Retract-symtoms-groupid
+
+(group (answer No) (GroupId ?Noid) )
+(groupid-symtoms (GroupID ?Noid))
+?sym <- (symtoms (ID ?Noid))
+=>
+(retract ?sym)
+;;(printout t crlf "ans:"?sym crlf)
+)
+
+(defrule Add-symtoms-questionid
+(question (answer Yes) (Id ?id) )
+(questionid-symtoms (QuestionID ?id) (symtom ?sym))
+(not (exists (symtoms (ID ?id))))
+=>
+(assert (symtoms (symtom ?sym) (ID ?id)))
+
+)
+
+(defrule Retract-symtoms-questionid
+
+(question (answer Yes) (Id ?Noid) )
+(questionid-symtoms (QuestionID ?Noid))
+?sym <- (symtoms (ID ?Noid))
+=>
+(retract ?sym)
+;;(printout t crlf "ans:"?sym crlf)
+)
+
 
