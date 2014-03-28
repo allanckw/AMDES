@@ -82,7 +82,7 @@ namespace AMDES_KBS
             //    }
             //}
             CLIPSController.CurrentPatient = pat;
-            CLIPSController.loadQuestions();
+            CLIPSController.loadEverything();
 
             int sectionID = CLIPSController.getCurrentQnGroupID();
 

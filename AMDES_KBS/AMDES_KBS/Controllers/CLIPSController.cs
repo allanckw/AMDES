@@ -34,7 +34,7 @@ namespace AMDES_KBS.Controllers
             env.Reset();
         }
 
-        public static void loadQuestions()
+        public static void loadEverything()
         {
             //to paste to load questions
             ClearandLoad();
@@ -52,6 +52,7 @@ namespace AMDES_KBS.Controllers
                     QuestionCountGroup qcg = (QuestionCountGroup)qg;
                     str2assert = str2assert + qcg.getQuestionTypeENUM().ToString() +
                         ") (SuccessArg " + qcg.Threshold + "))";
+
                 }
                 else
                 {
@@ -60,14 +61,29 @@ namespace AMDES_KBS.Controllers
 
                 env.AssertString(str2assert);
 
+                //grp symptom assertion
+                str2assert = "(groupid-symtoms (GroupID _" + qg.GroupID + ") (symtom " + qg.Symptom + ") )";
+                env.AssertString(str2assert);
+
                 foreach (Question q in qg.Questions)
                 {
                     str2assert = "(question (Id _" + q.ID + ") (QuestionText " + "\"" +
                         q.Name + "\"" + ") (GroupId _" + qg.GroupID + "))";
                     env.AssertString(str2assert);
+
+                    //question symptom assertion
+                    str2assert = "(questionid-symtoms (QuestionID _" + q.ID + ") (symtom " + q.Symptom + ") )";
+                    env.AssertString(str2assert);
                 }
             }
-            
+
+
+            loadNavex();
+            run();
+        }
+
+        private static void loadNavex()
+        {
             FirstQuestion fq = FirstQuestionController.readFirstQuestion();
 
             env.AssertString("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID starting) )");
@@ -147,10 +163,7 @@ namespace AMDES_KBS.Controllers
                 }
 
             }
-
-            run();
         }
-
         private static string createNavigationAssertion(Navigation nav)
         {
             StringBuilder sb = new StringBuilder();

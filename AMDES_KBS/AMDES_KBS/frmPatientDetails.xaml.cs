@@ -107,7 +107,7 @@ namespace AMDES_KBS
 
         private void AssertQuestions()
         {
-            CLIPSController.loadQuestions();
+            CLIPSController.loadEverything();
 
             //str2assert = str2assert + ")";
             //_theEnv.AssertString(str2assert);
