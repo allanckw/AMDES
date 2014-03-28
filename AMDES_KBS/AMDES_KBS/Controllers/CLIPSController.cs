@@ -65,75 +65,21 @@ namespace AMDES_KBS.Controllers
                         q.Name + "\"" + ") (GroupId _" + qg.GroupID + "))";
                     env.AssertString(str2assert);
                 }
-
-                if (qg.NextTrueLink != null)
-                {
-                    string x = createNavigationAssertion(qg.NextTrueLink, qg.GroupID, true);
-                    env.AssertString(x);
-                }
-
-                if (qg.NextFalseLink != null)
-                {
-                    env.AssertString(createNavigationAssertion(qg.NextFalseLink, qg.GroupID, false));
-                }
             }
             assertAge();
 
-            
+
             env.AssertString("(Navigation  (DestinationGroupID _1))");
 
             run();
         }
 
-        //(Navigation (CriteriaGroupID A) (CriteriaAnswer Yes) (DestinationGroupID B))
-        //(Navigation (CriteriaGroupID A) (CriteriaAnswer No) (DestinationGroupID C) (AttributeName Age) (AttributeValue 65) (AttributeCompareType >=))
-        //(Navigation (CriteriaGroupID A) (CriteriaAnswer No) (DestinationGroupID B) (AttributeName Age) (AttributeValue 65) (AttributeCompareType <))
-        //(Navigation (CriteriaGroupID B) (CriteriaAnswer No) (Comment "UR ILL") (Conclusion Yes))
-        //(Navigation (CriteriaGroupID C) (CriteriaAnswer No) (Comment "UR ILL") (Conclusion Yes))
-
         private static string createNavigationAssertion(Navigation nav, int groupID, bool criteria)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("(Navigation ");
-            sb.Append("(CriteriaGroupID _" + groupID + ") ");
-            if (criteria)
-            {
-                sb.Append("(CriteriaAnswer Yes) ");
-            }
-            else
-            {
-                sb.Append("(CriteriaAnswer No) ");
-            }
-
-            if (!nav.isConclusive)
-            {
-                sb.Append("(DestinationGroupID _" + nav.DestGrpID + ") ");
-
-                if (nav.isRequireAge)
-                {
-                    sb.Append("(AttributeName Age) ");
-                    sb.Append("(AttributeValue " + nav.Age.ToString() + ") ");
-
-                    if (nav.MoreThanEqualAge)
-                    {
-                        sb.Append("(AttributeCompareType >=)");
-                    }
-                    else if (nav.LessThanAge)
-                    {
-                        sb.Append("(AttributeCompareType <))");
-                    }
-                }
-            }
-            else
-            {
-                sb.Append("(Conclusion Yes)");
-                for (int i = 0; i < nav.getDiagnosis().Count(); i++)
-                {
-                    Diagnosis d = nav.getDiagnosisAt(i);
-                    //TODO Assert Diagnosis result in multifield
-                }
-
-            }
+           
+            //TODO
 
             sb.Append(")");
 
@@ -160,17 +106,61 @@ namespace AMDES_KBS.Controllers
         //TODO: Get back Navihistory
         //
 
-        public static List<Question> getHistory()
+        private static List<int> getNaviHistory()
         {
-            List<Question> history = new List<Question>();
-            String evalStr = " (find-all-facts((?a question)) TRUE)";
+            string x = "";
 
+            List<int> naviHistory = new List<int>();
+            String evalStr = " (find-all-facts((?a NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
 
             foreach (FactAddressValue fv in mv)
             {
+                x = fv.GetFactSlot("ID").ToString();
+            }
+
+            Console.WriteLine(x);
+
+            return naviHistory;
+        }
+
+        public static History getCurrentPatientHistory()
+        {
+  
+            List<int> navHistory = new List<int>();
+            History history = new History(CurrentPatient.NRIC);
+            String evalStr = " (find-all-facts((?a question)) TRUE)";
+
+            for (int i = 0; i < navHistory.Count; i++)
+            {
+                history.createNewHistory(navHistory[i]);
+            }
+
+            MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
+            string x= "";
+
+            foreach (FactAddressValue fv in mv)
+            {
                 //question history YES ONLY
-                //
+                x = fv.GetFactSlot("GroupID").ToString();
+                //natalie :(
+                 
+
+                if (navHistory.Contains(int.Parse(x.Remove(0, 1))))
+                {
+                    string qid = fv.GetFactSlot("Id").ToString();
+                    string answer = fv.GetFactSlot("answer").ToString();
+                    if (answer.ToUpper().CompareTo("YES") == 0)
+                    {
+                        //add history item
+                        history.updateHistoryItem(int.Parse(x), int.Parse(qid.Remove(0, 1)), true);
+                    }
+                    else
+                    {
+                        history.updateHistoryItem(int.Parse(x), int.Parse(qid.Remove(0, 1)), false);
+                    }
+                }
+
             }
 
             //if some jisiao go and add / delete question , archive and reset system. 

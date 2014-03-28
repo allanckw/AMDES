@@ -76,68 +76,62 @@ namespace AMDES_KBS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //List<QuestionGroup> x = QuestionController.getAllQuestionGroup();
+            Rules r = new Rules();
 
-            //QuestionGroup miao = new QuestionGroup();
-            //miao.GroupID = QuestionController.getNextGroupID();
-            //miao.Header = "Amensia";
-            //miao.addQuestion("Will you forgive me? ", "GG");
-            //miao.addQuestion("please?", "XX");
-            //miao.addQuestion("I will do anything for u :(", "ZZ");
+            List<Rules> rList = NavigationController.getAllRules();
+            r.RuleID = 1;
 
-            //Navigation nav = new Navigation();
-            //nav.isConclusive = true;
-            ////nav.DestGrpID = 2;
-            //nav.isRequireAge = true;
-            //nav.setMoreThanEqualAge();
+            r.Description = "nat i am sorry";
 
-            //Diagnosis d = new Diagnosis();
-            //d.RID = 1;
-            //d.Comment = "GG liao la, going to die soon :(((";
+            Navigation n1 = new Navigation();
+            Navigation n2 = new Navigation();
 
-            //Diagnosis d2 = new Diagnosis();
-            //d.RID = 2;
-            //d.Comment = "Maybe can try noobiniser";
+            n2.DestGrpID = 2;
 
-            //nav.addDiagnosis(d);
-            //nav.addDiagnosis(d2);
+            NaviChildCritAttribute a1 = new NaviChildCritAttribute();
+            a1.AttributeName = "a";
+            a1.AttributeValue = "1";
+            a1.Ans = false;
+            a1.setRuleType(1);
 
-            //miao.NextFalseLink = nav;
+            NaviChildCritAttribute a2 = new NaviChildCritAttribute();
+            a2.AttributeName = "b";
+            a2.AttributeValue = "2";
+            a2.Ans = false;
+            a2.setRuleType(3);
 
-            //Navigation nav1 = new Navigation();
-            //nav1.isConclusive = false;
-            //nav1.DestGrpID = 2;
-            //nav1.isRequireAge = true;
-            //nav1.setMoreThanEqualAge();
+            n1.addNavCriteriaAttribute(a1);
+            n1.addNavCriteriaAttribute(a2);
+
+            n2.addNavCriteriaAttribute(a1);
+            n2.addNavCriteriaAttribute(a2);
+
+            NaviChildCriteriaQuestion nq1 = new NaviChildCriteriaQuestion();
+            nq1.CriteriaGrpID = "1";
+            nq1.Ans = true;
 
 
-            //miao.NextTrueLink = nav1;
+            NaviChildCriteriaQuestion nq2 = new NaviChildCriteriaQuestion();
+            nq2.CriteriaGrpID = "2";
+            nq2.Ans = false;
 
-            //QuestionController.updateQuestionGroup(miao);
+            n1.addNavCriteriaQuestion(nq1);
+            n1.addNavCriteriaQuestion(nq2);
+            n2.addNavCriteriaQuestion(nq1);
+            n2.addNavCriteriaQuestion(nq2);
 
-            //PatientController.addNewPatient(new Assessor("sad", "emose"), "s2345436q", "noob", "bie", DateTime.Now.AddYears(-30));
+            r.Navigations.Add(n1);
+            r.Navigations.Add(n2);
 
-            //Patient p = PatientController.searchPatientByNRIC("s2345906z");
 
-            //PatientController.updatePatientStatus("S8747645Z", PatientStatus.COMPLETED);
+            //n.DestGrpID = "-";
+            n1.addDiagnosisID(1);
+            n1.addDiagnosisID(2);
+            n1.addDiagnosisID(3);
+           // r.Navigations.Add(n1);
 
-            //List<Patient> pats = PatientController.searchPatientByName("natalie");
 
-            //MessageBox.Show(pats.Count.ToString());
-
-            //Diagnosis d = new Diagnosis();
-            //d.RID = 1;
-            //d.Comment = "GG liao la, going to die soon :(((";
-            //d.Link = "www.google.com.sg";
-            //d.Header = "bleah";
-
-            //Diagnosis d2 = new Diagnosis();
-            //d.RID = 2;
-            //d.Comment = "Maybe can try noobiniser";
-
-            //DiagnosisController.updateDiagnosis(d);
-            //DiagnosisController.updateDiagnosis(d2);
-            
+            NavigationController.updateRules(r);
         }
     }
 }

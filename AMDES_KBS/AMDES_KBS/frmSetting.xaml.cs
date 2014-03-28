@@ -39,6 +39,7 @@ namespace AMDES_KBS
         {
             //SettingFrame.Navigate(new frmNavigation());
             new frmFlowToDiagnosis().ShowDialog();
+
         }
 
         private void btnDiagnosis_Click(object sender, RoutedEventArgs e)

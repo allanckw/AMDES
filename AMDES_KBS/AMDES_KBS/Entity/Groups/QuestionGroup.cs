@@ -117,18 +117,5 @@ namespace AMDES_KBS.Entity
             set { desc = value; }
         }
 
-
-        public Navigation NextFalseLink
-        {
-            get { return nextFalseLink; }
-            set { nextFalseLink = value; }
-        }
-
-        public Navigation NextTrueLink
-        {
-            get { return nextTrueLink; }
-            set { nextTrueLink = value; }
-        }
-
     }
 }

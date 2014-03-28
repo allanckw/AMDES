@@ -34,25 +34,11 @@ namespace AMDES_KBS
             qgParent = qg;
             navigationLink = NaviPath;
             loadDistinct(qgParent);
-            if (navigationLink)
-            {
-                if (qg.NextTrueLink != null)
-                {
-                    loadSelectedGroupData(qg.NextTrueLink);
-                }
-            }
-            else
-            {
-                if (qg.NextFalseLink != null)
-                {
-                    loadSelectedGroupData(qg.NextFalseLink);
-                }
-            }
         }
 
         public void loadSelectedGroupData(Navigation navi)
         {
-            chkConclusive.IsChecked = navi.isConclusive;
+            chkConclusive.IsChecked = navi.isConclusive();
             List<QuestionGroup> qgList = (List<QuestionGroup>)lstGroupList.ItemsSource;
             for (int i = 0; i < qgList.Count; i++)
             {
@@ -63,12 +49,14 @@ namespace AMDES_KBS
                 }
             }
 
-            chkRequireAge.IsChecked = navi.isRequireAge;
-            radless.IsChecked = navi.LessThanAge;
-            radMoreEqual.IsChecked = navi.MoreThanEqualAge;
-            txtAge.Text = navi.Age.ToString();
+            //@Kai attention require age now no longer uses isRequireAge, but adds navichildcriteria
+            //chkRequireAge.IsChecked = navi.isRequireAge;
+            //radless.IsChecked = navi.LessThanAge;
+            //radMoreEqual.IsChecked = navi.MoreThanEqualAge;
+            //txtAge.Text = navi.Age.ToString();
 
-            lstDiagnosisList.ItemsSource = navi.getDiagnosis();
+            //@Kai Attention DiagnosisID here
+            lstDiagnosisList.ItemsSource = navi.DiagnosesID;
             //if (navi.LessThanAge==true)
             //{
             //    radless.IsChecked = true;
@@ -172,34 +160,27 @@ namespace AMDES_KBS
 
             QuestionGroup qg = (QuestionGroup)lstGroupList.Items.GetItemAt(lstGroupList.SelectedIndex);
             
-            navi.isConclusive = IsCheckBoxChecked(chkConclusive);
-            navi.DestGrpID = qg.GroupID;
-            navi.isRequireAge = IsCheckBoxChecked(chkRequireAge);
+            //isConculsive and isRequireAge no longer a variable to set, isConclusive uses if diagnosisID is present or not
+            //navi.isConclusive = IsCheckBoxChecked(chkConclusive);
+            //navi.DestGrpID = qg.GroupID;
+            //navi.isRequireAge = IsCheckBoxChecked(chkRequireAge);
 
-            if (navi.isRequireAge)
-            {
-                if (radless.IsChecked == true)
-                {
-                    navi.setLessThanAge();
-                }
+            //Use NavigationChildCriteria.AttrCompareType
 
-                if (radMoreEqual.IsChecked == true)
-                {
-                    navi.setMoreThanEqualAge();
-                }
+            //if (navi.isRequireAge)
+            //{
+            //    if (radless.IsChecked == true)
+            //    {
+            //        navi.setLessThanAge();
+            //    }
 
-                navi.Age = int.Parse(txtAge.Text.Trim());                
-            }
+            //    if (radMoreEqual.IsChecked == true)
+            //    {
+            //        navi.setMoreThanEqualAge();
+            //    }
 
-            if (navigationLink)
-            {
-                qgParent.NextTrueLink = navi;
-            }
-
-            else
-            {
-                qgParent.NextFalseLink = navi;
-            }
+            //    navi.Age = int.Parse(txtAge.Text.Trim());                
+            //}
 
             QuestionController.updateQuestionGroup(qgParent);
 

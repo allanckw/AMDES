@@ -11,11 +11,6 @@ namespace AMDES_KBS.Entity
         {
         }
 
-        //public Question(int id, string qn)
-        //{
-        //    this.id = id;
-        //    this.name = qn;
-        //}
 
         public Question(string qn, string sym="")
         {

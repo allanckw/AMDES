@@ -149,7 +149,6 @@ namespace AMDES_KBS.Controllers
 
                 document.Save(Diagnosis.dataPath);
 
-                QuestionController.deleteAllDiagnosisByID(id);
             }
         }
     }

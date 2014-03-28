@@ -84,22 +84,6 @@ namespace AMDES_KBS.Controllers
                                 );
 
 
-
-            //i suppose the loading on startup, clips have to know where it is going to point to for next qn
-            if (p.NextFalseLink != null)// NAVEX need to know next GroupID //Next False Link GoTo??
-            {
-                Navigation nav = p.NextFalseLink;
-                XElement falseNavex = NavigationController.convertToXML(nav, "NextFalseLink");
-                newGRP.Add(falseNavex);
-            }
-
-            if (p.NextTrueLink != null)
-            {
-                Navigation nav = p.NextTrueLink;
-                XElement trueNavex = NavigationController.convertToXML(nav, "NextTrueLink");
-                newGRP.Add(trueNavex);
-            }
-
             if (p.Questions.Count > 0)
             {
                 for (int j = 0; j < p.Questions.Count; j++)
@@ -157,7 +141,7 @@ namespace AMDES_KBS.Controllers
 
         private static QuestionGroup readQnGrpData(XElement x)
         {
-           
+
             if (x != null)
             {
                 QuestionGroup p = new QuestionGroup();
@@ -174,15 +158,6 @@ namespace AMDES_KBS.Controllers
                     p.Header = x.Element("Header").Value;
                     p.Description = x.Element("Description").Value;
                     p.Symptom = x.Element("Symptom").Value;
-
-                    if (x.Element("NextTrueLink") != null)
-                    {
-                        p.NextTrueLink = NavigationController.getNavigation(x.Element("NextTrueLink"));
-                    }
-                    if (x.Element("NextFalseLink") != null)
-                    {
-                        p.NextFalseLink = NavigationController.getNavigation(x.Element("NextFalseLink"));
-                    }
 
                     var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                                select pa).ToList();
@@ -213,15 +188,6 @@ namespace AMDES_KBS.Controllers
                 p.Header = x.Element("Header").Value;
                 p.Description = x.Element("Description").Value;
                 p.Symptom = x.Element("Symptom").Value;
-
-                if (x.Element("NextTrueLink") != null)
-                {
-                    p.NextTrueLink = NavigationController.getNavigation(x.Element("NextTrueLink"));
-                }
-                if (x.Element("NextFalseLink") != null)
-                {
-                    p.NextFalseLink = NavigationController.getNavigation(x.Element("NextFalseLink"));
-                }
 
                 var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                            select pa).ToList();
@@ -291,42 +257,6 @@ namespace AMDES_KBS.Controllers
 
                 document.Save(QuestionGroup.dataPath);
             }
-        }
-
-        public static void deleteAllDiagnosisByID(int RID)
-        {
-            List<QuestionGroup> grp = new List<QuestionGroup>();
-
-            grp = QuestionController.getAllQuestionGroup();
-
-            for (int i = 0; i < grp.Count; i++)
-            {
-                QuestionGroup qg = getGroupByID(grp.ElementAt(i).GroupID);
-                if (qg.NextTrueLink != null)
-                {
-                    Navigation newNav = NavigationController.deleteDiagnosisByID(qg.NextTrueLink, RID);
-
-                    if (newNav.getDiagnosis().Count != qg.NextTrueLink.getDiagnosis().Count)
-                    {//if count is diff then update else dun care
-                        qg.NextTrueLink = newNav;
-                        QuestionController.updateQuestionGroup(qg);
-                    }
-                 
-                }
-
-                if (qg.NextFalseLink != null)
-                {
-                    Navigation newNav = NavigationController.deleteDiagnosisByID(qg.NextFalseLink, RID);
-
-                    if (newNav.getDiagnosis().Count != qg.NextFalseLink.getDiagnosis().Count)
-                    {//if count is diff then update else dun care
-                        qg.NextFalseLink = newNav;
-                        QuestionController.updateQuestionGroup(qg);
-                    }
-                }
-            }
-
-
         }
     }
 }

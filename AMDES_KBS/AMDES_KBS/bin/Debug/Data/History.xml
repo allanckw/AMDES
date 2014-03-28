@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Histories xml-->
+<Histories>
+  <History pid="natalie">
+    <Group GrpID="1">
+      <Question>
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question>
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question>
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question>
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group GrpID="2">
+      <Question>
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question>
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question>
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question>
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+  </History>
+</Histories>
