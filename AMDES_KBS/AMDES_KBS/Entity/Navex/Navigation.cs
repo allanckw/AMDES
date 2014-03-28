@@ -64,7 +64,7 @@ namespace AMDES_KBS.Entity
             DiagnosesID = new List<int>();
         }
 
-        public void addNavCriteriaQuestion(string grpID, bool ans)
+        public void addNavCriteriaQuestion(int grpID, bool ans)
         {
             childCriteriaQn.Add(new NaviChildCriteriaQuestion(this.NavID, grpID, ans));
         }
@@ -86,7 +86,7 @@ namespace AMDES_KBS.Entity
                 childCriteriaQn.Add(q);
         }
 
-        public void removeCriteriaQuestion(string grpID)
+        public void removeCriteriaQuestion(int grpID)
         {
             for (int i = 0; i < childCriteriaQn.Count; i++)
             {

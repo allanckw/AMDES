@@ -69,12 +69,12 @@ namespace AMDES_KBS.Controllers
             assertAge();
 
 
-            env.AssertString("(Navigation  (DestinationGroupID _1))");
+            //env.AssertString("(Navigation  (DestinationGroupID _1))");
 
             run();
         }
 
-        private static string createNavigationAssertion(Navigation nav, int groupID, bool criteria)
+        private static string createNavigationAssertion(Navigation nav)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("(Navigation ");

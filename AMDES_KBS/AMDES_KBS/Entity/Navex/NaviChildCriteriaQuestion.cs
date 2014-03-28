@@ -14,9 +14,9 @@ namespace AMDES_KBS.Entity
             get { return navid; }
             set { navid = value; }
         }
-        private string criteriaGrpID;
+        private int criteriaGrpID;
 
-        public string CriteriaGrpID
+        public int CriteriaGrpID
         {
             get { return criteriaGrpID; }
             set { criteriaGrpID = value; }
@@ -29,7 +29,7 @@ namespace AMDES_KBS.Entity
             set { ans = value; }
         }
 
-        public NaviChildCriteriaQuestion(string navID, string grpID, bool ans)
+        public NaviChildCriteriaQuestion(string navID, int grpID, bool ans)
         {
             this.navid = navID;
             this.criteriaGrpID = grpID;

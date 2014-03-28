@@ -11,6 +11,7 @@ namespace AMDES_KBS.Controllers
     public class NavigationController
     {
 
+      
         private static int rulesRIDCounter = 1;
 
         private static void createDataFile()
@@ -176,7 +177,7 @@ namespace AMDES_KBS.Controllers
             {
                 Navigation n = new Navigation();
                 n.NavID = x.Attribute("NavID").Value;
-                n.DestGrpID = x.Element("Destination").Value;
+                n.DestGrpID = int.Parse(x.Element("Destination").Value);
 
                 var cq = (from pa in x.Descendants("NavigationChildCriterias").Descendants("ChildCriteriaQuestionGroup")
                           select pa).ToList();
@@ -206,7 +207,7 @@ namespace AMDES_KBS.Controllers
             }
 
             return null;
-           
+
         }
 
         private static NaviChildCriteriaQuestion readChildCriteriaQuestion(XElement x)
@@ -216,7 +217,7 @@ namespace AMDES_KBS.Controllers
             {
                 NaviChildCriteriaQuestion p = new NaviChildCriteriaQuestion();
 
-                p.CriteriaGrpID = x.Element("CriteriaGrpID").Value;
+                p.CriteriaGrpID = int.Parse(x.Element("CriteriaGrpID").Value);
                 p.Ans = bool.Parse(x.Element("Answer").Value);
                 return p;
 

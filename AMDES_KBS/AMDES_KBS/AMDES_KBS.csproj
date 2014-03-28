@@ -77,10 +77,12 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\CLIPSController.cs" />
     <Compile Include="Controllers\DiagnosisController.cs" />
+    <Compile Include="Controllers\FirstQuestionController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Entity\History\History.cs" />
     <Compile Include="Entity\History\QnHistory.cs" />
+    <Compile Include="Entity\Navex\FirstQuestion.cs" />
     <Compile Include="Entity\Navex\NaviChildCritAttribute.cs" />
     <Compile Include="Entity\Navex\NaviChildCriteriaQuestion.cs" />
     <Compile Include="Entity\Navex\Navigation.cs" />
