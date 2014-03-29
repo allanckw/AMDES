@@ -20,6 +20,7 @@ namespace AMDES_KBS
     /// </summary>
     public partial class frmTermCondition : Window
     {
+
         public frmTermCondition()
         {
             this.InitializeComponent();

@@ -11,8 +11,7 @@
     <RootNamespace>AMDES_KBS</RootNamespace>
     <AssemblyName>AMDES_KBS</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -80,7 +79,8 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mommosoft.ExpertSystem">
+    <Reference Include="Mommosoft.ExpertSystem, Version=0.3.0.2, Culture=neutral, PublicKeyToken=20382083c6694bdc, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Mommosoft.ExpertSystem.dll</HintPath>
     </Reference>
     <Reference Include="MvvmFoundation.Wpf">
@@ -155,7 +155,6 @@
     <Compile Include="GraphDrawing\Arrows\ArrowEnds.cs" />
     <Compile Include="GraphDrawing\Arrows\ArrowLine.cs" />
     <Compile Include="GraphDrawing\Arrows\ArrowLineBase.cs" />
-    <Compile Include="GraphDrawing\CircularDependency.cs" />
     <Compile Include="GraphDrawing\Graph.cs" />
     <Compile Include="GraphDrawing\GraphBuilder.cs" />
     <Compile Include="GraphDrawing\GraphDetailsView.xaml.cs">

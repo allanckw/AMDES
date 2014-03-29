@@ -14,6 +14,8 @@ namespace AMDES_KBS.Controllers
 
         //for debug purpose, to pull out to test on clips, and to pull out to assert for restore patient
         private static List<StringBuilder> assertLog = new List<StringBuilder>();
+
+        //WARNING MOMOSOFT CLIPS REQUIRED x86 MODE ONLY, ALL OTHER MODE WILL FAIL
         private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
 
         private static string dataPath = @"Data\Logs\";
@@ -221,8 +223,9 @@ namespace AMDES_KBS.Controllers
 
         public static int getCurrentQnGroupID()
         {
-            //http://stackoverflow.com/questions/9862085/finding-facts-of-a-template-which-has-something-in-common-with-another-template
-            String evalStr = " (find-all-facts((?a Currentgroup)) TRUE)";
+            //WARNING: Require Navigation to be SETUP OR INSTANT FAIL!
+
+            String evalStr = "(find-all-facts ((?f Currentgroup)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
 
             string x = "-1";
