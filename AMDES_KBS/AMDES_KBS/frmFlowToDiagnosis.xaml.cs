@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
+using CircularDependencyTool;
 
 namespace AMDES_KBS
 {
@@ -26,6 +27,12 @@ namespace AMDES_KBS
         public frmFlowToDiagnosis()
         {
             InitializeComponent();
+            IEnumerable<Graph> g = GraphBuilder.BuildGraphs();
+            foreach (Graph gr in g)
+            {
+
+            }
+            zz.DataContext = g;
             lstStep = new List<ucNavigationFlowSetting>();
         }
 

@@ -1,0 +1,44 @@
+﻿<!-- DATACONTEXT = Graph -->
+<UserControl 
+  x:Class="CircularDependencyTool.GraphWithDetailsView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="clr-namespace:CircularDependencyTool"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+  xmlns:thriple="http://thriple.codeplex.com/" >
+    <Border 
+    BorderBrush="LightGray" 
+    BorderThickness="0" 
+    CornerRadius="3" 
+    Padding="1"
+    >
+        <Grid>
+
+            <thriple:ContentControl3D  
+        x:FieldModifier="private"
+        x:Name="cntCtrl3D" 
+        CameraZoomDestination="2,  1,0"
+        EasingMode="None" 
+        Width="660" Height="330" VerticalAlignment="Bottom" >
+                <thriple:ContentControl3D.CameraPrototype>
+                    <!--<PerspectiveCamera Position="0,0.5,1.2" LookDirection="0,0,-2" FieldOfView="79" />-->
+                    <PerspectiveCamera Position="0,0.5,1.2" LookDirection="0,0,-2" FieldOfView="79" />
+                </thriple:ContentControl3D.CameraPrototype>
+
+                <thriple:ContentControl3D.Content >
+                    <!-- This AdornerDecorator is only necessary because the GraphView is used in a ContentControl3D. -->
+                    <AdornerDecorator>
+                        <local:GraphView Width="660" Height="330" />
+                    </AdornerDecorator>
+                </thriple:ContentControl3D.Content>
+
+                <thriple:ContentControl3D.BackContent>
+                    <local:GraphDetailsView Width="660" Height="330" />
+                </thriple:ContentControl3D.BackContent>
+            </thriple:ContentControl3D>
+            <Button Height="30" Width ="30" Content="\|/"  VerticalAlignment="Bottom"  Name="btnDown" VerticalContentAlignment="Center" HorizontalAlignment="Right" Click="btnDown_Click" />
+            <Button Height="30" Width ="30" VerticalAlignment="Top" Name="btnUp" VerticalContentAlignment="Center" Margin="0,-2,0,0" HorizontalAlignment="Right" Click="btnUp_Click" Content="/|\" />
+        </Grid>
+
+    </Border>
+</UserControl>

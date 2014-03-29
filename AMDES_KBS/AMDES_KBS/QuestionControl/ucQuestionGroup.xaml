@@ -10,7 +10,7 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <Label Width="100" Content="Header" FontSize="16" FontWeight="Bold" />
                 <Label Width="15" Content=":" />
-                <TextBox x:Name="txtHeader" Width="200" Text="" Height="25" BorderThickness="2" />
+                <TextBox x:Name="txtHeader" Width="200" Text="" Height="25" BorderThickness="2" MaxLength="30" />
                 <StackPanel x:Name="stkpnlCOUNT" Orientation="Horizontal" Visibility="Collapsed">
                     <Label Width="90" Content="Threshold" FontSize="16" FontWeight="Bold" />
                     <Label Width="15" Content=":" />
@@ -30,7 +30,7 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <Label Width="100" Content="Symptom" FontSize="16" FontWeight="Bold" />
                 <Label Width="15" Content=":" />
-                <TextBox x:Name="txtSymptom" Width="200" Height="25" Text="" BorderThickness="1" />
+                <TextBox x:Name="txtSymptom" Width="450" Height="25" Text="" BorderThickness="1" MaxLength="200" />
             </StackPanel>
         </StackPanel>
     </Grid>

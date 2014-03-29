@@ -2,7 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:amdes="clr-namespace:AMDES_KBS"
+          xmlns:local="clr-namespace:CircularDependencyTool"
         Title="Flow to Diagnosis" Height="680" Width="660" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="{x:Type local:NodeConnector}">
+            <Setter Property="ArrowLength" Value="12" />
+            <Setter Property="Stroke" Value="Gray" />
+            <Setter Property="StrokeThickness" Value="1" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <StackPanel Orientation="Horizontal">
             <StackPanel x:Name="stkpnlLeftDiv">
@@ -25,7 +33,7 @@
                         <Label Content="Diagnosis Conclusion" FontWeight="Bold" Width="160" FontSize="13"  />
                         <Button x:Name="btnAddDiagnosis" Content="Select" Height="25"  FontSize="12" Click="btnAddDiagnosis_Click" />
                     </StackPanel>
-                        <StackPanel x:Name="stkpnlDiagnosisRule">
+                    <StackPanel x:Name="stkpnlDiagnosisRule">
                         <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="170" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionChanged="lstDiagnosisList_SelectionChanged">
                             <ListBox.ItemTemplate>
@@ -46,7 +54,7 @@
                 <StackPanel>
                     <StackPanel x:Name="stkpnlMainPanel" Height="240" Width="430" >
                         <StackPanel x:Name="stkpnlSteps" Height="200">
-                            
+
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button x:Name="btnPrevStep" Width="100" Height="25" Margin="0,0,10,0" Visibility="Hidden" Click="btnPrevStep_Click">Prev Step</Button>
@@ -63,6 +71,24 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Height="330" VerticalAlignment="Bottom">
+            <!-- List of Graphs -->
+            <ItemsControl Name="zz"
+    HorizontalAlignment="Center"
+    ItemsSource="{Binding Path=., Mode=OneTime}"
+    VerticalAlignment="Center"
+    >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:GraphWithDetailsView />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
     </Grid>
 </Window>
