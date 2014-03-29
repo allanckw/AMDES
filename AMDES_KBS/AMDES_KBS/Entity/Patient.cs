@@ -24,8 +24,6 @@ namespace AMDES_KBS.Entity
         private List<Test> testsList;
 
         private List<Symptom> sympsList; 
-        //TODO: Store chain of QuestionGroupID to determine next form of action?
-        
 
         private PatientStatus status;
 

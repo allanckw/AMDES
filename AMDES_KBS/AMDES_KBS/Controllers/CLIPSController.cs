@@ -46,7 +46,6 @@ namespace AMDES_KBS.Controllers
             File.WriteAllText(filePath, sb.ToString());
         }
 
-
         public static void ClearandLoad()
         {
             env.Clear();
@@ -171,6 +170,7 @@ namespace AMDES_KBS.Controllers
                 createNavigationAssertion(n);
             }
         }
+        
         private static void createNavigationAssertion(Navigation n)
         {
             StringBuilder sb = new StringBuilder();
@@ -224,6 +224,36 @@ namespace AMDES_KBS.Controllers
             }
         }
 
+        public static void assertQuestion(string id, bool answer)
+        {
+            //to paste to load questions
+            StringBuilder sb = new StringBuilder("(choice _" + id + " ");
+            if (answer)
+            {
+                sb.Append("Yes");
+            }
+            else
+            {
+                sb.Append("No");
+            }
+            sb.Append(")");
+
+            assert(sb);
+            run();
+        }
+
+        public static void assertNextSection()
+        {
+            assert(new StringBuilder("(Next)"));
+            run();
+        }
+
+        public static void assertPrevSection()
+        {
+            assert(new StringBuilder("(Previous)"));
+            run();
+        }
+
         public static int getCurrentQnGroupID()
         {
             //WARNING: Require Navigation to be SETUP OR INSTANT FAIL!
@@ -250,9 +280,10 @@ namespace AMDES_KBS.Controllers
             string x = "";
 
             List<int> naviHistory = new List<int>();
-            String evalStr = " (find-all-facts((?a NaviHistory)) TRUE)";
+            String evalStr = "(find-all-facts((?a NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
 
+            //Need to find output
             foreach (FactAddressValue fv in mv)
             {
                 x = fv.GetFactSlot("ID").ToString();
@@ -267,7 +298,19 @@ namespace AMDES_KBS.Controllers
         {
             List<Symptom> sList = new List<Symptom>();
 
-            String evalStr = " (find-all-facts((?a question)) TRUE)";
+            String evalStr = "(find-all-facts((?g symtoms)) TRUE)";
+            MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
+
+            foreach (FactAddressValue fv in mv)
+            {
+                Symptom s = new Symptom(fv.GetFactSlot("symtom").ToString(), 
+                                        int.Parse(fv.GetFactSlot("symtom").ToString().Remove(0,1)));
+
+                if (!sList.Contains(s))
+                {
+                    sList.Add(s);
+                }
+            }
 
             return sList;
         }
@@ -314,35 +357,7 @@ namespace AMDES_KBS.Controllers
             return history;
         }
 
-        public static void assertQuestion(string id, bool answer)
-        {
-            //to paste to load questions
-            StringBuilder sb = new StringBuilder("(choice _" + id + " ");
-            if (answer)
-            {
-                sb.Append("Yes");
-            }
-            else
-            {
-                sb.Append("No");
-            }
-            sb.Append(")");
 
-            assert(sb);
-            run();
-        }
-
-        public static void assertNextSection()
-        {
-            assert(new StringBuilder("(Next)"));
-            run();
-        }
-
-        public static void assertPrevSection()
-        {
-            assert(new StringBuilder("(Previous)"));
-            run();
-        }
 
     }
 }

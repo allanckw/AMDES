@@ -5,28 +5,29 @@ using System.Text;
 
 namespace AMDES_KBS.Entity
 {
-    public class Symptom
+    public class Symptom : IComparable<Symptom>
     {
-       
+        public Symptom()
+        {
+        }
+
+        public Symptom(string name, int diagID)
+        {
+            this.name = name;
+            this.diaDate = DateTime.Now;
+        }
+
+        private int diagnosedByID;
+
+        public int DiagnosedByID
+        {
+            get { return diagnosedByID; }
+            set { diagnosedByID = value; }
+        }
+
         private string name;
 
-        private bool present;
-
         private DateTime diaDate;
-
-        private string id;
-
-        public string ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        public bool SymptomPresent
-        {
-            get { return present; }
-            set { present = value; }
-        }
 
         public string SymptomName
         {
@@ -38,6 +39,11 @@ namespace AMDES_KBS.Entity
         {
             get { return diaDate; }
             set { diaDate = value; }
+        }
+
+        public int CompareTo(Symptom s)
+        {
+            return this.name.ToUpper().CompareTo(s.SymptomName.ToUpper());
         }
     }
 }
