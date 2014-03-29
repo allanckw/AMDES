@@ -61,6 +61,7 @@ namespace AMDES_KBS.Controllers
             List<Navigation> defBehavior = DefaultBehaviorController.getAllDefaultBehavior();
             loadQuestions(grps);
             loadNavex(fq, rList, defBehavior);
+            assertAge();
 
             run();
         }
@@ -86,14 +87,8 @@ namespace AMDES_KBS.Controllers
             assertLog.Add(sb);
         }
 
-        public static void loadQuestions(List<QuestionGroup> grps)
+        private static void loadQuestions(List<QuestionGroup> grps)
         {
-            //to paste to load questions
-            ClearandLoad();
-            reset();
-            assertAge();
-
-
             foreach (QuestionGroup qg in grps)
             {
                 StringBuilder sb = new StringBuilder();
