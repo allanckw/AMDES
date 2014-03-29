@@ -51,5 +51,10 @@ namespace AMDES_KBS
         {
             new frmFirstPageSetting().ShowDialog();
         }
+
+        private void btnDefaultBehaviour_Click(object sender, RoutedEventArgs e)
+        {
+            new frmDefaultBehaviour().ShowDialog();
+        }
     }
 }

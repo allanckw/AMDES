@@ -66,6 +66,17 @@ namespace AMDES_KBS.Controllers
                                 new XElement("Diagnoses")
                                 );
 
+            if (p.DiagnosisList.Count > 0)
+            {
+                for (int i = 0; i < p.diagnosis.Count; i++)
+                {
+                    int diagID = p.diagnosis[i];
+
+                    XElement diag = new XElement("RDiagnosisID", diagID);
+
+                    newGRP.Element("Diagnoses").Add(diag);
+                }
+            }
 
             if (p.Navigations.Count > 0)
             {
@@ -79,6 +90,7 @@ namespace AMDES_KBS.Controllers
                                            new XElement("NavigationChildAttributes"),
                                            new XElement("Diagnoses")
                                            );
+
 
                     for (int n = 0; n < q.ChildCriteriaQuestion.Count; n++)
                     {
@@ -98,7 +110,8 @@ namespace AMDES_KBS.Controllers
                                         new XElement("AttributeName", ca.AttributeName),
                                         new XElement("AttributeValue", ca.AttributeValue),
                                         new XElement("CompareType", ca.getCompareType())//,
-                                        //new XElement("Answer", ca.Ans)
+                                        new XElement("Answer", ca.Ans),
+                                        new XElement("SetOnGroupID", ca.GroupID)
                                         );
 
                         navex.Element("NavigationChildAttributes").Add(cca);
@@ -166,6 +179,16 @@ namespace AMDES_KBS.Controllers
                 {
                     r.Navigations.Add(readNavigation(n));
                 }
+
+                var diag = (from pa in x.Descendants("Diagnoses").Descendants("RDiagnosisID")
+                            select pa).ToList();
+
+
+                foreach (var d in diag)
+                {
+                    r.addDiagnosisID(readDiagnosisID(d));
+                }
+
                 return r;
 
             }
@@ -238,6 +261,7 @@ namespace AMDES_KBS.Controllers
                 p.AttributeValue = x.Element("AttributeValue").Value;
                 p.setRuleType(int.Parse(x.Element("CompareType").Value));
                 //p.Ans = bool.Parse(x.Element("Answer").Value);
+                p.GroupID = int.Parse(x.Element("SetOnGroupID").Value);
                 return p;
             }
             else

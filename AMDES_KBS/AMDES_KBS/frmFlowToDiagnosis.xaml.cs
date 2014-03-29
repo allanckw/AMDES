@@ -24,6 +24,8 @@ namespace AMDES_KBS
     {
         int currStep=1;
         List<ucNavigationFlowSetting> lstStep;
+        Rules rule;
+
         public frmFlowToDiagnosis()
         {
             InitializeComponent();
@@ -34,11 +36,81 @@ namespace AMDES_KBS
             }
             zz.DataContext = g;
             lstStep = new List<ucNavigationFlowSetting>();
+            LoadAllRule();
+            //newFlowDetail();
         }
 
-        public void newFlowDetail()
+        private void LoadAllRule()
+        {
+            cboDiagnosisList.ItemsSource = NavigationController.getAllRules();
+            cboDiagnosisList.SelectedIndex = -1;
+        }
+
+        private void LoadExistingNavi()
+        {
+            cboDiagnosisList.ItemsSource = NavigationController.getAllRules();
+        }
+
+        private void loadNaviList(Rules r)
+        {
+            //cboNaviList.ItemsSource = r.Navigations;
+            txtDescription.Text = r.Description;
+            lstDiagnosisList.ItemsSource = r.DiagnosisList;
+            lstStep = new List<ucNavigationFlowSetting>();
+            loadSteps(r.Navigations);
+            //cboNaviList.ItemsSource = r.Navigations;
+        }
+
+        private void loadSteps(List<Navigation> naviList)
+        {
+            for (int i = 0; i < naviList.Count; i++)
+            {
+                Navigation navi = naviList[i];
+                addStep(i + 1, navi);
+            }
+            currStep = 1;
+            stkpnlSteps.Children.Clear();
+            lstStep[0].loadIsConclusive();
+            lstStep[0].loadCheckedAgeMoreOrLess();
+            lstStep[0].loadCheckedYN();
+
+            stkpnlSteps.Children.Add(lstStep[0]);
+            btnNextStep.Visibility = Visibility.Visible;
+            btnPrevStep.Visibility = Visibility.Hidden;
+        }
+
+        public void addStep(int stepNo, Navigation step)
+        {
+            //stkpnlSteps.Children.Clear();
+            ucNavigationFlowSetting stepControl = new ucNavigationFlowSetting(stepNo, step);
+            stepControl.chkConclusive.Checked += new RoutedEventHandler(chk_Checked);
+            stepControl.chkConclusive.Unchecked += new RoutedEventHandler(chk_UnChecked);
+            //stepControl
+            stepControl.loadIsConclusive();
+            stepControl.loadCheckedAgeMoreOrLess();
+            stepControl.loadCheckedYN();
+
+            lstStep.Add(stepControl);
+
+            //stkpnlSteps.Children.Add(stepControl);
+            //if (currStep == stepNo)
+            //{
+            //    btnPrevStep.Visibility = Visibility.Hidden;
+            //}
+            //else
+            //{
+            //    btnPrevStep.Visibility = Visibility.Visible;
+            //}
+        }
+
+        private void newFlowDetail()
         {
             currStep = 1;
+            rule = new Rules();
+            rule.RuleID = NavigationController.getNextRuleRID();
+            txtDescription.Text = "";
+            lstDiagnosisList.ItemsSource = null;
+            cboDiagnosisList.SelectedIndex = -1;
             lstStep = new List<ucNavigationFlowSetting>();
             addNewStep();
         }
@@ -71,14 +143,13 @@ namespace AMDES_KBS
             }
         }
 
-        private void cboGroupList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void lstDiagnosisList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            lstDiagnosisList.SelectedIndex = -1;
+            int selectedIdx = lstDiagnosisList.SelectedIndex;
+            if (selectedIdx==-1)
+            {
+                return;
+            }
         }
 
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
@@ -112,12 +183,16 @@ namespace AMDES_KBS
 
         private void btnPrevStep_Click(object sender, RoutedEventArgs e)
         {
-            if (currStep > 0)
-            {
-                currStep--;
-                loadSteps();
-                btnPrevStep.Visibility = Visibility.Visible;
-            }
+            currStep--;
+            loadSteps();
+            //if (currStep > 1)
+            //{
+            //    btnPrevStep.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    btnPrevStep.Visibility = Visibility.Hidden;
+            //}
         }
 
         private void loadSteps()
@@ -131,11 +206,159 @@ namespace AMDES_KBS
                 btnPrevStep.Visibility = Visibility.Visible;
             }
 
+
+
             stkpnlSteps.Children.Clear();
             lstStep[currStep - 1].loadCheckedYN();
-            
+            lstStep[currStep - 1].loadCheckedAgeMoreOrLess();
+            disableNextButton(lstStep[currStep - 1]);
             stkpnlSteps.Children.Add(lstStep[currStep-1]);
 
+        }
+
+        private void cboDiagnosisList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int selectedIdx = cboDiagnosisList.SelectedIndex;
+            if (selectedIdx == -1)
+            {
+                return;
+            }
+
+            rule = (Rules)cboDiagnosisList.Items[selectedIdx];
+            loadNaviList(rule);
+        }
+
+        private bool saveNavigation()
+        {
+            rule.Description = txtDescription.Text;
+            List<int> RIDList = new List<int>();
+            if (rule.DiagnosisList.Count>0)
+            {
+                foreach (Diagnosis dia in rule.DiagnosisList)
+                {
+                    RIDList.Add(dia.RID);               
+                }
+            }
+
+            for (int i = 0; i < RIDList.Count; i++)
+            {
+                rule.removeDiagnosisID(RIDList[i]);
+            }
+
+            for (int i = 0; i < lstDiagnosisList.Items.Count; i++)
+            {
+                Diagnosis dia = (Diagnosis)lstDiagnosisList.Items[i];
+                rule.addDiagnosisID(dia.RID);
+            }
+
+            List<Navigation> NaviDeleteList = new List<Navigation>();
+            if (rule.Navigations.Count>0)
+            {
+                foreach (Navigation navi in rule.Navigations)
+                {
+                    NaviDeleteList.Add(navi);
+                    //rule.removeNavigation(navi);
+                }
+            }
+
+            for (int i = 0; i < NaviDeleteList.Count; i++)
+            {
+                rule.removeNavigation(NaviDeleteList[i]);
+            }
+
+            Navigation prevNavi = null;
+
+            for (int i = 0; i < lstStep.Count; i++)
+            {
+                Navigation newNavi = new Navigation();
+                if (prevNavi != null)
+                {
+                    //newNavi.addNavCriteriaQuestion(prevgetCriteria());
+                    foreach (NaviChildCriteriaQuestion qn in prevNavi.ChildCriteriaQuestion)
+                    {
+                        newNavi.addNavCriteriaQuestion(qn);
+                    }
+
+                    foreach (NaviChildCritAttribute attr in prevNavi.ChildCriteriaAttributes)
+                    {
+                        newNavi.addNavCriteriaAttribute(attr);
+                    }
+                }
+
+                ucNavigationFlowSetting currStep = lstStep[i];
+                int destID = i + 1;
+                if (i + 1 >= lstStep.Count)
+                {
+                    destID = -1;
+                }
+                else
+                {
+                    ucNavigationFlowSetting nextStep = lstStep[i+1];
+                    destID = nextStep.getGroupID();
+                    if (currStep.chkConclusive.IsChecked==true)
+                    {
+                        destID = -1;
+                    }
+                    //if (destID == -1)
+                    //{
+                    //    break;
+                    //}
+                }
+
+                currStep.getAnswer();
+                newNavi.addNavCriteriaQuestion(currStep.getCriteria());
+              
+                foreach (NaviChildCritAttribute attr in currStep.getAttrList())
+                {
+                    newNavi.addNavCriteriaAttribute(attr);
+                }
+
+                newNavi.DestGrpID = destID;
+                prevNavi = newNavi;
+                rule.insertNavigation(newNavi);
+            }
+            prevNavi.DiagnosesID = rule.diagnosis;
+            return true;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (saveNavigation())
+            {
+                NavigationController.updateRules(rule);
+                refreshPage();
+                MessageBox.Show("Saved!");
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationController.deleteRules(rule.RuleID);
+            refreshPage();
+            MessageBox.Show("Deletion Complete");
+        }
+
+        private void refreshPage()
+        {
+            LoadAllRule();
+            newFlowDetail();
+        }
+
+        private void disableNextButton(ucNavigationFlowSetting ucControl)
+        {
+            if (ucControl.chkConclusive.IsChecked == true)
+            {
+                btnNextStep.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnNextStep.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -125,6 +125,9 @@
     <Compile Include="Entity\Navex\NaviChildCriteriaQuestion.cs" />
     <Compile Include="Entity\Navex\Navigation.cs" />
     <Compile Include="Entity\Navex\Rules.cs" />
+    <Compile Include="frmDefaultBehaviour.xaml.cs">
+      <DependentUpon>frmDefaultBehaviour.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmDiagnosisSetting.xaml.cs">
       <DependentUpon>frmDiagnosisSetting.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
     <Compile Include="SettingControl\ucNavigationSetting.xaml.cs">
       <DependentUpon>ucNavigationSetting.xaml</DependentUpon>
     </Compile>
+    <Page Include="frmDefaultBehaviour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="frmDiagnosisSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

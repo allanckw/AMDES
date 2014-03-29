@@ -14,6 +14,15 @@ namespace AMDES_KBS.Entity
             get { return navid; }
             set { navid = value; }
         }
+
+        private int groupID;
+
+        public int GroupID
+        {
+            get { return groupID; }
+            set { groupID = value; }
+        }
+
         private string attributeName;
 
         public string AttributeName

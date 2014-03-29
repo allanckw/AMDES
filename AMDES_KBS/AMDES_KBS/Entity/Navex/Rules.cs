@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
@@ -33,7 +34,19 @@ namespace AMDES_KBS.Entity
             set { ruleID = value; }
         }
 
-        private List<int> diagnosis;
+        public List<int> diagnosis;
+
+        public List<Diagnosis> DiagnosisList
+        {
+            get {
+                List<Diagnosis> diaList = new List<Diagnosis>();
+                foreach (int diaID in diagnosis)
+                {
+                    diaList.Add(DiagnosisController.getDiagnosisByID(diaID));
+                }
+                return diaList; 
+            }
+        }
 
         public Rules(int ruleID)
         {
