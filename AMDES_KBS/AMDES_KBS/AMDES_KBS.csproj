@@ -76,6 +76,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\CLIPSController.cs" />
+    <Compile Include="Controllers\DefaultBehaviorController.cs" />
     <Compile Include="Controllers\DiagnosisController.cs" />
     <Compile Include="Controllers\FirstQuestionController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />

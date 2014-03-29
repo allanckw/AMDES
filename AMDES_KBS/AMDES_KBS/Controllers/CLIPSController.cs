@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AMDES_KBS.Entity;
-
 using Mommosoft.ExpertSystem;
+using System.IO;
 
 namespace AMDES_KBS.Controllers
 {
@@ -12,21 +12,66 @@ namespace AMDES_KBS.Controllers
     {
         private static Patient pat;
 
+        //for debug purpose, to pull out to test on clips, and to pull out to assert for restore patient
+        private static List<StringBuilder> assertLog = new List<StringBuilder>();
+        private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
+
+        private static string dataPath = @"Data\Logs\";
+
         public static Patient CurrentPatient
         {
-            get { return CLIPSController.pat; }
-            set { CLIPSController.pat = value; }
+            get
+            {
+                return CLIPSController.pat;
+            }
+            set
+            {
+                if (value != null)
+                    CLIPSController.pat = value;
+                else
+                    throw new NullReferenceException("Current Patient is NULL!");
+            }
         }
 
-        private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
+        public static void saveAssertLog()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (StringBuilder s in assertLog)
+            {
+                sb.AppendLine(s.ToString());
+            }
+            string filePath = dataPath + CurrentPatient.NRIC + ".log";
+            File.WriteAllText(filePath, sb.ToString());
+        }
+
 
         public static void ClearandLoad()
         {
             env.Clear();
+            assertLog.Clear();
+
             env.Load("dementia.clp");
             reset();
-            env.AssertString("(mode 1)");
+            assert(new StringBuilder("(mode 1)"));
 
+            List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
+            FirstQuestion fq = FirstQuestionController.readFirstQuestion();
+            List<Rules> rList = NavigationController.getAllRules();
+            List<Navigation> defBehavior = DefaultBehaviorController.getAllDefaultBehavior();
+            loadQuestions(grps);
+            loadNavex(fq, rList, defBehavior);
+
+            run();
+        }
+
+        public static void assertAge()
+        {
+            assert(new StringBuilder("(attribute Age " + CurrentPatient.getAge() + ")"));
+        }
+
+        private static void run()
+        {
+            env.Run();
         }
 
         public static void reset()
@@ -34,146 +79,144 @@ namespace AMDES_KBS.Controllers
             env.Reset();
         }
 
-        public static void loadEverything()
+        private static void assert(StringBuilder sb)
+        {
+            env.AssertString(sb.ToString());
+            assertLog.Add(sb);
+        }
+
+        public static void loadQuestions(List<QuestionGroup> grps)
         {
             //to paste to load questions
             ClearandLoad();
             reset();
             assertAge();
 
-            string str2assert;
-            List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
+
             foreach (QuestionGroup qg in grps)
-            {
-                str2assert = "(group (GroupId _" + qg.GroupID +
-                        ") (SuccessType ";
-                if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
-                {
-                    QuestionCountGroup qcg = (QuestionCountGroup)qg;
-                    str2assert = str2assert + qcg.getQuestionTypeENUM().ToString() +
-                        ") (SuccessArg " + qcg.Threshold + "))";
-
-                }
-                else
-                {
-                    str2assert = str2assert + qg.getQuestionTypeENUM().ToString() + "))";
-                }
-
-                env.AssertString(str2assert);
-
-                //grp symptom assertion
-                str2assert = "(groupid-symtoms (GroupID _" + qg.GroupID + ") (symtom " + qg.Symptom + ") )";
-                env.AssertString(str2assert);
-
-                foreach (Question q in qg.Questions)
-                {
-                    str2assert = "(question (Id _" + q.ID + ") (QuestionText " + "\"" +
-                        q.Name + "\"" + ") (GroupId _" + qg.GroupID + "))";
-                    env.AssertString(str2assert);
-
-                    //question symptom assertion
-                    str2assert = "(questionid-symtoms (QuestionID _" + q.ID + ") (symtom " + q.Symptom + ") )";
-                    env.AssertString(str2assert);
-                }
-            }
-
-
-            loadNavex();
-            run();
-        }
-
-        private static void loadNavex()
-        {
-            FirstQuestion fq = FirstQuestionController.readFirstQuestion();
-
-            env.AssertString("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID starting) )");
-
-            env.AssertString("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ") " +
-                             "(NavigationID S1_" + fq.NextGrpID + ") )");
-
-            env.AssertString("(NaviChildCritQ (NavigationID S1_" + fq.NextGrpID + ")  " +
-                             " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer Yes) )");
-
-
-            env.AssertString("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ")  " +
-                             "(NavigationID S2_" + fq.NextGrpID + ") )");
-
-            env.AssertString("(NaviChildCritQ (NavigationID S2_" + fq.NextGrpID +
-                             " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer No) )");
-
-
-            List<Rules> navList = NavigationController.getAllRules();
-
-            foreach (Rules r in navList)
             {
                 StringBuilder sb = new StringBuilder();
 
-                //TODO:
-                foreach (Navigation n in r.Navigations)
+                sb.Append("(group (GroupId _" + qg.GroupID + ") (SuccessType ");
+
+                if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
                 {
-                    sb.Append("(Navigation  (DestinationGroupID _");
-                    sb.Append(n.DestGrpID + ")");
-                    sb.Append(" (NavigationID _" + n.NavID + ") ");
+                    QuestionCountGroup qcg = (QuestionCountGroup)qg;
 
-                    if (n.isConclusive())
-                    {
-                        sb.Append("(RID");
-                        foreach (int x in n.DiagnosesID)
-                        {
-                            sb.Append(" R" + x.ToString());
-                        }
-                        sb.Append(") ");
-                    }
-
-                    sb.Append(")");
-                    env.AssertString(sb.ToString());
-
-                    sb.Clear();
-                    foreach (NaviChildCriteriaQuestion ncq in n.ChildCriteriaQuestion)
-                    {
-                        sb.Append("(NaviChildCritQ (NavigationID _" + n.NavID + ") ");
-                        sb.Append("(CriteriaGroupID _" + ncq.CriteriaGrpID + ") ");
-                        if (ncq.Ans == false)
-                        {
-                            sb.Append("(CriteriaAnswer No)");
-                        }
-                        else
-                        {
-                            sb.Append("(CriteriaAnswer Yes)");
-                        }
-                        sb.Append(")");
-
-                        env.AssertString(sb.ToString());
-                        sb.Clear();
-                    }
-
-                    foreach (NaviChildCritAttribute ncq in n.ChildCriteriaAttributes)
-                    {
-                        //(NaviChildCritA (NavigationID GO_C) (AttributeName Age) (AttributeValue 50) (AttributeCompareType <) )
-                        sb.Append("(NaviChildCritA (NavigationID _" + n.NavID + ") ");
-                        sb.Append("(AttributeName " + ncq.AttributeName + ") ");
-                        sb.Append("(AttributeValue " + ncq.AttributeValue + ") ");
-                        sb.Append("(AttributeCompareType " + ncq.getCompareTypeString() + ") ");
-                        sb.Append(")");
-
-                        env.AssertString(sb.ToString());
-                        sb.Clear();
-                    }
-
+                    sb.Append(qcg.getQuestionTypeENUM().ToString() + ") (SuccessArg " + qcg.Threshold + ")) ");
+                }
+                else
+                {
+                    sb.Append(qg.getQuestionTypeENUM().ToString() + ")) ");
                 }
 
+                assert(sb);
+                sb.Clear();
+
+                //grp symptom assertion
+                sb.Append("(groupid-symtoms (GroupID _" + qg.GroupID + ") (symtom " + qg.Symptom + ") )");
+                assert(sb);
+
+
+                foreach (Question q in qg.Questions)
+                {
+                    sb.Clear();
+                    sb.Append("(question (Id _" + q.ID + ") (QuestionText " + "\"" +
+                        q.Name + "\"" + ") (GroupId _" + qg.GroupID + "))");
+                    assert(sb);
+                    sb.Clear();
+
+                    //question symptom assertion
+                    sb.Append("(questionid-symtoms (QuestionID _" + q.ID + ") (symtom " + q.Symptom + ") )");
+                    assert(sb);
+                }
+            }
+
+        }
+
+        private static void loadNavex(FirstQuestion fq, List<Rules> rList, List<Navigation> defBehavior)
+        {
+
+
+            assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID _0) )"));
+
+            assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ") " +
+                            "(NavigationID S1_" + fq.NextGrpID + ") )"));
+
+            assert(new StringBuilder("(NaviChildCritQ (NavigationID S1_" + fq.NextGrpID + ")  " +
+                            " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer Yes) )"));
+
+            assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ")  " +
+                             "(NavigationID S2_" + fq.NextGrpID + ") )"));
+
+            assert(new StringBuilder("(NaviChildCritQ (NavigationID S2_" + fq.NextGrpID +
+                            " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer No) )"));
+
+
+            foreach (Rules r in rList)
+            {
+                foreach (Navigation n in r.Navigations)
+                {
+                    createNavigationAssertion(n);
+                }
+            }
+
+            foreach (Navigation n in defBehavior)
+            {
+                createNavigationAssertion(n);
             }
         }
-        private static string createNavigationAssertion(Navigation nav)
+        private static void createNavigationAssertion(Navigation n)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("(Navigation ");
+            sb.Append("(Navigation  (DestinationGroupID _");
+            sb.Append(n.DestGrpID + ")");
+            sb.Append(" (NavigationID _" + n.NavID + ") ");
 
-            //TODO
+            if (n.isConclusive())
+            {
+                sb.Append("(RID");
+                foreach (int x in n.DiagnosesID)
+                {
+                    sb.Append(" R" + x.ToString());
+                }
+                sb.Append(") ");
+            }
 
             sb.Append(")");
+            assert(sb);
 
-            return sb.ToString();
+            sb.Clear();
+            foreach (NaviChildCriteriaQuestion ncq in n.ChildCriteriaQuestion)
+            {
+                sb.Append("(NaviChildCritQ (NavigationID _" + n.NavID + ") ");
+                sb.Append("(CriteriaGroupID _" + ncq.CriteriaGrpID + ") ");
+                if (ncq.Ans == false)
+                {
+                    sb.Append("(CriteriaAnswer No)");
+                }
+                else
+                {
+                    sb.Append("(CriteriaAnswer Yes)");
+                }
+                sb.Append(")");
+
+                assert(sb);
+                sb.Clear();
+            }
+
+            foreach (NaviChildCritAttribute ncq in n.ChildCriteriaAttributes)
+            {
+                //(NaviChildCritA (NavigationID GO_C) (AttributeName Age) (AttributeValue 50) (AttributeCompareType <) )
+                sb.Append("(NaviChildCritA (NavigationID _" + n.NavID + ") ");
+                sb.Append("(AttributeName " + ncq.AttributeName + ") ");
+                sb.Append("(AttributeValue " + ncq.AttributeValue + ") ");
+                sb.Append("(AttributeCompareType " + ncq.getCompareTypeString() + ") ");
+                sb.Append(")");
+
+                assert(sb);
+                sb.Clear();
+            }
         }
 
         public static int getCurrentQnGroupID()
@@ -194,7 +237,7 @@ namespace AMDES_KBS.Controllers
         //TODO: Get back symptom
         //TODO: Get back QnHistory
         //TODO: Get back Navihistory
-        //
+        //TODO: Get back Symptom.
 
         private static List<int> getNaviHistory()
         {
@@ -253,50 +296,36 @@ namespace AMDES_KBS.Controllers
 
             }
 
-            //if some jisiao go and add / delete question , archive and reset system. 
             return history;
-        }
-
-
-
-        public static void assertAge()
-        {
-            env.AssertString("(attribute Age " + CurrentPatient.getAge() + ")");//todo: assert which var
         }
 
         public static void assertQuestion(string id, bool answer)
         {
             //to paste to load questions
-            string str2assert = "(choice _" + id + " ";
+            StringBuilder sb = new StringBuilder("(choice _" + id + " ");
             if (answer)
             {
-                str2assert += "Yes";
+                sb.Append("Yes");
             }
             else
             {
-                str2assert += "No";
+                sb.Append("No");
             }
-            str2assert += ")";
+            sb.Append(")");
 
-            env.AssertString(str2assert);
+            assert(sb);
             run();
         }
 
-        public static void run()
-        {
-            env.Run();
-        }
-
-
         public static void assertNextSection()
         {
-            env.AssertString("(Next)");
+            assert(new StringBuilder("(Next)"));
             run();
         }
 
         public static void assertPrevSection()
         {
-            env.AssertString("(Previous)");
+            assert(new StringBuilder("(Previous)"));
             run();
         }
 

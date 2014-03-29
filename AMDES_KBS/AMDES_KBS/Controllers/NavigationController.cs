@@ -61,7 +61,7 @@ namespace AMDES_KBS.Controllers
             //(i.e. the information for : Y -> A, N -> B, < 7 -> A, > 7 -> B
             XElement newGRP = new XElement("Rule", new XAttribute("RID", p.RuleID),
                               new XElement("Description", p.Description),
-                //description of the Question Rules, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
+                                //description of the Question Rules, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
                                 new XElement("Navigations"),
                                 new XElement("Diagnoses")
                                 );

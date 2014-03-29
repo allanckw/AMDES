@@ -84,7 +84,9 @@ namespace AMDES_KBS
                 //Dim myWindow As Window1 = TryCast(Application.Current.MainWindow, Window1)
                 frmMain myWindow = (frmMain)Application.Current.MainWindow;
                 myWindow.loadPatientList();
+
                 CLIPSController.CurrentPatient = p;
+                
                 return true;
             }
 
@@ -96,7 +98,6 @@ namespace AMDES_KBS
             if (savePatient())
             {
                 amdesPageFrame.Navigate(new frmOverview(amdesPageFrame));
-
             }
         }
 
@@ -107,10 +108,7 @@ namespace AMDES_KBS
 
         private void AssertQuestions()
         {
-            CLIPSController.loadEverything();
-
-            //str2assert = str2assert + ")";
-            //_theEnv.AssertString(str2assert);
+            CLIPSController.ClearandLoad();
         }
     }
 }

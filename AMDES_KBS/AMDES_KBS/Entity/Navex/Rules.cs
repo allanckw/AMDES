@@ -8,6 +8,7 @@ namespace AMDES_KBS.Entity
     public class Rules
     {
         public static string dataPath = @"data\Rules.xml";
+        public static string defaultRulesPath = @"data\DefRules.xml";
 
         private List<Navigation> navList;
 
