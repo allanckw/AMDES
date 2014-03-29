@@ -51,9 +51,40 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mommosoft.ExpertSystem">
       <HintPath>lib\Mommosoft.ExpertSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmFoundation.Wpf">
+      <HintPath>lib\MvvmFoundation.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
@@ -66,9 +97,15 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Thriple">
+      <HintPath>lib\Thriple.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPF.JoshSmith">
+      <HintPath>lib\WPF.JoshSmith.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -115,6 +152,25 @@
     <Compile Include="frmSection.xaml.cs">
       <DependentUpon>frmSection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GraphDrawing\Arrows\ArrowEnds.cs" />
+    <Compile Include="GraphDrawing\Arrows\ArrowLine.cs" />
+    <Compile Include="GraphDrawing\Arrows\ArrowLineBase.cs" />
+    <Compile Include="GraphDrawing\CircularDependency.cs" />
+    <Compile Include="GraphDrawing\Graph.cs" />
+    <Compile Include="GraphDrawing\GraphBuilder.cs" />
+    <Compile Include="GraphDrawing\GraphDetailsView.xaml.cs">
+      <DependentUpon>GraphDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GraphDrawing\GraphView.xaml.cs">
+      <DependentUpon>GraphView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GraphDrawing\GraphWithDetailsView.xaml.cs">
+      <DependentUpon>GraphWithDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GraphDrawing\Node.cs" />
+    <Compile Include="GraphDrawing\NodeConnectionAdorner.cs" />
+    <Compile Include="GraphDrawing\NodeConnectionAdornerDecorator.cs" />
+    <Compile Include="GraphDrawing\NodeConnector.cs" />
     <Compile Include="PatientUserControl\ucPatientDisplay.xaml.cs">
       <DependentUpon>ucPatientDisplay.xaml</DependentUpon>
     </Compile>
@@ -218,6 +274,18 @@
       <DependentUpon>frmSetting.xaml</DependentUpon>
     </Compile>
     <Page Include="frmTermCondition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GraphDrawing\GraphDetailsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GraphDrawing\GraphView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GraphDrawing\GraphWithDetailsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -31,6 +31,11 @@ namespace AMDES_KBS
                 Directory.CreateDirectory("Data");
             }
 
+            if (!Directory.Exists(@"Data\Logs"))
+            {
+                Directory.CreateDirectory(@"Data\Logs");
+            }
+
             if (File.Exists(Assessor.dataPath))
             {
                 Assessor a = AssessorController.readAssessor();

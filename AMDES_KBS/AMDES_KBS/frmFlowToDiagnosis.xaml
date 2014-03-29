@@ -2,11 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:amdes="clr-namespace:AMDES_KBS"
-        Title="Flow to Diagnosis" Height="320" Width="660" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Flow to Diagnosis" Height="680" Width="660" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <StackPanel Orientation="Horizontal">
             <StackPanel x:Name="stkpnlLeftDiv">
-                <Label Content="Choose Diagnosis Flow" FontWeight="Bold" Height="30" FontSize="15"/>
+                <Label Content="Select Diagnoses Flow of Rules" FontWeight="Bold" Height="30" FontSize="13"/>
                 <ComboBox x:Name="cboGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboGroupList_SelectionChanged">
                     <ComboBox.ItemTemplate>
@@ -22,7 +22,7 @@
                 </ComboBox>
                 <StackPanel x:Name="stkpnlDiagnosis" Width="200" Orientation="Vertical" Margin="0,20,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Diagnosis Conclusion" FontWeight="Bold" Width="160" FontSize="14"  />
+                        <Label Content="Diagnosis Conclusion" FontWeight="Bold" Width="160" FontSize="13"  />
                         <Button x:Name="btnAddDiagnosis" Content="Select" Height="25"  FontSize="12" Click="btnAddDiagnosis_Click" />
                     </StackPanel>
                         <StackPanel x:Name="stkpnlDiagnosisRule">
@@ -61,6 +61,8 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="330" VerticalAlignment="Bottom">
         </StackPanel>
     </Grid>
 </Window>

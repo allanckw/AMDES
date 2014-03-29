@@ -7,7 +7,7 @@ namespace AMDES_KBS.Entity
 {
     public class History
     {
-        public static string dataPath = @"data\History.xml";
+        public static string dataPath = @"data\Logs\History.xml";
 
         private string patientID;
 
