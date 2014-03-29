@@ -48,22 +48,30 @@ namespace AMDES_KBS.Controllers
 
         public static void ClearandLoad()
         {
-            env.Clear();
-            assertLog.Clear();
+            if (CurrentPatient != null)
+            {
+                //call this f(x) everytime u click a new patient
+                env.Clear();
+                assertLog.Clear();
 
-            env.Load("dementia.clp");
-            reset();
-            assert(new StringBuilder("(mode 1)"));
+                env.Load("dementia.clp");
+                reset();
+                assert(new StringBuilder("(mode 1)"));
 
-            List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
-            FirstQuestion fq = FirstQuestionController.readFirstQuestion();
-            List<Rules> rList = NavigationController.getAllRules();
-            List<Navigation> defBehavior = DefaultBehaviorController.getAllDefaultBehavior();
-            loadQuestions(grps);
-            loadNavex(fq, rList, defBehavior);
-            assertAge();
+                List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
+                FirstQuestion fq = FirstQuestionController.readFirstQuestion();
+                List<Rules> rList = NavigationController.getAllRules();
+                List<Navigation> defBehavior = DefaultBehaviorController.getAllDefaultBehavior();
+                loadQuestions(grps);
+                loadNavex(fq, rList, defBehavior);
+                assertAge();
 
-            run();
+                run();
+            }
+            else
+            {
+                throw new NullReferenceException("Current Patient is Null!, please set CurrentPatient before loading.");
+            }
         }
 
         public static void assertAge()
