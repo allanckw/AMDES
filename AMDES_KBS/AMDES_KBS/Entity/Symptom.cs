@@ -14,6 +14,7 @@ namespace AMDES_KBS.Entity
         public Symptom(string name, int diagID)
         {
             this.name = name;
+            this.diagnosedByID = diagID;
             this.diaDate = DateTime.Now;
         }
 
