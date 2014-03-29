@@ -123,11 +123,12 @@ namespace AMDES_KBS.Controllers
                 foreach (Question q in qg.Questions)
                 {
                     sb.Clear();
+
                     sb.Append("(question (Id _" + q.ID + ") (QuestionText " + "\"" +
                         q.Name + "\"" + ") (GroupId _" + qg.GroupID + "))");
                     assert(sb);
-                    sb.Clear();
 
+                    sb.Clear();
                     //question symptom assertion
                     sb.Append("(questionid-symtoms (QuestionID _" + q.ID + ") (symtom " + q.Symptom + ") )");
                     assert(sb);
@@ -139,15 +140,17 @@ namespace AMDES_KBS.Controllers
         private static void loadNavex(FirstQuestion fq, List<Rules> rList, List<Navigation> defBehavior)
         {
 
-
+            //1st navex point
             assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID _0) )"));
 
+            //2nd navex point A
             assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ") " +
                             "(NavigationID S1_" + fq.NextGrpID + ") )"));
-
+            
             assert(new StringBuilder("(NaviChildCritQ (NavigationID S1_" + fq.NextGrpID + ")  " +
                             " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer Yes) )"));
 
+            //2nd navex point B
             assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ")  " +
                              "(NavigationID S2_" + fq.NextGrpID + ") )"));
 
@@ -258,6 +261,15 @@ namespace AMDES_KBS.Controllers
             Console.WriteLine(x);
 
             return naviHistory;
+        }
+
+        public static List<Symptom> getCurrentPatientSymptom()
+        {
+            List<Symptom> sList = new List<Symptom>();
+
+            String evalStr = " (find-all-facts((?a question)) TRUE)";
+
+            return sList;
         }
 
         public static History getCurrentPatientHistory()

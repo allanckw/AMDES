@@ -10,14 +10,10 @@ namespace CircularDependencyTool
         // NOTE: This method is invoked from AppWindow.xaml
         public static IEnumerable<Graph> BuildGraphs()
         {
+            //can create multiple graph, but in our case we only need 1 graph
             return new List<Graph>
             {
-                //BuildGraph("Simple.xml"),
-                //BuildGraph("Complex.xml"),
-                //BuildGraph("VeryCircular.xml"),                                
-                //BuildGraph("SimpleCircular.xml"),
                 BuildGraph("ComplexCircular.xml")                
-                //BuildGraph("SuperCircular.xml")
             };
         }
 
@@ -37,31 +33,9 @@ namespace CircularDependencyTool
             foreach (XElement nodeElem in nodeElems)
             {
                 string id = nodeElem.Attribute("id").Value + " ABCDE FGHIJK LMNO PQRS TUVW XYZ";
-                double x = graph.X;//(double)nodeElem.Attribute("x");
-                double y = graph.Y;//(double)nodeElem.Attribute("y");
-                //var node = new Node(id, x, y);
-
-                var node = new Node(id, x, y);
-                graph.Nodes.Add(node);
+                graph.addGraphNodes(id);
             }
 
-            // Associate each node with its dependencies.
-            foreach (Node node in graph.Nodes)
-            {
-                var nodeElem = nodeElems.First(elem => elem.Attribute("id").Value + " ABCDE FGHIJK LMNO PQRS TUVW XYZ" == node.ID);
-                var dependencyElems = nodeElem.Elements("dependency");
-                foreach (XElement dependencyElem in dependencyElems)
-                {
-                    string depID = dependencyElem.Attribute("id").Value + " ABCDE FGHIJK LMNO PQRS TUVW XYZ";
-
-                    if (depID == node.ID)
-                        throw new Exception("A node cannot be its own dependency.  Node ID = " + depID);
-
-                    var dependency = graph.Nodes.FirstOrDefault(n => n.ID == depID);
-                    if (dependency != null)
-                        node.NodeDependencies.Add(dependency);
-                }
-            }
             return graph;
         }
     }

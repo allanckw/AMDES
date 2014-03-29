@@ -21,7 +21,7 @@ namespace CircularDependencyTool
                 if (Nodes.Count % 5 == 0 && Nodes.Count > 0)
                 {
                     oddRow = !oddRow;
-                    y += 50;
+                    y += 45;
                     if (oddRow)
                     {
                         x += 130;
@@ -85,11 +85,23 @@ namespace CircularDependencyTool
 
         #region Properties
 
-                public List<Node> Nodes { get; private set; }
+        public List<Node> Nodes { get; private set; }
 
-        public void addGraphNodes(Node n)
+        public void addGraphNodes(string id) 
         {
+            var node = new Node(id, this.X, this.Y);
 
+            if (Nodes.Count == 0)
+            {
+                Nodes.Add(node);
+            }
+            else if (Nodes.Count > 0 )
+            {
+                Node dependency = Nodes[Nodes.Count - 1];
+                node.NodeDependencies.Add(dependency);
+                Nodes.Add(node);
+            }
+            
         }
 
         public string Title { get; private set; }

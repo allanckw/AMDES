@@ -109,8 +109,8 @@ namespace AMDES_KBS.Controllers
                         XElement cca = new XElement("ChildCriteriaAttribute",
                                         new XElement("AttributeName", ca.AttributeName),
                                         new XElement("AttributeValue", ca.AttributeValue),
-                                        new XElement("CompareType", ca.getCompareType())//,
-                                        new XElement("Answer", ca.Ans),
+                                        new XElement("CompareType", ca.getCompareType()),
+                                        //new XElement("Answer", ca.Ans),
                                         new XElement("SetOnGroupID", ca.GroupID)
                                         );
 

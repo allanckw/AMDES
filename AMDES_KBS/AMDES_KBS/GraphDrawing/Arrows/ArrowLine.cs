@@ -96,9 +96,9 @@ namespace Petzold.Media2D
                 pathgeo.Figures.Clear();
 
                 // Define a single PathFigure with the points.
-                pathfigLine.StartPoint = new Point(X1, Y1);
+                pathfigLine.StartPoint = new Point(X2, Y2);
                 polysegLine.Points.Clear();
-                polysegLine.Points.Add(new Point(X2, Y2));
+                polysegLine.Points.Add(new Point(X1, Y1));
                 pathgeo.Figures.Add(pathfigLine);
 
                 // Call the base property to add arrows on the ends.

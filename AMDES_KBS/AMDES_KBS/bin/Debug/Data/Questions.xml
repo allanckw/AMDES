@@ -1,6 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Questions xml-->
 <QuestionGroups>
+<QuestionGroup id="1">
+    <Header>Section A</Header>
+    <Description></Description>
+    <QnType>0</QnType>
+    <Symptom>Amnesia</Symptom>
+    <Questions>
+      <Question QID="1.1">
+        <Name>Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both~~~~Compared to before, does the patient have problems remembering things/events that happened recently?~~Frequently misplacing his/her personal belongings?~~Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~Forget where he/she keeps his/her things?~~Forget what he/she has come to do?~~Have problems finding his/her way around ?~~Ask repeated questions or repeat himself/herself often?~~Other Q:__________________________________</Name>
+        <Symptom>Amnesia</Symptom>
+      </Question>
+    </Questions>
+    <NextFalseLink>
+      <DestGrp>3</DestGrp>
+      <RequireAge>false</RequireAge>
+      <Age>65</Age>
+      <isConclusive>false</isConclusive>
+      <LessThanAge>false</LessThanAge>
+      <MoreThanEqualAge>true</MoreThanEqualAge>
+      <Diagnoses />
+    </NextFalseLink>
+    <NextTrueLink>
+      <DestGrp>6</DestGrp>
+      <RequireAge>false</RequireAge>
+      <Age>65</Age>
+      <isConclusive>false</isConclusive>
+      <LessThanAge>false</LessThanAge>
+      <MoreThanEqualAge>true</MoreThanEqualAge>
+      <Diagnoses />
+    </NextTrueLink>
+  </QuestionGroup>
   <QuestionGroup id="2">
     <Header>Section B</Header>
     <Description></Description>
@@ -167,34 +197,5 @@
       </Question>
     </Questions>
   </QuestionGroup>
-  <QuestionGroup id="1">
-    <Header>Section A</Header>
-    <Description></Description>
-    <QnType>0</QnType>
-    <Symptom>Amnesia</Symptom>
-    <Questions>
-      <Question QID="1.1">
-        <Name>Forget previously learned material (Initially with recent material lost), or impaired ability to learn new material or both~~~~Compared to before, does the patient have problems remembering things/events that happened recently?~~Frequently misplacing his/her personal belongings?~~Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~Forget where he/she keeps his/her things?~~Forget what he/she has come to do?~~Have problems finding his/her way around ?~~Ask repeated questions or repeat himself/herself often?~~Other Q:__________________________________</Name>
-        <Symptom>Amnesia</Symptom>
-      </Question>
-    </Questions>
-    <NextFalseLink>
-      <DestGrp>3</DestGrp>
-      <RequireAge>false</RequireAge>
-      <Age>65</Age>
-      <isConclusive>false</isConclusive>
-      <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>true</MoreThanEqualAge>
-      <Diagnoses />
-    </NextFalseLink>
-    <NextTrueLink>
-      <DestGrp>6</DestGrp>
-      <RequireAge>false</RequireAge>
-      <Age>65</Age>
-      <isConclusive>false</isConclusive>
-      <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>true</MoreThanEqualAge>
-      <Diagnoses />
-    </NextTrueLink>
-  </QuestionGroup>
+  
 </QuestionGroups>
