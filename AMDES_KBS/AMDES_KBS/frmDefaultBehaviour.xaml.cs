@@ -20,6 +20,8 @@ namespace AMDES_KBS
     /// </summary>
     public partial class frmDefaultBehaviour : Window
     {
+        Navigation navi;
+
         List<NaviChildCriteriaQuestion> naviChildQuestion;
         List<NaviChildCritAttribute> naviChildAttribute;
 
@@ -30,11 +32,18 @@ namespace AMDES_KBS
             loadQuestionGroup();
         }
 
+        private void loadAllBehaviour()
+        {
+            cboDiagnosisList.ItemsSource = DefaultBehaviorController.getAllDefaultBehavior();
+        }
+
         private void newForm()
         {
+            navi = new Navigation();
             naviChildQuestion = new List<NaviChildCriteriaQuestion>();
             naviChildAttribute = new List<NaviChildCritAttribute>();
             cboDiagnosisList.SelectedIndex = -1;
+            cboGroupList.SelectedIndex = -1;
             txtDescription.Text = "";
             reloadAttribute();
             reloadCriteria();
@@ -259,12 +268,72 @@ namespace AMDES_KBS
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (saveBehaviour())
+            {
+                MessageBox.Show("Saved!");
+                newForm();
+            }
+        }
 
+        private bool saveBehaviour()
+        {
+            List<int> RIDList = new List<int>();
+            if (navi.DiagnosesID.Count > 0)
+            {
+                foreach (int diaID in navi.DiagnosesID)
+                {
+                    RIDList.Add(diaID);
+                }
+            }
+
+            for (int i = 0; i < RIDList.Count; i++)
+            {
+                navi.removeDiagnosisID(RIDList[i]);
+            }
+
+            for (int i = 0; i < lstDiagnosisList.Items.Count; i++)
+            {
+                Diagnosis dia = (Diagnosis)lstDiagnosisList.Items[i];
+                navi.addDiagnosisID(dia.RID);
+            }
+
+            navi.clearCriteriaQuestions();
+            navi.clearCriteriaAttributes();
+
+            foreach (NaviChildCriteriaQuestion naviCriteria in naviChildQuestion)
+            {
+                navi.addNavCriteriaQuestion(naviCriteria);
+            }
+
+            foreach (NaviChildCritAttribute naviAttr in naviChildAttribute)
+            {
+                navi.addNavCriteriaAttribute(naviAttr);
+            }
+
+            try
+            {
+                DefaultBehaviorController.updateRules(navi);
+            }
+            catch (Exception ex)
+            {
+                return false;
+//                throw;
+            }
+            return true;
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            int sIdx = cboDiagnosisList.SelectedIndex;
+            if (sIdx == -1)
+            {
+                return;
+            }
+            //Navigation sNavi = (Navigation)cboDiagnosisList.Items[sIdx];
+            DefaultBehaviorController.deleteDefaultBehavior(int.Parse(navi.NavID));
+            MessageBox.Show("Behaviour Deleted!");
+            newForm();
+            
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -272,14 +341,33 @@ namespace AMDES_KBS
             this.Close();
         }
 
-        private void lstDiagnosisList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void cboDiagnosisList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int sIdx = cboDiagnosisList.SelectedIndex;
+            if (sIdx == -1)
+            {
+                return;
+            }
+            navi = (Navigation)cboDiagnosisList.Items[sIdx];
+        }
 
+        private void LoadExistingBehaviour()
+        {
+            this.naviChildQuestion = new List<NaviChildCriteriaQuestion>();
+            this.naviChildAttribute = new List<NaviChildCritAttribute>();
+
+            foreach (NaviChildCriteriaQuestion naviCriteria in navi.ChildCriteriaQuestion)
+            {
+                naviChildQuestion.Add(naviCriteria);
+            }
+
+            foreach (NaviChildCritAttribute naviAttr in navi.ChildCriteriaAttributes)
+            {
+                naviChildAttribute.Add(naviAttr);
+            }
+
+            reloadCriteria();
+            reloadAttribute();
         }
     }
 }

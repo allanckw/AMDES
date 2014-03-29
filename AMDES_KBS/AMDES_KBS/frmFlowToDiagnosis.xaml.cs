@@ -113,6 +113,8 @@ namespace AMDES_KBS
             cboDiagnosisList.SelectedIndex = -1;
             lstStep = new List<ucNavigationFlowSetting>();
             addNewStep();
+            btnNextStep.Visibility = Visibility.Visible;
+            btnPrevStep.Visibility = Visibility.Hidden;
         }
 
         public void addNewStep()
@@ -294,10 +296,14 @@ namespace AMDES_KBS
                 else
                 {
                     ucNavigationFlowSetting nextStep = lstStep[i+1];
-                    destID = nextStep.getGroupID();
-                    if (currStep.chkConclusive.IsChecked==true)
+
+                    if (currStep.chkConclusive.IsChecked == true)
                     {
                         destID = -1;
+                    }
+                    else
+                    {
+                        destID = nextStep.getGroupID();
                     }
                     //if (destID == -1)
                     //{
@@ -316,6 +322,10 @@ namespace AMDES_KBS
                 newNavi.DestGrpID = destID;
                 prevNavi = newNavi;
                 rule.insertNavigation(newNavi);
+                if (destID == -1)
+                {
+                    break;
+                }
             }
             prevNavi.DiagnosesID = rule.diagnosis;
             return true;
