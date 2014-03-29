@@ -59,14 +59,28 @@ namespace AMDES_KBS.Controllers
                 assert(new StringBuilder("(mode 1)"));
 
                 List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
+
                 FirstQuestion fq = FirstQuestionController.readFirstQuestion();
                 List<Rules> rList = NavigationController.getAllRules();
                 List<Navigation> defBehavior = DefaultBehaviorController.getAllDefaultBehavior();
-                loadQuestions(grps);
-                loadNavex(fq, rList, defBehavior);
-                assertAge();
 
-                run();
+                if (grps.Count == 0)
+                {
+                }
+                else if (fq == null)
+                {
+                }
+                else if (rList.Count == 0)
+                {
+                }
+                else
+                {
+                    loadQuestions(grps);
+                    loadNavex(fq, rList, defBehavior);
+                    assertAge();
+                    run();
+                }
+               
             }
             else
             {
@@ -74,7 +88,7 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void assertAge()
+        private static void assertAge()
         {
             assert(new StringBuilder("(attribute Age " + CurrentPatient.getAge() + ")"));
         }
@@ -145,19 +159,19 @@ namespace AMDES_KBS.Controllers
             //1st navex point
             assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID _0) )"));
 
-            //2nd navex point A
-            assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ") " +
-                            "(NavigationID S1_" + fq.NextGrpID + ") )"));
+            ////2nd navex point A
+            //assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ") " +
+            //                "(NavigationID S1_" + fq.NextGrpID + ") )"));
             
-            assert(new StringBuilder("(NaviChildCritQ (NavigationID S1_" + fq.NextGrpID + ")  " +
-                            " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer Yes) )"));
+            //assert(new StringBuilder("(NaviChildCritQ (NavigationID S1_" + fq.NextGrpID + ")  " +
+            //                " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer Yes) )"));
 
-            //2nd navex point B
-            assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ")  " +
-                             "(NavigationID S2_" + fq.NextGrpID + ") )"));
+            ////2nd navex point B
+            //assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ")  " +
+            //                 "(NavigationID S2_" + fq.NextGrpID + ") )"));
 
-            assert(new StringBuilder("(NaviChildCritQ (NavigationID S2_" + fq.NextGrpID +
-                            " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer No) )"));
+            //assert(new StringBuilder("(NaviChildCritQ (NavigationID S2_" + fq.NextGrpID +
+            //                " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer No) )"));
 
 
             foreach (Rules r in rList)
@@ -247,13 +261,13 @@ namespace AMDES_KBS.Controllers
 
         public static void assertNextSection()
         {
-            assert(new StringBuilder("(Next)"));
+            assert(new StringBuilder("(next)"));
             run();
         }
 
         public static void assertPrevSection()
         {
-            assert(new StringBuilder("(Previous)"));
+            assert(new StringBuilder("(previous)"));
             run();
         }
 

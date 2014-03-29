@@ -45,12 +45,11 @@ namespace AMDES_KBS
 
         private void saveFirstSection()
         {
-            //Error Here, First Link -> Next Group so need 2 combobox not 1 or the system will hang here
+           
             //Update first navigation link
-            //FirstQuestion fq = new FirstQuestion();
-            ////fq.GrpID 
-            ////fq.NextGrpID
-            //FirstQuestionController.writeFirstQuestion(fq);
+            FirstQuestion fq = new FirstQuestion();
+            //fq.GrpID = //please fill in the blank
+            FirstQuestionController.writeFirstQuestion(fq);
         }
     }
 }

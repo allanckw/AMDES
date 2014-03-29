@@ -17,10 +17,10 @@ namespace AMDES_KBS.Controllers
 
             XElement fq = new XElement("FirstQuestion");
             XElement initGrp = new XElement("InitialGrpID", f.GrpID);
-            XElement nextGrp = new XElement("DestinationGrpID", f.NextGrpID);
+            //XElement nextGrp = new XElement("DestinationGrpID", f.NextGrpID);
 
             fq.Add(initGrp);
-            fq.Add(nextGrp);
+            //fq.Add(nextGrp);
             fq.Save(FirstQuestion.dataPath);
         }
 
@@ -32,7 +32,7 @@ namespace AMDES_KBS.Controllers
                 FirstQuestion fq = new FirstQuestion();
 
                 fq.GrpID = int.Parse(document.Descendants("InitialGrpID").ElementAt(0).Value);
-                fq.NextGrpID = int.Parse(document.Descendants("DestinationGrpID").ElementAt(0).Value);
+                //fq.NextGrpID = int.Parse(document.Descendants("DestinationGrpID").ElementAt(0).Value);
                 return fq;
             }
             else

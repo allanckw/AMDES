@@ -16,13 +16,6 @@ namespace AMDES_KBS.Entity
             get { return grpID; }
             set { grpID = value; }
         }
-        private int nextGrpID;
-
-        public int NextGrpID
-        {
-            get { return nextGrpID; }
-            set { nextGrpID = value; }
-        }
 
 
     }
