@@ -23,7 +23,7 @@ namespace AMDES_KBS.Controllers
                     new XDeclaration("1.0", "utf-8", "yes"),
 
                     new XComment("AMDES Rules xml"),
-                        new XElement("Navigation")
+                        new XElement("Navigations")
                 );
 
                 document.Save(Rules.defaultRulesPath);
@@ -44,7 +44,7 @@ namespace AMDES_KBS.Controllers
             {
                 XDocument document = XDocument.Load(Rules.defaultRulesPath);
 
-                var rules = (from pa in document.Descendants("Navigation")
+                var rules = (from pa in document.Descendants("Navigations")
                              select pa).ToList();
 
                 foreach (var x in rules)
@@ -71,8 +71,7 @@ namespace AMDES_KBS.Controllers
 
             //Not sure if i need to set NextGroupLink from outsRIDe so i can load the information to clips on load
             //(i.e. the information for : Y -> A, N -> B, < 7 -> A, > 7 -> B
-            XElement newGRP = new XElement("Navigations");
-
+           
             string navid = getNextRuleRID().ToString();
             XElement navex = new XElement("Navex", new XAttribute("NavID", navid),
                                    new XElement("Destination", q.DestGrpID),
@@ -111,7 +110,7 @@ namespace AMDES_KBS.Controllers
                 XElement diag = new XElement("DiagnosisID", diagID);
                 navex.Element("Diagnoses").Add(diag);
             }
-            newGRP.Element("Navigations").Add(navex);
+            document.Element("Navigations").Add(navex);
             document.Save(Rules.defaultRulesPath);
         }
 

@@ -71,7 +71,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Height="330" VerticalAlignment="Bottom">
-            <!-- List of Graphs -->
+            <!-- List of Graphs Comment away the part below to hide-->
             <ItemsControl Name="zz"
     HorizontalAlignment="Center"
     ItemsSource="{Binding Path=., Mode=OneTime}"
@@ -89,6 +89,7 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+            <!-- end graph drawing -->
         </StackPanel>
     </Grid>
 </Window>
