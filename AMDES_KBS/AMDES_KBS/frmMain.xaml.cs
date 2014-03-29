@@ -46,19 +46,19 @@ namespace AMDES_KBS
 
         private void btnSetting_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result =
-                MessageBox.Show("This configurations is for expert users only for the setting up of AMDES, "
-                                + Environment.NewLine +
-                                "Changing the settings (any one of the them) will cause all existing data to be archived and the system may fail if it is incorrectly configured"
-                                + Environment.NewLine +
-                                "Are you sure you want to continue??? ", "Confirmation of entering configuration form",
-                                MessageBoxButton.YesNo, MessageBoxImage.Question);
+            //MessageBoxResult result =
+            //    MessageBox.Show("This configurations is for expert users only for the setting up of AMDES, "
+            //                    + Environment.NewLine +
+            //                    "Changing the settings (any one of the them) will cause all existing data to be archived and the system may fail if it is incorrectly configured"
+            //                    + Environment.NewLine +
+            //                    "Are you sure you want to continue??? ", "Confirmation of entering configuration form",
+            //                    MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            if (result == MessageBoxResult.Yes)
-            {
+           // if (result == MessageBoxResult.Yes)
+           // {
                 frmSetting SettingForm = new frmSetting();
                 SettingForm.ShowDialog();
-            }
+            //}
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)

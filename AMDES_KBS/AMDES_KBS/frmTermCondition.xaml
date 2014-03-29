@@ -3,7 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="AMDES_KBS.frmTermCondition"
 	x:Name="Window"
-	Title="frmTermCondition"
+	Title="Welcome to AMDES - Adaptive Medical Diagnosis Expert System"
 	Width="440" Height="492" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
 
     <Grid x:Name="LayoutRoot">
@@ -19,21 +19,22 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="stkpnlTermCondition" Height="335" Width="430">
-                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="24"/>
+                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="20"/>
                 <RichTextBox Height="300" Width="400" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
                     <FlowDocument>
                         <Paragraph>
                             <Run Text="Welcome to AMDES (Adaptive Medical Diagnosis Expert System) for the Early Diagnosis of Dementia"/>
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="This is an experimental proficatic expert system for the early diagnosis for dementia, by providing suggestions to detect and next course of actions based on clinical guidelines and machine learning techniques based on past patients' history" />
+                            <Run Text="This is an experimental expert system for the early diagnosis for dementia. It does so by providing suggestions to detect and try to offer the next course of action based on clinical guidelines from the DSM IV Criteria together with machine learning techniques based on past patients' history" />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="This system serves as a guide and does not gurantee that the patient is actually suffering from dementia, the physician should exercise his own discretion based on the output provided by the system." />
+                            <Run Text="We would appreciate your feedback, you may send them to amdes_nus_soc@googlegroups.com " />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="Credits: Medical Informatics Team from Khoo Teck Puat Hospital and National University of Singapore, School of Computing"/>
+                            <Run Text="Credits: Medical Informatics Team from Khoo Teck Puat Hospital and National University of Singapore, School of Computing."/>
                         </Paragraph>
+                       
                     </FlowDocument>
                 </RichTextBox>
             </StackPanel>

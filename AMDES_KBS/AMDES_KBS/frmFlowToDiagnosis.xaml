@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:amdes="clr-namespace:AMDES_KBS"
           xmlns:local="clr-namespace:CircularDependencyTool"
-        Title="Flow to Diagnosis" Height="680" Width="660" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Flow to Diagnosis" Height="720" Width="660" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="{x:Type local:NodeConnector}">
             <Setter Property="ArrowLength" Value="12" />
