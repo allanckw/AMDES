@@ -28,7 +28,7 @@
                     </StackPanel>
                     <StackPanel x:Name="stkpnlDiagnosisRule">
                         <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="170" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionChanged="lstDiagnosisList_SelectionChanged">
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="170" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
