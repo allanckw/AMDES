@@ -90,7 +90,7 @@
             </StackPanel>
             
         </StackPanel>
-        <Label Content="Displaying Decision Points:" Margin="0,340,0,0" FontSize="15" />
+        <Label Content="Displaying Decision Points:" Margin="0,340,0,0" FontSize="15" Name="lblText" />
         <StackPanel Orientation="Horizontal" Height="330" VerticalAlignment="Bottom">
             
             <!-- List of Graphs Comment away the part below to hide-->

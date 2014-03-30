@@ -22,7 +22,7 @@ namespace AMDES_KBS
 
     public partial class frmFlowToDiagnosis : Window
     {
-        int currStep=1;
+        int currStep = 1;
         List<ucNavigationFlowSetting> lstStep;
         Rules rule;
 
@@ -30,13 +30,6 @@ namespace AMDES_KBS
         List<Graph> gList = new List<Graph>();
         Graph g;
         //end graph drawing
-
-        private void loadGraph()
-        {
-            gList.Clear();
-            gList.Add(g);
-            zz.DataContext = gList;
-        }
 
         private void loadGraph1()
         {
@@ -50,7 +43,7 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             //IEnumerable<Graph> g = GraphBuilder.BuildGraphs();
-            
+
             lstStep = new List<ucNavigationFlowSetting>();
 
             if (!FirstQuestionController.checkFirstQuestion())
@@ -58,7 +51,7 @@ namespace AMDES_KBS
                 MessageBox.Show("Please set your first question before continuing!");
                 new frmFirstPageSetting().ShowDialog();
             }
-            
+
             LoadAllRule();
 
             //newFlowDetail();
@@ -132,6 +125,7 @@ namespace AMDES_KBS
             currStep = 1;
             rule = new Rules();
             rule.RuleID = NavigationController.getNextRuleRID();
+
             txtDescription.Text = "";
             lstDiagnosisList.ItemsSource = null;
             cboDiagnosisList.SelectedIndex = -1;
@@ -139,6 +133,10 @@ namespace AMDES_KBS
             addNewStep();
             btnNextStep.Visibility = Visibility.Visible;
             btnPrevStep.Visibility = Visibility.Hidden;
+
+            g = new Graph("New Rule - Rule ID: " + rule.RuleID.ToString());
+            loadGraph1();
+            lblText.Content = "Displaying Decision Points";
         }
 
         public void addNewStep()
@@ -172,7 +170,7 @@ namespace AMDES_KBS
         private void lstDiagnosisList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int selectedIdx = lstDiagnosisList.SelectedIndex;
-            if (selectedIdx==-1)
+            if (selectedIdx == -1)
             {
                 return;
             }
@@ -180,17 +178,6 @@ namespace AMDES_KBS
 
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
         {
-           
-            Navigation navs = rule.Navigations[currStep - 1];
-            g.resetGraph();
-
-            foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
-            {
-                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
-            }
-
-            loadGraph1();
-
             currStep++;
             int tempPage = currStep - 1;
             if (tempPage < lstStep.Count)
@@ -201,11 +188,33 @@ namespace AMDES_KBS
             {
                 addNewStep();
             }
+
+            if (cboDiagnosisList.SelectedIndex >= 0)
+            {
+                Navigation navs = rule.Navigations[currStep - 2];
+                g.resetGraph();
+
+                foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
+                {
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                }
+
+                loadGraph1();
+            }
+            else
+            {
+                //@KAI
+                //i need the object of the previous navigation, 
+                //i see that u did not add it to rules directly, so i am unable to get it back when 
+                //no diagnosis id is selected, please facilitate
+            }
+            lblText.Content = "Displaying Last Decision Point (Previous Step)";
         }
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
             newFlowDetail();
+
         }
 
         private void chk_Checked(object sender, RoutedEventArgs e)
@@ -222,25 +231,32 @@ namespace AMDES_KBS
         {
             currStep--;
 
-            Navigation navs = rule.Navigations[currStep - 1];
-            g.resetGraph();
+            loadSteps();
 
-            foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
+            if (cboDiagnosisList.SelectedIndex >= 0)
             {
-                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                Navigation navs;
+                if (currStep == 1)
+                    navs = rule.Navigations[currStep - 1];
+                else
+                    navs = rule.Navigations[currStep - 2];
+
+                g.resetGraph();
+                foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
+                {
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                }
+                loadGraph1();
+            }
+            else
+            {
+                //@KAI
+                //i need the object of the previous navigation, 
+                //i see that u did not add it to rules directly, so i am unable to get it back when 
+                //no diagnosis id is selected, please facilitate
             }
 
-            loadGraph1();
-
-            loadSteps();
-            //if (currStep > 1)
-            //{
-            //    btnPrevStep.Visibility = Visibility.Visible;
-            //}
-            //else
-            //{
-            //    btnPrevStep.Visibility = Visibility.Hidden;
-            //}
+            lblText.Content = "Displaying Current Decision Point";
         }
 
         private void loadSteps()
@@ -254,13 +270,11 @@ namespace AMDES_KBS
                 btnPrevStep.Visibility = Visibility.Visible;
             }
 
-
-
             stkpnlSteps.Children.Clear();
             lstStep[currStep - 1].loadCheckedYN();
             lstStep[currStep - 1].loadCheckedAgeMoreOrLess();
             disableNextButton(lstStep[currStep - 1]);
-            stkpnlSteps.Children.Add(lstStep[currStep-1]);
+            stkpnlSteps.Children.Add(lstStep[currStep - 1]);
 
         }
 
@@ -273,11 +287,11 @@ namespace AMDES_KBS
             }
 
             rule = (Rules)cboDiagnosisList.Items[selectedIdx];
-            
+
             //Graph
             g = new Graph("RuleID: " + rule.RuleID + ", " + rule.Description);
             //g.addGraphNodes(QuestionController.getGroupByID(rule.Navigations[0].ChildCriteriaQuestion[0].CriteriaGrpID).Header);
-            loadGraph();
+            loadGraph1();
             //end graph
 
             loadNaviList(rule);
@@ -287,11 +301,11 @@ namespace AMDES_KBS
         {
             rule.Description = txtDescription.Text;
             List<int> RIDList = new List<int>();
-            if (rule.DiagnosisList.Count>0)
+            if (rule.DiagnosisList.Count > 0)
             {
                 foreach (Diagnosis dia in rule.DiagnosisList)
                 {
-                    RIDList.Add(dia.RID);               
+                    RIDList.Add(dia.RID);
                 }
             }
 
@@ -307,7 +321,7 @@ namespace AMDES_KBS
             }
 
             List<Navigation> NaviDeleteList = new List<Navigation>();
-            if (rule.Navigations.Count>0)
+            if (rule.Navigations.Count > 0)
             {
                 foreach (Navigation navi in rule.Navigations)
                 {
@@ -348,7 +362,7 @@ namespace AMDES_KBS
                 }
                 else
                 {
-                    ucNavigationFlowSetting nextStep = lstStep[i+1];
+                    ucNavigationFlowSetting nextStep = lstStep[i + 1];
 
                     if (currStep.chkConclusive.IsChecked == true)
                     {
@@ -366,7 +380,7 @@ namespace AMDES_KBS
 
                 currStep.getAnswer();
                 newNavi.addNavCriteriaQuestion(currStep.getCriteria());
-              
+
                 foreach (NaviChildCritAttribute attr in currStep.getAttrList())
                 {
                     newNavi.addNavCriteriaAttribute(attr);
@@ -389,7 +403,15 @@ namespace AMDES_KBS
             if (saveNavigation())
             {
                 NavigationController.updateRules(rule);
-                refreshPage();
+                g = new Graph("RuleID: " + rule.RuleID + ", " + rule.Description);
+                Navigation nav = rule.Navigations[rule.Navigations.Count - 1];
+                foreach (NaviChildCriteriaQuestion n in nav.ChildCriteriaQuestion)
+                {
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                }
+                loadGraph1();
+                lblText.Content = "Displaying Saved Rule";
+                LoadAllRule();
                 MessageBox.Show("Saved!");
             }
         }
