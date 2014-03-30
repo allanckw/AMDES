@@ -40,11 +40,11 @@ namespace AMDES_KBS.Controllers
         {
             List<Navigation> rList = new List<Navigation>();
 
-            if (File.Exists(Rules.dataPath))
+            if (File.Exists(Rules.defaultRulesPath))
             {
                 XDocument document = XDocument.Load(Rules.defaultRulesPath);
 
-                var rules = (from pa in document.Descendants("Navigations")
+                var rules = (from pa in document.Descendants("Navex")
                              select pa).ToList();
 
                 foreach (var x in rules)
@@ -117,7 +117,7 @@ namespace AMDES_KBS.Controllers
         public static void updateRules(Navigation n)
         {
             createDataFile();
-
+            
             if (getDefaultBehaviorByID(int.Parse(n.NavID)) == null)
             {
                 addNavigation(n); //if RID is not present, just add

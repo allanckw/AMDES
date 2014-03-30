@@ -9,7 +9,7 @@ namespace AMDES_KBS.Entity
     {
         public static string dataPath = @"data\Navex.xml";
 
-        private string navID;
+        private string navID = "-1";
         private int destGrpID = -1;
         private List<int> diagnosis;
 

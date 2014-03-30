@@ -30,6 +30,7 @@ namespace AMDES_KBS
             InitializeComponent();
             newForm();
             loadQuestionGroup();
+            loadAllBehaviour();
         }
 
         private void loadAllBehaviour()
