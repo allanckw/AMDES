@@ -159,7 +159,6 @@
     <Compile Include="GraphDrawing\Arrows\ArrowLine.cs" />
     <Compile Include="GraphDrawing\Arrows\ArrowLineBase.cs" />
     <Compile Include="GraphDrawing\Graph.cs" />
-    <Compile Include="GraphDrawing\GraphBuilder.cs" />
     <Compile Include="GraphDrawing\GraphDetailsView.xaml.cs">
       <DependentUpon>GraphDetailsView.xaml</DependentUpon>
     </Compile>
