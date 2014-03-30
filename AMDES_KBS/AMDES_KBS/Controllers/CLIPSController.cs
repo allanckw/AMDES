@@ -296,19 +296,29 @@ namespace AMDES_KBS.Controllers
         {
             string x = "";
 
-            List<int> naviHistory = new List<int>();
+            List<string> naviHistory = new List<string>();
             String evalStr = "(find-all-facts((?a NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
-
+           
             //Need to find output
             foreach (FactAddressValue fv in mv)
             {
-                x = fv.GetFactSlot("ID").ToString();
+                x = fv.GetFactSlot("ID").ToString().Replace("_", "");
+            }
+            naviHistory = x.Split(' ').ToList<string>();
+
+            
+            Console.WriteLine(x);
+            List<int> h = new List<int>();
+
+            for (int i = 1; i < naviHistory.Count - 1; i++) //ignore 1st and last 
+            {
+                h.Add(int.Parse(naviHistory[i]));
             }
 
-            Console.WriteLine(x);
+            //return naviHistory;
 
-            return naviHistory;
+            return h;
         }
 
         public static List<Symptom> getCurrentPatientSymptom()
@@ -345,12 +355,11 @@ namespace AMDES_KBS.Controllers
             }
 
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
-            string x = "";
 
             foreach (FactAddressValue fv in mv)
             {
                 //question history YES ONLY
-                x = fv.GetFactSlot("GroupID").ToString();
+                string x = fv.GetFactSlot("GroupId").ToString();
                 //natalie :(
 
 
@@ -373,8 +382,6 @@ namespace AMDES_KBS.Controllers
 
             return history;
         }
-
-
 
     }
 }

@@ -81,7 +81,7 @@
 (multislot RID (type SYMBOL) (default NIL))
 )
 
-;;Question 
+
 (deftemplate NaviChildCritQ
 (slot NavigationID (type SYMBOL) ) ;;NAVID
 (slot CriteriaGroupID (type SYMBOL) (default NIL)) ;;Group ID for TRUE
