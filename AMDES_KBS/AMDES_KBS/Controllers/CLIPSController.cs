@@ -321,7 +321,7 @@ namespace AMDES_KBS.Controllers
             foreach (FactAddressValue fv in mv)
             {
                 Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString(), 
-                                        int.Parse(fv.GetFactSlot("ID").ToString().Remove(0,1)));
+                                        fv.GetFactSlot("ID").ToString().Remove(0,1));
 
                 if (!sList.Contains(s))
                 {

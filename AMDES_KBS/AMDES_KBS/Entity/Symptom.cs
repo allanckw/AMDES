@@ -11,16 +11,16 @@ namespace AMDES_KBS.Entity
         {
         }
 
-        public Symptom(string name, int diagID)
+        public Symptom(string name, string diagID)
         {
             this.name = name;
             this.diagnosedByID = diagID;
             this.diaDate = DateTime.Now;
         }
 
-        private int diagnosedByID;
+        private string diagnosedByID;
 
-        public int DiagnosedByID
+        public string DiagnosedByID
         {
             get { return diagnosedByID; }
             set { diagnosedByID = value; }
