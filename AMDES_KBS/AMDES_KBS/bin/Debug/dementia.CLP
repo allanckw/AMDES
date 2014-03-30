@@ -153,18 +153,18 @@
 (modify ?CUR_Group (answer No))
 )
 
-(defrule Pass-COUNT-no-to-yes
+(defrule Pass-COUNT-No-to-yes
 ?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType COUNT) (TrueCount ?b) (SuccessArg ?c) (answer ~Yes))
 (test(>= ?b ?c))
 =>
 (modify ?CUR_Group (answer Yes))
 )
 
-(defrule Pass-COUNT-yes-to-no
+(defrule Pass-COUNT-yes-to-No
 ?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType COUNT) (TrueCount ?b) (SuccessArg ?c) (answer ~No))
 (test(< ?b ?c))
 =>
-(modify ?CUR_Group (answer no))
+(modify ?CUR_Group (answer No))
 )
 
 (defrule Change-Answer
@@ -550,7 +550,7 @@
 		(if(= ?attvalue ?av)
 		then;;yes
 			(modify ?crit (Answer Yes))
-		else;;no
+		else;;No
 			(modify ?crit (Answer No))
 		)
 	)
@@ -561,7 +561,7 @@
 		then;;yes
 			(modify ?crit (Answer Yes))
 	
-		else;;no
+		else;;No
 			(modify ?crit (Answer No))
 		)
 	)
@@ -571,7 +571,7 @@
 		then;;yes
 			(modify ?crit (Answer Yes))
 	
-		else;;no
+		else;;No
 			(modify ?crit (Answer No))
 		)
 	)
@@ -580,7 +580,7 @@
 		(if(> ?attvalue ?av)
 		then;;yes
 			(modify ?crit (Answer Yes))
-		else;;no
+		else;;No
 			(modify ?crit (Answer No))
 		)
 	)
@@ -590,7 +590,7 @@
 		(if(< ?attvalue ?av)
 		then;;yes
 			(modify ?crit (Answer Yes))
-		else;;no
+		else;;No
 			(modify ?crit (Answer No))	
 		)
 	)
