@@ -77,7 +77,7 @@ namespace AMDES_KBS
             CLIPSController.ClearandLoad();
             //Allan ToDo: load history here
             int sectionID = CLIPSController.getCurrentQnGroupID();
-            MessageBox.Show(sectionID.ToString());
+            //MessageBox.Show(sectionID.ToString()); - DONE
 
             frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
             amdesPageFrame.Navigate(TestSection);

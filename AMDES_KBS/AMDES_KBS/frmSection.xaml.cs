@@ -251,7 +251,7 @@ namespace AMDES_KBS
             int sectionID = CLIPSController.getCurrentQnGroupID();
             
             frmSection nextSection = new frmSection(amdesPageFrame, sectionID, this);
-            
+            MessageBox.Show(sectionID.ToString());
             amdesPageFrame.Navigate(nextSection);
         }
 

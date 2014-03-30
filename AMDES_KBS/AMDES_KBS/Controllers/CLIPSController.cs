@@ -202,12 +202,12 @@ namespace AMDES_KBS.Controllers
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append(" (NavigationID N" + n.NavID + ") ");
+            sb.Append("(Navigation " + "(NavigationID N" + n.NavID + ") ");
+            
 
             if (n.DestGrpID != -1)
             {
-                sb.Append("(Navigation  (DestinationGroupID _");
-                sb.Append(n.DestGrpID + ")");
+                sb.Append("(DestinationGroupID _" + n.DestGrpID + ") ");
             }
 
             if (n.isConclusive())
