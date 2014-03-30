@@ -190,24 +190,25 @@ namespace AMDES_KBS
 
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
         {
-            if (lstStep[currStep - 1].getGroupID() == -1)
-            {
-                MessageBox.Show("Please fill in the current step!");
-                return;
-            }
-            currStep++;
-            //int tempPage = currStep - 1;
-            //if (tempPage < lstStep.Count)
+            //if (lstStep[currStep - 1].getGroupID() == -1)
             //{
-            //    loadSteps();
-            //}
-            //else
-            //{
-            //    addNewStep();
+            //    MessageBox.Show("Please fill in the current step!");
+            //    return;
             //}
 
             if (cboDiagnosisList.SelectedIndex >= 0)
             {
+                currStep++;
+                int tempPage = currStep - 1;
+                if (tempPage < lstStep.Count)
+                {
+                    loadSteps();
+                }
+                else
+                {
+                    addNewStep();
+                }
+
                 Navigation navs = rule.Navigations[currStep - 2];
                 g.resetGraph();
 
