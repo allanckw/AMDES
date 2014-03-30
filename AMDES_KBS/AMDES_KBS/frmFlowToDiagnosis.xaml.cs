@@ -122,9 +122,11 @@ namespace AMDES_KBS
 
         private void newFlowDetail()
         {
+
             currStep = 1;
             rule = new Rules();
             rule.RuleID = NavigationController.getNextRuleRID();
+
 
             txtDescription.Text = "";
             lstDiagnosisList.ItemsSource = null;
@@ -133,7 +135,7 @@ namespace AMDES_KBS
             addNewStep();
             btnNextStep.Visibility = Visibility.Visible;
             btnPrevStep.Visibility = Visibility.Hidden;
-
+            
             g = new Graph("New Rule - Rule ID: " + rule.RuleID.ToString());
             loadGraph1();
             lblText.Content = "Displaying Decision Points";
@@ -141,10 +143,20 @@ namespace AMDES_KBS
 
         public void addNewStep()
         {
+   
             stkpnlSteps.Children.Clear();
             ucNavigationFlowSetting step = new ucNavigationFlowSetting(currStep);
             step.chkConclusive.Checked += new RoutedEventHandler(chk_Checked);
             step.chkConclusive.Unchecked += new RoutedEventHandler(chk_UnChecked);
+
+            //@KAI, please create a label to tell people that the 1st step is defaulted to
+            //the first question, if the first question is taken care of by default behavior 
+            //they can change
+            if (currStep == 1)
+            {
+                step.setGroupBox(FirstQuestionController.readFirstQuestion().GrpID);
+            }
+
             lstStep.Add(step);
             stkpnlSteps.Children.Add(step);
             if (currStep == 1)

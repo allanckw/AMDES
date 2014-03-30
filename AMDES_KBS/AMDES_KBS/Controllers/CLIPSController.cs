@@ -56,7 +56,7 @@ namespace AMDES_KBS.Controllers
                 assertLog.Clear();
                 count = 0; 
 
-                env.Load("dementia.clp");
+                env.Load(@"engine\dementia.clp");
                 
                 reset();
                 assert(new StringBuilder("(mode 1)"));

@@ -56,7 +56,7 @@
             <StackPanel x:Name="stkpnlDetail" Orientation="Horizontal">
                 <StackPanel x:Name="stkpnlNotConclusive" Orientation="Horizontal">
                     <StackPanel x:Name="stkpnlGroupList">
-                        <Label Content="Choose Section" FontWeight="Bold" />
+                        <Label Content="Choose Section" FontWeight="Bold" Width="405" />
                         <ComboBox x:Name="cboGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <ComboBox.ItemTemplate>

@@ -117,5 +117,10 @@ namespace AMDES_KBS.Entity
             set { desc = value; }
         }
 
+        public bool Equals(QuestionGroup qg)
+        {
+            return this.GroupID == qg.GroupID;
+        }
+
     }
 }

@@ -50,13 +50,27 @@ namespace AMDES_KBS
             loadAnswer(step, navi);
         }
 
+        public void setGroupBox(int grpID)
+        {
+            QuestionGroup qg = QuestionController.getGroupByID(grpID);
+            for (int i = 0; i < cboGroupList.Items.Count; i++)
+            {
+                QuestionGroup g = (QuestionGroup)cboGroupList.Items[i];
+                if (g.Equals(qg))
+                {
+                    cboGroupList.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
         public void getAnswer()
         {
             naviChildCriteriaGroup = new NaviChildCriteriaQuestion();
             naviChildAttrGroupList = new List<NaviChildCritAttribute>();
 
             int selectedIdx = cboGroupList.SelectedIndex;
-            int currGrpID=((QuestionGroup)cboGroupList.Items[selectedIdx]).GroupID;
+            int currGrpID = ((QuestionGroup)cboGroupList.Items[selectedIdx]).GroupID;
             naviChildCriteriaGroup.CriteriaGrpID = currGrpID;
             naviChildCriteriaGroup.Ans = Result;
 
@@ -86,7 +100,7 @@ namespace AMDES_KBS
                 }
             }
 
-            if (!ageExists && this.chkRequireAge.IsChecked==true)
+            if (!ageExists && this.chkRequireAge.IsChecked == true)
             {
                 NaviChildCritAttribute ageAttr = new NaviChildCritAttribute();
                 //ageExists = true;
@@ -161,7 +175,7 @@ namespace AMDES_KBS
             List<NaviChildCritAttribute> navigroupList = new List<NaviChildCritAttribute>();
             foreach (NaviChildCritAttribute naviAttr in navi.ChildCriteriaAttributes)
             {
-                if (naviAttr.GroupID==grpID)
+                if (naviAttr.GroupID == grpID)
                 {
                     //navigroupList.Add(naviAttr);
                     naviChildAttrGroupList.Add(naviAttr);
@@ -197,7 +211,7 @@ namespace AMDES_KBS
             //NaviChildCritAttribute.AttributeCmpType.MoreThanEqual;
             //if (naviChildAttribute.AttributeNameCMP)
             //{
-                
+
             //}
         }
 
