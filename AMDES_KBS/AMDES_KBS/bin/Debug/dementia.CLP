@@ -40,14 +40,14 @@
 
 ; ; QuestionQuestionQuestion
 (deftemplate question
-(slot Id (type SYMBOL))
+(slot ID (type SYMBOL))
 (slot QuestionText (type STRING))
 (slot answer (type SYMBOL) (default NIL))
-(slot GroupId (type SYMBOL))
+(slot GroupID (type SYMBOL))
 )
 
 (deftemplate group
-(slot GroupId (type SYMBOL))
+(slot GroupID (type SYMBOL))
 (slot SuccessType (type SYMBOL))
 (slot SuccessArg (type INTEGER))
 (slot TrueCount (type INTEGER) (default 0))
@@ -58,14 +58,14 @@
 
 ;;maybe dont need depends
 (deftemplate Currentquestion
-(slot Id (type SYMBOL))
+(slot ID (type SYMBOL))
 (slot QuestionText (type STRING))
 (slot answer (type STRING) (default ""))
-(slot GroupId (type SYMBOL))
+(slot GroupID (type SYMBOL))
 )
 
 (deftemplate Currentgroup
-(slot GroupId (type SYMBOL))
+(slot GroupID (type SYMBOL))
 (slot SuccessType (type SYMBOL))
 (slot SuccessArg (type INTEGER))
 (slot TrueCount (type INTEGER) (default 0))
@@ -110,10 +110,10 @@
 )
 
 (defrule Pass-And
-?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType AND) (answer ~Yes))
+?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType AND) (answer ~Yes))
 (not (exists
 	
-	(question (Id ?a) (QuestionText ?b) (answer No) (GroupId ?z))
+	(question (ID ?a) (QuestionText ?b) (answer No) (GroupID ?z))
 ))
 =>
 ;;(printout t crlf "Satisfied "?z"!" crlf)
@@ -121,10 +121,10 @@
 )
 
 (defrule Fail-And
-?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType AND) (answer Yes))
+?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType AND) (answer Yes))
 (exists
 	
-	(question (Id ?a) (QuestionText ?b) (answer No) (GroupId ?z))
+	(question (ID ?a) (QuestionText ?b) (answer No) (GroupID ?z))
 )
 =>
 ;;(printout t crlf "Satisfied "?z"!" crlf)
@@ -132,10 +132,10 @@
 )
 
 (defrule Pass-OR
-?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType OR) (answer ~Yes))
+?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType OR) (answer ~Yes))
 (exists
 	
-	(question (Id ?a) (QuestionText ?b) (answer Yes) (GroupId ?z))
+	(question (ID ?a) (QuestionText ?b) (answer Yes) (GroupID ?z))
 )
 =>
 ;;(printout t crlf "Satisfied "?z"!" crlf)
@@ -143,10 +143,10 @@
 )
 
 (defrule Fail-OR
-?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType OR) (answer Yes))
+?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType OR) (answer Yes))
 (not (exists
 	
-	(question (Id ?a) (QuestionText ?b) (answer Yes) (GroupId ?z))
+	(question (ID ?a) (QuestionText ?b) (answer Yes) (GroupID ?z))
 ))
 =>
 ;;(printout t crlf "Satisfied "?z"!" crlf)
@@ -154,14 +154,14 @@
 )
 
 (defrule Pass-COUNT-no-to-yes
-?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType COUNT) (TrueCount ?b) (SuccessArg ?c) (answer ~Yes))
+?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType COUNT) (TrueCount ?b) (SuccessArg ?c) (answer ~Yes))
 (test(>= ?b ?c))
 =>
 (modify ?CUR_Group (answer Yes))
 )
 
 (defrule Pass-COUNT-yes-to-no
-?CUR_Group <- (group (GroupId ?z&~NIL) (SuccessType COUNT) (TrueCount ?b) (SuccessArg ?c) (answer ~No))
+?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType COUNT) (TrueCount ?b) (SuccessArg ?c) (answer ~No))
 (test(< ?b ?c))
 =>
 (modify ?CUR_Group (answer no))
@@ -169,8 +169,8 @@
 
 (defrule Change-Answer
 ?f1 <- (choice ?id ?x)
-?f2 <- (question (Id ?id) (answer ?y) (GroupId ?z))
-?f3 <- (group (GroupId ?z) (TrueCount ?count))
+?f2 <- (question (ID ?id) (answer ?y) (GroupID ?z))
+?f3 <- (group (GroupID ?z) (TrueCount ?count))
 =>
 (switch ?y
 (case NIL then 
@@ -221,12 +221,12 @@
 
 ;; change page here
 (defrule previous_question
-?rmv<-(Currentgroup (GroupId ?y))
+?rmv<-(Currentgroup (GroupID ?y))
 ?prev<-(previous)
 ?hist<-(NaviHistory (ID $?x ?p ?y END))
 ?grp<-
 (group 
-(GroupId ?p)
+(GroupID ?p)
 (SuccessType ?a)
 (SuccessArg ?b)
 (TrueCount ?c)
@@ -240,7 +240,7 @@
 (printout t crlf "previous" crlf)
 (assert 
 (Currentgroup 
-(GroupId ?p)
+(GroupID ?p)
 (SuccessType ?a)
 (SuccessArg ?b)
 (TrueCount ?c)
@@ -260,7 +260,7 @@
 (Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
 (forall
 (NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
-(group (GroupId ?CGID) (answer ?CA))
+(group (GroupID ?CGID) (answer ?CA))
 (NaviHistory (ID $?START ?CGID $?END))
 )
 (not (exists (Currentgroup)))
@@ -271,7 +271,7 @@
 ?hist<-(NaviHistory (ID $?x END))
 ?grp<-
 (group 
-(GroupId ?z)
+(GroupID ?z)
 (SuccessType ?a)
 (SuccessArg ?b)
 (TrueCount ?c)
@@ -282,7 +282,7 @@
 =>
 	(assert 
 	(Currentgroup 
-	(GroupId ?z)
+	(GroupID ?z)
 	(SuccessType ?a)
 	(SuccessArg ?b)
 	(TrueCount ?c)
@@ -296,12 +296,12 @@
 ;; change page here
 (defrule next_question1
 	(mode 1)
-	?rmv<-(Currentgroup (GroupId ?y))
+	?rmv<-(Currentgroup (GroupID ?y))
 	?nxt<-(next)
 	(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
 	(forall
 		(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
-		(group (GroupId ?CGID) (answer ?CA))
+		(group (GroupID ?CGID) (answer ?CA))
 		(NaviHistory (ID $?START ?CGID $?END))
 	)
 	
@@ -312,7 +312,7 @@
 	?hist<-(NaviHistory (ID $?x END))
 	?grp<-
 	(group 
-		(GroupId ?z)
+		(GroupID ?z)
 		(SuccessType ?a)
 		(SuccessArg ?b)
 		(TrueCount ?c)
@@ -327,7 +327,7 @@
 	(printout t crlf "next" crlf)
 	(assert 
 		(Currentgroup 
-		(GroupId ?z)
+		(GroupID ?z)
 		(SuccessType ?a)
 		(SuccessArg ?b)
 		(TrueCount ?c)
@@ -341,13 +341,13 @@
 ;; Navigation to a conclusion
 (defrule next_question2
 	(mode 1)
-	?rmv<-(Currentgroup (GroupId ?y))
+	?rmv<-(Currentgroup (GroupID ?y))
 	?nxt<-(next)
 	(Navigation (NavigationID ?naviID) (DestinationGroupID NIL) (RID $?diag))
 	
 	(forall
 		(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
-		(group (GroupId ?CGID) (answer ?CA))
+		(group (GroupID ?CGID) (answer ?CA))
 		(NaviHistory (ID $?START ?CGID $?END))
 	)
 
@@ -502,24 +502,24 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defrule CurrentQuestion-retract
-(Currentgroup (GroupId ?y))
-?question<-(Currentquestion (GroupId ?x&~?y))
+(Currentgroup (GroupID ?y))
+?question<-(Currentquestion (GroupID ?x&~?y))
 =>
 (retract ?question)
 )
 
 
 (defrule CurrentQuestion-assert
-(Currentgroup (GroupId ?y))
-(question (GroupId ?y) (Id ?a) (QuestionText ?b) (answer ?c))
+(Currentgroup (GroupID ?y))
+(question (GroupID ?y) (ID ?a) (QuestionText ?b) (answer ?c))
 (not 
 
 (exists
- (Currentquestion (Id ?a))
+ (Currentquestion (ID ?a))
 )
 )
 =>
-(assert (Currentquestion (GroupId ?y) (Id ?a) (QuestionText ?b) (answer ?c)))
+(assert (Currentquestion (GroupID ?y) (ID ?a) (QuestionText ?b) (answer ?c)))
 )
 
 
@@ -528,7 +528,7 @@
 (mode2criteriaGroup (GroupID ?z&~NIL))
 (forall 
 	(mode2criteria (Answer ?x) (ID ?y) (GroupID ?z))
-	(group (answer ?x) (GroupId ?y))
+	(group (answer ?x) (GroupID ?y))
 )
 (not (exists
 	(mode2criteriaAttribute (Answer No) (GroupID ?z))
@@ -599,7 +599,7 @@
 )
 
 (defrule Add-symptoms-groupid
-(group (answer Yes) (GroupId ?id) )
+(group (answer Yes) (GroupID ?id) )
 (groupid-symptoms (GroupID ?id) (symptom ?sym))
 (not (exists (symptoms (ID ?id))))
 =>
@@ -609,7 +609,7 @@
 
 (defrule Retract-symptoms-groupid
 
-(group (answer No) (GroupId ?Noid) )
+(group (answer No) (GroupID ?Noid) )
 (groupid-symptoms (GroupID ?Noid))
 ?sym <- (symptoms (ID ?Noid))
 =>
@@ -618,7 +618,7 @@
 )
 
 (defrule Add-symptoms-questionid
-(question (answer Yes) (Id ?id) )
+(question (answer Yes) (ID ?id) )
 (questionid-symptoms (QuestionID ?id) (symptom ?sym))
 (not (exists (symptoms (ID ?id))))
 =>
@@ -628,7 +628,7 @@
 
 (defrule Retract-symptoms-questionid
 
-(question (answer Yes) (Id ?Noid) )
+(question (answer Yes) (ID ?Noid) )
 (questionid-symptoms (QuestionID ?Noid))
 ?sym <- (symptoms (ID ?Noid))
 =>

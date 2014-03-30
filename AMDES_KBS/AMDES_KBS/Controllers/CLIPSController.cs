@@ -14,6 +14,7 @@ namespace AMDES_KBS.Controllers
 
         //for debug purpose, to pull out to test on clips, and to pull out to assert for restore patient
         private static List<String> assertLog = new List<String>();
+        static int count = 0; //just a counter to check the number of assertions... 
 
         //WARNING MOMOSOFT CLIPS REQUIRED x86 MODE ONLY, ALL OTHER MODE WILL FAIL
         private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
@@ -53,11 +54,14 @@ namespace AMDES_KBS.Controllers
                 //call this f(x) everytime u click a new patient
                 env.Clear();
                 assertLog.Clear();
+                count = 0; 
 
                 env.Load("dementia.clp");
+                
                 reset();
                 assert(new StringBuilder("(mode 1)"));
                 assertAge();
+                run();
 
                 List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
 
@@ -77,8 +81,10 @@ namespace AMDES_KBS.Controllers
                 else
                 {
                     loadQuestions(grps); //load question pass all assertions
-                    //loadNavex(fq, rList, defBehavior);
-                    //
+                    run();
+                    loadNavex(fq, rList, defBehavior);
+                    run();
+                    saveAssertLog();
                     //run();
                 }
                
@@ -97,20 +103,24 @@ namespace AMDES_KBS.Controllers
         private static void run()
         {
             env.Run();
+            assertLog.Add("(run)");
         }
 
         public static void reset()
         {
             env.Reset();
+            assertLog.Add("(reset)");
         }
-        static int count = 0;
+        
         private static void assert(StringBuilder sb)
         {
-            env.AssertString(sb.ToString());
-            assertLog.Add(sb.ToString());
+            String a = sb.ToString().Trim();
+            env.AssertString(a);
+            assertLog.Add(a);
             count++;
         }
 
+        //Clear
         private static void loadQuestions(List<QuestionGroup> grps)
         {
             StringBuilder sb;
@@ -118,7 +128,7 @@ namespace AMDES_KBS.Controllers
             foreach (QuestionGroup qg in grps)
             {
                 sb = new StringBuilder();
-                sb.Append("(group (GroupId _" + qg.GroupID + ") (SuccessType ");
+                sb.Append("(group (GroupID _" + qg.GroupID + ") (SuccessType ");
 
                 if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
                 {
@@ -147,7 +157,13 @@ namespace AMDES_KBS.Controllers
                 {
                     sb.Clear();
 
-                    sb.Append("(question (Id _" + q.ID + ") (QuestionText " + "\"" + q.Name + "\"" + ") (GroupId _" + qg.GroupID + "))");
+                    sb.Append("(question (ID _" + q.ID + ") ");
+                    sb.Append("(GroupID _" + qg.GroupID + ") ");
+                    
+                    //sb.Append("(QuestionText " + "\"" + q.Name + "\"" + ") "); 
+                    //irrelevant to dump to clips required only when doing on command prompt
+                    
+                    sb.Append(")");
                     assert(sb);
 
                     //question symptom assertion
@@ -185,9 +201,14 @@ namespace AMDES_KBS.Controllers
         private static void createNavigationAssertion(Navigation n)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("(Navigation  (DestinationGroupID _");
-            sb.Append(n.DestGrpID + ")");
+
             sb.Append(" (NavigationID N" + n.NavID + ") ");
+
+            if (n.DestGrpID != -1)
+            {
+                sb.Append("(Navigation  (DestinationGroupID _");
+                sb.Append(n.DestGrpID + ")");
+            }
 
             if (n.isConclusive())
             {
@@ -353,13 +374,13 @@ namespace AMDES_KBS.Controllers
             foreach (FactAddressValue fv in mv)
             {
                 //question history YES ONLY
-                string x = fv.GetFactSlot("GroupId").ToString();
+                string x = fv.GetFactSlot("GroupID").ToString();
                 //natalie :(
 
 
                 if (navHistory.Contains(int.Parse(x.Remove(0, 1))))
                 {
-                    string qid = fv.GetFactSlot("Id").ToString();
+                    string qid = fv.GetFactSlot("ID").ToString();
                     string answer = fv.GetFactSlot("answer").ToString();
                     if (answer.ToUpper().CompareTo("YES") == 0)
                     {
