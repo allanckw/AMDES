@@ -44,7 +44,10 @@ namespace AMDES_KBS
             naviChildAttribute = new List<NaviChildCritAttribute>();
             cboDiagnosisList.SelectedIndex = -1;
             cboGroupList.SelectedIndex = -1;
-            txtDescription.Text = "";
+            chkConclusive.IsChecked = false;
+            stkpnlDiagnosis.Visibility = Visibility.Collapsed;
+            stkpnlSectionDestination.Visibility = Visibility.Visible;
+            //txtDescription.Text = "";
             reloadAttribute();
             reloadCriteria();
         }
@@ -81,6 +84,7 @@ namespace AMDES_KBS
         private void loadQuestionGroup()
         {
             cboGroupList.ItemsSource = QuestionController.getAllQuestionGroup();
+            cboDestination.ItemsSource = QuestionController.getAllQuestionGroup();
         }
 
         private void btnAddCriteria_Click(object sender, RoutedEventArgs e)
@@ -277,25 +281,41 @@ namespace AMDES_KBS
 
         private bool saveBehaviour()
         {
-            List<int> RIDList = new List<int>();
-            if (navi.DiagnosesID.Count > 0)
+            if (chkConclusive.IsChecked == true)
             {
-                foreach (int diaID in navi.DiagnosesID)
+                List<int> RIDList = new List<int>();
+                if (navi.DiagnosesID.Count > 0)
                 {
-                    RIDList.Add(diaID);
+                    foreach (int diaID in navi.DiagnosesID)
+                    {
+                        RIDList.Add(diaID);
+                    }
+                }
+
+                for (int i = 0; i < RIDList.Count; i++)
+                {
+                    navi.removeDiagnosisID(RIDList[i]);
+                }
+
+                for (int i = 0; i < lstDiagnosisList.Items.Count; i++)
+                {
+                    Diagnosis dia = (Diagnosis)lstDiagnosisList.Items[i];
+                    navi.addDiagnosisID(dia.RID);
                 }
             }
-
-            for (int i = 0; i < RIDList.Count; i++)
+            else
             {
-                navi.removeDiagnosisID(RIDList[i]);
+                int sIdx = cboDestination.SelectedIndex;
+                if (sIdx==-1)
+                {
+                    MessageBox.Show("Please Select ur destination section!");
+                    return false;
+                }
+
+                QuestionGroup qg = (QuestionGroup)cboDestination.Items[sIdx];
+                navi.DestGrpID = qg.GroupID;
             }
 
-            for (int i = 0; i < lstDiagnosisList.Items.Count; i++)
-            {
-                Diagnosis dia = (Diagnosis)lstDiagnosisList.Items[i];
-                navi.addDiagnosisID(dia.RID);
-            }
 
             navi.clearCriteriaQuestions();
             navi.clearCriteriaAttributes();
@@ -368,6 +388,18 @@ namespace AMDES_KBS
 
             reloadCriteria();
             reloadAttribute();
+        }
+
+        private void chkConclusive_Checked(object sender, RoutedEventArgs e)
+        {
+            stkpnlSectionDestination.Visibility = Visibility.Collapsed;
+            stkpnlDiagnosis.Visibility = Visibility.Visible;
+        }
+
+        private void chkConclusive_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stkpnlSectionDestination.Visibility = Visibility.Visible;
+            stkpnlDiagnosis.Visibility = Visibility.Collapsed;
         }
     }
 }

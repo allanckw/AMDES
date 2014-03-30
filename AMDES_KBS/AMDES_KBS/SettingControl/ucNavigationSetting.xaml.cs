@@ -49,13 +49,12 @@ namespace AMDES_KBS
                 }
             }
 
-            //@Kai attention require age now no longer uses isRequireAge, but adds navichildcriteria
             //chkRequireAge.IsChecked = navi.isRequireAge;
             //radless.IsChecked = navi.LessThanAge;
             //radMoreEqual.IsChecked = navi.MoreThanEqualAge;
             //txtAge.Text = navi.Age.ToString();
 
-            //@Kai Attention DiagnosisID here
+
             lstDiagnosisList.ItemsSource = navi.DiagnosesID;
             //if (navi.LessThanAge==true)
             //{

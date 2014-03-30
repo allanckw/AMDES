@@ -74,7 +74,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button x:Name="btnPrevStep" Width="100" Height="25" Margin="0,0,10,0" Visibility="Hidden" Click="btnPrevStep_Click">Prev Step</Button>
-                            <Button x:Name="btnNextStep" Width="100" Height="25" Margin="0,0,1,0" Click="btnNextStep_Click">Next Step</Button>
+                            <Button x:Name="btnNextStep" Width="100" Height="25" Margin="0,0,1,0" Visibility="Hidden" Click="btnNextStep_Click">Next Step</Button>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel x:Name="stkpnlBUtton" Orientation="Horizontal" Height="30" Width="430" Margin="0,10,0,0">

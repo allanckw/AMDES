@@ -178,7 +178,11 @@ namespace AMDES_KBS
 
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (lstStep[currStep-1].getGroupID() == -1)
+            {
+                MessageBox.Show("Please fill in the current step!");
+                return;
+            }
             currStep++;
             int tempPage = currStep - 1;
             if (tempPage < lstStep.Count)
@@ -204,10 +208,48 @@ namespace AMDES_KBS
             }
             else
             {
-                //@KAI
+            currStep++;
+            int tempPage = currStep - 1;
+            if (tempPage < lstStep.Count)
+            {
+                loadSteps();
+            }
+            else
+            {
+                addNewStep();
+            }
+
+            if (cboDiagnosisList.SelectedIndex >= 0)
+            {
+                Navigation navs = rule.Navigations[currStep - 2];
+                g.resetGraph();
+
+                foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
+                {
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                }
+
+                loadGraph1();
+            }
+            else
+            {
+                //@KAI fixed
                 //i need the object of the previous navigation, 
                 //i see that u did not add it to rules directly, so i am unable to get it back when 
                 //no diagnosis id is selected, please facilitate
+                Navigation navs = new Navigation();
+                for (int i = 0; i < currStep; i++)
+                {
+                    ucNavigationFlowSetting ucNavi = lstStep[i];
+                    ucNavi.getAnswer();
+                    navs.addNavCriteriaQuestion(ucNavi.getCriteria());
+                }
+                g.resetGraph();
+                foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
+                {
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                }
+                loadGraph1();
             }
             lblText.Content = "Displaying Last Decision Point (Previous Step)";
         }
@@ -249,10 +291,23 @@ namespace AMDES_KBS
             }
             else
             {
-                //@KAI
+                //@KAI done
                 //i need the object of the previous navigation, 
                 //i see that u did not add it to rules directly, so i am unable to get it back when 
                 //no diagnosis id is selected, please facilitate
+                Navigation navs=new Navigation();
+                for (int i = 0; i < currStep; i++)
+                {
+                    ucNavigationFlowSetting ucNavi = lstStep[i];
+                    ucNavi.getAnswer();
+                    navs.addNavCriteriaQuestion(ucNavi.getCriteria());
+                }
+                g.resetGraph();
+                foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
+                {
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                }
+                loadGraph1();
             }
 
             lblText.Content = "Displaying Current Decision Point";

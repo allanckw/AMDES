@@ -38,6 +38,19 @@ namespace AMDES_KBS
         private void btnNavigation_Click(object sender, RoutedEventArgs e)
         {
             //SettingFrame.Navigate(new frmNavigation());
+            FirstQuestion fq = FirstQuestionController.readFirstQuestion();
+            if (fq==null)
+            {
+                //MessageBox.Show("Please define first setting!");
+                frmFirstPageSetting firstPageSetting = new frmFirstPageSetting();
+                if (firstPageSetting.DialogResult==false)
+                {
+                    //new frmFlowToDiagnosis().ShowDialog();
+                    MessageBox.Show("Please define first setting!");
+                    return;
+                }
+            }
+
             new frmFlowToDiagnosis().ShowDialog();
 
         }
@@ -54,6 +67,18 @@ namespace AMDES_KBS
 
         private void btnDefaultBehaviour_Click(object sender, RoutedEventArgs e)
         {
+            FirstQuestion fq = FirstQuestionController.readFirstQuestion();
+            if (fq == null)
+            {
+                //MessageBox.Show("Please define first setting!");
+                frmFirstPageSetting firstPageSetting = new frmFirstPageSetting();
+                if (firstPageSetting.DialogResult == false)
+                {
+                    //new frmFlowToDiagnosis().ShowDialog();
+                    MessageBox.Show("Please define first setting!");
+                    return;
+                }
+            }
             new frmDefaultBehaviour().ShowDialog();
         }
     }
