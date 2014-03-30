@@ -178,6 +178,7 @@ namespace AMDES_KBS
 
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
         {
+            
             currStep++;
             int tempPage = currStep - 1;
             if (tempPage < lstStep.Count)

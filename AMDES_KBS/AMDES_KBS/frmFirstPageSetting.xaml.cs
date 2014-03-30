@@ -45,9 +45,9 @@ namespace AMDES_KBS
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            saveFirstSection();
+            bool x = saveFirstSection();
 
-            if (saveFirstSection())
+            if (x)
             {
                 DialogResult = true;
             }
