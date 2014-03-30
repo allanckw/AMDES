@@ -628,7 +628,7 @@
 
 (defrule Retract-symptoms-questionid
 
-(question (answer Yes) (ID ?Noid) )
+(question (answer No) (ID ?Noid) )
 (questionid-symptoms (QuestionID ?Noid))
 ?sym <- (symptoms (ID ?Noid))
 =>
