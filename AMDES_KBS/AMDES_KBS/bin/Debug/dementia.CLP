@@ -16,16 +16,16 @@
 (slot GroupID (type SYMBOL))
 )
 
-(deftemplate groupid-symtoms
+(deftemplate groupid-symptoms
 (slot GroupID (type SYMBOL))
-(slot symtom (type STRING)))
+(slot symptom (type STRING)))
 
-(deftemplate questionid-symtoms
+(deftemplate questionid-symptoms
 (slot QuestionID (type SYMBOL))
-(slot symtom (type STRING)))
+(slot symptom (type STRING)))
 
-(deftemplate symtoms
-(slot symtom (type STRING))
+(deftemplate symptoms
+(slot symptom (type STRING))
 (slot ID (type SYMBOL))
 )
 
@@ -35,7 +35,6 @@
 (multislot RID (type SYMBOL))
 )
 
-; ; Sign of a symptom
 (deftemplate NaviHistory
 (multislot ID (type SYMBOL) (default NIL END)))
 
@@ -106,6 +105,8 @@
 (deffacts the-facts
 (NaviHistory)
 (NaviChildCritASTUB)
+
+
 )
 
 (defrule Pass-And
@@ -293,215 +294,210 @@
 )
 
 ;; change page here
-(defrule next_question
-(mode 1)
-?rmv<-(Currentgroup (GroupId ?y))
-?nxt<-(next)
-(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
-(forall
-(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
-(group (GroupId ?CGID) (answer ?CA))
-(NaviHistory (ID $?START ?CGID $?END))
-)
+(defrule next_question1
+	(mode 1)
+	?rmv<-(Currentgroup (GroupId ?y))
+	?nxt<-(next)
+	(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
+	(forall
+		(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
+		(group (GroupId ?CGID) (answer ?CA))
+		(NaviHistory (ID $?START ?CGID $?END))
+	)
+	
+	(forall
+		(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
+		(NaviChildCritASTUB (Answer ?yes))
+	)
+	?hist<-(NaviHistory (ID $?x END))
+	?grp<-
+	(group 
+		(GroupId ?z)
+		(SuccessType ?a)
+		(SuccessArg ?b)
+		(TrueCount ?c)
+		(conclusion ?d)
+		(answer ?e)
 
-(forall
-(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
-(NaviChildCritASTUB (Answer ?yes))
-)
-?hist<-(NaviHistory (ID $?x END))
-?grp<-
-(group 
-(GroupId ?z)
-(SuccessType ?a)
-(SuccessArg ?b)
-(TrueCount ?c)
-(conclusion ?d)
-(answer ?e)
-
-)
+	)
 =>
 
 	(retract ?rmv)
 	(retract ?nxt)
 	(printout t crlf "next" crlf)
 	(assert 
-	(Currentgroup 
-	(GroupId ?z)
-	(SuccessType ?a)
-	(SuccessArg ?b)
-	(TrueCount ?c)
-	(conclusion ?d)
-	(answer ?e)
+		(Currentgroup 
+		(GroupId ?z)
+		(SuccessType ?a)
+		(SuccessArg ?b)
+		(TrueCount ?c)
+		(conclusion ?d)
+		(answer ?e)
 	))
 	(modify ?hist (ID $?x ?z END))
 
 )
 
 ;; Navigation to a conclusion
-(defrule next_question
-(mode 1)
-?rmv<-(Currentgroup (GroupId ?y))
-?nxt<-(next)
-(Navigation (NavigationID ?naviID) (DestinationGroupID NIL) (RID ?diag))
-(forall
-(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
-(group (GroupId ?CGID) (answer ?CA))
-(NaviHistory (ID $?START ?CGID $?END))
-)
+(defrule next_question2
+	(mode 1)
+	?rmv<-(Currentgroup (GroupId ?y))
+	?nxt<-(next)
+	(Navigation (NavigationID ?naviID) (DestinationGroupID NIL) (RID $?diag))
+	
+	(forall
+		(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
+		(group (GroupId ?CGID) (answer ?CA))
+		(NaviHistory (ID $?START ?CGID $?END))
+	)
 
-(forall
-(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
-(NaviChildCritASTUB (Answer ?yes))
-)
-?hist<-(NaviHistory (ID $?x END))
+	(forall
+		(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
+		(NaviChildCritASTUB (Answer ?yes))
+	)
+	?hist<-(NaviHistory (ID $?x END))
 =>
 
 	(retract ?rmv)
 	(retract ?nxt)
-	(assert (diagnosis (RID ?diag)))
-	
-	
-
+	(assert (diagnosis (RID $?diag)))
 )
 
 ;;;;;;;;;self attribute assertion here
-(defrule next_question
+;;;Error Here, Rule was never fired
+(defrule next_question_attr
 (attribute ?attribu ?value)
 ?target<-(NaviChildCritA  (AttributeName ?attribu) (AttributeValue ?cvalue) (AttributeCompareType ?at) (Answer ?ans))
 =>
-
-
 	(switch ?at
-	(case = then 
-	
-		(if(= ?cvalue ?value)
-		then;;yes
-			
-			(switch ?ans
-				(case Yes then 
+		(case = then 
+		
+			(if(= ?cvalue ?value)
+			then;;yes
+				
+				(switch ?ans
+					(case Yes then 
+					)
+					(case No then 	
+						(modify ?target (Answer Yes))
+					)
 				)
-				(case No then 	
-					(modify ?target (Answer Yes))
+
+
+			else;;no
+				(switch ?ans
+					(case Yes then 
+						(modify ?target (Answer No))
+					)
+					(case No then 	
+						
+					)
 				)
 			)
+		)
 
-
-		else;;no
-			(switch ?ans
-				(case Yes then 
-					(modify ?target (Answer No))
+		(case <= then 
+		
+			(if(<= ?cvalue ?value)
+			then;;yes
+				
+				(switch ?ans
+					(case Yes then 
+					)
+					(case No then 	
+						(modify ?target (Answer Yes))
+					)
 				)
-				(case No then 	
-					
+
+
+			else;;no
+				(switch ?ans
+					(case Yes then 
+						(modify ?target (Answer No))
+					)
+					(case No then 	
+						
+					)
+				)
+			)
+		)
+		(case >= then 
+		
+			(if(>= ?cvalue ?value)
+			then;;yes
+				
+				(switch ?ans
+					(case Yes then 
+					)
+					(case No then 	
+						(modify ?target (Answer Yes))
+					)
+				)
+
+
+			else;;no
+				(switch ?ans
+					(case Yes then 
+						(modify ?target (Answer No))
+					)
+					(case No then 	
+						
+					)
+				)
+			)
+		)
+		(case > then 
+		
+			(if(> ?cvalue ?value)
+			then;;yes
+				
+				(switch ?ans
+					(case Yes then 
+					)
+					(case No then 	
+						(modify ?target (Answer Yes))
+					)
+				)
+
+
+			else;;no
+				(switch ?ans
+					(case Yes then 
+						(modify ?target (Answer No))
+					)
+					(case No then 	
+						
+					)
+				)
+			)
+		)
+
+		(case < then 
+		
+			(if(< ?cvalue ?value)
+			then;;yes
+				
+				(switch ?ans
+					(case Yes then 
+					)
+					(case No then 	
+						(modify ?target (Answer Yes))
+					)
+				)
+
+
+			else;;no
+				(switch ?ans
+					(case Yes then 
+						(modify ?target (Answer No))
+					)
+					(case No then 	
+						
+					)
 				)
 			)
 		)
 	)
-
-	(case <= then 
-	
-		(if(<= ?cvalue ?value)
-		then;;yes
-			
-			(switch ?ans
-				(case Yes then 
-				)
-				(case No then 	
-					(modify ?target (Answer Yes))
-				)
-			)
-
-
-		else;;no
-			(switch ?ans
-				(case Yes then 
-					(modify ?target (Answer No))
-				)
-				(case No then 	
-					
-				)
-			)
-		)
-	)
-	(case >= then 
-	
-		(if(>= ?cvalue ?value)
-		then;;yes
-			
-			(switch ?ans
-				(case Yes then 
-				)
-				(case No then 	
-					(modify ?target (Answer Yes))
-				)
-			)
-
-
-		else;;no
-			(switch ?ans
-				(case Yes then 
-					(modify ?target (Answer No))
-				)
-				(case No then 	
-					
-				)
-			)
-		)
-	)
-	(case > then 
-	
-		(if(> ?cvalue ?value)
-		then;;yes
-			
-			(switch ?ans
-				(case Yes then 
-				)
-				(case No then 	
-					(modify ?target (Answer Yes))
-				)
-			)
-
-
-		else;;no
-			(switch ?ans
-				(case Yes then 
-					(modify ?target (Answer No))
-				)
-				(case No then 	
-					
-				)
-			)
-		)
-	)
-
-	(case < then 
-	
-		(if(< ?cvalue ?value)
-		then;;yes
-			
-			(switch ?ans
-				(case Yes then 
-				)
-				(case No then 	
-					(modify ?target (Answer Yes))
-				)
-			)
-
-
-		else;;no
-			(switch ?ans
-				(case Yes then 
-					(modify ?target (Answer No))
-				)
-				(case No then 	
-					
-				)
-			)
-		)
-	)
-
-
-)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -602,39 +598,39 @@
 
 )
 
-(defrule Add-symtoms-groupid
+(defrule Add-symptoms-groupid
 (group (answer Yes) (GroupId ?id) )
-(groupid-symtoms (GroupID ?id) (symtom ?sym))
-(not (exists (symtoms (ID ?id))))
+(groupid-symptoms (GroupID ?id) (symptom ?sym))
+(not (exists (symptoms (ID ?id))))
 =>
-(assert (symtoms (symtom ?sym) (ID ?id)))
+(assert (symptoms (symptom ?sym) (ID ?id)))
 
 )
 
-(defrule Retract-symtoms-groupid
+(defrule Retract-symptoms-groupid
 
 (group (answer No) (GroupId ?Noid) )
-(groupid-symtoms (GroupID ?Noid))
-?sym <- (symtoms (ID ?Noid))
+(groupid-symptoms (GroupID ?Noid))
+?sym <- (symptoms (ID ?Noid))
 =>
 (retract ?sym)
 ;;(printout t crlf "ans:"?sym crlf)
 )
 
-(defrule Add-symtoms-questionid
+(defrule Add-symptoms-questionid
 (question (answer Yes) (Id ?id) )
-(questionid-symtoms (QuestionID ?id) (symtom ?sym))
-(not (exists (symtoms (ID ?id))))
+(questionid-symptoms (QuestionID ?id) (symptom ?sym))
+(not (exists (symptoms (ID ?id))))
 =>
-(assert (symtoms (symtom ?sym) (ID ?id)))
+(assert (symptoms (symptom ?sym) (ID ?id)))
 
 )
 
-(defrule Retract-symtoms-questionid
+(defrule Retract-symptoms-questionid
 
 (question (answer Yes) (Id ?Noid) )
-(questionid-symtoms (QuestionID ?Noid))
-?sym <- (symtoms (ID ?Noid))
+(questionid-symptoms (QuestionID ?Noid))
+?sym <- (symptoms (ID ?Noid))
 =>
 (retract ?sym)
 ;;(printout t crlf "ans:"?sym crlf)
