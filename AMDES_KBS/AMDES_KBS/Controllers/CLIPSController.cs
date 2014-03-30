@@ -159,21 +159,6 @@ namespace AMDES_KBS.Controllers
             //1st navex point
             assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID _0) )"));
 
-            ////2nd navex point A
-            //assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ") " +
-            //                "(NavigationID S1_" + fq.NextGrpID + ") )"));
-            
-            //assert(new StringBuilder("(NaviChildCritQ (NavigationID S1_" + fq.NextGrpID + ")  " +
-            //                " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer Yes) )"));
-
-            ////2nd navex point B
-            //assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.NextGrpID + ")  " +
-            //                 "(NavigationID S2_" + fq.NextGrpID + ") )"));
-
-            //assert(new StringBuilder("(NaviChildCritQ (NavigationID S2_" + fq.NextGrpID +
-            //                " (CriteriaGroupID _" + fq.GrpID + ") (CriteriaAnswer No) )"));
-
-
             foreach (Rules r in rList)
             {
                 foreach (Navigation n in r.Navigations)
