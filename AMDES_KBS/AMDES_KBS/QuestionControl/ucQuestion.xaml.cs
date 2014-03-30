@@ -52,6 +52,7 @@ namespace AMDES_KBS
             
         }
 
+        //Allan Note: ClipsController Point 1 Integration Done
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Add event handler implementation here.

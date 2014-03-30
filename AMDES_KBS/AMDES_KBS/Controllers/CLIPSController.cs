@@ -13,7 +13,7 @@ namespace AMDES_KBS.Controllers
         private static Patient pat;
 
         //for debug purpose, to pull out to test on clips, and to pull out to assert for restore patient
-        private static List<StringBuilder> assertLog = new List<StringBuilder>();
+        private static List<String> assertLog = new List<String>();
 
         //WARNING MOMOSOFT CLIPS REQUIRED x86 MODE ONLY, ALL OTHER MODE WILL FAIL
         private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
@@ -38,7 +38,7 @@ namespace AMDES_KBS.Controllers
         public static void saveAssertLog()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (StringBuilder s in assertLog)
+            foreach (String s in assertLog)
             {
                 sb.AppendLine(s.ToString());
             }
@@ -57,6 +57,7 @@ namespace AMDES_KBS.Controllers
                 env.Load("dementia.clp");
                 reset();
                 assert(new StringBuilder("(mode 1)"));
+                assertAge();
 
                 List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
 
@@ -75,10 +76,10 @@ namespace AMDES_KBS.Controllers
                 }
                 else
                 {
-                    loadQuestions(grps);
-                    loadNavex(fq, rList, defBehavior);
-                    assertAge();
-                    run();
+                    loadQuestions(grps); //load question pass all assertions
+                    //loadNavex(fq, rList, defBehavior);
+                    //
+                    //run();
                 }
                
             }
@@ -102,19 +103,21 @@ namespace AMDES_KBS.Controllers
         {
             env.Reset();
         }
-
+        static int count = 0;
         private static void assert(StringBuilder sb)
         {
             env.AssertString(sb.ToString());
-            assertLog.Add(sb);
+            assertLog.Add(sb.ToString());
+            count++;
         }
 
         private static void loadQuestions(List<QuestionGroup> grps)
         {
+            StringBuilder sb;
+
             foreach (QuestionGroup qg in grps)
             {
-                StringBuilder sb = new StringBuilder();
-
+                sb = new StringBuilder();
                 sb.Append("(group (GroupId _" + qg.GroupID + ") (SuccessType ");
 
                 if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
@@ -132,22 +135,28 @@ namespace AMDES_KBS.Controllers
                 sb.Clear();
 
                 //grp symptom assertion
-                sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (symptom " + "\"" + qg.Symptom + "\"" + ") )");
-                assert(sb);
+                if (qg.Symptom.Length > 0)
+                {
+                    sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (symptom " + "\"" + qg.Symptom + "\"" + ") )");
+                    assert(sb);
+                    sb.Clear();
+                }
 
 
                 foreach (Question q in qg.Questions)
                 {
                     sb.Clear();
 
-                    sb.Append("(question (Id _" + q.ID + ") (QuestionText " + "\"" +
-                        q.Name + "\"" + ") (GroupId _" + qg.GroupID + "))");
+                    sb.Append("(question (Id _" + q.ID + ") (QuestionText " + "\"" + q.Name + "\"" + ") (GroupId _" + qg.GroupID + "))");
                     assert(sb);
 
-                    sb.Clear();
                     //question symptom assertion
-                    sb.Append("(questionid-symptoms (QuestionID _" + q.ID + ") (symptom " + "\"" + qg.Symptom + "\"" + ") )");
-                    assert(sb);
+                    if (q.Symptom.Length > 0)
+                    {
+                        sb.Clear();
+                        sb.Append("(questionid-symptoms (QuestionID _" + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
+                        assert(sb);
+                    }
                 }
             }
 

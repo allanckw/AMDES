@@ -71,24 +71,13 @@ namespace AMDES_KBS
 
         private void btnContTest_Click(object sender, RoutedEventArgs e)
         {
-            //var c = this;
-            //while (true)
-            //{
-            //    c = c.Parent;
-            //    if (c.GetType()==typeof(Frame))
-            //    {
-            //        amdesPageFrame = (Frame)c;
-            //        break;
-            //    }
-            //}
+
+
             CLIPSController.CurrentPatient = pat;
-            
-            //load history here
-            //CLIPSController.loadEverything();
-
+            CLIPSController.ClearandLoad();
+            //Allan ToDo: load history here
             int sectionID = CLIPSController.getCurrentQnGroupID();
-
-            //MessageBox.Show(sectionID.ToString());
+            MessageBox.Show(sectionID.ToString());
 
             frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
             amdesPageFrame.Navigate(TestSection);
