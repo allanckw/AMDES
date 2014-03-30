@@ -132,7 +132,7 @@ namespace AMDES_KBS.Controllers
                 sb.Clear();
 
                 //grp symptom assertion
-                sb.Append("(groupid-symtoms (GroupID _" + qg.GroupID + ") (symtom " + qg.Symptom + ") )");
+                sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (symptom " + "\"" + qg.Symptom + "\"" + ") )");
                 assert(sb);
 
 
@@ -146,7 +146,7 @@ namespace AMDES_KBS.Controllers
 
                     sb.Clear();
                     //question symptom assertion
-                    sb.Append("(questionid-symtoms (QuestionID _" + q.ID + ") (symtom " + q.Symptom + ") )");
+                    sb.Append("(questionid-symptoms (QuestionID _" + q.ID + ") (symptom " + "\"" + qg.Symptom + "\"" + ") )");
                     assert(sb);
                 }
             }
@@ -193,7 +193,7 @@ namespace AMDES_KBS.Controllers
             StringBuilder sb = new StringBuilder();
             sb.Append("(Navigation  (DestinationGroupID _");
             sb.Append(n.DestGrpID + ")");
-            sb.Append(" (NavigationID _" + n.NavID + ") ");
+            sb.Append(" (NavigationID N" + n.NavID + ") ");
 
             if (n.isConclusive())
             {
@@ -211,7 +211,7 @@ namespace AMDES_KBS.Controllers
             sb.Clear();
             foreach (NaviChildCriteriaQuestion ncq in n.ChildCriteriaQuestion)
             {
-                sb.Append("(NaviChildCritQ (NavigationID _" + n.NavID + ") ");
+                sb.Append("(NaviChildCritQ (NavigationID N" + n.NavID + ") ");
                 sb.Append("(CriteriaGroupID _" + ncq.CriteriaGrpID + ") ");
                 if (ncq.Ans == false)
                 {
@@ -230,7 +230,7 @@ namespace AMDES_KBS.Controllers
             foreach (NaviChildCritAttribute ncq in n.ChildCriteriaAttributes)
             {
                 //(NaviChildCritA (NavigationID GO_C) (AttributeName Age) (AttributeValue 50) (AttributeCompareType <) )
-                sb.Append("(NaviChildCritA (NavigationID _" + n.NavID + ") ");
+                sb.Append("(NaviChildCritA (NavigationID N" + n.NavID + ") ");
                 sb.Append("(AttributeName " + ncq.AttributeName + ") ");
                 sb.Append("(AttributeValue " + ncq.AttributeValue + ") ");
                 sb.Append("(AttributeCompareType " + ncq.getCompareTypeString() + ") ");
@@ -315,13 +315,13 @@ namespace AMDES_KBS.Controllers
         {
             List<Symptom> sList = new List<Symptom>();
 
-            String evalStr = "(find-all-facts((?g symtoms)) TRUE)";
+            String evalStr = "(find-all-facts((?g symptoms)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
 
             foreach (FactAddressValue fv in mv)
             {
-                Symptom s = new Symptom(fv.GetFactSlot("symtom").ToString(), 
-                                        int.Parse(fv.GetFactSlot("symtom").ToString().Remove(0,1)));
+                Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString(), 
+                                        int.Parse(fv.GetFactSlot("ID").ToString().Remove(0,1)));
 
                 if (!sList.Contains(s))
                 {

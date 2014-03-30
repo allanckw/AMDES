@@ -30,10 +30,6 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             IEnumerable<Graph> g = GraphBuilder.BuildGraphs();
-            foreach (Graph gr in g)
-            {
-
-            }
             zz.DataContext = g;
             lstStep = new List<ucNavigationFlowSetting>();
             LoadAllRule();
