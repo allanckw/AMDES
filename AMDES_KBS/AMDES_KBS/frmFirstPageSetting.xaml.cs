@@ -33,8 +33,14 @@ namespace AMDES_KBS
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
-            this.Close();
+            saveFirstSection();
+
+            if (saveFirstSection())
+            {
+                DialogResult = true;
+                this.Close();
+            }
+
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -43,13 +49,24 @@ namespace AMDES_KBS
             this.Close();
         }
 
-        private void saveFirstSection()
+        private bool saveFirstSection()
         {
-           
-            //Update first navigation link
-            FirstQuestion fq = new FirstQuestion();
-            //fq.GrpID = //please fill in the blank
-            FirstQuestionController.writeFirstQuestion(fq);
+
+            if (cboSectionList.SelectedIndex >= 0)
+            {
+                //Update first navigation link
+                QuestionGroup qg = (QuestionGroup)cboSectionList.SelectedItem;
+                FirstQuestion fq = new FirstQuestion();
+                fq.GrpID = qg.GroupID;
+                FirstQuestionController.writeFirstQuestion(fq);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Please select the first section group!", "Please make selection", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
         }
+
     }
 }

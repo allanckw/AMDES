@@ -1,6 +1,6 @@
 ﻿<Window x:Class="AMDES_KBS.frmFirstPageSetting"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
         Title="Select the first section to navigate" Height="110" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
