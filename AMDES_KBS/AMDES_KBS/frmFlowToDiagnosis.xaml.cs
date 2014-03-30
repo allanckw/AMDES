@@ -26,18 +26,37 @@ namespace AMDES_KBS
         List<ucNavigationFlowSetting> lstStep;
         Rules rule;
 
+        //Graph drawing
+        List<Graph> gList = new List<Graph>();
+        Graph g;
+        //end graph drawing
+
+        private void loadGraph()
+        {
+            gList.Clear();
+            gList.Add(g);
+            zz.DataContext = gList;
+        }
+
+        private void loadGraph1()
+        {
+            gList.Clear();
+            gList.Add(g);
+            zz.DataContext = null;
+            zz.DataContext = gList;
+        }
+
         public frmFlowToDiagnosis()
         {
             InitializeComponent();
-            IEnumerable<Graph> g = GraphBuilder.BuildGraphs();
-            zz.DataContext = g;
+            //IEnumerable<Graph> g = GraphBuilder.BuildGraphs();
+            
             lstStep = new List<ucNavigationFlowSetting>();
 
             if (!FirstQuestionController.checkFirstQuestion())
             {
-                MessageBox.Show("Please load your first question before continuing!");
+                MessageBox.Show("Please set your first question before continuing!");
                 new frmFirstPageSetting().ShowDialog();
-                //this.Close();
             }
             
             LoadAllRule();
@@ -161,6 +180,17 @@ namespace AMDES_KBS
 
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
         {
+           
+            Navigation navs = rule.Navigations[currStep - 1];
+            g.resetGraph();
+
+            foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
+            {
+                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+            }
+
+            loadGraph1();
+
             currStep++;
             int tempPage = currStep - 1;
             if (tempPage < lstStep.Count)
@@ -191,6 +221,17 @@ namespace AMDES_KBS
         private void btnPrevStep_Click(object sender, RoutedEventArgs e)
         {
             currStep--;
+
+            Navigation navs = rule.Navigations[currStep - 1];
+            g.resetGraph();
+
+            foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
+            {
+                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+            }
+
+            loadGraph1();
+
             loadSteps();
             //if (currStep > 1)
             //{
@@ -232,6 +273,13 @@ namespace AMDES_KBS
             }
 
             rule = (Rules)cboDiagnosisList.Items[selectedIdx];
+            
+            //Graph
+            g = new Graph("RuleID: " + rule.RuleID + ", " + rule.Description);
+            //g.addGraphNodes(QuestionController.getGroupByID(rule.Navigations[0].ChildCriteriaQuestion[0].CriteriaGrpID).Header);
+            loadGraph();
+            //end graph
+
             loadNaviList(rule);
         }
 

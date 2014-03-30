@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System;
 
 namespace CircularDependencyTool
 {
@@ -76,7 +76,7 @@ namespace CircularDependencyTool
 
         public Graph(string title)
         {
-           
+
             this.Nodes = new List<Node>();
             this.Title = title;
         }
@@ -87,21 +87,34 @@ namespace CircularDependencyTool
 
         public List<Node> Nodes { get; private set; }
 
-        public void addGraphNodes(string id) 
+        public void addGraphNodes(string id)
         {
             var node = new Node(id, this.X, this.Y);
+            if (Nodes.Contains(node))
+            {
+                throw new InvalidOperationException("Please do not add the same set of question twice!");
+            }
+            else
+            {
+                if (Nodes.Count == 0)
+                {
+                    Nodes.Add(node);
+                }
+                else if (Nodes.Count > 0)
+                {
+                    Node dependency = Nodes[Nodes.Count - 1];
+                    node.NodeDependencies.Add(dependency);
+                    Nodes.Add(node);
+                }
+            }
+        }
 
-            if (Nodes.Count == 0)
-            {
-                Nodes.Add(node);
-            }
-            else if (Nodes.Count > 0 )
-            {
-                Node dependency = Nodes[Nodes.Count - 1];
-                node.NodeDependencies.Add(dependency);
-                Nodes.Add(node);
-            }
-            
+        public void resetGraph()
+        {
+            Nodes.Clear();
+            x = 5; 
+            y = 5;
+
         }
 
         public string Title { get; private set; }

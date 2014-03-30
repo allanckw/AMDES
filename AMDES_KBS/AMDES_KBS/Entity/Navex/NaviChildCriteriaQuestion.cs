@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AMDES_KBS.Entity
 {
-    public class NaviChildCriteriaQuestion
+    public class NaviChildCriteriaQuestion 
     {
         private string navid;
 
@@ -39,5 +39,7 @@ namespace AMDES_KBS.Entity
         public NaviChildCriteriaQuestion()
         {
         }
+
+
     }
 }

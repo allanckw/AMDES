@@ -18,7 +18,7 @@ namespace AMDES_KBS.Entity
             get { return navID; }
             set { navID = value; }
         }
-        
+
         public int DestGrpID
         {
             get { return destGrpID; }
@@ -53,8 +53,11 @@ namespace AMDES_KBS.Entity
         public List<NaviChildCriteriaQuestion> ChildCriteriaQuestion
         {
             get { return childCriteriaQn; }
-            set { if (value != null)
-                childCriteriaQn = value; }
+            set
+            {
+                if (value != null)
+                    childCriteriaQn = value;
+            }
         }
 
         public Navigation()
@@ -83,7 +86,14 @@ namespace AMDES_KBS.Entity
         public void addNavCriteriaQuestion(NaviChildCriteriaQuestion q)
         {
             if (q != null)
-                childCriteriaQn.Add(q);
+            {
+                var x = childCriteriaQn.Where(s => s.CriteriaGrpID == q.CriteriaGrpID).SingleOrDefault();
+
+                if (x == null)
+                    childCriteriaQn.Add(q);
+                else
+                    throw new InvalidOperationException("Circular Reference detected, please do not add the same Question Group!");
+            }
         }
 
         public void removeCriteriaQuestion(int grpID)

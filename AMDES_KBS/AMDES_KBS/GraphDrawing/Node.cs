@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MvvmFoundation.Wpf;
+using System;
 
 namespace CircularDependencyTool
 {
     /// <summary>
     /// Represents an item in a graph.
     /// </summary>
-    public class Node : ObservableObject
+    public class Node : ObservableObject, IComparable<Node>
     {
         #region Constructor
 
@@ -103,5 +104,10 @@ namespace CircularDependencyTool
         double _locationX, _locationY;
 
         #endregion // Fields
+
+        public int CompareTo(Node n)
+        {
+            return this.ID.CompareTo(n.ID);
+        }
     }
 }
