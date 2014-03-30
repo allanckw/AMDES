@@ -29,6 +29,18 @@ namespace AMDES_KBS
         private void loadAllSection()
         {
             cboSectionList.ItemsSource = QuestionController.getAllQuestionGroup();
+            FirstQuestion fq = FirstQuestionController.readFirstQuestion();
+            if (fq != null)
+            {
+                for (int i = 0; i < cboSectionList.Items.Count; i++)
+                {
+                    if (fq.GrpID == ((QuestionGroup)cboSectionList.Items[i]).GroupID)
+                    {
+                        cboSectionList.SelectedIndex = i;
+                        break;
+                    }
+                }
+            }
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
@@ -38,7 +50,6 @@ namespace AMDES_KBS
             if (saveFirstSection())
             {
                 DialogResult = true;
-                this.Close();
             }
 
         }
@@ -46,7 +57,6 @@ namespace AMDES_KBS
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
-            this.Close();
         }
 
         private bool saveFirstSection()
@@ -63,6 +73,9 @@ namespace AMDES_KBS
             }
             else
             {
+                FirstQuestion fq = new FirstQuestion();
+                fq.GrpID = -1;
+                FirstQuestionController.writeFirstQuestion(fq);
                 MessageBox.Show("Please select the first section group!", "Please make selection", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }

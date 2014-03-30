@@ -32,7 +32,16 @@ namespace AMDES_KBS
             IEnumerable<Graph> g = GraphBuilder.BuildGraphs();
             zz.DataContext = g;
             lstStep = new List<ucNavigationFlowSetting>();
+
+            if (!FirstQuestionController.checkFirstQuestion())
+            {
+                MessageBox.Show("Please load your first question before continuing!");
+                new frmFirstPageSetting().ShowDialog();
+                //this.Close();
+            }
+            
             LoadAllRule();
+
             //newFlowDetail();
         }
 

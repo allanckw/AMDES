@@ -42,5 +42,21 @@ namespace AMDES_KBS.Controllers
 
         }
 
+        public static bool checkFirstQuestion()
+        {
+            FirstQuestion fq;
+            if ((fq = readFirstQuestion()) != null)
+            {
+                if (fq.GrpID == -1)
+                    return false;
+                else
+                    return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
