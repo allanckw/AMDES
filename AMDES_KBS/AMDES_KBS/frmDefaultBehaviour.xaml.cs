@@ -24,7 +24,7 @@ namespace AMDES_KBS
 
         List<NaviChildCriteriaQuestion> naviChildQuestion;
         List<NaviChildCritAttribute> naviChildAttribute;
-
+        List<Navigation> AllBehaviour;
         public frmDefaultBehaviour()
         {
             InitializeComponent();
@@ -35,7 +35,29 @@ namespace AMDES_KBS
 
         private void loadAllBehaviour()
         {
-            cboDiagnosisList.ItemsSource = DefaultBehaviorController.getAllDefaultBehavior();
+            AllBehaviour = DefaultBehaviorController.getAllDefaultBehavior();
+            for (int i = 0; i < AllBehaviour.Count; i++)
+            {
+                Navigation behaviour = AllBehaviour[i];
+                bool conclusive = behaviour.isConclusive();
+                string s="";
+                s = "Conclusive - " + conclusive.ToString().ToUpper();
+                if (conclusive)
+                {
+                    foreach (int rID in behaviour.DiagnosesID)
+                    {
+                        Diagnosis dia = DiagnosisController.getDiagnosisByID(rID);
+                        s += Environment.NewLine + "Diagnosis - " + dia.Header;
+                    }
+                }
+                else
+                {
+                    QuestionGroup qg = QuestionController.getGroupByID(behaviour.DestGrpID);
+                    s += Environment.NewLine + "Destination - Section " + qg.Header;
+                }
+
+                cboDiagnosisList.Items.Add(s);
+            }
         }
 
         private void newForm()
@@ -369,11 +391,52 @@ namespace AMDES_KBS
             {
                 return;
             }
-            navi = (Navigation)cboDiagnosisList.Items[sIdx];
+            navi = AllBehaviour[sIdx];
+            LoadExistingBehaviour();
         }
 
         private void LoadExistingBehaviour()
         {
+            bool isConclusive = navi.isConclusive();
+            chkConclusive.IsChecked = isConclusive;
+            if (isConclusive)
+            {
+                stkpnlDiagnosisRule.Visibility = Visibility.Visible;
+                stkpnlSectionDestination.Visibility = Visibility.Collapsed;
+                lstDiagnosisList.ItemsSource = null;
+                List<Diagnosis> diaListExist = new List<Diagnosis>();
+                List<Diagnosis> diaList = DiagnosisController.getAllDiagnosis();
+                foreach (int rID in navi.DiagnosesID)
+                {
+                    for (int i = 0; i < diaList.Count; i++)
+                    {
+                        Diagnosis dia = diaList[i];
+                        if (dia.RID==rID)
+                        {
+                            diaListExist.Add(dia);
+                            break;
+                        }
+                    }
+                }
+                lstDiagnosisList.ItemsSource = diaListExist;
+            }
+            else
+            {
+                stkpnlDiagnosisRule.Visibility = Visibility.Collapsed;
+                stkpnlSectionDestination.Visibility = Visibility.Visible;
+                int sIdx = -1;
+                for (int i = 0; i < cboDestination.Items.Count; i++)
+                {
+                    QuestionGroup qgItem = (QuestionGroup)cboDestination.Items[i];
+                    if (qgItem.GroupID==navi.DestGrpID)
+                    {
+                        sIdx = i;
+                        break;
+                    }
+                }
+                cboDestination.SelectedIndex = sIdx;
+            }
+
             this.naviChildQuestion = new List<NaviChildCriteriaQuestion>();
             this.naviChildAttribute = new List<NaviChildCritAttribute>();
 
