@@ -236,10 +236,8 @@ namespace AMDES_KBS
             if (cboDiagnosisList.SelectedIndex >= 0)
             {
                 Navigation navs;
-                if (currStep == 1)
-                    navs = rule.Navigations[currStep - 1];
-                else
-                    navs = rule.Navigations[currStep - 2];
+
+                navs = rule.Navigations[currStep - 1];
 
                 g.resetGraph();
                 foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
