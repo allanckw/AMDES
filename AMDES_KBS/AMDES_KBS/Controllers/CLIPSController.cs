@@ -54,10 +54,10 @@ namespace AMDES_KBS.Controllers
                 //call this f(x) everytime u click a new patient
                 env.Clear();
                 assertLog.Clear();
-                count = 0; 
+                count = 0;
 
                 env.Load(@"engine\dementia.clp");
-                
+
                 reset();
                 assert(new StringBuilder("(mode 1)"));
                 assertAge();
@@ -87,7 +87,7 @@ namespace AMDES_KBS.Controllers
                     saveAssertLog();
                     //run();
                 }
-               
+
             }
             else
             {
@@ -111,7 +111,7 @@ namespace AMDES_KBS.Controllers
             env.Reset();
             assertLog.Add("(reset)");
         }
-        
+
         private static void assert(StringBuilder sb)
         {
             String a = sb.ToString().Trim();
@@ -159,10 +159,10 @@ namespace AMDES_KBS.Controllers
 
                     sb.Append("(question (ID _" + q.ID + ") ");
                     sb.Append("(GroupID _" + qg.GroupID + ") ");
-                    
+
                     //sb.Append("(QuestionText " + "\"" + q.Name + "\"" + ") "); 
                     //irrelevant to dump to clips required only when doing on command prompt
-                    
+
                     sb.Append(")");
                     assert(sb);
 
@@ -184,6 +184,11 @@ namespace AMDES_KBS.Controllers
             //1st navex point
             assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID _0) )"));
 
+            foreach (Navigation n in defBehavior)
+            {
+                createNavigationAssertion(n);
+            }
+
             foreach (Rules r in rList)
             {
                 foreach (Navigation n in r.Navigations)
@@ -192,18 +197,15 @@ namespace AMDES_KBS.Controllers
                 }
             }
 
-            foreach (Navigation n in defBehavior)
-            {
-                createNavigationAssertion(n);
-            }
+
         }
-        
+
         private static void createNavigationAssertion(Navigation n)
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append("(Navigation " + "(NavigationID N" + n.NavID + ") ");
-            
+
 
             if (n.DestGrpID != -1)
             {
@@ -298,8 +300,40 @@ namespace AMDES_KBS.Controllers
             {
                 x = fv.GetFactSlot("GroupID").ToString();
             }
+            x = x.Remove(0, 1); //remove _
 
-            return int.Parse(x.Remove(0, 1)); //remove _
+            if (x.CompareTo("RESULT") == 0) //
+            {
+                return -1; //when -1 call getResultingDiagnosis()
+            }
+            else
+            {
+                return int.Parse(x);
+            }
+        }
+
+        public static List<Diagnosis> getResultingDiagnosis()
+        {
+            String evalStr = "(find-all-facts ((?f diagnosis)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
+            MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
+            List<Diagnosis> dList = new List<Diagnosis>();
+
+            string x = "";
+
+            foreach (FactAddressValue fv in mv)
+            {
+                x = fv.GetFactSlot("RID").ToString();
+            }
+
+            List<string> split = x.Split(' ').ToList<string>();
+
+            foreach (string s in split)
+            {
+                Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(s.Remove(0, 1)));
+                dList.Add(d);
+            }
+
+            return dList;
         }
 
         //TODO: Get back symptom
@@ -314,7 +348,7 @@ namespace AMDES_KBS.Controllers
             List<string> naviHistory = new List<string>();
             String evalStr = "(find-all-facts((?a NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
-           
+
             //Need to find output
             foreach (FactAddressValue fv in mv)
             {
@@ -322,7 +356,7 @@ namespace AMDES_KBS.Controllers
             }
             naviHistory = x.Split(' ').ToList<string>();
 
-            
+
             Console.WriteLine(x);
             List<int> h = new List<int>();
 
@@ -345,8 +379,8 @@ namespace AMDES_KBS.Controllers
 
             foreach (FactAddressValue fv in mv)
             {
-                Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString(), 
-                                        fv.GetFactSlot("ID").ToString().Remove(0,1));
+                Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString(),
+                                        fv.GetFactSlot("ID").ToString().Remove(0, 1));
 
                 if (!sList.Contains(s))
                 {

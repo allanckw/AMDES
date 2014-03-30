@@ -135,7 +135,7 @@ namespace AMDES_KBS
             addNewStep();
             btnNextStep.Visibility = Visibility.Visible;
             btnPrevStep.Visibility = Visibility.Hidden;
-            
+
             g = new Graph("New Rule - Rule ID: " + rule.RuleID.ToString());
             loadGraph1();
             lblText.Content = "Displaying Decision Points";
@@ -143,7 +143,7 @@ namespace AMDES_KBS
 
         public void addNewStep()
         {
-   
+
             stkpnlSteps.Children.Clear();
             ucNavigationFlowSetting step = new ucNavigationFlowSetting(currStep);
             step.chkConclusive.Checked += new RoutedEventHandler(chk_Checked);
@@ -218,6 +218,7 @@ namespace AMDES_KBS
                 }
 
                 loadGraph1();
+                lblText.Content = "Displaying Last Decision Point (Previous Step)";
             }
             else
             {
@@ -243,6 +244,7 @@ namespace AMDES_KBS
                     }
 
                     loadGraph1();
+                    lblText.Content = "Displaying Last Decision Point (Previous Step)";
                 }
                 else
                 {
@@ -251,7 +253,7 @@ namespace AMDES_KBS
                     //i see that u did not add it to rules directly, so i am unable to get it back when 
                     //no diagnosis id is selected, please facilitate
                     Navigation navs = new Navigation();
-                    for (int i = 0; i < currStep-1; i++)
+                    for (int i = 0; i < currStep - 1; i++)
                     {
                         ucNavigationFlowSetting ucNavi = lstStep[i];
                         ucNavi.getAnswer();
@@ -302,6 +304,7 @@ namespace AMDES_KBS
                     g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
                 }
                 loadGraph1();
+                lblText.Content = "Displaying Current Decision Point";
             }
             else
             {
@@ -309,7 +312,7 @@ namespace AMDES_KBS
                 //i need the object of the previous navigation, 
                 //i see that u did not add it to rules directly, so i am unable to get it back when 
                 //no diagnosis id is selected, please facilitate
-                Navigation navs=new Navigation();
+                Navigation navs = new Navigation();
                 for (int i = 0; i < currStep; i++)
                 {
                     ucNavigationFlowSetting ucNavi = lstStep[i];

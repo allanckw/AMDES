@@ -253,10 +253,10 @@ namespace AMDES_KBS
 
             if (lblSection.Content.ToString().CompareTo(sectionID.ToString()) == 0)
             {
-                //Warning Stuck Condition, this freaking msgbox should never come out in our testing phase if all the rules are defined correctly.
-                MessageBox.Show("The Rules did not cover the sequence of diagnosis defined in the system" + Environment.NewLine +
-                    "please verify your rules in the configuration, " + Environment.NewLine + " if the problem persists, please contact the system administrator of this system with the data folder in the root folder of this program and we will assist you " +
-                    Environment.NewLine + " at amdes_nus_soc@googlegroups.com ", "Error In Navigation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                ////Warning Stuck Condition, this freaking msgbox should never come out in our testing phase if all the rules are defined correctly.
+                //MessageBox.Show("The Rules did not cover the sequence of diagnosis defined in the system" + Environment.NewLine +
+                //    "please verify your rules in the configuration, " + Environment.NewLine + " if the problem persists, please contact the system administrator of this system with the data folder in the root folder of this program and we will assist you " +
+                //    Environment.NewLine + " at amdes_nus_soc@googlegroups.com ", "Error In Navigation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
@@ -269,6 +269,10 @@ namespace AMDES_KBS
         {
             if (prevPage != null)
             {
+                CLIPSController.assertPrevSection();
+                int sectionID = CLIPSController.getCurrentQnGroupID();
+                //u can use prevPage to navigate back, there will be no effect on clips, 
+                //the effect on clips will be invisible to the user
                 amdesPageFrame.Navigate(prevPage);
             }
         }

@@ -361,6 +361,9 @@
 	(retract ?rmv)
 	(retract ?nxt)
 	(assert (diagnosis (RID $?diag)))
+	;;Placeholder to tell the UI that Result is found
+	(assert (Currentgroup (GroupID _RESULT) (SuccessType Yes) (SuccessArg 0) (TrueCount 0) (answer Yes)))
+	
 )
 
 ;;;;;;;;;self attribute assertion here
