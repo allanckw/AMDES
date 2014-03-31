@@ -345,7 +345,7 @@ namespace AMDES_KBS.Controllers
             CurrentPatient.setCompleted();
 
             PatientController.updatePatient(CurrentPatient);
-
+            HistoryController.updateCurrentPatientHistory();
             return dList;
         }
 

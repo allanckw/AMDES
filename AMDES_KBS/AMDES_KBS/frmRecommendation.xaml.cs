@@ -21,21 +21,21 @@ namespace AMDES_KBS
     /// </summary>
     public partial class frmRecommendation : AMDESPage
     {
-        double heightLimit = 0;
-        double currHeight = 0;
-        int CurrPageNo = 1;
-        int TotalPageNo = 1;
+        //double heightLimit = 0;
+        //double currHeight = 0;
+        //int CurrPageNo = 1;
+        //int TotalPageNo = 1;
 
         //Frame amdesPageFrame;
         List<Diagnosis> AllDiagnose;
         List<List<ucDiagnosis>> PageContent;
-        bool collapseRest = false;
+        //bool collapseRest = false;
 
         public frmRecommendation()
         {
             InitializeComponent();
             //amdesPageFrame = amdesFrame;
-            heightLimit = 430;
+            //heightLimit = 430;
             loadRecommendation();
         }
 
@@ -45,8 +45,8 @@ namespace AMDES_KBS
             //lblSection.Content = sectionID;
             //amdesPageFrame = amdesFrame;
             //prevPage = null;
-            btnPrev.Visibility = Visibility.Collapsed;
-            heightLimit = 430;
+            //btnPrev.Visibility = Visibility.Collapsed;
+            //heightLimit = 430;
             Patient currPatient = CLIPSController.CurrentPatient;
             lblPatientID.Content = currPatient.NRIC;
             lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
@@ -110,51 +110,51 @@ namespace AMDES_KBS
         //    }
         //}
 
-        private void btnNext_Click(object sender, RoutedEventArgs e)
-        {
-            btnPrev.Visibility = Visibility.Visible;
-            if (CurrPageNo != TotalPageNo)
-            {
-                foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
-                {
-                    item.setVisibility(Visibility.Collapsed);
-                }
+        //private void btnNext_Click(object sender, RoutedEventArgs e)
+        //{
+        //    btnPrev.Visibility = Visibility.Visible;
+        //    if (CurrPageNo != TotalPageNo)
+        //    {
+        //        foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
+        //        {
+        //            item.setVisibility(Visibility.Collapsed);
+        //        }
 
-                CurrPageNo++;
-                foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
-                {
-                    item.setVisibility(Visibility.Visible);
-                }
-                lblCurrPage.Content = CurrPageNo.ToString();
-                if (CurrPageNo == TotalPageNo)
-                    btnNext.Visibility = Visibility.Hidden;
-            }
-        }
+        //        CurrPageNo++;
+        //        foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
+        //        {
+        //            item.setVisibility(Visibility.Visible);
+        //        }
+               
+        //        if (CurrPageNo == TotalPageNo)
+        //            btnNext.Visibility = Visibility.Hidden;
+        //    }
+        //}
 
-        private void btnPrev_Click(object sender, RoutedEventArgs e)
-        {
-            btnNext.Visibility = Visibility.Visible;
-            if (CurrPageNo != 1)
-            {
-                foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
-                {
-                    item.setVisibility(Visibility.Collapsed);
-                }
+        //private void btnPrev_Click(object sender, RoutedEventArgs e)
+        //{
+        //    btnNext.Visibility = Visibility.Visible;
+        //    if (CurrPageNo != 1)
+        //    {
+        //        foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
+        //        {
+        //            item.setVisibility(Visibility.Collapsed);
+        //        }
 
-                CurrPageNo--;
-                foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
-                {
-                    item.setVisibility(Visibility.Visible);
-                }
-                lblCurrPage.Content = CurrPageNo.ToString();
-                if (CurrPageNo == 1)
-                    btnPrev.Visibility = Visibility.Hidden;
+        //        CurrPageNo--;
+        //        foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
+        //        {
+        //            item.setVisibility(Visibility.Visible);
+        //        }
+        //        lblCurrPage.Content = CurrPageNo.ToString();
+        //        if (CurrPageNo == 1)
+        //            btnPrev.Visibility = Visibility.Hidden;
 
-            }
-            else
-            {
-                btnPrev.Visibility = Visibility.Hidden;
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        btnPrev.Visibility = Visibility.Hidden;
+        //    }
+        //}
     }
 }
