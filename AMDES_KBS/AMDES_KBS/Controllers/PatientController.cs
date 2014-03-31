@@ -48,11 +48,10 @@ namespace AMDES_KBS.Controllers
                                        new XElement("AssessmentDate", DateTime.Now.Ticks),
                                        new XElement("Status", p.Status),
                                        new XElement("Tests"),
-                    //new XElement("Symptoms"),
-
-                                           new XElement("Assessor",
-                                               new XElement("AssessorName", p.Doctor.Name),
-                                               new XElement("AssessLocation", p.Doctor.ClinicName)
+                                       new XElement("Assessor",
+                                       new XElement("AssessorName", p.Doctor.Name),
+                                       new XElement("AssessLocation", p.Doctor.ClinicName),
+                                       new XElement("Symptoms")
                                            )
                                        );
 
@@ -96,13 +95,12 @@ namespace AMDES_KBS.Controllers
                                     new XElement("AssessmentDate", p.AssessmentDate.Ticks),
                                     new XElement("Status", p.Status),
                                     new XElement("Tests"),
-                //new XElement("Symptoms"),
-
-                                        new XElement("Assessor",
-                                            new XElement("AssessorName", p.Doctor.Name),
-                                            new XElement("AssessLocation", p.Doctor.ClinicName)
-                                        )
-                                    );
+                                    new XElement("Assessor",
+                                    new XElement("AssessorName", p.Doctor.Name),
+                                    new XElement("AssessLocation", p.Doctor.ClinicName),
+                                    new XElement("Symptoms")
+                                    )
+                                   );
 
             if (p.TestsList.Count > 0)
             {
@@ -113,7 +111,7 @@ namespace AMDES_KBS.Controllers
                     newPat.Element("Tests").Add(
                         new XElement("Test",
                             new XElement("TestName", t.TestName),
-                            new XElement("Status", t.Status),
+                            new XElement("Status", t.getStatus()),
                             new XElement("OrderedDate", t.OrderedDate.GetValueOrDefault().Ticks),
                             new XElement("ReportDate", t.ReportDate.GetValueOrDefault().Ticks),
                                     new XElement("Assessor",
@@ -125,22 +123,21 @@ namespace AMDES_KBS.Controllers
                 }
             }
 
-            //if (p.SymptomsList.Count > 0)
-            //{
-            //    for (int i = 0; i < p.SymptomsList.Count; i++)
-            //    {
-            //        Symptom s = p.SymptomsList.ElementAt(i);
-            //        newPat.Element("Symptoms").Add(
-            //            new XElement("Symptom", new XAttribute("id", s.ID),
-            //                new XElement("SymptomName", s.SymptomName),
-            //                new XElement("Exist", s.SymptomPresent),
-            //                new XElement("DiagnosisDate", s.DiagnosisDate.Ticks)
+            if (p.SymptomsList.Count > 0)
+            {
+                for (int i = 0; i < p.SymptomsList.Count; i++)
+                {
+                    Symptom s = p.SymptomsList.ElementAt(i);
+                    newPat.Element("Symptoms").Add(
+                        new XElement("Symptom",
+                            new XElement("SymptomName", s.SymptomName),
+                            new XElement("DiagnosisDate", s.DiagnosisDate.Ticks),
+                            new XElement("DiagnosedByID", s.DiagnosedByID)
+                            )
+                        );
 
-            //                )
-            //            );
-
-            //    }
-            //}
+                }
+            }
             document.Element("Patients").Add(newPat);
             document.Save(Patient.dataPath);
         }
@@ -181,13 +178,56 @@ namespace AMDES_KBS.Controllers
                 p.AssessmentDate = new DateTime(long.Parse(x.Element("AssessmentDate").Value));
                 p.DOB = new DateTime(long.Parse(x.Element("DOB").Value));
 
-                //TODO: TEST AND SYMPTOM LOAD
+                var tests = (from test in x.Descendants("Tests").Descendants("Test")
+                             select test).ToList();
+
+                foreach (var t in tests)
+                {
+                    p.addTest(readPatientTest(t));
+                }
+
+                var symptoms = (from syms in x.Descendants("Symptoms").Descendants("Symptom")
+                                select syms).ToList();
+
+                foreach (var s in symptoms)
+                {
+                    p.addSymptom(readPatientSymptoms(s));
+                }
             }
             else
             {
                 return null;
             }
             return p;
+        }
+
+        private static Test readPatientTest(XElement x)
+        {
+            if (x != null)
+            {
+                Test t = new Test();
+                t.TestName = x.Element("TestName").Value;
+                t.Doctor = AssessorController.readAssessor(x.Element("Assessor"));
+                t.OrderedDate = new DateTime(long.Parse(x.Element("OrderedDate").Value));
+                t.ReportDate = new DateTime(long.Parse(x.Element("ReportDate").Value));
+                t.setStatus(int.Parse(x.Element("Status").Value));
+
+                return t;
+            }
+            return null;
+        }
+
+        private static Symptom readPatientSymptoms(XElement x)
+        {
+            if (x != null)
+            {
+                Symptom s = new Symptom();
+                s.DiagnosedByID = x.Element("DiagnosedByID").Value;
+                s.DiagnosisDate = new DateTime(long.Parse(x.Element("DiagnosisDate").Value));
+                s.SymptomName = x.Element("SymptomName").Value;
+                return s;
+            }
+            return null;
         }
 
         public static List<Patient> searchPatientByName(string name = "")

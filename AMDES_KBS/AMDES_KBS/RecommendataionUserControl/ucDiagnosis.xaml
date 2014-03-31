@@ -18,7 +18,9 @@
             </StackPanel>
 
             <StackPanel x:Name="stkpnlDiagnosisLink" Visibility="Collapsed" >
-                <Label x:Name="lblLink" Height="30" Foreground="Red" Margin="0,10,0,0" Content="Link out to resource" />
+                <Label x:Name="lblLink" Height="30" Foreground="Red" Margin="0,10,0,0" Content="Link out to resource" >
+                    
+                </Label>
             </StackPanel>
 
         </StackPanel>

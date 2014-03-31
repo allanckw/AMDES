@@ -26,7 +26,7 @@ namespace AMDES_KBS
         public ucPatientDisplay(Patient p, Frame ParentFrame)
         {
             InitializeComponent();
-            loadTest();
+           
 
             this.amdesPageFrame = ParentFrame;
             this.pat = p;
@@ -39,6 +39,9 @@ namespace AMDES_KBS
 
             if (p.TestsList.Count == 0)
                 btnShowHideTest.Visibility = Visibility.Hidden;
+            else
+                loadTest(); 
+
             if (p.Status == PatientStatus.COMPLETED)
             {
                 btnResult.Visibility = Visibility.Visible;

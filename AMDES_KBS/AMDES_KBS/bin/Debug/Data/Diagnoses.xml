@@ -1,49 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Diagnoses xml-->
 <Diagnoses>
-  <Diagnosis diagID="1">
-    <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to  some  cognitive deficits.  You may wish to evaluate further. </Comment>
-    <Header>R1</Header>
-    <Link>www.google.com.sg</Link>
-  </Diagnosis>
-  <Diagnosis diagID="2">
-    <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present  for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
-    <Header>R2</Header>
-    <Link></Link>
-  </Diagnosis>
-  <Diagnosis diagID="3">
-    <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid  (&lt; 6 months).  </Comment>
-    <Header>R3</Header>
-    <Link></Link>
-  </Diagnosis>
-  <Diagnosis diagID="4">
-    <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil  the DSM IV criteria.~~~~Please refer the patient to a memory clinic for further assessment.</Comment>
-    <Header>R4</Header>
-    <Link></Link>
-  </Diagnosis>
-  <Diagnosis diagID="5">
-    <Comment>Patient has other underlying conditions that can result in cognitive impairment.  The patient will  need further evaluation.~~</Comment>
-    <Header>R5</Header>
-    <Link></Link>
-  </Diagnosis>
-  <Diagnosis diagID="6">
-    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~Urea &amp; electrolytes (or renal panel)~~Calcium panel~~Vitamin B12 level~~Folate level~~Thyroid function test~~</Comment>
-    <Header>R6</Header>
-    <Link></Link>
-  </Diagnosis>
-  <Diagnosis diagID="7">
-    <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
-    <Header>R7</Header>
-    <Link></Link>
-  </Diagnosis>
-  <Diagnosis diagID="8">
-    <Comment>You are fine!</Comment>
-    <Header>R0</Header>
-    <Link></Link>
-  </Diagnosis>
-  <Diagnosis diagID="9">
-    <Comment>Sorry, we are unable to diagnose, please refer to specialist.</Comment>
-    <Header>No Diagnosis</Header>
-    <Link></Link>
-  </Diagnosis>
+ <Diagnosis diagID="1">
+  <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
+  <Header>Low likelihood of dementia, other underlying conditions</Header>
+  <Link>www.google.com.sg</Link>
+ </Diagnosis>
+ <Diagnosis diagID="2">
+  <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
+  <Header>Low likelihood of dementia, Consider congenital conditions</Header>
+  <Link></Link>
+ </Diagnosis>
+ <Diagnosis diagID="3">
+  <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
+  <Header>Low likelihood of dementia</Header>
+  <Link></Link>
+ </Diagnosis>
+ <Diagnosis diagID="4">
+  <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.~~~~Please refer the patient to a memory clinic for further assessment.</Comment>
+  <Header>HIGH likelihood of dementia</Header>
+  <Link></Link>
+ </Diagnosis>
+ <Diagnosis diagID="5">
+  <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
+  <Header>Cognitive impairment</Header>
+  <Link></Link>
+ </Diagnosis>
+ <Diagnosis diagID="6">
+  <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~Urea &amp; electrolytes (or renal panel)~~Calcium panel~~Vitamin B12 level~~Folate level~~Thyroid function test~~</Comment>
+  <Header>R6</Header>
+  <Link></Link>
+ </Diagnosis>
+ <Diagnosis diagID="7">
+  <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+  <Header>Imaging and Referral</Header>
+  <Link></Link>
+ </Diagnosis>
+ <Diagnosis diagID="8">
+  <Comment>The patient does not have any signs of dementia.</Comment>
+  <Header>No Dementia</Header>
+  <Link></Link>
+ </Diagnosis>
+ <Diagnosis diagID="9">
+  <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~ The patient will need further evaluation.~~</Comment>
+  <Header>No Diagnosis</Header>
+  <Link></Link>
+ </Diagnosis>
 </Diagnoses>

@@ -12,6 +12,7 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
+    <Symptoms />
   </Patient>
   <Patient id="S8747645Z">
     <Last_Name>Tan</Last_Name>
@@ -24,6 +25,7 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
+    <Symptoms />
   </Patient>
   <Patient id="S8826035Z">
     <Last_Name>Ang</Last_Name>
@@ -36,6 +38,7 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
+    <Symptoms />
   </Patient>
   <Patient id="S8764783D">
     <Last_Name>Ang</Last_Name>
@@ -48,6 +51,7 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
+    <Symptoms />
   </Patient>
   <Patient id="S2345436Q">
     <Last_Name>bie</Last_Name>
@@ -60,6 +64,7 @@
       <AssessorName>sad</AssessorName>
       <AssessLocation>emose</AssessLocation>
     </Assessor>
+    <Symptoms />
   </Patient>
   <Patient id="S3848487Z">
     <Last_Name>Ang</Last_Name>
@@ -72,6 +77,7 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
+    <Symptoms />
   </Patient>
   <Patient id="S1175911Z">
     <Last_Name>Zhang</Last_Name>
@@ -84,6 +90,7 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
+    <Symptoms />
   </Patient>
   <Patient id="S8823654H">
     <Last_Name>Chan</Last_Name>
@@ -96,6 +103,7 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
+    <Symptoms />
   </Patient>
   <Patient id="S0275487J">
     <Last_Name>Tan</Last_Name>
@@ -108,5 +116,40 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
+    <Symptoms />
+  </Patient>
+  <Patient id="S099147D">
+    <Last_Name>A</Last_Name>
+    <First_Name>patient with test</First_Name>
+    <DOB>626798333353879857</DOB>
+    <AssessmentDate>635319101353889858</AssessmentDate>
+    <Status>DRAFT</Status>
+    <Tests>
+      <Test>
+        <TestName>Blood Test A</TestName>
+        <Status>0</Status>
+        <OrderedDate>635319101353899858</OrderedDate>
+        <ReportDate>0</ReportDate>
+        <Assessor>
+          <AssessorName>Dr Simon Tan</AssessorName>
+          <AssessLocation>La La Clinic</AssessLocation>
+        </Assessor>
+      </Test>
+      <Test>
+        <TestName>Urea Test</TestName>
+        <Status>1</Status>
+        <OrderedDate>635319101353899858</OrderedDate>
+        <ReportDate>635329101453899858</ReportDate>
+        <Assessor>
+          <AssessorName>Dr Simon Tan</AssessorName>
+          <AssessLocation>La La Clinic</AssessLocation>
+        </Assessor>
+      </Test>
+    </Tests>
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms />
   </Patient>
 </Patients>
