@@ -85,4 +85,28 @@
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
   </Patient>
+  <Patient id="S8823654H">
+    <Last_Name>Chan</Last_Name>
+    <First_Name>Ya Ling</First_Name>
+    <DOB>627173280000000000</DOB>
+    <AssessmentDate>635319048165222425</AssessmentDate>
+    <Status>DRAFT</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+  </Patient>
+  <Patient id="S0275487J">
+    <Last_Name>Tan</Last_Name>
+    <First_Name>Ya Le</First_Name>
+    <DOB>611267040000000000</DOB>
+    <AssessmentDate>635319049070182259</AssessmentDate>
+    <Status>DRAFT</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+  </Patient>
 </Patients>

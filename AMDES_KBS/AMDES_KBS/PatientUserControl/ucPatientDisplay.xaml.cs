@@ -39,6 +39,14 @@ namespace AMDES_KBS
 
             if (p.TestsList.Count == 0)
                 btnShowHideTest.Visibility = Visibility.Hidden;
+            if (p.Status == PatientStatus.COMPLETED)
+            {
+                btnResult.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnResult.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void loadTest()
@@ -81,6 +89,15 @@ namespace AMDES_KBS
 
             frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
             amdesPageFrame.Navigate(TestSection);
+        }
+
+        private void btnResult_Click(object sender, RoutedEventArgs e)
+        {
+            //@Allan to check and modify
+            List<Diagnosis> diaList = new List<Diagnosis>();
+            frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, diaList);
+            amdesPageFrame.Navigate(frmConclusion);
+           
         }
     }
 }
