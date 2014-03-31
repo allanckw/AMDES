@@ -35,9 +35,16 @@ namespace AMDES_KBS.Entity
 
         public string Link
         {
-
-            get { return this.link; }
-            set {this.link = value;}
+            get
+            {
+                if (this.link.Length > 0 && this.link.StartsWith("http://"))
+                    return link;
+                else if (link.Length > 0 && !this.link.StartsWith("http://"))
+                    return "http://" + this.link;
+                else
+                    return "";
+            }
+            set { this.link = value; }
         }
 
 
