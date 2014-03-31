@@ -8,16 +8,16 @@
     <Grid x:Name="gridDiagnosis">
         <StackPanel x:Name="stkpnlDiagnosis">
             <StackPanel x:Name="stkpnlDiagnosisHeader" Orientation="Horizontal">
-                <Label x:Name="lblRuleID" Width="50" Height="30"/>
+                <Label x:Name="lblRuleID" Width="auto" Height="30"/>
                 <Label Content="The patient has the following symptoms stated in the questionnaire:" />
             </StackPanel>
             <StackPanel x:Name="stkpnlSymptons" Margin="50,0,0,0">
             </StackPanel>
             <StackPanel x:Name="stkpnlDiagnosisMessage" >
-                <TextBox x:Name="txtDiagnosisMessage" IsReadOnly="true" TextWrapping="Wrap" BorderThickness="0" Background="Transparent" Width="660" BorderBrush="{x:Null}" Margin="0,10,0,0" Text="Likelihood of dementia is low. If the cognitive deficit(s) has been present  for a long time, do consider congenital conditions like mental retardation, cerebral palsy. " />
+                <TextBox x:Name="txtDiagnosisMessage" IsReadOnly="true" TextWrapping="Wrap" BorderThickness="0" Background="Transparent" Width="660" BorderBrush="{x:Null}" Margin="0,10,0,0" />
             </StackPanel>
 
-            <StackPanel x:Name="stkpnlDiagnosisLink" >
+            <StackPanel x:Name="stkpnlDiagnosisLink" Visibility="Collapsed" >
                 <Label x:Name="lblLink" Height="30" Foreground="Red" Margin="0,10,0,0" Content="Link out to resource" />
             </StackPanel>
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AMDES_KBS.Controllers;
 
 //http://stackoverflow.com/questions/8417225/parse-xml-using-linq-to-xml-to-class-objects
 
@@ -23,7 +24,7 @@ namespace AMDES_KBS.Entity
 
         private List<Test> testsList;
 
-        private List<Symptom> sympsList; 
+        private List<Symptom> sympsList;
 
         private PatientStatus status;
 
@@ -88,7 +89,7 @@ namespace AMDES_KBS.Entity
             set { this.status = value; }
         }
 
-        public  DateTime AssessmentDate
+        public DateTime AssessmentDate
         {
             get { return dAssessment; }
             set { this.dAssessment = value; }
@@ -119,15 +120,17 @@ namespace AMDES_KBS.Entity
                 this.testsList.RemoveAt(i);
         }
 
-        public  List<Symptom> SymptomsList
+        public List<Symptom> SymptomsList
         {
             get { return this.sympsList; }
         }
 
         public void addSymptom(Symptom s)
         {
-            if (s != null)
+
+            if (s != null && !this.sympsList.Contains(s))
                 this.sympsList.Add(s);
+
         }
 
         public Symptom getSymptomAt(int i)
@@ -148,7 +151,7 @@ namespace AMDES_KBS.Entity
         {
             int age = DateTime.Today.Year - DOB.Year;
 
-            if (DOB > DateTime.Today.AddYears(-age)) 
+            if (DOB > DateTime.Today.AddYears(-age))
                 age--;
 
             return age;

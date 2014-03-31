@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AMDES_KBS.Entity;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
@@ -19,44 +21,49 @@ namespace AMDES_KBS
     /// </summary>
     public partial class ucDiagnosis : UserControl
     {
-        public ucDiagnosis(string ruleID)
+        Diagnosis DiaRule;
+        public ucDiagnosis(Diagnosis Rule)
         {
             InitializeComponent();
-            lblRuleID.Content = ruleID;
-            //updateHeight();
+            DiaRule = Rule;
+            lblRuleID.Content = DiaRule.Header;
+            loadComment();
+            loadLink();
+            addSymptons();
         }
 
-        public double getHeight()
+        public void addSymptons()
         {
-            updateHeight();
-            return gridDiagnosis.Height;
-        }
-
-        public void addSymptons(int count)
-        {
-            for (int i = 0; i < count; i++)
+            
+            foreach (Symptom sym in CLIPSController.CurrentPatient.SymptomsList)
             {
                 Label lblSymptons = new Label();
-                lblSymptons.Content = "Symptons " + (i + 1);
+                lblSymptons.Content = "Symptoms - " + sym.SymptomName;
                 stkpnlSymptons.Children.Add(lblSymptons);
             }
             //updateHeight();
         }
-        
-        public void loadComment()
+
+        private void loadComment()
         {
-            string comment = "Likelihood of dementia is low. If the cognitive deficit(s) has been present  for a long time, do consider congenital conditions like mental retardation, cerebral palsy. " +
-                Environment.NewLine +
-                "You may consider a referral to a specialist should there be a sudden change or decline in the condition.";
-            this.txtDiagnosisMessage.Text = comment;
+            this.txtDiagnosisMessage.Text = DiaRule.Comment.Replace("~~", Environment.NewLine);
         }
 
-        private void updateHeight()
+        private void loadLink()
         {
-            var desiredSizeOld = gridDiagnosis.DesiredSize;
-            gridDiagnosis.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
-            var desiredSizeNew = gridDiagnosis.DesiredSize;
-            gridDiagnosis.Height = desiredSizeNew.Height - 5;
+            string linkString = DiaRule.Link;
+            if (linkString.Length == 0)
+            {
+                return;
+            }
+
+            this.lblLink.Content = DiaRule.Link;
+            stkpnlDiagnosisLink.Visibility = Visibility.Visible;
+            //string comment = "Likelihood of dementia is low. If the cognitive deficit(s) has been present  for a long time, do consider congenital conditions like mental retardation, cerebral palsy. " +
+            //    Environment.NewLine +
+            //    "You may consider a referral to a specialist should there be a sudden change or decline in the condition.";
+            //this.txtDiagnosisMessage.Text = DiaRule.Comment.Replace("~~", Environment.NewLine);
+
         }
 
         public void setVisibility(Visibility v)

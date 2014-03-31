@@ -15,7 +15,7 @@
                     <Label x:Name="lblPatientID" FontSize="14" FontWeight="Bold" Content="SXXXXXXXZ" Width="100" />
                 </StackPanel>
                 <StackPanel x:Name="stkpnlRecommendation" Orientation="Horizontal">
-                    <Label Content="Recommendation" FontSize="14" FontWeight="Bold" Width="150" Margin="65,0,0,0" />
+                    <Label Content="Recommendation" FontSize="14" FontWeight="Bold" Width="150" Margin="205,0,0,0" />
                 </StackPanel>
                 <StackPanel x:Name="stkpnlPage" Orientation="Horizontal" Margin="5,0,0,0">
                     <Label Content="Page" FontSize="14" FontWeight="Bold" Width="45" />
@@ -24,9 +24,11 @@
                     <Label x:Name="lblTotalPage" FontSize="14" FontWeight="Bold" Content="10" Width="30" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="PageFrame" Height="430">
+            <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="PageFrame" Height="480">
             </StackPanel>
-            <StackPanel x:Name="ButtonFrame" Height="50" Orientation="Horizontal" HorizontalAlignment="Right">
+            </ScrollViewer>
+            <StackPanel x:Name="ButtonFrame" Height="50" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Hidden">
                 <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="5" Click="btnPrev_Click" />
                 <Button x:Name="btnNext" Content="Next" Height="30" Width="100" Margin="5" Click="btnNext_Click" />
             </StackPanel>

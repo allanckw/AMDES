@@ -1,3 +1,5 @@
+
+
 (deftemplate mode2criteria
 (slot ID (type SYMBOL))
 (slot GroupID (type SYMBOL))
@@ -97,17 +99,11 @@
 )
 
 ;;so the forall can work
-(deftemplate NaviChildCritASTUB
-(slot Answer (type SYMBOL) (default Yes))
-)
-
-; ; The initial facts
-(deffacts the-facts
-(NaviHistory)
-(NaviChildCritASTUB)
+;;(deftemplate NaviChildCritASTUB
+;;(slot Answer (type SYMBOL) (default Yes))
+;;);;dont need anymore
 
 
-)
 
 (defrule Pass-And
 ?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType AND) (answer ~Yes))
@@ -168,8 +164,8 @@
 )
 
 (defrule Change-Answer
-?f1 <- (choice ?id ?x)
-?f2 <- (question (ID ?id) (answer ?y) (GroupID ?z))
+?f1 <- (choice ?ID ?x)
+?f2 <- (question (ID ?ID) (answer ?y) (GroupID ?z))
 ?f3 <- (group (GroupID ?z) (TrueCount ?count))
 =>
 (switch ?y
@@ -179,7 +175,7 @@
 	(if(eq Yes ?x)
 	then;;yes
 		(modify ?f3 (TrueCount (+ ?count 1)))
-	else;;no
+	else;;No
 	)
 )
 (case Yes then 
@@ -258,16 +254,20 @@
 (mode 1)
 
 (Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
-(forall
-(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
-(group (GroupID ?CGID) (answer ?CA))
-(NaviHistory (ID $?START ?CGID $?END))
-)
+
+(not (exists (NaviChildCritQ (NavigationID ?naviID))))
+
+(not (exists (NaviChildCritA (NavigationID ?naviID) (Answer No))))
+;;(forall
+;;	(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
+;;	(group (GroupID ?CGID) (answer ?CA))
+;;	(NaviHistory (ID $?START ?CGID $?END))
+;;)
 (not (exists (Currentgroup)))
-(forall
-(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
-(NaviChildCritASTUB (Answer ?yes))
-)
+;;(forall
+;;	(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
+;;	(NaviChildCritASTUB (Answer ?yes))
+;;)
 ?hist<-(NaviHistory (ID $?x END))
 ?grp<-
 (group 
@@ -299,16 +299,15 @@
 	?rmv<-(Currentgroup (GroupID ?y))
 	?nxt<-(next)
 	(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
+	
+	(exists (NaviChildCritQ (NavigationID ?naviID)))
 	(forall
 		(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
 		(group (GroupID ?CGID) (answer ?CA))
 		(NaviHistory (ID $?START ?CGID $?END))
 	)
 	
-	(forall
-		(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
-		(NaviChildCritASTUB (Answer ?yes))
-	)
+	(not (exists (NaviChildCritA (NavigationID ?naviID) (Answer No))))
 	?hist<-(NaviHistory (ID $?x END))
 	?grp<-
 	(group 
@@ -339,22 +338,20 @@
 )
 
 ;; Navigation to a conclusion
-(defrule next_question2
+(defrule next_Conclusion	(declare (salience 1)) ;;When seeing a conclusion, it should always be fired
 	(mode 1)
 	?rmv<-(Currentgroup (GroupID ?y))
 	?nxt<-(next)
 	(Navigation (NavigationID ?naviID) (DestinationGroupID NIL) (RID $?diag))
-	
+
+	(exists (NaviChildCritQ (NavigationID ?naviID)));;so it wont run initial question again
 	(forall
 		(NaviChildCritQ (NavigationID ?naviID)(CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
 		(group (GroupID ?CGID) (answer ?CA))
 		(NaviHistory (ID $?START ?CGID $?END))
 	)
 
-	(forall
-		(NaviChildCritA (NavigationID ?naviID) (Answer ?yes))
-		(NaviChildCritASTUB (Answer ?yes))
-	)
+	(not (exists (NaviChildCritA (NavigationID ?naviID) (Answer No))))
 	?hist<-(NaviHistory (ID $?x END))
 =>
 
@@ -601,24 +598,24 @@
 
 )
 
-(defrule Add-symptoms-groupid
-(group (answer Yes) (GroupID ?id) )
+(defrule Add-symptoms-groupid-notcount
+(group (answer Yes) (GroupID ?id) (SuccessType ~COUNT) )
 (groupid-symptoms (GroupID ?id) (symptom ?sym))
 (not (exists (symptoms (ID ?id))))
 =>
 (assert (symptoms (symptom ?sym) (ID ?id)))
 
-)
+)(defrule Add-symptoms-groupid-count(group (answer No) (GroupID ?id) (SuccessType COUNT) )(groupid-symptoms (GroupID ?id) (symptom ?sym))(not (exists (symptoms (ID ?id))))=>(assert (symptoms (symptom ?sym) (ID ?id))))
 
-(defrule Retract-symptoms-groupid
+(defrule Retract-symptoms-groupid-not-count
 
-(group (answer No) (GroupID ?Noid) )
+(group (answer No) (GroupID ?Noid) (SuccessType ~COUNT) )
 (groupid-symptoms (GroupID ?Noid))
 ?sym <- (symptoms (ID ?Noid))
 =>
 (retract ?sym)
 ;;(printout t crlf "ans:"?sym crlf)
-)
+)(defrule Retract-symptoms-groupid-count(group (answer Yes) (GroupID ?Noid) (SuccessType COUNT) )(groupid-symptoms (GroupID ?Noid))?sym <- (symptoms (ID ?Noid))=>(retract ?sym);;(printout t crlf "ans:"?sym crlf))
 
 (defrule Add-symptoms-questionid
 (question (answer Yes) (ID ?id) )
@@ -640,3 +637,10 @@
 )
 
 
+
+
+; ; The initial facts
+(deffacts the-facts
+(NaviHistory)
+
+)

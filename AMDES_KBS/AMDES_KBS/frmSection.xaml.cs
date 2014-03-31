@@ -249,19 +249,28 @@ namespace AMDES_KBS
             CLIPSController.assertNextSection();
 
             int sectionID = CLIPSController.getCurrentQnGroupID();
-            //MessageBox.Show(sectionID.ToString());
-
-            if (lblSection.Content.ToString().CompareTo(sectionID.ToString()) == 0)
+            if (sectionID == -1)
             {
-                ////Warning Stuck Condition, this freaking msgbox should never come out in our testing phase if all the rules are defined correctly.
-                //MessageBox.Show("The Rules did not cover the sequence of diagnosis defined in the system" + Environment.NewLine +
-                //    "please verify your rules in the configuration, " + Environment.NewLine + " if the problem persists, please contact the system administrator of this system with the data folder in the root folder of this program and we will assist you " +
-                //    Environment.NewLine + " at amdes_nus_soc@googlegroups.com ", "Error In Navigation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                List<Diagnosis> result = CLIPSController.getResultingDiagnosis();
+                frmRecommendation finalConclusionPage = new frmRecommendation(amdesPageFrame, result);
+                amdesPageFrame.Navigate(finalConclusionPage);
             }
             else
             {
-                frmSection nextSection = new frmSection(amdesPageFrame, sectionID, this);
-                amdesPageFrame.Navigate(nextSection);
+                //MessageBox.Show(sectionID.ToString());
+
+                if (lblSection.Content.ToString().CompareTo(sectionID.ToString()) == 0)
+                {
+                    ////Warning Stuck Condition, this freaking msgbox should never come out in our testing phase if all the rules are defined correctly.
+                    //MessageBox.Show("The Rules did not cover the sequence of diagnosis defined in the system" + Environment.NewLine +
+                    //    "please verify your rules in the configuration, " + Environment.NewLine + " if the problem persists, please contact the system administrator of this system with the data folder in the root folder of this program and we will assist you " +
+                    //    Environment.NewLine + " at amdes_nus_soc@googlegroups.com ", "Error In Navigation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    frmSection nextSection = new frmSection(amdesPageFrame, sectionID, this);
+                    amdesPageFrame.Navigate(nextSection);
+                }
             }
         }
 

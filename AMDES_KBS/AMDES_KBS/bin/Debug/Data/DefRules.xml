@@ -23,7 +23,7 @@
     <NavigationChildAttributes />
     <Diagnoses />
   </Navex>
-  <Navex NavID="3">
+  <Navex NavID="5">
     <Destination>-1</Destination>
     <NavigationChildCriterias>
       <ChildCriteriaQuestionGroup>
@@ -41,10 +41,10 @@
     </NavigationChildCriterias>
     <NavigationChildAttributes />
     <Diagnoses>
-      <DiagnosisID>9</DiagnosisID>
+      <DiagnosisID>8</DiagnosisID>
     </Diagnoses>
   </Navex>
-  <Navex NavID="4">
+  <Navex NavID="6">
     <Destination>-1</Destination>
     <NavigationChildCriterias>
       <ChildCriteriaQuestionGroup>
@@ -62,7 +62,7 @@
     </NavigationChildCriterias>
     <NavigationChildAttributes />
     <Diagnoses>
-      <DiagnosisID>8</DiagnosisID>
+      <DiagnosisID>9</DiagnosisID>
     </Diagnoses>
   </Navex>
 </Navigations>

@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AMDES_KBS.Entity;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
@@ -25,7 +27,8 @@ namespace AMDES_KBS
         int TotalPageNo = 1;
 
         //Frame amdesPageFrame;
-        List<List<ucDiagnosis>> PageContent = new List<List<ucDiagnosis>>();
+        List<Diagnosis> AllDiagnose;
+        List<List<ucDiagnosis>> PageContent;
         bool collapseRest = false;
 
         public frmRecommendation()
@@ -36,59 +39,76 @@ namespace AMDES_KBS
             loadRecommendation();
         }
 
+        public frmRecommendation(Frame amdesFrame, List<Diagnosis> diaList)
+        {
+            InitializeComponent();
+            //lblSection.Content = sectionID;
+            //amdesPageFrame = amdesFrame;
+            //prevPage = null;
+            btnPrev.Visibility = Visibility.Collapsed;
+            heightLimit = 430;
+            Patient currPatient = CLIPSController.CurrentPatient;
+            lblPatientID.Content = currPatient.NRIC;
+            lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
+            AllDiagnose = diaList;
+            PageContent = new List<List<ucDiagnosis>>();
+            loadRecommendation();
+
+        }
+
         public void loadRecommendation()
         {
-            for (int i = 0; i < 7; i++)
+            foreach (Diagnosis diaRule in AllDiagnose)
             {
-                ucDiagnosis diagnosis = new ucDiagnosis("R" + (i+1));
-                //diagnosis.addSymptoms(i+1);
-                PageFrame.Children.Add(diagnosis);
+                ucDiagnosis diagnosisControl = new ucDiagnosis(diaRule);
+                //diagnosis.addSymptoms(i + 1);
+                PageFrame.Children.Add(diagnosisControl);
             }
-            sortPage();
+            //sortPage();
         }
 
-        private void sortPage()
-        {
-            currHeight = 0;
-            List<ucDiagnosis> QuestionPerPage = new List<ucDiagnosis>();
-            foreach (ucDiagnosis item in PageFrame.Children)
-            {
-                string temp = item.Name;
-                currHeight += Math.Ceiling(item.getHeight());
+        //private void sortPage()
+        //{
+        //    currHeight = 0;
+        //    List<ucDiagnosis> QuestionPerPage = new List<ucDiagnosis>();
+        //    foreach (ucDiagnosis item in PageFrame.Children)
+        //    {
+        //        string temp = item.Name;
+        //        currHeight += Math.Ceiling(item.getHeight());
 
-                if (currHeight >= heightLimit)
-                {
-                    currHeight = 0;
-                    currHeight += Math.Ceiling(item.getHeight());
-                    PageContent.Add(QuestionPerPage);
-                    QuestionPerPage = new List<ucDiagnosis>();
-                    if (collapseRest == false)
-                    {
-                        collapseRest = true;
-                    }
-                }
+        //        if (currHeight >= heightLimit)
+        //        {
+        //            currHeight = 0;
+        //            currHeight += Math.Ceiling(item.getHeight());
+        //            PageContent.Add(QuestionPerPage);
+        //            QuestionPerPage = new List<ucDiagnosis>();
+        //            if (collapseRest == false)
+        //            {
+        //                collapseRest = true;
+        //            }
+        //        }
 
-                if (collapseRest)
-                {
-                    item.setVisibility(Visibility.Collapsed);
-                }
+        //        if (collapseRest)
+        //        {
+        //            item.setVisibility(Visibility.Collapsed);
+        //        }
 
-                QuestionPerPage.Add(item);
-            }
+        //        QuestionPerPage.Add(item);
+        //    }
 
-            if (QuestionPerPage.Count > 0)
-            {
-                PageContent.Add(QuestionPerPage);
-            }
+        //    if (QuestionPerPage.Count > 0)
+        //    {
+        //        PageContent.Add(QuestionPerPage);
+        //    }
 
-            TotalPageNo = PageContent.Count;
-            lblTotalPage.Content = PageContent.Count.ToString();
-            btnPrev.Visibility = Visibility.Hidden;
-            if (TotalPageNo == 1)
-            {
-                btnNext.Visibility = Visibility.Hidden;
-            }
-        }
+        //    TotalPageNo = PageContent.Count;
+        //    lblTotalPage.Content = PageContent.Count.ToString();
+        //    btnPrev.Visibility = Visibility.Hidden;
+        //    if (TotalPageNo == 1)
+        //    {
+        //        btnNext.Visibility = Visibility.Hidden;
+        //    }
+        //}
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {

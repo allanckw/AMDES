@@ -51,6 +51,7 @@ namespace AMDES_KBS.Controllers
         {
             if (CurrentPatient != null)
             {
+                CurrentPatient.SymptomsList.Clear();
                 //call this f(x) everytime u click a new patient
                 env.Clear();
                 assertLog.Clear();
@@ -315,23 +316,27 @@ namespace AMDES_KBS.Controllers
         public static List<Diagnosis> getResultingDiagnosis()
         {
             String evalStr = "(find-all-facts ((?f diagnosis)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
+            //String evalStr = "(find-all-facts ((?f NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
             List<Diagnosis> dList = new List<Diagnosis>();
 
-            string x = "";
-
             foreach (FactAddressValue fv in mv)
             {
-                x = fv.GetFactSlot("RID").ToString();
+                //multi field need to use array choices
+                MultifieldValue ArrayChoices = (MultifieldValue)fv.GetFactSlot("RID");
+
+                for (int i = 0; i < ArrayChoices.Count(); i++)
+                {
+                    string x = ArrayChoices[i].ToString().Remove(0, 1);
+                    Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(x));
+                    dList.Add(d);
+                }
+                //x = fv.GetFactSlot("ID").ToString();
             }
 
-            List<string> split = x.Split(' ').ToList<string>();
+            getCurrentPatientSymptom();
 
-            foreach (string s in split)
-            {
-                Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(s.Remove(0, 1)));
-                dList.Add(d);
-            }
+            CurrentPatient.setCompleted();
 
             return dList;
         }
@@ -343,31 +348,24 @@ namespace AMDES_KBS.Controllers
 
         private static List<int> getNaviHistory()
         {
-            string x = "";
-
-            List<string> naviHistory = new List<string>();
+            List<int> naviHistory = new List<int>();
             String evalStr = "(find-all-facts((?a NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
 
-            //Need to find output
             foreach (FactAddressValue fv in mv)
             {
-                x = fv.GetFactSlot("ID").ToString().Replace("_", "");
-            }
-            naviHistory = x.Split(' ').ToList<string>();
+                //multi field need to use array choices
+                MultifieldValue ArrayChoices = (MultifieldValue)fv.GetFactSlot("ID");
 
-
-            Console.WriteLine(x);
-            List<int> h = new List<int>();
-
-            for (int i = 1; i < naviHistory.Count - 1; i++) //ignore 1st and last 
-            {
-                h.Add(int.Parse(naviHistory[i]));
+                for (int i = 1; i < ArrayChoices.Count() - 1; i++)
+                {
+                    string x = ArrayChoices[i].ToString().Remove(0, 1);
+                    naviHistory.Add(int.Parse(x));
+                   
+                }
             }
 
-            //return naviHistory;
-
-            return h;
+            return naviHistory;
         }
 
         public static List<Symptom> getCurrentPatientSymptom()
@@ -382,10 +380,7 @@ namespace AMDES_KBS.Controllers
                 Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString(),
                                         fv.GetFactSlot("ID").ToString().Remove(0, 1));
 
-                if (!sList.Contains(s))
-                {
-                    sList.Add(s);
-                }
+                CurrentPatient.addSymptom(s);
             }
 
             return sList;

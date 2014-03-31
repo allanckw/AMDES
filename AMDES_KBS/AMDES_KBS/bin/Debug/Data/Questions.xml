@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Questions xml-->
 <QuestionGroups>
-<QuestionGroup id="1">
+  <QuestionGroup id="1">
     <Header>Section A</Header>
     <Description></Description>
     <QnType>0</QnType>
@@ -12,24 +12,6 @@
         <Symptom>Amnesia</Symptom>
       </Question>
     </Questions>
-    <NextFalseLink>
-      <DestGrp>3</DestGrp>
-      <RequireAge>false</RequireAge>
-      <Age>65</Age>
-      <isConclusive>false</isConclusive>
-      <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>true</MoreThanEqualAge>
-      <Diagnoses />
-    </NextFalseLink>
-    <NextTrueLink>
-      <DestGrp>6</DestGrp>
-      <RequireAge>false</RequireAge>
-      <Age>65</Age>
-      <isConclusive>false</isConclusive>
-      <LessThanAge>false</LessThanAge>
-      <MoreThanEqualAge>true</MoreThanEqualAge>
-      <Diagnoses />
-    </NextTrueLink>
   </QuestionGroup>
   <QuestionGroup id="2">
     <Header>Section B</Header>
@@ -115,7 +97,7 @@
     <Header>Mental Test Score</Header>
     <Description>Instructions: for Recall memory phase,  ~~Tell the patient “37 Bukit Timah Road”~~Ask another qn. Ask to recall at the end of the test.</Description>
     <QnType>2</QnType>
-    <Symptom></Symptom>
+    <Symptom>Fail Mental Test Score</Symptom>
     <Questions>
       <Question QID="6.1">
         <Name>What is the year?</Name>
@@ -197,5 +179,4 @@
       </Question>
     </Questions>
   </QuestionGroup>
-  
 </QuestionGroups>

@@ -30,7 +30,7 @@ namespace AMDES_KBS
             InitializeComponent();
             newForm();
             loadQuestionGroup();
-            loadAllBehaviour();
+         //   loadAllBehaviour();
         }
 
         private void loadAllBehaviour()
@@ -74,6 +74,7 @@ namespace AMDES_KBS
             //txtDescription.Text = "";
             reloadAttribute();
             reloadCriteria();
+            loadAllBehaviour();
         }
 
         private void reloadCriteria()
