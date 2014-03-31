@@ -26,7 +26,7 @@ namespace AMDES_KBS
         public ucPatientDisplay(Patient p, Frame ParentFrame)
         {
             InitializeComponent();
-           
+
 
             this.amdesPageFrame = ParentFrame;
             this.pat = p;
@@ -40,7 +40,7 @@ namespace AMDES_KBS
             if (p.TestsList.Count == 0)
                 btnShowHideTest.Visibility = Visibility.Hidden;
             else
-                loadTest(); 
+                loadTest();
 
             if (p.Status == PatientStatus.COMPLETED)
             {
@@ -97,10 +97,11 @@ namespace AMDES_KBS
         private void btnResult_Click(object sender, RoutedEventArgs e)
         {
             //@Allan to check and modify
-            List<Diagnosis> diaList = new List<Diagnosis>();
-            frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, diaList);
+            CLIPSController.CurrentPatient = pat;
+
+            frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, pat.Diagnoses);
             amdesPageFrame.Navigate(frmConclusion);
-           
+
         }
     }
 }

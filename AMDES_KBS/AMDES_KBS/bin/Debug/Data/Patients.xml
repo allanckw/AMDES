@@ -1,129 +1,124 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Patients xml-->
 <Patients>
-  <Patient id="S8834871J">
-    <Last_Name>Teo</Last_Name>
-    <First_Name>Chee Yong, Shawn</First_Name>
-    <DOB>627260544000000000</DOB>
-    <AssessmentDate>635307596215691887</AssessmentDate>
-    <Status>DRAFT</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms />
-  </Patient>
   <Patient id="S8747645Z">
     <Last_Name>Tan</Last_Name>
     <First_Name>Teo Lui</First_Name>
     <DOB>626908032000000000</DOB>
     <AssessmentDate>635307611509652725</AssessmentDate>
-    <Status>COMPLETED</Status>
+    <Status>1</Status>
     <Tests />
     <Assessor>
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
   </Patient>
   <Patient id="S8826035Z">
     <Last_Name>Ang</Last_Name>
     <First_Name>Ji Kai</First_Name>
     <DOB>627209568000000000</DOB>
     <AssessmentDate>635307622162942058</AssessmentDate>
-    <Status>DRAFT</Status>
+    <Status>1</Status>
     <Tests />
     <Assessor>
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
   </Patient>
   <Patient id="S8764783D">
     <Last_Name>Ang</Last_Name>
     <First_Name>Kai</First_Name>
     <DOB>627209568000000000</DOB>
     <AssessmentDate>635307623515819438</AssessmentDate>
-    <Status>DRAFT</Status>
+    <Status>1</Status>
     <Tests />
     <Assessor>
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
   </Patient>
   <Patient id="S2345436Q">
     <Last_Name>bie</Last_Name>
     <First_Name>noob</First_Name>
     <DOB>625841456629949868</DOB>
     <AssessmentDate>635308304630019872</AssessmentDate>
-    <Status>DRAFT</Status>
+    <Status>1</Status>
     <Tests />
     <Assessor>
       <AssessorName>sad</AssessorName>
       <AssessLocation>emose</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
   </Patient>
   <Patient id="S3848487Z">
     <Last_Name>Ang</Last_Name>
     <First_Name>Kai</First_Name>
     <DOB>635294880000000000</DOB>
     <AssessmentDate>635308575101651452</AssessmentDate>
-    <Status>DRAFT</Status>
+    <Status>1</Status>
     <Tests />
     <Assessor>
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
   </Patient>
   <Patient id="S1175911Z">
     <Last_Name>Zhang</Last_Name>
     <First_Name>Tai Chuan</First_Name>
     <DOB>611968608000000000</DOB>
     <AssessmentDate>635318910323461389</AssessmentDate>
-    <Status>DRAFT</Status>
+    <Status>1</Status>
     <Tests />
     <Assessor>
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
   </Patient>
   <Patient id="S8823654H">
     <Last_Name>Chan</Last_Name>
     <First_Name>Ya Ling</First_Name>
     <DOB>627173280000000000</DOB>
     <AssessmentDate>635319048165222425</AssessmentDate>
-    <Status>DRAFT</Status>
+    <Status>1</Status>
     <Tests />
     <Assessor>
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
   </Patient>
   <Patient id="S0275487J">
     <Last_Name>Tan</Last_Name>
     <First_Name>Ya Le</First_Name>
     <DOB>611267040000000000</DOB>
     <AssessmentDate>635319049070182259</AssessmentDate>
-    <Status>DRAFT</Status>
+    <Status>1</Status>
     <Tests />
     <Assessor>
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
   </Patient>
   <Patient id="S099147D">
     <Last_Name>A</Last_Name>
     <First_Name>patient with test</First_Name>
     <DOB>626798333353879857</DOB>
     <AssessmentDate>635319101353889858</AssessmentDate>
-    <Status>DRAFT</Status>
+    <Status>1</Status>
     <Tests>
       <Test>
         <TestName>Blood Test A</TestName>
@@ -138,8 +133,8 @@
       <Test>
         <TestName>Urea Test</TestName>
         <Status>1</Status>
-        <OrderedDate>635319101353899858</OrderedDate>
-        <ReportDate>635329101453899858</ReportDate>
+        <OrderedDate>625119101353899858</OrderedDate>
+        <ReportDate>635319101353899858</ReportDate>
         <Assessor>
           <AssessorName>Dr Simon Tan</AssessorName>
           <AssessLocation>La La Clinic</AssessLocation>
@@ -151,5 +146,32 @@
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
+    <Diagnoses />
+  </Patient>
+  <Patient id="S8834871J">
+    <Last_Name>Teo</Last_Name>
+    <First_Name>Chee Yong, Shawn</First_Name>
+    <DOB>627260544000000000</DOB>
+    <AssessmentDate>635307596215691887</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Mental Test Score </SymptomName>
+        <DiagnosisDate>635319169841277112</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~ The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://www.google.com.sg</Link>
+      </Diagnosis>
+    </Diagnoses>
   </Patient>
 </Patients>

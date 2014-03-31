@@ -76,7 +76,7 @@ namespace AMDES_KBS
                        RegexOptions.IgnorePatternWhitespace);
             if (regex.IsMatch(criteria))
             {
-                Patient p = PatientController.searchPatientByNRIC(criteria);
+                Patient p = PatientController.searchPatientByID(criteria);
                 if (p != null)
                 {
                     patientResultDisplay = new frmOverview(frameDisplay, p);

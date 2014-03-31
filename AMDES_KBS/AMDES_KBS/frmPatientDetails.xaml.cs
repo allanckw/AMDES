@@ -80,7 +80,7 @@ namespace AMDES_KBS
                 Patient p = new Patient(a, txtNRIC.Text.Trim(), txtFirstName.Text.Trim(),
                                     txtLastName.Text.Trim(), (DateTime)dtpDOB.SelectedDate);
 
-                PatientController.addPatient(p);
+                PatientController.updatePatient(p);
                 //Dim myWindow As Window1 = TryCast(Application.Current.MainWindow, Window1)
                 frmMain myWindow = (frmMain)Application.Current.MainWindow;
                 myWindow.loadPatientList();

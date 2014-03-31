@@ -10,7 +10,7 @@ namespace AMDES_KBS.Controllers
 {
     class PatientController
     {
-        private static void createPatientFile()
+        private static void createDataFile()
         {
             //create xml document from scratch
             if (!File.Exists(Patient.dataPath))
@@ -32,9 +32,9 @@ namespace AMDES_KBS.Controllers
         //http://msdn.microsoft.com/en-us/library/bb387089.aspx
         public static void addNewPatient(Assessor a, string nric, string first, string last, DateTime dob)
         {
-            if (PatientController.searchPatientByNRIC(nric) == null)    //Search if nric exist, if yes throw exception!
+            if (PatientController.searchPatientByID(nric) == null)    //Search if nric exist, if yes throw exception!
             {
-                createPatientFile();
+                createDataFile();
 
                 Patient p = new Patient(a, nric, first, last, dob);
 
@@ -69,10 +69,12 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        public static void updatePatientStatus(string id, PatientStatus s)
+
+        //example for update on the fly
+        private static void updatePatientStatus(string id, PatientStatus s)
         {
             XDocument document = XDocument.Load(Patient.dataPath);
-            if (PatientController.searchPatientByNRIC(id) != null)
+            if (PatientController.searchPatientByID(id) != null)
             {
                 (from pa in document.Descendants("Patient")
                  where pa.Attribute("id").Value.ToUpper().CompareTo(id.ToUpper()) == 0
@@ -82,9 +84,8 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void addPatient(Patient p)
+        private static void addPatient(Patient p)
         {
-            createPatientFile();
             XDocument document = XDocument.Load(Patient.dataPath);
 
 
@@ -93,14 +94,14 @@ namespace AMDES_KBS.Controllers
                                     new XElement("First_Name", p.First_Name),
                                     new XElement("DOB", p.DOB.Ticks),
                                     new XElement("AssessmentDate", p.AssessmentDate.Ticks),
-                                    new XElement("Status", p.Status),
+                                    new XElement("Status", p.getStatus()),
                                     new XElement("Tests"),
                                     new XElement("Assessor",
                                     new XElement("AssessorName", p.Doctor.Name),
-                                    new XElement("AssessLocation", p.Doctor.ClinicName),
-                                    new XElement("Symptoms")
-                                    )
-                                   );
+                                    new XElement("AssessLocation", p.Doctor.ClinicName)),
+                                    new XElement("Symptoms"),
+                                    new XElement("Diagnoses")
+                                    );
 
             if (p.TestsList.Count > 0)
             {
@@ -128,21 +129,30 @@ namespace AMDES_KBS.Controllers
                 for (int i = 0; i < p.SymptomsList.Count; i++)
                 {
                     Symptom s = p.SymptomsList.ElementAt(i);
-                    newPat.Element("Symptoms").Add(
-                        new XElement("Symptom",
+                    XElement x = new XElement("Symptom",
                             new XElement("SymptomName", s.SymptomName),
                             new XElement("DiagnosisDate", s.DiagnosisDate.Ticks),
-                            new XElement("DiagnosedByID", s.DiagnosedByID)
-                            )
-                        );
+                            new XElement("DiagnosedByID", s.DiagnosedByID));
+
+                    newPat.Element("Symptoms").Add(x);
+
 
                 }
             }
+
+            if (p.Diagnoses.Count > 0)
+            {
+                for (int i = 0; i < p.Diagnoses.Count; i++)
+                {
+                    newPat.Element("Diagnoses").Add(DiagnosisController.convertToXML(p.Diagnoses[i]));
+                }
+            }
+
             document.Element("Patients").Add(newPat);
             document.Save(Patient.dataPath);
         }
 
-        public static Patient searchPatientByNRIC(string nric)
+        public static Patient searchPatientByID(string nric)
         {
             XDocument document = XDocument.Load(Patient.dataPath);
 
@@ -162,6 +172,7 @@ namespace AMDES_KBS.Controllers
             }
 
         }
+
         private static Patient readPatientData(XElement x)
         {
             Patient p = new Patient();
@@ -178,6 +189,8 @@ namespace AMDES_KBS.Controllers
                 p.AssessmentDate = new DateTime(long.Parse(x.Element("AssessmentDate").Value));
                 p.DOB = new DateTime(long.Parse(x.Element("DOB").Value));
 
+                p.setStatus(int.Parse(x.Element("Status").Value));
+
                 var tests = (from test in x.Descendants("Tests").Descendants("Test")
                              select test).ToList();
 
@@ -192,6 +205,14 @@ namespace AMDES_KBS.Controllers
                 foreach (var s in symptoms)
                 {
                     p.addSymptom(readPatientSymptoms(s));
+                }
+
+                var diagnoses = (from syms in x.Descendants("Diagnoses").Descendants("Diagnosis")
+                                select syms).ToList();
+
+                foreach (var d in diagnoses)
+                {
+                    p.addDiagnosis(DiagnosisController.readDiagnosis(d));
                 }
             }
             else
@@ -301,23 +322,32 @@ namespace AMDES_KBS.Controllers
                 }
             }
 
-            return pList;
+            return pList.OrderBy(x => x.Last_Name).ToList();
         }
 
-        public static void saveCurrentPatient(Patient p)
+        public static void updatePatient(Patient p)
         {
-            PatientController.deletePatient(p.NRIC);
-            PatientController.addPatient(p);
+            createDataFile();
+
+            if (searchPatientByID(p.NRIC) == null)
+            {
+                addPatient(p); //if RID is not present, just add
+            }
+            else
+            {
+                deletePatient(p.NRIC); //delete and add
+                addPatient(p);
+            }
         }
 
-        public static void deletePatient(string nric)
+        public static void deletePatient(string pid)
         {
             XDocument document = XDocument.Load(Patient.dataPath);
 
-            if (PatientController.searchPatientByNRIC(nric) != null)
+            if (PatientController.searchPatientByID(pid) != null)
             {
                 (from pa in document.Descendants("Patient")
-                 where pa.Attribute("id").Value.ToUpper().CompareTo(nric.ToUpper()) == 0
+                 where pa.Attribute("id").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
                  select pa).SingleOrDefault().Remove();
 
                 document.Save(Patient.dataPath);

@@ -26,6 +26,8 @@ namespace AMDES_KBS.Entity
 
         private List<Symptom> sympsList;
 
+        private List<Diagnosis> diagList;
+
         private PatientStatus status;
 
         private string nric, firstname, lastname;
@@ -58,6 +60,7 @@ namespace AMDES_KBS.Entity
         {
             testsList = new List<Test>();
             sympsList = new List<Symptom>();
+            diagList = new List<Diagnosis>();
             dAssessment = DateTime.Now;
             status = PatientStatus.DRAFT;
         }
@@ -73,6 +76,7 @@ namespace AMDES_KBS.Entity
 
             testsList = new List<Test>();
             sympsList = new List<Symptom>();
+            diagList = new List<Diagnosis>();
             dAssessment = DateTime.Now;
             status = PatientStatus.DRAFT;
         }
@@ -128,8 +132,11 @@ namespace AMDES_KBS.Entity
         public void addSymptom(Symptom s)
         {
             var z = sympsList.Where(x => (x.SymptomName.ToUpper().CompareTo(s.SymptomName.ToUpper()) == 0)).SingleOrDefault();
-            if (s != null && z== null)
+
+            if (s != null && z == null)
+            {
                 this.sympsList.Add(s);
+            }
 
         }
 
@@ -145,6 +152,38 @@ namespace AMDES_KBS.Entity
         {
             if (sympsList.Count > 0 && i >= 0)
                 this.sympsList.RemoveAt(i);
+        }
+
+
+
+        public List<Diagnosis> Diagnoses
+        {
+            get { return diagList; }
+        }
+
+        public void addDiagnosis(Diagnosis d)
+        {
+            var z = diagList.Where(x => (x.RID == d.RID)).SingleOrDefault();
+
+            if (d != null && z == null)
+            {
+                this.diagList.Add(d);
+            }
+
+        }
+
+        public Diagnosis getDiagnosisAt(int i)
+        {
+            if (sympsList.Count > 0 && i >= 0)
+                return this.diagList.ElementAt(i);
+            else
+                return null;
+        }
+
+        public void removeDiagnosisAt(int i)
+        {
+            if (sympsList.Count > 0 && i >= 0)
+                this.diagList.RemoveAt(i);
         }
 
         public int getAge()
@@ -166,5 +205,29 @@ namespace AMDES_KBS.Entity
         {
             return (p.nric.CompareTo(this.nric));
         }
+
+        public PatientStatus getQuestionTypeENUM()
+        {
+            return status;
+        }
+
+        public int getStatus()
+        {
+            return (int)status;
+        }
+
+        public void setStatus(int x)
+        {
+            if (typeof(PatientStatus).IsEnumDefined(x))
+            {
+                status = (PatientStatus)x;
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid Type!");
+            }
+        }
+
+
     }
 }

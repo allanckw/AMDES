@@ -56,7 +56,7 @@ namespace AMDES_KBS
             {
                 return;
             }
-
+            //http://www.blagoev.com/blog/post/building-a-wpf-linklabel-control.aspx
             this.lblLink.Url = new System.Uri(linkString);
             stkpnlDiagnosisLink.Visibility = Visibility.Visible;
             //string comment = "Likelihood of dementia is low. If the cognitive deficit(s) has been present  for a long time, do consider congenital conditions like mental retardation, cerebral palsy. " +

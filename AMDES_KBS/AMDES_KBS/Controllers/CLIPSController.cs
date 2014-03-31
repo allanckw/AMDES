@@ -104,7 +104,7 @@ namespace AMDES_KBS.Controllers
         private static void run()
         {
             env.Run();
-            assertLog.Add("(run)");
+            //assertLog.Add("(run)");
         }
 
         public static void reset()
@@ -334,14 +334,17 @@ namespace AMDES_KBS.Controllers
                 {
                     string x = ArrayChoices[i].ToString().Remove(0, 1);
                     Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(x));
+                    CurrentPatient.addDiagnosis(d);
                     dList.Add(d);
                 }
-                //x = fv.GetFactSlot("ID").ToString();
+                
             }
 
             getCurrentPatientSymptom();
 
             CurrentPatient.setCompleted();
+
+            PatientController.updatePatient(CurrentPatient);
 
             return dList;
         }

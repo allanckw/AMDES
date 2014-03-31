@@ -262,8 +262,6 @@
     <Compile Include="Controllers\AssessorController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
-    <Compile Include="Controllers\SymptomController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Entity\Assessor.cs" />
     <Compile Include="Entity\Diagnosis.cs" />
     <Compile Include="Entity\Groups\QuestionCountGroup.cs" />
