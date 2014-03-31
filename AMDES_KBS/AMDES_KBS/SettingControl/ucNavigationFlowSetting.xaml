@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="190" d:DesignWidth="410">
+             d:DesignHeight="220" d:DesignWidth="410">
     <Grid>
         <StackPanel>
-            <Label Height="35" x:Name="lblCurrStep" FontSize="18" FontWeight="Bold">Step X</Label>
+            <Label Height="40" x:Name="lblCurrStep" FontSize="24" FontWeight="Bold">Step X</Label>
             <StackPanel Orientation="Horizontal">
-                <CheckBox x:Name="chkConclusive" Content="Is Conclusive?" FontWeight="Bold" Width="100" Height="20" />
+                <CheckBox x:Name="chkConclusive" Content="Is Conclusive?(Uncheck to add steps)" FontSize="16" FontWeight="Bold" Height="20" Margin="0,5,0,0" />
             </StackPanel>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
@@ -70,7 +70,8 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <StackPanel x:Name="stkpnlTF" Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label FontWeight="Bold" Margin="0,10,0,0">Condition</Label>
+                        <StackPanel x:Name="stkpnlTF" Orientation="Horizontal" Margin="0,0,0,0">
                             <RadioButton x:Name="radY" GroupName="checkTF" Content="Yes" Height="20" Width="100" IsChecked="True" Checked="radY_Checked" />
                             <RadioButton x:Name="radN" GroupName="checkTF" Content="No" Height="20" Width="100" IsChecked="False" Checked="radN_Checked" />
                         </StackPanel>

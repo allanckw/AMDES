@@ -70,6 +70,7 @@ namespace AMDES_KBS
             chkConclusive.IsChecked = false;
             stkpnlDiagnosis.Visibility = Visibility.Collapsed;
             stkpnlSectionDestination.Visibility = Visibility.Visible;
+            lstDiagnosisList.ItemsSource = null;
             //txtDescription.Text = "";
             reloadAttribute();
             reloadCriteria();

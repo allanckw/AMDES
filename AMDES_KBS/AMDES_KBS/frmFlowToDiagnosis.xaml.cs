@@ -135,6 +135,7 @@ namespace AMDES_KBS
             addNewStep();
             btnNextStep.Visibility = Visibility.Visible;
             btnPrevStep.Visibility = Visibility.Hidden;
+            stkpnlDiagnosis.Visibility = Visibility.Hidden;
 
             g = new Graph("New Rule - Rule ID: " + rule.RuleID.ToString());
             loadGraph1();
@@ -191,24 +192,25 @@ namespace AMDES_KBS
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
         {
             //if (lstStep[currStep - 1].getGroupID() == -1)
-            //{
-            //    MessageBox.Show("Please fill in the current step!");
-            //    return;
-            //}
+            if (lstStep[currStep - 1].getGroupID() == -1)
+            {
+                MessageBox.Show("Please fill in the current step!");
+                return;
+            }
+            currStep++;
+            //currStep++;
+            int tempPage = currStep - 1;
+            if (tempPage < lstStep.Count)
+            {
+                loadSteps();
+            }
+            else
+            {
+                addNewStep();
+            }
 
             if (cboDiagnosisList.SelectedIndex >= 0)
             {
-                currStep++;
-                int tempPage = currStep - 1;
-                if (tempPage < lstStep.Count)
-                {
-                    loadSteps();
-                }
-                else
-                {
-                    addNewStep();
-                }
-
                 Navigation navs = rule.Navigations[currStep - 2];
                 g.resetGraph();
 
@@ -222,17 +224,6 @@ namespace AMDES_KBS
             }
             else
             {
-                //currStep++;
-                int tempPage = currStep - 1;
-                if (tempPage < lstStep.Count)
-                {
-                    loadSteps();
-                }
-                else
-                {
-                    addNewStep();
-                }
-
                 if (cboDiagnosisList.SelectedIndex >= 0)
                 {
                     Navigation navs = rule.Navigations[currStep - 2];
@@ -279,11 +270,13 @@ namespace AMDES_KBS
         private void chk_Checked(object sender, RoutedEventArgs e)
         {
             btnNextStep.Visibility = Visibility.Hidden;
+            stkpnlDiagnosis.Visibility = Visibility.Visible;
         }
 
         private void chk_UnChecked(object sender, RoutedEventArgs e)
         {
             btnNextStep.Visibility = Visibility.Visible;
+            stkpnlDiagnosis.Visibility = Visibility.Hidden;
         }
 
         private void btnPrevStep_Click(object sender, RoutedEventArgs e)
