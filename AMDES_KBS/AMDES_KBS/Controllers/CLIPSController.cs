@@ -189,16 +189,21 @@ namespace AMDES_KBS.Controllers
             {
                 createNavigationAssertion(n);
             }
-
+            List<Navigation> nList = new List<Navigation>();
             foreach (Rules r in rList)
             {
                 foreach (Navigation n in r.Navigations)
                 {
-                    createNavigationAssertion(n);
+                    nList.Add(n);
                 }
             }
 
+            nList.Sort();
 
+            foreach (Navigation n in nList)
+            {
+                createNavigationAssertion(n);
+            }
         }
 
         private static void createNavigationAssertion(Navigation n)
@@ -377,7 +382,7 @@ namespace AMDES_KBS.Controllers
 
             foreach (FactAddressValue fv in mv)
             {
-                Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString(),
+                Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '),
                                         fv.GetFactSlot("ID").ToString().Remove(0, 1));
 
                 CurrentPatient.addSymptom(s);

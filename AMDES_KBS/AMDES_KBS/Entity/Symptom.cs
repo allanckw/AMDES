@@ -44,6 +44,7 @@ namespace AMDES_KBS.Entity
 
         public int CompareTo(Symptom s)
         {
+
             return this.name.ToUpper().CompareTo(s.SymptomName.ToUpper());
         }
     }

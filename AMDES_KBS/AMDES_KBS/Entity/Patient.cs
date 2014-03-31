@@ -127,8 +127,8 @@ namespace AMDES_KBS.Entity
 
         public void addSymptom(Symptom s)
         {
-
-            if (s != null && !this.sympsList.Contains(s))
+            var z = sympsList.Where(x => (x.SymptomName.ToUpper().CompareTo(s.SymptomName.ToUpper()) == 0)).SingleOrDefault();
+            if (s != null && z== null)
                 this.sympsList.Add(s);
 
         }

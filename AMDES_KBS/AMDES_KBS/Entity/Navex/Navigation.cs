@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AMDES_KBS.Entity
 {
-    public class Navigation
+    public class Navigation : IComparable<Navigation>
     {
         public static string dataPath = @"data\Navex.xml";
 
@@ -155,6 +155,12 @@ namespace AMDES_KBS.Entity
         public bool isConclusive()
         {
             return this.diagnosis.Count > 0;
+        }
+
+        public int CompareTo(Navigation n)
+        {
+            return (this.ChildCriteriaQuestion.Count + this.ChildCriteriaAttributes.Count)
+                    - (n.ChildCriteriaQuestion.Count + n.ChildCriteriaAttributes.Count);
         }
     }
 
