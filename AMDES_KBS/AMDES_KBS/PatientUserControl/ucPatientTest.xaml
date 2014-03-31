@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignWidth="660">
+             d:DesignWidth="620">
     <Grid>
         <StackPanel x:Name="stkpnlPatientTestDetail" Orientation="Horizontal" Margin="0">
-            <TextBox x:Name="txtTestTime" Width="120" Text="12 Oct 2013 14:00" Margin="60,0,0,0"></TextBox>
-            <TextBox x:Name="txtPatientTest" Width="300" TextWrapping="Wrap" Text="Test of patients"></TextBox>
+            <TextBox x:Name="txtTestTime" Width="120" Text="12 Oct 2013 14:00" Margin="30,0,0,0"></TextBox>
+            <TextBox x:Name="txtPatientTest" Width="260" TextWrapping="Wrap" Text="Test of patients"></TextBox>
             <TextBox x:Name="txtAssessor" Width="100" Text="Dr Lim LH"></TextBox>
-            <TextBox x:Name="txtStatus" Width="80" Text="Completed"></TextBox>
+            <TextBox x:Name="txtStatus" Width="120" Text="Completed"></TextBox>
         </StackPanel>
     </Grid>
 </UserControl>
