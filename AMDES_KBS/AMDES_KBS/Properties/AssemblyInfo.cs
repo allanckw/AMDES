@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AMDES_KBS")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("AMDES_NUS_SOC")]
+[assembly: AssemblyDescription("Adaptive Medical Diagnosis System")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("National University of Singapore")]
 [assembly: AssemblyProduct("AMDES_KBS")]
-[assembly: AssemblyCopyright("Copyright ©")]
+[assembly: AssemblyCopyright("Copyright ©2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
