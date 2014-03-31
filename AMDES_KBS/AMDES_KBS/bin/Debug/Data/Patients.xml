@@ -73,4 +73,16 @@
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
   </Patient>
+  <Patient id="S1175911Z">
+    <Last_Name>Zhang</Last_Name>
+    <First_Name>Tai Chuan</First_Name>
+    <DOB>611968608000000000</DOB>
+    <AssessmentDate>635318910323461389</AssessmentDate>
+    <Status>DRAFT</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+  </Patient>
 </Patients>
