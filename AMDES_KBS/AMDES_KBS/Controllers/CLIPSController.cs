@@ -20,6 +20,7 @@ namespace AMDES_KBS.Controllers
         private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
 
         private static string dataPath = @"Data\Logs\";
+        private static string clpPath = @"engine\dementia.clp";
 
         public static Patient CurrentPatient
         {
@@ -47,7 +48,49 @@ namespace AMDES_KBS.Controllers
             File.WriteAllText(filePath, sb.ToString());
         }
 
-        public static void ClearandLoad()
+        //@Allan, Not Tested yet
+        public static History loadSavedAssertions()
+        {
+            CurrentPatient.SymptomsList.Clear();
+            //call this f(x) everytime u click a new patient
+            env.Clear();
+            assertLog.Clear();
+            count = 0;
+
+            env.Load(clpPath);
+            reset();
+
+            if (File.Exists(dataPath) && HistoryController.isHistoryExist(pat.NRIC))
+            {
+                //File Ops here
+                string line;
+                System.IO.StreamReader file = new System.IO.StreamReader(dataPath);
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    assertLog.Add(line);
+                    Console.WriteLine(line);
+                    count++;
+                }
+
+                file.Close();
+                //End File Op
+                foreach (string s in assertLog)
+                {
+                    env.AssertString(s);
+                }
+
+                run();
+                return HistoryController.getHistoryByID(pat.NRIC);
+            }
+            else
+            {
+                clearAndLoadNew();
+                return null;
+            }
+        }
+
+        public static void clearAndLoadNew()
         {
             if (CurrentPatient != null)
             {
@@ -57,7 +100,7 @@ namespace AMDES_KBS.Controllers
                 assertLog.Clear();
                 count = 0;
 
-                env.Load(@"engine\dementia.clp");
+                env.Load(clpPath);
 
                 reset();
                 assert(new StringBuilder("(mode 1)"));
@@ -337,7 +380,7 @@ namespace AMDES_KBS.Controllers
                     CurrentPatient.addDiagnosis(d);
                     dList.Add(d);
                 }
-                
+
             }
 
             getCurrentPatientSymptom();
@@ -345,7 +388,7 @@ namespace AMDES_KBS.Controllers
             CurrentPatient.setCompleted();
 
             PatientController.updatePatient(CurrentPatient);
-            HistoryController.updateCurrentPatientHistory();
+            HistoryController.updatePatientNavigationHistory(getCurrentPatientHistory());
             return dList;
         }
 
@@ -369,7 +412,7 @@ namespace AMDES_KBS.Controllers
                 {
                     string x = ArrayChoices[i].ToString().Remove(0, 1);
                     naviHistory.Add(int.Parse(x));
-                   
+
                 }
             }
 
@@ -397,7 +440,7 @@ namespace AMDES_KBS.Controllers
         public static History getCurrentPatientHistory()
         {
 
-            List<int> navHistory = new List<int>();
+            List<int> navHistory = getNaviHistory();
             History history = new History(CurrentPatient.NRIC);
             String evalStr = " (find-all-facts((?a question)) TRUE)";
 
@@ -411,28 +454,25 @@ namespace AMDES_KBS.Controllers
             foreach (FactAddressValue fv in mv)
             {
                 //question history YES ONLY
-                string x = fv.GetFactSlot("GroupID").ToString();
+                int x = int.Parse(fv.GetFactSlot("GroupID").ToString().Remove(0, 1));
                 //natalie :(
-
-
-                if (navHistory.Contains(int.Parse(x.Remove(0, 1))))
+                if (navHistory.Contains(x))
                 {
                     string qid = fv.GetFactSlot("ID").ToString();
                     string answer = fv.GetFactSlot("answer").ToString();
                     if (answer.ToUpper().CompareTo("YES") == 0)
                     {
                         //add history item
-                        history.updateHistoryItem(int.Parse(x), int.Parse(qid.Remove(0, 1)), true);
+                        history.updateHistoryItem(x, qid.Remove(0, 1), true);
                     }
                     else
                     {
-                        history.updateHistoryItem(int.Parse(x), int.Parse(qid.Remove(0, 1)), false);
+                        history.updateHistoryItem(x, qid.Remove(0, 1), false);
                     }
                 }
-
             }
-
             return history;
+
         }
 
     }

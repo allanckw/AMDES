@@ -7,7 +7,7 @@ namespace AMDES_KBS.Entity
 {
     public class History
     {
-        public static string dataPath = @"data\Logs\History.xml";
+        public static string dataPath = @"data\History.xml";
 
         private string patientID;
 
@@ -42,7 +42,7 @@ namespace AMDES_KBS.Entity
             history.Add(groupID, qnHistory);
         }
 
-        private void addHistoryItem(int groupID, int qid, bool ans)
+        private void addHistoryItem(int groupID, string qid, bool ans)
         {
             List<QnHistory> h;
             if (history.TryGetValue(groupID, out h))
@@ -51,7 +51,7 @@ namespace AMDES_KBS.Entity
             }
         }
 
-        public bool removeHistoryItem(int groupID, int qid)
+        public bool removeHistoryItem(int groupID, string qid)
         {
             List<QnHistory> h;
             int id = -1;
@@ -80,7 +80,7 @@ namespace AMDES_KBS.Entity
             return false;
         }
 
-        public void updateHistoryItem(int groupID, int qid, bool ans)
+        public void updateHistoryItem(int groupID, string qid, bool ans)
         {
             removeHistoryItem(groupID, qid);
             addHistoryItem(groupID, qid, ans);

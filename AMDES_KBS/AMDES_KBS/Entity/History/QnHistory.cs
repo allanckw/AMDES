@@ -7,16 +7,16 @@ namespace AMDES_KBS.Entity
 {
     public class QnHistory
     {
-        private int qid;
+        private string qid;
         private bool ans;
 
-        public QnHistory(int qid, bool ans)
+        public QnHistory(string qid, bool ans)
         {
             this.qid = qid;
             this.ans = ans;
         }
 
-        public int QuestionID
+        public string QuestionID
         {
             get { return qid; }
             set { qid = value; }

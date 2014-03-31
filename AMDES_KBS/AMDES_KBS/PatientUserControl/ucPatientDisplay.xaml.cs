@@ -82,11 +82,19 @@ namespace AMDES_KBS
 
         private void btnContTest_Click(object sender, RoutedEventArgs e)
         {
-
-
             CLIPSController.CurrentPatient = pat;
-            CLIPSController.ClearandLoad();
+            CLIPSController.clearAndLoadNew();
             //Allan ToDo: load history here
+           
+            //@Kai history here.. use this to populate back 
+            //TODO: Use Assert Log to assert back previous user choices to Clips
+            History h = CLIPSController.loadSavedAssertions();
+            
+            if (h != null)
+            {
+                //load back here
+            }
+
             int sectionID = CLIPSController.getCurrentQnGroupID();
             //MessageBox.Show(sectionID.ToString()); - DONE
 

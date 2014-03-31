@@ -108,7 +108,7 @@ namespace AMDES_KBS
 
         private void AssertQuestions()
         {
-            CLIPSController.ClearandLoad();
+            CLIPSController.clearAndLoadNew();
         }
     }
 }

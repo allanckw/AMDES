@@ -285,5 +285,13 @@ namespace AMDES_KBS
                 amdesPageFrame.Navigate(prevPage);
             }
         }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            
+            CLIPSController.saveAssertLog();
+            HistoryController.updatePatientNavigationHistory(CLIPSController.getCurrentPatientHistory());
+            MessageBox.Show("History have been saved", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

@@ -27,12 +27,7 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void updateCurrentPatientHistory()
-        {
-            updatePatientNavigationHistory(CLIPSController.getCurrentPatientHistory());
-        }
-
-        private static void updatePatientNavigationHistory(History h)
+        public static void updatePatientNavigationHistory(History h)
         {
             createDataFile();
 
@@ -59,7 +54,7 @@ namespace AMDES_KBS.Controllers
             foreach (KeyValuePair<int, List<QnHistory>> kvp in h.getHistory())
             {
                 //Console.WriteLine("Key : " + kvp.Key.ToString() + ", Value : " + kvp.Value);
-                XElement grp = new XElement("Group", new XAttribute("GrpID", kvp.Key.ToString()));
+                XElement hist = new XElement("Group", new XAttribute("histID", kvp.Key.ToString()));
 
                 for (int i = 0; i < kvp.Value.Count(); i++)
                 {
@@ -68,11 +63,11 @@ namespace AMDES_KBS.Controllers
                     qhx.Add(new XElement("QID", qnHistory.QuestionID));
                     qhx.Add(new XElement("Answer", qnHistory.Answer));
 
-                    grp.Add(qhx);
+                    hist.Add(qhx);
 
                 }
 
-                newPat.Add(grp);
+                newPat.Add(hist);
             }
 
             document.Element("Histories").Add(newPat);
@@ -100,11 +95,11 @@ namespace AMDES_KBS.Controllers
 
             try
             {
-                var grp = (from pa in document.Descendants("History")
+                var hist = (from pa in document.Descendants("History")
                            where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
                            select pa).SingleOrDefault();
 
-                return readHistoryData(grp);
+                return readHistoryData(hist);
 
             }
             catch (InvalidOperationException ex)
@@ -115,19 +110,30 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        public static History readHistoryData(XElement x)
+        public static bool isHistoryExist(string pid)
+        {
+            XDocument document = XDocument.Load(History.dataPath);
+
+            var hist = (from pa in document.Descendants("History")
+                       where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
+                       select pa).SingleOrDefault();
+
+            return hist != null; //not null means got so exist is true
+        }
+
+        private static History readHistoryData(XElement x)
         {
             if (x != null)
             {
                 History h = new History();
                 h.PatientID = x.Attribute("pid").Value;
 
-                var grps = (from pa in x.Descendants("Group")
+                var hists = (from pa in x.Descendants("Group")
                             select pa).ToList();
 
-                foreach (var g in grps)
+                foreach (var g in hists)
                 {
-                    int gid = int.Parse(g.Attribute("GrpID").Value);
+                    int gid = int.Parse(g.Attribute("histID").Value);
                     h.createNewHistory(gid);
 
                     var qns = (from q in x.Descendants("Question")
@@ -135,7 +141,7 @@ namespace AMDES_KBS.Controllers
 
                     foreach (var q in qns)
                     {
-                        h.updateHistoryItem(gid, int.Parse(q.Element("QID").Value), bool.Parse(q.Element("Answer").Value));
+                        h.updateHistoryItem(gid, q.Element("QID").Value, bool.Parse(q.Element("Answer").Value));
                     }
                 }
                 return h;
@@ -144,14 +150,5 @@ namespace AMDES_KBS.Controllers
                 return null;
         }
 
-
-
-
-        public History getPatientHistory(string patid)
-        {
-            History history = new History();
-
-            return history;
-        }
     }
 }
