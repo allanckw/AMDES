@@ -1,6 +1,6 @@
 (reset)
 (mode 1)
-(attribute AGE 25)
+(attribute AGE 73)
 (run)
 (group (GroupID _1) (SuccessType OR))
 (groupid-symptoms (GroupID _1) (symptom "Amnesia") )

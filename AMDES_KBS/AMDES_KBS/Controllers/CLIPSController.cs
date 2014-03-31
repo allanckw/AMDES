@@ -98,7 +98,7 @@ namespace AMDES_KBS.Controllers
 
         private static void assertAge()
         {
-            assert(new StringBuilder("(attribute Age " + CurrentPatient.getAge() + ")"));
+            assert(new StringBuilder("(attribute AGE " + CurrentPatient.getAge() + ")"));
         }
 
         private static void run()
