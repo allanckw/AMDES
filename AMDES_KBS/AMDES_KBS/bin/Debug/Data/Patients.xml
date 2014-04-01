@@ -15,20 +15,6 @@
     <Symptoms />
     <Diagnoses />
   </Patient>
-  <Patient id="S8826035Z">
-    <Last_Name>Ang</Last_Name>
-    <First_Name>Ji Kai</First_Name>
-    <DOB>627209568000000000</DOB>
-    <AssessmentDate>635307622162942058</AssessmentDate>
-    <Status>1</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms />
-    <Diagnoses />
-  </Patient>
   <Patient id="S8764783D">
     <Last_Name>Ang</Last_Name>
     <First_Name>Kai</First_Name>
@@ -71,20 +57,6 @@
     <Symptoms />
     <Diagnoses />
   </Patient>
-  <Patient id="S1175911Z">
-    <Last_Name>Zhang</Last_Name>
-    <First_Name>Tai Chuan</First_Name>
-    <DOB>611968608000000000</DOB>
-    <AssessmentDate>635318910323461389</AssessmentDate>
-    <Status>1</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms />
-    <Diagnoses />
-  </Patient>
   <Patient id="S8823654H">
     <Last_Name>Chan</Last_Name>
     <First_Name>Ya Ling</First_Name>
@@ -106,41 +78,6 @@
     <AssessmentDate>635319049070182259</AssessmentDate>
     <Status>1</Status>
     <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms />
-    <Diagnoses />
-  </Patient>
-  <Patient id="S099147D">
-    <Last_Name>A</Last_Name>
-    <First_Name>patient with test</First_Name>
-    <DOB>626798333353879857</DOB>
-    <AssessmentDate>635319101353889858</AssessmentDate>
-    <Status>1</Status>
-    <Tests>
-      <Test>
-        <TestName>Blood Test A</TestName>
-        <Status>0</Status>
-        <OrderedDate>635319101353899858</OrderedDate>
-        <ReportDate>0</ReportDate>
-        <Assessor>
-          <AssessorName>Dr Simon Tan</AssessorName>
-          <AssessLocation>La La Clinic</AssessLocation>
-        </Assessor>
-      </Test>
-      <Test>
-        <TestName>Urea Test</TestName>
-        <Status>1</Status>
-        <OrderedDate>625119101353899858</OrderedDate>
-        <ReportDate>635319101353899858</ReportDate>
-        <Assessor>
-          <AssessorName>Dr Simon Tan</AssessorName>
-          <AssessLocation>La La Clinic</AssessLocation>
-        </Assessor>
-      </Test>
-    </Tests>
     <Assessor>
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
@@ -171,6 +108,262 @@
         <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
         <Header>No Diagnosis</Header>
         <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S673648D">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Nick Lai</First_Name>
+    <DOB>626701536000000000</DOB>
+    <AssessmentDate>635319700987944591</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635319702295579383</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635319702295589384</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635319702295589384</DiagnosisDate>
+        <DiagnosedByID>2.3</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="4">
+        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.~~~~Please refer the patient to a memory clinic for further assessment.</Comment>
+        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S3424434D">
+    <Last_Name>sdd</Last_Name>
+    <First_Name>dsds</First_Name>
+    <DOB>608508288000000000</DOB>
+    <AssessmentDate>635319706936264815</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Mental Test Score </SymptomName>
+        <DiagnosisDate>635319707353168661</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635319707353168661</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635319707353168661</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Apraxia </SymptomName>
+        <DiagnosisDate>635319707353168661</DiagnosisDate>
+        <DiagnosedByID>2.2</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635319707353168661</DiagnosisDate>
+        <DiagnosedByID>2.3</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635319707353168661</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Acute onset of gait disturbance </SymptomName>
+        <DiagnosisDate>635319707353178661</DiagnosisDate>
+        <DiagnosedByID>7.7</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="5">
+        <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
+        <Header>Cognitive impairment</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S1175911Z">
+    <Last_Name>Zhang</Last_Name>
+    <First_Name>Tai Chuan</First_Name>
+    <DOB>611968608000000000</DOB>
+    <AssessmentDate>635318910323461389</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635319710709440628</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635319710709440628</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Apraxia </SymptomName>
+        <DiagnosisDate>635319710709440628</DiagnosisDate>
+        <DiagnosedByID>2.2</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635319710709440628</DiagnosisDate>
+        <DiagnosedByID>2.3</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635319710709440628</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="4">
+        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.</Comment>
+        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S099147D">
+    <Last_Name>A</Last_Name>
+    <First_Name>patient with test</First_Name>
+    <DOB>626798333353879857</DOB>
+    <AssessmentDate>635319101353889858</AssessmentDate>
+    <Status>0</Status>
+    <Tests>
+      <Test>
+        <TestName>Blood Test A</TestName>
+        <Status>0</Status>
+        <OrderedDate>635319101353899858</OrderedDate>
+        <ReportDate>0</ReportDate>
+        <Assessor>
+          <AssessorName>Dr Simon Tan</AssessorName>
+          <AssessLocation>La La Clinic</AssessLocation>
+        </Assessor>
+      </Test>
+      <Test>
+        <TestName>Urea Test</TestName>
+        <Status>1</Status>
+        <OrderedDate>625119101353899858</OrderedDate>
+        <ReportDate>635319101353899858</ReportDate>
+        <Assessor>
+          <AssessorName>Dr Simon Tan</AssessorName>
+          <AssessLocation>La La Clinic</AssessLocation>
+        </Assessor>
+      </Test>
+    </Tests>
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Mental Test Score </SymptomName>
+        <DiagnosisDate>635319727849210967</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S8826035Z">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Ji Kai</First_Name>
+    <DOB>627209568000000000</DOB>
+    <AssessmentDate>635307622162942058</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Mental Test Score </SymptomName>
+        <DiagnosisDate>635319729137794670</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635319729137794670</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635319729137794670</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635319729137794670</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Acute onset of gait disturbance </SymptomName>
+        <DiagnosisDate>635319729137794670</DiagnosisDate>
+        <DiagnosedByID>7.7</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="4">
+        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.~~~~Please refer the patient to a memory clinic for further assessment.</Comment>
+        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="5">
+        <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
+        <Header>Cognitive impairment</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="3">
+        <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
+        <Header>Low likelihood of dementia, Refer</Header>
+        <Link></Link>
       </Diagnosis>
     </Diagnoses>
   </Patient>

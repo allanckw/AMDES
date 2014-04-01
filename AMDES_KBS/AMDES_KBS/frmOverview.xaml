@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="510" d:DesignWidth="700"
+      d:DesignHeight="510" d:DesignWidth="960"
 	Title="frmOverview">
 
     <Grid>
@@ -22,7 +22,7 @@
                     <Label x:Name="txtAssessor" Width="100" Content="Assessor" />
                     <Label x:Name="txtStatus" Width="80" Content="Status" />
                 </StackPanel>
-                <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Height="460" Width="700" HorizontalAlignment="Left">
+                <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Height="460" Width="960" HorizontalAlignment="Left">
                     <StackPanel x:Name="stkpnlPatientList"/>
                 </ScrollViewer>
             </StackPanel>

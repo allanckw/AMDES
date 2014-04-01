@@ -13,13 +13,12 @@
                     <Label x:Name="lblRuleID" Width="auto" Height="30" Margin="0,20,0,0" FontSize="12" FontFamily="Tahoma" FontWeight="Bold" />
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="The patient has the following symptoms stated in the questionnaire:" Margin="0,10,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+                    <Label x:Name="lblSymptonsText" Content="The patient has the following symptoms stated in the questionnaire:" Margin="0,10,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="stkpnlSymptons" Margin="50,0,0,0">
             </StackPanel>
             <StackPanel x:Name="stkpnlDiagnosisMessage" Orientation="Vertical"  >
-                <Label Content="Remark:" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
                 <TextBox x:Name="txtDiagnosisMessage" IsReadOnly="true" TextWrapping="Wrap" BorderThickness="0" Background="Transparent" Width="660" BorderBrush="{x:Null}" Margin="0,10,0,0" />
             </StackPanel>
 

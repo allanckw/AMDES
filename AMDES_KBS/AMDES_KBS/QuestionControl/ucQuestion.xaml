@@ -7,12 +7,11 @@
              d:DesignWidth="660">
     <Grid x:Name="gridQuestion" Height="auto">    
     <StackPanel x:Name="stkpnlQuestion" Orientation="Horizontal" Margin="0">
-        
             <Label x:Name="lblQuestion" Width="70" Content="" FontWeight="Bold" FontSize="14" Margin="5,-5,0,0" />
         <!--<TextBlock x:Name="txtQuestion" Width="470" Height="{Binding Path=ActualHeight, ElementName=txtQuestion}" /-->
         <TextBox x:Name="txtQuestion" IsReadOnly="true" TextWrapping="Wrap" BorderThickness="0" Background="Transparent" Width="460" BorderBrush="{x:Null}" Margin="0,0,0,0"/>
-        <Button x:Name="btnYes" Content="Yes" Height="25" Width="50" FocusVisualStyle="{x:Null}" VerticalAlignment="Top" Margin="10,0,0,0" Background="#FF16BA27" Click="btnYes_Click" Focusable="False" />
-        <Button x:Name="btnNo" Content="No" Height="25" Width="50" FocusVisualStyle="{x:Null}" VerticalAlignment="Top" Margin="10,0,0,0" Background="#FFF90404" Click="btnNo_Click"/>
+        <Button x:Name="btnYes" Content="Yes" Height="25" Width="50" FocusVisualStyle="{x:Null}" FontWeight="Bold" VerticalAlignment="Top" Margin="10,0,0,0" Background="#507CFF00" Click="btnYes_Click" Focusable="False" />
+            <Button x:Name="btnNo" Content="No" Height="25" Width="50" FocusVisualStyle="{x:Null}" FontWeight="Bold" VerticalAlignment="Top" Margin="10,0,0,0" Background="#4EFF0000" Click="btnNo_Click"/>
     </StackPanel>
     </Grid>
 </UserControl>

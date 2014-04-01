@@ -41,6 +41,10 @@ namespace AMDES_KBS
                 lblSymptons.Content = "Symptoms - " + sym.SymptomName;
                 stkpnlSymptons.Children.Add(lblSymptons);
             }
+            if (stkpnlSymptons.Children.Count==0)
+            {
+                lblSymptonsText.Content = "The patient has no symptoms.";
+            }
             //updateHeight();
         }
 

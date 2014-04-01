@@ -29,15 +29,15 @@ namespace AMDES_KBS
             InitializeComponent();
             //frmSection newSection = new frmSection("A");
             //frameDisplay.Navigate(new frmRecommendation());
-            loadPatientList();
+            //loadPatientList();
             frameDisplay.Navigate(new frmOverview(frameDisplay));
         }
 
-        public void loadPatientList()
-        {
-            List<Patient> plist = PatientController.getAllPatients();
-            lstPatientList.ItemsSource = plist;
-        }
+        //public void loadPatientList()
+        //{
+        //    List<Patient> plist = PatientController.getAllPatients();
+        //    lstPatientList.ItemsSource = plist;
+        //}
 
         private void btnNewTest_Click(object sender, RoutedEventArgs e)
         {
@@ -101,16 +101,16 @@ namespace AMDES_KBS
             Application.Current.Shutdown();
         }
 
-        private void lstPatientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int selectedIndex = lstPatientList.SelectedIndex;
-            if (selectedIndex != -1)
-            {
-                Patient p = (Patient)lstPatientList.Items.GetItemAt(selectedIndex);
-                frmOverview patientView = new frmOverview(frameDisplay, p);
-                frameDisplay.Navigate(patientView);
-            }
+        //private void lstPatientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    int selectedIndex = lstPatientList.SelectedIndex;
+        //    if (selectedIndex != -1)
+        //    {
+        //        Patient p = (Patient)lstPatientList.Items.GetItemAt(selectedIndex);
+        //        frmOverview patientView = new frmOverview(frameDisplay, p);
+        //        frameDisplay.Navigate(patientView);
+        //    }
 
-        }
+        //}
     }
 }

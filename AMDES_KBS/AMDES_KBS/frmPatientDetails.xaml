@@ -30,8 +30,12 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="150"  Content="Date of Birth:" />
-                <DatePicker Width="200" Name="dtpDOB" />
-            </StackPanel>
+                    <StackPanel>
+                        <DatePicker Width="200" Name="dtpDOB" />
+                        <Label  Content="eg.  31/1/1970" />
+                    </StackPanel>
+                    <Label  Content=" (Format DD/MM/YYYY)" />
+                </StackPanel>
         </StackPanel>
         <StackPanel x:Name="stkpnlAssessorDetails">
                 <StackPanel Orientation="Horizontal">

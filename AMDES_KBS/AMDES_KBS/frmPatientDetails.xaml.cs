@@ -82,8 +82,8 @@ namespace AMDES_KBS
 
                 PatientController.updatePatient(p);
                 //Dim myWindow As Window1 = TryCast(Application.Current.MainWindow, Window1)
-                frmMain myWindow = (frmMain)Application.Current.MainWindow;
-                myWindow.loadPatientList();
+                //frmMain myWindow = (frmMain)Application.Current.MainWindow;
+                //myWindow.loadPatientList();
 
                 CLIPSController.CurrentPatient = p;
                 
