@@ -13,7 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
-
+using System.Windows.Media;
 namespace AMDES_KBS
 {
     /// <summary>
@@ -23,10 +23,18 @@ namespace AMDES_KBS
     {
         Patient pat;
         Frame amdesPageFrame;
-        public ucPatientDisplay(Patient p, Frame ParentFrame)
+        public ucPatientDisplay(Patient p, Frame ParentFrame, Color c)
         {
             InitializeComponent();
+            SolidColorBrush brush = new SolidColorBrush(c);
 
+            this.gridPatient.Background = brush;
+            txtAssessor.Background = brush;
+            txtPatientID.Background = brush;
+            txtPatientName.Background = brush;
+            txtStatus.Background = brush;
+            txtTestTime.Background = brush;
+               
 
             this.amdesPageFrame = ParentFrame;
             this.pat = p;

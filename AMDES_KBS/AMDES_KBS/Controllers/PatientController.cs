@@ -152,6 +152,21 @@ namespace AMDES_KBS.Controllers
             document.Save(Patient.dataPath);
         }
 
+        public static List<Patient> searchPatient(string criteria)
+        {
+            Patient p = searchPatientByID(criteria);
+            if (p != null)
+            {
+                List<Patient> pList = new List<Patient>();
+                pList.Add(p);
+                return pList;
+            }
+            else
+            {
+                return searchPatientByName(criteria);
+            }
+        }
+
         public static Patient searchPatientByID(string nric)
         {
             XDocument document = XDocument.Load(Patient.dataPath);

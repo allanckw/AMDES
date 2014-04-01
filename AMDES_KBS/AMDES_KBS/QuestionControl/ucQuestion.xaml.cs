@@ -29,6 +29,7 @@ namespace AMDES_KBS
         public ucQuestion()
         {
             InitializeComponent();
+            btnNo.IsEnabled = false; //off by default
         }
 
         public void loadQuestion(Question q, Label lblscore)

@@ -11,6 +11,7 @@ namespace AMDES_KBS.Controllers
     class CLIPSController
     {
         private static Patient pat;
+        public static bool? savePatient = false;
 
         //for debug purpose, to pull out to test on clips, and to pull out to assert for restore patient
         private static List<String> assertLog = new List<String>();

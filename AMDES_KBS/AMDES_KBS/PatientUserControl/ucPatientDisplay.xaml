@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignWidth="670">
-    <Grid x:Name="gridPatient">
-        <StackPanel x:Name="stkpnlPatient" Orientation="Vertical" Margin="0,0,0,20">
+    <Grid x:Name="gridPatient" >
+        <StackPanel x:Name="stkpnlPatient" Orientation="Vertical" Margin="0,0,0,20" >
             <StackPanel x:Name="stkpnlPatientDetail" Orientation="Horizontal" Margin="0">
                 <Button x:Name="btnShowHideTest" Width="20" Height="20" Content="+" VerticalAlignment="Top" Click="btnShowHideTest_Click" />
                 <TextBox x:Name="txtTestTime" IsReadOnly="True" Width="120" Text="12 Oct 2013 14:00" FontWeight="Bold" />

@@ -31,8 +31,28 @@ namespace AMDES_KBS
             a = AssessorController.readAssessor();
             txtAssessorName.Text = a.Name;
             txtAssessorLoc.Text = a.ClinicName;
-            dtpAss.SelectedDate = DateTime.Today;
+            dtpDOB.SelectedDate = dtpAss.SelectedDate = DateTime.Today;
+            turnOffPatientDetails();
+        }
 
+        private void turnOffPatientDetails()
+        {
+            if (CLIPSController.savePatient == false)
+            {
+                stkfirstname.Visibility = Visibility.Hidden;
+                stknric.Visibility = Visibility.Hidden;
+                stksurname.Visibility = Visibility.Hidden;
+                btnQuit.Visibility = Visibility.Collapsed;
+                btnSaveTest.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                stkfirstname.Visibility = Visibility.Visible;
+                stknric.Visibility = Visibility.Visible;
+                stksurname.Visibility = Visibility.Visible;
+                btnQuit.Visibility = Visibility.Visible;
+                btnSaveTest.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnStartTest_Click(object sender, RoutedEventArgs e)
@@ -51,45 +71,59 @@ namespace AMDES_KBS
 
         private bool savePatient()
         {
-            if (txtNRIC.Text.Trim().Length == 0)
+            if (CLIPSController.savePatient == true)
             {
-                MessageBox.Show("Please Enter Patient's Identification Number!", "Missing NRIC", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                txtNRIC.Focus();
-                return false;
-            }
-            else if (txtLastName.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Please Enter Patient's Surname / Last Name!", "Missing Surname / First Name", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                txtLastName.Focus();
-                return false;
-            }
-            else if (txtFirstName.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Please Enter Patient's Given name / First Name!", "Missing Given name / Last Name", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                txtLastName.Focus();
-                return false;
+                if (txtNRIC.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Please Enter Patient's Identification Number!", "Missing NRIC", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    txtNRIC.Focus();
+                    return false;
+                }
+                else if (txtLastName.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Please Enter Patient's Surname / Last Name!", "Missing Surname / First Name", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    txtLastName.Focus();
+                    return false;
+                }
+                else if (txtFirstName.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Please Enter Patient's Given name / First Name!", "Missing Given name / Last Name", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    txtLastName.Focus();
+                    return false;
+                }
+
+                else if (dtpDOB.SelectedDate == null)
+                {
+                    MessageBox.Show("Please Enter Patient's Date of birth!", "Missing Date of birth", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    return false;
+                }
+                else
+                {
+                    Patient p = new Patient(a, txtNRIC.Text.Trim(), txtFirstName.Text.Trim(),
+                                        txtLastName.Text.Trim(), (DateTime)dtpDOB.SelectedDate);
+
+                    PatientController.updatePatient(p);
+
+                    CLIPSController.CurrentPatient = p;
+
+                    return true;
+                }
             }
 
-            else if (dtpDOB.SelectedDate == null)
-            {
-                MessageBox.Show("Please Enter Patient's Date of birth!", "Missing Date of birth", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                return false;
-            }
             else
             {
-                Patient p = new Patient(a, txtNRIC.Text.Trim(), txtFirstName.Text.Trim(),
-                                    txtLastName.Text.Trim(), (DateTime)dtpDOB.SelectedDate);
-
-                PatientController.updatePatient(p);
-                //Dim myWindow As Window1 = TryCast(Application.Current.MainWindow, Window1)
-                //frmMain myWindow = (frmMain)Application.Current.MainWindow;
-                //myWindow.loadPatientList();
-
-                CLIPSController.CurrentPatient = p;
-                
-                return true;
+                if (dtpDOB.SelectedDate == null)
+                {
+                    MessageBox.Show("Please Enter Patient's Date of birth!", "Missing Date of birth", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    return false;
+                }
+                else
+                {
+                    Patient p = new Patient(a, (DateTime)dtpDOB.SelectedDate);
+                    CLIPSController.CurrentPatient = p;
+                    return true;
+                }
             }
-
 
         }
 

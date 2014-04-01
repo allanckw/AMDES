@@ -14,6 +14,21 @@ namespace AMDES_KBS.Entity
         DRAFT
     };
 
+    public enum PatientEthnicGrp
+    {
+        CHINESE,
+        MALAY,
+        INDIAN,
+        EURASIAN,
+        OTHERS
+    }
+
+    public enum PatientGender
+    {
+        MALE,
+        FEMALE
+    }
+
     public class Patient : IComparable<Patient>
     {
         public static string dataPath = @"Data\Patients.xml";
@@ -30,7 +45,25 @@ namespace AMDES_KBS.Entity
 
         private PatientStatus status;
 
-        private string nric, firstname, lastname;
+        private string nric = "" , firstname = "" , lastname = "" ;
+
+        private PatientGender gender = PatientGender.MALE;
+
+        private PatientEthnicGrp ethnicGrp = PatientEthnicGrp.CHINESE;
+
+        public PatientEthnicGrp EthnicGroup
+        {
+            get { return ethnicGrp; }
+            set { ethnicGrp = value; }
+        }
+
+
+        public PatientGender Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+
 
         public DateTime DOB
         {
@@ -54,6 +87,16 @@ namespace AMDES_KBS.Entity
         {
             get { return nric.ToUpper(); }
             set { nric = value.ToUpper(); }
+        }
+
+        public Patient(Assessor doc, DateTime dob)
+        {
+            this.doctor = doc;
+            testsList = new List<Test>();
+            sympsList = new List<Symptom>();
+            diagList = new List<Diagnosis>();
+            dAssessment = DateTime.Now;
+            status = PatientStatus.DRAFT;
         }
 
         public Patient()

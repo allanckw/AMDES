@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
+using System.Windows.Media;
 
 namespace AMDES_KBS
 {
@@ -23,16 +24,6 @@ namespace AMDES_KBS
             loadAllPatients();
         }
 
-        public frmOverview(Frame frame, Patient p)
-        {
-            InitializeComponent();
-            //loadQuestion();
-            amdesPageFrame = frame;
-            loadPatient(p);
-
-        }
-
-
         public frmOverview(Frame frame, List<Patient> plist)
         {
             InitializeComponent();
@@ -42,9 +33,9 @@ namespace AMDES_KBS
 
         }
 
-        private void loadPatient(Patient p)
+        private void loadPatient(Patient p, Color c)
         {
-            ucPatientDisplay patient = new ucPatientDisplay(p, amdesPageFrame);
+            ucPatientDisplay patient = new ucPatientDisplay(p, amdesPageFrame, c);
             stkpnlPatientList.Children.Add(patient);
         }
 
@@ -53,7 +44,14 @@ namespace AMDES_KBS
             for (int i = 0; i < pList.Count; i++)
             {
                 Patient p = pList.ElementAt(i);
-                loadPatient(p);
+                if (i % 2 == 0)
+                {
+                    loadPatient(p, Color.FromRgb(255, 254, 254));
+                }
+                else
+                {
+                    loadPatient(p, Color.FromRgb(242, 254, 254));
+                }
             }
         }
 

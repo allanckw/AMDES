@@ -24,20 +24,36 @@ namespace AMDES_KBS
         //private Type currPageType;
         //private AMDESPage currPage;
 
+
         public frmMain()
         {
             InitializeComponent();
-            //frmSection newSection = new frmSection("A");
-            //frameDisplay.Navigate(new frmRecommendation());
-            //loadPatientList();
             frameDisplay.Navigate(new frmOverview(frameDisplay));
         }
 
-        //public void loadPatientList()
-        //{
-        //    List<Patient> plist = PatientController.getAllPatients();
-        //    lstPatientList.ItemsSource = plist;
-        //}
+        public frmMain(bool? savePatient)
+        {
+            CLIPSController.savePatient = savePatient;
+            InitializeComponent();
+            if (CLIPSController.savePatient == false)
+            {
+                //frameDisplay.Navigate(new frmOverview(frameDisplay));
+                frameDisplay.Navigate(new frmPatientDetails(frameDisplay));
+                btnPatients.Visibility = Visibility.Hidden;
+                stkpnlSearchBox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                frameDisplay.Navigate(new frmOverview(frameDisplay));
+                btnPatients.Visibility = Visibility.Visible;
+                stkpnlSearchBox.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void listPatients()
+        {
+            frameDisplay.Navigate(new frmOverview(frameDisplay));
+        }
 
         private void btnNewTest_Click(object sender, RoutedEventArgs e)
         {
@@ -54,10 +70,10 @@ namespace AMDES_KBS
             //                    "Are you sure you want to continue??? ", "Confirmation of entering configuration form",
             //                    MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-           // if (result == MessageBoxResult.Yes)
-           // {
-                frmSetting SettingForm = new frmSetting();
-                SettingForm.ShowDialog();
+            // if (result == MessageBoxResult.Yes)
+            // {
+            frmSetting SettingForm = new frmSetting();
+            SettingForm.ShowDialog();
             //}
         }
 
@@ -65,34 +81,8 @@ namespace AMDES_KBS
         {
             frmOverview patientResultDisplay;
             string criteria = txtSearchCriteria.Text.Trim();
-            Regex regex = new Regex(@"
-                        ^           # anchor at the start
-                       (?=.*\d)     # must contain at least one numeric character
-                       (?=.*[a-z])  # must contain one lowercase character
-                       (?=.*[A-Z])  # must contain one uppercase character
-                       .{8,10}      # From 8 to 10 characters in length
-                       \s           # allows a space 
-                       $            # anchor at the end",
-                       RegexOptions.IgnorePatternWhitespace);
-            if (regex.IsMatch(criteria))
-            {
-                Patient p = PatientController.searchPatientByID(criteria);
-                if (p != null)
-                {
-                    patientResultDisplay = new frmOverview(frameDisplay, p);
-                }
-                else
-                {
-                    MessageBox.Show("No such record! Returning all patients records...", " No record found", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                    patientResultDisplay = new frmOverview(frameDisplay);
-                }
-            }
-            else
-            {
-                List<Patient> plist = PatientController.searchPatientByName(criteria);
-                patientResultDisplay = new frmOverview(frameDisplay, plist);
-            }
-
+            List<Patient> plist = PatientController.searchPatient(criteria);
+            patientResultDisplay = new frmOverview(frameDisplay, plist);
             frameDisplay.Navigate(patientResultDisplay);
         }
 
@@ -101,16 +91,10 @@ namespace AMDES_KBS
             Application.Current.Shutdown();
         }
 
-        //private void lstPatientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    int selectedIndex = lstPatientList.SelectedIndex;
-        //    if (selectedIndex != -1)
-        //    {
-        //        Patient p = (Patient)lstPatientList.Items.GetItemAt(selectedIndex);
-        //        frmOverview patientView = new frmOverview(frameDisplay, p);
-        //        frameDisplay.Navigate(patientView);
-        //    }
+        private void btnPatients_Click(object sender, RoutedEventArgs e)
+        {
+            listPatients();
+        }
 
-        //}
     }
 }
