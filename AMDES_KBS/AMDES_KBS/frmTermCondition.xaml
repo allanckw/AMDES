@@ -4,27 +4,28 @@
 	x:Class="AMDES_KBS.frmTermCondition"
 	x:Name="Window"
 	Title="Welcome to AMDES - Adaptive Medical Diagnosis Expert System"
-	Width="440" Height="492" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
+	Width="540" Height="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
 
     <Grid x:Name="LayoutRoot">
         <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto" >
-            <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Hidden">
-                <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="430">
+            <StackPanel x:Name="welcome" Height="70" Width="450" Margin="0,10,0,0" >
+                <Label VerticalAlignment="Center" Content="Welcome to AMDES for the early diagnosis of Dementia" FontSize="15" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Tahoma"/>
+            </StackPanel>
+            <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Collapsed">
+                <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="530" >
                     <Label VerticalAlignment="Top" Width="60" Content="Name"/>
                     <TextBox TextWrapping="Wrap" Width="360" Height="25" Name="txtName" Text="Doctor"/>
                 </StackPanel>
-                <StackPanel x:Name="stkpnlLocation" Height="30" Orientation="Horizontal" Width="430" Margin="10,0" >
+                <StackPanel x:Name="stkpnlLocation" Height="30" Orientation="Horizontal" Width="530" Margin="10,0" >
                     <Label VerticalAlignment="Top" Width="60" Content="Location"/>
                     <TextBox TextWrapping="Wrap" Text="Clinic" Width="360" Height="25" Name="txtLocation" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="stkpnlTermCondition" Height="335" Width="430">
-                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="20"/>
-                <RichTextBox Height="300" Width="400" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
+            <StackPanel x:Name="stkpnlTermCondition" Height="335" Width="530">
+                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="16" FontFamily="Tahoma" Margin="10,0,0,0"/>
+                <RichTextBox Height="300" Width="500" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
                     <FlowDocument>
-                        <Paragraph>
-                            <Run Text="Welcome to AMDES (Adaptive Medical Diagnosis Expert System) for the Early Diagnosis of Dementia"/>
-                        </Paragraph>
+                       
                         <Paragraph>
                             <Run Text="This is an experimental expert system for the early diagnosis for dementia. It does so by providing suggestions to detect and try to offer the next course of action based on clinical guidelines from the DSM IV Criteria together with machine learning techniques based on past patients' history" />
                         </Paragraph>
@@ -38,11 +39,11 @@
                     </FlowDocument>
                 </RichTextBox>
             </StackPanel>
-            <StackPanel x:Name="stkpnlAcceptDecline" Height="25" Width="450">
-                <StackPanel Height="20" Width="auto" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,0,0">
-                    <CheckBox Content="Save Patient Data?" Margin="0,0,80,0" Name="chkSavePat" />
-                    <Button Content="Accept" Width="100" Margin="0,0,10,0" Click="btnAccept_Click"/>
-                    <Button Content="Decline" Width="100" Margin="0,0,33,0" Click="btnDecline_Click"/>
+            <StackPanel x:Name="stkpnlAcceptDecline" Height="47" Width="512">
+                <StackPanel Height="40" Width="511" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,0,0">
+                    <CheckBox Content="Save Patient Data?" Margin="10,0,150,0" Name="chkSavePat" Height="30" FontSize="14"  FontWeight="DemiBold"/>
+                    <Button Content="Accept" Width="100" Margin="0,0,10,0" Click="btnAccept_Click" Height="30"/>
+                    <Button Content="Decline" Width="100" Margin="0,0,0,0" Click="btnDecline_Click" Height="30"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
