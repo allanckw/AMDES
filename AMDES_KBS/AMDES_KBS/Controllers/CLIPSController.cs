@@ -412,8 +412,10 @@ namespace AMDES_KBS.Controllers
                 for (int i = 1; i < ArrayChoices.Count() - 1; i++)
                 {
                     string x = ArrayChoices[i].ToString().Remove(0, 1);
-                    naviHistory.Add(int.Parse(x));
-
+                    if (x.CompareTo("RESULT") != 0) //
+                    {
+                        naviHistory.Add(int.Parse(x));
+                    }
                 }
             }
 
