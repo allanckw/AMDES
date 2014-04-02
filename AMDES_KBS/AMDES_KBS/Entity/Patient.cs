@@ -92,6 +92,7 @@ namespace AMDES_KBS.Entity
         public Patient(Assessor doc, DateTime dob)
         {
             this.doctor = doc;
+            this.DOB = dob;
             testsList = new List<Test>();
             sympsList = new List<Symptom>();
             diagList = new List<Diagnosis>();

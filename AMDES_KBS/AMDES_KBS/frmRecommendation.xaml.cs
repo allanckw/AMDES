@@ -26,7 +26,7 @@ namespace AMDES_KBS
         //int CurrPageNo = 1;
         //int TotalPageNo = 1;
 
-        //Frame amdesPageFrame;
+        Frame amdesPageFrame;
         List<Diagnosis> AllDiagnose;
         List<List<ucDiagnosis>> PageContent;
         //bool collapseRest = false;
@@ -43,7 +43,7 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             //lblSection.Content = sectionID;
-            //amdesPageFrame = amdesFrame;
+            amdesPageFrame = amdesFrame;
             //prevPage = null;
             //btnPrev.Visibility = Visibility.Collapsed;
             //heightLimit = 430;
@@ -67,6 +67,26 @@ namespace AMDES_KBS
             //sortPage();
         }
 
+        private void btnPrev_Click(object sender, RoutedEventArgs e)
+        {
+            int sectionID = CLIPSController.getCurrentQnGroupID();
+        }
+
+        private void btnTestAgin_Click(object sender, RoutedEventArgs e)
+        {
+            AssertQuestions();
+            int sectionID = CLIPSController.getCurrentQnGroupID();
+
+            //MessageBox.Show(sectionID.ToString());
+
+            frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
+            amdesPageFrame.Navigate(TestSection);
+        }
+
+        private void AssertQuestions()
+        {
+            CLIPSController.clearAndLoadNew();
+        }
         //private void sortPage()
         //{
         //    currHeight = 0;

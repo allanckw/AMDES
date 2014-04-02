@@ -20,16 +20,6 @@
                 <StackPanel Orientation="Horizontal">
                     <Label  Width="200" Content="Patient's Details" FontWeight="Bold" FontSize="16" />
                 </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <Label Width="150"  Content="Date of Birth:" />
-                    <StackPanel>
-                        <DatePicker Width="200" Name="dtpDOB"   />
-                        
-                    </StackPanel>
-                    <Label  Content=" (Format DD/MM/YYYY)" />
-                    <Label  Content="e.g. 31/1/1970" />
-                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label  Width="150" Content="Date of  Assessment:"/>
                     <DatePicker Width="200" Name="dtpAss" IsEnabled="False" />
@@ -45,6 +35,27 @@
                 <StackPanel Orientation="Horizontal" Name="stkfirstname">
                     <Label Width="150"  Content="Given name/ first name:" />
                     <TextBox Width="200" Height="30" Name="txtFirstName" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Width="150"  Content="Date of Birth:" />
+                    <StackPanel>
+                        <DatePicker Width="200" Name="dtpDOB"   />
+                    </StackPanel>
+                    <Label  Content=" (Format DD/MM/YYYY)" />
+                    <Label  Content="e.g. 31/1/1970" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Width="150"  Content="Sex:" />
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <RadioButton Margin="0,0,10,0">Male</RadioButton>
+                        <RadioButton>Female</RadioButton>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Width="150"  Content="Ethnic Group:" />
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <ComboBox x:Name="cboEthnicGrp" Width="200"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
             

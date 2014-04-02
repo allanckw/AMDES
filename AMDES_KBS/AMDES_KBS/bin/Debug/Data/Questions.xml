@@ -3,12 +3,12 @@
 <QuestionGroups>
   <QuestionGroup id="1">
     <Header>Section A</Header>
-    <Description></Description>
+    <Description>AMNESIA~~Compared to before, does the patient have problems remembering things/events that happened recently?</Description>
     <QnType>0</QnType>
     <Symptom>Amnesia</Symptom>
     <Questions>
       <Question QID="1.1">
-        <Name>AMNESIA~~Compared to before, does the patient have problems remembering things/events that happened recently?~~Frequently misplacing his/her personal belongings?~~Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~Forget where he/she keeps his/her things?~~Forget what he/she has come to do?~~Have problems finding his/her way around ?~~Ask repeated questions or repeat himself/herself often?</Name>
+        <Name>Frequently misplacing his/her personal belongings?~~Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~Forget where he/she keeps his/her things?~~Forget what he/she has come to do?~~Have problems finding his/her way around ?~~Ask repeated questions or repeat himself/herself often?</Name>
         <Symptom>Amnesia</Symptom>
       </Question>
     </Questions>
@@ -68,7 +68,7 @@
     <Symptom></Symptom>
     <Questions>
       <Question QID="5.1">
-        <Name>Does the patient have ANY of the following background medical issues?~~~~Parkinson’s disease</Name>
+        <Name>Parkinson’s disease</Name>
         <Symptom>Parkinson’s disease</Symptom>
       </Question>
       <Question QID="5.2">
@@ -145,12 +145,12 @@
   </QuestionGroup>
   <QuestionGroup id="7">
     <Header>Section C4,C5,C12-C16</Header>
-    <Description></Description>
+    <Description>Does the patient have ANY of the following issues?</Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
       <Question QID="7.1">
-        <Name>Does the patient have ANY of the following issues?~~~~Signs of acute stroke eg.one-sided weakness, babinski’s sign</Name>
+        <Name>Signs of acute stroke eg.one-sided weakness, babinski’s sign</Name>
         <Symptom>acute stroke</Symptom>
       </Question>
       <Question QID="7.2">

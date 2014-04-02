@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="510" d:DesignWidth="660"
+      d:DesignHeight="560" d:DesignWidth="960"
 	Title="frmRecommendation">
 
     <Grid>
@@ -15,15 +15,17 @@
                     <Label x:Name="lblPatientID" FontSize="14" FontWeight="Bold" Content="SXXXXXXXZ" Width="100" />
                 </StackPanel>
                 <StackPanel x:Name="stkpnlRecommendation" Orientation="Horizontal">
-                    <Label Content="Recommendations" FontSize="14" FontWeight="Bold" Width="150" Margin="220,0,0,0" />
+                    <Label Content="Recommendations" FontSize="14" FontWeight="Bold" Width="135" Margin="520,0,0,0" />
                 </StackPanel>
 
             </StackPanel>
-            <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="PageFrame" Height="480">
-            </StackPanel>
+            <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Height="490" Width="960" HorizontalAlignment="Left">
+                <StackPanel x:Name="PageFrame"/>
             </ScrollViewer>
-         
+            <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" />
+                <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,0,0" Click="btnTestAgin_Click" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </src:AMDESPage>
