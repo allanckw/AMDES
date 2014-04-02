@@ -440,13 +440,13 @@ namespace AMDES_KBS.Controllers
                 {
                     evalStr = "(find-all-facts((?g group)) TRUE)";
                     MultifieldValue mv1 = ((MultifieldValue)env.Eval(evalStr));
-                    foreach (FactAddressValue fav in mv1)
+                    foreach (FactAddressValue fv1 in mv1)
                     {
-                        int id = int.Parse(fv.GetFactSlot("GroupID").ToString().Remove(0, 1));
+                        int id = int.Parse(fv1.GetFactSlot("GroupID").ToString().Remove(0, 1));
                         if (id == grpID)
                         {
-                            int maxQn = int.Parse(fv.GetFactSlot("SuccessArg").ToString());
-                            int trueCount = int.Parse(fv.GetFactSlot("TrueCount").ToString());
+                            int maxQn = int.Parse(fv1.GetFactSlot("SuccessArg").ToString());
+                            int trueCount = int.Parse(fv1.GetFactSlot("TrueCount").ToString());
                             s.SymptomName += " Score: " + trueCount + "/" + maxQn;
                             break;
                         }

@@ -9,7 +9,7 @@
     <Grid x:Name="LayoutRoot">
         <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto" >
             <StackPanel x:Name="welcome" Height="70" Width="450" Margin="0,10,0,0" >
-                <Label VerticalAlignment="Center" Content="Welcome to AMDES for the early diagnosis of Dementia" FontSize="15" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Tahoma"/>
+                <Label VerticalAlignment="Center" Content="Welcome to AMDES for the Early Diagnosis of Dementia" FontSize="15" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Tahoma"/>
             </StackPanel>
             <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Collapsed">
                 <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="530" >
@@ -22,12 +22,18 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="stkpnlTermCondition" Height="335" Width="530">
-                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="16" FontFamily="Tahoma" Margin="10,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="16" FontFamily="Tahoma" Margin="10,10,10,10"/>
                 <RichTextBox Height="300" Width="500" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
                     <FlowDocument>
-                       
+
                         <Paragraph>
-                            <Run Text="This is an experimental expert system for the early diagnosis for dementia. It does so by providing suggestions to detect and try to offer the next course of action based on clinical guidelines from the DSM IV Criteria together with machine learning techniques based on past patients' history" />
+                            <Run Text="Adaptive Medical Diagnosis Expert System (AMDES)" />
+                        </Paragraph>
+                        <Paragraph>
+                            <Run Text="This is an experimental expert system for the early diagnosis for dementia. It does so by providing suggestions to detect and recommend the next course of actions based on clinical guidelines extracted from the DSM IV Criteria together with machine learning techniques based on past patients' history" />
+                        </Paragraph>
+                        <Paragraph>
+                            <Run Text="The system provides only serves to provide a guideline to the early diagnosis of dementia, the physician should exercise his/her own discretion based on the results provided by the system. The author(s) of AMDES shall not be liable to any damages if the system does not made a correct diagnosis. " />
                         </Paragraph>
                         <Paragraph>
                             <Run Text="We would appreciate your feedback, you may send them to amdes_nus_soc@googlegroups.com " />
