@@ -23,7 +23,12 @@
                 <!--<Label x:Name="lblLink" Height="30" Foreground="Red" Margin="0,10,0,0" Content="Link out to resource" >
 
                 </Label>-->
-                <ThemedControlsLibrary:LinkLabel Height="30" x:Name="lblLink" Foreground="Blue" HoverForeground="Red" Margin="0,10,0,0" Content="Link out to resource"/>
+                <TextBlock x:Name="txtLink" TextWrapping="Wrap">
+                    <Hyperlink Click="lblLink_Click">
+                        <Run Text="Link out to resource"/>
+                    </Hyperlink>
+               </TextBlock>
+                <!--<ThemedControlsLibrary:LinkLabel Height="30" Click="lblLink_Click" x:Name="lblLink" Foreground="Blue" HoverForeground="Red" Margin="0,10,0,0" Content="Link out to resource"/>-->
             </StackPanel>
 
         </StackPanel>

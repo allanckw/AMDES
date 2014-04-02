@@ -29,6 +29,7 @@ namespace AMDES_KBS
         Frame amdesPageFrame;
         List<Diagnosis> AllDiagnose;
         List<List<ucDiagnosis>> PageContent;
+        AMDESPage lastSection;
         //bool collapseRest = false;
 
         public frmRecommendation()
@@ -39,10 +40,11 @@ namespace AMDES_KBS
             loadRecommendation();
         }
 
-        public frmRecommendation(Frame amdesFrame, List<Diagnosis> diaList)
+        public frmRecommendation(Frame amdesFrame, List<Diagnosis> diaList,AMDESPage lastSec)
         {
             InitializeComponent();
             //lblSection.Content = sectionID;
+            lastSection = lastSec;
             amdesPageFrame = amdesFrame;
             //prevPage = null;
             //btnPrev.Visibility = Visibility.Collapsed;
@@ -69,7 +71,11 @@ namespace AMDES_KBS
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
+            //int sectionID = CLIPSController.getCurrentQnGroupID();
+            //frmSection lastSection = new frmSection(amdesPageFrame, sectionID);
+            CLIPSController.assertPrevSection();
             int sectionID = CLIPSController.getCurrentQnGroupID();
+            amdesPageFrame.Navigate(lastSection);
         }
 
         private void btnTestAgin_Click(object sender, RoutedEventArgs e)

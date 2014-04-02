@@ -44,7 +44,7 @@ namespace AMDES_KBS
             for (int i = 0; i < pList.Count; i++)
             {
                 Patient p = pList.ElementAt(i);
-                if (i % 2 == 0)
+                if (i % 2 != 0)
                 {
                     loadPatient(p, Color.FromRgb(255, 254, 254));
                 }

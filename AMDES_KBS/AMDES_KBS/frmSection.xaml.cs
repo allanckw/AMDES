@@ -252,7 +252,7 @@ namespace AMDES_KBS
             if (sectionID == -1)
             {
                 List<Diagnosis> result = CLIPSController.getResultingDiagnosis();
-                frmRecommendation finalConclusionPage = new frmRecommendation(amdesPageFrame, result);
+                frmRecommendation finalConclusionPage = new frmRecommendation(amdesPageFrame, result, this);
                 amdesPageFrame.Navigate(finalConclusionPage);
             }
             else

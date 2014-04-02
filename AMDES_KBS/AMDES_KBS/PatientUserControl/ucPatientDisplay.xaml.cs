@@ -115,7 +115,7 @@ namespace AMDES_KBS
             //@Allan to check and modify
             CLIPSController.CurrentPatient = pat;
 
-            frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, pat.Diagnoses);
+            frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, pat.Diagnoses, null);
             amdesPageFrame.Navigate(frmConclusion);
 
         }

@@ -33,15 +33,29 @@ namespace AMDES_KBS
             txtAssessorLoc.Text = a.ClinicName;
             dtpDOB.SelectedDate = dtpAss.SelectedDate = DateTime.Today;
             turnOffPatientDetails();
+            loadEnthicGrp();
+        }
+
+        private void loadEnthicGrp()
+        {
+            // Obtain the string names of all the elements within myEnum 
+            List<string> enthic = Enum.GetNames(typeof(PatientEthnicGrp)).ToList<String>();
+
+            for (int i = 0; i < enthic.Count; i++)
+            {
+                string s = enthic[i];
+                cboEthnicGrp.Items.Add(s);
+            }
+            cboEthnicGrp.SelectedIndex = 0;
         }
 
         private void turnOffPatientDetails()
         {
             if (CLIPSController.savePatient == false)
             {
-                stkfirstname.Visibility = Visibility.Hidden;
-                stknric.Visibility = Visibility.Hidden;
-                stksurname.Visibility = Visibility.Hidden;
+                stkfirstname.Visibility = Visibility.Collapsed;
+                stknric.Visibility = Visibility.Collapsed;
+                stksurname.Visibility = Visibility.Collapsed;
                 btnQuit.Visibility = Visibility.Collapsed;
                 btnSaveTest.Visibility = Visibility.Collapsed;
             }
@@ -120,6 +134,12 @@ namespace AMDES_KBS
                 else
                 {
                     Patient p = new Patient(a, (DateTime)dtpDOB.SelectedDate);
+                    if (radMale.IsChecked == true)
+                        p.Gender = PatientGender.MALE;                    
+                    else
+                        p.Gender = PatientGender.FEMALE;
+
+                    p.EthnicGroup = (PatientEthnicGrp)cboEthnicGrp.SelectedIndex;
                     CLIPSController.CurrentPatient = p;
                     return true;
                 }
