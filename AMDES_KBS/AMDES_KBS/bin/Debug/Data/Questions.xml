@@ -94,17 +94,17 @@
     </Questions>
   </QuestionGroup>
   <QuestionGroup id="6">
-    <Header>Mental Test Score</Header>
-    <Description>Instructions: for Recall memory phase,  ~~Tell the patient “37 Bukit Timah Road”~~Ask another qn. Ask to recall at the end of the test.</Description>
+    <Header>AMTS</Header>
+    <Description>Instructions: for Recall memory phase: ~~Tell the patient “16 Bukit Batok Road”~~Ask to recall the above phrase at the end of the test.</Description>
     <QnType>2</QnType>
-    <Symptom>Fail Mental Test Score</Symptom>
+    <Symptom>Fail Abbreivated Mental Test Score</Symptom>
     <Questions>
       <Question QID="6.1">
-        <Name>What is the year?</Name>
+        <Name>What is the year now?</Name>
         <Symptom></Symptom>
       </Question>
       <Question QID="6.2">
-        <Name>What is the time?(within 1 hr)</Name>
+        <Name>What is the time? (within an hr)</Name>
         <Symptom></Symptom>
       </Question>
       <Question QID="6.3">
@@ -112,7 +112,7 @@
         <Symptom></Symptom>
       </Question>
       <Question QID="6.4">
-        <Name>What is your data of birth?</Name>
+        <Name>When is your date of birth?</Name>
         <Symptom></Symptom>
       </Question>
       <Question QID="6.5">
@@ -124,7 +124,7 @@
         <Symptom></Symptom>
       </Question>
       <Question QID="6.7">
-        <Name>What is my/his/her job?(Show picture)</Name>
+        <Name>What is my/his/her job? (Show an image to the patient)</Name>
         <Symptom></Symptom>
       </Question>
       <Question QID="6.8">
@@ -132,11 +132,11 @@
         <Symptom></Symptom>
       </Question>
       <Question QID="6.9">
-        <Name>Recall Memory Phrase</Name>
+        <Name>Who is the country's Prime minister?</Name>
         <Symptom></Symptom>
       </Question>
       <Question QID="6.10">
-        <Name>Who is country's Prime minister</Name>
+        <Name>Recall the Memory Phrase</Name>
         <Symptom></Symptom>
       </Question>
     </Questions>

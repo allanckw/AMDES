@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
 using System.Threading;
+using System.Windows.Controls.Primitives;
 
 namespace AMDES_KBS
 {
@@ -29,17 +30,13 @@ namespace AMDES_KBS
         public ucQuestion()
         {
             InitializeComponent();
-            btnNo.IsEnabled = false; //off by default
         }
 
         public void loadQuestion(Question q, Label lblscore)
         {
             question = q;
             string questionText = q.Name.Replace("~~", Environment.NewLine);
-            //if (q.ID==6.10)
-            //{
-            //    int breakpoin = 0;
-            //}
+
             lblQuestion.Content = q.ID;
             txtQuestion.Text = questionText;
             var desiredSizeOld = txtQuestion.DesiredSize;
@@ -57,39 +54,53 @@ namespace AMDES_KBS
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Add event handler implementation here.
-            btnYes.IsEnabled = false;
-            btnNo.IsEnabled = true;
-            CLIPSController.assertQuestion(question.ID, true);
-            if (scoringData != null)
+            if ((sender as ToggleButton).IsChecked == true)
             {
-                int score = int.Parse(scoringData.Content.ToString());
-                score++;
-                scoringData.Content = score;
-            }
-            questionAnswer = true;
-            Thread.Sleep(100);
-            //clip to assert here or modify
-        }
-
-        private void btnNo_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO: Add event handler implementation here.
-            btnYes.IsEnabled = true;
-            btnNo.IsEnabled = false;
-            CLIPSController.assertQuestion(question.ID, false);
-            if (scoringData != null)
-            {
-                int score = int.Parse(scoringData.Content.ToString());
-                if (questionAnswer)
+                CLIPSController.assertQuestion(question.ID, true);
+                if (scoringData != null)
                 {
-                    score--;
+                    int score = int.Parse(scoringData.Content.ToString());
+                    score++;
                     scoringData.Content = score;
                 }
+                questionAnswer = true;
+                Thread.Sleep(100);
             }
-            questionAnswer = false;
-            Thread.Sleep(100);
-            //clip to assert here or modify
+            else
+            {
+                CLIPSController.assertQuestion(question.ID, false);
+                if (scoringData != null)
+                {
+                    int score = int.Parse(scoringData.Content.ToString());
+                    if (questionAnswer)
+                    {
+                        score--;
+                        scoringData.Content = score;
+                    }
+                }
+            }
+           
         }
+
+        //private void btnNo_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // TODO: Add event handler implementation here.
+        //    btnYes.IsEnabled = true;
+        //    btnNo.IsEnabled = false;
+        //    CLIPSController.assertQuestion(question.ID, false);
+        //    if (scoringData != null)
+        //    {
+        //        int score = int.Parse(scoringData.Content.ToString());
+        //        if (questionAnswer)
+        //        {
+        //            score--;
+        //            scoringData.Content = score;
+        //        }
+        //    }
+        //    questionAnswer = false;
+        //    Thread.Sleep(100);
+        //    //clip to assert here or modify
+        //}
 
         public bool getAnswer()
         {

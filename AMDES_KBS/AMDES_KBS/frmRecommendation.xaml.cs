@@ -73,7 +73,8 @@ namespace AMDES_KBS
         {
             //int sectionID = CLIPSController.getCurrentQnGroupID();
             //frmSection lastSection = new frmSection(amdesPageFrame, sectionID);
-            CLIPSController.assertPrevSection();
+
+            CLIPSController.retractDiagnosis();
             int sectionID = CLIPSController.getCurrentQnGroupID();
             amdesPageFrame.Navigate(lastSection);
         }

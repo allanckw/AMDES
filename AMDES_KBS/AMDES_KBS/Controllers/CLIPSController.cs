@@ -104,7 +104,6 @@ namespace AMDES_KBS.Controllers
                 env.Load(clpPath);
 
                 reset();
-                assert(new StringBuilder("(mode 1)"));
                 assertAge();
                 run();
 
@@ -278,7 +277,7 @@ namespace AMDES_KBS.Controllers
             sb.Clear();
             foreach (NaviChildCriteriaQuestion ncq in n.ChildCriteriaQuestion)
             {
-                sb.Append("(NaviChildCritQ (NavigationID N" + n.NavID + ") ");
+                sb.Append("(NaviChildCritQuestion (NavigationID N" + n.NavID + ") ");
                 sb.Append("(CriteriaGroupID _" + ncq.CriteriaGrpID + ") ");
                 if (ncq.Ans == false)
                 {
@@ -297,7 +296,7 @@ namespace AMDES_KBS.Controllers
             foreach (NaviChildCritAttribute ncq in n.ChildCriteriaAttributes)
             {
                 //(NaviChildCritA (NavigationID GO_C) (AttributeName Age) (AttributeValue 50) (AttributeCompareType <) )
-                sb.Append("(NaviChildCritA (NavigationID N" + n.NavID + ") ");
+                sb.Append("(NaviChildCritAttribute (NavigationID N" + n.NavID + ") ");
                 sb.Append("(AttributeName " + ncq.AttributeName + ") ");
                 sb.Append("(AttributeValue " + ncq.AttributeValue + ") ");
                 sb.Append("(AttributeCompareType " + ncq.getCompareTypeString() + ") ");
@@ -336,6 +335,13 @@ namespace AMDES_KBS.Controllers
         {
             assert(new StringBuilder("(previous)"));
             run();
+        }
+
+        public static void retractDiagnosis()
+        {
+            CurrentPatient.Diagnoses.Clear();
+            CurrentPatient.SymptomsList.Clear();
+            assertPrevSection();
         }
 
         public static int getCurrentQnGroupID()
@@ -393,11 +399,6 @@ namespace AMDES_KBS.Controllers
             return dList;
         }
 
-        //TODO: Get back symptom
-        //TODO: Get back QnHistory
-        //TODO: Get back Navihistory
-        //TODO: Get back Symptom.
-
         private static List<int> getNaviHistory()
         {
             List<int> naviHistory = new List<int>();
@@ -431,7 +432,8 @@ namespace AMDES_KBS.Controllers
 
             foreach (FactAddressValue fv in mv)
             {
-                int grpID = int.Parse(fv.GetFactSlot("ID").ToString().Remove(0, 1));
+                string x = fv.GetFactSlot("ID").ToString().Remove(0, 1);
+                int grpID = int.Parse(x);
                 Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '),
                                         grpID.ToString());
 
@@ -447,7 +449,7 @@ namespace AMDES_KBS.Controllers
                         {
                             int maxQn = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
                             int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
-                            s.SymptomName += " Score: " + trueCount + "/" + maxQn;
+                            s.SymptomName += " - Required Score: " + maxQn  + ", Patient Score: " + trueCount;
                             break;
                         }
                     }

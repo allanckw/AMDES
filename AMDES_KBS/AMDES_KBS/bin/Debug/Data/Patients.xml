@@ -390,8 +390,8 @@
   <Patient id="">
     <Last_Name></Last_Name>
     <First_Name></First_Name>
-    <DOB>635319936000000000</DOB>
-    <AssessmentDate>635320718964175823</AssessmentDate>
+    <DOB>635320800000000000</DOB>
+    <AssessmentDate>635320927028824675</AssessmentDate>
     <Status>0</Status>
     <Tests />
     <Assessor>
@@ -400,8 +400,8 @@
     </Assessor>
     <Symptoms>
       <Symptom>
-        <SymptomName> Fail Mental Test Score  Score: 0/8</SymptomName>
-        <DiagnosisDate>635320718999357835</DiagnosisDate>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635320927258417807</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
       </Symptom>
     </Symptoms>
