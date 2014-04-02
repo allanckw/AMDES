@@ -391,7 +391,7 @@
     <Last_Name></Last_Name>
     <First_Name></First_Name>
     <DOB>635319936000000000</DOB>
-    <AssessmentDate>635320705962182152</AssessmentDate>
+    <AssessmentDate>635320718964175823</AssessmentDate>
     <Status>0</Status>
     <Tests />
     <Assessor>
@@ -400,41 +400,16 @@
     </Assessor>
     <Symptoms>
       <Symptom>
-        <SymptomName> Fail Mental Test Score </SymptomName>
-        <DiagnosisDate>635320706040806649</DiagnosisDate>
+        <SymptomName> Fail Mental Test Score  Score: 0/8</SymptomName>
+        <DiagnosisDate>635320718999357835</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Amnesia </SymptomName>
-        <DiagnosisDate>635320706040826650</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Executive dysfunction </SymptomName>
-        <DiagnosisDate>635320706158023353</DiagnosisDate>
-        <DiagnosedByID>2.4</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
-      <Diagnosis diagID="1">
-        <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
-        <Header>Low likelihood of dementia, other underlying conditions</Header>
-        <Link>http://www.google.com.sg</Link>
-      </Diagnosis>
-      <Diagnosis diagID="7">
-        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
-        <Header>Brain Imaging and Referral</Header>
-        <Link></Link>
-      </Diagnosis>
-      <Diagnosis diagID="3">
-        <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
-        <Header>Low likelihood of dementia, Refer</Header>
-        <Link></Link>
-      </Diagnosis>
-      <Diagnosis diagID="6">
-        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~Urea &amp; electrolytes (or renal panel)~~Calcium panel~~Vitamin B12 level~~Folate level~~Thyroid function test~~</Comment>
-        <Header>Tests</Header>
-        <Link></Link>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
       </Diagnosis>
     </Diagnoses>
   </Patient>
