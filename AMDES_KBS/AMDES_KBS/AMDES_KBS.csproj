@@ -125,6 +125,8 @@
     <Compile Include="Controllers\FirstQuestionController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\SymptomController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Entity\History\History.cs" />
     <Compile Include="Entity\History\QnHistory.cs" />
     <Compile Include="Entity\Navex\FirstQuestion.cs" />

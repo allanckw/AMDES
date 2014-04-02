@@ -103,24 +103,13 @@ namespace AMDES_KBS.Controllers
                                     new XElement("Diagnoses")
                                     );
 
+            //this test is for phase 2
             if (p.TestsList.Count > 0)
             {
                 for (int i = 0; i < p.TestsList.Count; i++)
                 {
                     Test t = p.TestsList.ElementAt(i);
-
-                    newPat.Element("Tests").Add(
-                        new XElement("Test",
-                            new XElement("TestName", t.TestName),
-                            new XElement("Status", t.getStatus()),
-                            new XElement("OrderedDate", t.OrderedDate.GetValueOrDefault().Ticks),
-                            new XElement("ReportDate", t.ReportDate.GetValueOrDefault().Ticks),
-                                    new XElement("Assessor",
-                                        new XElement("AssessorName", p.Doctor.Name),
-                                        new XElement("AssessLocation", p.Doctor.ClinicName)
-                                    )
-                            )
-                        );
+                    newPat.Element("Tests").Add(TestController.writeTest(t, p.Doctor));
                 }
             }
 
@@ -129,14 +118,7 @@ namespace AMDES_KBS.Controllers
                 for (int i = 0; i < p.SymptomsList.Count; i++)
                 {
                     Symptom s = p.SymptomsList.ElementAt(i);
-                    XElement x = new XElement("Symptom",
-                            new XElement("SymptomName", s.SymptomName),
-                            new XElement("DiagnosisDate", s.DiagnosisDate.Ticks),
-                            new XElement("DiagnosedByID", s.DiagnosedByID));
-
-                    newPat.Element("Symptoms").Add(x);
-
-
+                    newPat.Element("Symptoms").Add(SymptomController.writeSymptom(s));
                 }
             }
 
@@ -163,7 +145,7 @@ namespace AMDES_KBS.Controllers
             }
             else
             {
-                return searchPatientByName(criteria);
+                return searchPatientByName(criteria).OrderBy(x => x.Last_Name).ToList();
             }
         }
 
@@ -211,7 +193,7 @@ namespace AMDES_KBS.Controllers
 
                 foreach (var t in tests)
                 {
-                    p.addTest(readPatientTest(t));
+                    p.addTest(TestController.readPatientTest(t));
                 }
 
                 var symptoms = (from syms in x.Descendants("Symptoms").Descendants("Symptom")
@@ -219,11 +201,11 @@ namespace AMDES_KBS.Controllers
 
                 foreach (var s in symptoms)
                 {
-                    p.addSymptom(readPatientSymptoms(s));
+                    p.addSymptom(SymptomController.readPatientSymptoms(s));
                 }
 
                 var diagnoses = (from syms in x.Descendants("Diagnoses").Descendants("Diagnosis")
-                                select syms).ToList();
+                                 select syms).ToList();
 
                 foreach (var d in diagnoses)
                 {
@@ -234,37 +216,13 @@ namespace AMDES_KBS.Controllers
             {
                 return null;
             }
-            return p;
+
+            if (p.NRIC.Length == 0)
+                return null;
+            else
+                return p;
         }
 
-        private static Test readPatientTest(XElement x)
-        {
-            if (x != null)
-            {
-                Test t = new Test();
-                t.TestName = x.Element("TestName").Value;
-                t.Doctor = AssessorController.readAssessor(x.Element("Assessor"));
-                t.OrderedDate = new DateTime(long.Parse(x.Element("OrderedDate").Value));
-                t.ReportDate = new DateTime(long.Parse(x.Element("ReportDate").Value));
-                t.setStatus(int.Parse(x.Element("Status").Value));
-
-                return t;
-            }
-            return null;
-        }
-
-        private static Symptom readPatientSymptoms(XElement x)
-        {
-            if (x != null)
-            {
-                Symptom s = new Symptom();
-                s.DiagnosedByID = x.Element("DiagnosedByID").Value;
-                s.DiagnosisDate = new DateTime(long.Parse(x.Element("DiagnosisDate").Value));
-                s.SymptomName = x.Element("SymptomName").Value;
-                return s;
-            }
-            return null;
-        }
 
         public static List<Patient> searchPatientByName(string name = "")
         {
@@ -318,7 +276,7 @@ namespace AMDES_KBS.Controllers
 
             }
 
-            return pList.OrderBy(x => x.Last_Name).ToList();
+            return pList.OrderBy(x => x.Last_Name).ToList(); ;
         }
 
         public static List<Patient> getAllPatients()
@@ -333,7 +291,9 @@ namespace AMDES_KBS.Controllers
 
                 foreach (var x in patients)
                 {
-                    pList.Add(readPatientData(x));
+                    Patient p = readPatientData(x);
+                    if (p != null)
+                        pList.Add(p);
                 }
             }
 
@@ -343,6 +303,9 @@ namespace AMDES_KBS.Controllers
         public static void updatePatient(Patient p)
         {
             createDataFile();
+
+            if (p.NRIC.Length == 0)
+                return;
 
             if (searchPatientByID(p.NRIC) == null)
             {

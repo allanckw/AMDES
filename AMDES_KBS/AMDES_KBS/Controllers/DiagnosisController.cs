@@ -90,7 +90,7 @@ namespace AMDES_KBS.Controllers
                     }
                 }
 
-                return pList;
+                return pList.OrderBy(x => x.Header).ToList(); ;
             }
             else
             {

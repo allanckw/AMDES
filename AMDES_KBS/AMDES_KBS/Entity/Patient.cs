@@ -39,13 +39,13 @@ namespace AMDES_KBS.Entity
 
         private List<Test> testsList;
 
-        private List<Symptom> sympsList;
+        private List<Symptom> sympsList; //immediate sym list of result
 
-        private List<Diagnosis> diagList;
+        private List<Diagnosis> diagList; //immediate diaglist of result
 
         private PatientStatus status;
 
-        private string nric = "" , firstname = "" , lastname = "" ;
+        private string nric = "", firstname = "", lastname = "";
 
         private PatientGender gender = PatientGender.MALE;
 
@@ -96,7 +96,7 @@ namespace AMDES_KBS.Entity
             testsList = new List<Test>();
             sympsList = new List<Symptom>();
             diagList = new List<Diagnosis>();
-            dAssessment = DateTime.Now;
+             dAssessment = DateTime.Today;
             status = PatientStatus.DRAFT;
         }
 
@@ -105,7 +105,7 @@ namespace AMDES_KBS.Entity
             testsList = new List<Test>();
             sympsList = new List<Symptom>();
             diagList = new List<Diagnosis>();
-            dAssessment = DateTime.Now;
+            dAssessment = DateTime.Today;
             status = PatientStatus.DRAFT;
         }
 
@@ -121,7 +121,7 @@ namespace AMDES_KBS.Entity
             testsList = new List<Test>();
             sympsList = new List<Symptom>();
             diagList = new List<Diagnosis>();
-            dAssessment = DateTime.Now;
+            dAssessment = DateTime.Today;
             status = PatientStatus.DRAFT;
         }
 
@@ -272,6 +272,15 @@ namespace AMDES_KBS.Entity
             }
         }
 
+        public History getLatestHistory()
+        {
+            List<History> hList = HistoryController.getHistoryByID(this.nric, AssessmentDate);
+            return hList[hList.Count - 1];
+        }
 
+        public List<History> getAllPatientHistory()
+        {
+            return HistoryController.getHistoryByID(this.nric, AssessmentDate);
+        }
     }
 }

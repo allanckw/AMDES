@@ -21,11 +21,6 @@
     <Header>Cognitive impairment</Header>
     <Link></Link>
   </Diagnosis>
-  <Diagnosis diagID="6">
-    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~Urea &amp; electrolytes (or renal panel)~~Calcium panel~~Vitamin B12 level~~Folate level~~Thyroid function test~~</Comment>
-    <Header>Tests</Header>
-    <Link></Link>
-  </Diagnosis>
   <Diagnosis diagID="7">
     <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
     <Header>Brain Imaging and Referral</Header>
@@ -44,6 +39,11 @@
   <Diagnosis diagID="4">
     <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.</Comment>
     <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+    <Link></Link>
+  </Diagnosis>
+  <Diagnosis diagID="6">
+    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test~~</Comment>
+    <Header>Recommended Tests</Header>
     <Link></Link>
   </Diagnosis>
 </Diagnoses>

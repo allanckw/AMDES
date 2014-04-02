@@ -27,29 +27,30 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void updatePatientNavigationHistory(History h)
+        public static void updatePatientNavigationHistory(History h, DateTime assDate)
         {
             createDataFile();
 
-            if (getHistoryByID(h.PatientID) == null)
+            if (getHistoryByID(h.PatientID, assDate) == null)
             {
                 addPatientNavigationHistory(h); //if id is not present, just add
             }
             else
             {
-                deletePatientNavigationHistory(h.PatientID); //delete and add
+                deletePatientNavigationHistory(h.PatientID, h.AssessmentDate); //delete and add
                 addPatientNavigationHistory(h);
             }
 
         }
 
-        private  static void addPatientNavigationHistory(History h)
+        private static void addPatientNavigationHistory(History h)
         {
             createDataFile();
 
             XDocument document = XDocument.Load(History.dataPath);
 
-            XElement newPat = new XElement("History", new XAttribute("pid", h.PatientID));
+            XElement newPat = new XElement("History", new XAttribute("pid", h.PatientID), 
+                                new XAttribute("AssessmentDate", h.AssessmentDate.Ticks));
 
             foreach (KeyValuePair<int, List<QnHistory>> kvp in h.getHistory())
             {
@@ -68,39 +69,70 @@ namespace AMDES_KBS.Controllers
                 }
 
                 newPat.Add(hist);
+
+                if (h.SymptomsList.Count > 0)
+                {
+                    XElement sy = new XElement("Symptoms");
+                    foreach (Symptom s in h.SymptomsList)
+                    {
+                        if (s != null)
+                            sy.Add(SymptomController.writeSymptom(s));
+                    }
+                    newPat.Add(sy);
+                }
+
+                if (h.Diagnoses.Count > 0)
+                {
+                    XElement hy = new XElement("Diagnoses");
+                    foreach (Diagnosis d in h.Diagnoses)
+                    {
+                        if (d != null)
+                           hy.Add(DiagnosisController.convertToXML(d));
+                    }
+                    newPat.Add(hy);
+                }
             }
 
             document.Element("Histories").Add(newPat);
             document.Save(History.dataPath);
         }
 
-        private static void deletePatientNavigationHistory(string pid)
+        private static void deletePatientNavigationHistory(string pid, DateTime assDate)
         {
 
             XDocument document = XDocument.Load(History.dataPath);
 
-            if (getHistoryByID(pid) != null)
+            if (getHistoryByID(pid, assDate) != null)
             {
                 (from pa in document.Descendants("History")
-                 where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
+                 where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
+                 long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Ticks
                  select pa).SingleOrDefault().Remove();
 
                 document.Save(History.dataPath);
             }
         }
 
-        public static History getHistoryByID(string pid)
+        public static List<History> getHistoryByID(string pid, DateTime assDate)
         {
             XDocument document = XDocument.Load(History.dataPath);
+            List<History> hList = new List<History>();
 
             try
             {
                 var hist = (from pa in document.Descendants("History")
-                           where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
-                           select pa).SingleOrDefault();
+                            where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
+                            long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Ticks
+                            select pa).ToList();
 
-                return readHistoryData(hist);
+                foreach (var h in hist)
+                {
+                    History hy = readHistoryData(h);
+                    if (hy != null)
+                        hList.Add(hy);
+                }
 
+                return hList.OrderBy(x => x.AssessmentDate).ToList(); 
             }
             catch (InvalidOperationException ex)
             {
@@ -115,8 +147,8 @@ namespace AMDES_KBS.Controllers
             XDocument document = XDocument.Load(History.dataPath);
 
             var hist = (from pa in document.Descendants("History")
-                       where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
-                       select pa).SingleOrDefault();
+                        where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
+                        select pa).SingleOrDefault();
 
             return hist != null; //not null means got so exist is true
         }
@@ -127,9 +159,10 @@ namespace AMDES_KBS.Controllers
             {
                 History h = new History();
                 h.PatientID = x.Attribute("pid").Value;
+                h.AssessmentDate = new DateTime(long.Parse(x.Attribute("AssessmentDate").Value));
 
                 var hists = (from pa in x.Descendants("Group")
-                            select pa).ToList();
+                             select pa).ToList();
 
                 foreach (var g in hists)
                 {
@@ -144,6 +177,23 @@ namespace AMDES_KBS.Controllers
                         h.updateHistoryItem(gid, q.Element("QID").Value, bool.Parse(q.Element("Answer").Value));
                     }
                 }
+
+                var symptoms = (from syms in x.Descendants("Symptoms").Descendants("Symptom")
+                                select syms).ToList();
+
+                foreach (var s in symptoms)
+                {
+                    h.addSymptom(SymptomController.readPatientSymptoms(s));
+                }
+
+                var diagnoses = (from syms in x.Descendants("Diagnoses").Descendants("Diagnosis")
+                                 select syms).ToList();
+
+                foreach (var d in diagnoses)
+                {
+                    h.addDiagnosis(DiagnosisController.readDiagnosis(d));
+                }
+
                 return h;
             }
             else
