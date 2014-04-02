@@ -429,9 +429,28 @@ namespace AMDES_KBS.Controllers
 
             foreach (FactAddressValue fv in mv)
             {
+                int grpID = int.Parse(fv.GetFactSlot("ID").ToString().Remove(0, 1));
                 Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '),
-                                        fv.GetFactSlot("ID").ToString().Remove(0, 1));
+                                        grpID.ToString());
 
+                QuestionGroup qg = QuestionController.getGroupByID(grpID);
+                if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
+                {
+                    evalStr = "(find-all-facts((?g group)) TRUE)";
+                    MultifieldValue mv1 = ((MultifieldValue)env.Eval(evalStr));
+                    foreach (FactAddressValue fav in mv1)
+                    {
+                        int id = int.Parse(fv.GetFactSlot("GroupID").ToString().Remove(0, 1));
+                        if (id == grpID)
+                        {
+                            int maxQn = int.Parse(fv.GetFactSlot("SuccessArg").ToString());
+                            int trueCount = int.Parse(fv.GetFactSlot("TrueCount").ToString());
+                            s.SymptomName += " Score: " + trueCount + "/" + maxQn;
+                            break;
+                        }
+                    }
+                }
+             
                 CurrentPatient.addSymptom(s);
             }
 
