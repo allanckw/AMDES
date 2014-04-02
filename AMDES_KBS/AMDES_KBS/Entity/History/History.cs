@@ -38,6 +38,8 @@ namespace AMDES_KBS.Entity
         public History()
         {
             history = new Dictionary<int, List<QnHistory>>();
+            sympsList = new List<Symptom>();
+            diagList = new List<Diagnosis>();
         }
 
         public History(string patientID, DateTime assDate)
@@ -45,6 +47,8 @@ namespace AMDES_KBS.Entity
             history = new Dictionary<int, List<QnHistory>>();
             this.patientID = patientID;
             assessmentDate = assDate;
+            sympsList = new List<Symptom>();
+            diagList = new List<Diagnosis>();
         }
 
         public void createNewHistory(int groupID)

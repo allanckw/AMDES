@@ -12,6 +12,7 @@ namespace AMDES_KBS.Controllers
     {
         private static Patient pat;
         public static bool? savePatient = false;
+        private List<History> hyList = new List<History>();
 
         public static bool? readOnly = false;
         //warning only for viewing the data will only be saved for latest test for assertions 
@@ -56,7 +57,7 @@ namespace AMDES_KBS.Controllers
         //@Allan, Not Tested yet
         public static History loadSavedAssertions()
         {
-            CurrentPatient.SymptomsList.Clear();
+            //CurrentPatient.SymptomsList.Clear();
             //call this f(x) everytime u click a new patient
             env.Clear();
             assertLog.Clear();
@@ -99,7 +100,7 @@ namespace AMDES_KBS.Controllers
         {
             if (CurrentPatient != null)
             {
-                CurrentPatient.SymptomsList.Clear();
+                //CurrentPatient.SymptomsList.Clear();
                 //call this f(x) everytime u click a new patient
                 env.Clear();
                 assertLog.Clear();
@@ -343,8 +344,8 @@ namespace AMDES_KBS.Controllers
 
         public static void retractDiagnosis()
         {
-            CurrentPatient.Diagnoses.Clear();
-            CurrentPatient.SymptomsList.Clear();
+            //CurrentPatient.Diagnoses.Clear();
+            //CurrentPatient.SymptomsList.Clear();
             assertPrevSection();
         }
 
@@ -372,12 +373,14 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static List<Diagnosis> getResultingDiagnosis()
+        public static void getResultingDiagnosis()
         {
+            History h = getCurrentPatientHistory();
+
             String evalStr = "(find-all-facts ((?f diagnosis)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
             //String evalStr = "(find-all-facts ((?f NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
-            List<Diagnosis> dList = new List<Diagnosis>();
+           
 
             foreach (FactAddressValue fv in mv)
             {
@@ -388,19 +391,16 @@ namespace AMDES_KBS.Controllers
                 {
                     string x = ArrayChoices[i].ToString().Remove(0, 1);
                     Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(x));
-                    CurrentPatient.addDiagnosis(d);
-                    dList.Add(d);
+                    h.addDiagnosis(d);
                 }
 
             }
-
-            getCurrentPatientSymptom();
-
+           
+            h = getCurrentPatientSymptom(h);
             CurrentPatient.setCompleted();
-
             PatientController.updatePatient(CurrentPatient);
-            HistoryController.updatePatientNavigationHistory(getCurrentPatientHistory(),CurrentPatient.AssessmentDate.Date);
-            return dList;
+            HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+           
         }
 
         private static List<int> getNaviHistory()
@@ -427,9 +427,9 @@ namespace AMDES_KBS.Controllers
             return naviHistory;
         }
 
-        public static List<Symptom> getCurrentPatientSymptom()
+        public static History getCurrentPatientSymptom(History h)
         {
-            List<Symptom> sList = new List<Symptom>();
+            //List<Symptom> sList = new List<Symptom>();
 
             String evalStr = "(find-all-facts((?s symptoms)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
@@ -459,10 +459,10 @@ namespace AMDES_KBS.Controllers
                     }
                 }
 
-                CurrentPatient.addSymptom(s);
+                h.addSymptom(s);
             }
 
-            return sList;
+            return h;
         }
 
         public static History getCurrentPatientHistory()

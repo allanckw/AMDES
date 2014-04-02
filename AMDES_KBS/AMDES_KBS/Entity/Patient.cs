@@ -274,13 +274,16 @@ namespace AMDES_KBS.Entity
 
         public History getLatestHistory()
         {
-            List<History> hList = HistoryController.getHistoryByID(this.nric, AssessmentDate);
-            return hList[hList.Count - 1];
+            List<History> hList = HistoryController.getHistoryByID(this.nric);
+            if (hList.Count > 0)
+                return hList[hList.Count - 1];
+            else
+                return null;
         }
 
         public List<History> getAllPatientHistory()
         {
-            return HistoryController.getHistoryByID(this.nric, AssessmentDate);
+            return HistoryController.getHistoryByID(this.nric);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace AMDES_KBS
         public void addSymptons()
         {
             
-            foreach (Symptom sym in CLIPSController.CurrentPatient.SymptomsList)
+            foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
             {
                 Label lblSymptons = new Label();
                 lblSymptons.Content = "Symptoms - " + sym.SymptomName;

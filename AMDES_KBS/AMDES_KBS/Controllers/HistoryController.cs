@@ -49,7 +49,7 @@ namespace AMDES_KBS.Controllers
 
             XDocument document = XDocument.Load(History.dataPath);
 
-            XElement newPat = new XElement("History", new XAttribute("pid", h.PatientID), 
+            XElement newPat = new XElement("History", new XAttribute("pid", h.PatientID),
                                 new XAttribute("AssessmentDate", h.AssessmentDate.Ticks));
 
             foreach (KeyValuePair<int, List<QnHistory>> kvp in h.getHistory())
@@ -70,27 +70,29 @@ namespace AMDES_KBS.Controllers
 
                 newPat.Add(hist);
 
-                if (h.SymptomsList.Count > 0)
-                {
-                    XElement sy = new XElement("Symptoms");
-                    foreach (Symptom s in h.SymptomsList)
-                    {
-                        if (s != null)
-                            sy.Add(SymptomController.writeSymptom(s));
-                    }
-                    newPat.Add(sy);
-                }
+                
+            }
 
-                if (h.Diagnoses.Count > 0)
+            if (h.SymptomsList.Count > 0)
+            {
+                XElement sy = new XElement("Symptoms");
+                foreach (Symptom s in h.SymptomsList)
                 {
-                    XElement hy = new XElement("Diagnoses");
-                    foreach (Diagnosis d in h.Diagnoses)
-                    {
-                        if (d != null)
-                           hy.Add(DiagnosisController.convertToXML(d));
-                    }
-                    newPat.Add(hy);
+                    if (s != null)
+                        sy.Add(SymptomController.writeSymptom(s));
                 }
+                newPat.Add(sy);
+            }
+
+            if (h.Diagnoses.Count > 0)
+            {
+                XElement hy = new XElement("Diagnoses");
+                foreach (Diagnosis d in h.Diagnoses)
+                {
+                    if (d != null)
+                        hy.Add(DiagnosisController.convertToXML(d));
+                }
+                newPat.Add(hy);
             }
 
             document.Element("Histories").Add(newPat);
@@ -106,14 +108,14 @@ namespace AMDES_KBS.Controllers
             {
                 (from pa in document.Descendants("History")
                  where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
-                 long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Ticks
+                 long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Date.Ticks
                  select pa).SingleOrDefault().Remove();
 
                 document.Save(History.dataPath);
             }
         }
 
-        public static List<History> getHistoryByID(string pid, DateTime assDate)
+        public static List<History> getHistoryByID(string pid)
         {
             XDocument document = XDocument.Load(History.dataPath);
             List<History> hList = new List<History>();
@@ -121,8 +123,7 @@ namespace AMDES_KBS.Controllers
             try
             {
                 var hist = (from pa in document.Descendants("History")
-                            where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
-                            long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Ticks
+                            where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
                             select pa).ToList();
 
                 foreach (var h in hist)
@@ -132,7 +133,31 @@ namespace AMDES_KBS.Controllers
                         hList.Add(hy);
                 }
 
-                return hList.OrderBy(x => x.AssessmentDate).ToList(); 
+                return hList.OrderBy(x => x.AssessmentDate).ToList();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+
+        }
+
+        public static History getHistoryByID(string pid, DateTime assDate)
+        {
+            XDocument document = XDocument.Load(History.dataPath);
+            List<History> hList = new List<History>();
+
+            try
+            {
+                var h = (from pa in document.Descendants("History")
+                         where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
+                         long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Date.Ticks
+                         select pa).SingleOrDefault();
+
+
+                return readHistoryData(h);
+
             }
             catch (InvalidOperationException ex)
             {

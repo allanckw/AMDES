@@ -1,457 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Histories xml-->
 <Histories>
-  <History pid="S8834871J">
-    <Group GrpID="6">
-      <Question>
-        <QID>6.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.7</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.9</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.8</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.10</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.5</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group GrpID="1">
-      <Question>
-        <QID>1.1</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-    <Group GrpID="2">
-      <Question>
-        <QID>2.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>2.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>2.3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>2.4</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-  </History>
-  <History pid="S673648D">
-    <Group histID="6">
-      <Question>
-        <QID>6.9</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.10</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.2</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.3</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.4</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.5</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.6</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.7</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.8</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="1">
-      <Question>
-        <QID>1.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="2">
-      <Question>
-        <QID>2.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>2.4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>2.1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>2.3</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="3">
-      <Question>
-        <QID>3.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="4">
-      <Question>
-        <QID>4.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="7">
-      <Question>
-        <QID>7.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.7</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-    <Group histID="5">
-      <Question>
-        <QID>5.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.6</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-  </History>
-  <History pid="S3424434D">
-    <Group histID="6">
-      <Question>
-        <QID>6.7</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.8</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.9</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.10</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.2</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.3</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.4</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.5</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.6</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="1">
-      <Question>
-        <QID>1.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="2">
-      <Question>
-        <QID>2.1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>2.2</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>2.3</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>2.4</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="3">
-      <Question>
-        <QID>3.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="4">
-      <Question>
-        <QID>4.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="7">
-      <Question>
-        <QID>7.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.7</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>7.6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.3</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-  </History>
-  <History pid="S1175911Z">
-    <Group histID="6">
-      <Question>
-        <QID>6.1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.2</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.3</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.4</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.5</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.6</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.7</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.8</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.9</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.10</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="1">
-      <Question>
-        <QID>1.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="2">
-      <Question>
-        <QID>2.1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>2.2</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>2.3</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>2.4</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="3">
-      <Question>
-        <QID>3.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="4">
-      <Question>
-        <QID>4.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="7">
-      <Question>
-        <QID>7.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>7.7</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-    <Group histID="5">
-      <Question>
-        <QID>5.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>5.6</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-  </History>
-  <History pid="S099147D">
+  <History pid="S099147D" AssessmentDate="635319101003889858">
     <Group histID="6">
       <Question>
         <QID>6.1</QID>
@@ -494,12 +44,6 @@
         <Answer>false</Answer>
       </Question>
     </Group>
-    <Group histID="1">
-      <Question>
-        <QID>1.1</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
     <Group histID="2">
       <Question>
         <QID>2.1</QID>
@@ -518,15 +62,29 @@
         <Answer>false</Answer>
       </Question>
     </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635320997101542605</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
   </History>
-  <History pid="S8826035Z">
+  <History pid="S099147D" AssessmentDate="635319101353889858">
     <Group histID="6">
       <Question>
-        <QID>6.9</QID>
+        <QID>6.6</QID>
         <Answer>false</Answer>
       </Question>
       <Question>
-        <QID>6.10</QID>
+        <QID>6.7</QID>
         <Answer>false</Answer>
       </Question>
       <Question>
@@ -550,114 +108,16 @@
         <Answer>true</Answer>
       </Question>
       <Question>
-        <QID>6.6</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>6.7</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
         <QID>6.8</QID>
         <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="1">
-      <Question>
-        <QID>1.1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="2">
-      <Question>
-        <QID>2.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>2.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>2.3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>2.4</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-    <Group histID="7">
-      <Question>
-        <QID>7.1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>7.2</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>7.5</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>7.3</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>7.4</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>7.6</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question>
-        <QID>7.7</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-  </History>
-  <History pid="">
-    <Group histID="6">
-      <Question>
-        <QID>6.1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.7</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question>
-        <QID>6.8</QID>
-        <Answer>false</Answer>
       </Question>
       <Question>
         <QID>6.9</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question>
         <QID>6.10</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
     </Group>
     <Group histID="1">
@@ -684,5 +144,12 @@
         <Answer>false</Answer>
       </Question>
     </Group>
+    <Diagnoses>
+      <Diagnosis diagID="8">
+        <Comment>The patient does not have any signs of dementia.</Comment>
+        <Header>No Dementia</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
   </History>
 </Histories>

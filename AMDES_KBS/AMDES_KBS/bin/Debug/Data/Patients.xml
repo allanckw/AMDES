@@ -15,20 +15,6 @@
     <Symptoms />
     <Diagnoses />
   </Patient>
-  <Patient id="S8764783D">
-    <Last_Name>Ang</Last_Name>
-    <First_Name>Kai</First_Name>
-    <DOB>627209568000000000</DOB>
-    <AssessmentDate>635307623515819438</AssessmentDate>
-    <Status>1</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms />
-    <Diagnoses />
-  </Patient>
   <Patient id="S2345436Q">
     <Last_Name>bie</Last_Name>
     <First_Name>noob</First_Name>
@@ -43,39 +29,11 @@
     <Symptoms />
     <Diagnoses />
   </Patient>
-  <Patient id="S3848487Z">
-    <Last_Name>Ang</Last_Name>
-    <First_Name>Kai</First_Name>
-    <DOB>635294880000000000</DOB>
-    <AssessmentDate>635308575101651452</AssessmentDate>
-    <Status>1</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms />
-    <Diagnoses />
-  </Patient>
   <Patient id="S8823654H">
     <Last_Name>Chan</Last_Name>
     <First_Name>Ya Ling</First_Name>
     <DOB>627173280000000000</DOB>
     <AssessmentDate>635319048165222425</AssessmentDate>
-    <Status>1</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms />
-    <Diagnoses />
-  </Patient>
-  <Patient id="S0275487J">
-    <Last_Name>Tan</Last_Name>
-    <First_Name>Ya Le</First_Name>
-    <DOB>611267040000000000</DOB>
-    <AssessmentDate>635319049070182259</AssessmentDate>
     <Status>1</Status>
     <Tests />
     <Assessor>
@@ -108,47 +66,6 @@
         <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
         <Header>No Diagnosis</Header>
         <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
-      </Diagnosis>
-    </Diagnoses>
-  </Patient>
-  <Patient id="S673648D">
-    <Last_Name>Ang</Last_Name>
-    <First_Name>Nick Lai</First_Name>
-    <DOB>626701536000000000</DOB>
-    <AssessmentDate>635319700987944591</AssessmentDate>
-    <Status>0</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms>
-      <Symptom>
-        <SymptomName> Amnesia </SymptomName>
-        <DiagnosisDate>635319702295579383</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Aphasia </SymptomName>
-        <DiagnosisDate>635319702295589384</DiagnosisDate>
-        <DiagnosedByID>2.1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Agnosia </SymptomName>
-        <DiagnosisDate>635319702295589384</DiagnosisDate>
-        <DiagnosedByID>2.3</DiagnosedByID>
-      </Symptom>
-    </Symptoms>
-    <Diagnoses>
-      <Diagnosis diagID="4">
-        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.~~~~Please refer the patient to a memory clinic for further assessment.</Comment>
-        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
-        <Link></Link>
-      </Diagnosis>
-      <Diagnosis diagID="7">
-        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
-        <Header>Brain Imaging and Referral</Header>
-        <Link></Link>
       </Diagnosis>
     </Diagnoses>
   </Patient>
@@ -259,6 +176,197 @@
       </Diagnosis>
     </Diagnoses>
   </Patient>
+  <Patient id="">
+    <Last_Name></Last_Name>
+    <First_Name></First_Name>
+    <DOB>635320800000000000</DOB>
+    <AssessmentDate>635320927028824675</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635320927258417807</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S0275487J">
+    <Last_Name>Tan</Last_Name>
+    <First_Name>Ya Le</First_Name>
+    <DOB>611267040000000000</DOB>
+    <AssessmentDate>635319049070182259</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 3</SymptomName>
+        <DiagnosisDate>635320984870603035</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S673648D">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Nick Lai</First_Name>
+    <DOB>626701536000000000</DOB>
+    <AssessmentDate>635319700987944591</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635320986444233042</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="4">
+        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.~~~~Please refer the patient to a memory clinic for further assessment.</Comment>
+        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S3848487Z">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Kai</First_Name>
+    <DOB>635294880000000000</DOB>
+    <AssessmentDate>635308575101651452</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635320989881959669</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S8826035Z">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Ji Kai</First_Name>
+    <DOB>627209568000000000</DOB>
+    <AssessmentDate>635307622162942058</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635320990629432422</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="4">
+        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.~~~~Please refer the patient to a memory clinic for further assessment.</Comment>
+        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="5">
+        <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
+        <Header>Cognitive impairment</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="3">
+        <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
+        <Header>Low likelihood of dementia, Refer</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="1">
+        <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
+        <Header>Low likelihood of dementia, other underlying conditions</Header>
+        <Link>http://www.google.com.sg</Link>
+      </Diagnosis>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
+  <Patient id="S8764783D">
+    <Last_Name>Ang</Last_Name>
+    <First_Name>Kai</First_Name>
+    <DOB>627209568000000000</DOB>
+    <AssessmentDate>635307623515819438</AssessmentDate>
+    <Status>0</Status>
+    <Tests />
+    <Assessor>
+      <AssessorName>Dr Simon Tan</AssessorName>
+      <AssessLocation>La La Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635320991061737148</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>No Diagnosis</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+  </Patient>
   <Patient id="S099147D">
     <Last_Name>A</Last_Name>
     <First_Name>patient with test</First_Name>
@@ -291,120 +399,7 @@
       <AssessorName>Dr Simon Tan</AssessorName>
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
-    <Symptoms>
-      <Symptom>
-        <SymptomName> Fail Mental Test Score </SymptomName>
-        <DiagnosisDate>635319727849210967</DiagnosisDate>
-        <DiagnosedByID>6</DiagnosedByID>
-      </Symptom>
-    </Symptoms>
-    <Diagnoses>
-      <Diagnosis diagID="9">
-        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
-        <Header>No Diagnosis</Header>
-        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
-      </Diagnosis>
-    </Diagnoses>
-  </Patient>
-  <Patient id="S8826035Z">
-    <Last_Name>Ang</Last_Name>
-    <First_Name>Ji Kai</First_Name>
-    <DOB>627209568000000000</DOB>
-    <AssessmentDate>635307622162942058</AssessmentDate>
-    <Status>0</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms>
-      <Symptom>
-        <SymptomName> Amnesia </SymptomName>
-        <DiagnosisDate>635320594326211389</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> acute stroke </SymptomName>
-        <DiagnosisDate>635320594326211389</DiagnosisDate>
-        <DiagnosedByID>7.1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> subdural hematoma </SymptomName>
-        <DiagnosisDate>635320594326211389</DiagnosisDate>
-        <DiagnosedByID>7.2</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> bleeding disorder </SymptomName>
-        <DiagnosisDate>635320594326211389</DiagnosisDate>
-        <DiagnosedByID>7.5</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Unexplained neurological symptoms </SymptomName>
-        <DiagnosisDate>635320594326211389</DiagnosisDate>
-        <DiagnosedByID>7.3</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> History associated with brain metastasis </SymptomName>
-        <DiagnosisDate>635320594326211389</DiagnosisDate>
-        <DiagnosedByID>7.4</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> urinary incontinence and gait disturbance early </SymptomName>
-        <DiagnosisDate>635320594326211389</DiagnosisDate>
-        <DiagnosedByID>7.6</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Acute onset of gait disturbance </SymptomName>
-        <DiagnosisDate>635320594326211389</DiagnosisDate>
-        <DiagnosedByID>7.7</DiagnosedByID>
-      </Symptom>
-    </Symptoms>
-    <Diagnoses>
-      <Diagnosis diagID="4">
-        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.~~~~Please refer the patient to a memory clinic for further assessment.</Comment>
-        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
-        <Link></Link>
-      </Diagnosis>
-      <Diagnosis diagID="7">
-        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
-        <Header>Brain Imaging and Referral</Header>
-        <Link></Link>
-      </Diagnosis>
-      <Diagnosis diagID="5">
-        <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
-        <Header>Cognitive impairment</Header>
-        <Link></Link>
-      </Diagnosis>
-      <Diagnosis diagID="3">
-        <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
-        <Header>Low likelihood of dementia, Refer</Header>
-        <Link></Link>
-      </Diagnosis>
-      <Diagnosis diagID="1">
-        <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
-        <Header>Low likelihood of dementia, other underlying conditions</Header>
-        <Link>http://www.google.com.sg</Link>
-      </Diagnosis>
-    </Diagnoses>
-  </Patient>
-  <Patient id="">
-    <Last_Name></Last_Name>
-    <First_Name></First_Name>
-    <DOB>635320800000000000</DOB>
-    <AssessmentDate>635320927028824675</AssessmentDate>
-    <Status>0</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms>
-      <Symptom>
-        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
-        <DiagnosisDate>635320927258417807</DiagnosisDate>
-        <DiagnosedByID>6</DiagnosedByID>
-      </Symptom>
-    </Symptoms>
+    <Symptoms />
     <Diagnoses>
       <Diagnosis diagID="9">
         <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>

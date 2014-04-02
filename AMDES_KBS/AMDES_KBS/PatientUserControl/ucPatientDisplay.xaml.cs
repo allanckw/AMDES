@@ -112,10 +112,12 @@ namespace AMDES_KBS
 
         private void btnResult_Click(object sender, RoutedEventArgs e)
         {
-            //@Allan to check and modify
+            //KAI Result button no longer here, please remove, move to test section
+            //new button will either start a new test or continue from a saved test depending on whether there is a history or not
+            //I cant move status to history yet cos your controls are using , please remove all references before i can continue
             CLIPSController.CurrentPatient = pat;
 
-            frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, pat.Diagnoses, null);
+            frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, pat.getLatestHistory().Diagnoses, null);
             amdesPageFrame.Navigate(frmConclusion);
 
         }

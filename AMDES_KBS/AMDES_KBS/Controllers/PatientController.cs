@@ -113,22 +113,22 @@ namespace AMDES_KBS.Controllers
                 }
             }
 
-            if (p.SymptomsList.Count > 0)
-            {
-                for (int i = 0; i < p.SymptomsList.Count; i++)
-                {
-                    Symptom s = p.SymptomsList.ElementAt(i);
-                    newPat.Element("Symptoms").Add(SymptomController.writeSymptom(s));
-                }
-            }
+            //if (p.SymptomsList.Count > 0)
+            //{
+            //    for (int i = 0; i < p.SymptomsList.Count; i++)
+            //    {
+            //        Symptom s = p.SymptomsList.ElementAt(i);
+            //        newPat.Element("Symptoms").Add(SymptomController.writeSymptom(s));
+            //    }
+            //}
 
-            if (p.Diagnoses.Count > 0)
-            {
-                for (int i = 0; i < p.Diagnoses.Count; i++)
-                {
-                    newPat.Element("Diagnoses").Add(DiagnosisController.convertToXML(p.Diagnoses[i]));
-                }
-            }
+            //if (p.Diagnoses.Count > 0)
+            //{
+            //    for (int i = 0; i < p.Diagnoses.Count; i++)
+            //    {
+            //        newPat.Element("Diagnoses").Add(DiagnosisController.convertToXML(p.Diagnoses[i]));
+            //    }
+            //}
 
             document.Element("Patients").Add(newPat);
             document.Save(Patient.dataPath);
@@ -199,18 +199,18 @@ namespace AMDES_KBS.Controllers
                 var symptoms = (from syms in x.Descendants("Symptoms").Descendants("Symptom")
                                 select syms).ToList();
 
-                foreach (var s in symptoms)
-                {
-                    p.addSymptom(SymptomController.readPatientSymptoms(s));
-                }
+                //foreach (var s in symptoms)
+                //{
+                //    p.addSymptom(SymptomController.readPatientSymptoms(s));
+                //}
 
-                var diagnoses = (from syms in x.Descendants("Diagnoses").Descendants("Diagnosis")
-                                 select syms).ToList();
+                //var diagnoses = (from syms in x.Descendants("Diagnoses").Descendants("Diagnosis")
+                //                 select syms).ToList();
 
-                foreach (var d in diagnoses)
-                {
-                    p.addDiagnosis(DiagnosisController.readDiagnosis(d));
-                }
+                //foreach (var d in diagnoses)
+                //{
+                //    p.addDiagnosis(DiagnosisController.readDiagnosis(d));
+                //}
             }
             else
             {

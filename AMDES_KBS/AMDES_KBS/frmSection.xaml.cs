@@ -251,7 +251,8 @@ namespace AMDES_KBS
             int sectionID = CLIPSController.getCurrentQnGroupID();
             if (sectionID == -1)
             {
-                List<Diagnosis> result = CLIPSController.getResultingDiagnosis();
+                CLIPSController.getResultingDiagnosis();
+                List<Diagnosis> result = CLIPSController.CurrentPatient.getLatestHistory().Diagnoses;
                 frmRecommendation finalConclusionPage = new frmRecommendation(amdesPageFrame, result, this);
                 amdesPageFrame.Navigate(finalConclusionPage);
             }
@@ -290,7 +291,8 @@ namespace AMDES_KBS
         {
             
             CLIPSController.saveAssertLog();
-            HistoryController.updatePatientNavigationHistory(CLIPSController.getCurrentPatientHistory());
+            //@ALLAN ATTN HERE
+            //HistoryController.updatePatientNavigationHistory(CLIPSController.getCurrentPatientHistory());
             MessageBox.Show("History have been saved", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
