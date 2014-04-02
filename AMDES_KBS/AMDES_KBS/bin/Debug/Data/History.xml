@@ -663,7 +663,7 @@
     <Group histID="1">
       <Question>
         <QID>1.1</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
     </Group>
     <Group histID="2">
@@ -681,6 +681,48 @@
       </Question>
       <Question>
         <QID>2.4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question>
+        <QID>3.1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question>
+        <QID>4.1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question>
+        <QID>7.1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question>
+        <QID>7.2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question>
+        <QID>7.3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question>
+        <QID>7.4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question>
+        <QID>7.5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question>
+        <QID>7.6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question>
+        <QID>7.7</QID>
         <Answer>false</Answer>
       </Question>
     </Group>
