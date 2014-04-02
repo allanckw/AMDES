@@ -426,7 +426,7 @@ namespace AMDES_KBS.Controllers
         {
             List<Symptom> sList = new List<Symptom>();
 
-            String evalStr = "(find-all-facts((?g symptoms)) TRUE)";
+            String evalStr = "(find-all-facts((?s symptoms)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
 
             foreach (FactAddressValue fv in mv)
@@ -442,11 +442,11 @@ namespace AMDES_KBS.Controllers
                     MultifieldValue mv1 = ((MultifieldValue)env.Eval(evalStr));
                     foreach (FactAddressValue fav in mv1)
                     {
-                        int id = int.Parse(fv.GetFactSlot("GroupID").ToString().Remove(0, 1));
+                        int id = int.Parse(fav.GetFactSlot("GroupID").ToString().Remove(0, 1));
                         if (id == grpID)
                         {
-                            int maxQn = int.Parse(fv.GetFactSlot("SuccessArg").ToString());
-                            int trueCount = int.Parse(fv.GetFactSlot("TrueCount").ToString());
+                            int maxQn = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
+                            int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
                             s.SymptomName += " Score: " + trueCount + "/" + maxQn;
                             break;
                         }
