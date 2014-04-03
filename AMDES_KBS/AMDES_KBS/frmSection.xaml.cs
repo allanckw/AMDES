@@ -66,6 +66,7 @@ namespace AMDES_KBS
 
             loadSection(sectionID);
             setAns(hisList);
+            setLastPage();
         }
 
         public frmSection(Frame amdesFrame, int sectionID, frmSection prevSection)
@@ -227,6 +228,24 @@ namespace AMDES_KBS
             else
             {
                 NavigationNext();
+            }
+        }
+
+        private void setLastPage()
+        {
+            while (CurrPageNo<TotalPageNo)
+            {
+                foreach (ucQuestion item in PageContent.ElementAt(CurrPageNo - 1))
+                {
+                    item.setVisibility(Visibility.Collapsed);
+                }
+
+                CurrPageNo++;
+                foreach (ucQuestion item in PageContent.ElementAt(CurrPageNo - 1))
+                {
+                    item.setVisibility(Visibility.Visible);
+                }
+                lblCurrPage.Content = CurrPageNo.ToString("D2");
             }
         }
 

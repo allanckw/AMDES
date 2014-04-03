@@ -92,6 +92,7 @@ namespace AMDES_KBS
                 if (prevSection != null)
                 {
                     QnSect.setPrevPage(prevSection);
+                    
                 }
 
                 if (i != history.Keys.Count - 1)

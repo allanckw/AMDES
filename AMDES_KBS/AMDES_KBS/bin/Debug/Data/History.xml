@@ -8,6 +8,10 @@
         <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
         <QID>3</QID>
         <Answer>false</Answer>
       </Question>
@@ -24,18 +28,6 @@
         <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
-        <QID>9</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>10</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>2</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question GrpID="6">
         <QID>7</QID>
         <Answer>true</Answer>
       </Question>
@@ -43,12 +35,65 @@
         <QID>8</QID>
         <Answer>true</Answer>
       </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
     </Group>
     <Symptoms>
       <Symptom>
         <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 3</SymptomName>
-        <DiagnosisDate>635321561759965010</DiagnosisDate>
+        <DiagnosisDate>635321564841301253</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635321564841331255</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635321564841351256</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Apraxia </SymptomName>
+        <DiagnosisDate>635321564841351256</DiagnosisDate>
+        <DiagnosedByID>2.2</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Status>1</Status>

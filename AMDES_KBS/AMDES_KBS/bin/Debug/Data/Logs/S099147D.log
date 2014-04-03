@@ -356,6 +356,3 @@
 (NaviChildCritQuestion (NavigationID N20.6) (CriteriaGroupID _7) (CriteriaAnswer No))
 (NaviChildCritQuestion (NavigationID N20.6) (CriteriaGroupID _5) (CriteriaAnswer Yes))
 (NaviChildCritAttribute (NavigationID N20.6) (AttributeName AGE) (AttributeValue 65) (AttributeCompareType <) )
-(choice _6.2 Yes)
-(choice _6.7 Yes)
-(choice _6.8 Yes)
