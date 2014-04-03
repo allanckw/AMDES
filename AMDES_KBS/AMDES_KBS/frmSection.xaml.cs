@@ -60,10 +60,6 @@ namespace AMDES_KBS
             prevPage = null;
             btnPrev.Visibility = Visibility.Collapsed;
             heightLimit = 430;
-            Patient currPatient = CLIPSController.CurrentPatient;
-            lblPatientID.Content = currPatient.NRIC;
-            lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
-
             loadSection(sectionID);
             setAns(hisList);
             setLastPage();
@@ -77,9 +73,6 @@ namespace AMDES_KBS
             prevPage = prevSection;
             btnPrev.Visibility = Visibility.Visible;
             heightLimit = 430;
-            Patient currPatient = CLIPSController.CurrentPatient;
-            lblPatientID.Content = currPatient.NRIC;
-            lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
             loadSection(sectionID);
             offCommands(240);
         }
@@ -93,6 +86,7 @@ namespace AMDES_KBS
                     offset -= btnPrev.Width + 10;
 
                 zz.Margin = new Thickness(0, 0, offset, 0);
+                lblPatientName.Content = lblPatientID.Content = "";
             }
             else
             {
@@ -101,6 +95,10 @@ namespace AMDES_KBS
                     offset -= btnPrev.Width + 10;
 
                 zz.Margin = new Thickness(0, 0, offset, 0);
+                lblPatientID.Content = CLIPSController.CurrentPatient.NRIC;
+                lblPatientName.Content = CLIPSController.CurrentPatient.Last_Name + " " + CLIPSController.CurrentPatient.First_Name;
+
+
             }
         }
 
