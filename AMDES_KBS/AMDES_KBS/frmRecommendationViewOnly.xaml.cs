@@ -19,7 +19,7 @@ namespace AMDES_KBS
     /// <summary>
     /// Interaction logic for frmRecommendation.xaml
     /// </summary>
-    public partial class frmRecommendation : AMDESPage
+    public partial class frmRecommendationViewOnly : AMDESPage
     {
         //double heightLimit = 0;
         //double currHeight = 0;
@@ -32,7 +32,7 @@ namespace AMDES_KBS
         AMDESPage lastSection;
         //bool collapseRest = false;
 
-        public frmRecommendation()
+        public frmRecommendationViewOnly()
         {
             InitializeComponent();
             //amdesPageFrame = amdesFrame;
@@ -40,7 +40,7 @@ namespace AMDES_KBS
             loadRecommendation();
         }
 
-        public frmRecommendation(Frame amdesFrame, List<Diagnosis> diaList,AMDESPage lastSec)
+        public frmRecommendationViewOnly(Frame amdesFrame, List<Diagnosis> diaList, AMDESPage lastSec)
         {
             InitializeComponent();
             //lblSection.Content = sectionID;

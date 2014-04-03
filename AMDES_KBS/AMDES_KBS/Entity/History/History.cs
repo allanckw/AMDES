@@ -5,8 +5,16 @@ using System.Text;
 
 namespace AMDES_KBS.Entity
 {
+    public enum PatientStatus
+    {
+        COMPLETED,
+        DRAFT
+    };
+
     public class History
     {
+        private PatientStatus status;
+
         public static string dataPath = @"data\History.xml";
 
         private string patientID;
@@ -18,7 +26,7 @@ namespace AMDES_KBS.Entity
         private DateTime assessmentDate;
 
         Dictionary<int, List<QnHistory>> history;
-        
+
         public string PatientID
         {
             get { return patientID; }
@@ -40,6 +48,8 @@ namespace AMDES_KBS.Entity
             history = new Dictionary<int, List<QnHistory>>();
             sympsList = new List<Symptom>();
             diagList = new List<Diagnosis>();
+            status = PatientStatus.DRAFT;
+
         }
 
         public History(string patientID, DateTime assDate)
@@ -49,12 +59,24 @@ namespace AMDES_KBS.Entity
             assessmentDate = assDate;
             sympsList = new List<Symptom>();
             diagList = new List<Diagnosis>();
+            status = PatientStatus.DRAFT;
+
         }
 
         public void createNewHistory(int groupID)
         {
             List<QnHistory> qnHistory = new List<QnHistory>();
             history.Add(groupID, qnHistory);
+        }
+
+        public List<QnHistory> retrieveHistoryList(int groupID)
+        {
+            List<QnHistory> h = new List<QnHistory>();
+            if (history.TryGetValue(groupID, out h))
+            {
+                return history[groupID].OrderBy(x => x.QuestionID).ToList(); 
+            }
+            return null;
         }
 
         private void addHistoryItem(int groupID, string qid, bool ans)
@@ -162,6 +184,33 @@ namespace AMDES_KBS.Entity
         {
             if (sympsList.Count > 0 && i >= 0)
                 this.diagList.RemoveAt(i);
+        }
+
+        public PatientStatus getStatusEnum()
+        {
+            return status;
+        }
+
+        public int getStatus()
+        {
+            return (int)status;
+        }
+
+        public void setStatus(int x)
+        {
+            if (typeof(PatientStatus).IsEnumDefined(x))
+            {
+                status = (PatientStatus)x;
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid Type!");
+            }
+        }
+
+        public void setCompleted()
+        {
+            this.status = PatientStatus.COMPLETED;
         }
     }
 

@@ -8,11 +8,6 @@ using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
-    public enum PatientStatus
-    {
-        COMPLETED,
-        DRAFT
-    };
 
     public enum PatientEthnicGrp
     {
@@ -39,11 +34,11 @@ namespace AMDES_KBS.Entity
 
         private List<Test> testsList;
 
-        private List<Symptom> sympsList; //immediate sym list of result
+        //private List<Symptom> sympsList; //immediate sym list of result
 
-        private List<Diagnosis> diagList; //immediate diaglist of result
+        //private List<Diagnosis> diagList; //immediate diaglist of result
 
-        private PatientStatus status;
+        
 
         private string nric = "", firstname = "", lastname = "";
 
@@ -68,7 +63,17 @@ namespace AMDES_KBS.Entity
         public DateTime DOB
         {
             get { return dob; }
-            set { dob = value; }
+            set
+            {
+                if (dob <= DateTime.Now.Date)
+                {
+                    this.dob = value;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Age cannot be from the future!!");
+                }
+            }
         }
 
         public string Last_Name
@@ -92,21 +97,28 @@ namespace AMDES_KBS.Entity
         public Patient(Assessor doc, DateTime dob)
         {
             this.doctor = doc;
-            this.DOB = dob;
+            if (dob <= DateTime.Now.Date)
+            {
+                this.dob = dob;
+            }
+            else
+            {
+                throw new InvalidOperationException("Age cannot be from the future!!");
+            }
             testsList = new List<Test>();
-            sympsList = new List<Symptom>();
-            diagList = new List<Diagnosis>();
-             dAssessment = DateTime.Today;
-            status = PatientStatus.DRAFT;
+            //sympsList = new List<Symptom>();
+            //diagList = new List<Diagnosis>();
+            dAssessment = DateTime.Today;
+            //status = PatientStatus.DRAFT;
         }
 
         public Patient()
         {
             testsList = new List<Test>();
-            sympsList = new List<Symptom>();
-            diagList = new List<Diagnosis>();
+            //sympsList = new List<Symptom>();
+            //diagList = new List<Diagnosis>();
             dAssessment = DateTime.Today;
-            status = PatientStatus.DRAFT;
+            //status = PatientStatus.DRAFT;
         }
 
         public Patient(Assessor doc, string nric, string first, string last, DateTime dob)
@@ -116,13 +128,20 @@ namespace AMDES_KBS.Entity
             this.nric = nric;
             this.firstname = first;
             this.lastname = last;
-            this.dob = dob;
+            if (dob <= DateTime.Now.Date)
+            {
+                this.dob = dob;
+            }
+            else
+            {
+                throw new InvalidOperationException("Age cannot be from the future!!");
+            }
 
             testsList = new List<Test>();
-            sympsList = new List<Symptom>();
-            diagList = new List<Diagnosis>();
+           // sympsList = new List<Symptom>();
+            //diagList = new List<Diagnosis>();
             dAssessment = DateTime.Today;
-            status = PatientStatus.DRAFT;
+            //status = PatientStatus.DRAFT;
         }
 
         public Assessor Doctor
@@ -131,11 +150,11 @@ namespace AMDES_KBS.Entity
             set { this.doctor = value; }
         }
 
-        public PatientStatus Status
-        {
-            get { return this.status; }
-            set { this.status = value; }
-        }
+        //public PatientStatus Status
+        //{
+        //    get { return this.status; }
+        //    set { this.status = value; }
+        //}
 
         public DateTime AssessmentDate
         {
@@ -168,67 +187,67 @@ namespace AMDES_KBS.Entity
                 this.testsList.RemoveAt(i);
         }
 
-        public List<Symptom> SymptomsList
-        {
-            get { return this.sympsList; }
-        }
+        //public List<Symptom> SymptomsList
+        //{
+        //    get { return this.sympsList; }
+        //}
 
-        public void addSymptom(Symptom s)
-        {
-            var z = sympsList.Where(x => (x.SymptomName.ToUpper().CompareTo(s.SymptomName.ToUpper()) == 0)).SingleOrDefault();
+        //public void addSymptom(Symptom s)
+        //{
+        //    var z = sympsList.Where(x => (x.SymptomName.ToUpper().CompareTo(s.SymptomName.ToUpper()) == 0)).SingleOrDefault();
 
-            if (s != null && z == null)
-            {
-                this.sympsList.Add(s);
-            }
+        //    if (s != null && z == null)
+        //    {
+        //        this.sympsList.Add(s);
+        //    }
 
-        }
+        //}
 
-        public Symptom getSymptomAt(int i)
-        {
-            if (sympsList.Count > 0 && i >= 0)
-                return this.sympsList.ElementAt(i);
-            else
-                return null;
-        }
+        //public Symptom getSymptomAt(int i)
+        //{
+        //    if (sympsList.Count > 0 && i >= 0)
+        //        return this.sympsList.ElementAt(i);
+        //    else
+        //        return null;
+        //}
 
-        public void removeSymptomAt(int i)
-        {
-            if (sympsList.Count > 0 && i >= 0)
-                this.sympsList.RemoveAt(i);
-        }
+        //public void removeSymptomAt(int i)
+        //{
+        //    if (sympsList.Count > 0 && i >= 0)
+        //        this.sympsList.RemoveAt(i);
+        //}
 
 
 
-        public List<Diagnosis> Diagnoses
-        {
-            get { return diagList; }
-        }
+        //public List<Diagnosis> Diagnoses
+        //{
+        //    get { return diagList; }
+        //}
 
-        public void addDiagnosis(Diagnosis d)
-        {
-            var z = diagList.Where(x => (x.RID == d.RID)).SingleOrDefault();
+        //public void addDiagnosis(Diagnosis d)
+        //{
+        //    var z = diagList.Where(x => (x.RID == d.RID)).SingleOrDefault();
 
-            if (d != null && z == null)
-            {
-                this.diagList.Add(d);
-            }
+        //    if (d != null && z == null)
+        //    {
+        //        this.diagList.Add(d);
+        //    }
 
-        }
+        //}
 
-        public Diagnosis getDiagnosisAt(int i)
-        {
-            if (sympsList.Count > 0 && i >= 0)
-                return this.diagList.ElementAt(i);
-            else
-                return null;
-        }
+        //public Diagnosis getDiagnosisAt(int i)
+        //{
+        //    if (sympsList.Count > 0 && i >= 0)
+        //        return this.diagList.ElementAt(i);
+        //    else
+        //        return null;
+        //}
 
-        public void removeDiagnosisAt(int i)
-        {
-            if (sympsList.Count > 0 && i >= 0)
-                this.diagList.RemoveAt(i);
-        }
+        //public void removeDiagnosisAt(int i)
+        //{
+        //    if (sympsList.Count > 0 && i >= 0)
+        //        this.diagList.RemoveAt(i);
+        //}
 
         public int getAge()
         {
@@ -240,37 +259,14 @@ namespace AMDES_KBS.Entity
             return age;
         }
 
-        public void setCompleted()
-        {
-            this.status = PatientStatus.COMPLETED;
-        }
+
 
         public int CompareTo(Patient p)
         {
             return (p.nric.CompareTo(this.nric));
         }
 
-        public PatientStatus getQuestionTypeENUM()
-        {
-            return status;
-        }
-
-        public int getStatus()
-        {
-            return (int)status;
-        }
-
-        public void setStatus(int x)
-        {
-            if (typeof(PatientStatus).IsEnumDefined(x))
-            {
-                status = (PatientStatus)x;
-            }
-            else
-            {
-                throw new InvalidOperationException("Invalid Type!");
-            }
-        }
+       
 
         public History getLatestHistory()
         {

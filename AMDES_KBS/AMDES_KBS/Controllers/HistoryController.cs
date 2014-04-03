@@ -50,7 +50,7 @@ namespace AMDES_KBS.Controllers
             XDocument document = XDocument.Load(History.dataPath);
 
             XElement newPat = new XElement("History", new XAttribute("pid", h.PatientID),
-                                new XAttribute("AssessmentDate", h.AssessmentDate.Ticks));
+                                new XAttribute("AssessmentDate", h.AssessmentDate.Date.Ticks));
 
             foreach (KeyValuePair<int, List<QnHistory>> kvp in h.getHistory())
             {
@@ -92,8 +92,12 @@ namespace AMDES_KBS.Controllers
                     if (d != null)
                         hy.Add(DiagnosisController.convertToXML(d));
                 }
+                    
+
                 newPat.Add(hy);
             }
+
+            newPat.Add(new XElement("Status", h.getStatus()));
 
             document.Element("Histories").Add(newPat);
             document.Save(History.dataPath);
@@ -117,6 +121,7 @@ namespace AMDES_KBS.Controllers
 
         public static List<History> getHistoryByID(string pid)
         {
+            createDataFile();
             XDocument document = XDocument.Load(History.dataPath);
             List<History> hList = new List<History>();
 
@@ -187,6 +192,7 @@ namespace AMDES_KBS.Controllers
                 h.AssessmentDate = new DateTime(long.Parse(x.Attribute("AssessmentDate").Value));
 
                 var hists = (from pa in x.Descendants("Group")
+                             //where pa.Attribute("histID")
                              select pa).ToList();
 
                 foreach (var g in hists)
@@ -201,6 +207,7 @@ namespace AMDES_KBS.Controllers
                     {
                         h.updateHistoryItem(gid, q.Element("QID").Value, bool.Parse(q.Element("Answer").Value));
                     }
+                    h.setStatus(int.Parse(x.Element("Status").Value));
                 }
 
                 var symptoms = (from syms in x.Descendants("Symptoms").Descendants("Symptom")

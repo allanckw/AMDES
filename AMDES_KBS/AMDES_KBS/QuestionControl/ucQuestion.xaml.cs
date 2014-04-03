@@ -50,6 +50,13 @@ namespace AMDES_KBS
             
         }
 
+        public void setAnswer(bool answer)
+        {
+            questionAnswer = answer;
+            btnYes.IsChecked = answer;
+            CLIPSController.assertQuestion(question.ID, answer);
+        }
+
         //Allan Note: ClipsController Point 1 Integration Done
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
@@ -77,6 +84,7 @@ namespace AMDES_KBS
                         score--;
                         scoringData.Content = score;
                     }
+                    questionAnswer = false;
                 }
             }
            

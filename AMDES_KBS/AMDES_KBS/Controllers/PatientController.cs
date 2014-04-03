@@ -46,7 +46,7 @@ namespace AMDES_KBS.Controllers
                                        new XElement("First_Name", p.First_Name),
                                        new XElement("DOB", p.DOB.Ticks),
                                        new XElement("AssessmentDate", DateTime.Now.Ticks),
-                                       new XElement("Status", p.Status),
+                                       
                                        new XElement("Tests"),
                                        new XElement("Assessor",
                                        new XElement("AssessorName", p.Doctor.Name),
@@ -94,7 +94,7 @@ namespace AMDES_KBS.Controllers
                                     new XElement("First_Name", p.First_Name),
                                     new XElement("DOB", p.DOB.Ticks),
                                     new XElement("AssessmentDate", p.AssessmentDate.Ticks),
-                                    new XElement("Status", p.getStatus()),
+                                    //new XElement("Status", p.getStatus()),
                                     new XElement("Tests"),
                                     new XElement("Assessor",
                                     new XElement("AssessorName", p.Doctor.Name),
@@ -186,7 +186,7 @@ namespace AMDES_KBS.Controllers
                 p.AssessmentDate = new DateTime(long.Parse(x.Element("AssessmentDate").Value));
                 p.DOB = new DateTime(long.Parse(x.Element("DOB").Value));
 
-                p.setStatus(int.Parse(x.Element("Status").Value));
+                
 
                 var tests = (from test in x.Descendants("Tests").Descendants("Test")
                              select test).ToList();

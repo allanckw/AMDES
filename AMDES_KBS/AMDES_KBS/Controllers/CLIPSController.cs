@@ -380,7 +380,7 @@ namespace AMDES_KBS.Controllers
             String evalStr = "(find-all-facts ((?f diagnosis)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
             //String evalStr = "(find-all-facts ((?f NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
-           
+
 
             foreach (FactAddressValue fv in mv)
             {
@@ -395,12 +395,46 @@ namespace AMDES_KBS.Controllers
                 }
 
             }
-           
+
             h = getCurrentPatientSymptom(h);
-            CurrentPatient.setCompleted();
-            PatientController.updatePatient(CurrentPatient);
-            HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
-           
+            h.setCompleted();
+
+            if (savePatient == true)
+            {
+                HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+            }
+        }
+
+        public static void saveCurrentNavex()
+        {
+            History h = getCurrentPatientHistory();
+
+            String evalStr = "(find-all-facts ((?f diagnosis)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
+            //String evalStr = "(find-all-facts ((?f NaviHistory)) TRUE)";
+            MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
+
+
+            foreach (FactAddressValue fv in mv)
+            {
+                //multi field need to use array choices
+                MultifieldValue ArrayChoices = (MultifieldValue)fv.GetFactSlot("RID");
+
+                for (int i = 0; i < ArrayChoices.Count(); i++)
+                {
+                    string x = ArrayChoices[i].ToString().Remove(0, 1);
+                    Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(x));
+                    h.addDiagnosis(d);
+                }
+
+            }
+
+            h = getCurrentPatientSymptom(h);
+            
+
+            if (savePatient == true)
+            {
+                HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+            }
         }
 
         private static List<int> getNaviHistory()
@@ -427,7 +461,7 @@ namespace AMDES_KBS.Controllers
             return naviHistory;
         }
 
-        public static History getCurrentPatientSymptom(History h)
+        private static History getCurrentPatientSymptom(History h)
         {
             //List<Symptom> sList = new List<Symptom>();
 
@@ -437,24 +471,30 @@ namespace AMDES_KBS.Controllers
             foreach (FactAddressValue fv in mv)
             {
                 string x = fv.GetFactSlot("ID").ToString().Remove(0, 1);
-                int grpID = int.Parse(x);
+                string grpID = x;
+                int y;
+                bool result = int.TryParse(x, out y);
+
+
                 Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '),
                                         grpID.ToString());
-
-                QuestionGroup qg = QuestionController.getGroupByID(grpID);
-                if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
+                if (result)
                 {
-                    evalStr = "(find-all-facts((?g group)) TRUE)";
-                    MultifieldValue mv1 = ((MultifieldValue)env.Eval(evalStr));
-                    foreach (FactAddressValue fav in mv1)
+                    QuestionGroup qg = QuestionController.getGroupByID(y);
+                    if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
                     {
-                        int id = int.Parse(fav.GetFactSlot("GroupID").ToString().Remove(0, 1));
-                        if (id == grpID)
+                        evalStr = "(find-all-facts((?g group)) TRUE)";
+                        MultifieldValue mv1 = ((MultifieldValue)env.Eval(evalStr));
+                        foreach (FactAddressValue fav in mv1)
                         {
-                            int maxQn = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
-                            int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
-                            s.SymptomName += " - Required Score: " + maxQn + ", Patient Score: " + trueCount;
-                            break;
+                            int id = int.Parse(fav.GetFactSlot("GroupID").ToString().Remove(0, 1));
+                            if (id == y)
+                            {
+                                int maxQn = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
+                                int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
+                                s.SymptomName += " - Required Score: " + maxQn + ", Patient Score: " + trueCount;
+                                break;
+                            }
                         }
                     }
                 }
@@ -465,7 +505,7 @@ namespace AMDES_KBS.Controllers
             return h;
         }
 
-        public static History getCurrentPatientHistory()
+        private static History getCurrentPatientHistory()
         {
 
             List<int> navHistory = getNaviHistory();

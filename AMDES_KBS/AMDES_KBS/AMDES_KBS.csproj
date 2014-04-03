@@ -127,6 +127,9 @@
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="frmRecommendationViewOnly.xaml.cs">
+      <DependentUpon>frmRecommendationViewOnly.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entity\History\History.cs" />
     <Compile Include="Entity\History\QnHistory.cs" />
     <Compile Include="Entity\Navex\FirstQuestion.cs" />
@@ -208,6 +211,10 @@
     <Compile Include="SettingControl\ucNavigationSetting.xaml.cs">
       <DependentUpon>ucNavigationSetting.xaml</DependentUpon>
     </Compile>
+    <Page Include="frmRecommendationViewOnly.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="frmDefaultBehaviour.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

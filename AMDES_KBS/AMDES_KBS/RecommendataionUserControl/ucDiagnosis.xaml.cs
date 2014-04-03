@@ -29,24 +29,24 @@ namespace AMDES_KBS
             lblRuleID.Content = DiaRule.Header;
             loadComment();
             loadLink();
-            addSymptons();
+            //addSymptons();
         }
 
-        public void addSymptons()
-        {
+        //public void addSymptons()
+        //{
             
-            foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
-            {
-                Label lblSymptons = new Label();
-                lblSymptons.Content = "Symptoms - " + sym.SymptomName;
-                stkpnlSymptons.Children.Add(lblSymptons);
-            }
-            if (stkpnlSymptons.Children.Count==0)
-            {
-                lblSymptonsText.Content = "The patient has no symptoms.";
-            }
-            //updateHeight();
-        }
+        //    foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
+        //    {
+        //        Label lblSymptons = new Label();
+        //        lblSymptons.Content = "Symptoms - " + sym.SymptomName;
+        //        stkpnlSymptons.Children.Add(lblSymptons);
+        //    }
+        //    if (stkpnlSymptons.Children.Count==0)
+        //    {
+        //        lblSymptonsText.Content = "The patient has no symptoms.";
+        //    }
+        //    //updateHeight();
+        //}
 
         private void loadComment()
         {

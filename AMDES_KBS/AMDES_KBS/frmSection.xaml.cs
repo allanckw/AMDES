@@ -52,6 +52,22 @@ namespace AMDES_KBS
             loadSection(sectionID);
         }
 
+        public frmSection(Frame amdesFrame, int sectionID, List<QnHistory> hisList)
+        {
+            InitializeComponent();
+            lblSection.Content = sectionID;
+            amdesPageFrame = amdesFrame;
+            prevPage = null;
+            btnPrev.Visibility = Visibility.Collapsed;
+            heightLimit = 430;
+            Patient currPatient = CLIPSController.CurrentPatient;
+            lblPatientID.Content = currPatient.NRIC;
+            lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
+
+            loadSection(sectionID);
+            setAns(hisList);
+        }
+
         public frmSection(Frame amdesFrame, int sectionID, frmSection prevSection)
         {
             InitializeComponent();
@@ -184,6 +200,14 @@ namespace AMDES_KBS
             lblTotalPage.Content = PageContent.Count.ToString("D2");
         }
 
+        private void setAns(List<QnHistory> hisList)
+        {
+            for (int i = 0; i < WholeContent.Count ; i++)
+            {
+                WholeContent[i].setAnswer(hisList[i].Answer);
+            }
+        }
+
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             if (CurrPageNo != TotalPageNo)
@@ -289,11 +313,16 @@ namespace AMDES_KBS
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            
+            //Warning: only last session saved!!!
             CLIPSController.saveAssertLog();
-            //@ALLAN ATTN HERE
-            //HistoryController.updatePatientNavigationHistory(CLIPSController.getCurrentPatientHistory());
+            CLIPSController.saveCurrentNavex();
             MessageBox.Show("History have been saved", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public void setPrevPage(frmSection prevSection)
+        {
+            this.prevPage = prevSection;
+            this.btnPrev.Visibility = Visibility.Visible;
         }
     }
 }

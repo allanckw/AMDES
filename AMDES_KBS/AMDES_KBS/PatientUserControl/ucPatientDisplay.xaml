@@ -15,7 +15,6 @@
                 <TextBox x:Name="txtAssessor" IsReadOnly="True" Width="150" Text="Dr Lim LH" FontWeight="Bold" TextWrapping="Wrap" />
                 <StackPanel>
                     <TextBox x:Name="txtStatus" IsReadOnly="True" Width="80" Text="Completed" FontWeight="Bold" />
-                    <Button x:Name="btnResult" Content="Result" Width="80" Height="20" Visibility="Collapsed" Click="btnResult_Click" />
                 </StackPanel>
                 <Button x:Name="btnContTest" Width="39" Height="20" Margin="5,0,0,0" VerticalAlignment="Top" Click="btnContTest_Click" Content="New" />
             </StackPanel>

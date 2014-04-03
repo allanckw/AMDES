@@ -372,7 +372,6 @@
     <First_Name>patient with test</First_Name>
     <DOB>626798333353879857</DOB>
     <AssessmentDate>635319101353889858</AssessmentDate>
-    <Status>0</Status>
     <Tests>
       <Test>
         <TestName>Blood Test A</TestName>
@@ -400,12 +399,6 @@
       <AssessLocation>La La Clinic</AssessLocation>
     </Assessor>
     <Symptoms />
-    <Diagnoses>
-      <Diagnosis diagID="9">
-        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
-        <Header>No Diagnosis</Header>
-        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
-      </Diagnosis>
-    </Diagnoses>
+    <Diagnoses />
   </Patient>
 </Patients>

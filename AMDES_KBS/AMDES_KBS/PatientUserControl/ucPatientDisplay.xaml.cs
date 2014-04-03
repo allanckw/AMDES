@@ -13,7 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
-using System.Windows.Media;
+
 namespace AMDES_KBS
 {
     /// <summary>
@@ -23,10 +23,11 @@ namespace AMDES_KBS
     {
         Patient pat;
         Frame amdesPageFrame;
+        SolidColorBrush brush;
         public ucPatientDisplay(Patient p, Frame ParentFrame, Color c)
         {
             InitializeComponent();
-            SolidColorBrush brush = new SolidColorBrush(c);
+            brush = new SolidColorBrush(c);
 
             this.gridPatient.Background = brush;
             txtAssessor.Background = brush;
@@ -41,32 +42,35 @@ namespace AMDES_KBS
 
             this.txtPatientID.Text = p.NRIC;
             this.txtPatientName.Text = p.Last_Name + " " + p.First_Name;
-            this.txtStatus.Text = p.Status.ToString();
+            //this.txtStatus.Text = p.Status.ToString();
             this.txtTestTime.Text = p.AssessmentDate.ToString("dd MMM yyyy");
             this.txtAssessor.Text = p.Doctor.Name;
 
-            if (p.TestsList.Count == 0)
+            List<History> hList = p.getAllPatientHistory();
+
+            if (hList.Count == 0)
                 btnShowHideTest.Visibility = Visibility.Hidden;
             else
-                loadTest();
+                loadTest(hList);
 
-            if (p.Status == PatientStatus.COMPLETED)
-            {
-                btnResult.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                btnResult.Visibility = Visibility.Collapsed;
-            }
+            //if (p.Status == PatientStatus.COMPLETED)
+            //{
+            //    btnResult.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    btnResult.Visibility = Visibility.Collapsed;
+            //}
         }
 
-        private void loadTest()
+        private void loadTest(List<History> lstHistory)
         {
             if (pat != null)
             {
-                for (int i = 0; i < pat.TestsList.Count; i++)
+              
+                for (int i = 0; i < lstHistory.Count; i++)
                 {
-                    ucPatientTest patientTest = new ucPatientTest(pat.TestsList.ElementAt(i));
+                    ucPatientTest patientTest = new ucPatientTest(lstHistory[i],pat,amdesPageFrame ,brush);
                     //patientTest.Visibility = Visibility.Collapsed;
                     stkpnlPatientTestList.Children.Add(patientTest);
                 }
