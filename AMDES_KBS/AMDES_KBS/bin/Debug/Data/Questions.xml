@@ -7,7 +7,7 @@
     <QnType>0</QnType>
     <Symptom>Amnesia</Symptom>
     <Questions>
-      <Question QID="1.1">
+      <Question QID="1">
         <Name>Frequently misplacing his/her personal belongings?~~Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~Forget where he/she keeps his/her things?~~Forget what he/she has come to do?~~Have problems finding his/her way around ?~~Ask repeated questions or repeat himself/herself often?</Name>
         <Symptom>Amnesia</Symptom>
       </Question>
@@ -19,19 +19,19 @@
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
-      <Question QID="2.1">
+      <Question QID="1">
         <Name>APHASIA~~Disturbance of language function (receptive and/or expressive)~~~~Compared to before, does the patient have the following symptoms;~~Problems finding words to express his/herself in a conversation?~~Problems understanding what others say?Does the resident have problems naming objects or persons?</Name>
         <Symptom>Aphasia</Symptom>
       </Question>
-      <Question QID="2.2">
+      <Question QID="2">
         <Name>APRAXIA~~Impaired ability to execute motor activities despite intact motor abilities, sensory function and comprehension of the required task~~~~Compared to before, does the patient have the following symptoms;~~Problems performing familiar tasks or basic ADLs well? E.g. dressing, bathing~~Appear to be clumsier or appear to drop things more frequently?~~Problems using simple gadgets or  appliances?</Name>
         <Symptom>Apraxia</Symptom>
       </Question>
-      <Question QID="2.3">
+      <Question QID="3">
         <Name>AGNOSIA~~Failure to recognise or identify objects despite intact sensory function~~~~Compared to before, does the patient have the following symptoms;~~Can’t recall or recognize familiar places?~~Have difficulties recognising the faces of people they know well? ~~Mistake familiar objects for something else? E.g. a toothbrush or comb for a shaver</Name>
         <Symptom>Agnosia</Symptom>
       </Question>
-      <Question QID="2.4">
+      <Question QID="4">
         <Name>EXECUTIVE DYSFUNCTION~~Impairment in ability to think abstractly, plan, initiate ,sequence, monitor and stop complex behaviour~~~~Compared to before, does the patient have the following symptoms;~~Does the resident have problems with simple math?~~Does the resident have problems initiating or performing his/her usual activities (iADLs) or planning what to do?~~Does the resident  have problems getting started to do things~~Does the resident have problems controlling his/her behaviour?~~Does the resident have problems making decisions or making a choice?</Name>
         <Symptom>Executive dysfunction</Symptom>
       </Question>
@@ -43,7 +43,7 @@
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
-      <Question QID="3.1">
+      <Question QID="1">
         <Name>Is there a significant decline in functioning as compared to previous level?</Name>
         <Symptom></Symptom>
       </Question>
@@ -55,7 +55,7 @@
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
-      <Question QID="4.1">
+      <Question QID="1">
         <Name>Is the course of the cognitive decline gradual? (More than 6 months) ?</Name>
         <Symptom></Symptom>
       </Question>
@@ -67,27 +67,27 @@
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
-      <Question QID="5.1">
+      <Question QID="1">
         <Name>Parkinson’s disease</Name>
         <Symptom>Parkinson’s disease</Symptom>
       </Question>
-      <Question QID="5.2">
+      <Question QID="2">
         <Name>Thyroid disorders</Name>
         <Symptom>Thyroid disorders</Symptom>
       </Question>
-      <Question QID="5.3">
+      <Question QID="3">
         <Name>Vit B12/ Folate deficiency</Name>
         <Symptom>Folate deficiency</Symptom>
       </Question>
-      <Question QID="5.4">
+      <Question QID="4">
         <Name>Electrolyte imbalance – hypercalcemia, hyper/hyponatremia, advanced organ failure</Name>
         <Symptom>Electrolyte imbalance</Symptom>
       </Question>
-      <Question QID="5.5">
+      <Question QID="5">
         <Name>Substance or drug induced condition</Name>
         <Symptom>drug induced condition</Symptom>
       </Question>
-      <Question QID="5.6">
+      <Question QID="6">
         <Name>Psychiatric disorders – major depression, schzophrenia, acute delirium</Name>
         <Symptom>Psychiatric disorders</Symptom>
       </Question>
@@ -99,43 +99,43 @@
     <QnType>2</QnType>
     <Symptom>Fail Abbreivated Mental Test Score</Symptom>
     <Questions>
-      <Question QID="6.1">
+      <Question QID="1">
         <Name>What is the year now?</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.2">
+      <Question QID="2">
         <Name>What is the time? (within an hr)</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.3">
+      <Question QID="3">
         <Name>What is your age?</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.4">
+      <Question QID="4">
         <Name>When is your date of birth?</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.5">
+      <Question QID="5">
         <Name>What is your home address?</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.6">
+      <Question QID="6">
         <Name>Where are we now?</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.7">
+      <Question QID="7">
         <Name>What is my/his/her job? (Show an image to the patient)</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.8">
+      <Question QID="8">
         <Name>Count backwards from 20 to 1</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.9">
+      <Question QID="9">
         <Name>Who is the country's Prime minister?</Name>
         <Symptom></Symptom>
       </Question>
-      <Question QID="6.10">
+      <Question QID="10">
         <Name>Recall the Memory Phrase</Name>
         <Symptom></Symptom>
       </Question>
@@ -149,31 +149,31 @@
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
-      <Question QID="7.1">
+      <Question QID="1">
         <Name>Signs of acute stroke eg.one-sided weakness, babinski’s sign</Name>
         <Symptom>acute stroke</Symptom>
       </Question>
-      <Question QID="7.2">
+      <Question QID="2">
         <Name>Recent head trauma with  headache, loss of consciousness, vomiting (subdural hematoma)</Name>
         <Symptom>subdural hematoma</Symptom>
       </Question>
-      <Question QID="7.3">
+      <Question QID="3">
         <Name>Unexplained neurological symptoms eg. new onset of severe headaches or seizures</Name>
         <Symptom>Unexplained neurological symptoms</Symptom>
       </Question>
-      <Question QID="7.4">
+      <Question QID="4">
         <Name>History of cancer, especially of a type or at a site associated with brain metastasis</Name>
         <Symptom>History associated with brain metastasis</Symptom>
       </Question>
-      <Question QID="7.5">
+      <Question QID="5">
         <Name>Use of anticoagulants or history of bleeding disorder</Name>
         <Symptom>bleeding disorder</Symptom>
       </Question>
-      <Question QID="7.6">
+      <Question QID="6">
         <Name>History of urinary incontinence and gait disturbance early in the disease </Name>
         <Symptom>urinary incontinence and gait disturbance early</Symptom>
       </Question>
-      <Question QID="7.7">
+      <Question QID="7">
         <Name>Acute onset of gait disturbance</Name>
         <Symptom>Acute onset of gait disturbance</Symptom>
       </Question>

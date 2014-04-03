@@ -24,6 +24,7 @@ namespace AMDES_KBS
     public partial class ucQuestion : UserControl
     {
         bool questionAnswer = false;
+        int gid;
         Question question;
         Label scoringData;
 
@@ -32,9 +33,10 @@ namespace AMDES_KBS
             InitializeComponent();
         }
 
-        public void loadQuestion(Question q, Label lblscore)
+        public void loadQuestion(Question q, int gid, Label lblscore)
         {
             question = q;
+            this.gid = gid;
             string questionText = q.Name.Replace("~~", Environment.NewLine);
 
             lblQuestion.Content = q.ID;
@@ -54,7 +56,7 @@ namespace AMDES_KBS
         {
             questionAnswer = answer;
             btnYes.IsChecked = answer;
-            CLIPSController.assertQuestion(question.ID, answer);
+            CLIPSController.assertQuestion(gid, question.ID, answer);
         }
 
         //Allan Note: ClipsController Point 1 Integration Done
@@ -63,7 +65,7 @@ namespace AMDES_KBS
             // TODO: Add event handler implementation here.
             if ((sender as ToggleButton).IsChecked == true)
             {
-                CLIPSController.assertQuestion(question.ID, true);
+                CLIPSController.assertQuestion(gid, question.ID, true);
                 if (scoringData != null)
                 {
                     int score = int.Parse(scoringData.Content.ToString());
@@ -75,7 +77,7 @@ namespace AMDES_KBS
             }
             else
             {
-                CLIPSController.assertQuestion(question.ID, false);
+                CLIPSController.assertQuestion(gid, question.ID, false);
                 if (scoringData != null)
                 {
                     int score = int.Parse(scoringData.Content.ToString());

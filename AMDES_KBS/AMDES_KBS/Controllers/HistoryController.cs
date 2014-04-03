@@ -61,6 +61,7 @@ namespace AMDES_KBS.Controllers
                 {
                     QnHistory qnHistory = kvp.Value[i];
                     XElement qhx = new XElement("Question");
+                    qhx.Add(new XAttribute("GrpID", kvp.Key));
                     qhx.Add(new XElement("QID", qnHistory.QuestionID));
                     qhx.Add(new XElement("Answer", qnHistory.Answer));
 
@@ -192,7 +193,6 @@ namespace AMDES_KBS.Controllers
                 h.AssessmentDate = new DateTime(long.Parse(x.Attribute("AssessmentDate").Value));
 
                 var hists = (from pa in x.Descendants("Group")
-                             //where pa.Attribute("histID")
                              select pa).ToList();
 
                 foreach (var g in hists)
@@ -201,11 +201,12 @@ namespace AMDES_KBS.Controllers
                     h.createNewHistory(gid);
 
                     var qns = (from q in x.Descendants("Question")
+                               where int.Parse(q.Attribute("GrpID").Value) == gid
                                select q).ToList();
 
                     foreach (var q in qns)
                     {
-                        h.updateHistoryItem(gid, q.Element("QID").Value, bool.Parse(q.Element("Answer").Value));
+                        h.updateHistoryItem(gid, int.Parse(q.Element("QID").Value), bool.Parse(q.Element("Answer").Value));
                     }
                     h.setStatus(int.Parse(x.Element("Status").Value));
                 }

@@ -19,8 +19,8 @@ namespace AMDES_KBS.Entity
         }
 
 
+        private int id;
         private string name;
-        private string id;
 
         private string symptom;
         //if the answer to this group is true, what should it assert about the patient???
@@ -39,13 +39,13 @@ namespace AMDES_KBS.Entity
             set { name = value; }
         }
 
-        public string ID
+        public int ID
         {
             get { return id; }
             set
             {
-               
-                    id = value;
+
+                id = value;
             }
         }
 

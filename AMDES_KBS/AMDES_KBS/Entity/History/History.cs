@@ -79,7 +79,7 @@ namespace AMDES_KBS.Entity
             return null;
         }
 
-        private void addHistoryItem(int groupID, string qid, bool ans)
+        private void addHistoryItem(int groupID, int qid, bool ans)
         {
             List<QnHistory> h;
             if (history.TryGetValue(groupID, out h))
@@ -88,7 +88,7 @@ namespace AMDES_KBS.Entity
             }
         }
 
-        public bool removeHistoryItem(int groupID, string qid)
+        public bool removeHistoryItem(int groupID, int  qid)
         {
             List<QnHistory> h;
             int id = -1;
@@ -117,7 +117,7 @@ namespace AMDES_KBS.Entity
             return false;
         }
 
-        public void updateHistoryItem(int groupID, string qid, bool ans)
+        public void updateHistoryItem(int groupID, int qid, bool ans)
         {
             removeHistoryItem(groupID, qid);
             addHistoryItem(groupID, qid, ans);

@@ -90,7 +90,7 @@ namespace AMDES_KBS.Controllers
                 {
                     Question q = p.Questions.ElementAt(j);
                     newGRP.Element("Questions").Add(
-                                        new XElement("Question", new XAttribute("QID", p.GroupID + "." + (j + 1)),
+                                        new XElement("Question", new XAttribute("QID", (j + 1)),
                                             new XElement("Name", q.Name),
                                             new XElement("Symptom", q.Symptom))
                                   );
@@ -213,7 +213,7 @@ namespace AMDES_KBS.Controllers
             if (x != null)
             {
                 Question q = new Question();
-                q.ID = x.Attribute("QID").Value;
+                q.ID = int.Parse(x.Attribute("QID").Value);
                 q.Name = x.Element("Name").Value;
                 q.Symptom = x.Element("Symptom").Value;
                 return q;

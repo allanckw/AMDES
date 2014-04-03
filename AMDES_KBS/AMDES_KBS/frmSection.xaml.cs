@@ -150,12 +150,12 @@ namespace AMDES_KBS
             ucQuestion ucQ = new ucQuestion();
             if (sectionType == QuestionType.COUNT)
             {
-                ucQ.loadQuestion(q, lblCurrScore);
+                ucQ.loadQuestion(q,QG.GroupID, lblCurrScore);
             }
             else
             {
                 //ucQ.Name="Question" + q.ID;
-                ucQ.loadQuestion(q, null);
+                ucQ.loadQuestion(q,QG.GroupID, null);
             }
             //currHeight += Math.Ceiling(ucQ.getHeight());
             QuestionFrame.Children.Add(ucQ);

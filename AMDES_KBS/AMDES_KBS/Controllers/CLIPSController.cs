@@ -206,7 +206,7 @@ namespace AMDES_KBS.Controllers
                 {
                     sb.Clear();
 
-                    sb.Append("(question (ID _" + q.ID + ") ");
+                    sb.Append("(question (ID _" + qg.GroupID + "." + q.ID + ") ");
                     sb.Append("(GroupID _" + qg.GroupID + ") ");
 
                     //sb.Append("(QuestionText " + "\"" + q.Name + "\"" + ") "); 
@@ -312,10 +312,10 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void assertQuestion(string id, bool answer)
+        public static void assertQuestion(int grpID, int id, bool answer)
         {
             //to paste to load questions
-            StringBuilder sb = new StringBuilder("(choice _" + id + " ");
+            StringBuilder sb = new StringBuilder("(choice _" + grpID + "." + id + " ");
             if (answer)
             {
                 sb.Append("Yes");
@@ -526,16 +526,16 @@ namespace AMDES_KBS.Controllers
                 //natalie :(
                 if (navHistory.Contains(x))
                 {
-                    string qid = fv.GetFactSlot("ID").ToString();
+                    string qid = fv.GetFactSlot("ID").ToString().Remove(0, 1);
                     string answer = fv.GetFactSlot("answer").ToString();
                     if (answer.ToUpper().CompareTo("YES") == 0)
                     {
                         //add history item
-                        history.updateHistoryItem(x, qid.Remove(0, 1), true);
+                        history.updateHistoryItem(x, int.Parse(qid.Split('.')[1]), true);
                     }
                     else
                     {
-                        history.updateHistoryItem(x, qid.Remove(0, 1), false);
+                        history.updateHistoryItem(x, int.Parse(qid.Split('.')[1]), false);
                     }
                 }
             }
