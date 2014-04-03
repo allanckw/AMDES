@@ -10,19 +10,20 @@
     <Grid>
         <StackPanel x:Name="MainFrame">
             <StackPanel x:Name="stkpnlRecommendation" Orientation="Horizontal">
-                <Label Content="Recommendations Page" FontSize="14" FontWeight="Bold" Margin="0,0,0,0" />
+                <Label Content="Recommendations Page" FontSize="18" FontWeight="Bold" Margin="0,0,0,0" />
             </StackPanel>
             <StackPanel x:Name="stkpnlHeader" Orientation="Horizontal">
                 <StackPanel x:Name="stkpnlSectionPatientDetail" Orientation="Horizontal">
                     <Label x:Name="lblPatientName" Content="Name of Patient" FontSize="14" FontWeight="Bold" Margin="0,0,0,0" />
-                    <Label x:Name="lblPatientID" FontSize="14" FontWeight="Bold" Content="SXXXXXXXZ" Margin="10,0,0,0"/>
+                    <Label x:Name="lblPatientID" FontSize="14" FontWeight="Bold"  Content="SXXXXXXXZ" Margin="10,0,0,0"/>
                     <Label x:Name="lblPatientAge" FontSize="14" FontWeight="Bold" Content="" />
                 </StackPanel>
 
 
             </StackPanel>
             <StackPanel x:Name="PageSFrame" Height="160" Width="960" Margin="0,0,0,0"/>
-            <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Margin="0,20,0,0" Height="285" Width="960" HorizontalAlignment="Left">
+            <Label Content="Recommendations"  FontSize="14" FontWeight="Bold"/>
+            <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="270" Width="960" HorizontalAlignment="Left">
                 <StackPanel x:Name="PageFrame"/>
             </ScrollViewer>
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">

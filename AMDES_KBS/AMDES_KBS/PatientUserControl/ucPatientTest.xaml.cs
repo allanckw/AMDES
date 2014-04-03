@@ -32,9 +32,9 @@ namespace AMDES_KBS
             this.Background = brush;
             foreach (Control c in stkpnlPatientTestDetail.Children)
             {
-                if(c.GetType()!=typeof(Button))
+                if (c.GetType() != typeof(Button))
                     c.Background = brush;
-                
+
             }
             //this.stkpnlPatientTestDetail.Background = brush;
             //this.txtStatus.Text = t.Status.ToString();
@@ -64,12 +64,8 @@ namespace AMDES_KBS
 
         private void btnResult_Click(object sender, RoutedEventArgs e)
         {
-            //KAI Result button no longer here, please remove, move to test section
-            //new button will either start a new test or continue from a saved test depending on whether there is a history or not
-            //I cant move status to history yet cos your controls are using , please remove all references before i can continue
             CLIPSController.CurrentPatient = pat;
-
-            frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, pat.getLatestHistory().Diagnoses, null);
+            frmRecommendationViewOnly frmConclusion = new frmRecommendationViewOnly(amdesPageFrame, t);
             amdesPageFrame.Navigate(frmConclusion);
         }
 
@@ -98,17 +94,17 @@ namespace AMDES_KBS
                     QnSect.setPrevPage(prevSection);
                 }
 
-                if (i != history.Keys.Count-1)
+                if (i != history.Keys.Count - 1)
                 {
                     CLIPSController.assertNextSection();
                 }
 
-                prevSection = QnSect;          
+                prevSection = QnSect;
             }
             //foreach (int k in history.Keys)
             //{
             //    //MessageBox.Show(k.ToString());
-      
+
             //}
             int sectionID = CLIPSController.getCurrentQnGroupID();
             amdesPageFrame.Navigate(prevSection);

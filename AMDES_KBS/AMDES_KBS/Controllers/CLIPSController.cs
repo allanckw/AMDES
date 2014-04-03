@@ -219,7 +219,7 @@ namespace AMDES_KBS.Controllers
                     if (q.Symptom.Length > 0)
                     {
                         sb.Clear();
-                        sb.Append("(questionid-symptoms (QuestionID _" + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
+                        sb.Append("(questionid-symptoms (QuestionID _" + qg.GroupID + "." +  q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
                         assert(sb);
                     }
                 }

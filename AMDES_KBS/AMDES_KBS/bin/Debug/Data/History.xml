@@ -5,15 +5,11 @@
     <Group histID="6">
       <Question GrpID="6">
         <QID>1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>2</QID>
         <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
         <QID>3</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
         <QID>4</QID>
@@ -21,11 +17,23 @@
       </Question>
       <Question GrpID="6">
         <QID>5</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
         <QID>6</QID>
         <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="6">
         <QID>7</QID>
@@ -33,93 +41,14 @@
       </Question>
       <Question GrpID="6">
         <QID>8</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>9</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>10</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-    <Group histID="1">
-      <Question GrpID="1">
-        <QID>1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="2">
-      <Question GrpID="2">
-        <QID>1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="2">
-        <QID>3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="2">
-        <QID>4</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question GrpID="2">
-        <QID>2</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="3">
-      <Question GrpID="3">
-        <QID>1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="4">
-      <Question GrpID="4">
-        <QID>1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="7">
-      <Question GrpID="7">
-        <QID>1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>7</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>3</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>4</QID>
         <Answer>true</Answer>
       </Question>
     </Group>
     <Symptoms>
       <Symptom>
-        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 5</SymptomName>
-        <DiagnosisDate>635321507982369956</DiagnosisDate>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 3</SymptomName>
+        <DiagnosisDate>635321561759965010</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Amnesia </SymptomName>
-        <DiagnosisDate>635321507982379957</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Status>1</Status>

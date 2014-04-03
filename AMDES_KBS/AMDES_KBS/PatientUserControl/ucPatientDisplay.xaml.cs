@@ -71,6 +71,7 @@ namespace AMDES_KBS
                 for (int i = 0; i < lstHistory.Count; i++)
                 {
                     ucPatientTest patientTest = new ucPatientTest(lstHistory[i],pat,amdesPageFrame ,brush);
+                    patientTest.Tag = i;
                     //patientTest.Visibility = Visibility.Collapsed;
                     stkpnlPatientTestList.Children.Add(patientTest);
                 }
@@ -95,18 +96,16 @@ namespace AMDES_KBS
         private void btnContTest_Click(object sender, RoutedEventArgs e)
         {
             CLIPSController.CurrentPatient = pat;
-            CLIPSController.clearAndLoadNew();
-            //Allan ToDo: load history here
-           
-            //@Kai history here.. use this to populate back 
-            //TODO: Use Assert Log to assert back previous user choices to Clips
-            //History h = CLIPSController.loadSavedAssertions();
-            
-            //if (h != null)
-            //{
-            //    //load back here
-            //}
 
+            if (HistoryController.checkForDraft(pat.NRIC))
+            {
+                MessageBox.Show("You have an existing draft test, please continue from there", "Draft Test Found", MessageBoxButton.OK, MessageBoxImage.Information);
+                stkpnlPatientTestList.Visibility = Visibility.Visible;
+                btnShowHideTest.Content = "-";
+                return;
+            }
+
+            CLIPSController.clearAndLoadNew();
             int sectionID = CLIPSController.getCurrentQnGroupID();
             //MessageBox.Show(sectionID.ToString()); - DONE
 

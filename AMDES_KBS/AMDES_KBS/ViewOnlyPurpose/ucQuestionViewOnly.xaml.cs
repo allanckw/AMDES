@@ -21,14 +21,14 @@ namespace AMDES_KBS
     /// <summary>
     /// Interaction logic for ucQuestion.xaml
     /// </summary>
-    public partial class ucQuestion : UserControl
+    public partial class ucQuestionViewOnly : UserControl
     {
         bool questionAnswer = false;
         int gid;
         Question question;
         Label scoringData;
 
-        public ucQuestion()
+        public ucQuestionViewOnly()
         {
             InitializeComponent();
         }
@@ -56,7 +56,6 @@ namespace AMDES_KBS
         {
             questionAnswer = answer;
             btnYes.IsChecked = answer;
-            CLIPSController.assertQuestion(gid, question.ID, answer);
             if (answer)
             {
                 if (scoringData != null)
@@ -72,54 +71,8 @@ namespace AMDES_KBS
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Add event handler implementation here.
-            if ((sender as ToggleButton).IsChecked == true)
-            {
-                CLIPSController.assertQuestion(gid, question.ID, true);
-                if (scoringData != null)
-                {
-                    int score = int.Parse(scoringData.Content.ToString());
-                    score++;
-                    scoringData.Content = score;
-                }
-                questionAnswer = true;
-                Thread.Sleep(100);
-            }
-            else
-            {
-                CLIPSController.assertQuestion(gid, question.ID, false);
-                if (scoringData != null)
-                {
-                    int score = int.Parse(scoringData.Content.ToString());
-                    if (questionAnswer)
-                    {
-                        score--;
-                        scoringData.Content = score;
-                    }
-                    questionAnswer = false;
-                }
-            }
-           
+            (sender as ToggleButton).IsChecked = questionAnswer;        
         }
-
-        //private void btnNo_Click(object sender, RoutedEventArgs e)
-        //{
-        //    // TODO: Add event handler implementation here.
-        //    btnYes.IsEnabled = true;
-        //    btnNo.IsEnabled = false;
-        //    CLIPSController.assertQuestion(question.ID, false);
-        //    if (scoringData != null)
-        //    {
-        //        int score = int.Parse(scoringData.Content.ToString());
-        //        if (questionAnswer)
-        //        {
-        //            score--;
-        //            scoringData.Content = score;
-        //        }
-        //    }
-        //    questionAnswer = false;
-        //    Thread.Sleep(100);
-        //    //clip to assert here or modify
-        //}
 
         public bool getAnswer()
         {

@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              d:DesignWidth="660">
     <Grid x:Name="gridDiagnosis">
-        <StackPanel x:Name="stkpnlDiagnosis" Margin="0,0,0,20">
+        <StackPanel x:Name="stkpnlDiagnosis" Margin="10,0,0,20">
             <StackPanel x:Name="stkpnlDiagnosisHeader" Orientation="Vertical">
                 <StackPanel>
                     <Label x:Name="lblRuleID" Width="auto" Height="30" Margin="0,0,0,0" FontSize="12" FontFamily="Tahoma" FontWeight="Bold" />

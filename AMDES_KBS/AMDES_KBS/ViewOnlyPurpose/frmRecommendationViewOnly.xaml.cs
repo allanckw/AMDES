@@ -40,11 +40,11 @@ namespace AMDES_KBS
             loadRecommendation();
         }
 
-        public frmRecommendationViewOnly(Frame amdesFrame, List<Diagnosis> diaList, AMDESPage lastSec)
+        public frmRecommendationViewOnly(Frame amdesFrame, History h)
         {
             InitializeComponent();
             //lblSection.Content = sectionID;
-            lastSection = lastSec;
+            //lastSection = lastSec;
             amdesPageFrame = amdesFrame;
             //prevPage = null;
             //btnPrev.Visibility = Visibility.Collapsed;
@@ -63,11 +63,70 @@ namespace AMDES_KBS
                 lblPatientID.Visibility = Visibility.Visible;
                 lblPatientName.Visibility = Visibility.Visible;
             }
-            AllDiagnose = diaList;
+            AllDiagnose = h.Diagnoses;
             PageContent = new List<List<ucDiagnosis>>();
             loadRecommendation();
-
+            loadHistory(h);
         }
+
+        private void loadHistory(History h)
+        {
+            frmSectionViewOnly prevSection = null;
+
+            Dictionary<int, List<QnHistory>> history = h.getHistory();
+
+            for (int i = 0; i < history.Keys.Count; i++)
+            {
+                int k = history.Keys.ElementAt(i);
+                List<QnHistory> qnHis = h.retrieveHistoryList(k);
+
+                frmSectionViewOnly QnSect = createSection(k, qnHis);
+
+                if (prevSection != null)
+                {
+                    prevSection.setNextPage(QnSect);
+                    QnSect.setPrevPage(prevSection);
+                }
+
+                prevSection = QnSect;
+            }
+            lastSection = prevSection;
+            prevSection.setNextPage(this);
+        }
+
+        private frmSectionViewOnly createSection(int gid, List<QnHistory> qnhistory)
+        {
+            frmSectionViewOnly section = new frmSectionViewOnly(amdesPageFrame, gid, qnhistory);
+            return section;
+        }
+        //public frmRecommendationViewOnly(Frame amdesFrame, List<Diagnosis> diaList, AMDESPage lastSec)
+        //{
+        //    InitializeComponent();
+        //    //lblSection.Content = sectionID;
+        //    lastSection = lastSec;
+        //    amdesPageFrame = amdesFrame;
+        //    //prevPage = null;
+        //    //btnPrev.Visibility = Visibility.Collapsed;
+        //    //heightLimit = 430;
+        //    Patient currPatient = CLIPSController.CurrentPatient;
+        //    lblPatientID.Content = currPatient.NRIC;
+        //    lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
+        //    lblPatientAge.Content = "Age : " + currPatient.getAge();
+        //    if (CLIPSController.savePatient == false)
+        //    {
+        //        lblPatientID.Visibility = Visibility.Collapsed;
+        //        lblPatientName.Visibility = Visibility.Collapsed;
+        //    }
+        //    else
+        //    {
+        //        lblPatientID.Visibility = Visibility.Visible;
+        //        lblPatientName.Visibility = Visibility.Visible;
+        //    }
+        //    AllDiagnose = diaList;
+        //    PageContent = new List<List<ucDiagnosis>>();
+        //    loadRecommendation();
+
+        //}
 
         public void loadRecommendation()
         {
@@ -87,25 +146,7 @@ namespace AMDES_KBS
             //int sectionID = CLIPSController.getCurrentQnGroupID();
             //frmSection lastSection = new frmSection(amdesPageFrame, sectionID);
 
-            CLIPSController.retractDiagnosis();
-            int sectionID = CLIPSController.getCurrentQnGroupID();
             amdesPageFrame.Navigate(lastSection);
-        }
-
-        private void btnTestAgin_Click(object sender, RoutedEventArgs e)
-        {
-            AssertQuestions();
-            int sectionID = CLIPSController.getCurrentQnGroupID();
-
-            //MessageBox.Show(sectionID.ToString());
-
-            frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
-            amdesPageFrame.Navigate(TestSection);
-        }
-
-        private void AssertQuestions()
-        {
-            CLIPSController.clearAndLoadNew();
         }
 
         private void AddSymptons()

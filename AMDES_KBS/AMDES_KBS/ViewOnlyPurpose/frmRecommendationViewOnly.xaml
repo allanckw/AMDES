@@ -26,8 +26,7 @@
                 <StackPanel x:Name="PageFrame"/>
             </ScrollViewer>
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
-                <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" />
-                <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,0,0" Click="btnTestAgin_Click" />
+                <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,0,0" Click="btnPrev_Click" />
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -127,7 +127,13 @@
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="frmRecommendationViewOnly.xaml.cs">
+    <Compile Include="ViewOnlyPurpose\ucQuestionViewOnly.xaml.cs">
+      <DependentUpon>ucQuestionViewOnly.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewOnlyPurpose\frmSectionViewOnly.xaml.cs">
+      <DependentUpon>frmSectionViewOnly.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewOnlyPurpose\frmRecommendationViewOnly.xaml.cs">
       <DependentUpon>frmRecommendationViewOnly.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entity\History\History.cs" />
@@ -211,7 +217,15 @@
     <Compile Include="SettingControl\ucNavigationSetting.xaml.cs">
       <DependentUpon>ucNavigationSetting.xaml</DependentUpon>
     </Compile>
-    <Page Include="frmRecommendationViewOnly.xaml">
+    <Page Include="ViewOnlyPurpose\ucQuestionViewOnly.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewOnlyPurpose\frmSectionViewOnly.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewOnlyPurpose\frmRecommendationViewOnly.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

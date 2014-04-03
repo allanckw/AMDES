@@ -120,6 +120,17 @@ namespace AMDES_KBS.Controllers
             }
         }
 
+        public static bool checkForDraft(string pid)
+        {
+            XDocument document = XDocument.Load(History.dataPath);
+            var hist = (from pa in document.Descendants("History")
+                        where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
+                        int.Parse(pa.Element("Status").Value) == (int)PatientStatus.DRAFT
+                        select pa).ToList();
+
+            return hist.Count > 0;
+        }
+
         public static List<History> getHistoryByID(string pid)
         {
             createDataFile();
