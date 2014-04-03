@@ -40,15 +40,10 @@ namespace AMDES_KBS
             loadRecommendation();
         }
 
-        public frmRecommendationViewOnly(Frame amdesFrame, History h)
+        public frmRecommendationViewOnly(Frame amdesFrame, History h, bool fromRecommendations = false)
         {
             InitializeComponent();
-            //lblSection.Content = sectionID;
-            //lastSection = lastSec;
             amdesPageFrame = amdesFrame;
-            //prevPage = null;
-            //btnPrev.Visibility = Visibility.Collapsed;
-            //heightLimit = 430;
             Patient currPatient = CLIPSController.CurrentPatient;
             lblPatientID.Content = currPatient.NRIC;
             lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
@@ -67,6 +62,11 @@ namespace AMDES_KBS
             PageContent = new List<List<ucDiagnosis>>();
             loadRecommendation();
             loadHistory(h);
+
+            if (fromRecommendations)
+            {
+                amdesPageFrame.Navigate(lastSection);
+            }
         }
 
         private void loadHistory(History h)
@@ -99,34 +99,6 @@ namespace AMDES_KBS
             frmSectionViewOnly section = new frmSectionViewOnly(amdesPageFrame, gid, qnhistory);
             return section;
         }
-        //public frmRecommendationViewOnly(Frame amdesFrame, List<Diagnosis> diaList, AMDESPage lastSec)
-        //{
-        //    InitializeComponent();
-        //    //lblSection.Content = sectionID;
-        //    lastSection = lastSec;
-        //    amdesPageFrame = amdesFrame;
-        //    //prevPage = null;
-        //    //btnPrev.Visibility = Visibility.Collapsed;
-        //    //heightLimit = 430;
-        //    Patient currPatient = CLIPSController.CurrentPatient;
-        //    lblPatientID.Content = currPatient.NRIC;
-        //    lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
-        //    lblPatientAge.Content = "Age : " + currPatient.getAge();
-        //    if (CLIPSController.savePatient == false)
-        //    {
-        //        lblPatientID.Visibility = Visibility.Collapsed;
-        //        lblPatientName.Visibility = Visibility.Collapsed;
-        //    }
-        //    else
-        //    {
-        //        lblPatientID.Visibility = Visibility.Visible;
-        //        lblPatientName.Visibility = Visibility.Visible;
-        //    }
-        //    AllDiagnose = diaList;
-        //    PageContent = new List<List<ucDiagnosis>>();
-        //    loadRecommendation();
-
-        //}
 
         public void loadRecommendation()
         {
@@ -143,9 +115,6 @@ namespace AMDES_KBS
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
-            //int sectionID = CLIPSController.getCurrentQnGroupID();
-            //frmSection lastSection = new frmSection(amdesPageFrame, sectionID);
-
             amdesPageFrame.Navigate(lastSection);
         }
 
@@ -181,110 +150,21 @@ namespace AMDES_KBS
             PageSFrame.Children.Add(stkpnlSymptonsPnl);
         }
 
-        //public void addSymptons()
-        //{
-        //    StackPanel stkpnlSymptons = new StackPanel();
+        private void btnTestAgin_Click(object sender, RoutedEventArgs e)
+        {
+            AssertQuestions();
+            int sectionID = CLIPSController.getCurrentQnGroupID();
 
-        //    foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
-        //    {
-        //        Label lblSymptons = new Label();
-        //        lblSymptons.Content = "Symptoms - " + sym.SymptomName;
-        //        stkpnlSymptons.Children.Add(lblSymptons);
-        //    }
-        //    //if (stkpnlSymptons.Children.Count == 0)
-        //    //{
-        //    //    lblSymptonsText.Content = "The patient has no symptoms.";
-        //    //}
-        //    //updateHeight();
-        //}
-        //private void sortPage()
-        //{
-        //    currHeight = 0;
-        //    List<ucDiagnosis> QuestionPerPage = new List<ucDiagnosis>();
-        //    foreach (ucDiagnosis item in PageFrame.Children)
-        //    {
-        //        string temp = item.Name;
-        //        currHeight += Math.Ceiling(item.getHeight());
+            //MessageBox.Show(sectionID.ToString());
 
-        //        if (currHeight >= heightLimit)
-        //        {
-        //            currHeight = 0;
-        //            currHeight += Math.Ceiling(item.getHeight());
-        //            PageContent.Add(QuestionPerPage);
-        //            QuestionPerPage = new List<ucDiagnosis>();
-        //            if (collapseRest == false)
-        //            {
-        //                collapseRest = true;
-        //            }
-        //        }
+            frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
+            amdesPageFrame.Navigate(TestSection);
+        }
 
-        //        if (collapseRest)
-        //        {
-        //            item.setVisibility(Visibility.Collapsed);
-        //        }
-
-        //        QuestionPerPage.Add(item);
-        //    }
-
-        //    if (QuestionPerPage.Count > 0)
-        //    {
-        //        PageContent.Add(QuestionPerPage);
-        //    }
-
-        //    TotalPageNo = PageContent.Count;
-        //    lblTotalPage.Content = PageContent.Count.ToString();
-        //    btnPrev.Visibility = Visibility.Hidden;
-        //    if (TotalPageNo == 1)
-        //    {
-        //        btnNext.Visibility = Visibility.Hidden;
-        //    }
-        //}
-
-        //private void btnNext_Click(object sender, RoutedEventArgs e)
-        //{
-        //    btnPrev.Visibility = Visibility.Visible;
-        //    if (CurrPageNo != TotalPageNo)
-        //    {
-        //        foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
-        //        {
-        //            item.setVisibility(Visibility.Collapsed);
-        //        }
-
-        //        CurrPageNo++;
-        //        foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
-        //        {
-        //            item.setVisibility(Visibility.Visible);
-        //        }
-               
-        //        if (CurrPageNo == TotalPageNo)
-        //            btnNext.Visibility = Visibility.Hidden;
-        //    }
-        //}
-
-        //private void btnPrev_Click(object sender, RoutedEventArgs e)
-        //{
-        //    btnNext.Visibility = Visibility.Visible;
-        //    if (CurrPageNo != 1)
-        //    {
-        //        foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
-        //        {
-        //            item.setVisibility(Visibility.Collapsed);
-        //        }
-
-        //        CurrPageNo--;
-        //        foreach (ucDiagnosis item in PageContent.ElementAt(CurrPageNo - 1))
-        //        {
-        //            item.setVisibility(Visibility.Visible);
-        //        }
-        //        lblCurrPage.Content = CurrPageNo.ToString();
-        //        if (CurrPageNo == 1)
-        //            btnPrev.Visibility = Visibility.Hidden;
-
-        //    }
-        //    else
-        //    {
-        //        btnPrev.Visibility = Visibility.Hidden;
-        //    }
-        //}
+        private void AssertQuestions()
+        {
+            CLIPSController.clearAndLoadNew();
+        }
+      
     }
 }

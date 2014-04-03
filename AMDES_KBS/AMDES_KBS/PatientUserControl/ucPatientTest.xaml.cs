@@ -45,6 +45,15 @@ namespace AMDES_KBS
             {
                 this.txtTestTime.Text = t.AssessmentDate.ToString("dd MMM yyyy");
             }
+            if (t.CompletedDate != null)
+            {
+                this.txtCompletedDate.Text = t.AssessmentDate.ToString("dd MMM yyyy");
+            }
+            else
+            {
+                this.txtCompletedDate.Text = "-";
+            }
+
             if (t.getStatusEnum() == PatientStatus.COMPLETED)
             {
                 btnResult.Visibility = Visibility.Visible;
@@ -102,11 +111,7 @@ namespace AMDES_KBS
 
                 prevSection = QnSect;
             }
-            //foreach (int k in history.Keys)
-            //{
-            //    //MessageBox.Show(k.ToString());
 
-            //}
             int sectionID = CLIPSController.getCurrentQnGroupID();
             amdesPageFrame.Navigate(prevSection);
         }

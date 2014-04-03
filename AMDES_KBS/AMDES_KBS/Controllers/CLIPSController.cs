@@ -54,7 +54,6 @@ namespace AMDES_KBS.Controllers
             File.WriteAllText(filePath, sb.ToString());
         }
 
-        //@Allan, Not Tested yet
         public static History loadSavedAssertions()
         {
             //CurrentPatient.SymptomsList.Clear();
@@ -219,7 +218,7 @@ namespace AMDES_KBS.Controllers
                     if (q.Symptom.Length > 0)
                     {
                         sb.Clear();
-                        sb.Append("(questionid-symptoms (QuestionID _" + qg.GroupID + "." +  q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
+                        sb.Append("(questionid-symptoms (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
                         assert(sb);
                     }
                 }
@@ -399,10 +398,9 @@ namespace AMDES_KBS.Controllers
             h = getCurrentPatientSymptom(h);
             h.setCompleted();
 
-            if (savePatient == true)
-            {
+           
                 HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
-            }
+            
         }
 
         public static void saveCurrentNavex()
@@ -429,11 +427,13 @@ namespace AMDES_KBS.Controllers
             }
 
             h = getCurrentPatientSymptom(h);
-            
-
-            if (savePatient == true)
+            if (savePatient.Value)
             {
                 HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+            }
+            else
+            {
+                HistoryController.updatePatientNavigationHistory(h, new DateTime(0));
             }
         }
 
@@ -507,9 +507,17 @@ namespace AMDES_KBS.Controllers
 
         private static History getCurrentPatientHistory()
         {
-
+            History history;
             List<int> navHistory = getNaviHistory();
-            History history = new History(CurrentPatient.NRIC, CurrentPatient.AssessmentDate);
+            if (savePatient.Value)
+            {
+                history = new History(CurrentPatient.NRIC, CurrentPatient.AssessmentDate);
+            }
+            else
+            {
+                history = new History(CurrentPatient.NRIC, new DateTime(0));
+            }
+
             String evalStr = " (find-all-facts((?a question)) TRUE)";
 
             for (int i = 0; i < navHistory.Count; i++)

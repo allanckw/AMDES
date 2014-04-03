@@ -8,9 +8,10 @@
     <Grid>
         <StackPanel x:Name="stkpnlPatientTestDetail" Orientation="Horizontal" Margin="0">
             <TextBox x:Name="txtTestTime" Width="120" Text="12 Oct 2013 14:00" Margin="30,0,0,0"></TextBox>
-            <TextBox x:Name="txtStatus" Width="120" Text="Completed"></TextBox>
-            <Button x:Name="btnResult" Content="Result" Width="80" Height="20" Visibility="Collapsed" Click="btnResult_Click" />
-            <Button x:Name="btnCont" Content="Continue" Width="80" Height="20" Visibility="Collapsed" Click="btnCont_Click" />
+            <TextBox x:Name="txtStatus" Width="120" Text="Completed" ></TextBox>
+            <TextBox x:Name="txtCompletedDate" Width="120" Text="12 Oct 2013 14:00" Margin="0,0,0,0"></TextBox>
+            <Button x:Name="btnResult" Content="Result" Width="60" Height="22" Margin="1,1,1,1" Visibility="Collapsed" Click="btnResult_Click" />
+            <Button x:Name="btnCont" Content="Continue" Width="60" Height="22" Margin="1,1,1,1" Visibility="Collapsed" Click="btnCont_Click" />
         </StackPanel>
     </Grid>
 </UserControl>

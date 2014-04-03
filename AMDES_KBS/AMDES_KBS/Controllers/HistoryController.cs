@@ -100,6 +100,14 @@ namespace AMDES_KBS.Controllers
 
             newPat.Add(new XElement("Status", h.getStatus()));
 
+            if (h.CompletedDate != null)
+            {
+                newPat.Add(new XElement("CompletedDate", h.CompletedDate.Value.Ticks));
+            }
+            else
+            {
+                newPat.Add(new XElement("CompletedDate",0));
+            }
             document.Element("Histories").Add(newPat);
             document.Save(History.dataPath);
         }
@@ -220,6 +228,11 @@ namespace AMDES_KBS.Controllers
                         h.updateHistoryItem(gid, int.Parse(q.Element("QID").Value), bool.Parse(q.Element("Answer").Value));
                     }
                     h.setStatus(int.Parse(x.Element("Status").Value));
+                    long d = long.Parse(x.Element("CompletedDate").Value);
+                    if (d > 0)
+                        h.CompletedDate = new DateTime(d);
+                    else
+                        h.CompletedDate = null;
                 }
 
                 var symptoms = (from syms in x.Descendants("Symptoms").Descendants("Symptom")

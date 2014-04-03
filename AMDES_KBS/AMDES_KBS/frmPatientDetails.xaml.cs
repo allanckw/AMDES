@@ -142,6 +142,8 @@ namespace AMDES_KBS
                             p.Gender = PatientGender.FEMALE;
 
                         p.EthnicGroup = (PatientEthnicGrp)cboEthnicGrp.SelectedIndex;
+                        p.NRIC = "ANON";
+
                         CLIPSController.CurrentPatient = p;
                         return true;
                     }

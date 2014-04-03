@@ -43,11 +43,17 @@
 
             <StackPanel x:Name="QuestionFrame" Height="430">
             </StackPanel>
+
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0">
+                <StackPanel x:Name="zz" Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,50,0">
+                    <Label Content="The button for each question indicates your current choice, click to toggle (from No to Yes and vice versa)" FontWeight="Bold" FontSize="12"  Margin="0,0,0,0" HorizontalContentAlignment="Right" />
+                </StackPanel>
                 <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" />
                 <Button x:Name="btnNext" Content="Next" Height="30" Width="100" Margin="0,0,10,0" Click="btnNext_Click" />
-                <Button x:Name="btnSave" Content="Save" Height="30" Width="100" Click="btnSave_Click" />
+                <Button x:Name="btnSave" Content="Save" Height="30" Width="100" Click="btnSave_Click"  Margin="0,0,10,0"/>
+                
             </StackPanel>
+
         </StackPanel>
     </Grid>
 </src:AMDESPage>

@@ -176,32 +176,6 @@
       </Diagnosis>
     </Diagnoses>
   </Patient>
-  <Patient id="">
-    <Last_Name></Last_Name>
-    <First_Name></First_Name>
-    <DOB>635320800000000000</DOB>
-    <AssessmentDate>635320927028824675</AssessmentDate>
-    <Status>0</Status>
-    <Tests />
-    <Assessor>
-      <AssessorName>Dr Simon Tan</AssessorName>
-      <AssessLocation>La La Clinic</AssessLocation>
-    </Assessor>
-    <Symptoms>
-      <Symptom>
-        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
-        <DiagnosisDate>635320927258417807</DiagnosisDate>
-        <DiagnosedByID>6</DiagnosedByID>
-      </Symptom>
-    </Symptoms>
-    <Diagnoses>
-      <Diagnosis diagID="9">
-        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
-        <Header>No Diagnosis</Header>
-        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
-      </Diagnosis>
-    </Diagnoses>
-  </Patient>
   <Patient id="S0275487J">
     <Last_Name>Tan</Last_Name>
     <First_Name>Ya Le</First_Name>

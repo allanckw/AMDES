@@ -16,11 +16,11 @@
             </StackPanel>
             <StackPanel x:Name="PatientFrame" Height="480">
                 <StackPanel x:Name="stkpnlPatientListingHeader" Orientation="Horizontal" Margin="0">
-                    <Label x:Name="txtTestTime" Width="120" Content="Date / Time" Margin="20,0,0,0" />
-                    <Label x:Name="txtPatientName" Width="350"  Content="Name of patients" />
-                    <Label x:Name="txtPatientID" Width="120" Content="Patient's ID" />
-                    <Label x:Name="txtAssessor" Width="150" Content="Assessor" />
-                    <Label x:Name="txtStatus" Width="80" Content="Status" />
+                    <Label x:Name="txtTestTime" Width="120" Content="Date / Time" Margin="20,0,0,0" FontWeight="DemiBold"/>
+                    <Label x:Name="txtPatientName" Width="350"  Content="Name of patients" FontWeight="DemiBold"/>
+                    <Label x:Name="txtPatientID" Width="120" Content="Patient's ID" FontWeight="DemiBold"/>
+                    <Label x:Name="txtAssessor" Width="150" Content="Assessor" FontWeight="DemiBold" />
+                    <Label x:Name="txtStatus" Width="80" Content="Status" FontWeight="DemiBold"/>
                 </StackPanel>
                 <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Height="454" Width="960" HorizontalAlignment="Left">
                     <StackPanel x:Name="stkpnlPatientList"/>

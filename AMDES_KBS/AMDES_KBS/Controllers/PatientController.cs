@@ -46,7 +46,7 @@ namespace AMDES_KBS.Controllers
                                        new XElement("First_Name", p.First_Name),
                                        new XElement("DOB", p.DOB.Ticks),
                                        new XElement("AssessmentDate", DateTime.Now.Ticks),
-                                       
+
                                        new XElement("Tests"),
                                        new XElement("Assessor",
                                        new XElement("AssessorName", p.Doctor.Name),
@@ -94,7 +94,7 @@ namespace AMDES_KBS.Controllers
                                     new XElement("First_Name", p.First_Name),
                                     new XElement("DOB", p.DOB.Ticks),
                                     new XElement("AssessmentDate", p.AssessmentDate.Ticks),
-                                    //new XElement("Status", p.getStatus()),
+                //new XElement("Status", p.getStatus()),
                                     new XElement("Tests"),
                                     new XElement("Assessor",
                                     new XElement("AssessorName", p.Doctor.Name),
@@ -186,7 +186,7 @@ namespace AMDES_KBS.Controllers
                 p.AssessmentDate = new DateTime(long.Parse(x.Element("AssessmentDate").Value));
                 p.DOB = new DateTime(long.Parse(x.Element("DOB").Value));
 
-                
+
 
                 var tests = (from test in x.Descendants("Tests").Descendants("Test")
                              select test).ToList();
@@ -271,7 +271,10 @@ namespace AMDES_KBS.Controllers
             {
                 foreach (var x in patients)
                 {
-                    pList.Add(readPatientData(x));
+                    if (x != null)
+                    {
+                        pList.Add(readPatientData(x));
+                    }
                 }
 
             }
@@ -293,7 +296,9 @@ namespace AMDES_KBS.Controllers
                 {
                     Patient p = readPatientData(x);
                     if (p != null)
+                    {
                         pList.Add(p);
+                    }
                 }
             }
 

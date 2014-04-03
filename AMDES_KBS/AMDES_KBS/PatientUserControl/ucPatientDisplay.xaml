@@ -6,21 +6,24 @@
              mc:Ignorable="d" 
              d:DesignWidth="960">
     <Grid x:Name="gridPatient" >
-        <StackPanel x:Name="stkpnlPatient" Orientation="Vertical" Margin="0,0,0,0" >
+        <StackPanel x:Name="stkpnlPatient" Orientation="Vertical" Margin="0,5,0,5" >
             <StackPanel x:Name="stkpnlPatientDetail" Orientation="Horizontal" Margin="0">
                 <Button x:Name="btnShowHideTest" Width="20" Height="20" Content="+" VerticalAlignment="Top" Click="btnShowHideTest_Click" />
                 <TextBox x:Name="txtTestTime" IsReadOnly="True" Width="120" Text="12 Oct 2013 14:00" FontWeight="Bold" />
                 <TextBox x:Name="txtPatientName" IsReadOnly="True" Width="350" TextWrapping="Wrap" Text="Name of patients" FontWeight="Bold" />
                 <TextBox x:Name="txtPatientID" IsReadOnly="True" Width="120" Text="S1234567B" FontWeight="Bold" TextWrapping="Wrap" />
                 <TextBox x:Name="txtAssessor" IsReadOnly="True" Width="150" Text="Dr Lim LH" FontWeight="Bold" TextWrapping="Wrap" />
-                <StackPanel>
-                    <TextBox x:Name="txtStatus" IsReadOnly="True" Width="80" Text="Completed" FontWeight="Bold" />
-                </StackPanel>
                 <Button x:Name="btnContTest" Width="39" Height="20" Margin="5,0,0,0" VerticalAlignment="Top" Click="btnContTest_Click" Content="New" />
             </StackPanel>
-            <StackPanel x:Name="stkpnlPatientTestList">
-                
+            
+            <StackPanel x:Name="stkpnlPatientTestHeader" Orientation="Horizontal">
+                <TextBox x:Name="lblTestTime" Width="120" Text="Assessment Date" Margin="30,0,0,0"  FontWeight="Bold"></TextBox>
+                <TextBox x:Name="lblStatus" Width="120" Text="Test Status"  FontWeight="Bold"></TextBox>
+                <TextBox x:Name="lblCompletedDate" Width="120" Text="Completed Date" Margin="0,0,0,0"  FontWeight="Bold"></TextBox>
             </StackPanel>
+            <StackPanel x:Name="stkpnlPatientTestList" Orientation="Vertical">
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </UserControl>

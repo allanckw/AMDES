@@ -23,12 +23,19 @@
             </StackPanel>
             <StackPanel x:Name="PageSFrame" Height="160" Width="960" Margin="0,0,0,0"/>
             <Label Content="Recommendations"  FontSize="14" FontWeight="Bold"/>
-            <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="270" Width="960" HorizontalAlignment="Left">
+            <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="230" Width="960" HorizontalAlignment="Left">
                 <StackPanel x:Name="PageFrame"/>
             </ScrollViewer>
-            <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+            <StackPanel x:Name="ButtonFrame" Height="70" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,60,0">
+                    <Label Content="View Trace allows you to view the options that have been selected to get to these recommendations,"  FontWeight="Bold" FontSize="12" />
+                    <Label Content="you cannot undo after this action." FontWeight="Bold" FontSize="12" />
+                    <Label Content="Previous undo your action and brings you back to the previous section."  FontWeight="Bold" FontSize="12" />
+                </StackPanel>
+                <Button Content="View Trace" Height="30" Name="button1" Width="100" Margin="0,0,10,0" Click="button1_Click" />
                 <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" />
                 <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,0,0" Click="btnTestAgin_Click" />
+
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -21,7 +21,7 @@
                     <TextBox TextWrapping="Wrap" Text="Clinic" Width="360" Height="25" Name="txtLocation" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="stkpnlTermCondition" Height="335" Width="530">
+            <StackPanel x:Name="stkpnlTermCondition" Height="365" Width="530">
                 <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="16" FontFamily="Tahoma" Margin="10,10,10,10"/>
                 <RichTextBox Height="300" Width="500" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
                     <FlowDocument>
@@ -47,7 +47,7 @@
             </StackPanel>
             <StackPanel x:Name="stkpnlAcceptDecline" Height="47" Width="512">
                 <StackPanel Height="40" Width="511" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,0,0">
-                    <CheckBox Content="Save Patient Data?" Margin="10,0,150,0" Name="chkSavePat" Height="30" FontSize="14"  FontWeight="DemiBold" IsChecked="True" />
+                    <CheckBox Content="Save Patient Data?" Margin="10,0,150,0" Name="chkSavePat" Height="30" FontSize="14"  FontWeight="DemiBold" IsChecked="False" />
                     <Button Content="Accept" Width="100" Margin="0,0,10,0" Click="btnAccept_Click" Height="30"/>
                     <Button Content="Decline" Width="100" Margin="0,0,0,0" Click="btnDecline_Click" Height="30"/>
                 </StackPanel>

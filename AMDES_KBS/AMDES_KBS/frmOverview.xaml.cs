@@ -60,11 +60,6 @@ namespace AMDES_KBS
             List<Patient> pList = PatientController.getAllPatients();
 
             loadPatients(pList);
-            //for (int i = 0; i < pList.Count; i++)
-            //{
-            //    Patient p = pList.ElementAt(i);
-            //    loadPatient(p);
-            //}
         }
 
 

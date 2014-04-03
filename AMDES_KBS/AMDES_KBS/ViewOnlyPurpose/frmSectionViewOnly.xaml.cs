@@ -206,6 +206,7 @@ namespace AMDES_KBS
                 if (prevPage == null)
                 {
                     btnPrev.Visibility = Visibility.Collapsed;
+                   
                 }
                 else
                 {

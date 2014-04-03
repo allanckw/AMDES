@@ -46,11 +46,11 @@ namespace AMDES_KBS
             Patient currPatient = CLIPSController.CurrentPatient;
             lblPatientID.Content = currPatient.NRIC;
             lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
-
-
-
+            offCommands(240);
             loadSection(sectionID);
         }
+
+
 
         public frmSection(Frame amdesFrame, int sectionID, List<QnHistory> hisList)
         {
@@ -67,6 +67,7 @@ namespace AMDES_KBS
             loadSection(sectionID);
             setAns(hisList);
             setLastPage();
+            offCommands(240);
         }
 
         public frmSection(Frame amdesFrame, int sectionID, frmSection prevSection)
@@ -80,47 +81,28 @@ namespace AMDES_KBS
             lblPatientID.Content = currPatient.NRIC;
             lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
             loadSection(sectionID);
+            offCommands(240);
         }
 
-        //public frmSection(frmSection prevSection)
-        //{
-        //    InitializeComponent();
-        //    lblSection.Content = prevSection.lblSection.Content;
-        //    amdesPageFrame = prevSection.amdesPageFrame;
-        //    prevPage = prevSection.prevPage;
-        //    heightLimit = 430;
-        //    Patient currPatient = CLIPSController.CurrentPatient;
-        //    lblPatientID.Content = currPatient.NRIC;
-        //    lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
-        //    PageContent = prevSection.PageContent;
-        //    WholeContent = prevSection.WholeContent;
-        //    heightLimit = prevSection.heightLimit;
-        //    CurrPageNo = prevSection.CurrPageNo;
-        //    TotalPageNo = prevSection.TotalPageNo;
-        //    collapseRest = prevSection.collapseRest;
-        //    sectionType = prevSection.sectionType;
-        //    //loadSection(sectionID);
+        void offCommands(double offset)
+        {
+            if (CLIPSController.savePatient == false) //turn off saving when anon mode
+            {
+                btnSave.Visibility = Visibility.Collapsed;
+                if (btnPrev.Visibility == Visibility.Visible)
+                    offset -= btnPrev.Width + 10;
 
-        //    //double heightLimit = 0;
-        //    //double currHeight = 0;
-        //    //int CurrPageNo = 1;
-        //    //int TotalPageNo = 1;
+                zz.Margin = new Thickness(0, 0, offset, 0);
+            }
+            else
+            {
+                offset -= 110;
+                if (btnPrev.Visibility == Visibility.Visible)
+                    offset -= btnPrev.Width + 10;
 
-        //    //Frame amdesPageFrame;
-        //    //QuestionType sectionType;
-        //    //frmSection prevPage;
-
-        //    //List<List<ucQuestion>> PageContent = new List<List<ucQuestion>>();
-        //    //List<ucQuestion> WholeContent = new List<ucQuestion>();
-
-        //    //bool collapseRest = false;
-        //}
-
-        //public void loadPrevSection(frmSection prevSection)
-        //{
-        //    this.MainFrame = prevSection.MainFrame;
-        //}
-
+                zz.Margin = new Thickness(0, 0, offset, 0);
+            }
+        }
 
         public void loadSection(int sectionID)
         {
@@ -138,7 +120,7 @@ namespace AMDES_KBS
             }
 
             lblSection.Content = QG.Header;
-            txtDesc.Text = QG.Description.Replace("~~", Environment.NewLine);
+            txtDesc.Text = QG.Description.Replace("~~", Environment.NewLine).Trim();
             foreach (Question q in QG.Questions)
             {
                 addQuestion(q);
@@ -151,12 +133,12 @@ namespace AMDES_KBS
             ucQuestion ucQ = new ucQuestion();
             if (sectionType == QuestionType.COUNT)
             {
-                ucQ.loadQuestion(q,QG.GroupID, lblCurrScore);
+                ucQ.loadQuestion(q, QG.GroupID, lblCurrScore);
             }
             else
             {
                 //ucQ.Name="Question" + q.ID;
-                ucQ.loadQuestion(q,QG.GroupID, null);
+                ucQ.loadQuestion(q, QG.GroupID, null);
             }
             //currHeight += Math.Ceiling(ucQ.getHeight());
             QuestionFrame.Children.Add(ucQ);
@@ -203,7 +185,7 @@ namespace AMDES_KBS
 
         private void setAns(List<QnHistory> hisList)
         {
-            for (int i = 0; i < WholeContent.Count ; i++)
+            for (int i = 0; i < WholeContent.Count; i++)
             {
                 WholeContent[i].setAnswer(hisList[i].Answer);
             }
@@ -233,7 +215,7 @@ namespace AMDES_KBS
 
         private void setLastPage()
         {
-            while (CurrPageNo<TotalPageNo)
+            while (CurrPageNo < TotalPageNo)
             {
                 foreach (ucQuestion item in PageContent.ElementAt(CurrPageNo - 1))
                 {
@@ -279,10 +261,12 @@ namespace AMDES_KBS
                 if (prevPage == null)
                 {
                     btnPrev.Visibility = Visibility.Collapsed;
+
                 }
                 else
                 {
                     btnPrev.Visibility = Visibility.Visible;
+
                 }
             }
         }
@@ -315,6 +299,8 @@ namespace AMDES_KBS
                     frmSection nextSection = new frmSection(amdesPageFrame, sectionID, this);
                     amdesPageFrame.Navigate(nextSection);
                 }
+
+
             }
         }
 

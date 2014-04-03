@@ -25,6 +25,8 @@ namespace AMDES_KBS.Entity
 
         private DateTime assessmentDate;
 
+        private DateTime? completedDate;
+
         Dictionary<int, List<QnHistory>> history;
 
         public string PatientID
@@ -43,12 +45,19 @@ namespace AMDES_KBS.Entity
             set { assessmentDate = value; }
         }
 
+        public DateTime? CompletedDate
+        {
+            get { return completedDate; }
+            set { completedDate = value; }
+        }
+
         public History()
         {
             history = new Dictionary<int, List<QnHistory>>();
             sympsList = new List<Symptom>();
             diagList = new List<Diagnosis>();
             status = PatientStatus.DRAFT;
+            completedDate = null;
 
         }
 
@@ -60,6 +69,7 @@ namespace AMDES_KBS.Entity
             sympsList = new List<Symptom>();
             diagList = new List<Diagnosis>();
             status = PatientStatus.DRAFT;
+            completedDate = null;
 
         }
 
@@ -211,6 +221,7 @@ namespace AMDES_KBS.Entity
         public void setCompleted()
         {
             this.status = PatientStatus.COMPLETED;
+            this.completedDate = DateTime.Now.Date;
         }
     }
 

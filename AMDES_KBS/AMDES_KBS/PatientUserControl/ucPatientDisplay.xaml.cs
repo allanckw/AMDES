@@ -30,12 +30,23 @@ namespace AMDES_KBS
             brush = new SolidColorBrush(c);
 
             this.gridPatient.Background = brush;
-            txtAssessor.Background = brush;
-            txtPatientID.Background = brush;
-            txtPatientName.Background = brush;
-            txtStatus.Background = brush;
-            txtTestTime.Background = brush;
-               
+
+            foreach (Control ctrl in stkpnlPatientDetail.Children)
+            { 
+                if (ctrl.GetType() != typeof(Button))
+                    ctrl.Background = brush;
+            }
+
+            foreach (Control ctrl in stkpnlPatientTestList.Children)
+            {
+                if (ctrl.GetType() != typeof(Button))
+                    ctrl.Background = brush;
+            }
+
+            foreach (Control ctrl in stkpnlPatientTestHeader.Children)
+            {
+                ctrl.Background = brush;
+            }
 
             this.amdesPageFrame = ParentFrame;
             this.pat = p;
@@ -48,29 +59,28 @@ namespace AMDES_KBS
 
             List<History> hList = p.getAllPatientHistory();
 
-            if (hList.Count == 0)
-                btnShowHideTest.Visibility = Visibility.Hidden;
-            else
-                loadTest(hList);
+            stkpnlPatientTestHeader.Visibility = Visibility.Collapsed;
 
-            //if (p.Status == PatientStatus.COMPLETED)
-            //{
-            //    btnResult.Visibility = Visibility.Visible;
-            //}
-            //else
-            //{
-            //    btnResult.Visibility = Visibility.Collapsed;
-            //}
+            if (hList.Count == 0)
+            {
+                btnShowHideTest.Visibility = Visibility.Hidden;
+                stkpnlPatientTestList.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                loadTest(hList);
+            }
+
         }
 
         private void loadTest(List<History> lstHistory)
         {
             if (pat != null)
             {
-              
+
                 for (int i = 0; i < lstHistory.Count; i++)
                 {
-                    ucPatientTest patientTest = new ucPatientTest(lstHistory[i],pat,amdesPageFrame ,brush);
+                    ucPatientTest patientTest = new ucPatientTest(lstHistory[i], pat, amdesPageFrame, brush);
                     patientTest.Tag = i;
                     //patientTest.Visibility = Visibility.Collapsed;
                     stkpnlPatientTestList.Children.Add(patientTest);
@@ -84,11 +94,13 @@ namespace AMDES_KBS
             if (btnShowHideTest.Content.ToString().Trim() == "+")
             {
                 stkpnlPatientTestList.Visibility = Visibility.Visible;
+                stkpnlPatientTestHeader.Visibility = Visibility.Visible;
                 btnShowHideTest.Content = "-";
             }
             else
             {
                 stkpnlPatientTestList.Visibility = Visibility.Collapsed;
+                stkpnlPatientTestHeader.Visibility = Visibility.Collapsed;
                 btnShowHideTest.Content = "+";
             }
         }
@@ -107,7 +119,6 @@ namespace AMDES_KBS
 
             CLIPSController.clearAndLoadNew();
             int sectionID = CLIPSController.getCurrentQnGroupID();
-            //MessageBox.Show(sectionID.ToString()); - DONE
 
             frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
             amdesPageFrame.Navigate(TestSection);
@@ -115,11 +126,7 @@ namespace AMDES_KBS
 
         private void btnResult_Click(object sender, RoutedEventArgs e)
         {
-            //KAI Result button no longer here, please remove, move to test section
-            //new button will either start a new test or continue from a saved test depending on whether there is a history or not
-            //I cant move status to history yet cos your controls are using , please remove all references before i can continue
             CLIPSController.CurrentPatient = pat;
-
             frmRecommendation frmConclusion = new frmRecommendation(amdesPageFrame, pat.getLatestHistory().Diagnoses, null);
             amdesPageFrame.Navigate(frmConclusion);
 
