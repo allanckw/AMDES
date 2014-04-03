@@ -116,12 +116,12 @@ namespace AMDES_KBS
             header.FontWeight = FontWeights.Bold;
 
             StackPanel stkpnlSymptons = new StackPanel();
-            stkpnlSymptons.Margin = new Thickness(20, 0, 0, 0);
+            stkpnlSymptons.Margin = new Thickness(10, 0, 0, 0);
 
             foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
             {
                 Label lblSymptons = new Label();
-                lblSymptons.Content = "Symptoms - " + sym.SymptomName;
+                lblSymptons.Content = sym.SymptomName;
                 stkpnlSymptons.Children.Add(lblSymptons);
             }
 

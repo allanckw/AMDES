@@ -84,7 +84,7 @@ namespace AMDES_KBS
             }
             catch { }
             {
-                MessageBox.Show("Please check your internet connection!");
+                //MessageBox.Show("Please check your internet connection!");
             }
         }
 

@@ -124,12 +124,12 @@ namespace AMDES_KBS
             header.Content = "The patient has the following symptoms stated in the questionnaire :";
             header.Height = 30;
             StackPanel stkpnlSymptons = new StackPanel();
-            stkpnlSymptons.Margin = new Thickness(20, 0, 0, 0);
+            stkpnlSymptons.Margin = new Thickness(10, 0, 0, 0);
 
             foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
             {
                 Label lblSymptons = new Label();
-                lblSymptons.Content = "Symptoms - " + sym.SymptomName;
+                lblSymptons.Content = sym.SymptomName;
                 stkpnlSymptons.Children.Add(lblSymptons);
             }
 
@@ -139,8 +139,8 @@ namespace AMDES_KBS
             }
             //<ScrollViewer x:Name="svS" VerticalScrollBarVisibility="auto" Height="160" Width="960" HorizontalAlignment="Left">
             ScrollViewer sv = new ScrollViewer();
-            sv.Height=160-30;
-            sv.Width=960;
+            sv.Height = 160 - 30;
+            sv.Width = 960;
             sv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             sv.Content = stkpnlSymptons;
 
@@ -165,6 +165,6 @@ namespace AMDES_KBS
         {
             CLIPSController.clearAndLoadNew();
         }
-      
+
     }
 }
