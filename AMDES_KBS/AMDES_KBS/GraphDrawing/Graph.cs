@@ -87,9 +87,9 @@ namespace CircularDependencyTool
 
         public List<Node> Nodes { get; private set; }
 
-        public void addGraphNodes(string id)
+        public void addGraphNodes(string id, bool evalTrue)
         {
-            var node = new Node(id, this.X, this.Y);
+            var node = new Node(id, this.X, this.Y, evalTrue);
             if (Nodes.Contains(node))
             {
                 throw new InvalidOperationException("Please do not add the same set of question twice!");

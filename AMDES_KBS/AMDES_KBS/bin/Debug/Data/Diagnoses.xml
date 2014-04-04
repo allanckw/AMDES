@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Diagnoses xml-->
 <Diagnoses>
-  <Diagnosis diagID="1">
-    <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
-    <Header>Low likelihood of dementia, other underlying conditions</Header>
-    <Link>www.google.com.sg</Link>
-  </Diagnosis>
   <Diagnosis diagID="2">
     <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
     <Header>Low likelihood of dementia, Consider congenital conditions</Header>
@@ -44,6 +39,11 @@
   <Diagnosis diagID="6">
     <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test~~</Comment>
     <Header>Recommended Tests</Header>
+    <Link></Link>
+  </Diagnosis>
+  <Diagnosis diagID="1">
+    <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
+    <Header>Low likelihood of dementia, other underlying conditions</Header>
     <Link></Link>
   </Diagnosis>
 </Diagnoses>

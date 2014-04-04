@@ -12,13 +12,14 @@ namespace CircularDependencyTool
     {
         #region Constructor
 
-        public Node(string id, double locationX, double locationY)
+        public Node(string id, double locationX, double locationY, bool evalTrue)
         {
             this.NodeDependencies = new List<Node>();
            
             this.LocationX = locationX;
             this.LocationY = locationY;
             this.ID = id;
+            this.evalToTrue = !evalTrue;
         }
 
         #endregion // Constructor
@@ -56,6 +57,12 @@ namespace CircularDependencyTool
         }
 
         public List<Node> NodeDependencies { get; private set; }
+
+
+        public bool HasCircularDependency
+        {
+            get { return this.evalToTrue; }
+        }
 
         public double NodeWidth
         {
@@ -102,6 +109,8 @@ namespace CircularDependencyTool
         #region Fields
 
         double _locationX, _locationY;
+
+        bool evalToTrue;
 
         #endregion // Fields
 

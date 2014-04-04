@@ -209,7 +209,7 @@ namespace AMDES_KBS
             Navigation nav = rule.Navigations[rule.Navigations.Count - 1];
             foreach (NaviChildCriteriaQuestion n in nav.ChildCriteriaQuestion)
             {
-                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header,n.Ans);
             }
             loadGraph1();
             lblText.Content = "Displaying Saved Rule";
@@ -242,7 +242,7 @@ namespace AMDES_KBS
 
                 foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
                 {
-                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header, n.Ans);
                 }
 
                 loadGraph1();
@@ -257,7 +257,7 @@ namespace AMDES_KBS
 
                     foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
                     {
-                        g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                        g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header, n.Ans);
                     }
 
                     loadGraph1();
@@ -279,7 +279,7 @@ namespace AMDES_KBS
                     g.resetGraph();
                     foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
                     {
-                        g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                        g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header, n.Ans);
                     }
                     loadGraph1();
                 }
@@ -320,7 +320,7 @@ namespace AMDES_KBS
                 g.resetGraph();
                 foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
                 {
-                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header, n.Ans);
                 }
                 loadGraph1();
                 lblText.Content = "Displaying Current Decision Point";
@@ -341,7 +341,7 @@ namespace AMDES_KBS
                 g.resetGraph();
                 foreach (NaviChildCriteriaQuestion n in navs.ChildCriteriaQuestion)
                 {
-                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header, n.Ans);
                 }
                 loadGraph1();
             }
@@ -498,7 +498,7 @@ namespace AMDES_KBS
                 Navigation nav = rule.Navigations[rule.Navigations.Count - 1];
                 foreach (NaviChildCriteriaQuestion n in nav.ChildCriteriaQuestion)
                 {
-                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+                    g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header, n.Ans);
                 }
                 loadGraph1();
                 lblText.Content = "Displaying Saved Rule";

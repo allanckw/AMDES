@@ -14,13 +14,13 @@
             <Setter Property="BorderBrush" Value="Gray" />
             <Setter Property="Height" Value="{Binding Path=NodeHeight, Mode=OneTime}" />
             <Setter Property="Padding" Value="1" />
-            <Setter Property="TextElement.FontWeight" Value="Normal" />
+            <Setter Property="TextElement.FontWeight" Value="DemiBold" />
             <Setter Property="Width" Value="{Binding Path=NodeWidth, Mode=OneTime}" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=HasCircularDependency, Mode=OneTime}" Value="True">
-                    <Setter Property="Background" Value="Red" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="TextElement.FontWeight" Value="Bold" />
+                    <Setter Property="Background" Value="#4EFF0000" />
+                    <!--<Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="TextElement.FontWeight" Value="Bold" />-->
                 </DataTrigger>
             </Style.Triggers>
         </Style>

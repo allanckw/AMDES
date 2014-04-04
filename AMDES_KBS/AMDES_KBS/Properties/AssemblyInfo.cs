@@ -8,10 +8,10 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AMDES_NUS_SOC")]
-[assembly: AssemblyDescription("Adaptive Medical Diagnosis System")]
+[assembly: AssemblyDescription("Adaptive Medical Diagnosis Expert System")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("National University of Singapore")]
-[assembly: AssemblyProduct("AMDES_KBS")]
+[assembly: AssemblyCompany("National University of Singapore - CS4244 AY13/14 Team 7")]
+[assembly: AssemblyProduct("AMDES")]
 [assembly: AssemblyCopyright("Copyright ©2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

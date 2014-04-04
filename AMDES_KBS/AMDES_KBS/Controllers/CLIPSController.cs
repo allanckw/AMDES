@@ -165,6 +165,7 @@ namespace AMDES_KBS.Controllers
             String a = sb.ToString().Trim();
             env.AssertString(a);
             assertLog.Add(a);
+            saveAssertLog();
             count++;
         }
 
@@ -398,9 +399,9 @@ namespace AMDES_KBS.Controllers
             h = getCurrentPatientSymptom(h);
             h.setCompleted();
 
-           
-                HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
-            
+
+            HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+
         }
 
         public static void saveCurrentNavex()
