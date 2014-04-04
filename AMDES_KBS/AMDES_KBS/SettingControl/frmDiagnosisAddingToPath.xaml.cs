@@ -57,19 +57,19 @@ namespace AMDES_KBS
 
         private void loadAddedDiagnosis()
         {
-            List<Diagnosis> dList = DiagnosisController.getAllDiagnosis();
-            for (int i = 0; i < dList.Count; i++)
-            {
-                Diagnosis d = dList[i];
-                if (!existsInAddedList(d))
-                {
-                    dList.Remove(d);
-                    i--;
-                }
-            }
+            //List<Diagnosis> dList = DiagnosisController.getAllDiagnosis();
+            //for (int i = 0; i < dList.Count; i++)
+            //{
+            //    Diagnosis d = dList[i];
+            //    if (!existsInAddedList(d))
+            //    {
+            //        dList.Remove(d);
+            //        i--;
+            //    }
+            //}
 
-            AddedList = dList;
-
+            //AddedList = dList;
+            lstDiagnosisListAdded.ItemsSource = null;
             lstDiagnosisListAdded.ItemsSource = AddedList;
         }
 

@@ -137,7 +137,7 @@ namespace AMDES_KBS
 
 
             txtDescription.Text = "";
-            lstDiagnosisList.ItemsSource = null;
+            lstDiagnosisList.ItemsSource = new List<Diagnosis>();
             cboDiagnosisList.SelectedIndex = -1;
             lstStep = new List<ucNavigationFlowSetting>();
             addNewStep();
@@ -184,6 +184,7 @@ namespace AMDES_KBS
             frmDiagnosisAddingToPath cDiagnosis = new frmDiagnosisAddingToPath(dList);
             if (cDiagnosis.ShowDialog() == true)
             {
+                lstDiagnosisList.ItemsSource = null;
                 lstDiagnosisList.ItemsSource = cDiagnosis.getAddedDiagnosis();
             }
         }
@@ -503,7 +504,7 @@ namespace AMDES_KBS
                 loadGraph1();
                 lblText.Content = "Displaying Saved Rule";
                 LoadAllRule();
-                cboDiagnosisList.SelectedIndex = cboDiagnosisList.Items.Count - 1;
+                //cboDiagnosisList.SelectedIndex = cboDiagnosisList.Items.Count - 1;
                 MessageBox.Show("Saved!");
             }
         }

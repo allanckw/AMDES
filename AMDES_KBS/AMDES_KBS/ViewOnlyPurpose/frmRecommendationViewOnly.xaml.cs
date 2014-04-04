@@ -123,6 +123,7 @@ namespace AMDES_KBS
             Label header = new Label();
             header.Content = "The patient has the following symptoms stated in the questionnaire :";
             header.Height = 30;
+            header.FontWeight = FontWeights.Bold;
             StackPanel stkpnlSymptons = new StackPanel();
             stkpnlSymptons.Margin = new Thickness(10, 0, 0, 0);
 

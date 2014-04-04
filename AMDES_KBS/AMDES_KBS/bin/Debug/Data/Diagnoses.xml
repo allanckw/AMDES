@@ -21,29 +21,34 @@
     <Header>Brain Imaging and Referral</Header>
     <Link></Link>
   </Diagnosis>
-  <Diagnosis diagID="8">
-    <Comment>The patient does not have any signs of dementia.</Comment>
-    <Header>No Dementia</Header>
-    <Link></Link>
-  </Diagnosis>
-  <Diagnosis diagID="9">
-    <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
-    <Header>No Diagnosis</Header>
-    <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
-  </Diagnosis>
   <Diagnosis diagID="4">
     <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.</Comment>
     <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
     <Link></Link>
   </Diagnosis>
-  <Diagnosis diagID="6">
-    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test~~</Comment>
-    <Header>Recommended Tests</Header>
-    <Link></Link>
-  </Diagnosis>
   <Diagnosis diagID="1">
     <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
     <Header>Low likelihood of dementia, other underlying conditions</Header>
+    <Link></Link>
+  </Diagnosis>
+  <Diagnosis diagID="6">
+    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+    <Header>Recommended Tests</Header>
+    <Link></Link>
+  </Diagnosis>
+  <Diagnosis diagID="9">
+    <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+    <Header>Failed ATMS with no other symptoms</Header>
+    <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+  </Diagnosis>
+  <Diagnosis diagID="8">
+    <Comment>The patient has no signs of dementia.</Comment>
+    <Header>No Dementia</Header>
+    <Link></Link>
+  </Diagnosis>
+  <Diagnosis diagID="11">
+    <Comment>The patient has some symptoms of Dementia, but does not fufil DSM IV Criteria~~The patient will need further evaluation.</Comment>
+    <Header>Unconclusive - Some symptoms of Dementia</Header>
     <Link></Link>
   </Diagnosis>
 </Diagnoses>

@@ -35,6 +35,7 @@ namespace AMDES_KBS
 
         private void loadAllBehaviour()
         {
+            cboDiagnosisList.Items.Clear();
             AllBehaviour = DefaultBehaviorController.getAllDefaultBehavior();
             for (int i = 0; i < AllBehaviour.Count; i++)
             {
@@ -53,7 +54,7 @@ namespace AMDES_KBS
                 else
                 {
                     QuestionGroup qg = QuestionController.getGroupByID(behaviour.DestGrpID);
-                    s += Environment.NewLine + "Destination - Section " + qg.Header;
+                    s += Environment.NewLine + "Destination - " + qg.Header;
                 }
 
                 cboDiagnosisList.Items.Add(s);
@@ -70,7 +71,7 @@ namespace AMDES_KBS
             chkConclusive.IsChecked = false;
             stkpnlDiagnosis.Visibility = Visibility.Collapsed;
             stkpnlSectionDestination.Visibility = Visibility.Visible;
-            lstDiagnosisList.ItemsSource = null;
+            lstDiagnosisList.ItemsSource = new List<Diagnosis>();
             //txtDescription.Text = "";
             reloadAttribute();
             reloadCriteria();
@@ -201,6 +202,7 @@ namespace AMDES_KBS
             frmDiagnosisAddingToPath cDiagnosis = new frmDiagnosisAddingToPath(dList);
             if (cDiagnosis.ShowDialog() == true)
             {
+                lstDiagnosisList.ItemsSource = null;
                 lstDiagnosisList.ItemsSource = cDiagnosis.getAddedDiagnosis();
             }
         }
@@ -413,7 +415,7 @@ namespace AMDES_KBS
                     for (int i = 0; i < diaList.Count; i++)
                     {
                         Diagnosis dia = diaList[i];
-                        if (dia.RID==rID)
+                        if (dia.RID == rID)
                         {
                             diaListExist.Add(dia);
                             break;
