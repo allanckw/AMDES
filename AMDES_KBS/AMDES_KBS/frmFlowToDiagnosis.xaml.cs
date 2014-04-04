@@ -23,7 +23,7 @@ namespace AMDES_KBS
     public partial class frmFlowToDiagnosis : Window
     {
         int currStep = 1;
-        List<ucNavigationFlowSetting> lstStep;
+        static List<ucNavigationFlowSetting> lstStep;
         Rules rule;
 
         //Graph drawing
@@ -75,28 +75,38 @@ namespace AMDES_KBS
             lstDiagnosisList.ItemsSource = r.DiagnosisList;
             lstStep = new List<ucNavigationFlowSetting>();
             loadSteps(r.Navigations);
+            displayLastSteps();
             //cboNaviList.ItemsSource = r.Navigations;
+        }
+
+        private void addStepsIntoLst(ucNavigationFlowSetting ucNavi)
+        {
+            lstStep.Add(ucNavi);
         }
 
         private void loadSteps(List<Navigation> naviList)
         {
             for (int i = 0; i < naviList.Count; i++)
             {
-                Navigation navi = naviList[i];
-                addStep(i + 1, navi);
+                //Navigation navi = naviList[i];
+                ucNavigationFlowSetting ucNavi = addStep(i + 1, naviList[i]);
+                addStepsIntoLst(ucNavi);
+                //lstStep.Add(ucNavi);
             }
             currStep = 1;
+
             stkpnlSteps.Children.Clear();
-            lstStep[0].loadIsConclusive();
-            lstStep[0].loadCheckedAgeMoreOrLess();
-            lstStep[0].loadCheckedYN();
+
+            //lstStep[0].loadIsConclusive();
+            //lstStep[0].loadCheckedAgeMoreOrLess();
+            //lstStep[0].loadCheckedYN();
 
             stkpnlSteps.Children.Add(lstStep[0]);
             btnNextStep.Visibility = Visibility.Visible;
             btnPrevStep.Visibility = Visibility.Hidden;
         }
 
-        public void addStep(int stepNo, Navigation step)
+        public ucNavigationFlowSetting addStep(int stepNo, Navigation step)
         {
             //stkpnlSteps.Children.Clear();
             ucNavigationFlowSetting stepControl = new ucNavigationFlowSetting(stepNo, step);
@@ -106,9 +116,7 @@ namespace AMDES_KBS
             stepControl.loadIsConclusive();
             stepControl.loadCheckedAgeMoreOrLess();
             stepControl.loadCheckedYN();
-
-            lstStep.Add(stepControl);
-
+            return stepControl;
             //stkpnlSteps.Children.Add(stepControl);
             //if (currStep == stepNo)
             //{
@@ -187,6 +195,24 @@ namespace AMDES_KBS
             {
                 return;
             }
+        }
+
+        private void displayLastSteps()
+        {
+            while (currStep<lstStep.Count)
+            {
+                currStep++;
+                loadSteps();
+            }
+
+            g = new Graph("RuleID: " + rule.RuleID + ", " + rule.Description);
+            Navigation nav = rule.Navigations[rule.Navigations.Count - 1];
+            foreach (NaviChildCriteriaQuestion n in nav.ChildCriteriaQuestion)
+            {
+                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header);
+            }
+            loadGraph1();
+            lblText.Content = "Displaying Saved Rule";
         }
 
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
@@ -466,6 +492,7 @@ namespace AMDES_KBS
         {
             if (saveNavigation())
             {
+                int sdx = cboDiagnosisList.SelectedIndex;
                 NavigationController.updateRules(rule);
                 g = new Graph("RuleID: " + rule.RuleID + ", " + rule.Description);
                 Navigation nav = rule.Navigations[rule.Navigations.Count - 1];
@@ -476,6 +503,7 @@ namespace AMDES_KBS
                 loadGraph1();
                 lblText.Content = "Displaying Saved Rule";
                 LoadAllRule();
+                cboDiagnosisList.SelectedIndex = cboDiagnosisList.Items.Count - 1;
                 MessageBox.Show("Saved!");
             }
         }

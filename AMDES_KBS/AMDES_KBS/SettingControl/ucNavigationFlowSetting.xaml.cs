@@ -87,11 +87,11 @@ namespace AMDES_KBS
                             //attr.Ans = ageResult;
                             if (radMoreEqual.IsChecked == true)
                             {
-                                attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
+                                attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
                             }
                             else
                             {
-                                attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThan);
+                                attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
                             }
                         }
                         break;
@@ -110,11 +110,11 @@ namespace AMDES_KBS
                 //ageAttr.Ans = ageResult;
                 if (radMoreEqual.IsChecked == true)
                 {
-                    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
+                    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
                 }
                 else
                 {
-                    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThan);
+                    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
                 }
                 naviChildAttrGroupList.Add(ageAttr);
             }
@@ -187,13 +187,15 @@ namespace AMDES_KBS
                                 chkRequireAge.IsChecked = true;
                                 txtAge.Text = naviAttr.AttributeValue;
                                 //ageResult = naviAttr.Ans;
-                                if (naviAttr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+                                if (naviAttr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
                                 {
                                     radMoreEqual.IsChecked = true;
+                                    ageCompareResult = 1;
                                 }
                                 else
                                 {
-                                    radless.IsChecked = true;
+                                    this.radlessThaneqal.IsChecked = true;
+                                    ageCompareResult = 0;
                                 }
                             }
                             break;
@@ -203,6 +205,9 @@ namespace AMDES_KBS
                 }
             }
 
+           
+            loadCheckedAgeMoreOrLess();
+            loadCheckedYN();
             //loadCheckedAgeTF();
             //loadCheckedAgeTF();
             //loadCheckedAgeMoreOrLess();
@@ -273,7 +278,7 @@ namespace AMDES_KBS
         {
             if (ageCompareResult == 0)
             {
-                radless.IsChecked = true;
+                this.radlessThaneqal.IsChecked = true;
             }
             else
             {

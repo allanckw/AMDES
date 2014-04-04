@@ -16,8 +16,8 @@
                     <CheckBox x:Name="chkRequireAge" Content="Required Age?" Height="20" Checked="chkRequireAge_Checked" Unchecked="chkRequireAge_Unchecked" />
                     <StackPanel x:Name="stkpnlAgeSetting" Visibility="Hidden" Orientation="Horizontal" Margin="10,0,0,0" >
                         <StackPanel x:Name="stkpnlAgeCriteria">
-                            <RadioButton x:Name="radless" GroupName="checkAge" Content="Less than" Height="20" IsChecked="True" Checked="radless_Checked" />
-                            <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than or equal" Height="20" Width="125" Checked="radMoreEqual_Checked" />
+                            <RadioButton x:Name="radlessThaneqal" GroupName="checkAge" Content="Less than or equal" Height="20" IsChecked="True" Checked="radless_Checked" />
+                            <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than" Height="20" Width="125" Checked="radMoreEqual_Checked" />
                         </StackPanel>
                         <StackPanel Width="75" Height="40">
                             <TextBox x:Name="txtAge" Width="40" Height="30" Margin="5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
