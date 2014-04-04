@@ -20,7 +20,7 @@
                     <Label x:Name="txtPatientName" Width="350"  Content="Name of patients" FontWeight="DemiBold"/>
                     <Label x:Name="txtPatientID" Width="120" Content="Patient's ID" FontWeight="DemiBold"/>
                     <Label x:Name="txtAssessor" Width="150" Content="Assessor" FontWeight="DemiBold" />
-                    <Label x:Name="txtStatus" Width="80" Content="Status" FontWeight="DemiBold"/>
+                    <!--<Label x:Name="txtStatus" Width="80" Content="Status" FontWeight="DemiBold"/>-->
                 </StackPanel>
                 <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Height="454" Width="960" HorizontalAlignment="Left">
                     <StackPanel x:Name="stkpnlPatientList"/>
