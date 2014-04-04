@@ -15,6 +15,17 @@ namespace AMDES_KBS.Entity
         private string link;
         private string header;
 
+        public Diagnosis()
+        {
+        }
+
+        public Diagnosis(int rid, string comment, string header)
+        {
+            this.rid = rid;
+            this.comment = comment;
+            this.header = header;
+        }
+
         public string Header
         {
             get { return header; }

@@ -1,5 +1,5 @@
 ;;CS4244 Project (Group 8)
-;;AMDES Rule Base MODEL
+;; AMDES Rule Base MODEL
 ;; Ang Ji Kai (A0073896L)
 ;; Ang Nickolas (A0077307A)
 ;; Chong Kok Wei (A0073859M)
@@ -13,14 +13,15 @@
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 (deftemplate Currentquestion
+   (slot GroupID (type SYMBOL))
    (slot ID (type SYMBOL))
    (slot QuestionText (type STRING))
-   (slot answer (type STRING) (default ""))
-   (slot GroupID (type SYMBOL)))
+   (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 ;; Final Diagnosis
 (deftemplate diagnosis
-   (multislot RID (type SYMBOL)))
+   (multislot RID (type SYMBOL))
+   (slot Comment (type STRING)))
 
 ;; A Group has many questions
 (deftemplate group
@@ -74,7 +75,7 @@
 (deftemplate symptoms
    (slot ID (type SYMBOL))
    (slot symptom (type STRING)))
-
+   
 
 (defrule Initial_Question
    ;;(mode 1)
@@ -91,7 +92,49 @@
    (assert (Currentgroup (GroupID ?z) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c)  (answer ?e)))
    (modify ?hist (ID $?x ?z END)))
 
+(defrule Go_To_Next_QuestionGrp
+   ;;(mode 1)
+   (not (exists
+             (diagnosis)))
+   ?rmv <- (Currentgroup (GroupID ?y))
+   ?nxt <- (next)
+   (Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
+   (exists
+        (NaviChildCritQuestion (NavigationID ?naviID)))
+   (forall
+        (NaviChildCritQuestion (NavigationID ?naviID) (CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
+        (group (GroupID ?CGID) (answer ?CA))
+        (NaviHistory (ID $?START ?CGID $?END)))
+   (not (exists
+             (NaviChildCritAttribute (NavigationID ?naviID) (Answer No))))
+   ?hist <- (NaviHistory (ID $?x END))
+   ?grp <- (group (GroupID ?z) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e))
+   =>
+
+   (retract ?rmv)
+   (retract ?nxt)
+   (printout t crlf "next" crlf)
+   (assert (Currentgroup (GroupID ?z) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e)))
+   (modify ?hist (ID $?x ?z END)))
+
+(defrule Go_To_Previous_QuestionGrp
+   ?prev <- (previous)
+
+   (not (exists
+             (diagnosis)))
+   ?rmv <- (Currentgroup (GroupID ?y))
+   ?hist <- (NaviHistory (ID $?x ?p ?y END))
+   ?grp <- (group (GroupID ?p) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e))
+   =>
+   (retract ?rmv)
+   (retract ?prev)
+   (printout t crlf "previous" crlf)
+   (assert (Currentgroup (GroupID ?p) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e)))
+   (modify ?hist (ID $?x ?p END)))
+
 (defrule Assert_CurrentQuestion
+   (not (exists
+             (diagnosis)))
    (Currentgroup (GroupID ?y))
    (question (GroupID ?y) (ID ?a) (QuestionText ?b) (answer ?c))
    (not (exists
@@ -100,6 +143,8 @@
    (assert (Currentquestion (GroupID ?y) (ID ?a) (QuestionText ?b) (answer ?c))))
 
 (defrule Retract_CurrentQuestion
+   (not (exists
+             (diagnosis)))
    (Currentgroup (GroupID ?y))
    ?question <- (Currentquestion (GroupID ?x&~?y))
    =>
@@ -233,29 +278,7 @@
                   (modify ?target (Answer No)))
                (case No then))))))
 
-(defrule Go_To_Next_Question
-   ;;(mode 1)
-   (not (exists
-             (diagnosis)))
-   ?rmv <- (Currentgroup (GroupID ?y))
-   ?nxt <- (next)
-   (Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
-   (exists
-        (NaviChildCritQuestion (NavigationID ?naviID)))
-   (forall
-        (NaviChildCritQuestion (NavigationID ?naviID) (CriteriaGroupID ?CGID) (CriteriaAnswer ?CA))
-        (group (GroupID ?CGID) (answer ?CA))
-        (NaviHistory (ID $?START ?CGID $?END)))
-   (not (exists
-             (NaviChildCritAttribute (NavigationID ?naviID) (Answer No))))
-   ?hist <- (NaviHistory (ID $?x END))
-   ?grp <- (group (GroupID ?z) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e))
-   =>
-   (retract ?rmv)
-   (retract ?nxt)
-   (printout t crlf "next" crlf)
-   (assert (Currentgroup (GroupID ?z) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e)))
-   (modify ?hist (ID $?x ?z END)))
+
 
 (defrule Pass_AND_Type_Group 
    ?CUR_Group <- (group (GroupID ?z&~NIL) (SuccessType AND) (answer ~Yes))
@@ -298,20 +321,6 @@
    (modify ?CUR_Group (answer No)))
 
 
-
-(defrule Previous_Question
-   ?prev <- (previous)
-   (not (exists
-             (diagnosis)))
-   ?rmv <- (Currentgroup (GroupID ?y))
-   ?hist <- (NaviHistory (ID $?x ?p ?y END))
-   ?grp <- (group (GroupID ?p) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e))
-   =>
-   (retract ?rmv)
-   (retract ?prev)
-   (printout t crlf "previous" crlf)
-   (assert (Currentgroup (GroupID ?p) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e)))
-   (modify ?hist (ID $?x ?p END)))
 
 (defrule previous_useless
    ?prev <- (previous)
@@ -372,6 +381,30 @@
    (retract ?n)
    (printout t "Conclusion Reached, Cannot next anymore" crlf))
   
+(defrule Graceful_Exit1
+    (declare (salience 1))	
+	?hist2 <- (NaviHistory (ID $?x ?y ?y END))
+	=>
+   
+   (assert (Currentgroup (GroupID _RESULT) (answer Yes)))
+   (assert (diagnosis (RID R-99)) (Comment "Going back to the same current section!" ))
+   (printout t "Going back to the same current question group / section!" crlf)
+)
+
+(defrule Graceful_Exit2
+	 ?n <- (next)
+	 ?rmv <- (Currentgroup (GroupID ?y))
+	 (not(exists
+			(NaviChildCritQuestion (CriteriaGroupID ?y))))
+	 =>
+	(retract ?n)
+	(retract ?rmv)
+	(assert (Currentgroup (GroupID _RESULT) (answer Yes)))
+    (assert (diagnosis (RID R-99) (Comment "No navigation point defined!") ))
+	(printout t "No navigation point defined!" crlf)
+)
+
+
 ; ; The initial facts
 (deffacts the-facts
 (NaviHistory)

@@ -44,10 +44,20 @@ namespace AMDES_KBS
             btnPrev.Visibility = Visibility.Collapsed;
             heightLimit = 430;
             Patient currPatient = CLIPSController.CurrentPatient;
-            lblPatientID.Content = currPatient.NRIC;
-            lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
+
             offCommands(240);
             loadSection(sectionID);
+
+            if (CLIPSController.savePatient == true)
+            {
+                lblPatientID.Content = currPatient.NRIC;
+                lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
+            }
+            else
+            {
+                lblPatientID.Content = "";
+                lblPatientName.Content = "";
+            }
         }
 
 

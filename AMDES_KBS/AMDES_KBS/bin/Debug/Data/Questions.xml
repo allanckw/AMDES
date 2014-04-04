@@ -15,7 +15,7 @@
   </QuestionGroup>
   <QuestionGroup id="2">
     <Header>Section B</Header>
-    <Description></Description>
+    <Description>Compared to before, does the patient have the following problems?</Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
     <Questions>
@@ -45,7 +45,7 @@
     <Questions>
       <Question QID="1">
         <Name>Is there a significant decline in functioning as compared to previous level?</Name>
-        <Symptom></Symptom>
+        <Symptom>significant decline in functioning</Symptom>
       </Question>
     </Questions>
   </QuestionGroup>
@@ -57,7 +57,7 @@
     <Questions>
       <Question QID="1">
         <Name>Is the course of the cognitive decline gradual? (More than 6 months) ?</Name>
-        <Symptom></Symptom>
+        <Symptom>cognitive decline gradual</Symptom>
       </Question>
     </Questions>
   </QuestionGroup>
@@ -94,7 +94,7 @@
     </Questions>
   </QuestionGroup>
   <QuestionGroup id="6">
-    <Header>AMTS</Header>
+    <Header>Section AMTS</Header>
     <Description>Each question correctly answered scores one point.~~Recall Memory Phrase Instructions: ~~Give the patient an address, and ask him or her to repeat it at the end of the test. (e.g. 16 Clementi Road)</Description>
     <QnType>2</QnType>
     <Symptom>Fail Abbreivated Mental Test Score</Symptom>
@@ -171,7 +171,7 @@
       </Question>
       <Question QID="6">
         <Name>History of urinary incontinence and gait disturbance early in the disease </Name>
-        <Symptom>urinary incontinence and gait disturbance early</Symptom>
+        <Symptom>Urinary incontinence and gait disturbance early</Symptom>
       </Question>
       <Question QID="7">
         <Name>Acute onset of gait disturbance</Name>

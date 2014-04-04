@@ -420,9 +420,20 @@ namespace AMDES_KBS.Controllers
 
                 for (int i = 0; i < ArrayChoices.Count(); i++)
                 {
+
                     string x = ArrayChoices[i].ToString().Remove(0, 1);
-                    Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(x));
-                    h.addDiagnosis(d);
+                    int diagID = int.Parse(x);
+                    if (diagID == -99)
+                    {
+                        Diagnosis d = new Diagnosis(diagID, fv.GetFactSlot("Comment").ToString(), "Rule was unhandled");
+                        h.addDiagnosis(d);
+                        break;
+                    }
+                    else
+                    {
+                        Diagnosis d = DiagnosisController.getDiagnosisByID(diagID);
+                        h.addDiagnosis(d);
+                    }
                 }
 
             }
