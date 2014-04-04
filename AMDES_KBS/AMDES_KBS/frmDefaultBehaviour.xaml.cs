@@ -35,14 +35,14 @@ namespace AMDES_KBS
 
         private void loadAllBehaviour()
         {
-            cboDiagnosisList.Items.Clear();
+            cboBehaviourList.Items.Clear();
             AllBehaviour = DefaultBehaviorController.getAllDefaultBehavior();
             for (int i = 0; i < AllBehaviour.Count; i++)
             {
                 Navigation behaviour = AllBehaviour[i];
                 bool conclusive = behaviour.isConclusive();
-                string s="";
-                s = "Conclusive - " + conclusive.ToString().ToUpper();
+                string s="B" + (i+1) + " - ";
+                s += "Conclusive - " + conclusive.ToString().ToUpper();
                 if (conclusive)
                 {
                     foreach (int rID in behaviour.DiagnosesID)
@@ -57,7 +57,7 @@ namespace AMDES_KBS
                     s += Environment.NewLine + "Destination - " + qg.Header;
                 }
 
-                cboDiagnosisList.Items.Add(s);
+                cboBehaviourList.Items.Add(s);
             }
         }
 
@@ -66,7 +66,7 @@ namespace AMDES_KBS
             navi = new Navigation();
             naviChildQuestion = new List<NaviChildCriteriaQuestion>();
             naviChildAttribute = new List<NaviChildCritAttribute>();
-            cboDiagnosisList.SelectedIndex = -1;
+            cboBehaviourList.SelectedIndex = -1;
             cboGroupList.SelectedIndex = -1;
             chkConclusive.IsChecked = false;
             stkpnlDiagnosis.Visibility = Visibility.Collapsed;
@@ -95,15 +95,15 @@ namespace AMDES_KBS
             foreach (NaviChildCritAttribute attr in naviChildAttribute)
             {
                 string s = "";
-                if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
+                if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThanEqual)
                 {
-                    s = "<";
+                    s = "<=";
                 }
                 else
                 {
-                    s = ">=";
+                    s = ">";
                 }
-                lstAttributeList.Items.Add("AGE" + s + " " + attr.AttributeValue);
+                lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
             }
         }
 
@@ -136,8 +136,25 @@ namespace AMDES_KBS
             NaviChildCriteriaQuestion newCriteria = new NaviChildCriteriaQuestion();
             newCriteria.CriteriaGrpID = qg.GroupID;
             newCriteria.Ans = criteriaResult;
-            naviChildQuestion.Add(newCriteria);
-            reloadCriteria();
+
+            if (!checkDuplicateCriteria(newCriteria))
+            {
+                naviChildQuestion.Add(newCriteria);
+                reloadCriteria();
+            }
+        }
+
+        private bool checkDuplicateCriteria(NaviChildCriteriaQuestion crit)
+        {
+            foreach (NaviChildCriteriaQuestion critQn in this.naviChildQuestion)
+            {
+                if (crit.CriteriaGrpID==critQn.CriteriaGrpID)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void btnDeleteCriteria_Click(object sender, RoutedEventArgs e)
@@ -155,7 +172,13 @@ namespace AMDES_KBS
         {
             bool criteriaResult = false;
 
-            int sIdx = lstCriteriaList.SelectedIndex;
+            int criteriasIdx = this.lstCriteriaList.SelectedIndex;
+            if (criteriasIdx == -1)
+            {
+                return;
+            }
+
+            int sIdx = cboGroupList.SelectedIndex;
             if (sIdx == -1)
             {
                 return;
@@ -172,7 +195,7 @@ namespace AMDES_KBS
                 criteriaResult = false;
             }
 
-            NaviChildCriteriaQuestion oldCriteria = naviChildQuestion[sIdx];
+            NaviChildCriteriaQuestion oldCriteria = naviChildQuestion[criteriasIdx];
             oldCriteria.CriteriaGrpID = qg.GroupID;
             oldCriteria.Ans = criteriaResult;
             reloadCriteria();
@@ -185,15 +208,36 @@ namespace AMDES_KBS
             newAttribute.AttributeValue = txtAge.Text;
             if (radless.IsChecked == true)
             {
-                newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThan);
+                newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
             }
             else
             {
-                newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
+                newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
+            }
+            if (!checkDuplicateAttribute(newAttribute))
+            {
+                naviChildAttribute.Add(newAttribute);
+                reloadAttribute();
+            }
+        }
+
+        private bool checkDuplicateAttribute(NaviChildCritAttribute attr)
+        {
+            foreach (NaviChildCritAttribute critAttr in this.naviChildAttribute)
+            {
+                if (attr.AttributeName==critAttr.AttributeName)
+                {
+                    if (attr.getAttributeTypeENUM()==critAttr.getAttributeTypeENUM())
+                    {
+                        if (attr.AttributeValue==critAttr.AttributeValue)
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
 
-            naviChildAttribute.Add(newAttribute);
-            reloadAttribute();
+            return false;
         }
 
         private void btnAddDiagnosis_Click(object sender, RoutedEventArgs e)
@@ -230,11 +274,11 @@ namespace AMDES_KBS
             oldAttribute.AttributeValue = txtAge.Text;
             if (radless.IsChecked == true)
             {
-                oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThan);
+                oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
             }
             else
             {
-                oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
+                oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
             }
 
             reloadAttribute();
@@ -259,7 +303,7 @@ namespace AMDES_KBS
 
         private void loadExistingAttribute(NaviChildCritAttribute attribute)
         {
-            if (attribute.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+            if (attribute.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
             {
                 radMoreEqual.IsChecked = true;
             }
@@ -371,7 +415,7 @@ namespace AMDES_KBS
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            int sIdx = cboDiagnosisList.SelectedIndex;
+            int sIdx = cboBehaviourList.SelectedIndex;
             if (sIdx == -1)
             {
                 return;
@@ -390,7 +434,7 @@ namespace AMDES_KBS
 
         private void cboDiagnosisList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int sIdx = cboDiagnosisList.SelectedIndex;
+            int sIdx = cboBehaviourList.SelectedIndex;
             if (sIdx == -1)
             {
                 return;

@@ -149,6 +149,15 @@ namespace AMDES_KBS
                 ScrollViewer sv = (ScrollViewer)sectionTab.Content;
                 StackPanel stkpnl = (StackPanel)sv.Content;
 
+                if (groupControl.txtHeader.Text.Trim().Length==0)
+                {
+                    //tcQuestionGroupSetting.SelectedIndex = i;
+                    tcQuestionSetting.SelectedIndex = i;
+                    tcQuestionGroupSetting.SelectedIndex = i;
+                    MessageBox.Show("Header cannot be empty!");
+                    return;
+                }
+
                 if (groupControl.getQuestionType() == QuestionType.COUNT)
                 {
                     QuestionCountGroup qcg = groupControl.getQuestionCountGroup();

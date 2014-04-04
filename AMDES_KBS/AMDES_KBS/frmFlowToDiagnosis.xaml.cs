@@ -143,7 +143,7 @@ namespace AMDES_KBS
             addNewStep();
             btnNextStep.Visibility = Visibility.Visible;
             btnPrevStep.Visibility = Visibility.Hidden;
-            stkpnlDiagnosis.Visibility = Visibility.Hidden;
+            //stkpnlDiagnosis.Visibility = Visibility.Hidden;
 
             g = new Graph("New Rule - Rule ID: " + rule.RuleID.ToString());
             loadGraph1();
@@ -297,13 +297,13 @@ namespace AMDES_KBS
         private void chk_Checked(object sender, RoutedEventArgs e)
         {
             btnNextStep.Visibility = Visibility.Hidden;
-            stkpnlDiagnosis.Visibility = Visibility.Visible;
+            //stkpnlDiagnosis.Visibility = Visibility.Visible;
         }
 
         private void chk_UnChecked(object sender, RoutedEventArgs e)
         {
             btnNextStep.Visibility = Visibility.Visible;
-            stkpnlDiagnosis.Visibility = Visibility.Hidden;
+            //stkpnlDiagnosis.Visibility = Visibility.Hidden;
         }
 
         private void btnPrevStep_Click(object sender, RoutedEventArgs e)
@@ -390,6 +390,12 @@ namespace AMDES_KBS
 
         private bool saveNavigation()
         {
+            if (txtDescription.Text.Trim().Length==0)
+            {
+                MessageBox.Show("Description cannot be empty!");
+                return false;
+            }
+
             rule.Description = txtDescription.Text;
             List<int> RIDList = new List<int>();
             if (rule.DiagnosisList.Count > 0)
