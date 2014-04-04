@@ -110,7 +110,17 @@ namespace AMDES_KBS
                 //diagnosis.addSymptoms(i + 1);
                 PageFrame.Children.Add(diagnosisControl);
             }
-            //sortPage();
+
+            if (CLIPSController.savePatient == false)
+            {
+                lblPatientID.Visibility = Visibility.Collapsed;
+                lblPatientName.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                lblPatientID.Visibility = Visibility.Visible;
+                lblPatientName.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)

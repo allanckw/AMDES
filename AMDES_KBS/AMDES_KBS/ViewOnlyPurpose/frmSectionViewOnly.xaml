@@ -44,6 +44,7 @@
             <StackPanel x:Name="QuestionFrame" Height="430">
             </StackPanel>
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0">
+                <Label Content="You are on a View-Only form, changes to the options are not allowed."  FontWeight="Bold" FontSize="12"  Margin="0,0,345,0" HorizontalContentAlignment="Left" />
                 <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" />
                 <Button x:Name="btnNext" Content="Next" Height="30" Width="100" Margin="0,0,0,0" Click="btnNext_Click" />
             </StackPanel>

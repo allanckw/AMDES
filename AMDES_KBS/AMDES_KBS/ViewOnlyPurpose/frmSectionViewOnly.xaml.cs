@@ -51,6 +51,16 @@ namespace AMDES_KBS
 
             loadSection(sectionID);
             setAns(hisList);
+
+            if (CLIPSController.savePatient == false) //turn off saving when anon mode
+            {
+                lblPatientName.Content = lblPatientID.Content = "";
+            }
+            else
+            {
+                lblPatientID.Content = CLIPSController.CurrentPatient.NRIC;
+                lblPatientName.Content = CLIPSController.CurrentPatient.Last_Name + " " + CLIPSController.CurrentPatient.First_Name;
+            }
         }
 
         public void loadSection(int sectionID)
@@ -82,12 +92,12 @@ namespace AMDES_KBS
             ucQuestionViewOnly ucQ = new ucQuestionViewOnly();
             if (sectionType == QuestionType.COUNT)
             {
-                ucQ.loadQuestion(q,QG.GroupID, lblCurrScore);
+                ucQ.loadQuestion(q, QG.GroupID, lblCurrScore);
             }
             else
             {
                 //ucQ.Name="Question" + q.ID;
-                ucQ.loadQuestion(q,QG.GroupID, null);
+                ucQ.loadQuestion(q, QG.GroupID, null);
             }
             //currHeight += Math.Ceiling(ucQ.getHeight());
             QuestionFrame.Children.Add(ucQ);
@@ -130,7 +140,7 @@ namespace AMDES_KBS
 
             TotalPageNo = PageContent.Count;
             lblTotalPage.Content = PageContent.Count.ToString("D2");
-            while (CurrPageNo<TotalPageNo)
+            while (CurrPageNo < TotalPageNo)
             {
                 foreach (ucQuestionViewOnly item in PageContent.ElementAt(CurrPageNo - 1))
                 {
@@ -148,7 +158,7 @@ namespace AMDES_KBS
 
         private void setAns(List<QnHistory> hisList)
         {
-            for (int i = 0; i < WholeContent.Count ; i++)
+            for (int i = 0; i < WholeContent.Count; i++)
             {
                 WholeContent[i].setAnswer(hisList[i].Answer);
             }
@@ -206,7 +216,7 @@ namespace AMDES_KBS
                 if (prevPage == null)
                 {
                     btnPrev.Visibility = Visibility.Collapsed;
-                   
+
                 }
                 else
                 {
@@ -223,7 +233,7 @@ namespace AMDES_KBS
             }
             else
             {
-                    amdesPageFrame.Navigate(nextPage);
+                amdesPageFrame.Navigate(nextPage);
             }
         }
 
@@ -244,7 +254,7 @@ namespace AMDES_KBS
         public void setNextPage(AMDESPage nextSection)
         {
             this.nextPage = nextSection;
-           //this.btnPrev.Visibility = Visibility.Visible;
+            //this.btnPrev.Visibility = Visibility.Visible;
         }
     }
 }
