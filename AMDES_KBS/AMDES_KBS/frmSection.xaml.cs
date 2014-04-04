@@ -306,6 +306,10 @@ namespace AMDES_KBS
         {
             if (prevPage != null)
             {
+                foreach (ucQuestion qn in this.WholeContent)
+                {
+                    CLIPSController.assertQuestion(QG.GroupID, qn.getQuestion().ID, false);
+                }
                 CLIPSController.assertPrevSection();
                 int sectionID = CLIPSController.getCurrentQnGroupID();
                 //u can use prevPage to navigate back, there will be no effect on clips, 
