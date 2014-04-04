@@ -136,6 +136,8 @@ namespace AMDES_KBS.Controllers
 
         public static List<Patient> searchPatient(string criteria)
         {
+            createDataFile();
+
             Patient p = searchPatientByID(criteria);
             if (p != null)
             {
@@ -151,6 +153,7 @@ namespace AMDES_KBS.Controllers
 
         public static Patient searchPatientByID(string nric)
         {
+           
             XDocument document = XDocument.Load(Patient.dataPath);
 
             try
