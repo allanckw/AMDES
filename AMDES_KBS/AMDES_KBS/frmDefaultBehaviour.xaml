@@ -8,24 +8,15 @@
                 <Label Content="Default Behaviour" FontWeight="Bold" Height="30" FontSize="14"/>
                 <ComboBox x:Name="cboDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="45" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboDiagnosisList_SelectionChanged">
-                    <!--<ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <WrapPanel Orientation="Horizontal" >
-                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                </WrapPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>-->
+                    
                 </ComboBox>
-                <CheckBox x:Name="chkConclusive" Content="Is Conclusive" Margin="0,10,0,0" FontWeight="Bold" Height="30" FontSize="14" Checked="chkConclusive_Checked" Unchecked="chkConclusive_Unchecked" /> 
+                <CheckBox x:Name="chkConclusive" Content="Is Conclusive" Margin="0,10,0,0" FontWeight="Bold" Height="30" FontSize="14" Checked="chkConclusive_Checked" Unchecked="chkConclusive_Unchecked" />
                 <StackPanel x:Name="stkpnlSectionDestination" >
                     <Label Content="Choose Destination" FontWeight="Bold" Height="30" FontSize="14"/>
                     <ComboBox FontFamily="Tahoma" FontSize="12" FontWeight="Normal" Height="30" Name="cboDestination" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="200">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Vertical" Margin="0,5,0,5">
                                     <WrapPanel Orientation="Horizontal">
                                         <TextBlock FontWeight="Bold" Foreground="DarkBlue" Text="" />
                                         <TextBlock FontWeight="Bold" Foreground="DarkBlue" Text="{Binding Header}" TextWrapping="Wrap" />
@@ -45,7 +36,7 @@
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="170" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Vertical" Margin="0,5,0,5">
                                         <WrapPanel Orientation="Horizontal" >
                                             <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
                                             <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
@@ -60,20 +51,7 @@
             <StackPanel x:Name="stkpnlRightDiv" Width="430" Margin="5,0,0,0">
                 <StackPanel>
                     <StackPanel x:Name="stkpnlMainPanel" Height="320" Width="430" >
-                        <!--<Label Content="Choose Navigation Flow" FontWeight="Bold" Height="30" FontSize="14"/>
-                        <ComboBox x:Name="cboNaviList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="14" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboGroupList_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
-                                        <WrapPanel Orientation="Horizontal" >
-                                            <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                            <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                        </WrapPanel>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>-->
+                        
                         <StackPanel x:Name="stkpnlSteps" Height="320" Margin="0,0,0,0">
                             <Label FontWeight="Bold" Height="35" FontSize="20">Behaviour Details</Label>
                             <StackPanel x:Name="stkpnlcriteria" Orientation="Horizontal">
@@ -81,17 +59,7 @@
                                     <Label FontWeight="Bold" Height="30" FontSize="14">List of Criteria</Label>
                                     <ListBox x:Name="lstCriteriaList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionChanged="lstCriteriaList_SelectionChanged">
-                                        <!--<ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Vertical">
-                                                    <WrapPanel Orientation="Horizontal" >
-                                                        <TextBlock Text="{Binding CriteriaGrpID}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                                        <TextBlock Text="-" Foreground="DarkBlue" FontWeight="Bold"/>
-                                                        <TextBlock Text="{Binding Ans}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                                    </WrapPanel>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>-->
+
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel x:Name="stkpnlGroupList" Margin="10,0,0,0">
@@ -100,7 +68,7 @@
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" >
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
-                                                <StackPanel Orientation="Vertical">
+                                                <StackPanel Orientation="Vertical" Margin="0,5,0,5">
                                                     <WrapPanel Orientation="Horizontal" >
                                                         <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
                                                         <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
@@ -125,17 +93,7 @@
                                     <Label FontWeight="Bold" Height="30" FontSize="14">List of Attribute</Label>
                                     <ListBox x:Name="lstAttributeList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionChanged="lstAttributeList_SelectionChanged">
-                                        <!--<ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Vertical">
-                                                    <WrapPanel Orientation="Horizontal" >
-                                                        <TextBlock Text="{Binding AttributeValue}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                                        <TextBlock Text="-" Foreground="DarkBlue" FontWeight="Bold"/>
-                                                        <TextBlock Text="{Binding Ans}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                                    </WrapPanel>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>-->
+                                    
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel>

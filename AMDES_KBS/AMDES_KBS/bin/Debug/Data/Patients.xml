@@ -1,3 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Patients xml-->
-<Patients />
+<Patients>
+  <Patient id="S1234567D">
+    <Last_Name>Ng</Last_Name>
+    <First_Name>La La</First_Name>
+    <DOB>613547136000000000</DOB>
+    <AssessmentDate>635321664000000000</AssessmentDate>
+    <Tests />
+    <Assessor>
+      <AssessorName>Doctor</AssessorName>
+      <AssessLocation>Clinic</AssessLocation>
+    </Assessor>
+    <Symptoms />
+    <Diagnoses />
+  </Patient>
+</Patients>

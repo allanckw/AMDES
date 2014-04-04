@@ -4,52 +4,52 @@
         Title="frmDiagnosisAddingToPath" Height="380" Width="846">
     <Grid>
         <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <StackPanel x:Name="stkpnlListOfDiagnosis">
-                <Label Content="List of Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
-                <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stkpnlListOfDiagnosis">
+                    <Label Content="List of Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
+                    <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="220" Width="145" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisList_SelectionChanged">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <WrapPanel Orientation="Horizontal" >
-                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                </WrapPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>
-            <StackPanel x:Name="stkpnlDetails" Margin="10,0,10,0">
-                <Label x:Name="lblheader" Height="40" FontSize="15" Margin="0,0,0,10"/>
-                <StackPanel>
-                    <Label Content="Comments" FontSize="15" Margin="0,0,0,10"/>
-                    <TextBox x:Name="txtComment" Width="500" Height="85" MaxLength="400" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True"></TextBox>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                    <WrapPanel Orientation="Horizontal" >
+                                        <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </StackPanel>
+                <StackPanel x:Name="stkpnlDetails" Margin="10,0,10,0">
+                    <Label x:Name="lblheader" Height="40" FontSize="15" Margin="0,0,0,10"/>
+                    <StackPanel>
+                        <Label Content="Comments" FontSize="15" Margin="0,0,0,10"/>
+                        <TextBox x:Name="txtComment" Width="500" Height="85" MaxLength="400" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True"></TextBox>
+                    </StackPanel>
 
-                <StackPanel>
-                    <Label Content="Link" FontSize="15" Margin="0,0,0,10"/>
-                    <TextBox x:Name="txtLink" Width="500" Height="30" MaxLength="400" IsReadOnly="True"></TextBox>
+                    <StackPanel>
+                        <Label Content="Link" FontSize="15" Margin="0,0,0,10"/>
+                        <TextBox x:Name="txtLink" Width="500" Height="30" MaxLength="400" IsReadOnly="True"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="stkpnlListOfDiagnosisAdded" Width="171">
+                    <Label Content="Selected Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
+                    <ListBox x:Name="lstDiagnosisListAdded" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="220" Width="151" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisListAdded_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                    <WrapPanel Orientation="Horizontal" >
+                                        <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="stkpnlListOfDiagnosisAdded" Width="171">
-                <Label Content="Selected Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
-                <ListBox x:Name="lstDiagnosisListAdded" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="220" Width="151" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisListAdded_SelectionChanged">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <WrapPanel Orientation="Horizontal" >
-                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                </WrapPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>
-        </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
                 <Button x:Name="btnAdd" Content="Add" Width="100" Margin="0,0,580,0" Click="btnAdd_Click"></Button>
                 <Button x:Name="btnRemove"  Content="Remove" Width="100" Click="btnRemove_Click"></Button>

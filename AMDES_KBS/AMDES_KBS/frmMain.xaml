@@ -37,29 +37,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="stkpnlDisplay" Orientation="Horizontal">
-                <!--<GroupBox Header="List of Patients" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205" Height="560" Foreground="Black" FontSize="13.333" FontFamily="Stencil" Margin="5,0,0,0">
-                    <ListBox x:Name="lstPatientList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="530" Width="188" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstPatientList_SelectionChanged">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <WrapPanel Orientation="Horizontal" >
-                                        <TextBlock Text="ID: " Foreground="DarkBlue" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding NRIC}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                    </WrapPanel>
-                                    <WrapPanel Orientation="Horizontal"  Margin="0,5,0,0">
-                                        <TextBlock Text="{Binding Last_Name}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                        <TextBlock Text=" " TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding First_Name}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                    </WrapPanel>
-                                    <WrapPanel Orientation="Horizontal"  >
-                                        <TextBlock Text="NIL " Visibility="Hidden" Foreground="DarkBlue" FontWeight="Bold"/>
-                                    </WrapPanel>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </GroupBox>-->
+          
                 <Frame x:Name="frameDisplay" Width="960" Height="560" NavigationUIVisibility="Hidden" TabIndex="1" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top"  UseLayoutRounding="True" Margin="10,0,0,0" />
             </StackPanel>
         </StackPanel>

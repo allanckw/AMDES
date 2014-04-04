@@ -5191,4 +5191,3637 @@
     <Status>0</Status>
     <CompletedDate>635321664000000000</CompletedDate>
   </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322395526007076</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322395526017076</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="1">
+        <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
+        <Header>Low likelihood of dementia, other underlying conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322396536834892</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322396536844892</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Unexplained neurological symptoms </SymptomName>
+        <DiagnosisDate>635322396536854893</DiagnosisDate>
+        <DiagnosedByID>7.3</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="1">
+        <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
+        <Header>Low likelihood of dementia, other underlying conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322396810790561</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322396810800562</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> subdural hematoma </SymptomName>
+        <DiagnosisDate>635322396810810562</DiagnosisDate>
+        <DiagnosedByID>7.2</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Unexplained neurological symptoms </SymptomName>
+        <DiagnosisDate>635322396810810562</DiagnosisDate>
+        <DiagnosedByID>7.3</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="1">
+        <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
+        <Header>Low likelihood of dementia, other underlying conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322396992320944</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322396992320944</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="1">
+        <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. You may wish to evaluate further. </Comment>
+        <Header>Low likelihood of dementia, other underlying conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322397323759901</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322397323769902</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635322397323779902</DiagnosisDate>
+        <DiagnosedByID>2.3</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="2">
+        <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
+        <Header>Low likelihood of dementia, Consider congenital conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322398535709221</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322398535719221</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322398535729222</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635322398535729222</DiagnosisDate>
+        <DiagnosedByID>2.3</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> urinary incontinence and gait disturbance early </SymptomName>
+        <DiagnosisDate>635322398535729222</DiagnosisDate>
+        <DiagnosedByID>7.6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="2">
+        <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
+        <Header>Low likelihood of dementia, Consider congenital conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322398919481171</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322398919491172</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Apraxia </SymptomName>
+        <DiagnosisDate>635322398919501172</DiagnosisDate>
+        <DiagnosedByID>2.2</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Acute onset of gait disturbance </SymptomName>
+        <DiagnosisDate>635322398919501172</DiagnosisDate>
+        <DiagnosedByID>7.7</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="2">
+        <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
+        <Header>Low likelihood of dementia, Consider congenital conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322399106991896</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322399107001897</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322399107011897</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="2">
+        <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
+        <Header>Low likelihood of dementia, Consider congenital conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322400025894454</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322400025904455</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322400025914456</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322400025914456</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="3">
+        <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
+        <Header>Low likelihood of dementia, Refer</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322400894594141</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322400894604142</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322400894614142</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322400894614142</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> History associated with brain metastasis </SymptomName>
+        <DiagnosisDate>635322400894614142</DiagnosisDate>
+        <DiagnosedByID>7.4</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> subdural hematoma </SymptomName>
+        <DiagnosisDate>635322400894614142</DiagnosisDate>
+        <DiagnosedByID>7.2</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="3">
+        <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
+        <Header>Low likelihood of dementia, Refer</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322401402573196</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322401402583196</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322401402653200</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322401402653200</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> bleeding disorder </SymptomName>
+        <DiagnosisDate>635322401402653200</DiagnosisDate>
+        <DiagnosedByID>7.5</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="3">
+        <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
+        <Header>Low likelihood of dementia, Refer</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322401727511781</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322401727521782</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Apraxia </SymptomName>
+        <DiagnosisDate>635322401727531782</DiagnosisDate>
+        <DiagnosedByID>2.2</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="3">
+        <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and /or decline is rapid (&lt; 6 months). </Comment>
+        <Header>Low likelihood of dementia, Refer</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322402410790863</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322402410850866</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322402410860867</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322402410860867</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="4">
+        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.</Comment>
+        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322402764401088</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322402764401088</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322402764411089</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322402764411089</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="4">
+        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.</Comment>
+        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322403205866338</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322403205876339</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322403205886340</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322403205886340</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="4">
+        <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.</Comment>
+        <Header>HIGH likelihood of dementia, fulfil DSM IV Criteria</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>Recommended Tests</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322403531414959</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322403531424959</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322403531434960</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> acute stroke </SymptomName>
+        <DiagnosisDate>635322403531434960</DiagnosisDate>
+        <DiagnosedByID>7.1</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="5">
+        <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
+        <Header>Cognitive impairment</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322403982770775</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322403982780775</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635322403982790776</DiagnosisDate>
+        <DiagnosedByID>2.3</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322403982790776</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> History associated with brain metastasis </SymptomName>
+        <DiagnosisDate>635322403982790776</DiagnosisDate>
+        <DiagnosedByID>7.4</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="5">
+        <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
+        <Header>Cognitive impairment</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322404318409972</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322404318419973</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322404318419973</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322404318419973</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Psychiatric disorders </SymptomName>
+        <DiagnosisDate>635322404318419973</DiagnosisDate>
+        <DiagnosedByID>5.6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="5">
+        <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
+        <Header>Cognitive impairment</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322404863111127</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322404863121128</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322404863131129</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Executive dysfunction </SymptomName>
+        <DiagnosisDate>635322404863131129</DiagnosisDate>
+        <DiagnosedByID>2.4</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Psychiatric disorders </SymptomName>
+        <DiagnosisDate>635322404863131129</DiagnosisDate>
+        <DiagnosedByID>5.6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="5">
+        <Comment>Patient has other underlying conditions that can result in cognitive impairment. The patient will need further evaluation.~~</Comment>
+        <Header>Cognitive impairment</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322405212121090</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="9">
+        <Comment>The patient has failed the abbreviated mental test score (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+        <Header>Failed ATMS with no other symptoms</Header>
+        <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Diagnoses>
+      <Diagnosis diagID="8">
+        <Comment>The patient has no signs of dementia.</Comment>
+        <Header>No Dementia</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322405639495534</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322405639505535</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Acute onset of gait disturbance </SymptomName>
+        <DiagnosisDate>635322405639505535</DiagnosisDate>
+        <DiagnosedByID>7.7</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322405891609954</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Aphasia </SymptomName>
+        <DiagnosisDate>635322405891629955</DiagnosisDate>
+        <DiagnosedByID>2.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Apraxia </SymptomName>
+        <DiagnosisDate>635322405891629955</DiagnosisDate>
+        <DiagnosedByID>2.2</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> History associated with brain metastasis </SymptomName>
+        <DiagnosisDate>635322405891629955</DiagnosisDate>
+        <DiagnosedByID>7.4</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322406425730504</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Apraxia </SymptomName>
+        <DiagnosisDate>635322406425740505</DiagnosisDate>
+        <DiagnosedByID>2.2</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322406746808869</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635322406746818869</DiagnosisDate>
+        <DiagnosedByID>2.3</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="11">
+        <Comment>The patient has some symptoms of Dementia, but does not fufil DSM IV Criteria~~The patient will need further evaluation.</Comment>
+        <Header>Unconclusive - Some symptoms of Dementia</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
+  <History pid="S1234567D" AssessmentDate="635321664000000000">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635322413520606308</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635322413520616308</DiagnosisDate>
+        <DiagnosedByID>1.1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Acute onset of gait disturbance </SymptomName>
+        <DiagnosisDate>635322413520626309</DiagnosisDate>
+        <DiagnosedByID>7.7</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="1">
+        <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. ~~The patient will need further evaluation.</Comment>
+        <Header>Low likelihood of dementia, other underlying conditions</Header>
+        <Link></Link>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+        <Header>Brain Imaging and Referral</Header>
+        <Link></Link>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635321664000000000</CompletedDate>
+  </History>
 </Histories>

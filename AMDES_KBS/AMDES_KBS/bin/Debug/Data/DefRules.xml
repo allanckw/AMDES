@@ -65,31 +65,4 @@
     <NavigationChildAttributes />
     <Diagnoses />
   </Navex>
-  <Navex NavID="12">
-    <Destination>-1</Destination>
-    <NavigationChildCriterias>
-      <ChildCriteriaQuestionGroup>
-        <CriteriaGrpID>1</CriteriaGrpID>
-        <Answer>false</Answer>
-      </ChildCriteriaQuestionGroup>
-      <ChildCriteriaQuestionGroup>
-        <CriteriaGrpID>2</CriteriaGrpID>
-        <Answer>true</Answer>
-      </ChildCriteriaQuestionGroup>
-      <ChildCriteriaQuestionGroup>
-        <CriteriaGrpID>7</CriteriaGrpID>
-        <Answer>false</Answer>
-      </ChildCriteriaQuestionGroup>
-    </NavigationChildCriterias>
-    <NavigationChildAttributes>
-      <ChildCriteriaAttribute>
-        <AttributeName>AGE</AttributeName>
-        <AttributeValue>65</AttributeValue>
-        <CompareType>1</CompareType>
-      </ChildCriteriaAttribute>
-    </NavigationChildAttributes>
-    <Diagnoses>
-      <DiagnosisID>11</DiagnosisID>
-    </Diagnoses>
-  </Navex>
 </Navigations>

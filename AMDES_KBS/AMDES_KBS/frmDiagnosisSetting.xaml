@@ -15,7 +15,7 @@
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="480" Width="173" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisList_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical" Margin="0,5,0,5">
                                 <WrapPanel Orientation="Horizontal" Margin="0,5,0,5" >
                                     <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
