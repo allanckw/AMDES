@@ -33,7 +33,7 @@
                             <Run Text="This is an experimental expert system for the early diagnosis for dementia. It does so by providing suggestions to detect and recommend the next course of actions based on clinical guidelines extracted from the DSM IV Criteria together with machine learning techniques based on past patients' history" />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="The system provides only serves to provide a guideline to the early diagnosis of dementia, the physician should exercise his/her own discretion based on the results provided by the system. The author(s) of AMDES shall not be liable to any damages if the system does not made a correct diagnosis. " />
+                            <Run Text="The system provides only serves to provide a guideline to the early diagnosis of dementia, the physician should exercise his/her own discretion based on the results provided by the system. The author(s) of AMDES shall not be liable to any damages if the system does not make a correct diagnosis. " />
                         </Paragraph>
                         <Paragraph>
                             <Run Text="We would appreciate your feedback, you may send them to amdes_nus_soc@googlegroups.com " />
