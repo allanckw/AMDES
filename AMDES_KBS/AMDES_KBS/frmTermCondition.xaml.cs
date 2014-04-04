@@ -43,12 +43,6 @@ namespace AMDES_KBS
                 txtName.Text = a.Name;
                 txtLocation.Text = a.ClinicName;
             }
-            else
-            {
-                txtName.Clear();
-                txtLocation.Clear();
-                txtName.Focus();
-            }
         }
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
