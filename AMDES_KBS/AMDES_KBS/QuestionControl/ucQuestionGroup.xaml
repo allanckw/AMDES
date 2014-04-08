@@ -24,7 +24,7 @@
                 <Label Width="100" Content="Description" FontSize="16" FontWeight="Bold" />
                 <Label Width="15" Content=":" />
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <TextBox x:Name="txtDesc" Width="450" TextWrapping="Wrap" AcceptsReturn="True" Height="60" Text="" BorderThickness="1" MaxLength="200" />
+                    <TextBox x:Name="txtDesc" Width="450" TextWrapping="Wrap" AcceptsReturn="True" Height="60" MaxHeight="60" Text="" BorderThickness="1" MaxLength="200" />
                 </ScrollViewer>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
