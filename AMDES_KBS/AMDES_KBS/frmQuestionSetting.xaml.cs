@@ -155,6 +155,7 @@ namespace AMDES_KBS
                     tcQuestionSetting.SelectedIndex = i;
                     tcQuestionGroupSetting.SelectedIndex = i;
                     MessageBox.Show("Header cannot be empty!");
+                    groupControl.txtHeader.Focus();
                     return;
                 }
 

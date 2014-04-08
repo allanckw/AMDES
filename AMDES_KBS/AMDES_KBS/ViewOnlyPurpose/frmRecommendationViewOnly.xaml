@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel x:Name="MainFrame">
             <StackPanel x:Name="stkpnlRecommendation" Orientation="Horizontal">
-                <Label Content="Recommendations Page" FontSize="18" FontWeight="Bold" Margin="0,0,0,0" />
+                <Label Content="Result" FontSize="18" FontWeight="Bold" Margin="0,0,0,0" />
             </StackPanel>
             <StackPanel x:Name="stkpnlHeader" Orientation="Horizontal">
                 <StackPanel x:Name="stkpnlSectionPatientDetail" Orientation="Horizontal">
@@ -22,7 +22,7 @@
 
             </StackPanel>
             <StackPanel x:Name="PageSFrame" Height="160" Width="960" Margin="0,0,0,0"/>
-            <Label Content="Recommendations"  FontSize="14" FontWeight="Bold"/>
+            <Label Content="Assessment"  FontSize="14" FontWeight="Bold"/>
             <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="230" Width="960" HorizontalAlignment="Left">
                 <StackPanel x:Name="PageFrame"/>
             </ScrollViewer>

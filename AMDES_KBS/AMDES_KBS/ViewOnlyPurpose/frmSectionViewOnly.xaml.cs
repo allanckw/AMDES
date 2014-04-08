@@ -68,7 +68,7 @@ namespace AMDES_KBS
             WholeContent = new List<ucQuestionViewOnly>();
             QG = QuestionController.getGroupByID(sectionID);
             sectionType = QG.getQuestionTypeENUM();
-            stkpnlScore.Visibility = Visibility.Hidden;
+            stkpnlScore.Visibility = Visibility.Collapsed;
             if (this.sectionType == QuestionType.COUNT)
             {
                 stkpnlScore.Visibility = Visibility.Visible;
@@ -76,10 +76,20 @@ namespace AMDES_KBS
                 lblCurrScore.Content = 0;
                 lblCurrScore.Tag = QCG.Threshold;
                 lblTotalScore.Content = QCG.MaxQuestions;
+                heightLimit -= 2;
             }
 
             lblSection.Content = QG.Header;
             txtDesc.Text = QG.Description.Replace("~~", Environment.NewLine);
+
+            var desiredSizeOld = txtDesc.DesiredSize;
+            txtDesc.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
+            var desiredSizeNew = txtDesc.DesiredSize;
+            txtDesc.Height = desiredSizeNew.Height;
+
+            heightLimit += (60 - txtDesc.Height);
+            QuestionFrame.Height = heightLimit;
+
             foreach (Question q in QG.Questions)
             {
                 addQuestion(q);
