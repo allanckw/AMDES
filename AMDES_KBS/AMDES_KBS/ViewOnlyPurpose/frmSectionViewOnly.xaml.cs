@@ -52,15 +52,7 @@ namespace AMDES_KBS
             loadSection(sectionID);
             setAns(hisList);
 
-            if (CLIPSController.savePatient == false) //turn off saving when anon mode
-            {
-                lblPatientName.Content = lblPatientID.Content = "";
-            }
-            else
-            {
-                lblPatientID.Content = CLIPSController.CurrentPatient.NRIC;
-                lblPatientName.Content = CLIPSController.CurrentPatient.Last_Name + " " + CLIPSController.CurrentPatient.First_Name;
-            }
+           
         }
 
         public void loadSection(int sectionID)
@@ -78,14 +70,46 @@ namespace AMDES_KBS
                 lblTotalScore.Content = QCG.MaxQuestions;
             }
 
-            lblSection.Content = QG.Header;
-            txtDesc.Text = QG.Description.Replace("~~", Environment.NewLine);
+            lblSection.Content = QG.Header.Trim();
+            txtDesc.Text = QG.Description.Replace("~~", Environment.NewLine).Trim();
             foreach (Question q in QG.Questions)
             {
                 addQuestion(q);
             }
             sortPageAndShowLast();
         }
+
+
+        void offCommands(double offset)
+        {
+            
+            if (CLIPSController.savePatient == false) //turn off saving when anon mode
+            {
+
+                if (btnPrev.Visibility != Visibility.Visible)
+                {
+                    offset += btnPrev.Width + 10;
+                }
+                
+                zz.Margin = new Thickness(0, 0, offset, 0);
+                lblPatientName.Content = lblPatientID.Content = "";
+            }
+            else
+            {
+                if (btnPrev.Visibility != Visibility.Visible)
+                {
+                    offset += btnPrev.Width + 10;
+                }
+                
+
+                zz.Margin = new Thickness(0, 0, offset, 0);
+                lblPatientID.Content = CLIPSController.CurrentPatient.NRIC;
+                lblPatientName.Content = CLIPSController.CurrentPatient.Last_Name + " " + CLIPSController.CurrentPatient.First_Name;
+
+
+            }
+        }
+
 
         public void addQuestion(Question q)
         {
@@ -216,11 +240,12 @@ namespace AMDES_KBS
                 if (prevPage == null)
                 {
                     btnPrev.Visibility = Visibility.Collapsed;
-
+                    offCommands(390);
                 }
                 else
                 {
                     btnPrev.Visibility = Visibility.Visible;
+                    offCommands(390);
                 }
             }
         }
@@ -249,11 +274,13 @@ namespace AMDES_KBS
         {
             this.prevPage = prevSection;
             this.btnPrev.Visibility = Visibility.Visible;
+            offCommands(390);
         }
 
         public void setNextPage(AMDESPage nextSection)
         {
             this.nextPage = nextSection;
+            offCommands(390);
             //this.btnPrev.Visibility = Visibility.Visible;
         }
     }
