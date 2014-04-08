@@ -60,7 +60,7 @@ namespace AMDES_KBS
             WholeContent = new List<ucQuestionViewOnly>();
             QG = QuestionController.getGroupByID(sectionID);
             sectionType = QG.getQuestionTypeENUM();
-            stkpnlScore.Visibility = Visibility.Hidden;
+            stkpnlScore.Visibility = Visibility.Collapsed;
             if (this.sectionType == QuestionType.COUNT)
             {
                 stkpnlScore.Visibility = Visibility.Visible;
