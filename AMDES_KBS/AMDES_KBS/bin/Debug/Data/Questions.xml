@@ -3,12 +3,12 @@
 <QuestionGroups>
   <QuestionGroup id="1">
     <Header>Section A</Header>
-    <Description>Compared to before, does the patient have problems remembering things/events that happened recently?</Description>
+    <Description>Compared to before, does the patient have the following problems?</Description>
     <QnType>0</QnType>
     <Symptom>Amnesia</Symptom>
     <Questions>
       <Question QID="1">
-        <Name>AMNESIA~~~~Frequently misplacing his/her personal belongings?~~Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~Forget where he/she keeps his/her things?~~Forget what he/she has come to do?~~Have problems finding his/her way around?~~Ask repeated questions or repeat himself/herself often?</Name>
+        <Name>AMNESIA~~Problems remembering things or events that happened recently?~~~~Frequently misplacing his/her personal belongings?~~Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~Forget where he/she keeps his/her things?~~Forget what he/she has come to do?~~Have problems finding his/her way around?~~Ask repeated questions or repeat himself/herself often?</Name>
         <Symptom>Amnesia</Symptom>
       </Question>
     </Questions>
