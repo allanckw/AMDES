@@ -4,6 +4,9 @@
 ;; Ang Nickolas (A0077307A)
 ;; Chong Kok Wei (A0073859M)
 
+
+(defmodule MAIN (export deftemplate initial-fact))
+
 (deftemplate Currentgroup
    (slot GroupID (type SYMBOL))
    (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT
@@ -75,7 +78,13 @@
 (deftemplate symptoms
    (slot ID (type SYMBOL))
    (slot symptom (type STRING)))
-   
+
+;; NEED TO CHANGE STRATEGY HERE
+(defrule init
+	(declare (salience 1))	
+	=>
+	(set-strategy depth)
+)
 
 (defrule Initial_Question
    ;;(mode 1)
@@ -410,3 +419,209 @@
 (NaviHistory)
 
 )
+
+
+;;;;;;;;;;;;;;;;;;;;;;mode2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defmodule DecisionTree (import MAIN deftemplate initial-fact))
+
+(deftemplate DecisionTree::LeafSet ;;conjunctive set of the disjunctive normal form
+(slot LeafID )
+(slot Result (type SYMBOL) (default NIL))
+(slot Total (type INTEGER) (default 0))
+(slot TotalPass (type INTEGER) (default 0))
+)
+
+(deftemplate DecisionTree::clause ;;
+(slot LeafID )
+(slot CompareType )
+(slot CompareValue) ;;eg CompareValue > attributevalue
+(slot CompareAttributeName)
+(slot Result (type SYMBOL) (default NIL))
+(slot Counted(default No))
+)
+
+(deftemplate DecisionTree::Conclusion ;;conclusion if this set resolve true
+(slot LeafID )
+(slot Diagnosis (type SYMBOL));;maybe this can change to RID or result ID
+(slot Agree)
+(slot DisAgree)
+)
+
+(deftemplate DecisionTree::Answer;;
+(slot Diagnosis (type SYMBOL));;maybe this can change to RID or result ID
+(slot Agree)
+(slot DisAgree)
+)
+
+(deftemplate DecisionTree::Attribute ;;
+(slot Name )
+(slot Value )
+)
+
+;; NEED TO CHANGE STRATEGY HERE
+(defrule DecisionTree::init
+	(declare (salience 1))	
+	=>
+	(set-strategy complexity)
+)
+
+; ; The initial facts
+(deffacts DecisionTree::the-facts
+	(Attribute (Name Age) (Value 44))
+	(Attribute (Name test) (Value Yes))
+
+	(LeafSet (LeafID 1))
+	(clause (LeafID 1) (CompareType eq ) (CompareValue Yes) (CompareAttributeName test) )
+	(clause (LeafID 1) (CompareType == ) (CompareValue 44) (CompareAttributeName Age) )
+	(Conclusion (LeafID 1) (Diagnosis D1))
+	(Conclusion (LeafID 1) (Diagnosis D2))
+
+;;(assert (Attribute (Name TT4) (Value 20)))
+
+)
+
+
+
+(defrule DecisionTree::Process-Clause
+
+?crit<-(clause (LeafID ?id) (CompareType ?CT) (CompareValue ?CV) (CompareAttributeName ?CAN) (Result NIL) )
+(Attribute (Name ?CAN) (Value ?V))
+=>
+
+
+(switch ?CT
+
+	(case eq then 
+	
+		(if(eq ?CV ?V)
+		then;;yes
+			(modify ?crit (Result Pass))
+			
+		else;;no
+			(modify ?crit (Result Fail))
+			(assert (Fail ?id))
+		)
+	)
+	(case == then 
+	
+		(if(eq ?CV ?V)
+		then;;yes
+			
+			(modify ?crit (Result Pass))
+		else;;no
+			(modify ?crit (Result Fail))
+			(assert (Fail ?id))
+		)
+	)
+
+	(case = then 
+	
+		(if(eq ?CV ?V)
+		then;;yes
+			
+			(modify ?crit (Result Pass))
+		else;;no
+			(modify ?crit (Result Fail))
+			(assert (Fail ?id))
+		)
+	)
+
+	(case <= then 
+	
+		(if(<= ?CV ?V)
+		then;;yes
+			
+			(modify ?crit (Result Pass))
+	
+		else;;no
+			(modify ?crit (Result Fail))
+			(assert (Fail ?id))
+		)
+	)
+	(case >= then 
+	
+		(if(>= ?CV ?V)
+		then;;yes
+			(assert (Pass ?id))
+			(modify ?crit (Result Pass))
+	
+		else;;no
+			(modify ?crit (Result Fail))
+		)
+	)
+	(case > then 
+	
+		(if(> ?CV ?V)
+		then;;yes
+			(assert (Pass ?id))
+			(modify ?crit (Result Pass))
+		else;;no
+			(modify ?crit (Result Fail))
+		)
+	)
+
+	(case < then 
+	
+		(if(< ?CV ?V)
+		then;;yes
+			(assert (Pass ?id))
+			(modify ?crit (Result Pass))
+		else;;no
+			(modify ?crit (Result Fail))	
+		)
+	)
+);;end of switch
+
+)
+
+(defrule DecisionTree::TotalPassCounting
+?p<- (Pass ?id)
+?l<-(LeafSet (LeafID ?id) (TotalPass ?count))
+=>
+(retract ?p)
+(modify ?l (TotalPass (+ ?count 1)))
+)
+;;;;;;;;;;
+(defrule DecisionTree::Fail-LeafSet
+;;(salience 1)
+?Leaf <- (LeafSet (LeafID ?ID) (Result NIL))
+(exists
+	
+	(clause (LeafID ?ID) (Result Fail) )
+
+)
+=>
+(modify ?Leaf (Result Fail))
+)
+
+(defrule DecisionTree::Pass-LeafSet
+;;(salience 1)
+?Leaf <- (LeafSet (LeafID ?ID) (Result NIL))
+
+	(not(exists
+		(clause (LeafID ?ID) (Result Fail) )
+	))
+
+=>
+(modify ?Leaf (Result Pass))
+)
+;;;;;;;;;;;
+;;insert diagnosis
+(defrule DecisionTree::Diagnosis-finalize
+
+(Conclusion (LeafID ?ID) (Diagnosis ?D) (Agree ?a) (DisAgree ?da))
+(LeafSet (LeafID ?ID) (Result Pass) )
+=>
+(assert (Answer (Diagnosis ?D) (Agree ?a) (DisAgree ?da)))
+)
+
+;;;
+(defrule DecisionTree::Counting
+?c<-(clause (LeafID ?id) (Counted No))
+?l<-(LeafSet (LeafID ?id) (Total ?count))
+=>
+(modify ?c (Counted Yes))
+
+(modify ?l (Total (+ ?count 1)))
+)
+
