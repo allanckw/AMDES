@@ -1,0 +1,1 @@
+java -jar "Initial Test\amdesrulesgen.jar" data.csv

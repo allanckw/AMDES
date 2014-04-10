@@ -81,5 +81,19 @@ namespace AMDES_KBS
             }
             new frmDefaultBehaviour().ShowDialog();
         }
+
+        private void btnGenerate_Click(object sender, RoutedEventArgs e)
+        {
+            //must have java install
+            try
+            {//java -jar "amdesrulesgen.jar" where.txt
+                String path = "GenerateRulesFromHistory.bat";
+                System.Diagnostics.Process.Start(path);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

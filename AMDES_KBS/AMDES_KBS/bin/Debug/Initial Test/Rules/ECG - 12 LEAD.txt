@@ -1,0 +1,28 @@
+PART decision list
+------------------
+
+EthnicGroup = CHINESE AND
+Gender = FEMALE: No (292.0/3.0)
+
+EthnicGroup = CHINESE: No (94.0/4.0)
+
+EthnicGroup = MALAY: No (17.0)
+
+EthnicGroup = EURASIAN: No (9.0)
+
+Gender = MALE: No (11.0)
+
+EthnicGroup = OTHERS AND
+age > 79: No (6.0)
+
+age > 76: No (4.0/1.0)
+
+: No (3.0)
+
+Number of Rules  : 	8
+
+====================================================
+Accuracy, Area under PRC - Yes, Area Under PRC - No
+98.35%,  1.63%,  98.37%
+Num of attr: 4.0
+Num of instances:484

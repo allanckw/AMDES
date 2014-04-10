@@ -12,6 +12,7 @@
                         <Button x:Name="btnStartPage" Width="150" Content="Define Start Page" Margin="0,0,0,5" Click="btnStartPage_Click" />
                         <Button x:Name="btnDefaultBehaviour" Width="150" Content="Default Behaviour" Margin="0,0,0,5" Click="btnDefaultBehaviour_Click" />
                         <Button x:Name="btnNavigation" Width="150" Content="Define Navigations" Margin="0,0,0,5" Click="btnNavigation_Click" />
+                        <Button x:Name="btnGenerate" Width="150" Content="Generate ARFF" Margin="0,0,0,5" Click="btnGenerate_Click" />
                         <Button x:Name="btnExitSetting" Width="150" Content="Exit" Margin="0,0,0,5" Click="btnExitSetting_Click" />
                     </StackPanel>
                     <Frame x:Name="SettingFrame" NavigationUIVisibility="Hidden" Width="711" Height="530" Margin="10,0,0,0" ></Frame>

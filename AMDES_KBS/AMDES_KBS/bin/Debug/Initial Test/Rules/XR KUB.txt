@@ -1,0 +1,15 @@
+PART decision list
+------------------
+
+Gender = FEMALE AND
+EthnicGroup = CHINESE: No (302.0/2.0)
+
+: No (170.0)
+
+Number of Rules  : 	2
+
+====================================================
+Accuracy, Area under PRC - Yes, Area Under PRC - No
+99.62%,  0.38%,  99.62%
+Num of attr: 4.0
+Num of instances:524
