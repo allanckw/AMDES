@@ -46,7 +46,7 @@ namespace AMDES_KBS
                 string s = enthic[i];
                 cboEthnicGrp.Items.Add(s);
             }
-            cboEthnicGrp.SelectedIndex = 0;
+            cboEthnicGrp.SelectedIndex = -1;
         }
 
         private void turnOffPatientDetails()
@@ -174,6 +174,24 @@ namespace AMDES_KBS
         private void AssertQuestions()
         {
             CLIPSController.clearAndLoadNew();
+        }
+
+        private void btnStats_Click(object sender, RoutedEventArgs e)
+        {
+            //This data is based on patient's history that have been extracted
+            //Just a POC that it works, not saying doctors are racist!!
+            if (radFemale.IsChecked == false && radMale.IsChecked == false)
+            {
+                MessageBox.Show("Please select the patient's gender before viewing statistics");
+            }
+            else if (cboEthnicGrp.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select the patient's Ethnic Group before viewing statistics");
+            }
+            else
+            {
+                //CLIPSController.???
+            }
         }
     }
 }

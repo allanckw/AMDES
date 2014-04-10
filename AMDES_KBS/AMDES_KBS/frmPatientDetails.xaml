@@ -47,7 +47,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Label Width="150"  Content="Gender:" />
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <RadioButton x:Name="radMale"  Margin="0,0,10,0" IsChecked="True" GroupName="grpGender">Male</RadioButton>
+                        <RadioButton x:Name="radMale"  Margin="0,0,10,0" GroupName="grpGender">Male</RadioButton>
                         <RadioButton x:Name="radFemale" GroupName="grpGender">Female</RadioButton>
                     </StackPanel>
                 </StackPanel>
@@ -76,7 +76,8 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="btnStartTest" Width="70" Height="25" Margin="150,10,0,0" Content="Start Test" Click="btnStartTest_Click" />
-                <Button x:Name="btnSaveTest" Width="120" Height="25" Margin="10,10,0,0" Content="Saved and Exit Test" Click="btnSaveTest_Click" />
+                <Button x:Name="btnStats" Width="150" Height="25" Margin="10,10,0,0" Content="Initial Visit Tests Statistics" Click="btnStats_Click" />
+                <Button x:Name="btnSaveTest" Width="120" Height="25" Margin="10,10,0,0" Content="Save and Exit Test" Click="btnSaveTest_Click" />
                 <Button Content="Return to Main" Height="25" Margin="10,10,0,0" Name="btnQuit" Width="120" Click="btnQuit_Click" />
             </StackPanel>
         </StackPanel>
