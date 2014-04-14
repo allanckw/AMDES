@@ -5,7 +5,7 @@
     <Header>Section A</Header>
     <Description>Compared to before, does the patient have the following problems?</Description>
     <QnType>0</QnType>
-    <Symptom>Amnesia</Symptom>
+    <Symptom></Symptom>
     <Questions>
       <Question QID="1">
         <Name>AMNESIA~~Problems remembering things or events that happened recently~~~~Compared to before, does the patient have the following symptoms:~~Frequently misplacing his/her personal belongings?~~Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~Forget where he/she keeps his/her things?~~Forget what he/she has come to do?~~Have problems finding his/her way around?~~Ask repeated questions or repeat himself/herself often?</Name>
@@ -45,7 +45,7 @@
     <Questions>
       <Question QID="1">
         <Name>Is there a significant decline in functioning as compared to previous level?</Name>
-        <Symptom>significant decline in functioning</Symptom>
+        <Symptom>Significant decline in function</Symptom>
       </Question>
     </Questions>
   </QuestionGroup>
@@ -57,7 +57,7 @@
     <Questions>
       <Question QID="1">
         <Name>Is the course of the cognitive decline gradual? (More than 6 months) ?</Name>
-        <Symptom>cognitive decline gradual</Symptom>
+        <Symptom>Gradual cognitive decline </Symptom>
       </Question>
     </Questions>
   </QuestionGroup>
@@ -85,7 +85,7 @@
       </Question>
       <Question QID="5">
         <Name>Substance or drug induced condition</Name>
-        <Symptom>drug induced condition</Symptom>
+        <Symptom>Drug induced condition</Symptom>
       </Question>
       <Question QID="6">
         <Name>Psychiatric disorders – major depression, schzophrenia, acute delirium</Name>
@@ -151,11 +151,11 @@
     <Questions>
       <Question QID="1">
         <Name>Signs of acute stroke eg.one-sided weakness, babinski’s sign</Name>
-        <Symptom>acute stroke</Symptom>
+        <Symptom>Acute stroke</Symptom>
       </Question>
       <Question QID="2">
         <Name>Recent head trauma with  headache, loss of consciousness, vomiting (subdural hematoma)</Name>
-        <Symptom>subdural hematoma</Symptom>
+        <Symptom>Recent head trauma</Symptom>
       </Question>
       <Question QID="3">
         <Name>Unexplained neurological symptoms eg. new onset of severe headaches or seizures</Name>
@@ -167,7 +167,7 @@
       </Question>
       <Question QID="5">
         <Name>Use of anticoagulants or history of bleeding disorder</Name>
-        <Symptom>bleeding disorder</Symptom>
+        <Symptom>Bleeding disorder</Symptom>
       </Question>
       <Question QID="6">
         <Name>History of urinary incontinence and gait disturbance early in the disease </Name>
