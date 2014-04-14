@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
-using System.Text.RegularExpressions;
+
 
 namespace AMDES_KBS
 {
@@ -86,8 +79,16 @@ namespace AMDES_KBS
             txtHeader.Text = d.Header;
             txtComment.Text = d.Comment.Replace("~~", Environment.NewLine);
             txtLink.Text = d.Link;
+            chkSym.IsChecked = d.RetrieveSym;
+            chkSym_Checked(this, new RoutedEventArgs());
+
             lstGroupList.ItemsSource = null;
-            lstGroupList.ItemsSource = new List<QuestionGroup>();
+            List<QuestionGroup> qgGrpList = new List<QuestionGroup>();
+            for (int i = 0; i < d.RetrievalIDList.Count; i++)
+            {
+                qgGrpList.Add(QuestionController.getGroupByID(d.RetrievalIDList[i]));
+            }
+            lstGroupList.ItemsSource = qgGrpList;
         }
 
         private void loadSymtpomQuestionGroup(Diagnosis d)
@@ -125,8 +126,9 @@ namespace AMDES_KBS
             sDiagnosis.Header = txtHeader.Text.Trim();
             sDiagnosis.Comment = txtComment.Text.Replace(Environment.NewLine, "~~");
             sDiagnosis.Link = txtLink.Text.Trim();
-            //for adding new symptons by diagnosis @@@Allan
-            getSymptonsForDiagnosis();
+
+            sDiagnosis.RetrieveSym = chkSym.IsChecked.Value;
+            sDiagnosis.RetrievalIDList = getSymptonsForDiagnosis();
 
             if (!SaveDiagnosis(sDiagnosis))
             {
@@ -138,10 +140,18 @@ namespace AMDES_KBS
 
         }
 
-        private List<QuestionGroup> getSymptonsForDiagnosis()
+        private List<int> getSymptonsForDiagnosis()
         {
             List<QuestionGroup> currQGlist = (List<QuestionGroup>)lstGroupList.ItemsSource;
-            return currQGlist;
+
+            List<int> z = new List<int>();
+
+            foreach (QuestionGroup g in currQGlist)
+            {
+                z.Add(g.GroupID);
+            }
+
+            return z;
         }
 
         private bool SaveDiagnosis(Diagnosis d)
@@ -295,6 +305,16 @@ namespace AMDES_KBS
                 }
             }
             
+        }
+
+        private void chkSym_Checked(object sender, RoutedEventArgs e)
+        {
+            bool sym = chkSym.IsChecked.Value;
+
+            txtComment.IsEnabled = !sym;
+            txtLink.IsEnabled = !sym;
+
+            stkpnlcriteria.IsEnabled = sym;
         }
     }
 }

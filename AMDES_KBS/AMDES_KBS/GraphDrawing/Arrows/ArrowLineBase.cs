@@ -1,7 +1,6 @@
 //----------------------------------------------
 // ArrowLineBase.cs (c) 2007 by Charles Petzold
 //----------------------------------------------
-using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;

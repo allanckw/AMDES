@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AMDES_KBS.Entity;
-using System.Xml.Linq;
 using System.IO;
+using System.Linq;
+using System.Xml.Linq;
+using AMDES_KBS.Entity;
 
 namespace AMDES_KBS.Controllers
 {
@@ -63,10 +62,27 @@ namespace AMDES_KBS.Controllers
 
         public static XElement convertToXML(Diagnosis d)
         {
-            return new XElement("Diagnosis", new XAttribute("diagID", d.RID),
+            XElement x = new XElement("Diagnosis", new XAttribute("diagID", d.RID),
                              new XElement("Comment", d.Comment),
                              new XElement("Header", d.Header),
-                             new XElement("Link", d.Link));
+                             new XElement("Link", d.Link),
+                             new XElement("RetrieveSymptom", d.RetrieveSym),
+                             new XElement("RetrieveFrom")
+                             );
+
+            if (d.RetrieveSym)
+            {
+                for (int i = 0; i < d.RetrievalIDList.Count; i++)
+                {
+
+                    XElement ccq = new XElement("QGrpID", d.RetrievalIDList[i]);
+                    x.Element("RetrieveFrom").Add(ccq);
+                }
+                
+            }
+
+            return x;
+
         }
 
         public static List<Diagnosis> getAllDiagnosis() //call this on form onload in settings
@@ -94,6 +110,7 @@ namespace AMDES_KBS.Controllers
             }
             else
             {
+                createDataFile();
                 return pList; // return empty list
             }
         }
@@ -107,6 +124,16 @@ namespace AMDES_KBS.Controllers
                 d.Comment = x.Element("Comment").Value;
                 d.Header = x.Element("Header").Value;
                 d.Link = x.Element("Link").Value;
+
+                d.RetrieveSym = bool.Parse(x.Element("RetrieveSymptom").Value);
+
+                var cq = (from pa in x.Descendants("RetrieveFrom").Descendants("QGrpID")
+                          select pa).ToList();
+
+                foreach (var cq1 in cq)
+                {
+                    d.addRetrievalID(int.Parse(cq1.Value));
+                }
 
                 return d;
             }
@@ -123,8 +150,8 @@ namespace AMDES_KBS.Controllers
             try
             {
                 var diag = (from pa in document.Descendants("Diagnosis")
-                           where int.Parse(pa.Attribute("diagID").Value) == id
-                           select pa).SingleOrDefault();
+                            where int.Parse(pa.Attribute("diagID").Value) == id
+                            select pa).SingleOrDefault();
 
                 return readDiagnosis(diag);
 

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using AMDES_KBS.Entity;
-using AMDES_KBS.Controllers;
 using System.Windows.Media;
+using AMDES_KBS.Controllers;
+using AMDES_KBS.Entity;
 
 namespace AMDES_KBS
 {

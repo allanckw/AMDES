@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Mommosoft.ExpertSystem;
 using System.Windows.Controls;
+using Mommosoft.ExpertSystem;
 
 namespace AMDES_KBS.Controllers
 {

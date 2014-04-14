@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
 using System.IO;
+using System.Linq;
+using System.Xml.Linq;
 using AMDES_KBS.Entity;
 
 namespace AMDES_KBS.Controllers
@@ -94,8 +93,8 @@ namespace AMDES_KBS.Controllers
                                     new XElement("First_Name", p.First_Name),
                                     new XElement("DOB", p.DOB.Ticks),
                                     new XElement("AssessmentDate", p.AssessmentDate.Ticks),
-                //new XElement("Status", p.getStatus()),
-                                    new XElement("Tests"),
+                                    //new XElement("Status", p.getStatus()),
+                                    //new XElement("Tests"),
                                     new XElement("Assessor",
                                     new XElement("AssessorName", p.Doctor.Name),
                                     new XElement("AssessLocation", p.Doctor.ClinicName)),
@@ -104,14 +103,14 @@ namespace AMDES_KBS.Controllers
                                     );
 
             //this test is for phase 2
-            if (p.TestsList.Count > 0)
-            {
-                for (int i = 0; i < p.TestsList.Count; i++)
-                {
-                    Test t = p.TestsList.ElementAt(i);
-                    newPat.Element("Tests").Add(TestController.writeTest(t, p.Doctor));
-                }
-            }
+            //if (p.TestsList.Count > 0)
+            //{
+            //    for (int i = 0; i < p.TestsList.Count; i++)
+            //    {
+            //        Test t = p.TestsList.ElementAt(i);
+            //        newPat.Element("Tests").Add(TestController.writeTest(t, p.Doctor));
+            //    }
+            //}
 
             //if (p.SymptomsList.Count > 0)
             //{
@@ -191,13 +190,13 @@ namespace AMDES_KBS.Controllers
 
 
 
-                var tests = (from test in x.Descendants("Tests").Descendants("Test")
-                             select test).ToList();
+                //var tests = (from test in x.Descendants("Tests").Descendants("Test")
+                //             select test).ToList();
 
-                foreach (var t in tests)
-                {
-                    p.addTest(TestController.readPatientTest(t));
-                }
+                //foreach (var t in tests)
+                //{
+                //    p.addTest(TestController.readPatientTest(t));
+                //}
 
                 var symptoms = (from syms in x.Descendants("Symptoms").Descendants("Symptom")
                                 select syms).ToList();

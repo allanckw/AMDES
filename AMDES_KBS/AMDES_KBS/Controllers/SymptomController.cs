@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AMDES_KBS.Entity;
 using System.Xml.Linq;
+using AMDES_KBS.Entity;
 
 namespace AMDES_KBS.Controllers
 {

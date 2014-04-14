@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AMDES_KBS.Entity;
-using System.Xml.Linq;
 using System.IO;
+using System.Linq;
+using System.Xml.Linq;
+using AMDES_KBS.Entity;
 
 namespace AMDES_KBS.Controllers
 {
@@ -203,12 +202,12 @@ namespace AMDES_KBS.Controllers
                 n.NavID = x.Attribute("NavID").Value;
                 n.DestGrpID = int.Parse(x.Element("Destination").Value);
 
-                var cq = (from pa in x.Descendants("NavigationChildCriterias").Descendants("ChildCriteriaQuestionGroup")
+                var grps = (from pa in x.Descendants("NavigationChildCriterias").Descendants("ChildCriteriaQuestionGroup")
                           select pa).ToList();
 
-                foreach (var cq1 in cq)
+                foreach (var g in grps)
                 {
-                    n.ChildCriteriaQuestion.Add(readChildCriteriaQuestion(cq1));
+                    n.ChildCriteriaQuestion.Add(readChildCriteriaQuestion(g));
                 }
 
                 var ca = (from pa in x.Descendants("NavigationChildAttributes").Descendants("ChildCriteriaAttribute")

@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
-using System.Diagnostics;
 using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
@@ -82,6 +76,8 @@ namespace AMDES_KBS
                     if (temp_store == null)
                         return;
                     LVResults.Items.Add(temp_store);
+
+                    //1st 1 is test name 2nd 1 is yes 3rd 1 is no %
                 }
             }
             catch (Exception c)

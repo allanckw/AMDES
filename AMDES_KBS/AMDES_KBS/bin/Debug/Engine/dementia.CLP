@@ -84,13 +84,6 @@
    (slot ID (type SYMBOL))
    (slot symptom (type STRING)))
 
-;; NEED TO CHANGE STRATEGY HERE
-(defrule init
-	(declare (salience 1))	
-	=>
-	(set-strategy depth)
-)
-
 (defrule Initial_Question
    ;;(mode 1)
    (Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
@@ -427,7 +420,8 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;DecisionTree;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defmodule DecisionTree (import MAIN deftemplate initial-fact))
+(defmodule DecisionTree (import MAIN deftemplate initial-fact)) 
+;;Compatiability issue from 6.2.3 (IVLE Copy, System will complain no initial data)
 
 (defrule DecisionTree::Change-Focus
 		=>

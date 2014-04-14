@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AMDES_KBS.Controllers;
 
 //http://stackoverflow.com/questions/8417225/parse-xml-using-linq-to-xml-to-class-objects
@@ -32,7 +30,7 @@ namespace AMDES_KBS.Entity
 
         private DateTime dAssessment, dob;
 
-        private List<Test> testsList;
+        //private List<Test> testsList;
 
         //private List<Symptom> sympsList; //immediate sym list of result
 
@@ -105,7 +103,7 @@ namespace AMDES_KBS.Entity
             {
                 throw new InvalidOperationException("Age cannot be from the future!!");
             }
-            testsList = new List<Test>();
+            //testsList = new List<Test>();
             //sympsList = new List<Symptom>();
             //diagList = new List<Diagnosis>();
             dAssessment = DateTime.Today;
@@ -114,7 +112,7 @@ namespace AMDES_KBS.Entity
 
         public Patient()
         {
-            testsList = new List<Test>();
+            //testsList = new List<Test>();
             //sympsList = new List<Symptom>();
             //diagList = new List<Diagnosis>();
             dAssessment = DateTime.Today;
@@ -137,7 +135,7 @@ namespace AMDES_KBS.Entity
                 throw new InvalidOperationException("Age cannot be from the future!!");
             }
 
-            testsList = new List<Test>();
+            //testsList = new List<Test>();
            // sympsList = new List<Symptom>();
             //diagList = new List<Diagnosis>();
             dAssessment = DateTime.Today;
@@ -162,30 +160,30 @@ namespace AMDES_KBS.Entity
             set { this.dAssessment = value; }
         }
 
-        public List<Test> TestsList
-        {
-            get { return this.testsList; }
-        }
+        //public List<Test> TestsList
+        //{
+        //    get { return this.testsList; }
+        //}
 
-        public void addTest(Test t)
-        {
-            if (t != null)
-                testsList.Add(t);
-        }
+        //public void addTest(Test t)
+        //{
+        //    if (t != null)
+        //        testsList.Add(t);
+        //}
 
-        public Test getTestAt(int i)
-        {
-            if (testsList.Count > 0 && i >= 0)
-                return this.testsList.ElementAt(i);
-            else
-                return null;
-        }
+        //public Test getTestAt(int i)
+        //{
+        //    if (testsList.Count > 0 && i >= 0)
+        //        return this.testsList.ElementAt(i);
+        //    else
+        //        return null;
+        //}
 
-        public void removeTestAt(int i)
-        {
-            if (testsList.Count > 0 && i >= 0)
-                this.testsList.RemoveAt(i);
-        }
+        //public void removeTestAt(int i)
+        //{
+        //    if (testsList.Count > 0 && i >= 0)
+        //        this.testsList.RemoveAt(i);
+        //}
 
         //public List<Symptom> SymptomsList
         //{

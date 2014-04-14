@@ -1,9 +1,9 @@
 ﻿<Window x:Class="AMDES_KBS.frmP2"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Phase 2" Height="640" Width="550" Loaded="Window_Loaded">
+        Title="Phase 2" Height="640" Width="923" Loaded="Window_Loaded">
     <Grid>
-        <ListView Height="143" HorizontalAlignment="Left" Margin="12,120,0,0" Name="LVResults" VerticalAlignment="Top" Width="502">
+        <ListView Height="143" HorizontalAlignment="Left" Margin="203,133,0,0" Name="LVResults" VerticalAlignment="Top" Width="514">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Test" Width="300" DisplayMemberBinding="{Binding Path=Item1}"/>
@@ -12,7 +12,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView Height="102" HorizontalAlignment="Left" Margin="12,12,0,0" Name="LVVariables"  VerticalAlignment="Top" Width="322" SelectionChanged="LVVariables_SelectionChanged">
+        <ListView Height="102" HorizontalAlignment="Left" Margin="395,16,0,0" Name="LVVariables"  VerticalAlignment="Top" Width="322" SelectionChanged="LVVariables_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Variable name" Width="150" DisplayMemberBinding="{Binding Path=Item1}" />
@@ -22,12 +22,12 @@
                 
             </ListView.View>
         </ListView>
-        <Label Content="Name :" Height="28" HorizontalAlignment="Left" Margin="340,12,0,0" Name="label1" VerticalAlignment="Top" />
-        <Label Content="Value :" Height="28" HorizontalAlignment="Left" Margin="340,46,0,0" Name="label2" VerticalAlignment="Top" />
-        <Button Content="Add" Height="23" HorizontalAlignment="Left" Margin="340,80,0,0" Name="btnAdd" VerticalAlignment="Top" Width="84" Click="btnAdd_Click" />
-        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="430,80,0,0" Name="btnDelete" VerticalAlignment="Top" Width="84" Click="btnDelete_Click" />
-        <ComboBox Height="23" HorizontalAlignment="Left" Margin="394,17,0,0" Name="cbName" VerticalAlignment="Top" Width="120" DisplayMemberPath="Item1" SelectionChanged="cbName_SelectionChanged" />
-        <StackPanel  HorizontalAlignment="Left" Margin="394,51,0,0" Name="stackPanel1" Orientation="Horizontal" VerticalAlignment="Top" >
+        <Label Content="Name :" Height="28" HorizontalAlignment="Left" Margin="204,16,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Value :" Height="28" HorizontalAlignment="Left" Margin="204,50,0,0" Name="label2" VerticalAlignment="Top" />
+        <Button Content="Add" Height="23" HorizontalAlignment="Left" Margin="204,84,0,0" Name="btnAdd" VerticalAlignment="Top" Width="84" Click="btnAdd_Click" />
+        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="294,84,0,0" Name="btnDelete" VerticalAlignment="Top" Width="84" Click="btnDelete_Click" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="258,21,0,0" Name="cbName" VerticalAlignment="Top" Width="120" DisplayMemberPath="Item1" SelectionChanged="cbName_SelectionChanged" />
+        <StackPanel  HorizontalAlignment="Left" Margin="258,55,0,0" Name="stackPanel1" Orientation="Horizontal" VerticalAlignment="Top" >
             <TextBox Height="23" Name="txtValue" Width="120" />
             <ComboBox Height="23" Name="cboValue" Width="120" Visibility="Collapsed" />
         </StackPanel>

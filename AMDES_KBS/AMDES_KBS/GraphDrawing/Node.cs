@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using MvvmFoundation.Wpf;
-using System;
 
 namespace CircularDependencyTool
 {
