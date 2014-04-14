@@ -200,12 +200,6 @@ namespace AMDES_KBS
             }
             btnDelete.IsEnabled = false;
 
-            /*
-             private string rule_path = "C:\\Users\\Nick\\Documents\\output_rules.txt";
-        //private  string CLP_FILE = "C:\\Users\\Nick\\Documents\\nus sem 8\\cs4244\\SilverTreeContainer\\TreeContainer\\VisLogTree\\data\\p2v4.CLP";
-        private string CLP_FILE = "C:\\Users\\Nick\\Documents\\nus sem 8\\cs4244\\dementia.CLP";
-             */
-
             List<Tuple<string, bool, List<string>>> AttChoices = new List<Tuple<string, bool, List<string>>>();//the bool indicate if its nominal anot
 
             foreach (P2Controller i in Test_Sets)

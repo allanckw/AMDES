@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Rules xml-->
+<Navigations>
+  <Navex NavID="6">
+    <Destination>-1</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>1</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>2</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes />
+    <Diagnoses>
+      <DiagnosisID>9</DiagnosisID>
+    </Diagnoses>
+  </Navex>
+  <Navex NavID="7">
+    <Destination>-1</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>true</Answer>
+      </ChildCriteriaQuestionGroup>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>1</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>2</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes />
+    <Diagnoses>
+      <DiagnosisID>8</DiagnosisID>
+    </Diagnoses>
+  </Navex>
+  <Navex NavID="8">
+    <Destination>1</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>true</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes />
+    <Diagnoses />
+  </Navex>
+  <Navex NavID="11">
+    <Destination>1</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes />
+    <Diagnoses />
+  </Navex>
+</Navigations>

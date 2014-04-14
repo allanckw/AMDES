@@ -368,6 +368,3 @@
 (NaviChildCritQuestion (NavigationID N17.6) (CriteriaGroupID _7) (CriteriaAnswer No))
 (NaviChildCritQuestion (NavigationID N17.6) (CriteriaGroupID _5) (CriteriaAnswer No))
 (NaviChildCritAttribute (NavigationID N17.6) (AttributeName AGE) (AttributeValue 65) (AttributeCompareType <=) )
-(next)
-(next)
-(next)

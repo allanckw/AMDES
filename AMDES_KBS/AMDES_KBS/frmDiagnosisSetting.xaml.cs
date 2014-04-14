@@ -17,7 +17,6 @@ namespace AMDES_KBS
     {
 
         int currIdx=-1;
-        List<QuestionGroup> qgList;
 
         public frmDiagnosisSetting()
         {
@@ -49,6 +48,8 @@ namespace AMDES_KBS
             newDiagnosis.Header = txtHeader.Text.Trim();
             newDiagnosis.Comment = txtComment.Text.Replace(Environment.NewLine, "~~");
             newDiagnosis.Link = txtLink.Text.Trim();
+            newDiagnosis.RetrieveSym = chkSym.IsChecked.Value;
+            newDiagnosis.RetrievalIDList = getSymptonsForDiagnosis();
 
             if (!SaveDiagnosis(newDiagnosis))
             {
@@ -66,8 +67,15 @@ namespace AMDES_KBS
                 txtHeader.Text = "";
                 txtComment.Text = "";
                 txtLink.Text = "";
+
+               
+
                 return;
 	        }
+
+            cboGroupList.SelectedIndex = -1;
+            lstGroupList.ItemsSource = null;
+            lstSymptomsList.ItemsSource = null;
 
             Diagnosis sDiagnosis = (Diagnosis)lstDiagnosisList.Items.GetItemAt(sidx);
             loadData(sDiagnosis);
@@ -163,7 +171,7 @@ namespace AMDES_KBS
                 return false;
             }
 
-            if (d.Comment.Trim().Length == 0)
+            if (d.RetrieveSym == false && d.Comment.Trim().Length == 0)
             {
                 MessageBox.Show("Please Key In Comment!");
                 txtComment.Focus();
