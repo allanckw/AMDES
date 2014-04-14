@@ -24,15 +24,27 @@ namespace AMDES_KBS
     {
 
         int currIdx=-1;
+        List<QuestionGroup> qgList;
 
         public frmDiagnosisSetting()
         {
             InitializeComponent();
             loadALLDiagnosis();
+            loadALLQuestionGroup();
+            lstGroupList.ItemsSource = null;
+            lstGroupList.ItemsSource = new List<QuestionGroup>();
+        }
+
+        private void loadALLQuestionGroup()
+        {
+            cboGroupList.ItemsSource = null;
+            cboGroupList.ItemsSource = QuestionController.getAllQuestionGroup();
         }
 
         private void loadALLDiagnosis()
         {
+            lstGroupList.ItemsSource = null;
+            lstGroupList.ItemsSource = new List<QuestionGroup>();
             lstDiagnosisList.ItemsSource = DiagnosisController.getAllDiagnosis();
             lstDiagnosisList.SelectedIndex = currIdx;
         }
@@ -74,6 +86,19 @@ namespace AMDES_KBS
             txtHeader.Text = d.Header;
             txtComment.Text = d.Comment.Replace("~~", Environment.NewLine);
             txtLink.Text = d.Link;
+            lstGroupList.ItemsSource = null;
+            lstGroupList.ItemsSource = new List<QuestionGroup>();
+        }
+
+        private void loadSymtpomQuestionGroup(Diagnosis d)
+        {
+            lstGroupList.Items.Clear();
+            List<QuestionGroup> currQGLst = new List<QuestionGroup>();
+            foreach (QuestionGroup qgItem in currQGLst)
+            {
+                lstGroupList.Items.Add(qgItem);
+            }
+            
         }
 
         private void btnDeleteComment_Click(object sender, RoutedEventArgs e)
@@ -100,6 +125,8 @@ namespace AMDES_KBS
             sDiagnosis.Header = txtHeader.Text.Trim();
             sDiagnosis.Comment = txtComment.Text.Replace(Environment.NewLine, "~~");
             sDiagnosis.Link = txtLink.Text.Trim();
+            //for adding new symptons by diagnosis @@@Allan
+            getSymptonsForDiagnosis();
 
             if (!SaveDiagnosis(sDiagnosis))
             {
@@ -109,6 +136,12 @@ namespace AMDES_KBS
             currIdx = sidx;
             loadALLDiagnosis();
 
+        }
+
+        private List<QuestionGroup> getSymptonsForDiagnosis()
+        {
+            List<QuestionGroup> currQGlist = (List<QuestionGroup>)lstGroupList.ItemsSource;
+            return currQGlist;
         }
 
         private bool SaveDiagnosis(Diagnosis d)
@@ -155,6 +188,113 @@ namespace AMDES_KBS
                  //|| uri.Scheme == Uri.UriSchemeFtp
                  //|| uri.Scheme == Uri.UriSchemeMailto
                 ///*...*/);
+        }
+
+        private void btnAddGroup_Click(object sender, RoutedEventArgs e)
+        {
+            int idx = cboGroupList.SelectedIndex;
+            if (idx==-1)
+            {
+                return;
+            }
+
+            QuestionGroup qg = (QuestionGroup)cboGroupList.Items[idx];
+            if (addSymptonsFromGroup(qg))
+                AddSymptomtoDiagnosis(qg);
+        }
+
+        private bool addSymptonsFromGroup(QuestionGroup qg)
+        {
+            List<QuestionGroup> lstQG = (List<QuestionGroup>)lstGroupList.ItemsSource;
+
+            if (lstQG == null)
+            {
+                return true;
+            }
+
+            foreach (QuestionGroup qgItem in lstQG)
+            {
+                if (qgItem.GroupID == qg.GroupID)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void AddSymptomtoDiagnosis(QuestionGroup qg)
+        {
+            List<QuestionGroup> lstQG = (List<QuestionGroup>)lstGroupList.ItemsSource;
+            if (lstQG == null)
+            {
+                lstQG = new List<QuestionGroup>();
+            }
+
+            lstQG.Add(qg);
+            lstGroupList.ItemsSource = null;
+            lstGroupList.ItemsSource = lstQG;
+        }
+
+        private void btnDeleteGroup_Click(object sender, RoutedEventArgs e)
+        {
+            List<QuestionGroup> lstQG = (List<QuestionGroup>)lstGroupList.ItemsSource;
+            int idx = lstGroupList.SelectedIndex;
+            if (idx == -1)
+            {
+                return;
+            }
+            lstQG.RemoveAt(idx);
+            lstGroupList.ItemsSource = null;
+            lstGroupList.ItemsSource = lstQG;
+        }
+
+        private void cboGroupList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<String> SymptomsList = new List<String>();
+            int idx = cboGroupList.SelectedIndex;
+            if (idx == -1)
+                return;
+            QuestionGroup qg = (QuestionGroup)cboGroupList.Items[idx];
+            if (qg.Symptom.Trim()!="")
+            {
+                SymptomsList.Add(qg.Symptom.Trim());
+            }
+
+            foreach (Question q in qg.Questions)
+            {
+                String symptom = q.Symptom.Trim();
+                if (symptom.Length>0)
+                {
+                    if (!SymptomsList.Contains(symptom))
+                    {
+                        SymptomsList.Add(symptom);
+                    }
+                }
+            }
+
+            lstSymptomsList.ItemsSource = null;
+            lstSymptomsList.ItemsSource = SymptomsList;
+        }
+
+        private void lstGroupList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int idx = lstGroupList.SelectedIndex;
+            if (idx==-1)
+            {
+                return;
+            }
+
+            QuestionGroup selectedQG = (QuestionGroup)lstGroupList.Items[idx];
+            for (int i = 0; i < cboGroupList.Items.Count; i++)
+            {
+                QuestionGroup qg = (QuestionGroup)cboGroupList.Items[i];
+                if (qg.GroupID==selectedQG.GroupID)
+                {
+                    cboGroupList.SelectedIndex = i;
+                    break;
+                }
+            }
+            
         }
     }
 }

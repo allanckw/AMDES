@@ -40,6 +40,54 @@
                     <Label Content="Link" FontSize="15" Margin="0,0,0,10"/>
                     <TextBox x:Name="txtLink" Width="500" Height="30" MaxLength="400" ></TextBox>
                 </StackPanel>
+
+                <StackPanel x:Name="stkpnlQuestionGroup" Orientation="Vertical" Margin="0,10,0,0">
+                    <Label Content="Retrieve Symptoms From Question Group" FontSize="15" Margin="0,0,0,0"/>
+                    <StackPanel x:Name="stkpnlcriteria" Orientation="Horizontal">
+                        <StackPanel>
+                            <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="140" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionMode="Single" SelectionChanged="lstGroupList_SelectionChanged">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" Margin="0,0,0,0">
+                                            <WrapPanel Orientation="Horizontal" Margin="0,2,0,0" >
+                                                <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                                <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                            </WrapPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                        <StackPanel x:Name="stkpnlGroupList" Margin="10,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                            <Label Content="Choose Section" FontWeight="Bold" />
+                                <StackPanel Orientation="Horizontal" Margin="70,5,0,0">
+                                    <Button x:Name="btnAddGroup" Content="Add" Width="60" Margin="0,0,0,0" Click="btnAddGroup_Click" />
+                                    <Button x:Name="btnDeleteGroup" Content="Delete" Width="60" Margin="5,0,0,0" Click="btnDeleteGroup_Click" />
+                                </StackPanel>
+                            </StackPanel>
+                            <ComboBox x:Name="cboGroupList" Margin="0,5,0,0" FontFamily="Tahoma" FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboGroupList_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                            <WrapPanel Orientation="Horizontal" >
+                                                <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                                <TextBlock Text="{Binding Header}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                            </WrapPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <ListBox x:Name="lstSymptomsList" Margin="1,5,0,0" FontFamily="Tahoma" FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="80" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionMode="Single">
+
+                            </ListBox>
+                        </StackPanel>
+
+                    </StackPanel>
+                </StackPanel>
                 
                 <StackPanel x:Name="stkpnlFooter" Orientation="Horizontal" Margin="0,10,0,0">
                     <Button x:Name="btnAddNew" Content="Add new Diagnosis" Width="120" Height="30" Margin="0,0,10,0" Click="btnAddNew_Click" />
