@@ -24,7 +24,8 @@ namespace AMDES_KBS
             a = AssessorController.readAssessor();
             txtAssessorName.Text = a.Name;
             txtAssessorLoc.Text = a.ClinicName;
-            dtpDOB.SelectedDate = dtpAss.SelectedDate = DateTime.Today;
+            dtpDOB.SelectedDate = new DateTime(DateTime.Today.Year, 1, 1);
+            dtpAss.SelectedDate = DateTime.Today;
             turnOffPatientDetails();
             loadEnthicGrp();
         }

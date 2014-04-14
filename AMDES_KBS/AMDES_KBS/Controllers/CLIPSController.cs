@@ -391,6 +391,28 @@ namespace AMDES_KBS.Controllers
                 {
                     string x = ArrayChoices[i].ToString().Remove(0, 1);
                     Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(x));
+
+                    if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
+                    {
+                        foreach (int k in d.RetrievalIDList)
+                        {
+                            List<Symptom> grpSymptoms = getPatientSymptomByQG(k);
+                            foreach (Symptom s in grpSymptoms)
+                            {
+                                if (d.Comment.Trim().Length == 0)
+                                {
+                                    d.Comment +=  s.SymptomName.Trim();
+                                }
+                                else
+                                {
+                                    d.Comment += ", " + s.SymptomName.Trim();
+                                }
+                                
+                                d.Comment = d.Comment.Trim();
+                            }
+                        }
+                    }
+                    d.Comment = d.Comment.Trim();
                     h.addDiagnosis(d);
                 }
 
@@ -471,6 +493,49 @@ namespace AMDES_KBS.Controllers
             }
 
             return naviHistory;
+        }
+
+        private static List<Symptom> getPatientSymptomByQG(int qgID)
+        {
+            List<Symptom> sList = new List<Symptom>();
+
+            String evalStr = "(find-all-facts((?s symptoms)) TRUE)";
+            MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
+
+            foreach (FactAddressValue fv in mv)
+            {
+                string grpID = fv.GetFactSlot("GroupID").ToString().Remove(0, 1);
+                string qID = fv.GetFactSlot("QuestionID").ToString().Remove(0, 1);
+                int y;
+                bool result = int.TryParse(grpID, out y);
+
+                if (result && qgID == y)
+                {
+                    Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '),
+                                            grpID.ToString());
+
+                    QuestionGroup qg = QuestionController.getGroupByID(y);
+                    if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
+                    {
+                        evalStr = "(find-all-facts((?g group)) TRUE)";
+                        MultifieldValue mv1 = ((MultifieldValue)env.Eval(evalStr));
+                        foreach (FactAddressValue fav in mv1)
+                        {
+                            int id = int.Parse(fav.GetFactSlot("GroupID").ToString().Remove(0, 1));
+                            if (id == y)
+                            {
+                                int maxQn = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
+                                int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
+                                s.SymptomName += " - Required Score: " + maxQn + ", Patient Score: " + trueCount;
+                                break;
+                            }
+                        }
+                    }
+
+                    sList.Add(s);
+                }
+            }
+            return sList;
         }
 
         private static History getCurrentPatientSymptom(History h)

@@ -71,4 +71,14 @@
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
+  <Diagnosis diagID="12">
+    <Comment></Comment>
+    <Header>TESTING bleah</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>1</QGrpID>
+      <QGrpID>2</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
 </Diagnoses>
