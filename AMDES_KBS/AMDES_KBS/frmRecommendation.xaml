@@ -21,11 +21,16 @@
 
 
             </StackPanel>
-            <StackPanel x:Name="PageSFrame" Height="160" Width="960" Margin="0,0,0,0"/>
-            <Label Content="Assessments"  FontSize="14" FontWeight="Bold"/>
-            <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="230" Width="960" HorizontalAlignment="Left">
-                <StackPanel x:Name="PageFrame"/>
-            </ScrollViewer>
+            <TabControl x:Name="tcResults" Background="Transparent" Height="400"  Width="960">
+                <TabItem x:Name="tbResults" Header="Results">
+                    <StackPanel x:Name="PageSFrame" Height="370" Margin="0,0,0,0"/>
+                </TabItem>
+                <TabItem x:Name="tbRecommendation" Header="Recommendations">
+                    <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
+                        <StackPanel x:Name="PageFrame"/>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
             <StackPanel x:Name="ButtonFrame" Height="70" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,60,0">
                     <Label Content="View Trace allows you to view the options that have been selected to get to these recommendations,"  FontWeight="Bold" FontSize="12" Foreground="Blue" />

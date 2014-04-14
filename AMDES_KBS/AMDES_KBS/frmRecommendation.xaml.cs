@@ -132,8 +132,7 @@ namespace AMDES_KBS
             }
             //<ScrollViewer x:Name="svS" VerticalScrollBarVisibility="auto" Height="160" Width="960" HorizontalAlignment="Left">
             ScrollViewer sv = new ScrollViewer();
-            sv.Height=160-30;
-            sv.Width=960;
+            sv.Width = tcResults.Width - 30;
             sv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             sv.Content = stkpnlSymptons;
 

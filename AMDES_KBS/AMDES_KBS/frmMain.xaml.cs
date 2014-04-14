@@ -96,5 +96,10 @@ namespace AMDES_KBS
             listPatients();
         }
 
+        private void btnStats_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
