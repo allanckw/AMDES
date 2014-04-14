@@ -53,8 +53,9 @@
 
 ;;A question has a symptom but can be null
 (deftemplate questionid-symptoms
-   (slot QuestionID (type SYMBOL))
-   (slot symptom (type STRING)))
+	(slot GroupID (type SYMBOL))
+    (slot QuestionID (type SYMBOL))
+    (slot symptom (type STRING)))
 
 ;; navigation 
 ;; A navigation element has Destination OR Diagnosis ID (RID = RuleID for short)
@@ -81,7 +82,8 @@
    (multislot ID (type SYMBOL) (default NIL END)))
 
 (deftemplate symptoms
-   (slot ID (type SYMBOL))
+   (slot GroupID (type SYMBOL))
+   (slot QuestionID (type SYMBOL) (default NIL))
    (slot symptom (type STRING)))
 
 (defrule Initial_Question
@@ -185,39 +187,39 @@
    (group (answer No) (GroupID ?id) (SuccessType COUNT))
    (groupid-symptoms (GroupID ?id) (symptom ?sym))
    (not (exists
-             (symptoms (ID ?id))))
+             (symptoms (GroupID ?id))))
    =>
-   (assert (symptoms (symptom ?sym) (ID ?id))))
+   (assert (symptoms (symptom ?sym) (GroupID ?id))))
 
 (defrule Add_Symptom_For_Group_Type_Normal
    (group (answer Yes) (GroupID ?id) (SuccessType AND|OR))
    (groupid-symptoms (GroupID ?id) (symptom ?sym))
    (not (exists
-             (symptoms (ID ?id))))
+             (symptoms (GroupID ?id))))
    =>
-   (assert (symptoms (symptom ?sym) (ID ?id))))
+   (assert (symptoms (symptom ?sym) (GroupID ?id))))
 
 (defrule Retract-symptoms-groupid-count
    (group (answer Yes) (GroupID ?Noid) (SuccessType COUNT))
    (groupid-symptoms (GroupID ?Noid))
-   ?sym <- (symptoms (ID ?Noid))
+   ?sym <- (symptoms (GroupID ?Noid))
    =>
    (retract ?sym))
 
 (defrule Retract-symptoms-groupid-not-count
    (group (answer No) (GroupID ?Noid) (SuccessType OR|AND))
    (groupid-symptoms (GroupID ?Noid))
-   ?sym <- (symptoms (ID ?Noid))
+   ?sym <- (symptoms (GroupID ?Noid))
    =>
    (retract ?sym))
    
 (defrule Add_Symptom_For_Question
    (question (answer Yes) (ID ?id))
-   (questionid-symptoms (QuestionID ?id) (symptom ?sym))
+   (questionid-symptoms  (symptom ?sym) (GroupID ?grp) (QuestionID ?id))
    (not (exists
-             (symptoms (ID ?id))))
+             (symptoms (GroupID ?grp) (QuestionID ?id))))
    =>
-   (assert (symptoms (symptom ?sym) (ID ?id))))
+   (assert (symptoms (GroupID ?grp) (QuestionID ?id) (symptom ?sym))))
 
 (defrule Next_Question_Attribute_Check
    (attribute ?attribu ?value)
@@ -338,8 +340,10 @@
    (retract ?prev)
    (printout t "Only 1 group in history, cannot previous any more" crlf)) 
 
+
+   
 (defrule Retract-symptoms-questionid
-   ?sym <- (symptoms (ID ?Noid))
+   ?sym <- (symptoms (QuestionID ?Noid&~NIL) (GroupID ?grp))
    (question (answer No) (ID ?Noid))
    (questionid-symptoms (QuestionID ?Noid))
    =>

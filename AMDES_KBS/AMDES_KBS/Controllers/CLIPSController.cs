@@ -219,7 +219,7 @@ namespace AMDES_KBS.Controllers
                     if (q.Symptom.Length > 0)
                     {
                         sb.Clear();
-                        sb.Append("(questionid-symptoms (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
+                        sb.Append("(questionid-symptoms (GroupID _" + qg.GroupID + ") (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
                         assert(sb);
                     }
                 }
@@ -482,10 +482,10 @@ namespace AMDES_KBS.Controllers
 
             foreach (FactAddressValue fv in mv)
             {
-                string x = fv.GetFactSlot("ID").ToString().Remove(0, 1);
-                string grpID = x;
+                string grpID = fv.GetFactSlot("GroupID").ToString().Remove(0, 1);
+                string qID = fv.GetFactSlot("QuestionID").ToString().Remove(0, 1);
                 int y;
-                bool result = int.TryParse(x, out y);
+                bool result = int.TryParse(grpID, out y);
 
 
                 Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '),

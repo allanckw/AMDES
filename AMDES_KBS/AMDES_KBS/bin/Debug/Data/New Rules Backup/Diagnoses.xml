@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Diagnoses xml-->
+<Diagnoses>
+  <Diagnosis diagID="6">
+    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+    <Header>Recommended Tests</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="8">
+    <Comment>The patient has no signs of dementia and no signs of cognitive impairment. </Comment>
+    <Header>No Dementia and no cognitive impairment</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="7">
+    <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
+    <Header>Require brain imaging and referral</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="9">
+    <Comment></Comment>
+    <Header>Underlying Diagnosis Include</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>5</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+</Diagnoses>

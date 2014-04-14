@@ -15,6 +15,27 @@
     <RetrieveSymptom>False</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
+  <Diagnosis diagID="5">
+    <Comment>Patient has other underlying conditions that can result in cognitive impairment. ~~The patient will need further evaluation.</Comment>
+    <Header>Need to exclude other causes of cognitive impairment</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="4">
+    <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.</Comment>
+    <Header>High likelihood of dementia - fulfil DSM IV Criteria</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="1">
+    <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. ~~The patient will need further evaluation.</Comment>
+    <Header>Low likelihood of dementia - Other underlying conditions</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
   <Diagnosis diagID="7">
     <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
     <Header>Require brain imaging and referral</Header>
@@ -22,13 +43,32 @@
     <RetrieveSymptom>False</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
-  <Diagnosis diagID="9">
-    <Comment></Comment>
-    <Header>Underlying Diagnosis Include</Header>
+  <Diagnosis diagID="3">
+    <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and / or decline is rapid (&lt; 6 months). </Comment>
+    <Header>Low likelihood of dementia - consider referral</Header>
     <Link></Link>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>5</QGrpID>
-    </RetrieveFrom>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="9">
+    <Comment>The patient has failed the abbreviated mental test (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+    <Header>Unconclusive - Failed AMT with no other symptoms</Header>
+    <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="11">
+    <Comment>The patient has some symptoms of Dementia, but does not fufil the DSM IV Criteria~~The patient will need further evaluation.</Comment>
+    <Header>Unconclusive - Some symptoms of dementia</Header>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+    <Link></Link>
+  </Diagnosis>
+  <Diagnosis diagID="2">
+    <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
+    <Header>Low likelihood of dementia - Consider congenital conditions</Header>
+    <Link></Link>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
   </Diagnosis>
 </Diagnoses>
