@@ -181,7 +181,7 @@ namespace AMDES_KBS
             string filter = "*.txt";
             string[] files = Directory.GetFiles(folder, filter);
 
-            cbValue.Visibility = System.Windows.Visibility.Collapsed;
+            cboValue.Visibility = System.Windows.Visibility.Collapsed;
             try
             {
             
@@ -253,11 +253,11 @@ namespace AMDES_KBS
             {
                 return txtValue.Text;
             }
-            else if (cbValue.Visibility == System.Windows.Visibility.Visible && cbValue.IsEnabled)
+            else if (cboValue.Visibility == System.Windows.Visibility.Visible && cboValue.IsEnabled)
             {
-                if (cbValue.SelectedIndex == -1)
+                if (cboValue.SelectedIndex == -1)
                     return null;
-                return cbValue.SelectedValue.ToString();
+                return cboValue.SelectedValue.ToString();
             }
 
             return null;
@@ -266,33 +266,33 @@ namespace AMDES_KBS
         private void Set_Mode(Tuple<string, bool, List<string>> raw_data)
         {
             txtValue.Clear();
-            cbValue.SelectedIndex = -1;
+            cboValue.SelectedIndex = -1;
             if(raw_data == null)
             {
                 txtValue.IsEnabled = false;
-                cbValue.IsEnabled = false;
+                cboValue.IsEnabled = false;
                 return;
             }
 
             txtValue.IsEnabled = true;
-            cbValue.IsEnabled = true;
+            cboValue.IsEnabled = true;
             if (raw_data.Item2)
             {
-                cbValue.Visibility = System.Windows.Visibility.Visible;
+                cboValue.Visibility = System.Windows.Visibility.Visible;
                 txtValue.Visibility = System.Windows.Visibility.Collapsed;
 
                 //populate cb
 
-                cbValue.Items.Clear();
+                cboValue.Items.Clear();
                 foreach (string choice in raw_data.Item3)
                 {
-                    cbValue.Items.Add(choice);
+                    cboValue.Items.Add(choice);
                 }
-                //cbValue.Items.Add("others");
+                //cboValue.Items.Add("others");
             }
             else
             {
-                cbValue.Visibility = System.Windows.Visibility.Collapsed;
+                cboValue.Visibility = System.Windows.Visibility.Collapsed;
                 txtValue.Visibility = System.Windows.Visibility.Visible;
             }
         }
