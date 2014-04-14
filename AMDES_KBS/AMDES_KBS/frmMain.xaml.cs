@@ -39,13 +39,13 @@ namespace AMDES_KBS
             {
                 //frameDisplay.Navigate(new frmOverview(frameDisplay));
                 frameDisplay.Navigate(new frmPatientDetails(frameDisplay));
-                btnPatients.Visibility = Visibility.Hidden;
+                btnPatients.Visibility = Visibility.Collapsed;
                 stkpnlSearchBox.Visibility = Visibility.Hidden;
             }
             else
             {
                 frameDisplay.Navigate(new frmOverview(frameDisplay));
-                btnPatients.Visibility = Visibility.Visible;
+                btnPatients.Visibility = Visibility.Collapsed;
                 stkpnlSearchBox.Visibility = Visibility.Visible;
             }
         }
@@ -98,7 +98,8 @@ namespace AMDES_KBS
 
         private void btnStats_Click(object sender, RoutedEventArgs e)
         {
-
+            frmP2 p2 = new frmP2();
+            p2.ShowDialog();
         }
 
     }

@@ -6,6 +6,11 @@
 
 
 (defmodule MAIN (export deftemplate initial-fact))
+(defrule MAIN::Change-Focus
+		=>
+		(set-strategy depth)
+		(printout t "change strategy to depth")
+)
 
 (deftemplate Currentgroup
    (slot GroupID (type SYMBOL))
@@ -421,14 +426,20 @@
 )
 
 
-;;;;;;;;;;;;;;;;;;;;;;mode2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;DecisionTree;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defmodule DecisionTree (import MAIN deftemplate initial-fact))
+
+(defrule DecisionTree::Change-Focus
+		=>
+		(set-strategy complexity)
+		(printout t "change strategy to complexity")
+)
 
 (deftemplate DecisionTree::LeafSet ;;conjunctive set of the disjunctive normal form
 (slot LeafID )
 (slot Result (type SYMBOL) (default NIL))
 (slot Total (type INTEGER) (default 0))
-(slot TotalPass (type INTEGER) (default 0))
+
 )
 
 (deftemplate DecisionTree::clause ;;
@@ -437,7 +448,7 @@
 (slot CompareValue) ;;eg CompareValue > attributevalue
 (slot CompareAttributeName)
 (slot Result (type SYMBOL) (default NIL))
-(slot Counted(default No))
+
 )
 
 (deftemplate DecisionTree::Conclusion ;;conclusion if this set resolve true
@@ -458,26 +469,30 @@
 (slot Value )
 )
 
-;; NEED TO CHANGE STRATEGY HERE
-(defrule DecisionTree::init
-	(declare (salience 1))	
-	=>
-	(set-strategy complexity)
-)
+
 
 ; ; The initial facts
 (deffacts DecisionTree::the-facts
-	(Attribute (Name Age) (Value 44))
-	(Attribute (Name test) (Value Yes))
+	;;(Attribute (Name Age) (Value 44))
+	;;(Attribute (Name test) (Value Yes))
 
-	(LeafSet (LeafID 1))
-	(clause (LeafID 1) (CompareType eq ) (CompareValue Yes) (CompareAttributeName test) )
-	(clause (LeafID 1) (CompareType == ) (CompareValue 44) (CompareAttributeName Age) )
-	(Conclusion (LeafID 1) (Diagnosis D1))
-	(Conclusion (LeafID 1) (Diagnosis D2))
+	;;(LeafSet (LeafID 1))
+	;;(clause (LeafID 1) (CompareType eq ) (CompareValue Yes) (CompareAttributeName test) )
+	;;;(clause (LeafID 1) (CompareType == ) (CompareValue 44) (CompareAttributeName Age) )
+	;;(Conclusion (LeafID 1) (Diagnosis D1))
+	;;(Conclusion (LeafID 1) (Diagnosis D2))
 
 ;;(assert (Attribute (Name TT4) (Value 20)))
 
+)
+
+;;;;;;;;;;;
+;;insert diagnosis
+(defrule DecisionTree::Diagnosis-finalize
+(Conclusion (LeafID ?ID) (Diagnosis ?D) (Agree ?a) (DisAgree ?da))
+(LeafSet (LeafID ?ID) (Result Pass) )
+=>
+(assert (Answer (Diagnosis ?D) (Agree ?a) (DisAgree ?da)))
 )
 
 
@@ -574,13 +589,6 @@
 
 )
 
-(defrule DecisionTree::TotalPassCounting
-?p<- (Pass ?id)
-?l<-(LeafSet (LeafID ?id) (TotalPass ?count))
-=>
-(retract ?p)
-(modify ?l (TotalPass (+ ?count 1)))
-)
 ;;;;;;;;;;
 (defrule DecisionTree::Fail-LeafSet
 ;;(salience 1)
@@ -605,23 +613,3 @@
 =>
 (modify ?Leaf (Result Pass))
 )
-;;;;;;;;;;;
-;;insert diagnosis
-(defrule DecisionTree::Diagnosis-finalize
-
-(Conclusion (LeafID ?ID) (Diagnosis ?D) (Agree ?a) (DisAgree ?da))
-(LeafSet (LeafID ?ID) (Result Pass) )
-=>
-(assert (Answer (Diagnosis ?D) (Agree ?a) (DisAgree ?da)))
-)
-
-;;;
-(defrule DecisionTree::Counting
-?c<-(clause (LeafID ?id) (Counted No))
-?l<-(LeafSet (LeafID ?id) (Total ?count))
-=>
-(modify ?c (Counted Yes))
-
-(modify ?l (Total (+ ?count 1)))
-)
-

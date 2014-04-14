@@ -122,8 +122,12 @@
     <Compile Include="Controllers\FirstQuestionController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\P2Controller.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="frmP2.xaml.cs">
+      <DependentUpon>frmP2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewOnlyPurpose\ucQuestionViewOnly.xaml.cs">
       <DependentUpon>ucQuestionViewOnly.xaml</DependentUpon>
     </Compile>
@@ -214,6 +218,10 @@
     <Compile Include="SettingControl\ucNavigationSetting.xaml.cs">
       <DependentUpon>ucNavigationSetting.xaml</DependentUpon>
     </Compile>
+    <Page Include="frmP2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ViewOnlyPurpose\ucQuestionViewOnly.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
