@@ -74,7 +74,7 @@
    (slot AttributeName (type SYMBOL) (default NIL))
    (slot AttributeValue)
    (slot AttributeCompareType (type SYMBOL) (default NIL))
-   (slot Answer (type SYMBOL) (default Yes) (allowed-symbols Yes No)))
+   (slot Answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 (deftemplate NaviHistory
    (multislot ID (type SYMBOL) (default NIL END)))
@@ -110,7 +110,7 @@
    (not (exists
              (NaviChildCritQuestion (NavigationID ?naviID))))
    (not (exists
-             (NaviChildCritAttribute (NavigationID ?naviID) (Answer Yes))))
+             (NaviChildCritAttribute (NavigationID ?naviID) (Answer No))))
    (not (exists
              (Currentgroup)))
    ?hist <- (NaviHistory (ID $?x END))
@@ -133,7 +133,7 @@
         (group (GroupID ?CGID) (answer ?CA))
         (NaviHistory (ID $?START ?CGID $?END)))
    (not (exists
-             (NaviChildCritAttribute (NavigationID ?naviID) (Answer Yes))))
+             (NaviChildCritAttribute (NavigationID ?naviID) (Answer No))))
    ?hist <- (NaviHistory (ID $?x END))
    ?grp <- (group (GroupID ?z) (SuccessType ?a) (SuccessArg ?b) (TrueCount ?c) (answer ?e))
    =>
@@ -383,7 +383,7 @@
         (group (GroupID ?CGID) (answer ?CA))
         (NaviHistory (ID $?START ?CGID $?END)))
    (not (exists
-             (NaviChildCritAttribute (NavigationID ?naviID) (Answer Yes))))
+             (NaviChildCritAttribute (NavigationID ?naviID) (Answer No))))
    =>
    (retract ?rmv)
    (retract ?nxt)
