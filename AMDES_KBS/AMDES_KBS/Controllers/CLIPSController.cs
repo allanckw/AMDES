@@ -242,12 +242,16 @@ namespace AMDES_KBS.Controllers
             {
                 foreach (Navigation n in r.Navigations)
                 {
-                    nList.Add(n);
+                    if (!nList.Contains(n))
+                        nList.Add(n);
                 }
             }
 
-            nList.Sort();
+           
+            Navigation.CriteriaSortingComparer comparer = new Navigation.CriteriaSortingComparer();
+            nList.Sort(comparer);
 
+            //foreach (Navigation n in nList)
             foreach (Navigation n in nList)
             {
                 createNavigationAssertion(n);
@@ -344,8 +348,6 @@ namespace AMDES_KBS.Controllers
 
         public static void retractDiagnosis()
         {
-            //CurrentPatient.Diagnoses.Clear();
-            //CurrentPatient.SymptomsList.Clear();
             assertPrevSection();
         }
 

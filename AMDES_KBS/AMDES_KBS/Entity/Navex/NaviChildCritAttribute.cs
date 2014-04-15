@@ -2,7 +2,7 @@
 
 namespace AMDES_KBS.Entity
 {
-    public class NaviChildCritAttribute
+    public class NaviChildCritAttribute : IEquatable<NaviChildCritAttribute>, IComparable<NaviChildCritAttribute>
     {
         private string navid;
 
@@ -35,14 +35,6 @@ namespace AMDES_KBS.Entity
             set { attributeValue = value; }
         }
 
-        //private bool ans;
-
-        //public bool Ans
-        //{
-        //    get { return ans; }
-        //    set { ans = value; }
-        //}
-
         private AttributeCmpType type;
 
         private AttributeCmpType Type
@@ -53,7 +45,7 @@ namespace AMDES_KBS.Entity
 
         public enum AttributeCmpType
         {
-            Equal, //==
+            Equal, //=
             MoreThanEqual, // >=
             MoreThan, //>
             LessThanEqual, //<=
@@ -63,7 +55,7 @@ namespace AMDES_KBS.Entity
         public string getCompareTypeString()
         {
             if (type == AttributeCmpType.Equal)
-                return "==";
+                return "=";
             else if (type == AttributeCmpType.MoreThanEqual)
                 return ">=";
             else if (type == AttributeCmpType.MoreThan)
@@ -109,6 +101,21 @@ namespace AMDES_KBS.Entity
 
         public NaviChildCritAttribute()
         {
+        }
+
+        public bool Equals(NaviChildCritAttribute nca)
+        {
+            return (this.attributeName.ToUpper() == nca.attributeName.ToUpper() &&
+                    this.attributeValue.ToUpper() == nca.attributeValue.ToUpper() &&
+                    this.Type == nca.Type);
+        }
+
+        public int CompareTo(NaviChildCritAttribute nca)
+        {
+            if (this.Equals(nca))
+                return 0;
+            else
+                return -1;
         }
     }
 }

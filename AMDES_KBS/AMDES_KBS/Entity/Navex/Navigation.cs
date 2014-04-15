@@ -4,13 +4,23 @@ using System.Linq;
 
 namespace AMDES_KBS.Entity
 {
-    public class Navigation : IComparable<Navigation>
+    public class Navigation : IComparable<Navigation>, IEquatable<Navigation>
     {
         public static string dataPath = @"data\Navex.xml";
 
         private string navID = "-1";
         private int destGrpID = -1;
         private List<int> diagnosis;
+        private List<NaviChildCritAttribute> childCriteriaAttr;
+        private List<NaviChildCriteriaQuestion> childCriteriaQn;
+
+        public Navigation()
+        {
+            childCriteriaAttr = new List<NaviChildCritAttribute>();
+            childCriteriaQn = new List<NaviChildCriteriaQuestion>();
+            DiagnosesID = new List<int>();
+        }
+
 
         public string NavID
         {
@@ -40,14 +50,10 @@ namespace AMDES_KBS.Entity
             set { diagnosis = value; }
         }
 
-        private List<NaviChildCritAttribute> childCriteriaAttr;
-
         public List<NaviChildCritAttribute> ChildCriteriaAttributes
         {
             get { return childCriteriaAttr; }
         }
-
-        private List<NaviChildCriteriaQuestion> childCriteriaQn;
 
         public List<NaviChildCriteriaQuestion> ChildCriteriaQuestion
         {
@@ -57,13 +63,6 @@ namespace AMDES_KBS.Entity
                 if (value != null)
                     childCriteriaQn = value;
             }
-        }
-
-        public Navigation()
-        {
-            childCriteriaAttr = new List<NaviChildCritAttribute>();
-            childCriteriaQn = new List<NaviChildCriteriaQuestion>();
-            DiagnosesID = new List<int>();
         }
 
         public void addNavCriteriaQuestion(int grpID, bool ans)
@@ -158,8 +157,102 @@ namespace AMDES_KBS.Entity
 
         public int CompareTo(Navigation n)
         {
-            return (this.ChildCriteriaQuestion.Count + this.ChildCriteriaAttributes.Count)
-                    - (n.ChildCriteriaQuestion.Count + n.ChildCriteriaAttributes.Count);
+            if (this.Equals(n))
+                return 0;
+            else
+                return -1;
+
+           
+        }
+
+        public bool Equals(Navigation n)
+        {
+            bool dupe = true;
+
+            //if they dun have the same no. of attribute they are not the same
+            if (this.ChildCriteriaAttributes.Count != n.ChildCriteriaAttributes.Count)
+            {
+                return false;
+            }
+            else if (this.ChildCriteriaQuestion.Count != n.ChildCriteriaQuestion.Count)
+            {
+                return false; //if they dun have the same criteria questions, they are not the same
+            }
+            else if (this.childCriteriaAttr.Count == n.ChildCriteriaAttributes.Count &&
+                     this.ChildCriteriaQuestion.Count == n.ChildCriteriaQuestion.Count)
+            {
+                //List<NaviChildCritAttribute> disAttrList = this.ChildCriteriaAttributes.Distinct<NaviChildCritAttribute>().ToList<NaviChildCritAttribute>();
+                //List<NaviChildCriteriaQuestion> disQnList = this.ChildCriteriaQuestion.Distinct<NaviChildCriteriaQuestion>().ToList<NaviChildCriteriaQuestion>();
+
+                //List<NaviChildCritAttribute> odisAttrList = n.ChildCriteriaAttributes.Distinct<NaviChildCritAttribute>().ToList<NaviChildCritAttribute>();
+                //List<NaviChildCriteriaQuestion> oodisQnList = n.ChildCriteriaQuestion.Distinct<NaviChildCriteriaQuestion>().ToList<NaviChildCriteriaQuestion>();
+                
+
+                for (int i = 0; i < this.ChildCriteriaQuestion.Count; i++)
+                {
+                    if(!this.ChildCriteriaQuestion.Contains(n.ChildCriteriaQuestion[i]))
+                    {
+                        dupe = false;
+                        break;
+                    }
+                }
+
+                if (!dupe)
+                {
+                    for (int i = 0; i < ChildCriteriaAttributes.Count; i++)
+                    {
+                        if (!this.childCriteriaAttr.Contains(n.ChildCriteriaAttributes[i]))
+                        {
+                            dupe = false;
+                            break;
+                        }
+                    }
+                }
+                //dupe = true = same
+                if (dupe && this.DestGrpID != n.DestGrpID)
+                {
+                    dupe = false;
+                }
+                else if (dupe && this.DestGrpID == n.DestGrpID)
+                {
+                    if (this.DestGrpID == -1) //check diagnoses
+                    {
+                        List<int> myDiag = this.DiagnosesID;
+                        List<int> oDiag = n.DiagnosesID;
+
+                        if (myDiag.Count != oDiag.Count)
+                        {
+                            dupe = false;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < oDiag.Count; i++)
+                            {
+                                if (!myDiag.Contains(oDiag[i]))
+                                {
+                                    dupe = false;
+                                    break;
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+            }
+            return dupe;
+        }
+
+        public class CriteriaSortingComparer : IComparer<Navigation>
+        {
+
+            public int Compare(Navigation n1, Navigation n2)
+            {
+                return (n1.ChildCriteriaQuestion.Count + n1.ChildCriteriaAttributes.Count)
+                             - (n2.ChildCriteriaQuestion.Count + n2.ChildCriteriaAttributes.Count);
+
+            }
+
         }
     }
 
