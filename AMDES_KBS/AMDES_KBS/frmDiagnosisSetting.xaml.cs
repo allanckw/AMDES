@@ -330,5 +330,64 @@ namespace AMDES_KBS
         {
             stkpnlSymtomsSection.Visibility = Visibility.Hidden;
         }
+
+        //Hidden Function only to us
+        private void btnImportSpecial_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog OD = new Microsoft.Win32.OpenFileDialog();
+            List<String> DiagnosisList = new List<String>();
+            if (OD.ShowDialog()==true)
+            {
+                string fileName = OD.FileName;
+                using (System.IO.StreamReader sr = new System.IO.StreamReader(fileName)) 
+                {
+                    while (sr.Peek() >= 0) 
+                    {
+                        String diagString = sr.ReadLine().Trim();
+                        DiagnosisList.Add(diagString);
+                    }
+                }
+            }
+
+            int counter;
+            try
+            {
+                counter = int.Parse(txtHeader.Text.ToString().Trim());
+            }
+            catch (Exception)
+            {
+                counter = 1;
+            }
+
+
+            foreach (String diagnosisStr in DiagnosisList)
+            {
+                Diagnosis d = new Diagnosis();
+                d.RID = DiagnosisController.getNextDiagnosisID();
+                d.Header = "R" + String.Format("{0:00}", counter);
+                d.Comment = diagnosisStr;
+                d.Link = "";
+                DiagnosisController.updateDiagnosis(d);
+                counter++;
+            }
+
+            this.loadALLDiagnosis();
+        }
+
+        private void txtHeader_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtHeader.Text.ToString().Trim() == "@Enable Special Function")
+            {
+                btnImportSpecial.Visibility = Visibility.Visible;
+            }
+            else if (txtHeader.Text.ToString().Trim() == "@Disable Special Function")
+            {
+                btnImportSpecial.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+
+            }
+        }
     }
 }

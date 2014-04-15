@@ -28,7 +28,7 @@
             <StackPanel x:Name="stkpnlDiagnosisDetails" Margin="5,30,0,0">
                 <StackPanel>
                     <Label Content="Header" FontSize="15" Margin="0,0,0,10"/>
-                    <TextBox x:Name="txtHeader" Width="500" Height="30" MaxLength="100"></TextBox>
+                    <TextBox x:Name="txtHeader" Width="500" Height="30" MaxLength="100" TextChanged="txtHeader_TextChanged"></TextBox>
                 </StackPanel>
 
                 <StackPanel Width="498">
@@ -93,6 +93,7 @@
                     <Button x:Name="btnAddNew" Content="Add new Diagnosis" Width="120" Height="30" Margin="0,0,10,0" Click="btnAddNew_Click" />
                     <Button x:Name="btnDeleteComment" Content="Delete Diagnosis" Width="120" Height="30"  Margin="0,0,10,0" Click="btnDeleteComment_Click" />
                     <Button x:Name="btnSaveComment" Content="Save Diagnosis" Width="120" Height="30" Click="btnSaveComment_Click" />
+                    <Button x:Name="btnImportSpecial" Content="" Width="30" Height="30" Margin="10,0,0,0" Visibility="Collapsed"  Click="btnImportSpecial_Click" />
 
                 </StackPanel>
             </StackPanel>
