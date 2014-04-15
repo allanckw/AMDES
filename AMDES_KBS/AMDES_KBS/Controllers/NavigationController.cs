@@ -10,7 +10,7 @@ namespace AMDES_KBS.Controllers
     public class NavigationController
     {
 
-      
+
         private static int rulesRIDCounter = 1;
 
         private static void createDataFile()
@@ -60,7 +60,7 @@ namespace AMDES_KBS.Controllers
             //(i.e. the information for : Y -> A, N -> B, < 7 -> A, > 7 -> B
             XElement newGRP = new XElement("Rule", new XAttribute("RID", p.RuleID),
                               new XElement("Description", p.Description),
-                                //description of the Question Rules, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
+                //description of the Question Rules, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
                                 new XElement("Navigations"),
                                 new XElement("Diagnoses")
                                 );
@@ -109,7 +109,7 @@ namespace AMDES_KBS.Controllers
                                         new XElement("AttributeName", ca.AttributeName),
                                         new XElement("AttributeValue", ca.AttributeValue),
                                         new XElement("CompareType", ca.getCompareType()),
-                                        //new XElement("Answer", ca.Ans),
+                            //new XElement("Answer", ca.Ans),
                                         new XElement("SetOnGroupID", ca.GroupID)
                                         );
 
@@ -203,7 +203,7 @@ namespace AMDES_KBS.Controllers
                 n.DestGrpID = int.Parse(x.Element("Destination").Value);
 
                 var grps = (from pa in x.Descendants("NavigationChildCriterias").Descendants("ChildCriteriaQuestionGroup")
-                          select pa).ToList();
+                            select pa).ToList();
 
                 foreach (var g in grps)
                 {
@@ -314,5 +314,26 @@ namespace AMDES_KBS.Controllers
             }
         }
 
+        public static void deleteDiagnosisID(int diagID)
+        {
+            XDocument document = XDocument.Load(Rules.dataPath);
+            try
+            {
+                (from pa in document.Descendants("Rule").Descendants("DiagnosisID")
+                 where int.Parse(pa.Value) == diagID
+                 select pa).SingleOrDefault().Remove();
+
+                (from pa in document.Descendants("Rule").Descendants("RDiagnosisID")
+                 where int.Parse(pa.Value) == diagID
+                 select pa).SingleOrDefault().Remove();
+            }
+            catch (Exception)
+            {
+
+            }
+
+            document.Save(Rules.dataPath);
+
+        }
     }
 }

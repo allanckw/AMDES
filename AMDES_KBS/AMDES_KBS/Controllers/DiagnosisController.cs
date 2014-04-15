@@ -78,7 +78,7 @@ namespace AMDES_KBS.Controllers
                     XElement ccq = new XElement("QGrpID", d.RetrievalIDList[i]);
                     x.Element("RetrieveFrom").Add(ccq);
                 }
-                
+
             }
 
             return x;
@@ -175,6 +175,8 @@ namespace AMDES_KBS.Controllers
                  select pa).SingleOrDefault().Remove();
 
                 document.Save(Diagnosis.dataPath);
+
+                NavigationController.deleteDiagnosisID(id);
 
             }
         }
