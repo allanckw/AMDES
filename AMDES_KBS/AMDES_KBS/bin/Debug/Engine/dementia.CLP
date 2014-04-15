@@ -34,7 +34,7 @@
 ;; A Group has many questions
 (deftemplate group
    (slot GroupID (type SYMBOL))
-   (slot SuccessType (type SYMBOL))
+   (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT
    (slot SuccessArg (type INTEGER))
    (slot TrueCount (type INTEGER) (default 0))
    ;;(slot conclusion (type SYMBOL) (default NIL)) moved to navigations
