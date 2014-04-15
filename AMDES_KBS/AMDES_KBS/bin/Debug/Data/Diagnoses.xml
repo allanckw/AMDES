@@ -8,6 +8,34 @@
     <RetrieveSymptom>False</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
+  <Diagnosis diagID="8">
+    <Comment>The patient has no signs of dementia and no signs of cognitive impairment. </Comment>
+    <Header>No Dementia and no cognitive impairment</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="5">
+    <Comment>Patient has other underlying conditions that can result in cognitive impairment. ~~The patient will need further evaluation.</Comment>
+    <Header>Need to exclude other causes of cognitive impairment</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="4">
+    <Comment>Patient has a HIGH likelihood of dementia, as the symptoms fulfil the DSM IV criteria.</Comment>
+    <Header>High likelihood of dementia - fulfil DSM IV Criteria</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="1">
+    <Comment>Patient has a LOW likelihood of dementia, and may have other underlying conditions leading to some cognitive deficits. ~~The patient will need further evaluation.</Comment>
+    <Header>Low likelihood of dementia - Other underlying conditions</Header>
+    <Link></Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
   <Diagnosis diagID="7">
     <Comment>Brain imaging and referral to a tertiary hospital is recommended</Comment>
     <Header>Require brain imaging and referral</Header>
@@ -15,144 +43,42 @@
     <RetrieveSymptom>False</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
-  <Diagnosis diagID="8">
-    <Comment>Dementia high likelihood by DSM4 criteria</Comment>
-    <Header>R01</Header>
+  <Diagnosis diagID="3">
+    <Comment>Likelihood of dementia is low. You may consider a referral to a specialist should the onset and course of the disease be sudden and / or decline is rapid (&lt; 6 months). </Comment>
+    <Header>Low likelihood of dementia - consider referral</Header>
     <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveSymptom>False</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
   <Diagnosis diagID="9">
-    <Comment>Dementia high likelihood by DSM4 criteria but passed AMT - please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R02</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="10">
-    <Comment>Failed AMT - re-take a more detailed history to elicit possible cognitive and functional deficits</Comment>
-    <Header>R03</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
+    <Comment>The patient has failed the abbreviated mental test (AMTS), but has no other symptoms.~~The patient will need further evaluation.~~</Comment>
+    <Header>Unconclusive - Failed AMT with no other symptoms</Header>
+    <Link>http://en.wikipedia.org/wiki/Abbreviated_mental_test_score</Link>
+    <RetrieveSymptom>False</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
   <Diagnosis diagID="11">
-    <Comment>Failed AMT but no history of significant cognitive and functional deficits - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R04</Header>
+    <Comment>The patient has some symptoms of Dementia, but does not fufil the DSM IV Criteria~~The patient will need further evaluation.</Comment>
+    <Header>Unconclusive - Some symptoms of dementia</Header>
+    <RetrieveSymptom>False</RetrieveSymptom>
+    <RetrieveFrom />
+    <Link></Link>
+  </Diagnosis>
+  <Diagnosis diagID="2">
+    <Comment>Likelihood of dementia is low. If the cognitive deficit(s) has been present for a long time, do consider congenital conditions like mental retardation, cerebral palsy. ~~~~You may consider a referral to a specialist should there be a sudden change or decline in the condition.</Comment>
+    <Header>Low likelihood of dementia - Consider congenital conditions</Header>
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
   <Diagnosis diagID="12">
-    <Comment>Failed AMT with Amnestic symptoms - Need to exclude other underlying causes. Please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R05</Header>
+    <Comment></Comment>
+    <Header>TESTING bleah</Header>
     <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="13">
-    <Comment>Failed AMT with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R06</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="14">
-    <Comment>Failed AMT with Amnestic symptoms but no significant functional decline, please refer the patient to a tertiary centre  for further evaluation</Comment>
-    <Header>R07</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="15">
-    <Comment>Failed AMT with cognitive deficits other than amnesia - re-take history and consider referring the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R08</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="16">
-    <Comment>Failed AMT with cognitive deficits other than amnesia - re-take history, look for underlying causes and consider referring the patient to a tertiary centre</Comment>
-    <Header>R09</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="17">
-    <Comment>Failed AMT with cognitive deficits other than Dementia - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre</Comment>
-    <Header>R10</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="18">
-    <Comment>Non-amnestic cognitive deficits, look for underlying cause and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R11</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="19">
-    <Comment>Non-amnestic cognitive deficits, please refer the patient to a tertiary centre for evaluation</Comment>
-    <Header>R12</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="20">
-    <Comment>Normal AMT with no significant cognitive deficits, dementia unlikely</Comment>
-    <Header>R13</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="21">
-    <Comment>Significant amnesia and functional decline, look for underlying cause and please refer the patient to a tertiary centre for evaluation</Comment>
-    <Header>R14</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="22">
-    <Comment>Significant amnesia and functional decline, please refer the patient to a tertiary centre for evaluation</Comment>
-    <Header>R15</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="23">
-    <Comment>Significant amnesia only, look for underlying cause and please refer the patient to a tertiary centre for evaluation</Comment>
-    <Header>R16</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="24">
-    <Comment>Significant amnesia only, please refer the patient to a tertiary centre for evaluation</Comment>
-    <Header>R17</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="25">
-    <Comment>Significant cognitive deficits and functional decline in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R18</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="26">
-    <Comment>Significant cognitive deficits in history, look for underlying cause for cognitive impairment and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R19</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="27">
-    <Comment>Significant cognitive deficits in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R20</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>1</QGrpID>
+      <QGrpID>2</QGrpID>
+    </RetrieveFrom>
   </Diagnosis>
 </Diagnoses>

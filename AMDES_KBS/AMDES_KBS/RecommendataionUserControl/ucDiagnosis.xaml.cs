@@ -20,31 +20,31 @@ namespace AMDES_KBS
             lblRuleID.Content = DiaRule.Header;
             loadComment();
             loadLink();
-            addSymptons();
+            //addSymptons();
         }
 
-        public void addSymptons()
-        {
-            if (DiaRule.RetrieveSym)
-            {
-                stkpnlSymptomsList.Visibility = Visibility.Visible;
+        //public void addSymptons()
+        //{
+        //    if (DiaRule.RetrieveSym)
+        //    {
+        //        stkpnlSymptomsList.Visibility = Visibility.Visible;
                
-                    foreach (int groupId in DiaRule.RetrievalIDList)
-	                {
-                        List<String> SymptomsListOfQuestionGroup = getSymptomsFromQuestionGroup(groupId);
-                        foreach (String symptoms in SymptomsListOfQuestionGroup)
-                        {
-                            Label lblSymptons = new Label();
-                            lblSymptons.Content = App.bulletForm() + symptoms;
-                            stkpnlSymptons.Children.Add(lblSymptons);
-                        }
-	                }
-            }
-            else
-            {
-                stkpnlSymptomsList.Visibility = Visibility.Collapsed;
-            }
-        }
+        //            foreach (int groupId in DiaRule.RetrievalIDList)
+        //            {
+        //                List<String> SymptomsListOfQuestionGroup = getSymptomsFromQuestionGroup(groupId);
+        //                foreach (String symptoms in SymptomsListOfQuestionGroup)
+        //                {
+        //                    Label lblSymptons = new Label();
+        //                    lblSymptons.Content = App.bulletForm() + symptoms;
+        //                    stkpnlSymptons.Children.Add(lblSymptons);
+        //                }
+        //            }
+        //    }
+        //    else
+        //    {
+        //        stkpnlSymptomsList.Visibility = Visibility.Collapsed;
+        //    }
+        //}
 
         private List<String> getSymptomsFromQuestionGroup(int groupID)
         {
