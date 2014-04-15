@@ -536,5 +536,26 @@ namespace AMDES_KBS
         {
             this.Close();
         }
+
+        private void btnDuplicate_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedIdx = cboDiagnosisList.SelectedIndex;
+            if (selectedIdx == -1)
+            {
+                return;
+            }
+
+            rule = (Rules)cboDiagnosisList.Items[selectedIdx];
+            rule.RuleID = NavigationController.getNextRuleRID();
+            //Graph
+            g = new Graph("RuleID: " + rule.RuleID + ", " + rule.Description);
+            //g.addGraphNodes(QuestionController.getGroupByID(rule.Navigations[0].ChildCriteriaQuestion[0].CriteriaGrpID).Header);
+            loadGraph1();
+            //end graph
+
+            loadNaviList(rule);
+
+            cboDiagnosisList.SelectedIndex = -1;
+        }
     }
 }
