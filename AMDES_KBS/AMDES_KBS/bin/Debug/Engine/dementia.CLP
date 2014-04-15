@@ -17,7 +17,6 @@
    (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT
    (slot SuccessArg (type INTEGER))
    (slot TrueCount (type INTEGER) (default 0))
-   ;;(slot conclusion (type SYMBOL) (default NIL)) moved to navigations
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 (deftemplate Currentquestion
@@ -37,7 +36,6 @@
    (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT
    (slot SuccessArg (type INTEGER))
    (slot TrueCount (type INTEGER) (default 0))
-   ;;(slot conclusion (type SYMBOL) (default NIL)) moved to navigations
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 ;;A Group has a symptom
@@ -86,6 +84,26 @@
    (slot QuestionID (type SYMBOL) (default NIL))
    (slot symptom (type STRING)))
 
+ (defrule NavigationError
+	?nav <-(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID ?y&~NIL))
+	?navAttr <- (NaviChildCritAttribute (NavigationID ?naviID))
+	?navQngrp <- (NaviChildCritQuestion (NavigationID ?naviID))
+	=>
+	(printout t "Error In Navigations ID: " ?naviID  ", please check your navigation point" crlf)
+	(retract ?nav)
+	(retract ?navAttr)
+	(retract ?navQngrp))
+	
+(defrule NavigationError
+	?nav <-(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&NIL) (RID ?y&NIL))
+	?navAttr <- (NaviChildCritAttribute (NavigationID ?naviID))
+	?navQngrp <- (NaviChildCritQuestion (NavigationID ?naviID))
+	=>
+	(printout t "Error In Navigations ID: " ?naviID  ", please check your navigation point" crlf)
+	(retract ?nav)
+	(retract ?navAttr)
+	(retract ?navQngrp))
+   
 (defrule Initial_Question
    ;;(mode 1)
    (Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
