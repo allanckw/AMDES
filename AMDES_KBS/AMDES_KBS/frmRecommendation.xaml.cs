@@ -112,8 +112,9 @@ namespace AMDES_KBS
             foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
             {
                 Label lblSymptons = new Label();
-                lblSymptons.Content = sym.SymptomName;
+                lblSymptons.Content = App.bulletForm() + sym.SymptomName;
                 stkpnlSymptons.Children.Add(lblSymptons);
+
             }
 
             if (stkpnlSymptons.Children.Count == 0)

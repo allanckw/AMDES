@@ -317,12 +317,18 @@ namespace AMDES_KBS
 
         private void chkSym_Checked(object sender, RoutedEventArgs e)
         {
-            bool sym = chkSym.IsChecked.Value;
+            //@Allan - I think he still want to have comment and link if i'm not wrong
+            //bool sym = chkSym.IsChecked.Value;
 
-            txtComment.IsEnabled = !sym;
-            txtLink.IsEnabled = !sym;
+            //txtComment.IsEnabled = !sym;
+            //txtLink.IsEnabled = !sym;
 
-            stkpnlcriteria.IsEnabled = sym;
+            stkpnlSymtomsSection.Visibility = Visibility.Visible;
+        }
+
+        private void chkSym_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stkpnlSymtomsSection.Visibility = Visibility.Hidden;
         }
     }
 }

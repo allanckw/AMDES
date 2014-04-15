@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using AMDES_KBS.Entity;
+using System.Collections.Generic;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
@@ -18,24 +20,56 @@ namespace AMDES_KBS
             lblRuleID.Content = DiaRule.Header;
             loadComment();
             loadLink();
-            //addSymptons();
+            addSymptons();
         }
 
-        //public void addSymptons()
-        //{
-            
-        //    foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
-        //    {
-        //        Label lblSymptons = new Label();
-        //        lblSymptons.Content = "Symptoms - " + sym.SymptomName;
-        //        stkpnlSymptons.Children.Add(lblSymptons);
-        //    }
-        //    if (stkpnlSymptons.Children.Count==0)
-        //    {
-        //        lblSymptonsText.Content = "The patient has no symptoms.";
-        //    }
-        //    //updateHeight();
-        //}
+        public void addSymptons()
+        {
+            if (DiaRule.RetrieveSym)
+            {
+                stkpnlSymptomsList.Visibility = Visibility.Visible;
+               
+                    foreach (int groupId in DiaRule.RetrievalIDList)
+	                {
+                        List<String> SymptomsListOfQuestionGroup = getSymptomsFromQuestionGroup(groupId);
+                        foreach (String symptoms in SymptomsListOfQuestionGroup)
+                        {
+                            Label lblSymptons = new Label();
+                            lblSymptons.Content = App.bulletForm() + symptoms;
+                            stkpnlSymptons.Children.Add(lblSymptons);
+                        }
+	                }
+            }
+            else
+            {
+                stkpnlSymptomsList.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private List<String> getSymptomsFromQuestionGroup(int groupID)
+        {
+            List<String> SymptomsList = new List<String>();
+
+            QuestionGroup qg = QuestionController.getGroupByID(groupID);
+            if (qg.Symptom.Trim() != "")
+            {
+                SymptomsList.Add(qg.Symptom.Trim());
+            }
+
+            foreach (Question q in qg.Questions)
+            {
+                String symptom = q.Symptom.Trim();
+                if (symptom.Length > 0)
+                {
+                    if (!SymptomsList.Contains(symptom))
+                    {
+                        SymptomsList.Add(symptom);
+                    }
+                }
+            }
+
+            return SymptomsList;
+        }
 
         private void loadComment()
         {
