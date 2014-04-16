@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="AMDES_KBS.ucChart"
+             xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <StackPanel Height="300">
+            <Label x:Name="lblTitle" Margin="0,0,0,0" Height="30" BorderThickness="0" Content="Title of Chart" FontSize="18" FontWeight="Bold"/>
+            <ScrollViewer  HorizontalScrollBarVisibility="Auto" Height="270" BorderThickness="0" VerticalScrollBarVisibility="Auto">
+                <DVC:Chart x:Name="Chart1" BorderThickness="0">
+                    <DVC:Chart.TitleStyle>
+                        <Style TargetType="Control">
+                            <Setter Property="Width" Value="0"/>
+                            <Setter Property="Height" Value="0"/>
+                        </Style>
+                    </DVC:Chart.TitleStyle>
+                    <DVC:Chart.LegendStyle>
+                        <Style TargetType="Control">
+                            <Setter Property="Width" Value="0"/>
+                            <Setter Property="Height" Value="0"/>
+                        </Style>
+                    </DVC:Chart.LegendStyle>
+                    <DVC:Chart.Series>
+                        <DVC:BarSeries Title="Yes"
+            IndependentValueBinding="{Binding Path=TestName}"
+            DependentValueBinding="{Binding Path=Yes}" >
+                        </DVC:BarSeries>
+                    </DVC:Chart.Series>
+                </DVC:Chart>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</UserControl>

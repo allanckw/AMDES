@@ -80,8 +80,9 @@ namespace AMDES_KBS
                    
                     //1st 1 is test name 2nd 1 is yes 3rd 1 is no %
                 }
-                lst = lst.OrderByDescending(x => x.Item2).ToList();
+                lst = lst.OrderByDescending(x => double.Parse(x.Item2.Remove(x.Item2.Length - 1, 1))).ToList();
                 LVResults.ItemsSource = lst;
+                loadBarChart(lst.OrderBy(x => double.Parse(x.Item2.Remove(x.Item2.Length - 1, 1))).ToList());
             }
             catch (Exception c)
             {
@@ -90,6 +91,12 @@ namespace AMDES_KBS
             }
         }
 
+        private void loadBarChart(List<Tuple<string, string, string>> lst)
+        {
+            stkpnlGraph.Children.Clear();
+            ucChart barChart = new ucChart(lst);
+            stkpnlGraph.Children.Add(barChart);
+        }
         private Tuple<string, string, string> load(P2Controller instance)
         {
             List<Tuple<string, string, string>> result = instance.Click(LVVariables);
@@ -144,7 +151,7 @@ namespace AMDES_KBS
             {
                 Tuple<string, string, string> Popresult = new Tuple<string, string, string>(
                     instance.File_Name,
-                    "Nil", "Nil");
+                    "0%", "0%");
 
                 return Popresult;
             }
