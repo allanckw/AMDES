@@ -8,8 +8,8 @@
 (defmodule MAIN (export deftemplate initial-fact))
 (defrule MAIN::Change-Focus
 		=>
-		(set-strategy depth)
-		(printout t "change strategy to depth")
+		(set-strategy depth) 
+		(printout t "change strategy to depth" crlf)
 )
 
 (deftemplate Currentgroup
@@ -84,6 +84,12 @@
    (slot QuestionID (type SYMBOL) (default NIL))
    (slot symptom (type STRING)))
 
+(deftemplate candidate-diagnosis
+	(slot RID (type SYMBOL))
+	(slot Header (type STRING))
+	(slot Comment (type STRING))
+	(slot Link (type STRING) (default "")))
+   
  (defrule NavigationError
 	?nav <-(Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID ?y&~NIL))
 	?navAttr <- (NaviChildCritAttribute (NavigationID ?naviID))
@@ -167,7 +173,8 @@
    (not (exists
              (Currentquestion (ID ?a))))
    =>
-   (assert (Currentquestion (GroupID ?y) (ID ?a) (QuestionText ?b) (answer ?c))))
+   (assert (Currentquestion (GroupID ?y) (ID ?a) (QuestionText ?b) (answer ?c)))
+   (printout t "Question ID: " ?a ": " ?b crlf))
 
 (defrule Retract_CurrentQuestion
    (not (exists
@@ -384,12 +391,28 @@
         (NaviHistory (ID $?START ?CGID $?END)))
    (not (exists
              (NaviChildCritAttribute (NavigationID ?naviID) (Answer No))))
+	
+
    =>
+	(loop-for-count (?cnt (length$ $?diag)) ;;Used as pointers
+		(printout t (nth$ ?cnt ?diag) crlf)
+		(assert (Conclusion ?diag))	
+	)
    (retract ?rmv)
    (retract ?nxt)
    (assert (diagnosis (RID $?diag)))
    (assert (Currentgroup (GroupID _RESULT) (answer Yes)))
    (modify ?hist (ID $?x _RESULT END)))
+
+(defrule print-R  ;;Print Diagnosis 
+		(candidate-diagnosis (RID ?diag) (Header ?diag.h) (Comment ?diag.c) (Link ?diag.l))
+		(Conclusion ?diag)
+		=>
+		(printout t ?diag.h crlf)
+		(printout t ?diag.c crlf)
+		(printout t ?diag.l crlf)
+
+)
    
 (defrule Retract_Diagnosis
    (declare (salience 1))
@@ -410,7 +433,7 @@
    (retract ?n)
    (printout t "Conclusion Reached, Cannot next anymore" crlf))
   
-(defrule Graceful_Exit1
+(defrule Graceful_Exit1 ;;Special case no conclusion but invalid program behavior
     (declare (salience 1))	
 	?hist2 <- (NaviHistory (ID $?x ?y ?y END))
 	=>
@@ -420,7 +443,7 @@
    (printout t "Going back to the same current question group / section!" crlf)
 )
 
-(defrule Graceful_Exit2
+(defrule Graceful_Exit2 ;;Special case no conclusion but invalid program behavior
 	 ?n <- (next)
 	 ?rmv <- (Currentgroup (GroupID ?y))
 	 (not(exists

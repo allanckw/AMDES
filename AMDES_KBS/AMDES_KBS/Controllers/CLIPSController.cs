@@ -132,14 +132,36 @@ namespace AMDES_KBS.Controllers
                     run();
                     loadNavex(fq, rList, defBehavior);
                     run();
+
+                    loadDiagnosis();
                     saveAssertLog();
-                    //run();
+                    run();
                 }
 
             }
             else
             {
                 throw new NullReferenceException("Current Patient is Null!, please set CurrentPatient before loading.");
+            }
+        }
+        private static void loadDiagnosis()
+        {
+            List<Diagnosis> diagList = DiagnosisController.getAllDiagnosis();
+            StringBuilder sb;
+            foreach (Diagnosis d in diagList)
+            {
+                sb = new StringBuilder();
+                //(candidate-diagnosis (RID R9) (Header "Patient OK") (Comment "Patient has no cognitive deficit or dementia"))
+                sb.Append("(candidate-diagnosis (RID R" + d.RID.ToString() + ") ");
+                sb.Append("(Header " + "\"" + d.Header.Trim().Replace("~~", " ") + "\"" + ") ");
+                sb.Append("(Comment " + "\"" + d.Comment.Trim().Replace("~~", " ") + "\"" + ") ");
+                
+                if (d.Link.Length > 0)
+                    sb.Append("(Link " + "\"" + d.Link + "\"" + ")");
+
+                sb.Append(")");
+
+                assert(sb);
             }
         }
 
@@ -247,7 +269,7 @@ namespace AMDES_KBS.Controllers
                 }
             }
 
-           
+
             Navigation.CriteriaSortingComparer comparer = new Navigation.CriteriaSortingComparer();
             nList.Sort(comparer);
 
@@ -403,13 +425,13 @@ namespace AMDES_KBS.Controllers
                             {
                                 if (d.Comment.Trim().Length == 0)
                                 {
-                                    d.Comment +=  s.SymptomName.Trim();
+                                    d.Comment += s.SymptomName.Trim();
                                 }
                                 else
                                 {
                                     d.Comment += ", " + s.SymptomName.Trim();
                                 }
-                                
+
                                 d.Comment = d.Comment.Trim();
                             }
                         }

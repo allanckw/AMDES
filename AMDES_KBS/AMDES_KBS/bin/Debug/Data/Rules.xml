@@ -1639,14 +1639,12 @@
         <Diagnoses>
           <DiagnosisID>2</DiagnosisID>
           <DiagnosisID>6</DiagnosisID>
-          <DiagnosisID>12</DiagnosisID>
         </Diagnoses>
       </Navex>
     </Navigations>
     <Diagnoses>
       <RDiagnosisID>2</RDiagnosisID>
       <RDiagnosisID>6</RDiagnosisID>
-      <RDiagnosisID>12</RDiagnosisID>
     </Diagnoses>
   </Rule>
 </Rules>
