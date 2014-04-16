@@ -5,12 +5,12 @@
     <Grid>
         <StackPanel>
             <StackPanel x:Name="stkpnlMenuHeader" Height="50" Orientation="Horizontal" >
-                <Button x:Name="btnNewTest" Width="100" Height="25" Content="New Test" Margin="5" Click="btnNewTest_Click"></Button>
+                <Button x:Name="btnNewTest" Width="100" Height="25" Content="New Patient" Margin="5" Click="btnNewTest_Click"></Button>
                 <Button x:Name="btnPatients" Width="100" Height="25" Content="Patients List" Margin="5" Click="btnPatients_Click"></Button>
                 <Button x:Name="btnStats" Width="150" Height="25" Margin="5" Content="Initial Visit Tests Statistics" Click="btnStats_Click" />
                 <Button x:Name="btnSetting" Width="100" Height="25" Content="Configurations" Margin="5" Click="btnSetting_Click"></Button>
 
-                   <StackPanel x:Name="stkpnlSearchBox" Orientation="Horizontal" Margin="280,5,5,5">
+                   <StackPanel x:Name="stkpnlSearchBox" Orientation="Horizontal" Margin="120,5,5,5">
                     <TextBox x:Name="txtSearchCriteria" Width="250" Height="25" ToolTip="Search by NRIC or Name">
                         <TextBox.Style>
                             <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">

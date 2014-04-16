@@ -281,7 +281,7 @@ namespace AMDES_KBS.Controllers
 
             }
 
-            return pList.OrderBy(x => x.Last_Name).ToList(); ;
+            return pList.OrderBy(x => x.Last_Name).ToList(); 
         }
 
         public static List<Patient> getAllPatients()

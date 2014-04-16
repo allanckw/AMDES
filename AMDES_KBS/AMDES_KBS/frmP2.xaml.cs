@@ -68,17 +68,20 @@ namespace AMDES_KBS
         {
             try
             {
-                LVResults.Items.Clear();
-
+                LVResults.ItemsSource = null;
+                List<Tuple<string, string, string>> lst = new List<Tuple<string, string, string>>();
                 foreach (P2Controller inc in Test_Sets)
                 {
                     Tuple<string, string, string> temp_store = load(inc);
                     if (temp_store == null)
                         return;
-                    LVResults.Items.Add(temp_store);
-
+                    
+                    lst.Add(temp_store);
+                   
                     //1st 1 is test name 2nd 1 is yes 3rd 1 is no %
                 }
+                lst = lst.OrderByDescending(x => x.Item2).ToList();
+                LVResults.ItemsSource = lst;
             }
             catch (Exception c)
             {

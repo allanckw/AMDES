@@ -31,12 +31,13 @@ namespace AMDES_KBS
                 //frameDisplay.Navigate(new frmOverview(frameDisplay));
                 frameDisplay.Navigate(new frmPatientDetails(frameDisplay));
                 btnPatients.Visibility = Visibility.Collapsed;
+                //stkpnlSearchBox.Margin.Left += btnPatients.Width;
                 stkpnlSearchBox.Visibility = Visibility.Hidden;
             }
             else
             {
                 frameDisplay.Navigate(new frmOverview(frameDisplay));
-                btnPatients.Visibility = Visibility.Collapsed;
+                btnPatients.Visibility = Visibility.Visible;
                 stkpnlSearchBox.Visibility = Visibility.Visible;
             }
         }
