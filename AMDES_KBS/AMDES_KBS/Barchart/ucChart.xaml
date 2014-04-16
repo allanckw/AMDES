@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
         <StackPanel Height="300">
-            <Label x:Name="lblTitle" Margin="0,0,0,0" Height="30" BorderThickness="0" Content="Title of Chart" FontSize="18" FontWeight="Bold"/>
+            <Label x:Name="lblTitle" Margin="0,0,0,0" Height="30" BorderThickness="0" Content="Title of Chart" FontSize="16" FontWeight="Bold"/>
             <ScrollViewer  HorizontalScrollBarVisibility="Auto" Height="270" BorderThickness="0" VerticalScrollBarVisibility="Auto">
                 <DVC:Chart x:Name="Chart1" BorderThickness="0">
                     <DVC:Chart.TitleStyle>

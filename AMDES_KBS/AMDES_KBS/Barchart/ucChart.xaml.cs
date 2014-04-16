@@ -23,7 +23,7 @@ namespace AMDES_KBS
         public ucChart(List<Tuple<string, string, string>> lst)
         {
             InitializeComponent();
-            lblTitle.Content = "Tests Conducted during initial visits";
+            lblTitle.Content = "Tests Conducted on initial visits";
             LoadChart(ProcessTuple(lst));
         }
 
@@ -33,7 +33,7 @@ namespace AMDES_KBS
             foreach (Tuple<string, string, string> item in lst)
             {
                 InitialVisitTest t = new InitialVisitTest();
-                t.TestName = item.Item1;
+                t.TestName = item.Item1 + "  ";
                 double x = 0;
                 bool result = double.TryParse(item.Item2.Remove(item.Item2.Length-1,1), out x);
                 if (!result)
@@ -60,11 +60,12 @@ namespace AMDES_KBS
                 Maximum = 100,
                 Orientation = AxisOrientation.X,
                 Location = AxisLocation.Top,
-                Interval=5,
+                Interval=10,
                 ShowGridLines = true,
             });
             
             ((BarSeries)Chart1.Series[0]).ItemsSource = TestCollection;
+            
             Chart1.Height = TestCollection.Count * 30;
 
         }
