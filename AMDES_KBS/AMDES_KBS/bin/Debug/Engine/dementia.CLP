@@ -396,7 +396,7 @@
    =>
 	(loop-for-count (?cnt (length$ $?diag)) ;;Used as pointers
 		(printout t (nth$ ?cnt ?diag) crlf)
-		(assert (Conclusion ?diag))	
+		(assert (Conclusion (nth$ ?cnt ?diag)))	
 	)
    (retract ?rmv)
    (retract ?nxt)
