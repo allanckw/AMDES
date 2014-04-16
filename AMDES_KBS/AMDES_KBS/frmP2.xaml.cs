@@ -174,7 +174,7 @@ namespace AMDES_KBS
         {
             //need try get from 1 directory all the txt files
 
-            
+            P2Controller.attributes = new List<string>();
          
             string folder = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) +  @"\Initial Test\Rules";;
             string filter = "*.txt";

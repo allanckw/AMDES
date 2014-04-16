@@ -17,7 +17,7 @@ namespace AMDES_KBS.Controllers
 
         public string File_Name;
 
-        private static List<string> attributes = new List<string>();//a attribute placeholder to make attribute distinct
+        public static List<string> attributes = new List<string>();//a attribute placeholder to make attribute distinct
 
         public P2Controller(string filename, string rule_path)
         {
