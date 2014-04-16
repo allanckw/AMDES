@@ -499,6 +499,7 @@ namespace AMDES_KBS
         {
             stkpnlSectionDestination.Visibility = Visibility.Collapsed;
             stkpnlDiagnosis.Visibility = Visibility.Visible;
+            lstDiagnosisList.Visibility = Visibility.Visible;
         }
 
         private void chkConclusive_Unchecked(object sender, RoutedEventArgs e)
