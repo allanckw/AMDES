@@ -69,11 +69,16 @@ namespace AMDES_KBS
             {
                 AssertQuestions();
                 int sectionID = CLIPSController.getCurrentQnGroupID();
-
-                //MessageBox.Show(sectionID.ToString());
-
-                frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
-                amdesPageFrame.Navigate(TestSection);
+                if (sectionID != -1)
+                {
+                    //MessageBox.Show(sectionID.ToString());
+                    frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
+                    amdesPageFrame.Navigate(TestSection);
+                }
+                else
+                {
+                    MessageBox.Show("No Navigation rules has been defined, please seek help from the Expert or Knowledge Engineer", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

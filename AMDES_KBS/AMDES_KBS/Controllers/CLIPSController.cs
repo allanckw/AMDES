@@ -157,7 +157,7 @@ namespace AMDES_KBS.Controllers
                 sb.Append("(candidate-diagnosis (RID R" + d.RID.ToString() + ") ");
                 sb.Append("(Header " + "\"" + d.Header.Trim().Replace("~~", " ") + "\"" + ") ");
                 sb.Append("(Comment " + "\"" + d.Comment.Trim().Replace("~~", " ") + "\"" + ") ");
-                
+
                 if (d.Link.Length > 0)
                     sb.Append("(Link " + "\"" + d.Link + "\"" + ")");
 
@@ -416,30 +416,40 @@ namespace AMDES_KBS.Controllers
                 for (int i = 0; i < ArrayChoices.Count(); i++)
                 {
                     string x = ArrayChoices[i].ToString().Remove(0, 1);
-                    Diagnosis d = DiagnosisController.getDiagnosisByID(int.Parse(x));
-
-                    if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
+                    int diagID = int.Parse(x);
+                    if (diagID == -99)
                     {
-                        foreach (int k in d.RetrievalIDList)
-                        {
-                            List<Symptom> grpSymptoms = getPatientSymptomByQG(k);
-                            foreach (Symptom s in grpSymptoms)
-                            {
-                                if (d.Comment.Trim().Length == 0)
-                                {
-                                    d.Comment += s.SymptomName.Trim();
-                                }
-                                else
-                                {
-                                    d.Comment += ", " + s.SymptomName.Trim();
-                                }
+                        Diagnosis d = new Diagnosis(diagID, fv.GetFactSlot("Comment").ToString(), "Rule was unhandled");
+                        h.addDiagnosis(d);
+                        break;
+                    }
+                    else
+                    {
+                        Diagnosis d = DiagnosisController.getDiagnosisByID(diagID);
 
-                                d.Comment = d.Comment.Trim();
+                        if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
+                        {
+                            foreach (int k in d.RetrievalIDList)
+                            {
+                                List<Symptom> grpSymptoms = getPatientSymptomByQG(k);
+                                foreach (Symptom s in grpSymptoms)
+                                {
+                                    if (d.Comment.Trim().Length == 0)
+                                    {
+                                        d.Comment += s.SymptomName.Trim();
+                                    }
+                                    else
+                                    {
+                                        d.Comment += ", " + s.SymptomName.Trim();
+                                    }
+
+                                    d.Comment = d.Comment.Trim();
+                                }
                             }
                         }
+                        d.Comment = d.Comment.Trim();
+                        h.addDiagnosis(d);
                     }
-                    d.Comment = d.Comment.Trim();
-                    h.addDiagnosis(d);
                 }
 
             }
@@ -480,6 +490,27 @@ namespace AMDES_KBS.Controllers
                     else
                     {
                         Diagnosis d = DiagnosisController.getDiagnosisByID(diagID);
+                        if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
+                        {
+                            foreach (int k in d.RetrievalIDList)
+                            {
+                                List<Symptom> grpSymptoms = getPatientSymptomByQG(k);
+                                foreach (Symptom s in grpSymptoms)
+                                {
+                                    if (d.Comment.Trim().Length == 0)
+                                    {
+                                        d.Comment += s.SymptomName.Trim();
+                                    }
+                                    else
+                                    {
+                                        d.Comment += ", " + s.SymptomName.Trim();
+                                    }
+
+                                    d.Comment = d.Comment.Trim();
+                                }
+                            }
+                        }
+                        d.Comment = d.Comment.Trim();
                         h.addDiagnosis(d);
                     }
                 }

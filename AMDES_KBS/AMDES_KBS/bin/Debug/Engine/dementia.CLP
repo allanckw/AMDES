@@ -436,10 +436,11 @@
 (defrule Graceful_Exit1 ;;Special case no conclusion but invalid program behavior
     (declare (salience 1))	
 	?hist2 <- (NaviHistory (ID $?x ?y ?y END))
+	?n <- (next)
 	=>
-   
+   (retract ?n)
    (assert (Currentgroup (GroupID _RESULT) (answer Yes)))
-   (assert (diagnosis (RID R-99)) (Comment "Going back to the same current section!" ))
+   (assert (diagnosis (RID R-99) (Comment "Going back to the same current section!" )))
    (printout t "Going back to the same current question group / section!" crlf)
 )
 
@@ -454,6 +455,17 @@
 	(assert (Currentgroup (GroupID _RESULT) (answer Yes)))
     (assert (diagnosis (RID R-99) (Comment "No navigation point defined!") ))
 	(printout t "No navigation point defined!" crlf)
+)
+
+(defrule Graceful_Exit3 ;;Special case no conclusion but invalid program behavior
+    (not(exists
+			(Navigation)))
+	;;?n <- (next)
+	=>
+   ;;(retract ?n)
+   (assert (Currentgroup (GroupID _RESULT) (answer Yes)))
+   (assert (diagnosis (RID R-99) (Comment "No Navigation has been defined!" )))
+   (printout t "No Navigation has been defined!" crlf)
 )
 
 

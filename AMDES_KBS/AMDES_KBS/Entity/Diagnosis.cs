@@ -86,12 +86,19 @@ namespace AMDES_KBS.Entity
         {
             get
             {
-                if (this.link.Length > 0 && this.link.StartsWith("http://"))
-                    return link;
-                else if (link.Length > 0 && !this.link.StartsWith("http://"))
-                    return "http://" + this.link;
+                if (this.link != null)
+                {
+                    if (this.link.Length > 0 && this.link.StartsWith("http://"))
+                        return link;
+                    else if (link.Length > 0 && !this.link.StartsWith("http://"))
+                        return "http://" + this.link;
+                    else
+                        return "";
+                }
                 else
+                {
                     return "";
+                }
             }
             set { this.link = value; }
         }
