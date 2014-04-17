@@ -153,7 +153,7 @@ namespace AMDES_KBS.Controllers
                     }
                 }
 
-                return rList.OrderBy(x => x.Description).ToList(); ;
+                return rList.OrderBy(x => x.RuleID).ToList(); ;
             }
             else
             {
