@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
+using System.Windows.Input;
 
 namespace AMDES_KBS
 {
@@ -86,6 +87,7 @@ namespace AMDES_KBS
         private void btnTestAgin_Click(object sender, RoutedEventArgs e)
         {
             AssertQuestions();
+            this.Cursor = Cursors.Wait;
             int sectionID = CLIPSController.getCurrentQnGroupID();
 
             //MessageBox.Show(sectionID.ToString());

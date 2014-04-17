@@ -275,7 +275,7 @@ namespace AMDES_KBS.Controllers
                 Parallel.ForEach(r.Navigations, n =>
                 {
                   
-                    if (!nList.Contains(n))
+                    if (n!= null && !nList.Contains(n))
                         nList.Add(n);
 
                     //Console.WriteLine("Processing {0} {1} on thread {2}",  r, n,
