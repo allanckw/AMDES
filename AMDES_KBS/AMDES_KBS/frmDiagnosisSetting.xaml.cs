@@ -92,10 +92,20 @@ namespace AMDES_KBS
 
             lstGroupList.ItemsSource = null;
             List<QuestionGroup> qgGrpList = new List<QuestionGroup>();
-            for (int i = 0; i < d.RetrievalIDList.Count; i++)
+
+            if (!d.RetrieveSym)
             {
-                qgGrpList.Add(QuestionController.getGroupByID(d.RetrievalIDList[i]));
+                stkpnlSymtomsSection.Visibility = Visibility.Hidden;
             }
+            else
+            {
+                stkpnlSymtomsSection.Visibility = Visibility.Visible;
+                for (int i = 0; i < d.RetrievalIDList.Count; i++)
+                {
+                    qgGrpList.Add(QuestionController.getGroupByID(d.RetrievalIDList[i]));
+                }
+            }
+
             lstGroupList.ItemsSource = qgGrpList;
         }
 

@@ -40,8 +40,8 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Test" Width="300" DisplayMemberBinding="{Binding Path=Item1}"/>
-                    <GridViewColumn Header="Yes"  Width="80" DisplayMemberBinding="{Binding Path=Item2}"/>
-                    <GridViewColumn Header="No"  Width="80" DisplayMemberBinding="{Binding Path=Item3}"/>
+                            <GridViewColumn Header="Yes"  Width="80" DisplayMemberBinding="{Binding Path=Item2,  StringFormat={}{0:0.0%}}"/>
+                            <GridViewColumn Header="No"  Width="80" DisplayMemberBinding="{Binding Path=Item3, StringFormat={}{0:0.0%}}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -20,30 +20,21 @@ namespace AMDES_KBS
     /// </summary>
     public partial class ucChart : UserControl
     {
-        public ucChart(List<Tuple<string, string, string>> lst)
+        public ucChart(List<Tuple<string, double, double>> lst)
         {
             InitializeComponent();
             lblTitle.Content = "Tests Conducted on initial visits";
             LoadChart(ProcessTuple(lst));
         }
 
-        private System.Collections.ObjectModel.Collection<InitialVisitTest> ProcessTuple(List<Tuple<string, string, string>> lst)
+        private System.Collections.ObjectModel.Collection<InitialVisitTest> ProcessTuple(List<Tuple<string, double, double>> lst)
         {
             System.Collections.ObjectModel.Collection<InitialVisitTest> TestCollection = new System.Collections.ObjectModel.Collection<InitialVisitTest>();
-            foreach (Tuple<string, string, string> item in lst)
+            foreach (Tuple<string, double, double> item in lst)
             {
                 InitialVisitTest t = new InitialVisitTest();
                 t.TestName = item.Item1 + "  ";
-                double x = 0;
-                bool result = double.TryParse(item.Item2.Remove(item.Item2.Length-1,1), out x);
-                if (!result)
-                {
-                    t.Yes = 0;
-                }
-                else
-                {
-                    t.Yes = x;
-                }
+                t.Yes = item.Item2 * 100;
                 TestCollection.Add(t);
             }
             return TestCollection;
@@ -60,12 +51,12 @@ namespace AMDES_KBS
                 Maximum = 100,
                 Orientation = AxisOrientation.X,
                 Location = AxisLocation.Top,
-                Interval=10,
+                Interval = 10,
                 ShowGridLines = true,
             });
-            
+
             ((BarSeries)Chart1.Series[0]).ItemsSource = TestCollection;
-            
+
             Chart1.Height = TestCollection.Count * 30;
 
         }

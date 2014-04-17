@@ -69,10 +69,10 @@ namespace AMDES_KBS
             try
             {
                 LVResults.ItemsSource = null;
-                List<Tuple<string, string, string>> lst = new List<Tuple<string, string, string>>();
+                List<Tuple<string, double, double>> lst = new List<Tuple<string, double, double>>();
                 foreach (P2Controller inc in Test_Sets)
                 {
-                    Tuple<string, string, string> temp_store = load(inc);
+                    Tuple<string, double, double> temp_store = load(inc);
                     if (temp_store == null)
                         return;
                     
@@ -80,9 +80,9 @@ namespace AMDES_KBS
                    
                     //1st 1 is test name 2nd 1 is yes 3rd 1 is no %
                 }
-                lst = lst.OrderByDescending(x => double.Parse(x.Item2.Remove(x.Item2.Length - 1, 1))).ToList();
+                lst = lst.OrderByDescending(x => x.Item2).ToList();
                 LVResults.ItemsSource = lst;
-                loadBarChart(lst.OrderBy(x => double.Parse(x.Item2.Remove(x.Item2.Length - 1, 1))).ToList());
+                loadBarChart(lst.OrderBy(x => x.Item2).ToList());
             }
             catch (Exception c)
             {
@@ -91,13 +91,13 @@ namespace AMDES_KBS
             }
         }
 
-        private void loadBarChart(List<Tuple<string, string, string>> lst)
+        private void loadBarChart(List<Tuple<string, double, double>> lst)
         {
             stkpnlGraph.Children.Clear();
             ucChart barChart = new ucChart(lst);
             stkpnlGraph.Children.Add(barChart);
         }
-        private Tuple<string, string, string> load(P2Controller instance)
+        private Tuple<string, double, double> load(P2Controller instance)
         {
             List<Tuple<string, string, string>> result = instance.Click(LVVariables);
             double positive = 0; string pos = "yes";//"positive";
@@ -132,16 +132,15 @@ namespace AMDES_KBS
                 }
             }
 
-
             Double total =positive + negative;
 
             if (total != 0)
             {
-                string percent1 = string.Format("{0:0.0%}", positive / total);
-                string percent2 = string.Format("{0:0.0%}", negative / total);
+                double percent1 = positive / total; //string.Format("{0:0.0%}",);
+                double percent2 = negative / total; // string.Format("{0:0.0%}", negative / total);
 
 
-                Tuple<string, string, string> Popresult = new Tuple<string, string, string>(
+                Tuple<string, double, double> Popresult = new Tuple<string, double, double>(
                     instance.File_Name,
                     percent1, percent2);
 
@@ -149,9 +148,9 @@ namespace AMDES_KBS
             }
             else
             {
-                Tuple<string, string, string> Popresult = new Tuple<string, string, string>(
+                Tuple<string, double, double> Popresult = new Tuple<string, double, double>(
                     instance.File_Name,
-                    "0%", "0%");
+                   0, 0);
 
                 return Popresult;
             }
