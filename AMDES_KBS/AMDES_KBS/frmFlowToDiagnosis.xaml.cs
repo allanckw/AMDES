@@ -502,7 +502,7 @@ namespace AMDES_KBS
                 loadGraph1();
                 lblText.Content = "Displaying Saved Rule";
                 LoadAllRule();
-                //cboDiagnosisList.SelectedIndex = cboDiagnosisList.Items.Count - 1;
+                cboDiagnosisList.SelectedIndex = cboDiagnosisList.Items.Count - 1;
                 MessageBox.Show("Saved!");
             }
         }
