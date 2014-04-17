@@ -9,8 +9,6 @@ namespace AMDES_KBS.Controllers
 {
     public class NavigationController
     {
-
-
         private static int rulesRIDCounter = 1;
 
         private static void createDataFile()
@@ -281,6 +279,7 @@ namespace AMDES_KBS.Controllers
 
         public static Rules getRulesByID(int RID)
         {
+            createDataFile();
             XDocument document = XDocument.Load(Rules.dataPath);
 
             try
@@ -302,6 +301,7 @@ namespace AMDES_KBS.Controllers
 
         public static void deleteRules(int RID)
         {
+            createDataFile();
             XDocument document = XDocument.Load(Rules.dataPath);
 
             if (getRulesByID(RID) != null)
@@ -316,6 +316,7 @@ namespace AMDES_KBS.Controllers
 
         public static void deleteDiagnosisID(int diagID)
         {
+            createDataFile();
             XDocument document = XDocument.Load(Rules.dataPath);
             try
             {

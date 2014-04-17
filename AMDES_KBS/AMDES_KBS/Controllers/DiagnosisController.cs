@@ -46,7 +46,7 @@ namespace AMDES_KBS.Controllers
             }
             else
             {
-                DiagnosisController.deleteDiagnosis(d.RID); //delete and add
+                DiagnosisController.deleteDiagnosis(d.RID, true); //delete and add
                 DiagnosisController.addDiagnosis(d);
             }
         }
@@ -164,7 +164,7 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        public static void deleteDiagnosis(int id)
+        public static void deleteDiagnosis(int id, bool update = false)
         {
             XDocument document = XDocument.Load(Diagnosis.dataPath);
 
@@ -175,8 +175,10 @@ namespace AMDES_KBS.Controllers
                  select pa).SingleOrDefault().Remove();
 
                 document.Save(Diagnosis.dataPath);
-
-                NavigationController.deleteDiagnosisID(id);
+                if (!update)
+                {
+                    NavigationController.deleteDiagnosisID(id);
+                }
 
             }
         }

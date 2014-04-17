@@ -43,7 +43,7 @@
 
                 <StackPanel x:Name="stkpnlQuestionGroup" Orientation="Vertical" Margin="0,10,0,0" >
                     <CheckBox Name="chkSym" Content="Create Symptom Retrieval Rule? " Checked="chkSym_Checked" Unchecked="chkSym_Unchecked" />
-                    <StackPanel x:Name="stkpnlSymtomsSection" Orientation="Horizontal" Visibility="Hidden">
+                    <StackPanel x:Name="stkpnlSymtomsSection" Orientation="Horizontal"  Visibility="Hidden">
                         <StackPanel>
                             <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="140" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionMode="Single" SelectionChanged="lstGroupList_SelectionChanged">

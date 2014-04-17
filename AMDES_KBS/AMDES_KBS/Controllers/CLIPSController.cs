@@ -124,9 +124,7 @@ namespace AMDES_KBS.Controllers
                 }
                 else if (fq == null)
                 {
-                }
-                else if (rList.Count == 0)
-                {
+                    throw new InvalidOperationException("First question is undefined!");
                 }
                 else
                 {

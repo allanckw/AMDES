@@ -5362,4 +5362,17 @@
     <Status>0</Status>
     <CompletedDate>635332896000000000</CompletedDate>
   </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Diagnoses>
+      <Diagnosis diagID="-99">
+        <Comment>"No Navigation has been defined!"</Comment>
+        <Header>Rule was unhandled</Header>
+        <Link></Link>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635332896000000000</CompletedDate>
+  </History>
 </Histories>

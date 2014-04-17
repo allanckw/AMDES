@@ -161,12 +161,14 @@ namespace AMDES_KBS
         private List<int> getSymptonsForDiagnosis()
         {
             List<QuestionGroup> currQGlist = (List<QuestionGroup>)lstGroupList.ItemsSource;
-
             List<int> z = new List<int>();
 
-            foreach (QuestionGroup g in currQGlist)
+            if (currQGlist != null)
             {
-                z.Add(g.GroupID);
+                foreach (QuestionGroup g in currQGlist)
+                {
+                    z.Add(g.GroupID);
+                }
             }
 
             return z;
@@ -334,11 +336,14 @@ namespace AMDES_KBS
             //txtLink.IsEnabled = !sym;
 
             stkpnlSymtomsSection.Visibility = Visibility.Visible;
+
+
         }
 
         private void chkSym_Unchecked(object sender, RoutedEventArgs e)
         {
             stkpnlSymtomsSection.Visibility = Visibility.Hidden;
+            lstGroupList.ItemsSource = null;
         }
 
         //Hidden Function only to us

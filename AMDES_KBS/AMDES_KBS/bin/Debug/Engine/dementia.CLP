@@ -460,9 +460,9 @@
 (defrule Graceful_Exit3 ;;Special case no conclusion but invalid program behavior
     (not(exists
 			(Navigation)))
-	;;?n <- (next)
+	?n <- (next)
 	=>
-   ;;(retract ?n)
+   (retract ?n)
    (assert (Currentgroup (GroupID _RESULT) (answer Yes)))
    (assert (diagnosis (RID R-99) (Comment "No Navigation has been defined!" )))
    (printout t "No Navigation has been defined!" crlf)

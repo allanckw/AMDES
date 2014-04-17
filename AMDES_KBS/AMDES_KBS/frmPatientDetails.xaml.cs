@@ -67,17 +67,24 @@ namespace AMDES_KBS
         {
             if (savePatient())
             {
-                AssertQuestions();
-                int sectionID = CLIPSController.getCurrentQnGroupID();
-                if (sectionID != -1)
+                try
                 {
-                    //MessageBox.Show(sectionID.ToString());
-                    frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
-                    amdesPageFrame.Navigate(TestSection);
+                    AssertQuestions();
+                    int sectionID = CLIPSController.getCurrentQnGroupID();
+                    if (sectionID != -1)
+                    {
+                        //MessageBox.Show(sectionID.ToString());
+                        frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
+                        amdesPageFrame.Navigate(TestSection);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Navigation rules has been defined, please seek help from the Expert or Knowledge Engineer", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("No Navigation rules has been defined, please seek help from the Expert or Knowledge Engineer", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
