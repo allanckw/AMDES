@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
+using System.Windows.Input;
 
 namespace AMDES_KBS
 {
@@ -90,6 +91,8 @@ namespace AMDES_KBS
 
 
             }
+
+           this.Cursor = Cursors.Pen;
         }
 
         public void loadSection(int sectionID)

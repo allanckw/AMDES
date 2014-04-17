@@ -28,7 +28,7 @@
             <StackPanel x:Name="stkpnlDiagnosisDetails" Margin="5,30,0,0">
                 <StackPanel>
                     <Label Content="Header" FontSize="15" Margin="0,0,0,10"/>
-                    <TextBox x:Name="txtHeader" Width="500" Height="30" MaxLength="100" TextChanged="txtHeader_TextChanged"></TextBox>
+                    <TextBox x:Name="txtHeader" Width="500" Height="30" MaxLength="150" TextChanged="txtHeader_TextChanged"></TextBox>
                 </StackPanel>
 
                 <StackPanel Width="498">

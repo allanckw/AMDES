@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using AMDES_KBS.Entity;
 using Mommosoft.ExpertSystem;
 
@@ -129,12 +131,10 @@ namespace AMDES_KBS.Controllers
                 else
                 {
                     loadQuestions(grps); //load question pass all assertions
-                    run();
-                    loadNavex(fq, rList, defBehavior);
-                    run();
-
                     loadDiagnosis();
-                    saveAssertLog();
+                    run();
+                    
+                    loadNavex(fq, rList, defBehavior);
                     run();
                 }
 
@@ -144,10 +144,14 @@ namespace AMDES_KBS.Controllers
                 throw new NullReferenceException("Current Patient is Null!, please set CurrentPatient before loading.");
             }
         }
+
+
+
         private static void loadDiagnosis()
         {
             List<Diagnosis> diagList = DiagnosisController.getAllDiagnosis();
             StringBuilder sb;
+
             foreach (Diagnosis d in diagList)
             {
                 sb = new StringBuilder();
@@ -158,11 +162,10 @@ namespace AMDES_KBS.Controllers
 
                 if (d.Link.Length > 0)
                     sb.Append("(Link " + "\"" + d.Link + "\"" + ")");
-
-                sb.Append(")");
-
+                sb.Append(") ");
                 assert(sb);
             }
+           
         }
 
         private static void assertAge()
@@ -192,11 +195,13 @@ namespace AMDES_KBS.Controllers
         }
 
         //Clear
+        //http://msdn.microsoft.com/en-us/library/dd460713(v=vs.100).aspx
         private static void loadQuestions(List<QuestionGroup> grps)
         {
             StringBuilder sb;
 
             foreach (QuestionGroup qg in grps)
+            //Parallel.ForEach(grps, qg =>
             {
                 sb = new StringBuilder();
                 sb.Append("(group (GroupID _" + qg.GroupID + ") (SuccessType ");
@@ -231,7 +236,7 @@ namespace AMDES_KBS.Controllers
                     sb.Append("(question (ID _" + qg.GroupID + "." + q.ID + ") ");
                     sb.Append("(GroupID _" + qg.GroupID + ") ");
 
-                    //sb.Append("(QuestionText " + "\"" + q.Name + "\"" + ") "); 
+                    sb.Append("(QuestionText " + "\"" + q.Name + "\"" + ") "); 
                     //irrelevant to dump to clips required only when doing on command prompt
 
                     sb.Append(")");
@@ -245,8 +250,9 @@ namespace AMDES_KBS.Controllers
                         assert(sb);
                     }
                 }
-            }
-
+               
+            }//);
+            //assert(sb);
         }
 
         private static void loadNavex(FirstQuestion fq, List<Rules> rList, List<Navigation> defBehavior)
@@ -259,21 +265,30 @@ namespace AMDES_KBS.Controllers
             {
                 createNavigationAssertion(n);
             }
+
             List<Navigation> nList = new List<Navigation>();
-            foreach (Rules r in rList)
+            int i = 0;
+            //foreach (Rules r in rList)
+            Parallel.ForEach(rList, r =>
             {
-                foreach (Navigation n in r.Navigations)
+                //foreach (Navigation n in r.Navigations)
+                Parallel.ForEach(r.Navigations, n =>
                 {
+                  
                     if (!nList.Contains(n))
                         nList.Add(n);
-                }
-            }
 
+                    //Console.WriteLine("Processing {0} {1} on thread {2}",  r, n,
+                    //               Thread.CurrentThread.ManagedThreadId);
+                });
+              
+            });
+            //Console.WriteLine(i);
 
             Navigation.CriteriaSortingComparer comparer = new Navigation.CriteriaSortingComparer();
             nList.Sort(comparer);
 
-            //foreach (Navigation n in nList)
+            //Cannot parallel here, must be sequential
             foreach (Navigation n in nList)
             {
                 createNavigationAssertion(n);
@@ -427,18 +442,19 @@ namespace AMDES_KBS.Controllers
 
                         if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
                         {
-                            foreach (int k in d.RetrievalIDList)
+                            foreach (int qgID in d.RetrievalIDList)
                             {
-                                List<Symptom> grpSymptoms = getPatientSymptomByQG(k);
-                                foreach (Symptom s in grpSymptoms)
+                                List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
+                                for (int j = 0; j < grpSymptoms.Count; j++)
                                 {
+                                    Symptom s = grpSymptoms[j];
                                     if (d.Comment.Trim().Length == 0)
                                     {
-                                        d.Comment += s.SymptomName.Trim();
+                                        d.Comment += "   " + App.bulletForm() + " " + s.SymptomName.Trim();
                                     }
                                     else
                                     {
-                                        d.Comment += ", " + s.SymptomName.Trim();
+                                        d.Comment += System.Environment.NewLine + "   " + App.bulletForm() + " " + s.SymptomName.Trim();
                                     }
 
                                     d.Comment = d.Comment.Trim();

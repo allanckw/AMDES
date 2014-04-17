@@ -5375,4 +5375,490 @@
     <Status>0</Status>
     <CompletedDate>635332896000000000</CompletedDate>
   </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Diagnoses>
+      <Diagnosis diagID="20">
+        <Comment>Normal Abbreviated Mental Test with no significant cognitive deficits, dementia unlikely</Comment>
+        <Header>R13</Header>
+        <Link></Link>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635333760000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635333932419407431</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Psychiatric disorders </SymptomName>
+        <DiagnosisDate>635333932419417431</DiagnosisDate>
+        <DiagnosedByID>5</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="11">
+        <Comment>Failed Abbreviated Mental Test but no history of significant cognitive and functional deficits - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre for further evaluation, Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</Comment>
+        <Header>R04 - Failed AMT, re-take history, look for underlying causes and consider referral</Header>
+        <Link></Link>
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>6</QGrpID>
+        </RetrieveFrom>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Please investigate these symptoms found in the questionaire as they are confounding factors of dementia: , Psychiatric disorders</Comment>
+        <Header>R23 - Underlying causes of cognitive impairment</Header>
+        <Link></Link>
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>5</QGrpID>
+        </RetrieveFrom>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>R22 - Recommended Tests</Header>
+        <Link></Link>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635333760000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635333932862642782</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Electrolyte imbalance </SymptomName>
+        <DiagnosisDate>635333932862662784</DiagnosisDate>
+        <DiagnosedByID>5</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="11">
+        <Comment>Failed Abbreviated Mental Test but no history of significant cognitive and functional deficits - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre for further evaluation, Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</Comment>
+        <Header>R04 - Failed AMT, re-take history, look for underlying causes and consider referral</Header>
+        <Link></Link>
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>6</QGrpID>
+        </RetrieveFrom>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Please investigate these symptoms found in the questionaire as they are confounding factors of dementia: , Electrolyte imbalance</Comment>
+        <Header>R23 - Underlying causes of cognitive impairment</Header>
+        <Link></Link>
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>5</QGrpID>
+        </RetrieveFrom>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>R22 - Recommended Tests</Header>
+        <Link></Link>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635333760000000000</CompletedDate>
+  </History>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</SymptomName>
+        <DiagnosisDate>635333937313497357</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Folate deficiency </SymptomName>
+        <DiagnosisDate>635333937313527358</DiagnosisDate>
+        <DiagnosedByID>5</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="11">
+        <Comment>Failed Abbreviated Mental Test but no history of significant cognitive and functional deficits - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre for further evaluation
+✓Fail Abbreivated Mental Test Score  - Required Score: 8, Patient Score: 0</Comment>
+        <Header>R04 - Failed AMT, re-take history, look for underlying causes and consider referral</Header>
+        <Link></Link>
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>6</QGrpID>
+        </RetrieveFrom>
+      </Diagnosis>
+      <Diagnosis diagID="7">
+        <Comment>Please investigate these symptoms found in the questionaire as they are confounding factors of dementia: 
+✓Folate deficiency</Comment>
+        <Header>R23 - Underlying causes of cognitive impairment</Header>
+        <Link></Link>
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>5</QGrpID>
+        </RetrieveFrom>
+      </Diagnosis>
+      <Diagnosis diagID="6">
+        <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
+        <Header>R22 - Recommended Tests</Header>
+        <Link></Link>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635333760000000000</CompletedDate>
+  </History>
 </Histories>

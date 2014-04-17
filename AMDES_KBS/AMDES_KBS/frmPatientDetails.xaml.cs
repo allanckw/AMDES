@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
+using System.Windows.Input;
 
 namespace AMDES_KBS
 {
@@ -69,6 +70,7 @@ namespace AMDES_KBS
             {
                 try
                 {
+                    this.Cursor = Cursors.Wait;
                     AssertQuestions();
                     int sectionID = CLIPSController.getCurrentQnGroupID();
                     if (sectionID != -1)

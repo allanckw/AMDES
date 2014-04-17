@@ -9,7 +9,7 @@ namespace AMDES_KBS
     {
         public static string bulletForm()
         {
-            return "\u25A0";
+            return "\u2713";
         }
         // \u2023 (TRIANGULAR BULLET)
         // \u25E6 (WHITE BULLET)
@@ -17,5 +17,6 @@ namespace AMDES_KBS
         // \u25A0 (BLACK SQUARE)
         // \u25A1 (WHITE SQUARE)
         // \u274F (LOWER RIGHT DROP-SHADOWED WHITE SQUARE)
+        // \u2713 (Tick)
     }
 }

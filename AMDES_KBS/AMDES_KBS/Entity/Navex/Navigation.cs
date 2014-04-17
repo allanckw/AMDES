@@ -248,9 +248,22 @@ namespace AMDES_KBS.Entity
 
             public int Compare(Navigation n1, Navigation n2)
             {
-                return (n1.ChildCriteriaQuestion.Count + n1.ChildCriteriaAttributes.Count)
-                             - (n2.ChildCriteriaQuestion.Count + n2.ChildCriteriaAttributes.Count);
-
+                if (n1 != null && n2 != null)
+                {
+                    return (n1.ChildCriteriaQuestion.Count + n1.ChildCriteriaAttributes.Count)
+                                 - (n2.ChildCriteriaQuestion.Count + n2.ChildCriteriaAttributes.Count);
+                }
+                else
+                {
+                    if (n1 == null)
+                    {
+                        return n2.ChildCriteriaQuestion.Count + n2.ChildCriteriaAttributes.Count;
+                    }
+                    else
+                    {
+                        return n1.ChildCriteriaQuestion.Count + n1.ChildCriteriaAttributes.Count;
+                    }
+                }
             }
 
         }
