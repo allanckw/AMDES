@@ -40,6 +40,17 @@ namespace AMDES_KBS
                 btnPatients.Visibility = Visibility.Visible;
                 stkpnlSearchBox.Visibility = Visibility.Visible;
             }
+
+            if (!CLIPSController.ExpertUser)
+            {
+                btnSetting.Visibility = Visibility.Collapsed;
+                //btnStats.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                btnSetting.Visibility = Visibility.Visible;
+                //btnStats.Visibility = Visibility.Visible;
+            }
         }
 
         private void listPatients()

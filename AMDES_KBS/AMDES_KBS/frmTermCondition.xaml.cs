@@ -51,6 +51,8 @@ namespace AMDES_KBS
             {
                 Assessor a = new Assessor(txtName.Text.Trim(), txtLocation.Text.Trim());
                 AssessorController.writeAssessor(a);
+                
+                CLIPSController.ExpertUser = File.Exists(@"Data\e.miao");
 
                 var admForm = new frmMain(chkSavePat.IsChecked);
                 this.Visibility = Visibility.Collapsed;

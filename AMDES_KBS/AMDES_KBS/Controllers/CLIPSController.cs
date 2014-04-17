@@ -10,6 +10,8 @@ namespace AMDES_KBS.Controllers
 {
     class CLIPSController
     {
+        public static bool ExpertUser;
+
         private static Patient pat;
         public static bool? savePatient = false;
         private List<History> hyList = new List<History>();
