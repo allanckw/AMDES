@@ -112,6 +112,7 @@ namespace CircularDependencyTool
         public void resetGraph()
         {
             Nodes.Clear();
+            oddRow = true;
             x = 5; 
             y = 5;
 

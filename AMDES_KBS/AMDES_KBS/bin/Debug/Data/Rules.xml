@@ -1,3 +1,874 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Rules xml-->
-<Rules />
+<Rules>
+  <Rule RID="1">
+    <Description>SET 1.1</Description>
+    <Navigations>
+      <Navex NavID="1.1">
+        <Destination>1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="1.2">
+        <Destination>2</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="1.3">
+        <Destination>4</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="1.4">
+        <Destination>5</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="1.5">
+        <Destination>7</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="1.6">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>7</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses>
+          <DiagnosisID>26</DiagnosisID>
+          <DiagnosisID>7</DiagnosisID>
+          <DiagnosisID>6</DiagnosisID>
+          <DiagnosisID>28</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>26</RDiagnosisID>
+      <RDiagnosisID>7</RDiagnosisID>
+      <RDiagnosisID>6</RDiagnosisID>
+      <RDiagnosisID>28</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+  <Rule RID="2">
+    <Description>SET 1.3</Description>
+    <Navigations>
+      <Navex NavID="2.1">
+        <Destination>1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="2.2">
+        <Destination>2</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="2.3">
+        <Destination>4</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="2.4">
+        <Destination>5</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="2.5">
+        <Destination>7</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="2.6">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>7</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes>
+          <ChildCriteriaAttribute>
+            <AttributeName>AGE</AttributeName>
+            <AttributeValue>65</AttributeValue>
+            <CompareType>2</CompareType>
+            <SetOnGroupID>7</SetOnGroupID>
+          </ChildCriteriaAttribute>
+        </NavigationChildAttributes>
+        <Diagnoses>
+          <DiagnosisID>26</DiagnosisID>
+          <DiagnosisID>7</DiagnosisID>
+          <DiagnosisID>6</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>26</RDiagnosisID>
+      <RDiagnosisID>7</RDiagnosisID>
+      <RDiagnosisID>6</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+  <Rule RID="4">
+    <Description>SET 1.2</Description>
+    <Navigations>
+      <Navex NavID="4.1">
+        <Destination>1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="4.2">
+        <Destination>2</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="4.3">
+        <Destination>4</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="4.4">
+        <Destination>5</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="4.5">
+        <Destination>7</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="4.6">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>7</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes>
+          <ChildCriteriaAttribute>
+            <AttributeName>AGE</AttributeName>
+            <AttributeValue>65</AttributeValue>
+            <CompareType>3</CompareType>
+            <SetOnGroupID>7</SetOnGroupID>
+          </ChildCriteriaAttribute>
+        </NavigationChildAttributes>
+        <Diagnoses>
+          <DiagnosisID>26</DiagnosisID>
+          <DiagnosisID>7</DiagnosisID>
+          <DiagnosisID>6</DiagnosisID>
+          <DiagnosisID>28</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>26</RDiagnosisID>
+      <RDiagnosisID>7</RDiagnosisID>
+      <RDiagnosisID>6</RDiagnosisID>
+      <RDiagnosisID>28</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+  <Rule RID="5">
+    <Description>Set 2.1</Description>
+    <Navigations>
+      <Navex NavID="5.1">
+        <Destination>1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="5.2">
+        <Destination>2</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="5.3">
+        <Destination>4</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="5.4">
+        <Destination>5</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="5.5">
+        <Destination>7</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="5.6">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>7</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses>
+          <DiagnosisID>9</DiagnosisID>
+          <DiagnosisID>6</DiagnosisID>
+          <DiagnosisID>28</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>9</RDiagnosisID>
+      <RDiagnosisID>6</RDiagnosisID>
+      <RDiagnosisID>28</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+  <Rule RID="6">
+    <Description>Set 2.2</Description>
+    <Navigations>
+      <Navex NavID="6.1">
+        <Destination>1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="6.2">
+        <Destination>2</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="6.3">
+        <Destination>4</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="6.4">
+        <Destination>5</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="6.5">
+        <Destination>7</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="6.6">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>7</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes>
+          <ChildCriteriaAttribute>
+            <AttributeName>AGE</AttributeName>
+            <AttributeValue>65</AttributeValue>
+            <CompareType>3</CompareType>
+            <SetOnGroupID>7</SetOnGroupID>
+          </ChildCriteriaAttribute>
+        </NavigationChildAttributes>
+        <Diagnoses>
+          <DiagnosisID>9</DiagnosisID>
+          <DiagnosisID>6</DiagnosisID>
+          <DiagnosisID>28</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>9</RDiagnosisID>
+      <RDiagnosisID>6</RDiagnosisID>
+      <RDiagnosisID>28</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+  <Rule RID="7">
+    <Description>Set 2.3</Description>
+    <Navigations>
+      <Navex NavID="7.1">
+        <Destination>1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="7.2">
+        <Destination>2</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="7.3">
+        <Destination>4</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="7.4">
+        <Destination>5</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="7.5">
+        <Destination>7</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="7.6">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>6</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>2</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>5</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>7</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes>
+          <ChildCriteriaAttribute>
+            <AttributeName>AGE</AttributeName>
+            <AttributeValue>65</AttributeValue>
+            <CompareType>2</CompareType>
+            <SetOnGroupID>7</SetOnGroupID>
+          </ChildCriteriaAttribute>
+        </NavigationChildAttributes>
+        <Diagnoses>
+          <DiagnosisID>9</DiagnosisID>
+          <DiagnosisID>6</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>9</RDiagnosisID>
+      <RDiagnosisID>6</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+</Rules>

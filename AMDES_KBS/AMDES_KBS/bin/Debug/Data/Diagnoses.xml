@@ -15,62 +15,6 @@
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
-  <Diagnosis diagID="10">
-    <Comment>Failed AMT - re-take a more detailed history to elicit possible cognitive and functional deficits</Comment>
-    <Header>R03</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="11">
-    <Comment>Failed AMT but no history of significant cognitive and functional deficits - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R04</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="12">
-    <Comment>Failed AMT with Amnestic symptoms - Need to exclude other underlying causes. Please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R05</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="13">
-    <Comment>Failed AMT with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R06</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="14">
-    <Comment>Failed AMT with Amnestic symptoms but no significant functional decline, please refer the patient to a tertiary centre  for further evaluation</Comment>
-    <Header>R07</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="15">
-    <Comment>Failed AMT with cognitive deficits other than amnesia - re-take history and consider referring the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R08</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="16">
-    <Comment>Failed AMT with cognitive deficits other than amnesia - re-take history, look for underlying causes and consider referring the patient to a tertiary centre</Comment>
-    <Header>R09</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="17">
-    <Comment>Failed AMT with cognitive deficits other than Dementia - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre</Comment>
-    <Header>R10</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
   <Diagnosis diagID="18">
     <Comment>Non-amnestic cognitive deficits, look for underlying cause and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
     <Header>R11</Header>
@@ -150,18 +94,90 @@
       <QGrpID>5</QGrpID>
     </RetrieveFrom>
   </Diagnosis>
-  <Diagnosis diagID="28">
-    <Comment>Brain imaging and referral to a tertiary center is recommended</Comment>
-    <Header>R21 Require brain imaging and referra</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
   <Diagnosis diagID="6">
     <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
     <Header>R22 Recommended Tests</Header>
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="28">
+    <Comment>Brain imaging and referral to a tertiary center is recommended</Comment>
+    <Header>R21 Require brain imaging and referral</Header>
+    <Link></Link>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="10">
+    <Comment>Failed AMT - re-take a more detailed history to elicit possible cognitive and functional deficits</Comment>
+    <Header>R03</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+  <Diagnosis diagID="11">
+    <Comment>Failed AMT but no history of significant cognitive and functional deficits - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre for further evaluation</Comment>
+    <Header>R04</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+  <Diagnosis diagID="12">
+    <Comment>Failed AMT with Amnestic symptoms - Need to exclude other underlying causes. Please refer the patient to a tertiary centre for further evaluation</Comment>
+    <Header>R05</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+  <Diagnosis diagID="13">
+    <Comment>Failed AMT with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation</Comment>
+    <Header>R06</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+  <Diagnosis diagID="14">
+    <Comment>Failed AMT with Amnestic symptoms but no significant functional decline, please refer the patient to a tertiary centre  for further evaluation</Comment>
+    <Header>R07</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+  <Diagnosis diagID="15">
+    <Comment>Failed AMT with cognitive deficits other than amnesia - re-take history and consider referring the patient to a tertiary centre for further evaluation</Comment>
+    <Header>R08</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+  <Diagnosis diagID="16">
+    <Comment>Failed AMT with cognitive deficits other than amnesia - re-take history, look for underlying causes and consider referring the patient to a tertiary centre</Comment>
+    <Header>R09</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+  <Diagnosis diagID="17">
+    <Comment>Failed AMT with cognitive deficits other than Dementia - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre</Comment>
+    <Header>R10</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
   </Diagnosis>
 </Diagnoses>
