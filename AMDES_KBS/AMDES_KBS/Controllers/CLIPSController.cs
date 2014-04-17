@@ -133,7 +133,7 @@ namespace AMDES_KBS.Controllers
                     loadQuestions(grps); //load question pass all assertions
                     loadDiagnosis();
                     run();
-                    
+
                     loadNavex(fq, rList, defBehavior);
                     run();
                 }
@@ -165,7 +165,7 @@ namespace AMDES_KBS.Controllers
                 sb.Append(") ");
                 assert(sb);
             }
-           
+
         }
 
         private static void assertAge()
@@ -236,7 +236,7 @@ namespace AMDES_KBS.Controllers
                     sb.Append("(question (ID _" + qg.GroupID + "." + q.ID + ") ");
                     sb.Append("(GroupID _" + qg.GroupID + ") ");
 
-                    sb.Append("(QuestionText " + "\"" + q.Name + "\"" + ") "); 
+                    sb.Append("(QuestionText " + "\"" + q.Name + "\"" + ") ");
                     //irrelevant to dump to clips required only when doing on command prompt
 
                     sb.Append(")");
@@ -250,7 +250,7 @@ namespace AMDES_KBS.Controllers
                         assert(sb);
                     }
                 }
-               
+
             }//);
             //assert(sb);
         }
@@ -268,21 +268,20 @@ namespace AMDES_KBS.Controllers
 
             List<Navigation> nList = new List<Navigation>();
             int i = 0;
-            //foreach (Rules r in rList)
-            Parallel.ForEach(rList, r =>
+            foreach (Rules r in rList)
             {
                 //foreach (Navigation n in r.Navigations)
                 Parallel.ForEach(r.Navigations, n =>
                 {
-                  
-                    if (n!= null && !nList.Contains(n))
+
+                    if (n != null && !nList.Contains(n))
                         nList.Add(n);
 
                     //Console.WriteLine("Processing {0} {1} on thread {2}",  r, n,
                     //               Thread.CurrentThread.ManagedThreadId);
                 });
-              
-            });
+
+            }
             //Console.WriteLine(i);
 
             Navigation.CriteriaSortingComparer comparer = new Navigation.CriteriaSortingComparer();
