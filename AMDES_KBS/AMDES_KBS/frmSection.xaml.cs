@@ -49,13 +49,17 @@ namespace AMDES_KBS
             lblSection.Content = sectionID;
             amdesPageFrame = amdesFrame;
             prevPage = null;
-            btnPrev.Visibility = Visibility.Collapsed;
             heightLimit = 430;
             loadSection(sectionID);
             setAns(hisList);
             setLastPage();
             offCommands(240);
+            if (CurrPageNo == 1)
+                btnPrev.Visibility = Visibility.Hidden;
+            else
+                btnPrev.Visibility = Visibility.Visible;
         }
+            
 
         public frmSection(Frame amdesFrame, int sectionID, frmSection prevSection)
         {
@@ -261,7 +265,7 @@ namespace AMDES_KBS
             {
                 if (prevPage == null)
                 {
-                    btnPrev.Visibility = Visibility.Collapsed;
+                    btnPrev.Visibility = Visibility.Hidden;
 
                 }
                 else
