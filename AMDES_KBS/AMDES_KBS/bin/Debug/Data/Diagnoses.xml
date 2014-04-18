@@ -123,7 +123,7 @@
     <RetrieveFrom />
   </Diagnosis>
   <Diagnosis diagID="7">
-    <Comment>Please investigate these symptoms found in the questionaire as they are confounding factors of dementia: </Comment>
+    <Comment>Please investigate these symptoms found in the questionnaire as they are confounding factors of dementia: </Comment>
     <Header>R23 - Underlying causes of cognitive impairment</Header>
     <Link></Link>
     <RetrieveSymptom>true</RetrieveSymptom>
