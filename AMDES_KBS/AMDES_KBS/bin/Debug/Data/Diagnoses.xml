@@ -7,6 +7,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="8">
     <Comment>Dementia high likelihood by DSM4 criteria</Comment>
@@ -14,6 +15,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="10">
     <Comment>Failed Abbreviated Mental Test - re-take a more detailed history to elicit possible cognitive and functional deficits</Comment>
@@ -23,6 +25,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="11">
     <Comment>Failed Abbreviated Mental Test but no history of significant cognitive and functional deficits - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre for further evaluation</Comment>
@@ -32,6 +35,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="12">
     <Comment>Failed Abbreviated Mental Test with Amnestic symptoms - Need to exclude other underlying causes. Please refer the patient to a tertiary centre for further evaluation</Comment>
@@ -41,6 +45,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="13">
     <Comment>Failed Abbreviated Mental Test with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation</Comment>
@@ -50,6 +55,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="15">
     <Comment>Failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take history and consider referring the patient to a tertiary centre for further evaluation</Comment>
@@ -59,6 +65,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="16">
     <Comment>Failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take history, look for underlying causes and consider referring the patient to a tertiary centre</Comment>
@@ -68,6 +75,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="17">
     <Comment>Failed Abbreviated Mental Test with cognitive deficits other than Dementia - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre</Comment>
@@ -77,6 +85,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="18">
     <Comment>Non-amnestic cognitive deficits, look for underlying cause and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
@@ -84,6 +93,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="14">
     <Comment>Failed Abbreviated Mental Test with Amnestic symptoms but no significant functional decline, please refer the patient to a tertiary centre  for further evaluation</Comment>
@@ -93,6 +103,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="19">
     <Comment>Non-amnestic cognitive deficits, please refer the patient to a tertiary centre for evaluation</Comment>
@@ -100,6 +111,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="21">
     <Comment>Significant amnesia and functional decline, look for underlying cause and please refer the patient to a tertiary centre for evaluation</Comment>
@@ -107,6 +119,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="22">
     <Comment>Significant amnesia and functional decline, please refer the patient to a tertiary centre for evaluation</Comment>
@@ -114,6 +127,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="23">
     <Comment>Significant amnesia only, look for underlying cause and please refer the patient to a tertiary centre for evaluation</Comment>
@@ -121,6 +135,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="6">
     <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
@@ -128,6 +143,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="24">
     <Comment>Significant amnesia only, please refer the patient to a tertiary centre for evaluation</Comment>
@@ -135,6 +151,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="25">
     <Comment>Significant cognitive deficits and functional decline in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
@@ -142,6 +159,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="27">
     <Comment>Significant cognitive deficits in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
@@ -149,6 +167,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="9">
     <Comment>Dementia high likelihood by DSM4 criteria but passed Abbreviated Mental Test - please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
@@ -156,6 +175,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="26">
     <Comment>Significant cognitive deficits in history, look for underlying cause for cognitive impairment and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
@@ -163,6 +183,7 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="7">
     <Comment>Please investigate these symptoms found in the questionnaire as they are confounding factors of dementia: </Comment>
@@ -172,14 +193,26 @@
     <RetrieveFrom>
       <QGrpID>5</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>true</RetrieveBelow65>
   </Diagnosis>
   <Diagnosis diagID="28">
     <Comment>Brain imaging and referral to a tertiary center is recommended due to the following conditions: </Comment>
-    <Header>R21 - Require brain imaging and referral</Header>
+    <Header>R21a - Require brain imaging and referral</Header>
     <Link></Link>
     <RetrieveSymptom>true</RetrieveSymptom>
     <RetrieveFrom>
       <QGrpID>7</QGrpID>
     </RetrieveFrom>
+    <RetrieveBelow65>true</RetrieveBelow65>
+  </Diagnosis>
+  <Diagnosis diagID="29">
+    <Comment>Brain imaging and referral to a tertiary center is recommended due to rapid decline and the following conditions: </Comment>
+    <Header>R21b - Require brain imaging and referral due to rapid decline</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>7</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>true</RetrieveBelow65>
   </Diagnosis>
 </Diagnoses>

@@ -14,6 +14,15 @@ namespace AMDES_KBS.Entity
         private string header;
 
         private bool retrieveSym;
+
+        private bool ageBelow65;
+
+        public bool AgeBelow65
+        {
+            get { return ageBelow65; }
+            set { ageBelow65 = value; }
+        }
+
         private List<int> retrievalIDList;
 
         public Diagnosis()

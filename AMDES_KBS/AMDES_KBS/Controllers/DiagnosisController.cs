@@ -67,7 +67,8 @@ namespace AMDES_KBS.Controllers
                              new XElement("Header", d.Header),
                              new XElement("Link", d.Link),
                              new XElement("RetrieveSymptom", d.RetrieveSym),
-                             new XElement("RetrieveFrom")
+                             new XElement("RetrieveFrom"),
+                             new XElement("RetrieveBelow65", d.AgeBelow65)
                              );
 
             if (d.RetrieveSym)
@@ -124,6 +125,9 @@ namespace AMDES_KBS.Controllers
                 d.Comment = x.Element("Comment").Value;
                 d.Header = x.Element("Header").Value;
                 d.Link = x.Element("Link").Value;
+
+                //RetrieveBelow65
+                d.AgeBelow65 = bool.Parse(x.Element("RetrieveBelow65").Value);
 
                 d.RetrieveSym = bool.Parse(x.Element("RetrieveSymptom").Value);
 

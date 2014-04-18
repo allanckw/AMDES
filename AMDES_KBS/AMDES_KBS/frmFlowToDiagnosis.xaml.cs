@@ -191,7 +191,7 @@ namespace AMDES_KBS
 
         private void displayLastSteps()
         {
-            while (currStep<lstStep.Count)
+            while (currStep < lstStep.Count)
             {
                 currStep++;
                 loadSteps();
@@ -201,7 +201,7 @@ namespace AMDES_KBS
             Navigation nav = rule.Navigations[rule.Navigations.Count - 1];
             foreach (NaviChildCriteriaQuestion n in nav.ChildCriteriaQuestion)
             {
-                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header,n.Ans);
+                g.addGraphNodes(QuestionController.getGroupByID(n.CriteriaGrpID).Header, n.Ans);
             }
             loadGraph1();
             lblText.Content = "Displaying Saved Rule";
@@ -282,7 +282,7 @@ namespace AMDES_KBS
                 addNewStep();
             }
 
-            
+
         }
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
@@ -383,7 +383,7 @@ namespace AMDES_KBS
 
         private bool saveNavigation()
         {
-            if (txtDescription.Text.Trim().Length==0)
+            if (txtDescription.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Description cannot be empty!");
                 return false;
@@ -503,8 +503,8 @@ namespace AMDES_KBS
                 loadGraph1();
                 lblText.Content = "Displaying Saved Rule";
                 LoadAllRule();
-                cboDiagnosisList.SelectedIndex = cboDiagnosisList.Items.Count - 1;
-                MessageBox.Show("Saved!");
+                //cboDiagnosisList.SelectedIndex = cboDiagnosisList.Items.Count - 1;
+                MessageBox.Show("Navigation Rule Saved!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

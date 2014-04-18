@@ -104,6 +104,7 @@ namespace AMDES_KBS
                 {
                     qgGrpList.Add(QuestionController.getGroupByID(d.RetrievalIDList[i]));
                 }
+                chkAge.IsChecked = d.AgeBelow65;
             }
 
             lstGroupList.ItemsSource = qgGrpList;
@@ -147,7 +148,7 @@ namespace AMDES_KBS
 
             sDiagnosis.RetrieveSym = chkSym.IsChecked.Value;
             sDiagnosis.RetrievalIDList = getSymptonsForDiagnosis();
-
+            sDiagnosis.AgeBelow65 = chkAge.IsChecked.Value;
             if (!SaveDiagnosis(sDiagnosis))
             {
                 return;

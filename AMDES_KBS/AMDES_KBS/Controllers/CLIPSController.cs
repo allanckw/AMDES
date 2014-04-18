@@ -470,6 +470,18 @@ namespace AMDES_KBS.Controllers
                     {
                         Diagnosis d = DiagnosisController.getDiagnosisByID(diagID);
 
+                        if (d.RetrieveSym && d.AgeBelow65)
+                        {
+                            if (CurrentPatient.getAge() <= 65)
+                            {
+                                if (d.Comment.Trim().Length == 0)
+                                {
+                                    d.Comment += System.Environment.NewLine;
+                                }
+                                d.Comment += "   " + App.bulletForm() + " Age <= 65";
+                            }
+                        }
+
                         if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
                         {
                             foreach (int qgID in d.RetrievalIDList)
@@ -486,10 +498,9 @@ namespace AMDES_KBS.Controllers
                                     {
                                         d.Comment += System.Environment.NewLine + "   " + App.bulletForm() + " " + s.SymptomName.Trim();
                                     }
-
-                                    d.Comment = d.Comment.Trim();
                                 }
                             }
+
                         }
                         d.Comment = d.Comment.Trim();
                         h.addDiagnosis(d);
