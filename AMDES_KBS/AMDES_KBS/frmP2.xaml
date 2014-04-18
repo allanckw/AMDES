@@ -4,7 +4,7 @@
         Title="Initial Visit Test Statistics" Height="650" Width="923" Loaded="Window_Loaded">
     <Grid>
         <StackPanel>
-            <GroupBox Header="Attribute" FontSize="18" FontWeight="Bold">
+            <GroupBox Header="Set Attributes" FontSize="18" FontWeight="Bold">
                 <StackPanel Orientation="Horizontal">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" >
@@ -35,7 +35,7 @@
             </ListView>
         </StackPanel>
         </GroupBox>
-            <GroupBox Header="Result" FontSize="18" FontWeight="Bold">
+            <GroupBox Header="Results" FontSize="18" FontWeight="Bold">
                 <ListView Height="143" HorizontalAlignment="Left" FontSize="12" FontWeight="Regular" Margin="203,0,0,0" Name="LVResults" VerticalAlignment="Top" Width="514">
             <ListView.View>
                 <GridView>
