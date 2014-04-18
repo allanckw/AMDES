@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
+using System.Threading.Tasks;
 
 namespace AMDES_KBS
 {
@@ -15,19 +16,20 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             lblTitle.Content = "Tests Conducted on initial visits";
-            LoadChart(ProcessTuple(lst));
+            LoadChart(ProcessTuple(lst.OrderBy(x=>x.Item2).ToList()));
         }
 
         private System.Collections.ObjectModel.Collection<InitialVisitTest> ProcessTuple(List<Tuple<string, double, double>> lst)
         {
             System.Collections.ObjectModel.Collection<InitialVisitTest> TestCollection = new System.Collections.ObjectModel.Collection<InitialVisitTest>();
             foreach (Tuple<string, double, double> item in lst)
-            {
-                InitialVisitTest t = new InitialVisitTest();
-                t.TestName = item.Item1 + "  ";
-                t.Yes = item.Item2 * 100;
-                TestCollection.Add(t);
-            }
+            //Parallel.ForEach(lst, item =>
+           {
+               InitialVisitTest t = new InitialVisitTest();
+               t.TestName = item.Item1 + "  ";
+               t.Yes = item.Item2 * 100;
+               TestCollection.Add(t);
+           }//);
             return TestCollection;
         }
 

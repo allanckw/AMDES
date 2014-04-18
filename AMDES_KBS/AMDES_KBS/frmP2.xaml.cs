@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using AMDES_KBS.Controllers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AMDES_KBS
 {
@@ -37,9 +39,9 @@ namespace AMDES_KBS
                 return;
             }
 
-            if(txtValue.Visibility == System.Windows.Visibility.Visible)
+            if (txtValue.Visibility == System.Windows.Visibility.Visible)
             {
-            double result;
+                double result;
                 if (!Double.TryParse(value.Trim(), out result))
                 {
                     MessageBox.Show("continous value, please enter a number");
@@ -57,7 +59,7 @@ namespace AMDES_KBS
             }
 
             Tuple<string, string> newVar = new Tuple<string, string>(cbName.Text, value);
-            
+
             LVVariables.Items.Add(newVar);
 
             //P2Controller.load(LVVariables);
@@ -70,19 +72,23 @@ namespace AMDES_KBS
             {
                 LVResults.ItemsSource = null;
                 List<Tuple<string, double, double>> lst = new List<Tuple<string, double, double>>();
+
                 foreach (P2Controller inc in Test_Sets)
+                //Parallel.ForEach(Test_Sets, inc =>
                 {
                     Tuple<string, double, double> temp_store = load(inc);
                     if (temp_store == null)
                         return;
-                    
+
                     lst.Add(temp_store);
-                   
+
                     //1st 1 is test name 2nd 1 is yes 3rd 1 is no %
-                }
+                }//);
                 lst = lst.OrderByDescending(x => x.Item2).ToList();
                 LVResults.ItemsSource = lst;
-                loadBarChart(lst.OrderBy(x => x.Item2).ToList());
+
+                loadBarChart(lst);
+
             }
             catch (Exception c)
             {
@@ -96,6 +102,7 @@ namespace AMDES_KBS
             stkpnlGraph.Children.Clear();
             ucChart barChart = new ucChart(lst);
             stkpnlGraph.Children.Add(barChart);
+
         }
         private Tuple<string, double, double> load(P2Controller instance)
         {
@@ -109,10 +116,10 @@ namespace AMDES_KBS
                 Double aggree = 0;
                 Double disaggree = 0;
 
-                if((!Double.TryParse(result[i].Item2,out aggree)) || (!Double.TryParse(result[i].Item3,out disaggree)))
+                if ((!Double.TryParse(result[i].Item2, out aggree)) || (!Double.TryParse(result[i].Item3, out disaggree)))
                 {
                     throw new InvalidOperationException("invalid percentage Number detected");
-                    
+
                 }
 
                 if (classifcation.Equals(pos))
@@ -127,12 +134,12 @@ namespace AMDES_KBS
                 }
                 else
                 {
-                    
+
                     throw new InvalidOperationException("invalid classifaction detected, this may be due to invalid rule files");
                 }
             }
 
-            Double total =positive + negative;
+            Double total = positive + negative;
 
             if (total != 0)
             {
@@ -155,8 +162,8 @@ namespace AMDES_KBS
                 return Popresult;
             }
 
-           
-            
+
+
         }
 
 
@@ -181,25 +188,25 @@ namespace AMDES_KBS
             //need try get from 1 directory all the txt files
 
             P2Controller.attributes = new List<string>();
-         
-            string folder = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) +  @"\Initial Test\Rules";;
+
+            string folder = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Initial Test\Rules"; ;
             string filter = "*.txt";
             string[] files = Directory.GetFiles(folder, filter);
+            Test_Sets = new List<P2Controller>();
+            Test_Sets.Capacity = files.Length;
 
             cboValue.Visibility = System.Windows.Visibility.Collapsed;
             try
             {
-            
-                Test_Sets = new List<P2Controller>();
-
-                foreach (string _file in files)
+                //foreach (string _file in files)
+                Parallel.ForEach(files, _file =>
                 {
                     string _filename = System.IO.Path.GetFileName(_file);
-                    Test_Sets.Add(new P2Controller(_filename.Substring(0,_filename.Length-4),_file));//"Engine\\dementia.CLP"));
-                
-                }
+                    Test_Sets.Add(new P2Controller(_filename.Substring(0, _filename.Length - 4), _file));//"Engine\\dementia.CLP"));
+
+                });
                 //Test_Sets.Add(new P2Controller("Rules\\25-HYDROXY VITAMIN D.txt", "C:\\Users\\Nick\\Documents\\nus sem 8\\cs4244\\dementia.CLP"));
-                
+
 
             }
             catch (Exception c)
@@ -215,17 +222,17 @@ namespace AMDES_KBS
             {
                 AttChoices = i.init(AttChoices);
             }
-           // P2Controller.init(AttChoices);
+            // P2Controller.init(AttChoices);
 
             choices = AttChoices;
 
-            foreach(Tuple<string, bool, List<string>> c in choices)
+            foreach (Tuple<string, bool, List<string>> c in choices)
             {
                 cbName.Items.Add(c);
                 //c.Item1
             }
 
-            
+
             txtValue.IsEnabled = false;
 
 
@@ -266,7 +273,7 @@ namespace AMDES_KBS
         {
             txtValue.Clear();
             cboValue.SelectedIndex = -1;
-            if(raw_data == null)
+            if (raw_data == null)
             {
                 txtValue.IsEnabled = false;
                 cboValue.IsEnabled = false;
@@ -296,6 +303,6 @@ namespace AMDES_KBS
             }
         }
 
-        
+
     }
 }
