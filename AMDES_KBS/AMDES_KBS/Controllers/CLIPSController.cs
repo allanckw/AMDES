@@ -23,14 +23,15 @@ namespace AMDES_KBS.Controllers
         //all other tests are readonly, do not call clips controller!
 
         //for debug purpose, to pull out to test on clips, and to pull out to assert for restore patient
-        private static List<String> assertLog = new List<String>();
+        private static List<string> assertLog = new List<string>();
+
         static int count = 0; //just a counter to check the number of assertions... 
 
         //WARNING MOMOSOFT CLIPS REQUIRED x86 MODE ONLY, ALL OTHER MODE WILL FAIL
         private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
 
         private static string dataPath = @"Data\Logs\";
-        private static string clpPath = @"engine\dementia.clp";
+        public static string clpPath = @"engine\dementia.clp";
 
         public static Patient CurrentPatient
         {
@@ -52,7 +53,7 @@ namespace AMDES_KBS.Controllers
             StringBuilder sb = new StringBuilder();
             foreach (String s in assertLog)
             {
-                sb.AppendLine(s.ToString());
+                sb.AppendLine(s);
             }
             string filePath = dataPath + CurrentPatient.NRIC + ".log";
             File.WriteAllText(filePath, sb.ToString());
@@ -73,22 +74,17 @@ namespace AMDES_KBS.Controllers
             {
                 //File Ops here
                 string line;
-                System.IO.StreamReader file = new System.IO.StreamReader(dataPath);
+                StreamReader file = new System.IO.StreamReader(dataPath);
 
                 while ((line = file.ReadLine()) != null)
                 {
-                    assertLog.Add(line);
-                    Console.WriteLine(line);
+                    assert(new StringBuilder(line));
                     count++;
                 }
 
                 file.Close();
+                saveAssertLog();
                 //End File Op
-                foreach (string s in assertLog)
-                {
-                    env.AssertString(s);
-                }
-
                 run();
                 return CurrentPatient.getLatestHistory();
             }
@@ -110,9 +106,7 @@ namespace AMDES_KBS.Controllers
                 count = 0;
 
                 env.Load(clpPath);
-
                 reset();
-                assertAge();
                 run();
 
                 List<QuestionGroup> grps = QuestionController.getAllQuestionGroup();
@@ -130,11 +124,28 @@ namespace AMDES_KBS.Controllers
                 }
                 else
                 {
-                    loadQuestions(grps); //load question pass all assertions
-                    loadDiagnosis();
-                    run();
+                    //Parallel.Invoke(
+                    //    () =>
+                    //    {
+                    //Console.WriteLine("Begin first task...");
+                    loadQuestions(grps);
+                    //    },  // close first Action
 
+                    //    () =>
+                    //     {
+                    //Console.WriteLine("Begin second task...");
+                    loadDiagnosis();
+                    //     }//, //close second Action
+
+                    //() =>
+                    //{
+                    //    //Console.WriteLine("Begin third task...");
+
+                    //} //close third Action
+                    //  ); //close parallel.invoke
                     loadNavex(fq, rList, defBehavior);
+                    saveAssertLog();
+                    assertAge();
                     run();
                 }
 
@@ -170,7 +181,7 @@ namespace AMDES_KBS.Controllers
 
         private static void assertAge()
         {
-            assert(new StringBuilder("(attribute AGE " + CurrentPatient.getAge() + ")"));
+            assert(new StringBuilder("(attribute AGE " + CurrentPatient.getAge() + ")"), false);
         }
 
         private static void run()
@@ -185,12 +196,13 @@ namespace AMDES_KBS.Controllers
             assertLog.Add("(reset)");
         }
 
-        private static void assert(StringBuilder sb)
+        private static void assert(StringBuilder sb, bool init = true)
         {
             String a = sb.ToString().Trim();
             env.AssertString(a);
             assertLog.Add(a);
-            saveAssertLog();
+            if (!init)
+                saveAssertLog();
             count++;
         }
 
@@ -252,7 +264,7 @@ namespace AMDES_KBS.Controllers
                 }
 
             }//);
-            //assert(sb);
+
         }
 
         private static void loadNavex(FirstQuestion fq, List<Rules> rList, List<Navigation> defBehavior)
@@ -270,8 +282,8 @@ namespace AMDES_KBS.Controllers
             int i = 0;
             foreach (Rules r in rList)
             {
-                //foreach (Navigation n in r.Navigations)
-                Parallel.ForEach(r.Navigations, n =>
+                foreach (Navigation n in r.Navigations)
+                //Parallel.ForEach(r.Navigations, n =>
                 {
 
                     if (n != null && !nList.Contains(n))
@@ -279,7 +291,7 @@ namespace AMDES_KBS.Controllers
 
                     //Console.WriteLine("Processing {0} {1} on thread {2}",  r, n,
                     //               Thread.CurrentThread.ManagedThreadId);
-                });
+                }//);
 
             }
             //Console.WriteLine(i);
@@ -293,6 +305,8 @@ namespace AMDES_KBS.Controllers
                 createNavigationAssertion(n);
             }
         }
+
+
 
         private static void createNavigationAssertion(Navigation n)
         {
@@ -322,6 +336,7 @@ namespace AMDES_KBS.Controllers
             sb.Clear();
             foreach (NaviChildCriteriaQuestion ncq in n.ChildCriteriaQuestion)
             {
+                sb = new StringBuilder();
                 sb.Append("(NaviChildCritQuestion (NavigationID N" + n.NavID + ") ");
                 sb.Append("(CriteriaGroupID _" + ncq.CriteriaGrpID + ") ");
                 if (ncq.Ans == false)
@@ -335,19 +350,22 @@ namespace AMDES_KBS.Controllers
                 sb.Append(")");
 
                 assert(sb);
+
                 sb.Clear();
             }
 
-            foreach (NaviChildCritAttribute ncq in n.ChildCriteriaAttributes)
+            foreach (NaviChildCritAttribute nca in n.ChildCriteriaAttributes)
             {
+                sb = new StringBuilder();
                 //(NaviChildCritA (NavigationID GO_C) (AttributeName Age) (AttributeValue 50) (AttributeCompareType <) )
                 sb.Append("(NaviChildCritAttribute (NavigationID N" + n.NavID + ") ");
-                sb.Append("(AttributeName " + ncq.AttributeName + ") ");
-                sb.Append("(AttributeValue " + ncq.AttributeValue + ") ");
-                sb.Append("(AttributeCompareType " + ncq.getCompareTypeString() + ") ");
+                sb.Append("(AttributeName " + nca.AttributeName + ") ");
+                sb.Append("(AttributeValue " + nca.AttributeValue + ") ");
+                sb.Append("(AttributeCompareType " + nca.getCompareTypeString() + ") ");
                 sb.Append(")");
 
                 assert(sb);
+
                 sb.Clear();
             }
         }
@@ -366,19 +384,19 @@ namespace AMDES_KBS.Controllers
             }
             sb.Append(")");
 
-            assert(sb);
+            assert(sb, false);
             run();
         }
 
         public static void assertNextSection()
         {
-            assert(new StringBuilder("(next)"));
+            assert(new StringBuilder("(next)"), false);
             run();
         }
 
         public static void assertPrevSection()
         {
-            assert(new StringBuilder("(previous)"));
+            assert(new StringBuilder("(previous)"), false);
             run();
         }
 

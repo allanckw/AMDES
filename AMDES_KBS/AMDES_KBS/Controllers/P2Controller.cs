@@ -13,7 +13,7 @@ namespace AMDES_KBS.Controllers
 
         private string rule_path; //rule path in txt
 
-        private string CLP_FILE =  @"engine\dementia.clp"; //clp file
+        private string CLP_FILE = CLIPSController.clpPath;
 
         public string File_Name;
 
@@ -98,17 +98,11 @@ namespace AMDES_KBS.Controllers
         }
         private void reload(ListView vars)
         {
-
             List<string> attributes = new List<string>();
-
-
         }
-
-
 
         private List<Tuple<string, bool, List<string>>> Get_Attributes(List<rules> _rules, List<Tuple<string, bool, List<string>>> AttChoices)
         {
-
 
             foreach (rules Rule_Instance in _rules)
             {
