@@ -14,48 +14,35 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
-                <Label  Width="200" Content="New Records" FontWeight="Bold" FontSize="20" />
+                <Label  Width="200" Content="New Record" FontWeight="Bold" FontSize="20"  />
             </StackPanel>
             <StackPanel x:Name="stkpnlPatientDetails">
                 <StackPanel Orientation="Horizontal">
-                    <Label  Width="200" Content="Patient's Details" FontWeight="Bold" FontSize="16" />
+                    <Label  Width="200" Content="Patient's Information" FontWeight="Bold" FontSize="16" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label  Width="150" Content="Date of  Assessment:"/>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                    <Label  Width="150" Content="Date of  Assessment:" HorizontalContentAlignment="Right"/>
                     <DatePicker Width="200" Name="dtpAss" IsEnabled="False" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Name="stknric">
-                    <Label  Width="150" Content="Patient identification no.:"/>
+                <StackPanel Orientation="Horizontal" Name="stknric" Margin="0,5,0,5">
+                    <Label  Width="150" Content="Patient identification no.:" HorizontalContentAlignment="Right"/>
                     <TextBox Width="200" Height="30" Name="txtNRIC" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Name="stksurname">
-                    <Label Width="150"  Content="Family name/surname:" />
+                <StackPanel Orientation="Horizontal" Name="stksurname" Margin="0,5,0,5" >
+                    <Label Width="150"  Content="Family name/surname:" HorizontalContentAlignment="Right"/>
                     <TextBox Width="200" Height="30" Name="txtLastName" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Name="stkfirstname">
-                    <Label Width="150"  Content="Given name/ first name:" />
+                <StackPanel Orientation="Horizontal" Name="stkfirstname" Margin="0,5,0,5">
+                    <Label Width="150"  Content="Given name/ first name:" HorizontalContentAlignment="Right"/>
                     <TextBox Width="200" Height="30" Name="txtFirstName" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Width="150"  Content="Date of Birth:" />
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                    <Label Width="150"  Content="Date of Birth:" HorizontalContentAlignment="Right" />
                     <StackPanel>
-                        <DatePicker Width="200" Name="dtpDOB"   />
+                        <DatePicker Width="200" Name="dtpDOB" FirstDayOfWeek="Monday" />
                     </StackPanel>
                     <Label  Content=" (Format DD/MM/YYYY)" />
                     <Label  Content="e.g. 31/1/1970" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Visibility="Collapsed">
-                    <Label Width="150"  Content="Gender:" />
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <RadioButton x:Name="radMale"  Margin="0,0,10,0" GroupName="grpGender">Male</RadioButton>
-                        <RadioButton x:Name="radFemale" GroupName="grpGender">Female</RadioButton>
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Visibility="Collapsed">
-                    <Label Width="150"  Content="Ethnic Group:" />
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <ComboBox x:Name="cboEthnicGrp" Width="200"/>
-                    </StackPanel>
                 </StackPanel>
             </StackPanel>
             

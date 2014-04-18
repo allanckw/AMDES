@@ -478,7 +478,7 @@ namespace AMDES_KBS.Controllers
                                 {
                                     d.Comment += System.Environment.NewLine;
                                 }
-                                d.Comment += "   " + App.bulletForm() + " Age <= 65";
+                                d.Comment += "   " + App.bulletForm() + " Age ≤ 65";
                             }
                         }
 

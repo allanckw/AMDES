@@ -22,11 +22,11 @@
 
             </StackPanel>
             <TabControl x:Name="tcResults" Background="Transparent" Height="400"  Width="960">
-                <TabItem x:Name="tbResults" Header="Assessments">
+                <TabItem x:Name="tbResults" FontSize="13"  Header="Assessments">
                     <StackPanel x:Name="PageSFrame" Height="370" Margin="0,0,0,0"/>
                 </TabItem>
-                <TabItem x:Name="tbRecommendation" Header="Recommendations">
-                    <ScrollViewer x:Name="svA" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
+                <TabItem x:Name="tbRecommendation" FontSize="13" Header="Recommendations">
+                    <ScrollViewer x:Name="svA" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
                         <StackPanel x:Name="PageFrame"/>
                     </ScrollViewer>
                 </TabItem>

@@ -7,20 +7,7 @@ using AMDES_KBS.Controllers;
 namespace AMDES_KBS.Entity
 {
 
-    public enum PatientEthnicGrp
-    {
-        CHINESE,
-        MALAY,
-        INDIAN,
-        EURASIAN,
-        OTHERS
-    }
-
-    public enum PatientGender
-    {
-        MALE,
-        FEMALE
-    }
+  
 
     public class Patient : IComparable<Patient>
     {
@@ -39,24 +26,6 @@ namespace AMDES_KBS.Entity
         
 
         private string nric = "", firstname = "", lastname = "";
-
-        private PatientGender gender = PatientGender.MALE;
-
-        private PatientEthnicGrp ethnicGrp = PatientEthnicGrp.CHINESE;
-
-        public PatientEthnicGrp EthnicGroup
-        {
-            get { return ethnicGrp; }
-            set { ethnicGrp = value; }
-        }
-
-
-        public PatientGender Gender
-        {
-            get { return gender; }
-            set { gender = value; }
-        }
-
 
         public DateTime DOB
         {

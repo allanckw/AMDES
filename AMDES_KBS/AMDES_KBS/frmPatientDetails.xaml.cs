@@ -28,21 +28,21 @@ namespace AMDES_KBS
             dtpDOB.SelectedDate = new DateTime(DateTime.Today.Year, 1, 1);
             dtpAss.SelectedDate = DateTime.Today;
             turnOffPatientDetails();
-            loadEnthicGrp();
+            //loadEnthicGrp();
         }
 
-        private void loadEnthicGrp()
-        {
-            // Obtain the string names of all the elements within myEnum 
-            List<string> enthic = Enum.GetNames(typeof(PatientEthnicGrp)).ToList<String>();
+        //private void loadEnthicGrp()
+        //{
+        //    // Obtain the string names of all the elements within myEnum 
+        //    List<string> enthic = Enum.GetNames(typeof(PatientEthnicGrp)).ToList<String>();
 
-            for (int i = 0; i < enthic.Count; i++)
-            {
-                string s = enthic[i];
-                cboEthnicGrp.Items.Add(s);
-            }
-            cboEthnicGrp.SelectedIndex = -1;
-        }
+        //    for (int i = 0; i < enthic.Count; i++)
+        //    {
+        //        string s = enthic[i];
+        //        cboEthnicGrp.Items.Add(s);
+        //    }
+        //    cboEthnicGrp.SelectedIndex = -1;
+        //}
 
         private void turnOffPatientDetails()
         {
@@ -144,12 +144,7 @@ namespace AMDES_KBS
                     else
                     {
                         Patient p = new Patient(a, (DateTime)dtpDOB.SelectedDate);
-                        if (radMale.IsChecked == true)
-                            p.Gender = PatientGender.MALE;
-                        else
-                            p.Gender = PatientGender.FEMALE;
-
-                        p.EthnicGroup = (PatientEthnicGrp)cboEthnicGrp.SelectedIndex;
+                        
                         p.NRIC = "ANON";
 
                         CLIPSController.CurrentPatient = p;
@@ -184,22 +179,22 @@ namespace AMDES_KBS
             CLIPSController.clearAndLoadNew();
         }
 
-        private void btnStats_Click(object sender, RoutedEventArgs e)
-        {
-            //This data is based on patient's history that have been extracted
-            //Just a POC that it works, not saying doctors are racist!!
-            if (radFemale.IsChecked == false && radMale.IsChecked == false)
-            {
-                MessageBox.Show("Please select the patient's gender before viewing statistics");
-            }
-            else if (cboEthnicGrp.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select the patient's Ethnic Group before viewing statistics");
-            }
-            else
-            {
-                //CLIPSController.???
-            }
-        }
+        //private void btnStats_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //This data is based on patient's history that have been extracted
+        //    //Just a POC that it works, not saying doctors are racist!!
+        //    if (radFemale.IsChecked == false && radMale.IsChecked == false)
+        //    {
+        //        MessageBox.Show("Please select the patient's gender before viewing statistics");
+        //    }
+        //    else if (cboEthnicGrp.SelectedIndex == -1)
+        //    {
+        //        MessageBox.Show("Please select the patient's Ethnic Group before viewing statistics");
+        //    }
+        //    else
+        //    {
+        //        //CLIPSController.???
+        //    }
+        //}
     }
 }

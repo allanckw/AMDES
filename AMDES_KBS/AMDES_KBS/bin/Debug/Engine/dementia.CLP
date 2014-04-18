@@ -424,7 +424,7 @@
    (assert (previous)))
 
 (defrule Retract_Conclusions
-   (declare (salience 2))
+   (declare (salience 1))
    ?diag <- (diagnosis)
    ?p <- (previous)
    ?conc <- (Conclusion ?c)
