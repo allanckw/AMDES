@@ -198,12 +198,25 @@ namespace AMDES_KBS.Controllers
 
         private static void assert(StringBuilder sb, bool init = true)
         {
-            String a = sb.ToString().Trim();
-            env.AssertString(a);
-            assertLog.Add(a);
-            if (!init)
-                saveAssertLog();
-            count++;
+            Parallel.Invoke(
+                () =>
+                {
+                    String a = sb.ToString().Trim();
+                    env.AssertString(a);
+                    assertLog.Add(a);
+
+                },  // close first Action
+                () =>
+                {
+                    if (!init)
+                        saveAssertLog();
+
+                    count++;
+                }//, //close second Action
+
+            ); //close parallel.invoke
+
+
         }
 
         //Clear
