@@ -474,7 +474,7 @@ namespace AMDES_KBS.Controllers
                         {
                             if (CurrentPatient.getAge() <= 65)
                             {
-                                if (d.Comment.Trim().Length == 0)
+                                if (d.Comment.Trim().Length > 0)
                                 {
                                     d.Comment += System.Environment.NewLine;
                                 }
