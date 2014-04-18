@@ -15,7 +15,7 @@ namespace AMDES_KBS
         public ucChart(List<Tuple<string, double, double>> lst)
         {
             InitializeComponent();
-            lblTitle.Content = "Tests Conducted on initial visits";
+            lblTitle.Content = "Frequency of Tests Conducted on Initial Visits ";
             LoadChart(ProcessTuple(lst.OrderBy(x=>x.Item2).ToList()));
         }
 
