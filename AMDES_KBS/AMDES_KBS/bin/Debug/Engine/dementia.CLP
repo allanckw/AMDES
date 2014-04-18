@@ -416,13 +416,21 @@
    
 (defrule Retract_Diagnosis
    (declare (salience 1))
-   ;;(mode 1)
    ?p <- (previous)
    ?diag <- (diagnosis)
-   =>
+   =>   
    (retract ?p)
    (retract ?diag)
    (assert (previous)))
+
+(defrule Retract_Conclusions
+   (declare (salience 2))
+   ?diag <- (diagnosis)
+   ?p <- (previous)
+   ?conc <- (Conclusion ?c)
+   =>
+   (retract ?conc)
+)
    
 (defrule Stop_assertion_after_Diagnosis
    (declare (salience 1))

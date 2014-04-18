@@ -122,25 +122,9 @@
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
-  <Diagnosis diagID="7">
-    <Comment>Please investigate these symptoms found in the questionnaire as they are confounding factors of dementia: </Comment>
-    <Header>R23 - Underlying causes of cognitive impairment</Header>
-    <Link></Link>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>5</QGrpID>
-    </RetrieveFrom>
-  </Diagnosis>
   <Diagnosis diagID="6">
     <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~1. Urea &amp; electrolytes (or renal panel)~~2. Calcium panel~~3. Vitamin B12 level~~4. Folate level~~5. Thyroid function test</Comment>
     <Header>R22 - Recommended Tests</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
-  <Diagnosis diagID="28">
-    <Comment>Brain imaging and referral to a tertiary center is recommended</Comment>
-    <Header>R21 - Require brain imaging and referral</Header>
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
@@ -159,13 +143,6 @@
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
   </Diagnosis>
-  <Diagnosis diagID="26">
-    <Comment>Significant cognitive deficits in history, look for underlying cause for cognitive impairment and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R19 - Sig. cognitive deficits and functional decline,, look for underlying cause and refer patient</Header>
-    <Link></Link>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-  </Diagnosis>
   <Diagnosis diagID="27">
     <Comment>Significant cognitive deficits in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
     <Header>R20 - Sig. cognitive deficits in history, refer patient</Header>
@@ -179,5 +156,30 @@
     <Link></Link>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="26">
+    <Comment>Significant cognitive deficits in history, look for underlying cause for cognitive impairment and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
+    <Header>R19 - Sig. cognitive deficits and functional decline, look for underlying cause and refer patient</Header>
+    <Link></Link>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+  </Diagnosis>
+  <Diagnosis diagID="7">
+    <Comment>Please investigate these symptoms found in the questionnaire as they are confounding factors of dementia: </Comment>
+    <Header>R23 - Underlying causes of cognitive impairment</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>5</QGrpID>
+    </RetrieveFrom>
+  </Diagnosis>
+  <Diagnosis diagID="28">
+    <Comment>Brain imaging and referral to a tertiary center is recommended due to the following conditions: </Comment>
+    <Header>R21 - Require brain imaging and referral</Header>
+    <Link></Link>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>7</QGrpID>
+    </RetrieveFrom>
   </Diagnosis>
 </Diagnoses>

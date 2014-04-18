@@ -7,7 +7,7 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stkpnlListOfDiagnosis">
                     <Label Content="List of Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
-                    <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                    <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" MouseDoubleClick="btnAdd_Click"
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="220" Width="145" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisList_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -22,7 +22,8 @@
                     </ListBox>
                 </StackPanel>
                 <StackPanel x:Name="stkpnlDetails" Margin="10,0,10,0">
-                    <Label x:Name="lblheader" Height="40" FontSize="15" Margin="0,0,0,10"/>
+                    <TextBox x:Name="lblheader" FontWeight="Bold" FontSize="15" Width="500" MaxHeight="60" MaxLength="150" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True"></TextBox>
+                    <!--<Label x:Name="lblheader" Height="40" FontSize="15" Margin="0,0,0,10" /> -->
                     <StackPanel>
                         <Label Content="Comments" FontSize="15" Margin="0,0,0,10"/>
                         <TextBox x:Name="txtComment" Width="500" Height="85" MaxLength="400" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True"></TextBox>
@@ -35,7 +36,7 @@
                 </StackPanel>
                 <StackPanel x:Name="stkpnlListOfDiagnosisAdded" Width="171">
                     <Label Content="Selected Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
-                    <ListBox x:Name="lstDiagnosisListAdded" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                    <ListBox x:Name="lstDiagnosisListAdded" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" MouseDoubleClick="btnRemove_Click"
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="220" Width="151" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisListAdded_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>

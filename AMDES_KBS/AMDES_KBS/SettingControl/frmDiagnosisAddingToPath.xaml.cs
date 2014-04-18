@@ -85,7 +85,7 @@ namespace AMDES_KBS
 
         private void loadDiagnosisPreview(Diagnosis d)
         {
-            lblheader.Content = d.Header;
+            lblheader.Text = d.Header;
             txtComment.Text = d.Comment.Replace("~~", Environment.NewLine);
             txtLink.Text = d.Link;
         }
