@@ -86,30 +86,11 @@ namespace AMDES_KBS
                         scoringData.Content = score;
                     }
                     questionAnswer = false;
+                    Thread.Sleep(100);
                 }
             }
            
         }
-
-        //private void btnNo_Click(object sender, RoutedEventArgs e)
-        //{
-        //    // TODO: Add event handler implementation here.
-        //    btnYes.IsEnabled = true;
-        //    btnNo.IsEnabled = false;
-        //    CLIPSController.assertQuestion(question.ID, false);
-        //    if (scoringData != null)
-        //    {
-        //        int score = int.Parse(scoringData.Content.ToString());
-        //        if (questionAnswer)
-        //        {
-        //            score--;
-        //            scoringData.Content = score;
-        //        }
-        //    }
-        //    questionAnswer = false;
-        //    Thread.Sleep(100);
-        //    //clip to assert here or modify
-        //}
 
         public bool getAnswer()
         {
