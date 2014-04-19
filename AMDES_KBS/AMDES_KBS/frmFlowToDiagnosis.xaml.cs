@@ -209,13 +209,37 @@ namespace AMDES_KBS
 
         private void UpdateIntermediateSteps(int stepNo)
         {
+            List<ucNavigationFlowSetting> oldlstStep = new List<ucNavigationFlowSetting>();
+            foreach (ucNavigationFlowSetting step in lstStep)
+            {
+                oldlstStep.Add(step);
+            }
+
+            ucNavigationFlowSetting currNewStep = lstStep[stepNo];
+            NaviChildCriteriaQuestion oldCriteria = currNewStep.getCriteria();
+            currNewStep.getAnswer();
+            NaviChildCriteriaQuestion newCriteria = currNewStep.getCriteria();
+
+            if (oldCriteria !=null)
+            {
+                if (oldCriteria.CriteriaGrpID != newCriteria.CriteriaGrpID || oldCriteria.Ans != newCriteria.Ans)
+                {
+                    //MessageBox.Show("There is changed");
+                    lstStep = new List<ucNavigationFlowSetting>();
+                    for (int step = 0; step < stepNo + 1; step++)
+                    {
+                        lstStep.Add(oldlstStep[step]);
+                    }
+                }
+            }
+
+
             List<Navigation> NaviDeleteList = new List<Navigation>();
             if (rule.Navigations.Count > 0)
             {
                 foreach (Navigation navi in rule.Navigations)
                 {
                     NaviDeleteList.Add(navi);
-                    //rule.removeNavigation(navi);
                 }
             }
 
@@ -244,6 +268,7 @@ namespace AMDES_KBS
                 }
 
                 ucNavigationFlowSetting currStep = lstStep[i];
+
                 int destID = i + 1;
                 if (i + 1 >= lstStep.Count)
                 {
@@ -584,7 +609,21 @@ namespace AMDES_KBS
                 lblText.Content = "Displaying Saved Rule";
                 LoadAllRule();
                 //cboDiagnosisList.SelectedIndex = cboDiagnosisList.Items.Count - 1;
+                getLastSavedRule(rule.RuleID);
                 MessageBox.Show("Navigation Rule Saved!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void getLastSavedRule(int ruleID)
+        {
+            for (int i = 0; i < cboDiagnosisList.Items.Count; i++)
+            {
+                Rules sRule = (Rules)cboDiagnosisList.Items[i];
+                if (sRule.RuleID==ruleID)
+                {
+                    cboDiagnosisList.SelectedIndex = i;
+                    break;
+                }
             }
         }
 
