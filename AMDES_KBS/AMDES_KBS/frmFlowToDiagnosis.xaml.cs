@@ -207,6 +207,84 @@ namespace AMDES_KBS
             lblText.Content = "Displaying Saved Rule";
         }
 
+        private void UpdateIntermediateSteps(int stepNo)
+        {
+            List<Navigation> NaviDeleteList = new List<Navigation>();
+            if (rule.Navigations.Count > 0)
+            {
+                foreach (Navigation navi in rule.Navigations)
+                {
+                    NaviDeleteList.Add(navi);
+                    //rule.removeNavigation(navi);
+                }
+            }
+
+            for (int i = 0; i < NaviDeleteList.Count; i++)
+            {
+                rule.removeNavigation(NaviDeleteList[i]);
+            }
+
+            Navigation prevNavi = null;
+
+            for (int i = 0; i < lstStep.Count; i++)
+            {
+                Navigation newNavi = new Navigation();
+                if (prevNavi != null)
+                {
+                    //newNavi.addNavCriteriaQuestion(prevgetCriteria());
+                    foreach (NaviChildCriteriaQuestion qn in prevNavi.ChildCriteriaQuestion)
+                    {
+                        newNavi.addNavCriteriaQuestion(qn);
+                    }
+
+                    foreach (NaviChildCritAttribute attr in prevNavi.ChildCriteriaAttributes)
+                    {
+                        newNavi.addNavCriteriaAttribute(attr);
+                    }
+                }
+
+                ucNavigationFlowSetting currStep = lstStep[i];
+                int destID = i + 1;
+                if (i + 1 >= lstStep.Count)
+                {
+                    destID = -1;
+                }
+                else
+                {
+                    ucNavigationFlowSetting nextStep = lstStep[i + 1];
+
+                    if (currStep.chkConclusive.IsChecked == true)
+                    {
+                        destID = -1;
+                    }
+                    else
+                    {
+                        destID = nextStep.getGroupID();
+                    }
+                    //if (destID == -1)
+                    //{
+                    //    break;
+                    //}
+                }
+
+                currStep.getAnswer();
+                newNavi.addNavCriteriaQuestion(currStep.getCriteria());
+
+                foreach (NaviChildCritAttribute attr in currStep.getAttrList())
+                {
+                    newNavi.addNavCriteriaAttribute(attr);
+                }
+
+                newNavi.DestGrpID = destID;
+                prevNavi = newNavi;
+                rule.insertNavigation(newNavi);
+                if (destID == -1)
+                {
+                    break;
+                }
+            }
+        }
+
         private void btnNextStep_Click(object sender, RoutedEventArgs e)
         {
             //if (lstStep[currStep - 1].getGroupID() == -1)
@@ -221,6 +299,7 @@ namespace AMDES_KBS
             {
                 if (cboDiagnosisList.SelectedIndex >= 0)
                 {
+                    UpdateIntermediateSteps(currStep - 2);
                     Navigation navs = rule.Navigations[currStep - 2];
                     g.resetGraph();
 
@@ -269,6 +348,7 @@ namespace AMDES_KBS
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                currStep--;
                 return;
             }
 
