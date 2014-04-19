@@ -61,10 +61,21 @@ namespace AMDES_KBS
                 lblCurrScore.Content = 0;
                 lblCurrScore.Tag = QCG.Threshold;
                 lblTotalScore.Content = QCG.MaxQuestions;
+                heightLimit -= 2;
             }
 
             lblSection.Content = QG.Header.Trim();
             txtDesc.Text = QG.Description.Replace("~~", Environment.NewLine).Trim();
+
+            var desiredSizeOld = txtDesc.DesiredSize;
+            txtDesc.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
+            var desiredSizeNew = txtDesc.DesiredSize;
+            txtDesc.Height = desiredSizeNew.Height;
+
+            //MessageBox.Show(txtDesc.Height.ToString());
+            heightLimit += (60 - txtDesc.Height);
+            QuestionFrame.Height = heightLimit;
+
             foreach (Question q in QG.Questions)
             {
                 addQuestion(q);

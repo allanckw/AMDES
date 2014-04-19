@@ -23,7 +23,9 @@
             </StackPanel>
             <TabControl x:Name="tcResults" FontSize="13" Background="Transparent" Height="400"  Width="960">
                 <TabItem x:Name="tbResults" FontSize="13" Header="Assessments">
-                    <StackPanel x:Name="PageSFrame"   Height="370" Margin="0,0,0,0"/>
+                    <ScrollViewer x:Name="svS" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
+                        <StackPanel x:Name="PageSFrame"/>
+                    </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tbRecommendation" Header="Recommendations">
                     <ScrollViewer x:Name="svA" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">

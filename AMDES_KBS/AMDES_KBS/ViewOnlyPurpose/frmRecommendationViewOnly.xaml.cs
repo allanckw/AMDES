@@ -141,14 +141,14 @@ namespace AMDES_KBS
                 header.Content = "The patient has no symptoms.";
             }
             //<ScrollViewer x:Name="svS" VerticalScrollBarVisibility="auto" Height="160" Width="960" HorizontalAlignment="Left">
-            ScrollViewer sv = new ScrollViewer();
-            sv.Width = tcResults.Width-30;
-            sv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-            sv.Content = stkpnlSymptons;
+            //ScrollViewer sv = new ScrollViewer();
+            //sv.Width = tcResults.Width-30;
+            //sv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            //sv.Content = stkpnlSymptons;
 
             StackPanel stkpnlSymptonsPnl = new StackPanel();
             stkpnlSymptonsPnl.Children.Add(header);
-            stkpnlSymptonsPnl.Children.Add(sv);
+            stkpnlSymptonsPnl.Children.Add(stkpnlSymptons);
             PageSFrame.Children.Add(stkpnlSymptonsPnl);
         }
 
