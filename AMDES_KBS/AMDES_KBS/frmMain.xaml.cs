@@ -102,7 +102,7 @@ namespace AMDES_KBS
         private void btnStats_Click(object sender, RoutedEventArgs e)
         {
             frmP2 p2 = new frmP2();
-            p2.ShowDialog();
+            p2.Show();
         }
 
     }

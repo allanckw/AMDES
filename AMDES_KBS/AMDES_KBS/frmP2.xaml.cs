@@ -9,6 +9,7 @@ using System.Windows.Documents;
 using AMDES_KBS.Controllers;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace AMDES_KBS
 {
@@ -22,6 +23,7 @@ namespace AMDES_KBS
         public frmP2()
         {
             InitializeComponent();
+            this.Cursor = Cursors.Wait;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -72,9 +74,10 @@ namespace AMDES_KBS
             {
                 LVResults.ItemsSource = null;
                 List<Tuple<string, double, double>> lst = new List<Tuple<string, double, double>>();
+                lst.Capacity = Test_Sets.Count;
 
-                foreach (P2Controller inc in Test_Sets)
-                //Parallel.ForEach(Test_Sets, inc =>
+                //foreach (P2Controller inc in Test_Sets)
+                Parallel.ForEach(Test_Sets, inc =>
                 {
                     Tuple<string, double, double> temp_store = load(inc);
                     if (temp_store == null)
@@ -83,7 +86,7 @@ namespace AMDES_KBS
                     lst.Add(temp_store);
 
                     //1st 1 is test name 2nd 1 is yes 3rd 1 is no %
-                }//);
+                });
                 lst = lst.OrderByDescending(x => x.Item2).ToList();
                 LVResults.ItemsSource = lst;
 
@@ -185,8 +188,7 @@ namespace AMDES_KBS
         private List<Tuple<string, bool, List<string>>> choices;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //need try get from 1 directory all the txt files
-
+           
             P2Controller.attributes = new List<string>();
 
             string folder = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Initial Test\Rules"; ;
@@ -217,26 +219,25 @@ namespace AMDES_KBS
             btnDelete.IsEnabled = false;
 
             List<Tuple<string, bool, List<string>>> AttChoices = new List<Tuple<string, bool, List<string>>>();//the bool indicate if its nominal anot
+            AttChoices.Capacity = Test_Sets.Count;
 
-            foreach (P2Controller i in Test_Sets)
+            foreach (P2Controller t  in Test_Sets)
+            //Parallel.ForEach(Test_Sets, t =>
             {
-                AttChoices = i.init(AttChoices);
-            }
-            // P2Controller.init(AttChoices);
+                AttChoices = t.init(AttChoices);
+            }//);
 
             choices = AttChoices;
 
             foreach (Tuple<string, bool, List<string>> c in choices)
             {
-                cbName.Items.Add(c);
-                //c.Item1
+                if (!cbName.Items.Contains(c))
+                    cbName.Items.Add(c);
             }
 
-
             txtValue.IsEnabled = false;
-
-
             load();
+            this.Cursor = Cursors.Arrow;
         }
 
         private void LVVariables_SelectionChanged(object sender, SelectionChangedEventArgs e)

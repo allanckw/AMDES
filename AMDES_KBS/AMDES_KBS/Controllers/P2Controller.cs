@@ -133,12 +133,9 @@ namespace AMDES_KBS.Controllers
                             //chk nominal anot
                             if (c.Item2 == true && (Rule_Compare.IndexOf(">") != -1 || Rule_Compare.IndexOf("<") != -1))
                             {
-
                                 Tuple<string, bool, List<string>> temp = new Tuple<string, bool, List<string>>(c.Item1, false, c.Item3);
                                 AttChoices.Remove(c);
                                 AttChoices.Add(temp);
-
-
                             }
                             break;
                         }
@@ -231,9 +228,6 @@ namespace AMDES_KBS.Controllers
         //  public string clipsasserted = "";
         private void repopulate_rules(List<rules> _rules)
         {
-
-
-
             //time to convert to clips
 
             _theEnv = new Mommosoft.ExpertSystem.Environment();
