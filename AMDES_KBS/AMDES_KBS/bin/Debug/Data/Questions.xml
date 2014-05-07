@@ -97,7 +97,7 @@
     <Header>Section AMTS</Header>
     <Description>Each correct answer by the patient scores one point.~~Recall Memory Phrase Instructions: ~~Give the patient an address, and ask him or her to repeat it at the end of the test. (e.g. 16 Clementi Road)</Description>
     <QnType>2</QnType>
-    <Symptom>Fail Abbreivated Mental Test Score</Symptom>
+    <Symptom>Failed AMT</Symptom>
     <Questions>
       <Question QID="1">
         <Name>What is the year now?</Name>
@@ -132,7 +132,7 @@
         <Symptom></Symptom>
       </Question>
       <Question QID="9">
-        <Name>Who is the country's Prime minister?</Name>
+        <Name>Who is the country's Prime minister currently?</Name>
         <Symptom></Symptom>
       </Question>
       <Question QID="10">

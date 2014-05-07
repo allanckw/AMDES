@@ -6,14 +6,14 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel x:Name="stkpnlLeftDiv">
                 <Label Content="Default Behaviour" FontWeight="Bold" Height="30" FontSize="14"/>
-                <ComboBox x:Name="cboBehaviourList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                <ComboBox x:Name="cboBehaviourList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="45" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboDiagnosisList_SelectionChanged">
                     
                 </ComboBox>
                 <CheckBox x:Name="chkConclusive" Content="Is Conclusive" Margin="0,10,0,0" FontWeight="Bold" Height="30" FontSize="14" Checked="chkConclusive_Checked" Unchecked="chkConclusive_Unchecked" />
                 <StackPanel x:Name="stkpnlSectionDestination" >
                     <Label Content="Choose Destination" FontWeight="Bold" Height="30" FontSize="14"/>
-                    <ComboBox FontFamily="Tahoma" FontSize="12" FontWeight="Normal" Height="30" Name="cboDestination" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="200">
+                    <ComboBox  FontSize="12" FontWeight="Normal" Height="30" Name="cboDestination" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="200">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical" Margin="0,5,0,5">
@@ -32,7 +32,7 @@
                         <Button x:Name="btnAddDiagnosis" Content="Select" Height="25"  FontSize="12" Click="btnAddDiagnosis_Click" />
                     </StackPanel>
                     <StackPanel x:Name="stkpnlDiagnosisRule">
-                        <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                        <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="170" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -57,14 +57,14 @@
                             <StackPanel x:Name="stkpnlcriteria" Orientation="Horizontal">
                                 <StackPanel>
                                     <Label FontWeight="Bold" Height="30" FontSize="14">List of Criteria</Label>
-                                    <ListBox x:Name="lstCriteriaList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                                    <ListBox x:Name="lstCriteriaList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionChanged="lstCriteriaList_SelectionChanged">
 
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel x:Name="stkpnlGroupList" Margin="10,0,0,0">
                                     <Label Content="Choose Section" FontWeight="Bold" />
-                                    <ComboBox x:Name="cboGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                                    <ComboBox x:Name="cboGroupList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" >
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
@@ -91,7 +91,7 @@
                             <StackPanel x:Name="stkpnlAttribute" Orientation="Horizontal" Margin="0,10,0,0">
                                 <StackPanel>
                                     <Label FontWeight="Bold" Height="30" FontSize="14">List of Attribute</Label>
-                                    <ListBox x:Name="lstAttributeList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                                    <ListBox x:Name="lstAttributeList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionChanged="lstAttributeList_SelectionChanged">
                                     
                                     </ListBox>

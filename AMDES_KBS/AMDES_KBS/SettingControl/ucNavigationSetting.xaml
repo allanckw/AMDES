@@ -15,7 +15,7 @@
                 <StackPanel x:Name="stkpnlNotConclusive" Orientation="Horizontal">
                     <StackPanel x:Name="stkpnlGroupList">
                         <Label Content="List of Group" FontWeight="Bold" />
-                        <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                        <ListBox x:Name="lstGroupList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -77,7 +77,7 @@
                     <Button x:Name="btnAddDiagnosis" Content="=>" Height="100" VerticalAlignment="Bottom" FontSize="20" Margin="5,0,5,0" Click="btnAddDiagnosis_Click" />
                     <StackPanel x:Name="stkpnlDiagnosisRule">
                         <Label Content="Diagnosis Conclusion" FontWeight="Bold"  />
-                        <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                        <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="140" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>

@@ -7,7 +7,7 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stkpnlListOfDiagnosis">
                     <Label Content="List of Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
-                    <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" MouseDoubleClick="btnAdd_Click"
+                    <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0"  FontSize="12" MouseDoubleClick="btnAdd_Click"
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="220" Width="145" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisList_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -36,7 +36,7 @@
                 </StackPanel>
                 <StackPanel x:Name="stkpnlListOfDiagnosisAdded" Width="171">
                     <Label Content="Selected Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
-                    <ListBox x:Name="lstDiagnosisListAdded" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" MouseDoubleClick="btnRemove_Click"
+                    <ListBox x:Name="lstDiagnosisListAdded" Margin="1,1,0,0"  FontSize="12" MouseDoubleClick="btnRemove_Click"
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="220" Width="151" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisListAdded_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>

@@ -15,7 +15,7 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel x:Name="stkpnlLeftDiv">
                 <Label Content="Choose Diagnosis Flow" FontWeight="Bold" Height="30" FontSize="14"/>
-                <ComboBox x:Name="cboDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="14" 
+                <ComboBox x:Name="cboDiagnosisList" Margin="1,1,0,0"  FontSize="14" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboDiagnosisList_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -36,7 +36,7 @@
                         <Button x:Name="btnAddDiagnosis" Content="Select" Height="25"  FontSize="12" Click="btnAddDiagnosis_Click" />
                     </StackPanel>
                     <StackPanel x:Name="stkpnlDiagnosisRule">
-                        <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                        <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="170" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionChanged="lstDiagnosisList_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>

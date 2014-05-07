@@ -9,7 +9,7 @@
     <Grid x:Name="LayoutRoot">
         <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto" >
             <StackPanel x:Name="welcome" Height="70" Width="450" Margin="0,10,0,0" >
-                <Label VerticalAlignment="Center" Content="Welcome to AMDES for the Early Diagnosis of Dementia" FontSize="15" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Tahoma"/>
+                <Label VerticalAlignment="Center" Content="Welcome to AMDES for the Early Diagnosis of Dementia" FontSize="15" HorizontalAlignment="Center" FontWeight="Bold" />
             </StackPanel>
             <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Collapsed">
                 <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="530" >
@@ -22,7 +22,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="stkpnlTermCondition" Height="365" Width="530">
-                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="16" FontFamily="Tahoma" Margin="10,10,10,10"/>
+                <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="16"  Margin="10,10,10,10"/>
                 <RichTextBox Height="300" Width="500" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
                     <FlowDocument>
 

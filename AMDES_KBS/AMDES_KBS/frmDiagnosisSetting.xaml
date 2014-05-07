@@ -11,7 +11,7 @@
         <StackPanel Orientation="Horizontal" Margin="0,0,-55,0">
             <StackPanel x:Name="stkpnlListOfDiagnosis" Width="183">
                 <Label Content="List of Diagnoses" FontWeight="Bold" Height="30" FontSize="15"/>
-                <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                <ListBox x:Name="lstDiagnosisList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="511" Width="173" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstDiagnosisList_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -48,7 +48,7 @@
                     </StackPanel>
                     <StackPanel x:Name="stkpnlSymtomsSection" Orientation="Horizontal"  Visibility="Hidden">
                         <StackPanel>
-                            <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                            <ListBox x:Name="lstGroupList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="140" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionMode="Single" SelectionChanged="lstGroupList_SelectionChanged">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
@@ -71,7 +71,7 @@
                                     <Button x:Name="btnDeleteGroup" Content="Delete" Width="60" Margin="5,0,0,0" Click="btnDeleteGroup_Click" />
                                 </StackPanel>
                             </StackPanel>
-                            <ComboBox x:Name="cboGroupList" Margin="0,5,0,0" FontFamily="Tahoma" FontSize="12" 
+                            <ComboBox x:Name="cboGroupList" Margin="0,5,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboGroupList_SelectionChanged">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
@@ -84,7 +84,7 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <ListBox x:Name="lstSymptomsList" Margin="1,5,0,0" FontFamily="Tahoma" FontSize="12" 
+                            <ListBox x:Name="lstSymptomsList" Margin="1,5,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="80" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionMode="Single">
 
                             </ListBox>

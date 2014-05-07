@@ -73,7 +73,7 @@
    (slot NavigationID (type SYMBOL))
    (slot AttributeName (type SYMBOL) (default NIL))
    (slot AttributeValue)
-   (slot AttributeCompareType (type SYMBOL) (default NIL))
+   (slot AttributeCompareType (type SYMBOL) (default NIL) )
    (slot Answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 (deftemplate NaviHistory

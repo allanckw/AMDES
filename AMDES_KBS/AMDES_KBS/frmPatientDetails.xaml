@@ -7,7 +7,7 @@
       d:DesignHeight="510" d:DesignWidth="670"
 	Title="frmPatientDetails">
 
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="510*" />
             <RowDefinition Height="0*" />
@@ -21,25 +21,25 @@
                     <Label  Width="200" Content="Patient's Information" FontWeight="Bold" FontSize="16" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                    <Label  Width="150" Content="Date of  Assessment:" HorizontalContentAlignment="Right"/>
-                    <DatePicker Width="200" Name="dtpAss" IsEnabled="False" />
+                    <Label  Width="150" Content="Date of  Assessment:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                    <DatePicker Width="200" Name="dtpAss" IsEnabled="False" FontSize="14"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Name="stknric" Margin="0,5,0,5">
-                    <Label  Width="150" Content="Patient identification no.:" HorizontalContentAlignment="Right"/>
-                    <TextBox Width="200" Height="30" Name="txtNRIC" />
+                    <Label  Width="150" Content="Identification no.:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Width="200" Height="30" Name="txtNRIC" FontSize="14"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Name="stksurname" Margin="0,5,0,5" >
-                    <Label Width="150"  Content="Family name/surname:" HorizontalContentAlignment="Right"/>
-                    <TextBox Width="200" Height="30" Name="txtLastName" />
+                    <Label Width="150"  Content="Surname:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Width="200" Height="30" Name="txtLastName" FontSize="14" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Name="stkfirstname" Margin="0,5,0,5">
-                    <Label Width="150"  Content="Given name/ first name:" HorizontalContentAlignment="Right"/>
-                    <TextBox Width="200" Height="30" Name="txtFirstName" />
+                    <Label Width="150"  Content="First name:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Width="200" Height="30" Name="txtFirstName" FontSize="14"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                    <Label Width="150"  Content="Date of Birth:" HorizontalContentAlignment="Right" />
+                    <Label Width="150"  Content="Date of Birth:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14" />
                     <StackPanel>
-                        <DatePicker Width="200" Name="dtpDOB" FirstDayOfWeek="Monday" />
+                        <DatePicker Width="200" Name="dtpDOB" FirstDayOfWeek="Monday" FontSize="14"/>
                     </StackPanel>
                     <Label  Content=" (Format DD/MM/YYYY)" />
                     <Label  Content="e.g. 31/1/1970" />
@@ -62,10 +62,10 @@
              
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnStartTest" Width="70" Height="25" Margin="150,10,0,0" Content="Start Test" Click="btnStartTest_Click" />
-               
-                <Button x:Name="btnSaveTest" Width="120" Height="25" Margin="10,10,0,0" Content="Save and Exit Test" Click="btnSaveTest_Click" />
-                <Button Content="Return to Main" Height="25" Margin="10,10,0,0" Name="btnQuit" Width="120" Click="btnQuit_Click" />
+                <Button x:Name="btnStartTest" Width="70" Height="25" Margin="150,10,0,0" Content="Start Test" Click="btnStartTest_Click" FontSize="14" />
+
+                <Button x:Name="btnSaveTest" Width="120" Height="25" Margin="10,10,0,0" Content="Save and Exit Test" Click="btnSaveTest_Click" FontSize="14" />
+                <Button Content="Return to Main" Height="25" Margin="10,10,0,0" Name="btnQuit" Width="120" Click="btnQuit_Click" FontSize="14" />
             </StackPanel>
         </StackPanel>
     </Grid>

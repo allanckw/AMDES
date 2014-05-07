@@ -11,7 +11,7 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel x:Name="stkpnlListOfGroup">
                 <Label Content="List of Group" FontWeight="Bold" Height="30" FontSize="15"/>
-                <ListBox x:Name="lstGroupList" Margin="1,1,0,0" FontFamily="Tahoma" FontSize="12" 
+                <ListBox x:Name="lstGroupList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="480" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstGroupList_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
