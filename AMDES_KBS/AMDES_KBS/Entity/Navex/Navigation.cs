@@ -90,7 +90,7 @@ namespace AMDES_KBS.Entity
                 if (x == null)
                     childCriteriaQn.Add(q);
                 else
-                    throw new InvalidOperationException("Circular Reference detected, please do not add the same Question Group!");
+                    throw new InvalidOperationException("Circular Reference detected, please do not add the same section!");
             }
         }
 
