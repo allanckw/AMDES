@@ -39,7 +39,7 @@ namespace AMDES_KBS
             {
                 scoringData = lblscore;
             }
-            
+           
         }
 
         public void setAnswer(bool answer)

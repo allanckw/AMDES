@@ -8,8 +8,8 @@
 
     <Grid x:Name="LayoutRoot">
         <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto" >
-            <StackPanel x:Name="welcome" Height="70" Width="450" Margin="0,10,0,0" >
-                <Label VerticalAlignment="Center" Content="Welcome to AMDES for the Early Diagnosis of Dementia" FontSize="15" HorizontalAlignment="Center" FontWeight="Bold" />
+            <StackPanel x:Name="welcome" Height="30" Width="450" Margin="0,10,0,0" >
+                <Label VerticalAlignment="Center" Content="Welcome to ADD - App for Dementia Diagnosis" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" />
             </StackPanel>
             <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Collapsed">
                 <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="530" >
@@ -23,23 +23,23 @@
             </StackPanel>
             <StackPanel x:Name="stkpnlTermCondition" Height="365" Width="530">
                 <TextBlock TextWrapping="Wrap" Text="Terms And Conditions" FontSize="16"  Margin="10,10,10,10"/>
-                <RichTextBox Height="300" Width="500" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
+                <RichTextBox Height="300" Width="500" VerticalScrollBarVisibility="Auto"  FontSize="13" IsReadOnly="True">
                     <FlowDocument>
 
                         <Paragraph>
-                            <Run Text="Adaptive Medical Diagnosis Expert System (AMDES)" />
+                            <Run Text="Add - App for Dementia Diagnosis" />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="This is an experimental expert system for the early diagnosis for dementia. It does so by providing suggestions to detect and recommend the next course of actions based on clinical guidelines extracted from the DSM IV Criteria together with machine learning techniques based on past patients' history" />
+                            <Run Text="This is an experimental expert system for the diagnosis for dementia. It does so by providing suggestions to detect and recommend the next course of actions based on the DSM 4 criteria." />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="The system provides only serves to provide a guideline to the early diagnosis of dementia, the physician should exercise his/her own discretion based on the results provided by the system. The author(s) of AMDES shall not be liable to any damages if the system does not make a correct diagnosis. " />
+                            <Run Text="This system only serves as a guideline, the physician should exercise his/her own discretion based on the results provided by the system. The author(s) of AMDES shall not be liable to any damages if the system does not make a correct diagnosis. " />
                         </Paragraph>
                         <Paragraph>
                             <Run Text="We would appreciate your feedback, you may send them to amdes_nus_soc@googlegroups.com " />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="Credits: Medical Informatics Team from Khoo Teck Puat Hospital and National University of Singapore, School of Computing."/>
+                            <Run Text="Credits: Khoo Teck Puat Hospital (Geriatric Medicine) and National University of Singapore, School of Computing."/>
                         </Paragraph>
                        
                     </FlowDocument>
@@ -48,8 +48,8 @@
             <StackPanel x:Name="stkpnlAcceptDecline" Height="47" Width="512">
                 <StackPanel Height="40" Width="511" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,0,0">
                     <CheckBox Content="Save Patient Data?" Margin="10,0,150,0" Name="chkSavePat" Height="30" FontSize="14"  FontWeight="DemiBold" IsChecked="False" />
-                    <Button Content="Accept" Width="100" Margin="0,0,10,0" Click="btnAccept_Click" Height="30"/>
-                    <Button Content="Decline" Width="100" Margin="0,0,0,0" Click="btnDecline_Click" Height="30"/>
+                    <Button Content="Accept" Width="100" Margin="0,0,10,0" Click="btnAccept_Click" Height="30" FontSize="14" />
+                    <Button Content="Decline" Width="100" Margin="0,0,0,0" Click="btnDecline_Click" Height="30" FontSize="14" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>

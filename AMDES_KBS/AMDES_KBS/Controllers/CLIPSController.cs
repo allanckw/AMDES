@@ -13,6 +13,9 @@ namespace AMDES_KBS.Controllers
     class CLIPSController
     {
         public static bool ExpertUser;
+        public static bool enableSavePatient;
+        public static bool enablePrev;
+        public static bool enableStats;
 
         private static Patient pat;
         public static bool? savePatient = false;
@@ -636,9 +639,9 @@ namespace AMDES_KBS.Controllers
                             int id = int.Parse(fav.GetFactSlot("GroupID").ToString().Remove(0, 1));
                             if (id == y)
                             {
-                                int maxQn = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
+                                int succArg = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
                                 int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
-                                s.SymptomName += " - Required Score: " + maxQn + ", Patient Score: " + trueCount;
+                                s.SymptomName +=  "- Score: " + trueCount + ", Required: " + succArg;
                                 break;
                             }
                         }
@@ -679,9 +682,9 @@ namespace AMDES_KBS.Controllers
                             int id = int.Parse(fav.GetFactSlot("GroupID").ToString().Remove(0, 1));
                             if (id == y)
                             {
-                                int maxQn = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
+                                int succArg = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
                                 int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
-                                s.SymptomName += " - Required Score: " + maxQn + ", Patient Score: " + trueCount;
+                                s.SymptomName += "- Score: " + trueCount + ", Required: " + succArg;
                                 break;
                             }
                         }

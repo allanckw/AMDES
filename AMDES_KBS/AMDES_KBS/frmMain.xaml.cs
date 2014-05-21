@@ -42,15 +42,20 @@ namespace AMDES_KBS
             }
 
             if (!CLIPSController.ExpertUser)
-            {
                 btnSetting.Visibility = Visibility.Collapsed;
-                //btnStats.Visibility = Visibility.Collapsed;
-            }
+
+
             else
-            {
                 btnSetting.Visibility = Visibility.Visible;
-                //btnStats.Visibility = Visibility.Visible;
-            }
+
+
+
+            if (!CLIPSController.enableStats)
+                btnStats.Visibility = Visibility.Collapsed;
+
+            else
+                btnStats.Visibility = Visibility.Visible;
+
         }
 
         private void listPatients()

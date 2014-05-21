@@ -10,12 +10,30 @@ namespace AMDES_KBS.Entity
 
         private int rid;
         private string comment;
+
         private string link;
+        private string linkDesc;
+
+        public string LinkDesc
+        {
+            get { return linkDesc; }
+            set { linkDesc = value; }
+        }
+
         private string header;
 
         private bool retrieveSym;
 
         private bool ageBelow65;
+
+        //res
+        private bool isResource;
+
+        public bool IsResource
+        {
+            get { return isResource; }
+            set { isResource = value; }
+        }
 
         public bool AgeBelow65
         {
@@ -71,7 +89,10 @@ namespace AMDES_KBS.Entity
 
         }
 
-
+        public bool hasResourceLink()
+        {
+            return this.link.Length > 0;
+        }
 
         public string Header
         {

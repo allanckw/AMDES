@@ -33,6 +33,16 @@ namespace AMDES_KBS
                 txtName.Text = a.Name;
                 txtLocation.Text = a.ClinicName;
             }
+
+            CLIPSController.ExpertUser = File.Exists(@"Data\e.miao");
+            CLIPSController.enablePrev = File.Exists(@"Data\e.prev");
+            CLIPSController.enableSavePatient = File.Exists(@"Data\e.spat");
+            CLIPSController.enableStats = File.Exists(@"Data\e.stats");
+
+            if (!CLIPSController.enableSavePatient)
+                chkSavePat.Visibility = Visibility.Hidden;
+            else
+                chkSavePat.Visibility = Visibility.Visible;
         }
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
@@ -52,7 +62,7 @@ namespace AMDES_KBS
                 Assessor a = new Assessor(txtName.Text.Trim(), txtLocation.Text.Trim());
                 AssessorController.writeAssessor(a);
                 
-                CLIPSController.ExpertUser = File.Exists(@"Data\e.miao");
+               
 
                 var admForm = new frmMain(chkSavePat.IsChecked);
                 this.Visibility = Visibility.Collapsed;
@@ -68,7 +78,7 @@ namespace AMDES_KBS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           
+ 
         }
     }
 }

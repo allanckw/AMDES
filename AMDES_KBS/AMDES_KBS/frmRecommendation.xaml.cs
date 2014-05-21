@@ -31,7 +31,7 @@ namespace AMDES_KBS
             loadRecommendation();
         }
 
-        public frmRecommendation(Frame amdesFrame, List<Diagnosis> diaList,AMDESPage lastSec)
+        public frmRecommendation(Frame amdesFrame, List<Diagnosis> diaList, AMDESPage lastSec)
         {
             InitializeComponent();
             //lblSection.Content = sectionID;
@@ -44,7 +44,7 @@ namespace AMDES_KBS
             lblPatientID.Content = currPatient.NRIC;
             lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
             lblPatientAge.Content = "Age : " + currPatient.getAge();
-            
+
             AllDiagnose = diaList;
             PageContent = new List<List<ucDiagnosis>>();
             loadRecommendation();
@@ -53,6 +53,13 @@ namespace AMDES_KBS
 
         public void loadRecommendation()
         {
+            if (!CLIPSController.enablePrev)
+                btnPrev.Visibility = Visibility.Hidden;
+
+            else
+                btnPrev.Visibility = Visibility.Visible;
+
+
             AddSymptons();
 
             foreach (Diagnosis diaRule in AllDiagnose)
@@ -137,8 +144,8 @@ namespace AMDES_KBS
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            frmRecommendationViewOnly frmConclusion = new frmRecommendationViewOnly(amdesPageFrame, CLIPSController.CurrentPatient.getLatestHistory(),true);
-           
+            frmRecommendationViewOnly frmConclusion = new frmRecommendationViewOnly(amdesPageFrame, CLIPSController.CurrentPatient.getLatestHistory(), true);
+
         }
 
         private frmSection createSection(int gid, List<QnHistory> qnhistory)
@@ -147,6 +154,8 @@ namespace AMDES_KBS
             return section;
         }
 
-        
+
+
+
     }
 }

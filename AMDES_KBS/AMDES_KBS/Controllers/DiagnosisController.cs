@@ -66,9 +66,12 @@ namespace AMDES_KBS.Controllers
                              new XElement("Comment", d.Comment),
                              new XElement("Header", d.Header),
                              new XElement("Link", d.Link),
+                             new XElement("LinkDesc", d.LinkDesc),
                              new XElement("RetrieveSymptom", d.RetrieveSym),
                              new XElement("RetrieveFrom"),
-                             new XElement("RetrieveBelow65", d.AgeBelow65)
+                             new XElement("RetrieveBelow65", d.AgeBelow65),
+                             new XElement("isRes", d.IsResource)
+
                              );
 
             if (d.RetrieveSym)
@@ -125,11 +128,14 @@ namespace AMDES_KBS.Controllers
                 d.Comment = x.Element("Comment").Value;
                 d.Header = x.Element("Header").Value;
                 d.Link = x.Element("Link").Value;
+                d.LinkDesc = x.Element("LinkDesc").Value;
 
                 //RetrieveBelow65
                 d.AgeBelow65 = bool.Parse(x.Element("RetrieveBelow65").Value);
 
                 d.RetrieveSym = bool.Parse(x.Element("RetrieveSymptom").Value);
+
+                d.IsResource = bool.Parse(x.Element("isRes").Value);
 
                 var cq = (from pa in x.Descendants("RetrieveFrom").Descendants("QGrpID")
                           select pa).ToList();

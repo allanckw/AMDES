@@ -21,23 +21,26 @@
 
 
             </StackPanel>
-            <TabControl x:Name="tcResults" FontSize="13" Background="Transparent" Height="400"  Width="960">
-                <TabItem x:Name="tbResults" FontSize="13" Header="Assessments">
+            <TabControl x:Name="tcResults" Background="Transparent" Height="432"  Width="960" >
+                <TabItem x:Name="tbResults" FontSize="13"  Header="Findings">
                     <ScrollViewer x:Name="svS" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
                         <StackPanel x:Name="PageSFrame"/>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tbRecommendation" Header="Recommendations">
+                <TabItem x:Name="tbRecommendation" FontSize="13" Header="Recommendations">
                     <ScrollViewer x:Name="svA" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
                         <StackPanel x:Name="PageFrame"/>
                     </ScrollViewer>
                 </TabItem>
+                <TabItem x:Name="tbResources" FontSize="13" Header="Resources">
+                    <ScrollViewer x:Name="svR" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
+                        <StackPanel x:Name="PageRFrame"/>
+                    </ScrollViewer>
+                </TabItem>
             </TabControl>
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
-                <Label Content="View Trace allows you to view the option that have been selected to get to these recommendations"  FontWeight="Bold" Margin="0,0,180,0" Foreground="Blue" />
-
-                <Button x:Name="btnPrev" Content="View Trace" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" />
-                <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,0,0" Click="btnTestAgin_Click" />
+                <Button x:Name="btnPrev" Content="Go Back" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" FontSize="14" />
+                 <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,0,0" Click="btnTestAgin_Click" ToolTip="Restart the test" FontSize="14" />
 
             </StackPanel>
         </StackPanel>

@@ -16,7 +16,7 @@ namespace AMDES_KBS
     public partial class frmDiagnosisSetting : Page
     {
 
-        int currIdx=-1;
+        int currIdx = -1;
 
         public frmDiagnosisSetting()
         {
@@ -68,10 +68,10 @@ namespace AMDES_KBS
                 txtComment.Text = "";
                 txtLink.Text = "";
 
-               
+
 
                 return;
-	        }
+            }
 
             cboGroupList.SelectedIndex = -1;
             lstGroupList.ItemsSource = null;
@@ -86,9 +86,30 @@ namespace AMDES_KBS
         {
             txtHeader.Text = d.Header;
             txtComment.Text = d.Comment.Replace("~~", Environment.NewLine);
-            txtLink.Text = d.Link;
+           
             chkSym.IsChecked = d.RetrieveSym;
-            chkSym_Checked(this, new RoutedEventArgs());
+            chkLink.IsChecked = d.Link.Length > 0;
+
+
+            if (chkLink.IsChecked == true)
+            {
+                txtLink.Text = d.Link;
+                txtLinkDesc.Text = d.LinkDesc;
+                chkLink_Checked(this, new RoutedEventArgs());
+            }
+            else
+            {
+                txtLink.Text = "";
+                txtLinkDesc.Text = "";
+                chkLink_Unchecked(this, new RoutedEventArgs());
+            }
+
+            if (chkSym.IsChecked == true)
+                chkSym_Checked(this, new RoutedEventArgs());
+            else
+                chkSym_Unchecked(this, new RoutedEventArgs());
+
+            chkRes.IsChecked = d.IsResource;
 
             lstGroupList.ItemsSource = null;
             List<QuestionGroup> qgGrpList = new List<QuestionGroup>();
@@ -105,6 +126,7 @@ namespace AMDES_KBS
                     qgGrpList.Add(QuestionController.getGroupByID(d.RetrievalIDList[i]));
                 }
                 chkAge.IsChecked = d.AgeBelow65;
+
             }
 
             lstGroupList.ItemsSource = qgGrpList;
@@ -118,7 +140,7 @@ namespace AMDES_KBS
             {
                 lstGroupList.Items.Add(qgItem);
             }
-            
+
         }
 
         private void btnDeleteComment_Click(object sender, RoutedEventArgs e)
@@ -144,11 +166,22 @@ namespace AMDES_KBS
             Diagnosis sDiagnosis = (Diagnosis)lstDiagnosisList.Items.GetItemAt(sidx);
             sDiagnosis.Header = txtHeader.Text.Trim();
             sDiagnosis.Comment = txtComment.Text.Replace(Environment.NewLine, "~~");
-            sDiagnosis.Link = txtLink.Text.Trim();
+            if (chkLink.IsChecked == true)
+            {
+                sDiagnosis.Link = txtLink.Text.Trim();
+                sDiagnosis.LinkDesc = txtLinkDesc.Text.Trim();
+            }
+            else
+            {
+                sDiagnosis.Link = "";
+                sDiagnosis.LinkDesc = "";
+            }
+
 
             sDiagnosis.RetrieveSym = chkSym.IsChecked.Value;
             sDiagnosis.RetrievalIDList = getSymptonsForDiagnosis();
             sDiagnosis.AgeBelow65 = chkAge.IsChecked.Value;
+            sDiagnosis.IsResource = chkRes.IsChecked.Value;
             if (!SaveDiagnosis(sDiagnosis))
             {
                 return;
@@ -206,7 +239,7 @@ namespace AMDES_KBS
 
         private bool IsValidUrl(string urlString)
         {
-            if (Regex.IsMatch(urlString,@"(http://|https://)?(www\.)?[A-Za-z0-9]+\.[a-z]{2,3}"))
+            if (Regex.IsMatch(urlString, @"(http://|https://)?(www\.)?[A-Za-z0-9]+\.[a-z]{2,3}"))
             {
                 return true;
             }
@@ -214,17 +247,17 @@ namespace AMDES_KBS
             return false;
             //Uri uri;
             //return Uri.TryCreate(urlString, UriKind.Absolute, out uri);
-                //&& //(uri.Scheme == Uri.UriSchemeHttp
-                 //|| uri.Scheme == Uri.UriSchemeHttps
-                 //|| uri.Scheme == Uri.UriSchemeFtp
-                 //|| uri.Scheme == Uri.UriSchemeMailto
-                ///*...*/);
+            //&& //(uri.Scheme == Uri.UriSchemeHttp
+            //|| uri.Scheme == Uri.UriSchemeHttps
+            //|| uri.Scheme == Uri.UriSchemeFtp
+            //|| uri.Scheme == Uri.UriSchemeMailto
+            ///*...*/);
         }
 
         private void btnAddGroup_Click(object sender, RoutedEventArgs e)
         {
             int idx = cboGroupList.SelectedIndex;
-            if (idx==-1)
+            if (idx == -1)
             {
                 return;
             }
@@ -286,7 +319,7 @@ namespace AMDES_KBS
             if (idx == -1)
                 return;
             QuestionGroup qg = (QuestionGroup)cboGroupList.Items[idx];
-            if (qg.Symptom.Trim()!="")
+            if (qg.Symptom.Trim() != "")
             {
                 SymptomsList.Add(qg.Symptom.Trim());
             }
@@ -294,7 +327,7 @@ namespace AMDES_KBS
             foreach (Question q in qg.Questions)
             {
                 String symptom = q.Symptom.Trim();
-                if (symptom.Length>0)
+                if (symptom.Length > 0)
                 {
                     if (!SymptomsList.Contains(symptom))
                     {
@@ -310,7 +343,7 @@ namespace AMDES_KBS
         private void lstGroupList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int idx = lstGroupList.SelectedIndex;
-            if (idx==-1)
+            if (idx == -1)
             {
                 return;
             }
@@ -319,13 +352,13 @@ namespace AMDES_KBS
             for (int i = 0; i < cboGroupList.Items.Count; i++)
             {
                 QuestionGroup qg = (QuestionGroup)cboGroupList.Items[i];
-                if (qg.GroupID==selectedQG.GroupID)
+                if (qg.GroupID == selectedQG.GroupID)
                 {
                     cboGroupList.SelectedIndex = i;
                     break;
                 }
             }
-            
+
         }
 
         private void chkSym_Checked(object sender, RoutedEventArgs e)
@@ -347,17 +380,27 @@ namespace AMDES_KBS
             lstGroupList.ItemsSource = null;
         }
 
+        private void chkLink_Checked(object sender, RoutedEventArgs e)
+        {
+            stkpnllinkDesc.Visibility = stkpnllinkURL.Visibility = Visibility.Visible;
+        }
+
+        private void chkLink_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stkpnllinkDesc.Visibility = stkpnllinkURL.Visibility = Visibility.Collapsed;
+        }
+
         //Hidden Function only to us
         private void btnImportSpecial_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog OD = new Microsoft.Win32.OpenFileDialog();
             List<String> DiagnosisList = new List<String>();
-            if (OD.ShowDialog()==true)
+            if (OD.ShowDialog() == true)
             {
                 string fileName = OD.FileName;
-                using (System.IO.StreamReader sr = new System.IO.StreamReader(fileName)) 
+                using (System.IO.StreamReader sr = new System.IO.StreamReader(fileName))
                 {
-                    while (sr.Peek() >= 0) 
+                    while (sr.Peek() >= 0)
                     {
                         String diagString = sr.ReadLine().Trim();
                         DiagnosisList.Add(diagString);
