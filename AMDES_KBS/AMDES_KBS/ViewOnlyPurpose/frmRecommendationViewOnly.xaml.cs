@@ -123,7 +123,7 @@ namespace AMDES_KBS
         private void AddSymptons()
         {
             Label header = new Label();
-            header.Content = "The patient has the following symptoms stated in the questionnaire :";
+            header.Content = "The patient has the following issues uncovered from the questionnaire: ";
             header.Height = 30;
             header.FontWeight = FontWeights.Bold;
             StackPanel stkpnlSymptons = new StackPanel();
@@ -138,7 +138,7 @@ namespace AMDES_KBS
 
             if (stkpnlSymptons.Children.Count == 0)
             {
-                header.Content = "The patient has no symptoms.";
+                header.Content = "N.A";
             }
             //<ScrollViewer x:Name="svS" VerticalScrollBarVisibility="auto" Height="160" Width="960" HorizontalAlignment="Left">
             //ScrollViewer sv = new ScrollViewer();

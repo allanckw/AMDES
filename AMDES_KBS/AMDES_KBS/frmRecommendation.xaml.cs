@@ -111,7 +111,7 @@ namespace AMDES_KBS
         private void AddSymptons()
         {
             Label header = new Label();
-            header.Content = "The patient has the following symptoms stated in the questionnaire :";
+            header.Content = "The patient has the following issues uncovered from the questionnaire: ";
             header.Height = 30;
             header.FontWeight = FontWeights.Bold;
 

@@ -641,7 +641,7 @@ namespace AMDES_KBS.Controllers
                             {
                                 int succArg = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
                                 int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
-                                s.SymptomName +=  "- Score: " + trueCount + ", Required: " + succArg;
+                                s.SymptomName += "- Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
                                 break;
                             }
                         }
@@ -684,7 +684,7 @@ namespace AMDES_KBS.Controllers
                             {
                                 int succArg = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
                                 int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
-                                s.SymptomName += "- Score: " + trueCount + ", Required: " + succArg;
+                                s.SymptomName += "- Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
                                 break;
                             }
                         }

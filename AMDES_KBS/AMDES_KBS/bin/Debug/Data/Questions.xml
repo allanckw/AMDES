@@ -95,7 +95,7 @@
   </QuestionGroup>
   <QuestionGroup id="6">
     <Header>Section AMT</Header>
-    <Description>Each correct answer by the patient scores one point.~~Recall Memory Phrase Instructions: ~~Give the patient an address, and ask him or her to repeat it at the end of the test. (e.g. 16 Clementi Road)</Description>
+    <Description>A correct answer to each question scores one point.~~Start by asking the patient to remember a Memory Phrase eg. address “37 Bukit Timah Road”</Description>
     <QnType>2</QnType>
     <Symptom>Failed AMT</Symptom>
     <Questions>

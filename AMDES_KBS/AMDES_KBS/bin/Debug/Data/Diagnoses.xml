@@ -254,11 +254,31 @@
   <Diagnosis diagID="6">
     <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~   1. Urea &amp; electrolytes (or renal panel)~~   2. Calcium panel~~   3. Vitamin B12 level~~   4. Folate level~~   5. Thyroid function test</Comment>
     <Header>R22 - Recommended Tests</Header>
-    <Link>http://asd.com</Link>
-    <LinkDesc>asd</LinkDesc>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="30">
+    <Comment> A. The development of multiple cognitive deficits manifested by both:~~ ~~ 1. Memory impairment (impaired ability to learn new information or to recall previously learned information)~~ 2. One or more of the following cognitive disturbances:~~ (a) Aphasia (language disturbance)~~ (b) Apraxia (impaired ability to carry out motor activities despite intact motor function)~~ (c) Agnosia (failure to recognize or identify objects despite intact sensory function)~~ (d) Disturbance in executive functioning (i.e., planning, organizing, sequencing, abstracting)~~ ~~ B. The cognitive deficits in criteria A1 and A2 each cause significant impairment in social or occupational functioning and represent a significant decline from a previous level of functioning.~~ ~~ C. Focal neurological signs and symptoms (e.g., exaggeration of deep tendon reflexes, extensor plantar response, pseudobulbar palsy, gait abnormalities, weakness of an extremity) or laboratory evidence indicative of cerebrovascular disease (e.g., multiple infarctions involving cortex and underlying white matter) that are judged to be etiologically related to the disturbance.~~ ~~ D. The deficits do not occur exclusively during the course of a delirium.~~</Comment>
+    <Header>R24 - DSM4 Criteria for the diagnosis of Dementia</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="31">
+    <Comment>The article AIMS: ~~To (1) establish the clinical usefulness of the 10-item Abbreviated Mental Test (AMT) and the 18-item Chinese Mini-Mental Status Examination (CMMSE) for detecting cognitive impairment associated with dementia in the elderly Chinese; (2) determine how the tests' optimal cut-off scores varied with the patients' educational level and age; and (3) evaluate which was the more accurate test.~~</Comment>
+    <Header>R25 - Diagnostic performance of two mental status tests in the older chinese: influence of education and age on cut-off values.</Header>
+    <Link>http://onlinelibrary.wiley.com/doi/10.1002/(SICI)1099-1166(200003)15:3%3C234::AID-GPS99%3E3.0.CO;2-G/abstract;jsessionid=B54670504A69424418EBF75FD7ECE9C2.f03t02</Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
   </Diagnosis>
 </Diagnoses>
