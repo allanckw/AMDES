@@ -9,7 +9,7 @@
     <Grid x:Name="LayoutRoot">
         <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto" >
             <StackPanel x:Name="welcome" Height="30" Width="450" Margin="0,10,0,0" >
-                <Label VerticalAlignment="Center" Content="Welcome to AiDD - Aid for Dementia Diagnosis" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" />
+                <Label VerticalAlignment="Center" Content="Welcome to AiDD - Aid for Dementia Diagnosis" FontSize="18" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FF210FEB" />
             </StackPanel>
             <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Collapsed">
                 <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="530" >
