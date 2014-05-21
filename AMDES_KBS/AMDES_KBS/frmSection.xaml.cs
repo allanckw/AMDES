@@ -80,7 +80,7 @@ namespace AMDES_KBS
                 if (btnPrev.Visibility == Visibility.Visible)
                     offset -= btnPrev.Width + 10;
 
-                zz.Margin = new Thickness(0, 0, offset, 0);
+                //zz.Margin = new Thickness(0, 0, offset, 0);
                 lblPatientName.Content = lblPatientID.Content = "";
             }
             else
@@ -89,7 +89,7 @@ namespace AMDES_KBS
                 if (btnPrev.Visibility == Visibility.Visible)
                     offset -= btnPrev.Width + 10;
 
-                zz.Margin = new Thickness(0, 0, offset, 0);
+                //zz.Margin = new Thickness(0, 0, offset, 0);
                 lblPatientID.Content = CLIPSController.CurrentPatient.NRIC;
                 lblPatientName.Content = CLIPSController.CurrentPatient.Last_Name + " " + CLIPSController.CurrentPatient.First_Name;
 
