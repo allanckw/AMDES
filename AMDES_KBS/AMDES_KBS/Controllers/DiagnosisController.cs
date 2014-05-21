@@ -174,6 +174,36 @@ namespace AMDES_KBS.Controllers
 
         }
 
+        public static List<Diagnosis> getResourceRules()
+        {
+            XDocument document = XDocument.Load(Diagnosis.dataPath);
+            List<Diagnosis> resList = new List<Diagnosis>();
+            try
+            {
+                var res = (from pa in document.Descendants("Diagnosis")
+                            where bool.Parse(pa.Attribute("isRes").Value) == true
+                           select pa).ToList();
+
+                foreach (var x in res)
+                {
+                    Diagnosis d = readDiagnosis(x);
+                    if (!resList.Contains(d))
+                    {
+                        resList.Add(d);
+                    }
+                }
+
+                return resList;
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+
+        }
+
         public static void deleteDiagnosis(int id, bool update = false)
         {
             XDocument document = XDocument.Load(Diagnosis.dataPath);

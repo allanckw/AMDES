@@ -62,8 +62,6 @@ namespace AMDES_KBS
                 Assessor a = new Assessor(txtName.Text.Trim(), txtLocation.Text.Trim());
                 AssessorController.writeAssessor(a);
                 
-               
-
                 var admForm = new frmMain(chkSavePat.IsChecked);
                 this.Visibility = Visibility.Collapsed;
                 Application.Current.MainWindow = admForm;

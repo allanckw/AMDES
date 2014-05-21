@@ -8,10 +8,10 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AiDD")]
-[assembly: AssemblyDescription("ADD - Aid for Dementia Diagnosis")]
+[assembly: AssemblyDescription("AiDD - Aid for Dementia Diagnosis")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Aid for Dementia Diagnosis")]
-[assembly: AssemblyProduct("AiDD - Aid for Dementia Diagnosis")]
+[assembly: AssemblyCompany("AiDD - Aid for Dementia Diagnosis")]
+[assembly: AssemblyProduct("AiDD - Aid for Dementia Diagnosis By AMDES")]
 [assembly: AssemblyCopyright("Copyright ©2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
