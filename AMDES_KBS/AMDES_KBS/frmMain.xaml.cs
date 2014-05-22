@@ -42,8 +42,10 @@ namespace AMDES_KBS
             }
 
             if (!CLIPSController.ExpertUser)
+            {
                 btnSetting.Visibility = Visibility.Collapsed;
-
+                stkpnlSearchBox.Margin = new Thickness(stkpnlSearchBox.Margin.Left + btnSetting.Width, 0, 0, 0);
+            }
 
             else
                 btnSetting.Visibility = Visibility.Visible;
@@ -51,8 +53,10 @@ namespace AMDES_KBS
 
 
             if (!CLIPSController.enableStats)
+            {
                 btnStats.Visibility = Visibility.Collapsed;
-
+                stkpnlSearchBox.Margin = new Thickness( stkpnlSearchBox.Margin.Left + btnStats.Width,0, 0, 0);
+            }
             else
                 btnStats.Visibility = Visibility.Visible;
 
