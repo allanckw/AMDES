@@ -133,6 +133,9 @@
     <Compile Include="frmP2.xaml.cs">
       <DependentUpon>frmP2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecommendataionUserControl\ucDiagnosisResource.xaml.cs">
+      <DependentUpon>ucDiagnosisResource.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewOnlyPurpose\ucQuestionViewOnly.xaml.cs">
       <DependentUpon>ucQuestionViewOnly.xaml</DependentUpon>
     </Compile>
@@ -228,6 +231,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="frmP2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RecommendataionUserControl\ucDiagnosisResource.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
 using System.Windows.Input;
+using System.Windows.Documents;
 
 namespace AMDES_KBS
 {
@@ -48,7 +49,7 @@ namespace AMDES_KBS
             AllDiagnose = diaList;
             PageContent = new List<List<ucDiagnosis>>();
             loadRecommendation();
-
+            LoadResources();
         }
 
         public void loadRecommendation()
@@ -140,6 +141,36 @@ namespace AMDES_KBS
             stkpnlSymptonsPnl.Children.Add(header);
             stkpnlSymptonsPnl.Children.Add(stkpnlSymptons);
             PageSFrame.Children.Add(stkpnlSymptonsPnl);
+        }
+
+        private void LoadResources()
+        {
+            Label header = new Label();
+            header.Content = "The following resources are available : ";
+            header.Height = 30;
+            header.FontWeight = FontWeights.Bold;
+
+            StackPanel stkpnlRes = new StackPanel();
+            stkpnlRes.Margin = new Thickness(10, 0, 0, 0);
+
+            foreach (Diagnosis d in AllDiagnose)
+            {
+                if (d.Link.Trim().Length>0)
+                {
+                    ucDiagnosisResource newDiagRes = new ucDiagnosisResource(d);
+                    stkpnlRes.Children.Add(newDiagRes);                                        
+                }
+            }
+
+            if (stkpnlRes.Children.Count == 0)
+            {
+                header.Content = "There is no resource available.";
+            }
+
+            StackPanel stkpnlResPnl = new StackPanel();
+            stkpnlResPnl.Children.Add(header);
+            stkpnlResPnl.Children.Add(stkpnlRes);
+            PageRFrame.Children.Add(stkpnlResPnl);
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)

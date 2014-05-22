@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="AMDES_KBS.ucDiagnosisResource"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignWidth="660">
+    <Grid x:Name="gridDiagnosis">
+            <StackPanel x:Name="stkpnlDiagnosisLink" Visibility="Collapsed" >
+                <!--<Label x:Name="lblLink" Height="30" Foreground="Red" Margin="0,10,0,0" Content="Link out to resource" >
+
+                </Label>-->
+                <TextBlock x:Name="txtLink" TextWrapping="Wrap">
+                    <Hyperlink Click="lblLink_Click">
+                        <Run x:Name="hlDesc" Text="Link out to resource"/>
+                    </Hyperlink>
+               </TextBlock>
+                <!--<ThemedControlsLibrary:LinkLabel Height="30" Click="lblLink_Click" x:Name="lblLink" Foreground="Blue" HoverForeground="Red" Margin="0,10,0,0" Content="Link out to resource"/>-->
+            </StackPanel>
+    </Grid>
+</UserControl>
