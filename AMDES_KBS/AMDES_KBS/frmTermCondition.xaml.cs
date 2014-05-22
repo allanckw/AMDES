@@ -2,6 +2,7 @@
 using System.Windows;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
+using System.Collections.Generic;
 
 namespace AMDES_KBS
 {
@@ -76,7 +77,7 @@ namespace AMDES_KBS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
- 
+           
         }
     }
 }

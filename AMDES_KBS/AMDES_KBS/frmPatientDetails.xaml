@@ -62,10 +62,10 @@
              
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnStartTest" Width="70" Height="25" Margin="150,10,0,0" Content="Start Test" Click="btnStartTest_Click" FontSize="14" />
+                <Button x:Name="btnStartTest" Width="70" Height="30" Margin="150,10,0,0" Content="Start Test" Click="btnStartTest_Click" FontSize="14" />
 
-                <Button x:Name="btnSaveTest" Width="120" Height="25" Margin="10,10,0,0" Content="Save and Exit Test" Click="btnSaveTest_Click" FontSize="14" />
-                <Button Content="Return to Main" Height="25" Margin="10,10,0,0" Name="btnQuit" Width="120" Click="btnQuit_Click" FontSize="14" />
+                <Button x:Name="btnSaveTest" Width="120" Height="30" Margin="10,10,0,0" Content="Save and Exit Test" Click="btnSaveTest_Click" FontSize="14" />
+                <Button Content="Return to Main" Height="30" Margin="10,10,0,0" Name="btnQuit" Width="120" Click="btnQuit_Click" FontSize="14" />
             </StackPanel>
         </StackPanel>
     </Grid>

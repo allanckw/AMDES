@@ -19,7 +19,7 @@ namespace AMDES_KBS
         //int TotalPageNo = 1;
 
         Frame amdesPageFrame;
-        List<Diagnosis> AllDiagnose;
+        List<Diagnosis> AllDiagnose = new List<Diagnosis>();
         List<List<ucDiagnosis>> PageContent;
         AMDESPage lastSection;
         //bool collapseRest = false;
@@ -62,6 +62,15 @@ namespace AMDES_KBS
 
 
             AddSymptons();
+
+            Label header = new Label();
+            header.Content = " ";
+            header.Height = 10;
+            header.FontWeight = FontWeights.Bold;
+            header.FontSize = 15;
+            header.Margin = new Thickness(0, 10, 0, 0);
+
+            PageFrame.Children.Add(header);
 
             foreach (Diagnosis diaRule in AllDiagnose)
             {
@@ -115,7 +124,8 @@ namespace AMDES_KBS
             header.Content = "The patient has the following issues uncovered from the questionnaire: ";
             header.Height = 30;
             header.FontWeight = FontWeights.Bold;
-
+            header.FontSize = 15;
+        
             StackPanel stkpnlSymptons = new StackPanel();
             stkpnlSymptons.Margin = new Thickness(10, 0, 0, 0);
 
@@ -129,7 +139,7 @@ namespace AMDES_KBS
 
             if (stkpnlSymptons.Children.Count == 0)
             {
-                header.Content = "The patient has no symptoms.";
+                header.Content = "The patient has no issues";
             }
             //<ScrollViewer x:Name="svS" VerticalScrollBarVisibility="auto" Height="160" Width="960" HorizontalAlignment="Left">
             //ScrollViewer sv = new ScrollViewer();
@@ -145,21 +155,22 @@ namespace AMDES_KBS
 
         private void LoadResources()
         {
+            List<Diagnosis> resources = DiagnosisController.getResourceRules();
             Label header = new Label();
-            header.Content = "The following resources are available : ";
+            header.Content = "Resources that you may find useful: ";
             header.Height = 30;
+            header.FontSize = 15;
             header.FontWeight = FontWeights.Bold;
+            header.Margin = new Thickness(0, 10, 0, 0);
 
             StackPanel stkpnlRes = new StackPanel();
             stkpnlRes.Margin = new Thickness(10, 0, 0, 0);
 
-            foreach (Diagnosis d in AllDiagnose)
+            foreach (Diagnosis d in resources)
             {
-                if (d.Link.Trim().Length>0)
-                {
-                    ucDiagnosisResource newDiagRes = new ucDiagnosisResource(d);
-                    stkpnlRes.Children.Add(newDiagRes);                                        
-                }
+
+                ucDiagnosisResource newDiagRes = new ucDiagnosisResource(d);
+                stkpnlRes.Children.Add(newDiagRes);
             }
 
             if (stkpnlRes.Children.Count == 0)

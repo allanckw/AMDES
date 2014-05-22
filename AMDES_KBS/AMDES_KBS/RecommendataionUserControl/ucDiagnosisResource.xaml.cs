@@ -17,32 +17,16 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             DiaRule = Rule;
+            lblRuleID.Content = DiaRule.Header;
+            loadComment();
             loadLink();
-            //addSymptons();
         }
 
-        //public void addSymptons()
-        //{
-        //    if (DiaRule.RetrieveSym)
-        //    {
-        //        stkpnlSymptomsList.Visibility = Visibility.Visible;
-               
-        //            foreach (int groupId in DiaRule.RetrievalIDList)
-        //            {
-        //                List<String> SymptomsListOfQuestionGroup = getSymptomsFromQuestionGroup(groupId);
-        //                foreach (String symptoms in SymptomsListOfQuestionGroup)
-        //                {
-        //                    Label lblSymptons = new Label();
-        //                    lblSymptons.Content = App.bulletForm() + symptoms;
-        //                    stkpnlSymptons.Children.Add(lblSymptons);
-        //                }
-        //            }
-        //    }
-        //    else
-        //    {
-        //        stkpnlSymptomsList.Visibility = Visibility.Collapsed;
-        //    }
-        //}
+        private void loadComment()
+        {
+            this.txtDiagnosisMessage.Text = DiaRule.Comment.Replace("~~", Environment.NewLine);
+        }
+
 
         private void loadLink()
         {

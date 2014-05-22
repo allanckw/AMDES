@@ -181,7 +181,7 @@ namespace AMDES_KBS.Controllers
             try
             {
                 var res = (from pa in document.Descendants("Diagnosis")
-                            where bool.Parse(pa.Attribute("isRes").Value) == true
+                            where bool.Parse(pa.Element("isRes").Value) == true
                            select pa).ToList();
 
                 foreach (var x in res)

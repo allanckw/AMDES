@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Diagnoses xml-->
 <Diagnoses>
-
-  <Diagnosis diagID="1">
-  
+  <Diagnosis diagID="20">
+    <Comment>Normal Abbreviated Mental Test score with no significant cognitive deficits, Dementia unlikely</Comment>
+    <Header>R13 Dementia unlikely</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="8">
     <Comment>Dementia high likelihood by DSM4 criteria</Comment>
     <Header>R01 - High likelihood of Dementia</Header>
     <Link></Link>
@@ -13,41 +21,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="2">
-    <Comment>Dementia high likelihood by DSM4 criteria but passed Abbreviated Mental Test - please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R02 - High likelihood of Dementia but passed AMT</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="3">
-    <Comment>Failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take more detailed history to elicit possible cognitive &amp; functional deficits, please refer the patient to a  tertiary centre if dementia suspicion is high </Comment>
-    <Header>R03 - Failed AMT with cognitive deficits other than amnesia, Retake History</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="4">
-    <Comment>Failed Abbreviated Mental Test but asymptomatic otherwise - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre</Comment>
-    <Header>R04 - Failed AMT, re-take history, look for underlying causes and consider referral</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="5">
+  <Diagnosis diagID="12">
     <Comment>Failed Abbreviated Mental Test with Amnestic symptoms - Need to exclude other underlying causes. Please refer the patient to a tertiary centre for further evaluation</Comment>
     <Header>R05 - Fail AMT with Amnestic symptoms, exclude underlying causes and refer patient</Header>
     <Link></Link>
@@ -59,7 +33,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="6">
+  <Diagnosis diagID="13">
     <Comment>Failed Abbreviated Mental Test with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation</Comment>
     <Header>R06 - Failed AMT with Amnestic symptoms, refer patient</Header>
     <Link></Link>
@@ -71,19 +45,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="7">
-    <Comment>Failed Abbreviated Mental Test with Amnestic symptoms and functional decline, dementia is likely, elicit more history to satisfy DSM4 criteria</Comment>
-    <Header>R07 - Failed AMT with Amnestic symptoms, dementia likely</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="8">
+  <Diagnosis diagID="15">
     <Comment>Failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take history and consider referring the patient to a tertiary centre for further evaluation</Comment>
     <Header>R08 - Failed AMT with cognitive deficits other than amnesia, re-take history and consider referral</Header>
     <Link></Link>
@@ -95,7 +57,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="9">
+  <Diagnosis diagID="16">
     <Comment>Failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take history, look for underlying causes and consider referring the patient to a tertiary centre</Comment>
     <Header>R09 - Failed AMT with cognitive deficits other than amnesia, retake history, look for underlying causes and consider referall</Header>
     <Link></Link>
@@ -107,7 +69,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="10">
+  <Diagnosis diagID="17">
     <Comment>Failed Abbreviated Mental Test with cognitive deficits other than Dementia - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre</Comment>
     <Header>R10 - Failed AMT with cognitive deficits other than Dementia</Header>
     <Link></Link>
@@ -119,7 +81,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="11">
+  <Diagnosis diagID="18">
     <Comment>Non-amnestic cognitive deficits, look for underlying cause and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
     <Header>R11 - Non-amnestic cognitive deficits, look for underlying causes and refer patient</Header>
     <Link></Link>
@@ -129,7 +91,19 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="12">
+  <Diagnosis diagID="14">
+    <Comment>Failed Abbreviated Mental Test with Amnestic symptoms but no significant functional decline, please refer the patient to a tertiary centre  for further evaluation</Comment>
+    <Header>R07 - Failed AMT with Amnestic symptoms but no sig. functional decline</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="19">
     <Comment>Non-amnestic cognitive deficits, please refer the patient to a tertiary centre for evaluation</Comment>
     <Header>R12 - Non-amnestic cognitive deficits, refer patient</Header>
     <Link></Link>
@@ -139,17 +113,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="13">
-    <Comment>Normal Abbreviated Mental Test score with no significant cognitive deficits, Dementia unlikely</Comment>
-    <Header>R13 Dementia unlikely</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="14">
+  <Diagnosis diagID="21">
     <Comment>Significant amnesia and functional decline, look for underlying cause and please refer the patient to a tertiary centre for evaluation</Comment>
     <Header>R14 - Sig. amnesia and functional decline, look for underlying cause and refer patient</Header>
     <Link></Link>
@@ -159,7 +123,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="15">
+  <Diagnosis diagID="22">
     <Comment>Significant amnesia and functional decline, please refer the patient to a tertiary centre for evaluation</Comment>
     <Header>R15 - Sig amnesia and functional decline, refer patient</Header>
     <Link></Link>
@@ -169,7 +133,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="16">
+  <Diagnosis diagID="23">
     <Comment>Significant amnesia only, look for underlying cause and please refer the patient to a tertiary centre for evaluation</Comment>
     <Header>R16 - Sig. amnesia, look for underlying cause and refer patient</Header>
     <Link></Link>
@@ -179,7 +143,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="17">
+  <Diagnosis diagID="24">
     <Comment>Significant amnesia only, please refer the patient to a tertiary centre for evaluation</Comment>
     <Header>R17 - Sig. amnesia, refer patient</Header>
     <Link></Link>
@@ -189,7 +153,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="18">
+  <Diagnosis diagID="25">
     <Comment>Significant cognitive deficits and functional decline in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
     <Header>R18 - Sig. cognitive deficits and functional decline, refer patient</Header>
     <Link></Link>
@@ -199,17 +163,7 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="19">
-    <Comment>Significant cognitive deficits in history, look for underlying cause for cognitive impairment and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R19 - Sig. cognitive deficits and functional decline, look for underlying cause and refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="20">
+  <Diagnosis diagID="27">
     <Comment>Significant cognitive deficits in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
     <Header>R20 - Sig. cognitive deficits in history, refer patient</Header>
     <Link></Link>
@@ -219,7 +173,27 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="211">
+  <Diagnosis diagID="9">
+    <Comment>Dementia high likelihood by DSM4 criteria but passed Abbreviated Mental Test - please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
+    <Header>R02 - High likelihood of Dementia but passed AMT</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="26">
+    <Comment>Significant cognitive deficits in history, look for underlying cause for cognitive impairment and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
+    <Header>R19 - Sig. cognitive deficits and functional decline, look for underlying cause and refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="28">
     <Comment>Brain imaging and referral to a tertiary center is recommended due to the following conditions: </Comment>
     <Header>R21a - Require brain imaging and referral</Header>
     <Link></Link>
@@ -231,29 +205,7 @@
     <RetrieveBelow65>true</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="212">
-    <Comment>Brain imaging and referral to a tertiary center is recommended due to rapid decline of function</Comment>
-    <Header>R21b - Require brain imaging and referral due to rapid decline of function</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="22">
-    <Comment>Failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive &amp; functional deficits and refer tertiary centre if dementia suspicion is high</Comment>
-    <Header>R22 - Failed AMT, re-take history, look for underlying causes and consider referral</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="23">
+  <Diagnosis diagID="7">
     <Comment>Please investigate these symptoms found in the questionnaire as they are confounding factors of dementia: </Comment>
     <Header>R23 - Underlying causes of cognitive impairment</Header>
     <Link></Link>
@@ -265,8 +217,72 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="24">
-    <Comment> A. The development of multiple cognitive deficits manifested by both:~~ ~~ 1. Memory impairment (impaired ability to learn new information or to recall previously learned information)~~ 2. One or more of the following cognitive disturbances:~~ (a) Aphasia (language disturbance)~~ (b) Apraxia (impaired ability to carry out motor activities despite intact motor function)~~ (c) Agnosia (failure to recognize or identify objects despite intact sensory function)~~ (d) Disturbance in executive functioning (i.e., planning, organizing, sequencing, abstracting)~~ ~~ B. The cognitive deficits in criteria A1 and A2 each cause significant impairment in social or occupational functioning and represent a significant decline from a previous level of functioning.~~ ~~ C. Focal neurological signs and symptoms (e.g., exaggeration of deep tendon reflexes, extensor plantar response, pseudobulbar palsy, gait abnormalities, weakness of an extremity) or laboratory evidence indicative of cerebrovascular disease (e.g., multiple infarctions involving cortex and underlying white matter) that are judged to be etiologically related to the disturbance.~~ ~~ D. The deficits do not occur exclusively during the course of a delirium.~~</Comment>
+  <Diagnosis diagID="29">
+    <Comment>Brain imaging and referral to a tertiary center is recommended due to rapid decline of function</Comment>
+    <Header>R21b - Require brain imaging and referral due to rapid decline of function</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="33">
+    <Comment>The paper aims to (1) establish the clinical usefulness of the 10-item Abbreviated Mental Test (AMT) and the 18-item Chinese Mini-Mental Status Examination (CMMSE) for detecting cognitive impairment associated with dementia in the elderly Chinese; (2) determine how the tests' optimal cut-off scores varied with the patients' educational level and age; and (3) evaluate which was the more accurate test.</Comment>
+    <Header>R26 - Diagnostic performance of two mental status tests in the older chinese: influence of education and age on cut-off values.</Header>
+    <Link>http://www.ncbi.nlm.nih.gov/pubmed/10713581</Link>
+    <LinkDesc>Read the paper from PubMed</LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="31">
+    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~   1. Urea &amp; electrolytes (or renal panel)~~   2. Calcium panel~~   3. Vitamin B12 level~~   4. Folate level~~   5. Thyroid function test</Comment>
+    <Header>R25 - Recommended Tests for Evaluation of Cognitive Impairment</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="30">
+    <Comment>Failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive &amp; functional deficits and refer the patient to a tertiary centre if dementia suspicion is high</Comment>
+    <Header>R22 - Failed AMT, retake history and refer if dementia suspicion is high</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="11">
+    <Comment>Failed Abbreviated Mental Test but asymptomatic otherwise - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre.</Comment>
+    <Header>R04 - Failed AMT but asymptomatic otherwise, re-take history and consider referral</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="10">
+    <Comment>Failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take more detailed history to elicit possible cognitive / functional deficits, and refer the patient to a tertiary centre if dementia suspicion is high</Comment>
+    <Header>R03 - Failed AMT with cognitive deficits other than amnesia, re-take History and refer if dementia suspicion is high</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="32">
+    <Comment>A. The development of multiple cognitive deficits manifested by both:~~1. Memory impairment (impaired ability to learn new information or to recall previously learned information)~~2. One or more of the following cognitive disturbances:~~ (a) Aphasia (language disturbance)~~ (b) Apraxia (impaired ability to carry out motor activities despite intact motor function)~~ (c) Agnosia (failure to recognize or identify objects despite intact sensory function)~~ (d) Disturbance in executive functioning (i.e., planning, organizing, sequencing, abstracting)~~ ~~B. The cognitive deficits in criteria A1 and A2 each cause significant impairment in social or occupational functioning and represent a significant decline from a previous level of functioning.~~ ~~C. Focal neurological signs and symptoms (e.g., exaggeration of deep tendon reflexes, extensor plantar response, pseudobulbar palsy, gait abnormalities, weakness of an extremity) or laboratory evidence indicative of cerebrovascular disease (e.g., multiple infarctions involving cortex and underlying white matter) that are judged to be etiologically related to the disturbance.~~ ~~D. The deficits do not occur exclusively during the course of a delirium.</Comment>
     <Header>R24 - DSM4 Criteria for the diagnosis of Dementia</Header>
     <Link></Link>
     <LinkDesc></LinkDesc>
@@ -275,25 +291,4 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>true</isRes>
   </Diagnosis>
-  <Diagnosis diagID="25">
-    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~   1. Urea &amp; electrolytes (or renal panel)~~   2. Calcium panel~~   3. Vitamin B12 level~~   4. Folate level~~   5. Thyroid function test</Comment>
-    <Header>R25 - Recommended Tests</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>true</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="26">
-    <Comment>The article AIMS: ~~To (1) establish the clinical usefulness of the 10-item Abbreviated Mental Test (AMT) and the 18-item Chinese Mini-Mental Status Examination (CMMSE) for detecting cognitive impairment associated with dementia in the elderly Chinese; (2) determine how the tests' optimal cut-off scores varied with the patients' educational level and age; and (3) evaluate which was the more accurate test.~~</Comment>
-    <Header>R26 - Diagnostic performance of two mental status tests in the older chinese: influence of education and age on cut-off values.</Header>
-    <Link>http://onlinelibrary.wiley.com/doi/10.1002/(SICI)1099-1166(200003)15:3%3C234::AID-GPS99%3E3.0.CO;2-G/abstract;jsessionid=B54670504A69424418EBF75FD7ECE9C2.f03t02</Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-
 </Diagnoses>
