@@ -30,7 +30,7 @@
                             <Run Text="Aid for Dementia Diagnosis (AiDD)" />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="This is an expert system (a branch of artifical intelligence) designed to facilitate the diagnosis of dementia. Knowledge were elicited from specialists and the DSM IV criteria for dementia." />
+                            <Run Text="This is an expert system (a branch of artifical intelligence) designed to facilitate the diagnosis of Dementia. Knowledge were elicited from specialists doctors and the DSM IV criteria." />
                         </Paragraph>
                         <Paragraph>
                             <Run Text="As AiDD serves primarily as a diagnostic aid, the physician should always exercise clinical judgment with respect to the conclusions and recommendations offered by the system. The developers of AiDD shall not be liable for any damages arising from using the application." />

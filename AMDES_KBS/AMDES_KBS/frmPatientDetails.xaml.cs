@@ -7,6 +7,8 @@ using System.Windows.Documents;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
 using System.Windows.Input;
+using System.Globalization;
+using System.Threading;
 
 namespace AMDES_KBS
 {
@@ -29,6 +31,11 @@ namespace AMDES_KBS
             dtpAss.SelectedDate = DateTime.Today;
             turnOffPatientDetails();
             //loadEnthicGrp();
+
+            CultureInfo ci = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            ci.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
+            ci.DateTimeFormat.DateSeparator = "/";
+            Thread.CurrentThread.CurrentCulture = ci;
         }
 
         //private void loadEnthicGrp()

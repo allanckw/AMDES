@@ -227,16 +227,6 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="33">
-    <Comment>The paper aims to (1) establish the clinical usefulness of the 10-item Abbreviated Mental Test (AMT) and the 18-item Chinese Mini-Mental Status Examination (CMMSE) for detecting cognitive impairment associated with dementia in the elderly Chinese; (2) determine how the tests' optimal cut-off scores varied with the patients' educational level and age; and (3) evaluate which was the more accurate test.</Comment>
-    <Header>R26 - Diagnostic performance of two mental status tests in the older chinese: influence of education and age on cut-off values.</Header>
-    <Link>http://www.ncbi.nlm.nih.gov/pubmed/10713581</Link>
-    <LinkDesc>Read the paper from PubMed</LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>true</isRes>
-  </Diagnosis>
   <Diagnosis diagID="31">
     <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~   1. Urea &amp; electrolytes (or renal panel)~~   2. Calcium panel~~   3. Vitamin B12 level~~   4. Folate level~~   5. Thyroid function test</Comment>
     <Header>R25 - Recommended Tests for Evaluation of Cognitive Impairment</Header>
@@ -286,6 +276,16 @@
     <Header>R24 - DSM4 Criteria for the diagnosis of Dementia</Header>
     <Link></Link>
     <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="33">
+    <Comment>The paper aims to (1) establish the clinical usefulness of the 10-item Abbreviated Mental Test (AMT) and the 18-item Chinese Mini-Mental Status Examination (CMMSE) for detecting cognitive impairment associated with dementia in the elderly Chinese; (2) determine how the tests' optimal cut-off scores varied with the patients' educational level and age; and (3) evaluate which was the more accurate test.</Comment>
+    <Header>R26 - Diagnostic performance of two mental status tests in the older chinese: influence of education and age on cut-off values.</Header>
+    <Link>http://www.ncbi.nlm.nih.gov/pubmed/10713581</Link>
+    <LinkDesc>Read the paper from PubMed</LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
     <RetrieveBelow65>false</RetrieveBelow65>

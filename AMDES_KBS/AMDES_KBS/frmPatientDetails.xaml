@@ -22,7 +22,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
                     <Label  Width="150" Content="Date of  Assessment:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                    <DatePicker Width="200" Name="dtpAss" IsEnabled="False" FontSize="14"/>
+                    <DatePicker Width="200" Name="dtpAss" IsEnabled="False" FontSize="14" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Name="stknric" Margin="0,5,0,5">
                     <Label  Width="150" Content="Identification no.:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
@@ -41,8 +41,8 @@
                     <StackPanel>
                         <DatePicker Width="200" Name="dtpDOB" FirstDayOfWeek="Monday" FontSize="14"/>
                     </StackPanel>
-                    <Label  Content=" (Format DD/MM/YYYY)" />
-                    <Label  Content="e.g. 31/1/1970" />
+                    <Label  Content=" (Format DD/MM/YYYY)" FontSize="14" />
+                    <Label  Content="e.g. 31/1/1970" FontSize="14" />
                 </StackPanel>
             </StackPanel>
             
