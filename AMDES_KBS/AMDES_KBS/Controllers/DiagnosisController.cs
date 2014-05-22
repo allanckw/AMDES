@@ -110,7 +110,7 @@ namespace AMDES_KBS.Controllers
                     }
                 }
 
-                return pList.OrderBy(x => x.Header).ToList(); ;
+                return pList.OrderBy(x => x.Header).ToList(); 
             }
             else
             {
@@ -193,7 +193,7 @@ namespace AMDES_KBS.Controllers
                     }
                 }
 
-                return resList;
+                return resList.OrderBy(x => x.RID).ToList();
 
             }
             catch (InvalidOperationException ex)
