@@ -31,7 +31,7 @@
 (question (ID _5.6) (GroupID _5) (QuestionText "Psychiatric disorders – major depression, schzophrenia, acute delirium") )
 (questionid-symptoms (GroupID _5) (QuestionID _5.6) (symptom "Psychiatric disorders") )
 (group (GroupID _6) (SuccessType COUNT) (SuccessArg 8))
-(groupid-symptoms (GroupID _6) (symptom "Failed AMT ") )
+(groupid-symptoms (GroupID _6) (symptom "Failed AMT") )
 (question (ID _6.1) (GroupID _6) (QuestionText "What is the year now?") )
 (question (ID _6.2) (GroupID _6) (QuestionText "What is the time to the nearest hour? ") )
 (question (ID _6.3) (GroupID _6) (QuestionText "What is your age?") )

@@ -62,7 +62,7 @@
     </Questions>
   </QuestionGroup>
   <QuestionGroup id="5">
-    <Header>Section C6- C11</Header>
+    <Header>Section C6 - C11</Header>
     <Description>Does the patient have ANY of the following background medical issues?</Description>
     <QnType>0</QnType>
     <Symptom></Symptom>

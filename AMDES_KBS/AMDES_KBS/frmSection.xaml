@@ -48,9 +48,9 @@
                 <!--<StackPanel x:Name="zz" Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,50,0">
                     <Label Content="The button for each question indicates your current choice, click to toggle (from No to Yes and vice versa)" FontWeight="Bold" FontSize="12"  Margin="0,0,0,0" HorizontalContentAlignment="Right" />
                 </StackPanel>-->
-                <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" FontSize="14"/>
-                <Button x:Name="btnNext" Content="Next" Height="30" Width="100" Margin="0,0,10,0" Click="btnNext_Click" FontSize="14"/>
-                <Button x:Name="btnSave" Content="Save" Height="30" Width="100" Click="btnSave_Click"  Margin="0,0,10,0" FontSize="14"/>
+                <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" FontSize="14" ToolTip="Go back to the previous page / section"/>
+                <Button x:Name="btnNext" Content="Next" Height="30" Width="100" Margin="0,0,10,0" Click="btnNext_Click" FontSize="14" ToolTip="Go to the next page / section"/>
+                <Button x:Name="btnSave" Content="Save" Height="30" Width="100" Click="btnSave_Click"  Margin="0,0,10,0" FontSize="14" ToolTip="Save your selection"/>
                 
             </StackPanel>
 

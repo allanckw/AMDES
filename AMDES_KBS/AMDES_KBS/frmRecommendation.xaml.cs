@@ -126,9 +126,9 @@ namespace AMDES_KBS
             header.Height = 30;
             header.FontWeight = FontWeights.Bold;
             header.FontSize = 15;
-        
+            header.Margin = new Thickness(15, 0, 0, 0);
             StackPanel stkpnlSymptons = new StackPanel();
-            stkpnlSymptons.Margin = new Thickness(10, 0, 0, 0);
+            stkpnlSymptons.Margin = new Thickness(20, 0, 0, 0);
 
             foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
             {
@@ -166,7 +166,7 @@ namespace AMDES_KBS
             //header.Margin = new Thickness(0, 10, 0, 0);
 
             StackPanel stkpnlRes = new StackPanel();
-            stkpnlRes.Margin = new Thickness(10, 0, 0, 0);
+            //stkpnlRes.Margin = new Thickness(10, 0, 0, 0);
 
             foreach (Diagnosis d in resources)
             {
