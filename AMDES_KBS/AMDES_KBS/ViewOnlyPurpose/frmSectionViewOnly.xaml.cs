@@ -50,6 +50,7 @@ namespace AMDES_KBS
 
         public void loadSection(int sectionID)
         {
+            heightLimit = this.QuestionFrame.Height;
             WholeContent = new List<ucQuestionViewOnly>();
             QG = QuestionController.getGroupByID(sectionID);
             sectionType = QG.getQuestionTypeENUM();
@@ -61,7 +62,7 @@ namespace AMDES_KBS
                 lblCurrScore.Content = 0;
                 lblCurrScore.Tag = QCG.Threshold;
                 lblTotalScore.Content = QCG.MaxQuestions;
-                heightLimit -= 2;
+                heightLimit -= 11;
             }
 
             lblSection.Content = QG.Header.Trim();

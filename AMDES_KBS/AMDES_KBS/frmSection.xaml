@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="560" d:DesignWidth="960"
+      d:DesignHeight="600" d:DesignWidth="960"
 	Title="frmSection">
 
     <Grid>
@@ -41,7 +41,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel x:Name="QuestionFrame" Height="410">
+            <StackPanel x:Name="QuestionFrame" Height="470">
             </StackPanel>
 
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0">

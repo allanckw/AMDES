@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="560" d:DesignWidth="960"
+      d:DesignHeight="600" d:DesignWidth="960"
 	Title="frmRecommendation">
 
     <Grid>
@@ -21,19 +21,19 @@
 
 
             </StackPanel>
-            <TabControl x:Name="tcResults" Background="Transparent" Height="432"  Width="960" >
-                <TabItem x:Name="tbResults" FontSize="13"  Header="Findings">
-                    <ScrollViewer x:Name="svS" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
+            <TabControl x:Name="tcResults" Background="Transparent" Height="500"  Width="960" >
+                <TabItem x:Name="tbResults" FontSize="13"  Header="Findings" Width="150">
+                    <ScrollViewer x:Name="svS" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="470" Width="950" HorizontalAlignment="Left">
                         <StackPanel x:Name="PageSFrame"/>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tbRecommendation" FontSize="13" Header="Recommendations">
-                    <ScrollViewer x:Name="svA" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
+                <TabItem x:Name="tbRecommendation" FontSize="13" Header="Recommendations" Width="150">
+                    <ScrollViewer x:Name="svA" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="470" Width="950" HorizontalAlignment="Left">
                         <StackPanel x:Name="PageFrame"/>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tbResources" FontSize="13" Header="Resources">
-                    <ScrollViewer x:Name="svR" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="370" Width="950" HorizontalAlignment="Left">
+                <TabItem x:Name="tbResources" FontSize="13" Header="Resources" Width="150">
+                    <ScrollViewer x:Name="svR" FontSize="13" VerticalScrollBarVisibility="auto" Margin="0,0,0,0" Height="470" Width="950" HorizontalAlignment="Left">
                         <StackPanel x:Name="PageRFrame"/>
                     </ScrollViewer>
                 </TabItem>

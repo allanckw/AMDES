@@ -36,7 +36,7 @@ namespace AMDES_KBS
             amdesPageFrame = amdesFrame;
             prevPage = null;
             btnPrev.Visibility = Visibility.Collapsed;
-            heightLimit = 430;
+            //heightLimit = 470;
             Patient currPatient = CLIPSController.CurrentPatient;
             loadSection(sectionID);
             offCommands(240);
@@ -49,7 +49,7 @@ namespace AMDES_KBS
             lblSection.Content = sectionID;
             amdesPageFrame = amdesFrame;
             prevPage = null;
-            heightLimit = 430;
+            //heightLimit = 470;
             loadSection(sectionID);
             setAns(hisList);
             setLastPage();
@@ -67,7 +67,7 @@ namespace AMDES_KBS
             amdesPageFrame = amdesFrame;
             prevPage = prevSection;
             btnPrev.Visibility = Visibility.Visible;
-            heightLimit = 430;
+            //heightLimit = 470;
             loadSection(sectionID);
             offCommands(240);
         }
@@ -101,6 +101,7 @@ namespace AMDES_KBS
 
         public void loadSection(int sectionID)
         {
+            heightLimit = this.QuestionFrame.Height;
             WholeContent = new List<ucQuestion>();
             QG = QuestionController.getGroupByID(sectionID);
             sectionType = QG.getQuestionTypeENUM();
@@ -112,7 +113,7 @@ namespace AMDES_KBS
                 lblCurrScore.Content = 0;
                 lblCurrScore.Tag = QCG.Threshold;
                 lblTotalScore.Content = QCG.MaxQuestions;
-                heightLimit -= 2;
+                heightLimit -= 11;
             }
 
             lblSection.Content = QG.Header;
