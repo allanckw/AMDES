@@ -6,10 +6,10 @@
              mc:Ignorable="d"
              d:DesignWidth="660">
     <Grid x:Name="gridDiagnosis">
-        <StackPanel x:Name="stkpnlDiagnosis" Margin="10,0,0,20">
+        <StackPanel x:Name="stkpnlDiagnosis" Margin="10,0,0,10">
             <StackPanel x:Name="stkpnlDiagnosisHeader" Orientation="Vertical">
                 <StackPanel>
-                    <Label x:Name="lblRuleID" Width="auto" Height="30" Margin="5,0,0,0" FontSize="14"  FontWeight="Bold" />
+                    <Label x:Name="lblRuleID" Width="auto" Height="30" Margin="5,0,0,0" FontSize="15"  FontWeight="Bold" />
                 </StackPanel>
                 <!--<StackPanel x:Name="stkpnlSymptomsList" Visibility="Collapsed">
                     <Label x:Name="lblSymptonsText" Content="The patient may has the following symptoms stated in the questionnaire:" Margin="0,10,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" />

@@ -97,6 +97,13 @@ namespace AMDES_KBS
         {
             AddSymptons();
 
+            //Label header = new Label();
+            //header.Content = ""; //"The following course of action(s) are recommended for the patient: ";
+            //header.Height = 10;
+            //header.FontWeight = FontWeights.Bold;
+            //header.FontSize = 15;
+            //header.Margin = new Thickness(0, 10, 0, 0);
+
             foreach (Diagnosis diaRule in AllDiagnose)
             {
                 ucDiagnosis diagnosisControl = new ucDiagnosis(diaRule);
@@ -119,12 +126,12 @@ namespace AMDES_KBS
         private void LoadResources()
         {
             List<Diagnosis> resources = DiagnosisController.getResourceRules();
-            Label header = new Label();
-            header.Content = "Resources that you may find useful: ";
-            header.Height = 30;
-            header.FontSize = 15;
-            header.FontWeight = FontWeights.Bold;
-            header.Margin = new Thickness(0, 10, 0, 0);
+            //Label header = new Label();
+            //header.Content = "Resources that you may find useful: ";
+            //header.Height = 30;
+            //header.FontSize = 15;
+            //header.FontWeight = FontWeights.Bold;
+            //header.Margin = new Thickness(0, 10, 0, 0);
 
             StackPanel stkpnlRes = new StackPanel();
             stkpnlRes.Margin = new Thickness(10, 0, 0, 0);
@@ -136,13 +143,13 @@ namespace AMDES_KBS
                 stkpnlRes.Children.Add(newDiagRes);
             }
 
-            if (stkpnlRes.Children.Count == 0)
-            {
-                header.Content = "There is no resource available.";
-            }
+            //if (stkpnlRes.Children.Count == 0)
+            //{
+            //    header.Content = "There is no resource available.";
+            //}
 
             StackPanel stkpnlResPnl = new StackPanel();
-            stkpnlResPnl.Children.Add(header);
+            //stkpnlResPnl.Children.Add(header);
             stkpnlResPnl.Children.Add(stkpnlRes);
             PageRFrame.Children.Add(stkpnlResPnl);
         }
