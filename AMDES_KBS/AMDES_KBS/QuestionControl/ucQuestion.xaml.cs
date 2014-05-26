@@ -29,8 +29,9 @@ namespace AMDES_KBS
             this.gid = gid;
             string questionText = q.Name.Replace("~~", Environment.NewLine);
 
-            lblQuestion.Content = q.ID;
+            lblQuestion.Content = q.ID + ".";
             txtQuestion.Text = questionText;
+
             var desiredSizeOld = txtQuestion.DesiredSize;
             txtQuestion.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
             var desiredSizeNew = txtQuestion.DesiredSize;

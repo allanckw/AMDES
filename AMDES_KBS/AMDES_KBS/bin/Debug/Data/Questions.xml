@@ -56,7 +56,7 @@
     <Symptom></Symptom>
     <Questions>
       <Question QID="1">
-        <Name>Is the course of the cognitive decline gradual? (More than 6 months) ?</Name>
+        <Name>Is the course of the cognitive decline gradual? (i.e. More than 6 months) </Name>
         <Symptom>Gradual cognitive decline </Symptom>
       </Question>
     </Questions>
@@ -95,7 +95,7 @@
   </QuestionGroup>
   <QuestionGroup id="6">
     <Header>Section AMT</Header>
-    <Description>A correct answer to each question scores one point.~~Start by asking the patient to remember a Memory Phrase eg. address “37 Bukit Timah Road”</Description>
+    <Description>Ask the patient these questions, a correct answer to each question scores one point.~~Start by asking the patient to remember a Memory Phrase (e.g. address “37 Bukit Timah Road”)</Description>
     <QnType>2</QnType>
     <Symptom>Failed AMT</Symptom>
     <Questions>
@@ -124,7 +124,7 @@
         <Symptom></Symptom>
       </Question>
       <Question QID="7">
-        <Name>What is my/his/her job? (Show an image to the patient)</Name>
+        <Name>What is my/his/her job? (Show an image to the patient if possible)</Name>
         <Symptom></Symptom>
       </Question>
       <Question QID="8">
@@ -132,7 +132,7 @@
         <Symptom></Symptom>
       </Question>
       <Question QID="9">
-        <Name>Who is the country's Prime minister currently?</Name>
+        <Name>Who is the country's current Prime minister?</Name>
         <Symptom></Symptom>
       </Question>
       <Question QID="10">

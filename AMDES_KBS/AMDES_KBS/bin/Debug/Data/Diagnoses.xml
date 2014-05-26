@@ -21,18 +21,6 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>true</isRes>
   </Diagnosis>
-  <Diagnosis diagID="10">
-    <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take more detailed history to elicit possible cognitive / functional deficits, and refer the patient to a tertiary centre if dementia suspicion is high</Comment>
-    <Header>R03 - Patient failed AMT with cognitive deficits other than amnesia, re-take History and refer if dementia suspicion is high</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
   <Diagnosis diagID="8">
     <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria, refer the patient to a tertiary center.</Comment>
     <Header>R01 - Patient has high likelihood of Dementia</Header>
@@ -40,52 +28,6 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="9">
-    <Comment>Patient has a high likelihood of Dementia by the DSM4 criteria, but passed Abbreviated Mental Test - refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R02 - Patient has high likelihood of Dementia but passed AMT</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="13">
-    <Comment>Patient failed Abbreviated Mental Test with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R06 - Patient failed AMT with Amnestic symptoms, refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="14">
-    <Comment>Patient failed Abbreviated Mental Test with Amnestic symptoms but no significant functional decline, please refer the patient to a tertiary centre  for further evaluation</Comment>
-    <Header>R07 - Patient failed AMT with Amnestic symptoms but no sig. functional decline</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="12">
-    <Comment>Patient failed Abbreviated Mental Test with Amnestic symptoms - Need to exclude other underlying causes. Please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R05 - Patient failed AMT with Amnestic symptoms, exclude underlying causes and refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
@@ -101,145 +43,9 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="15">
-    <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take history and consider referring the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R08 - Patient failed AMT with cognitive deficits other than amnesia, re-take history and consider referral</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="16">
-    <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take history, look for underlying causes and consider referring the patient to a tertiary centre</Comment>
-    <Header>R09 - Patient failed AMT with cognitive deficits other than amnesia, retake history, look for underlying causes and consider referall</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="17">
-    <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than Dementia - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre</Comment>
-    <Header>R10 - Patient failed AMT with cognitive deficits other than Dementia</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>true</RetrieveSymptom>
-    <RetrieveFrom>
-      <QGrpID>6</QGrpID>
-    </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="18">
-    <Comment>Patient has Non-amnestic cognitive deficits, look for underlying cause and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R11 - Patient has Non-amnestic cognitive deficits, look for underlying causes and refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="19">
-    <Comment>Patient has Non-amnestic cognitive deficits, please refer the patient to a tertiary centre for evaluation</Comment>
-    <Header>R12 - Patient has Non-amnestic cognitive deficits, refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
   <Diagnosis diagID="20">
     <Comment>Normal Abbreviated Mental Test score with no significant cognitive deficits, Dementia unlikely.</Comment>
     <Header>R13 - Patient is unlikely to have Dementia</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="32">
-    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~   1. Urea &amp; electrolytes (or renal panel)~~   2. Calcium panel~~   3. Vitamin B12 level~~   4. Folate level~~   5. Thyroid function test</Comment>
-    <Header>R25 - Recommended Tests for the Evaluation of Cognitive Impairment</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>true</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="24">
-    <Comment>Patient has significant amnesia only, please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R17 - Patient has Sig. amnesia, refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="23">
-    <Comment>Patient has significant amnesia only, look for underlying cause and please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R16 - Patient has Sig. amnesia, look for underlying cause and refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="22">
-    <Comment>Patient has significant amnesia and functional decline, please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R15 - Patient has Sig amnesia and functional decline, refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="21">
-    <Comment>Patient has Significant amnesia and functional decline, look for underlying cause and please refer the patient to a tertiary centre for further evaluation</Comment>
-    <Header>R14 - Patient has Sig. amnesia and functional decline, look for underlying cause and refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="25">
-    <Comment>Patient has significant cognitive deficits and functional decline in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R18 - Patient has sig. cognitive deficits and functional decline, refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="26">
-    <Comment>Patient has significant cognitive deficits in history, look for underlying cause for cognitive impairment and please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R19 - Patient has sig. cognitive deficits and functional decline, look for underlying cause and refer patient</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="27">
-    <Comment>Patient has significant cognitive deficits in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment</Comment>
-    <Header>R20 - Patient has sig. cognitive deficits in history, refer patient</Header>
     <Link></Link>
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
@@ -259,8 +65,180 @@
     <RetrieveBelow65>true</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
+  <Diagnosis diagID="14">
+    <Comment>Patient failed Abbreviated Mental Test with Amnestic symptoms and functional decline, dementia is likely, elicit more history to satisfy DSM4 criteria.</Comment>
+    <Header>R07 - Patient failed AMT with Amnestic symptoms but no sig. functional decline</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="9">
+    <Comment>Patient has a high likelihood of Dementia by the DSM4 criteria, but passed Abbreviated Mental Test - refer the patient to a tertiary centre for a more detailed cognitive assessment.</Comment>
+    <Header>R02 - Patient has high likelihood of Dementia but passed AMT</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="12">
+    <Comment>Patient failed Abbreviated Mental Test with Amnestic symptoms - Need to exclude other underlying causes. Please refer the patient to a tertiary centre for further evaluation.</Comment>
+    <Header>R05 - Patient failed AMT with Amnestic symptoms, exclude underlying causes and refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="13">
+    <Comment>Patient failed Abbreviated Mental Test with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation.</Comment>
+    <Header>R06 - Patient failed AMT with Amnestic symptoms, refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="15">
+    <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take history and consider referring the patient to a tertiary centre for further evaluation.</Comment>
+    <Header>R08 - Patient failed AMT with cognitive deficits other than amnesia, re-take history and consider referral</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="16">
+    <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take history, look for underlying causes and consider referring the patient to a tertiary centre.</Comment>
+    <Header>R09 - Patient failed AMT with cognitive deficits other than amnesia, retake history, look for underlying causes and consider referall</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="17">
+    <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than Dementia - re-take history, look for other underlying causes and consider referring the patient to a tertiary centre.</Comment>
+    <Header>R10 - Patient failed AMT with cognitive deficits other than Dementia</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="18">
+    <Comment>Patient has Non-amnestic cognitive deficits, look for underlying cause and please refer the patient to a tertiary centre for a more detailed cognitive assessment.</Comment>
+    <Header>R11 - Patient has Non-amnestic cognitive deficits, look for underlying causes and refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="19">
+    <Comment>Patient has Non-amnestic cognitive deficits, please refer the patient to a tertiary centre for evaluation.</Comment>
+    <Header>R12 - Patient has Non-amnestic cognitive deficits, refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="21">
+    <Comment>Patient has Significant amnesia and functional decline, look for underlying cause and please refer the patient to a tertiary centre for further evaluation.</Comment>
+    <Header>R14 - Patient has Sig. amnesia and functional decline, look for underlying cause and refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="22">
+    <Comment>Patient has significant amnesia and functional decline, please refer the patient to a tertiary centre for further evaluation.</Comment>
+    <Header>R15 - Patient has Sig amnesia and functional decline, refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="23">
+    <Comment>Patient has significant amnesia only, look for underlying cause and please refer the patient to a tertiary centre for further evaluation.</Comment>
+    <Header>R16 - Patient has Sig. amnesia, look for underlying cause and refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="24">
+    <Comment>Patient has significant amnesia only, please refer the patient to a tertiary centre for further evaluation.</Comment>
+    <Header>R17 - Patient has Sig. amnesia, refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="25">
+    <Comment>Patient has significant cognitive deficits and functional decline in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment.</Comment>
+    <Header>R18 - Patient has sig. cognitive deficits and functional decline, refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="26">
+    <Comment>Patient has significant cognitive deficits in history, look for underlying cause for cognitive impairment and please refer the patient to a tertiary centre for a more detailed cognitive assessment.</Comment>
+    <Header>R19 - Patient has sig. cognitive deficits and functional decline, look for underlying cause and refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="27">
+    <Comment>Patient has significant cognitive deficits in history, please refer the patient to a tertiary centre for a more detailed cognitive assessment.</Comment>
+    <Header>R20 - Patient has sig. cognitive deficits in history, refer patient</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
   <Diagnosis diagID="29">
-    <Comment>Brain imaging and referral to a tertiary center is recommended due to rapid decline of function</Comment>
+    <Comment>Brain imaging and referral to a tertiary center is recommended due to rapid decline of function.</Comment>
     <Header>R21b - Patient require brain imaging and referral due to rapid decline of function</Header>
     <Link></Link>
     <LinkDesc></LinkDesc>
@@ -269,8 +247,30 @@
     <RetrieveBelow65>true</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
+  <Diagnosis diagID="32">
+    <Comment>The following tests are recommended in the evaluation of cognitive impairment:~~    1. Urea &amp; electrolytes (or renal panel)~~    2. Calcium panel~~    3. Vitamin B12 level~~    4. Folate level~~    5. Thyroid function test</Comment>
+    <Header>R25 - Recommended Tests for the Evaluation of Cognitive Impairment</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="10">
+    <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.</Comment>
+    <Header>R03 - Patient failed AMT with cognitive deficits other than amnesia, re-take History and refer if dementia suspicion is high</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>6</QGrpID>
+    </RetrieveFrom>
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
   <Diagnosis diagID="30">
-    <Comment>Patient failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive &amp; functional deficits and refer the patient to a tertiary centre if dementia suspicion is high</Comment>
+    <Comment>Patient failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.</Comment>
     <Header>R22 - Patient failed AMT, retake history and refer if dementia suspicion is high</Header>
     <Link></Link>
     <LinkDesc></LinkDesc>
@@ -283,7 +283,7 @@
   </Diagnosis>
   <Diagnosis diagID="7">
     <Comment>Please investigate these symptoms found in the questionnaire as they are confounding factors of dementia: </Comment>
-    <Header>R23 - Underlying causes of cognitive impairment found</Header>
+    <Header>R23 - Underlying causes of cognitive impairment</Header>
     <Link></Link>
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>true</RetrieveSymptom>

@@ -37,18 +37,20 @@ namespace AMDES_KBS
             InitializeComponent();
             amdesPageFrame = amdesFrame;
             Patient currPatient = CLIPSController.CurrentPatient;
-            lblPatientID.Content = currPatient.NRIC;
-            lblPatientName.Content = currPatient.Last_Name + " " + currPatient.First_Name;
-            lblPatientAge.Content = "Age : " + currPatient.getAge();
+            lblPatientID.Content = "Patient's ID: " + currPatient.NRIC;
+            lblPatientName.Content = "Patient's Name: " + currPatient.Last_Name + " " + currPatient.First_Name;
+            lblPatientAge.Content = "Patient's Age: " + currPatient.getAge();
             if (CLIPSController.savePatient == false)
             {
                 lblPatientID.Visibility = Visibility.Collapsed;
                 lblPatientName.Visibility = Visibility.Collapsed;
+                lblPatientAge.Margin = new Thickness(0, 0, 0, 0);
             }
             else
             {
                 lblPatientID.Visibility = Visibility.Visible;
                 lblPatientName.Visibility = Visibility.Visible;
+                lblPatientAge.Margin = new Thickness(10, 0, 0, 0);
             }
             AllDiagnose = h.Diagnoses;
             PageContent = new List<List<ucDiagnosis>>();
