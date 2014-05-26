@@ -3,13 +3,13 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="AMDES_KBS.frmTermCondition"
 	x:Name="Window"
-	Title="Welcome to AiDD - Aid for Dementia Diagnosis"
+	Title="Welcome to ADD - Aid for Dementia Diagnosis"
 	Width="540" Height="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
 
     <Grid x:Name="LayoutRoot">
         <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto" >
             <StackPanel x:Name="welcome" Height="30" Width="450" Margin="0,10,0,0" >
-                <Label VerticalAlignment="Center" Content="Welcome to AiDD - Aid for Dementia Diagnosis" FontSize="18" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FF210FEB" />
+                <Label VerticalAlignment="Center" Content="Welcome to ADD - Aid for Dementia Diagnosis" FontSize="18" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FF210FEB" />
             </StackPanel>
             <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Collapsed">
                 <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="530" >
@@ -27,13 +27,13 @@
                     <FlowDocument>
 
                         <Paragraph  FontWeight="Bold" FontSize="15">
-                            <Run Text="Aid for Dementia Diagnosis (AiDD)" />
+                            <Run Text="Aid for Dementia Diagnosis (ADD)" />
                         </Paragraph>
                         <Paragraph>
                             <Run Text="This is an expert system (a branch of artifical intelligence) designed to facilitate the diagnosis of Dementia. Knowledge were elicited from specialists doctors and the DSM IV criteria." />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="As AiDD serves primarily as a diagnostic aid, the physician should always exercise clinical judgment with respect to the conclusions and recommendations offered by the system. The developers of AiDD shall not be liable for any damages arising from using the application." />
+                            <Run Text="As ADD serves primarily as a diagnostic aid, the physician should always exercise clinical judgment with respect to the conclusions and recommendations offered by the system. The developers of ADD shall not be liable for any damages arising from using the application." />
                         </Paragraph>
                         <Paragraph>
                             <Run Text="We would appreciate your feedback, you may send them to amdes_nus_soc@googlegroups.com " />
