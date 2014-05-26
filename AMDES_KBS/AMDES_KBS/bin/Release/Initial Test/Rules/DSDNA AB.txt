@@ -1,0 +1,18 @@
+PART decision list
+------------------
+
+Gender = FEMALE: No (342.0)
+
+age > 72: No (121.0)
+
+age > 58: No (9.0)
+
+: Yes (1.0)
+
+Number of Rules  : 	4
+
+====================================================
+Accuracy, Area under PRC - Yes, Area Under PRC - No
+99.81%,  0.19%,  99.81%
+Num of attr: 4.0
+Num of instances:525

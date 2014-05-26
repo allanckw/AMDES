@@ -8,8 +8,6 @@
 *.csproj
 
 # Build results
-![Dd]ebug/
-[Rr]elease/
 [Oo]bj
 *_i.c
 *_p.c
@@ -29,7 +27,7 @@
 *.vspscc
 !*.dll
 .builds
-AMDES_KBS.exe
+AiDD.exe
 
 # Visual C++ cache files
 ipch/
