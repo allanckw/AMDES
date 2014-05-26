@@ -1,26 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Diagnoses xml-->
 <Diagnoses>
-  <Diagnosis diagID="8">
-    <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria, refer the patient to a tertiary center.</Comment>
-    <Header>Patient has high likelihood of Dementia</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="9">
-    <Comment>Patient has a high likelihood of Dementia by the DSM4 criteria, but passed Abbreviated Mental Test - refer the patient to a tertiary centre for a more detailed cognitive assessment.</Comment>
-    <Header>Patient has high likelihood of Dementia but passed AMT</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
   <Diagnosis diagID="10">
     <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.</Comment>
     <Header>Patient failed AMT with cognitive deficits other than amnesia, re-take History and refer if dementia suspicion is high</Header>
@@ -292,5 +272,25 @@
     <RetrieveFrom />
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="8">
+    <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria, refer the patient to a tertiary center.</Comment>
+    <Header>Patient has high likelihood of Dementia by DSM4 criteria</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="9">
+    <Comment>Patient has a high likelihood of Dementia by the DSM4 criteria, but passed the Abbreviated Mental Test - refer the patient to a tertiary centre for a more detailed cognitive assessment.</Comment>
+    <Header>Patient has high likelihood of Dementia by DSM4 criteria but passed AMT</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
   </Diagnosis>
 </Diagnoses>
