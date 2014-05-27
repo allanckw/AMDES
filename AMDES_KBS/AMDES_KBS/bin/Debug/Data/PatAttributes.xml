@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Patient Attribute settings xml-->
+<PatientsAttributes>
+  <PatAttr name="BLOOD SUGAR">
+    <Type>0</Type>
+    <MinNumericValue>1</MinNumericValue>
+    <MaxNumericValue>10</MaxNumericValue>
+    <Categories />
+  </PatAttr>
+  <PatAttr name="BLOOD TYPE">
+    <Type>1</Type>
+    <MinNumericValue>-1</MinNumericValue>
+    <MaxNumericValue>-1</MaxNumericValue>
+    <Categories>
+      <Category>A+</Category>
+      <Category>A-</Category>
+      <Category>B+</Category>
+      <Category>B-</Category>
+      <Category>O+</Category>
+      <Category>O-</Category>
+      <Category>AB+</Category>
+      <Category>AB-</Category>
+    </Categories>
+  </PatAttr>
+</PatientsAttributes>

@@ -70,7 +70,7 @@ namespace AMDES_KBS.Controllers
 
                 newPat.Add(hist);
 
-                
+
             }
 
             if (h.SymptomsList.Count > 0)
@@ -92,7 +92,7 @@ namespace AMDES_KBS.Controllers
                     if (d != null)
                         hy.Add(DiagnosisController.convertToXML(d));
                 }
-                    
+
 
                 newPat.Add(hy);
             }
@@ -105,7 +105,7 @@ namespace AMDES_KBS.Controllers
             }
             else
             {
-                newPat.Add(new XElement("CompletedDate",0));
+                newPat.Add(new XElement("CompletedDate", 0));
             }
             document.Element("Histories").Add(newPat);
             document.Save(History.dataPath);
@@ -174,13 +174,22 @@ namespace AMDES_KBS.Controllers
 
             try
             {
-                var h = (from pa in document.Descendants("History")
-                         where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
-                         long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Date.Ticks
-                         select pa).SingleOrDefault();
-
-
-                return readHistoryData(h);
+                if (pid.CompareTo("ANON") == 0)
+                {
+                    var h = (from pa in document.Descendants("History")
+                             where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
+                             long.Parse(pa.Attribute("AssessmentDate").Value) == 0
+                             select pa).SingleOrDefault();
+                    return readHistoryData(h);
+                }
+                else
+                {
+                    var h = (from pa in document.Descendants("History")
+                             where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
+                             long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Date.Ticks
+                             select pa).SingleOrDefault();
+                    return readHistoryData(h);
+                }
 
             }
             catch (InvalidOperationException ex)

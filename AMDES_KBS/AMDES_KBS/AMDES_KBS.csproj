@@ -128,8 +128,10 @@
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\P2Controller.cs" />
+    <Compile Include="Controllers\PatAttributeController.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Entity\PatAttribute.cs" />
     <Compile Include="frmP2.xaml.cs">
       <DependentUpon>frmP2.xaml</DependentUpon>
     </Compile>

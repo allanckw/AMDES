@@ -76,8 +76,7 @@ namespace AMDES_KBS
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-           
+        { 
         }
     }
 }
