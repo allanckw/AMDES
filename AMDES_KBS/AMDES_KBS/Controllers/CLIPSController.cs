@@ -148,7 +148,7 @@ namespace AMDES_KBS.Controllers
                     //  ); //close parallel.invoke
                     loadNavex(fq, rList, defBehavior);
                     saveAssertLog();
-                    assertAge();
+                    assertAllAttributes();
                     run();
                 }
 
@@ -182,9 +182,14 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        private static void assertAge()
+        private static void assertAllAttributes()
         {
             assert(new StringBuilder("(attribute AGE " + CurrentPatient.getAge() + ")"), false);
+
+            foreach (KeyValuePair<string, int> kvp in CurrentPatient.getAttributes())
+            {
+                assert(new StringBuilder("(attribute " + kvp.Key.ToUpper() + " " + kvp.Value.ToString() + ")"), false);
+            }
         }
 
         private static void run()
