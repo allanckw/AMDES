@@ -40,7 +40,7 @@ namespace AMDES_KBS.Controllers
             }
             else
             {
-                deletePatient(p.AttributeName); //delete and add
+                deleteAttribute(p.AttributeName); //delete and add
                 addPatientAttribute(p);
             }
         }
@@ -72,7 +72,7 @@ namespace AMDES_KBS.Controllers
             document.Save(PatAttribute.dataPath);
         }
 
-        public static void deletePatient(string name)
+        public static void deleteAttribute(string name)
         {
             XDocument document = XDocument.Load(PatAttribute.dataPath);
 

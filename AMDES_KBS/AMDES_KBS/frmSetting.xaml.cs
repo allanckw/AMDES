@@ -85,5 +85,10 @@ namespace AMDES_KBS
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnAttribute_Click(object sender, RoutedEventArgs e)
+        {
+            SettingFrame.Navigate(new frmAttributeSetting());
+        }
     }
 }

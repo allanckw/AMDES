@@ -131,6 +131,9 @@
     <Compile Include="Controllers\PatAttributeController.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="frmAttributeSetting.xaml.cs">
+      <DependentUpon>frmAttributeSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entity\PatAttribute.cs" />
     <Compile Include="frmP2.xaml.cs">
       <DependentUpon>frmP2.xaml</DependentUpon>
@@ -229,6 +232,10 @@
       <DependentUpon>ucNavigationSetting.xaml</DependentUpon>
     </Compile>
     <Page Include="Barchart\ucChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAttributeSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

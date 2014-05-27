@@ -1,0 +1,81 @@
+﻿<Page x:Class="AMDES_KBS.frmAttributeSetting"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+    d:DesignHeight="580" d:DesignWidth="700"
+	Title="frmAttributeSetting">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" Margin="0,0,-55,0">
+            <StackPanel x:Name="stkpnlListOfAttr" Width="183">
+                <Label Content="List of Attribute" FontWeight="Bold" Height="30" FontSize="15"/>
+                <ListBox x:Name="lstAttrList" Margin="1,1,0,0"  FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="511" Width="173" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="lstAttrList_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,5" >
+                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding AttributeName}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                </WrapPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel x:Name="stkpnlDiagnosisDetails" Margin="5,30,0,0">
+                <StackPanel>
+                    <Label Content="Attribute Name" FontSize="15" Margin="0,0,0,10"/>
+                    <TextBox x:Name="txtAttrName" Width="500" Height="30" Tag="new" MaxLength="150" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Label Content="Attribute Type" FontSize="15" Margin="0,0,10,10"/>
+                    <ComboBox x:Name="cboType" Height="30" VerticalAlignment="Top" Width="300" SelectionChanged="cboType_SelectionChanged" />
+                </StackPanel>
+                <StackPanel x:Name="stkpnlCategoryEntry" Margin="0,10,0,0">
+                    <Label Content="Attribute Type - Category" FontSize="15" Margin="0,0,0,10"/>
+                    <StackPanel x:Name="stkpnlCEntry">
+                        <StackPanel Orientation="Horizontal">
+                            <ListView Height="180" HorizontalAlignment="Left" FontSize="15" FontWeight="Regular" Margin="0,0,0,0" Name="lvCategoryValue"  VerticalAlignment="Top" Width="255">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Value" Width="220" />
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <StackPanel Margin="5,0,0,0">
+                                <Label Content="Attribute Value" FontSize="15" Margin="0,0,0,0"/>
+                                <TextBox x:Name="txtValue" Height="25" Width="250" />
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Button Content="Add" Height="23" FontSize="12" FontWeight="Regular" HorizontalAlignment="Left" Margin="0,0,0,0" Name="btnAddAttrValue" VerticalAlignment="Top" Width="84" Click="btnAdd_Click" />
+                                    <Button Content="Delete" Height="23" FontSize="12" FontWeight="Regular" HorizontalAlignment="Left" Margin="5,0,0,0" Name="btnDeleteValue" VerticalAlignment="Top" Width="84" Click="btnDeleteValue_Click" />
+
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="stkpnlNumericalEntry" Margin="0,10,0,0">
+                    <Label Content="Attribute Type - Numerical" FontSize="15" Margin="0,0,0,10"/>
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                        <Label Content="Min Value" FontSize="15" Margin="0,0,0,0"/>
+                        <TextBox x:Name="txtMinValue" PreviewTextInput="NumberValidationTextBox" Height="25" Width="250" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                        <Label Content="Max Value" FontSize="15" Margin="0,0,0,0"/>
+                        <TextBox x:Name="txtMaxValue" PreviewTextInput="NumberValidationTextBox" Height="25" Width="250" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="stkpnlFooter" Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button x:Name="btnAddNewAttr" Content="New Attribute" Width="120" Height="30" Margin="0,0,10,0" Click="btnAddNewAttr_Click" />
+                    <Button x:Name="btnDeleteAttr" Content="Delete Attribute" Width="120" Height="30"  Margin="0,0,10,0" Click="btnDeleteAttr_Click" />
+                    <Button x:Name="btnSaveAttr" Content="Save Attribute" Width="120" Height="30" Click="btnSaveAttr_Click" />
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>
