@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ADD - Aid for Dementia Diagnosis")]
 [assembly: AssemblyProduct("ADD - Aid for Dementia Diagnosis By AMDES")]
-[assembly: AssemblyCopyright("Copyright ©2014")]
+[assembly: AssemblyCopyright("Copyright AMDES© 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -20,7 +20,7 @@
     <Symptom></Symptom>
     <Questions>
       <Question QID="1">
-        <Name>APHASIA~~Disturbance of language function (receptive and/or expressive)~~~~Compared to before, does the patient have the following symptoms:~~     Problems finding words to express his/herself in a conversation?~~     Problems understanding what others say?Does the resident have problems naming objects or persons?</Name>
+        <Name>APHASIA~~Disturbance of language function (receptive and/or expressive)~~~~Compared to before, does the patient have the following symptoms:~~     Problems finding words to express his/herself in a conversation?~~     Problems understanding what others say?~~     Does the resident have problems naming objects or persons?</Name>
         <Symptom>Aphasia</Symptom>
       </Question>
       <Question QID="2">
