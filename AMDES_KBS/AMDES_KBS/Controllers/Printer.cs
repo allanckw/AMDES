@@ -14,10 +14,12 @@ namespace AMDES_KBS.Controllers
 
         public static FlowDocument writeFlowDoc(List<Diagnosis> allDiagnoses)
         {
+            List<Symptom> symList = CLIPSController.CurrentPatient.getLatestHistory().SymptomsList;
+
             FlowDocument fdPrint = new FlowDocument();
             fdPrint.FontFamily = new FontFamily("Calibri");
             Paragraph p = new Paragraph();
-            p.FontSize = 16;
+            p.FontSize = 18;
             p.FontWeight = FontWeights.Bold;
             SolidColorBrush brush = new SolidColorBrush(System.Windows.Media.Colors.Blue);
             p.Foreground = brush;
@@ -29,7 +31,9 @@ namespace AMDES_KBS.Controllers
                 p = new Paragraph();
                 p.FontSize = 15;
                 p.FontWeight = FontWeights.Bold;
+                p.Inlines.Add(new Run("Date: " + DateTime.Today.ToString("dd MMM yyyy") + Environment.NewLine));
                 p.Inlines.Add(new Run("Patient's Age: " + CLIPSController.CurrentPatient.getAge().ToString()));
+                 
                 fdPrint.Blocks.Add(p);
             }
             else
@@ -37,18 +41,20 @@ namespace AMDES_KBS.Controllers
                 p = new Paragraph();
                 p.FontSize = 15;
                 p.FontWeight = FontWeights.Bold;
-                p.Inlines.Add(new Run("Patient's ID: " + CLIPSController.CurrentPatient.NRIC));
-                p.Inlines.Add(new Run("Patient's Name: " + CLIPSController.CurrentPatient.Last_Name + CLIPSController.CurrentPatient.First_Name));
-                p.Inlines.Add(new Run("Patient's Age: " + CLIPSController.CurrentPatient.getAge().ToString()));
-
+                p.Inlines.Add(new Run("Date: " + symList[0].DiagnosisDate.ToString("dd MMM yyyy") + Environment.NewLine));
+                p.Inlines.Add(new Run("Patient's ID: " + CLIPSController.CurrentPatient.NRIC + Environment.NewLine));
+                p.Inlines.Add(new Run("Patient's Name: " + CLIPSController.CurrentPatient.Last_Name + " " + CLIPSController.CurrentPatient.First_Name));
+                p.Inlines.Add(new Run(", Age: " + CLIPSController.CurrentPatient.getAge().ToString() + " "));
+               
                 fdPrint.Blocks.Add(p);
             }
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////
 
             if (CLIPSController.CurrentPatient.getLatestHistory().SymptomsList.Count == 0)
             {
                 p = new Paragraph();
-                p.FontSize = 15;
+                p.FontSize = 16;
                 p.FontWeight = FontWeights.Bold;
                 p.Inlines.Add(new Run("The evaluation does not suggest dementia in this patient"));
                 fdPrint.Blocks.Add(p);
@@ -56,12 +62,12 @@ namespace AMDES_KBS.Controllers
             else
             {
                 p = new Paragraph();
-                p.FontSize = 15;
+                p.FontSize = 16;
                 p.FontWeight = FontWeights.Bold;
                 p.Inlines.Add(new Run("The patient has the following issues uncovered from the questionnaire: " + Environment.NewLine));
                 fdPrint.Blocks.Add(p);
 
-                foreach (Symptom sym in CLIPSController.CurrentPatient.getLatestHistory().SymptomsList)
+                foreach (Symptom sym in symList )
                 {
                     Run symP = new Run("   " + App.bulletForm() + sym.SymptomName + Environment.NewLine);
                     symP.FontWeight = FontWeights.Normal;
@@ -74,26 +80,28 @@ namespace AMDES_KBS.Controllers
 
             ///////////////////////////////////////////////////////////////
             p = new Paragraph();
-            p.FontSize = 15;
+            p.FontSize = 16;
             p.FontWeight = FontWeights.Bold;
-            p.Inlines.Add(new Run("Recommendations"));
-            fdPrint.Blocks.Add(p);
+            Run recc = new Run("Recommendations" + Environment.NewLine);
+            recc.TextDecorations = TextDecorations.Underline;
+            p.Inlines.Add(recc);
+            
 
             foreach (Diagnosis diaRule in allDiagnoses)
             {
-                Paragraph headerP = new Paragraph();
+                Run headerP = new Run();
                 headerP.FontSize = 14;
                 headerP.FontWeight = FontWeights.Bold;
-                headerP.Inlines.Add(new Run(diaRule.Header));
+                p.Inlines.Add(new Run(diaRule.Header + Environment.NewLine));
 
-                Run x = new Run(Environment.NewLine + diaRule.Comment.Replace(App.bulletForm(), "   " + App.bulletForm()));
+                Run x = new Run(diaRule.Comment.Replace(App.bulletForm(), "   " + App.bulletForm()) + Environment.NewLine);
                 x.FontWeight = FontWeights.Normal;
-                headerP.Inlines.Add(x);
+                p.Inlines.Add(x);
 
-                fdPrint.Blocks.Add(headerP);
-
+                p.Inlines.Add(new Run(Environment.NewLine));
+                
             }
-
+            fdPrint.Blocks.Add(p);
 
             ////////////////////////////////////////////////////////////////
             p = new Paragraph();
