@@ -41,9 +41,8 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Print Preview" Name="tbPrint">
-                    <RichTextBox IsReadOnly="True" Name="rtbPrint">
-
-                    </RichTextBox>
+                    <FlowDocumentReader Name="rtbPrint" ViewingMode="Scroll"></FlowDocumentReader>
+                   
                 </TabItem>
             </TabControl>
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">

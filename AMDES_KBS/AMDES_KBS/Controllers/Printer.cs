@@ -15,7 +15,7 @@ namespace AMDES_KBS.Controllers
         public static FlowDocument writeFlowDoc(List<Diagnosis> allDiagnoses)
         {
             FlowDocument fdPrint = new FlowDocument();
-
+            fdPrint.FontFamily = new FontFamily("Calibri");
             Paragraph p = new Paragraph();
             p.FontSize = 16;
             p.FontWeight = FontWeights.Bold;
