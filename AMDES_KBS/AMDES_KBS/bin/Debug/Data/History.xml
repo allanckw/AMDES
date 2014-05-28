@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Histories xml-->
+<Histories>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Diagnoses>
+      <Diagnosis diagID="20">
+        <Comment>Normal Abbreviated Mental Test score with no significant cognitive deficits, Dementia unlikely.</Comment>
+        <Header>R13 - Patient is unlikely to have Dementia</Header>
+        <Link></Link>
+        <LinkDesc></LinkDesc>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+        <RetrieveBelow65>false</RetrieveBelow65>
+        <isRes>false</isRes>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635368320000000000</CompletedDate>
+  </History>
+</Histories>

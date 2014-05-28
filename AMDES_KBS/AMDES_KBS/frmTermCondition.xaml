@@ -30,7 +30,7 @@
                             <Run Text="Aid for Dementia Diagnosis (ADD)" />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="This is an expert system (a branch of artifical intelligence) designed to facilitate the diagnosis of Dementia. Knowledge were elicited from specialists doctors and the DSM IV criteria." />
+                            <Run Text="This is an expert system designed to facilitate the diagnosis of Dementia." />
                         </Paragraph>
                         <Paragraph>
                             <Run Text="As ADD serves primarily as a diagnostic aid, the physician should always exercise clinical judgment with respect to the conclusions and recommendations offered by the system. The developers of ADD shall not be liable for any damages arising from using the application." />

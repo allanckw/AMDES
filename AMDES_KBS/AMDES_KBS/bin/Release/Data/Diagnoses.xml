@@ -117,16 +117,6 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="20">
-    <Comment>Normal Abbreviated Mental Test score with no significant cognitive deficits, Dementia unlikely.</Comment>
-    <Header>Patient is unlikely to have Dementia</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
   <Diagnosis diagID="21">
     <Comment>Patient has Significant amnesia and functional decline, look for underlying cause and please refer the patient to a tertiary centre for further evaluation.</Comment>
     <Header>Patient has Sig. amnesia and functional decline, look for underlying cause and refer patient</Header>
@@ -273,16 +263,6 @@
     <RetrieveBelow65>false</RetrieveBelow65>
     <isRes>true</isRes>
   </Diagnosis>
-  <Diagnosis diagID="8">
-    <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria, refer the patient to a tertiary center.</Comment>
-    <Header>Patient has high likelihood of Dementia by DSM4 criteria</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
-    <isRes>false</isRes>
-  </Diagnosis>
   <Diagnosis diagID="9">
     <Comment>Patient has a high likelihood of Dementia by the DSM4 criteria, but passed the Abbreviated Mental Test - refer the patient to a tertiary centre for a more detailed cognitive assessment.</Comment>
     <Header>Patient has high likelihood of Dementia by DSM4 criteria but passed AMT</Header>
@@ -291,6 +271,26 @@
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
     <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="8">
+    <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria.</Comment>
+    <Header>Patient has high likelihood of Dementia by DSM4 criteria</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>false</RetrieveBelow65>
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="20">
+    <Comment>The patient has passed Abbreviated Mental Test with no significant cognitive deficits and hence does not satisfy the DSM4 criteria for Dementia.</Comment>
+    <Header>Patient is unlikely to have Dementia</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <RetrieveBelow65>true</RetrieveBelow65>
     <isRes>false</isRes>
   </Diagnosis>
 </Diagnoses>

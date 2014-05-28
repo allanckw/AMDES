@@ -174,7 +174,7 @@ namespace AMDES_KBS.Controllers
 
             try
             {
-                if (pid.CompareTo("ANON") == 0)
+                if (CLIPSController.savePatient == false)
                 {
                     var h = (from pa in document.Descendants("History")
                              where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
