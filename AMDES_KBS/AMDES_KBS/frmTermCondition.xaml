@@ -36,7 +36,7 @@
                             <Run Text="As ADD serves primarily as a diagnostic aid, the physician should always exercise clinical judgment with respect to the conclusions and recommendations offered by the system. The developers of ADD shall not be liable for any damages arising from using the application." />
                         </Paragraph>
                         <Paragraph>
-                            <Run Text="We would appreciate your feedback, you may send them to amdes_nus_soc@googlegroups.com " />
+                            <Run Text="We would appreciate your feedback, you may send them to amdes_nus_soc@googlegroups.com. " />
                         </Paragraph>
                         <Paragraph>
                             <Run Text="Credits: Geriatric Centre and Department of Medical Informatics from Khoo Teck Puat Hospital and National University of Singapore, School of Computing."/>

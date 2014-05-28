@@ -37,6 +37,11 @@
                         <StackPanel x:Name="PageRFrame"/>
                     </ScrollViewer>
                 </TabItem>
+                <TabItem Header="Print Preview" Name="tbPrint">
+                    <RichTextBox IsReadOnly="True" Name="rtbPrint">
+                        
+                    </RichTextBox>
+                </TabItem>
             </TabControl>
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0" >
                 <!--<StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,60,0">
@@ -44,10 +49,11 @@
                     <Label Content="you cannot undo after this action." FontWeight="Bold" FontSize="12" Foreground="Blue" />
                     <Label Content="Previous undo your action and brings you back to the previous section."  FontWeight="Bold" FontSize="12" Foreground="Blue" />
                 </StackPanel>-->
-                <Button x:Name="btnPrev" Content="Previous" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" FontSize="14" />
-                <Button Content="Go Back" Height="30" Name="button1" Width="100" Margin="0,0,10,0" Click="button1_Click" ToolTip="Allows you to view the options that have selected to get to these results" FontSize="14" />
-                <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,0,0" Click="btnTestAgin_Click" ToolTip="Restart the test" FontSize="14" />
 
+                <Button x:Name="btnPrev" Content="Go Back (z)" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" FontSize="14"  ToolTip="Go back to the previous section" />
+                <Button Content="Go Back" Height="30" Name="button1" Width="100" Margin="0,0,10,0" Click="button1_Click" ToolTip="Allows you to view the options that have selected to get to these results" FontSize="14" />
+                <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,10,0" Click="btnTestAgin_Click" ToolTip="Restart the test" FontSize="14" />
+                <Button x:Name="btnPrint" Content="Print" Height="30" Width="100" Margin="0,0,0,0" Click="btnPrint_Click" FontSize="14" ToolTip="Print the patient report" />
             </StackPanel>
 
         </StackPanel>

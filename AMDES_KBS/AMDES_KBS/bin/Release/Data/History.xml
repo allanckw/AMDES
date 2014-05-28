@@ -4,6 +4,22 @@
   <History pid="ANON" AssessmentDate="0">
     <Group histID="6">
       <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
         <QID>5</QID>
         <Answer>false</Answer>
       </Question>
@@ -27,27 +43,11 @@
         <QID>10</QID>
         <Answer>false</Answer>
       </Question>
-      <Question GrpID="6">
-        <QID>1</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>2</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>4</QID>
-        <Answer>true</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>3</QID>
-        <Answer>true</Answer>
-      </Question>
     </Group>
     <Group histID="1">
       <Question GrpID="1">
         <QID>1</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
     </Group>
     <Group histID="2">
@@ -60,24 +60,12 @@
         <Answer>false</Answer>
       </Question>
       <Question GrpID="2">
-        <QID>4</QID>
+        <QID>3</QID>
         <Answer>false</Answer>
       </Question>
       <Question GrpID="2">
-        <QID>3</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="3">
-      <Question GrpID="3">
-        <QID>1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="4">
-      <Question GrpID="4">
-        <QID>1</QID>
-        <Answer>true</Answer>
+        <QID>4</QID>
+        <Answer>false</Answer>
       </Question>
     </Group>
     <Group histID="5">
@@ -106,89 +94,29 @@
         <Answer>false</Answer>
       </Question>
     </Group>
-    <Group histID="7">
-      <Question GrpID="7">
-        <QID>1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>7</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
     <Symptoms>
       <Symptom>
-        <SymptomName> Failed AMT - Patient's Score: 4, Normal Score: 8 or more</SymptomName>
-        <DiagnosisDate>635368914741014851</DiagnosisDate>
+        <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
+        <DiagnosisDate>635369242125380166</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Amnesia </SymptomName>
-        <DiagnosisDate>635368914741064854</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Agnosia </SymptomName>
-        <DiagnosisDate>635368914741084855</DiagnosisDate>
-        <DiagnosedByID>2</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Significant decline in function </SymptomName>
-        <DiagnosisDate>635368914741104856</DiagnosisDate>
-        <DiagnosedByID>3</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Gradual cognitive decline  </SymptomName>
-        <DiagnosisDate>635368914741114857</DiagnosisDate>
-        <DiagnosedByID>4</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
-      <Diagnosis diagID="8">
-        <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria.</Comment>
-        <Header>Patient has high likelihood of Dementia by DSM4 criteria</Header>
-        <Link></Link>
-        <LinkDesc></LinkDesc>
-        <RetrieveSymptom>false</RetrieveSymptom>
-        <RetrieveFrom />
-        <RetrieveBelow65>false</RetrieveBelow65>
-        <isRes>false</isRes>
-      </Diagnosis>
-      <Diagnosis diagID="28">
-        <Comment>Brain imaging and referral to a tertiary center is recommended due to the following conditions: 
-   ✓ Age ≤ 65</Comment>
-        <Header>Patient require brain imaging and referral</Header>
+      <Diagnosis diagID="30">
+        <Comment>Patient failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.
+   ✓ Failed AMT - Patient's Score: 0, Normal Score: 8 or more</Comment>
+        <Header>Patient failed AMT, retake history and refer if dementia suspicion is high</Header>
         <Link></Link>
         <LinkDesc></LinkDesc>
         <RetrieveSymptom>true</RetrieveSymptom>
         <RetrieveFrom>
-          <QGrpID>7</QGrpID>
+          <QGrpID>6</QGrpID>
         </RetrieveFrom>
-        <RetrieveBelow65>true</RetrieveBelow65>
+        <RetrieveBelow65>false</RetrieveBelow65>
         <isRes>false</isRes>
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635368320000000000</CompletedDate>
+    <CompletedDate>635369184000000000</CompletedDate>
   </History>
 </Histories>

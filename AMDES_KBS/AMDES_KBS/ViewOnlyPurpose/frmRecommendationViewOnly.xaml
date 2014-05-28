@@ -10,14 +10,16 @@
     <Grid>
         <StackPanel x:Name="MainFrame">
             <StackPanel x:Name="stkpnlRecommendation" Orientation="Horizontal">
-                <Label Content="Results" FontSize="18" FontWeight="Bold" Margin="0,0,0,0" />
+                <Label Content="Results" FontSize="18" FontWeight="Bold" Margin="0,0,790,0" />
+                <!--<Label Content="Read Only"  FontSize="18" FontWeight="Bold" Foreground="Red"/>-->
             </StackPanel>
             <StackPanel x:Name="stkpnlHeader" Orientation="Horizontal">
                 <StackPanel x:Name="stkpnlSectionPatientDetail" Orientation="Horizontal">
-                    
+
                     <Label x:Name="lblPatientID" FontSize="14" FontWeight="Bold" Content="SXXXXXXXZ" Margin="0,0,0,0"/>
                     <Label x:Name="lblPatientName" Content="Name of Patient" FontSize="14" FontWeight="Bold" Margin="10,0,0,0" />
                     <Label x:Name="lblPatientAge" FontSize="14" FontWeight="Bold" Content="" />
+                   
                 </StackPanel>
 
 
@@ -38,11 +40,16 @@
                         <StackPanel x:Name="PageRFrame"/>
                     </ScrollViewer>
                 </TabItem>
+                <TabItem Header="Print Preview" Name="tbPrint">
+                    <RichTextBox IsReadOnly="True" Name="rtbPrint">
+
+                    </RichTextBox>
+                </TabItem>
             </TabControl>
             <StackPanel x:Name="ButtonFrame" Height="30" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
                 <Button x:Name="btnPrev" Content="Go Back" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" FontSize="14" ToolTip="Allows you to view the options that have selected to get to these results" />
-                 <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,0,0" Click="btnTestAgin_Click" ToolTip="Restart the test" FontSize="14" />
-
+                <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,10,0" Click="btnTestAgin_Click" ToolTip="Restart the test" FontSize="14" />
+                <Button x:Name="btnPrint" Content="Print" Height="30" Width="100" Margin="0,0,0,0" Click="btnPrint_Click" FontSize="14" ToolTip="Print the patient report" />
             </StackPanel>
         </StackPanel>
     </Grid>

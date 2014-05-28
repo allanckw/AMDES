@@ -5,6 +5,8 @@ using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
 using System.Windows.Input;
 using System.Windows.Documents;
+using System;
+
 
 namespace AMDES_KBS
 {
@@ -19,7 +21,7 @@ namespace AMDES_KBS
         //int TotalPageNo = 1;
 
         Frame amdesPageFrame;
-        List<Diagnosis> AllDiagnose = new List<Diagnosis>();
+        List<Diagnosis> allDiagnoses = new List<Diagnosis>();
         List<List<ucDiagnosis>> PageContent;
         AMDESPage lastSection;
         //bool collapseRest = false;
@@ -48,7 +50,7 @@ namespace AMDES_KBS
 
             lblPatientAge.Content = "Patient's Age: " + currPatient.getAge();
 
-            AllDiagnose = diaList;
+            allDiagnoses = diaList;
             PageContent = new List<List<ucDiagnosis>>();
             loadRecommendation();
             LoadResources();
@@ -62,27 +64,16 @@ namespace AMDES_KBS
             else
                 btnPrev.Visibility = Visibility.Visible;
 
-
             AddSymptons();
 
-            //Label header = new Label();
-            //header.Content = ""; //"The following course of action(s) are recommended for the patient: ";
-            //header.Height = 10;
-            //header.FontWeight = FontWeights.Bold;
-            //header.FontSize = 15;
-            //header.Margin = new Thickness(0, 10, 0, 0);
-
-            //PageFrame.Children.Add(header);
-
-            foreach (Diagnosis diaRule in AllDiagnose)
+            foreach (Diagnosis diaRule in allDiagnoses)
             {
                 ucDiagnosis diagnosisControl = new ucDiagnosis(diaRule);
-                
+
                 //diagnosis.addSymptoms(i + 1);
                 PageFrame.Children.Add(diagnosisControl);
             }
 
-                
             if (CLIPSController.savePatient == false)
             {
                 lblPatientID.Visibility = Visibility.Collapsed;
@@ -93,8 +84,10 @@ namespace AMDES_KBS
             {
                 lblPatientID.Visibility = Visibility.Visible;
                 lblPatientName.Visibility = Visibility.Visible;
-                 lblPatientAge.Margin = new Thickness(10, 0, 0, 0);
+                lblPatientAge.Margin = new Thickness(10, 0, 0, 0);
             }
+
+            rtbPrint.Document = Printer.writeFlowDoc(allDiagnoses);
         }
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
@@ -112,8 +105,6 @@ namespace AMDES_KBS
             AssertQuestions();
             this.Cursor = Cursors.Wait;
             int sectionID = CLIPSController.getCurrentQnGroupID();
-
-            //MessageBox.Show(sectionID.ToString());
 
             frmSection TestSection = new frmSection(amdesPageFrame, sectionID);
             amdesPageFrame.Navigate(TestSection);
@@ -146,7 +137,7 @@ namespace AMDES_KBS
 
             if (stkpnlSymptons.Children.Count == 0)
             {
-                header.Content = "The questionnaire did not find any evidence with regards to Dementia";
+                header.Content = "The evaluation does not suggest dementia in this patient";
             }
             //<ScrollViewer x:Name="svS" VerticalScrollBarVisibility="auto" Height="160" Width="960" HorizontalAlignment="Left">
             //ScrollViewer sv = new ScrollViewer();
@@ -203,7 +194,52 @@ namespace AMDES_KBS
             return section;
         }
 
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            DoThePrint(this.rtbPrint.Document);
+        }
 
+        private void DoThePrint(FlowDocument document)
+        {
+            // Clone the source document's content into a new FlowDocument.
+            // This is because the pagination for the printer needs to be
+            // done differently than the pagination for the displayed page.
+            // We print the copy, rather that the original FlowDocument.
+            System.IO.MemoryStream s = new System.IO.MemoryStream();
+            TextRange source = new TextRange(document.ContentStart, document.ContentEnd);
+            source.Save(s, DataFormats.Xaml);
+            FlowDocument copy = new FlowDocument();
+            TextRange dest = new TextRange(copy.ContentStart, copy.ContentEnd);
+            dest.Load(s, DataFormats.Xaml);
+
+            // Create a XpsDocumentWriter object, implicitly opening a Windows common print dialog,
+            // and allowing the user to select a printer.
+
+            // get information about the dimensions of the seleted printer+media.
+            System.Printing.PrintDocumentImageableArea ia = null;
+            System.Windows.Xps.XpsDocumentWriter docWriter = System.Printing.PrintQueue.CreateXpsDocumentWriter(ref ia);
+
+            if (docWriter != null && ia != null)
+            {
+                DocumentPaginator paginator = ((IDocumentPaginatorSource)copy).DocumentPaginator;
+
+                // Change the PageSize and PagePadding for the document to match the CanvasSize for the printer device.
+                paginator.PageSize = new Size(ia.MediaSizeWidth, ia.MediaSizeHeight);
+                Thickness t = new Thickness(72);  // copy.PagePadding;
+                copy.PagePadding = new Thickness(
+                                 Math.Max(ia.OriginWidth, t.Left),
+                                   Math.Max(ia.OriginHeight, t.Top),
+                                   Math.Max(ia.MediaSizeWidth - (ia.OriginWidth + ia.ExtentWidth), t.Right),
+                                   Math.Max(ia.MediaSizeHeight - (ia.OriginHeight + ia.ExtentHeight), t.Bottom));
+
+                copy.ColumnWidth = double.PositiveInfinity;
+                //copy.PageWidth = 528; // allow the page to be the natural with of the output device
+
+                // Send content to the printer.
+                docWriter.Write(paginator);
+            }
+
+        }
 
 
     }
