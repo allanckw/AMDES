@@ -95,6 +95,7 @@ namespace AMDES_KBS.Controllers
                 p.Inlines.Add(new Run(diaRule.Header + Environment.NewLine));
 
                 Run x = new Run(diaRule.Comment.Replace(App.bulletForm(), "   " + App.bulletForm()) + Environment.NewLine);
+                x.FontSize = 14;
                 x.FontWeight = FontWeights.Normal;
                 p.Inlines.Add(x);
 
