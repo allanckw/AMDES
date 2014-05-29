@@ -41,8 +41,20 @@ namespace AMDES_KBS
             lstAttrList.ItemsSource = lstAttr;
         }
 
+        private void clearAttrData()
+        {
+            txtAttrName.Tag = "new";
+            txtAttrName.Text = "";
+            txtValue.Text = "";
+            cboType.SelectedIndex = 0;
+            lvCategoryValue.Items.Clear();
+            txtMaxValue.Text = "";
+            txtMinValue.Text = "";
+        }
+
         private void loadAttrData(PatAttribute attr)
         {
+            clearAttrData();
             txtAttrName.Text = attr.AttributeName;
             txtAttrName.Tag = attr.AttributeName;
             cboType.SelectedIndex = attr.getAttributeType();
@@ -132,13 +144,7 @@ namespace AMDES_KBS
         private void btnAddNewAttr_Click(object sender, RoutedEventArgs e)
         {
             lstAttrList.SelectedIndex = -1;
-            txtAttrName.Tag = "new";
-            txtAttrName.Text = "";
-            txtValue.Text = "";
-            cboType.SelectedIndex = 0;
-            lvCategoryValue.Items.Clear();
-            txtMaxValue.Text = "";
-            txtMinValue.Text = "";
+            clearAttrData();
         }
 
         private void btnDeleteAttr_Click(object sender, RoutedEventArgs e)

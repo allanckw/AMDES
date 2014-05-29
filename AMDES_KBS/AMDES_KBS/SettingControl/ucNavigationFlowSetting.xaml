@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="220" d:DesignWidth="410">
+             d:DesignHeight="260" d:DesignWidth="410">
     <Grid>
         <StackPanel>
             <Label Height="40" x:Name="lblCurrStep" FontSize="24" FontWeight="Bold">Step X</Label>
@@ -17,8 +17,21 @@
                     <StackPanel x:Name="stkpnlAgeSetting" Visibility="Hidden" Orientation="Horizontal" Margin="10,0,0,0" >
                         <StackPanel x:Name="stkpnlAgeCriteria">
                             <!-- change to combo box -->
-                            <RadioButton x:Name="radlessThaneqal" GroupName="checkAge" Content="Less than or equal" Height="20" IsChecked="True" Checked="radless_Checked" />
-                            <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than" Height="20" Width="125" Checked="radMoreEqual_Checked" />
+                            <ComboBox x:Name="cboCompareType" Margin="0,5,0,0"  FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                            <WrapPanel Orientation="Horizontal" >
+                                                <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                                <TextBlock Text="{Binding}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                            </WrapPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <!--<RadioButton x:Name="radlessThaneqal" GroupName="checkAge" Content="Less than or equal" Height="20" IsChecked="True" Checked="radless_Checked" />
+                            <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than" Height="20" Width="125" Checked="radMoreEqual_Checked" />-->
                         </StackPanel>
                         <StackPanel Width="75" Height="40">
                             <TextBox x:Name="txtAge" Width="40" Height="30" Margin="5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">

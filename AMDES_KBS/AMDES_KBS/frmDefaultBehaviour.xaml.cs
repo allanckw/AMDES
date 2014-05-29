@@ -23,6 +23,7 @@ namespace AMDES_KBS
             InitializeComponent();
             newForm();
             loadQuestionGroup();
+            loadAllAttribute();
          //   loadAllBehaviour();
         }
 
@@ -52,6 +53,12 @@ namespace AMDES_KBS
 
                 cboBehaviourList.Items.Add(s);
             }
+        }
+        private void loadAllAttribute()
+        {
+            cboAttrList.ItemsSource = null;
+            cboAttrList.ItemsSource = PatAttributeController.getAllAttributes();
+            cboAttrList.SelectedIndex = 0;
         }
 
         private void newForm()
@@ -92,10 +99,19 @@ namespace AMDES_KBS
                 {
                     s = "<=";
                 }
-                else
+                else if(attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
+                {
+                    s = "<";
+                }
+                else if(attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+                {
+                    s = ">=";
+                }
+                else if(attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
                 {
                     s = ">";
                 }
+
                 lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
             }
         }
@@ -197,21 +213,72 @@ namespace AMDES_KBS
         private void btnAddAttribute_Click(object sender, RoutedEventArgs e)
         {
             NaviChildCritAttribute newAttribute = new NaviChildCritAttribute();
-            newAttribute.AttributeName = "AGE";
-            newAttribute.AttributeValue = txtAge.Text;
-            if (radless.IsChecked == true)
+
+            if (tcAttribute.SelectedIndex==0)
             {
-                newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                newAttribute.AttributeName = "AGE";
+                newAttribute.AttributeValue = txtAge.Text;
+                if (radless.IsChecked == true)
+                {
+                    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                }
+                else
+                {
+                    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
+                }
+                
             }
             else
             {
-                newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
+                int sidx = cboAttrList.SelectedIndex;
+                if (sidx==-1)
+                {
+                    return;
+                }
+                PatAttribute Attr = (PatAttribute) cboAttrList.Items[sidx];
+                newAttribute.AttributeName = Attr.AttributeName;
+
+                if (Attr.getAttributeTypeNUM()==PatAttribute.AttributeType.CATEGORICAL)
+                {
+                    newAttribute.AttributeValue = cboAttrCatValue.Items[cboAttrCatValue.SelectedIndex].ToString();
+                    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.Equal);
+                }
+                else if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.NUMERIC)
+                {
+                    if (txtAttrNumMinValue.Text.Trim() != "" && txtAttrNumMaxValue.Text.Trim() != "")
+                    {
+                        newAttribute.AttributeValue = txtAttrNumMinValue.Text;
+                        newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
+                        if (!checkDuplicateAttribute(newAttribute))
+                        {
+                            naviChildAttribute.Add(newAttribute);
+                        }
+                        newAttribute = new NaviChildCritAttribute();
+                        newAttribute.AttributeName = Attr.AttributeName;
+                        newAttribute.AttributeValue = txtAttrNumMaxValue.Text;
+                        newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                    }
+                    else
+                    {
+                        if (txtAttrNumMinValue.Text.Trim() != "" && txtAttrNumMaxValue.Text.Trim() == "")
+                        {
+                            newAttribute.AttributeValue = txtAttrNumMinValue.Text;
+                            newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
+                        }
+                        else
+                        {
+                            newAttribute.AttributeValue = txtAttrNumMaxValue.Text;
+                            newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                        }
+                    }
+                }
             }
+
             if (!checkDuplicateAttribute(newAttribute))
             {
                 naviChildAttribute.Add(newAttribute);
-                reloadAttribute();
             }
+            reloadAttribute();
         }
 
         private bool checkDuplicateAttribute(NaviChildCritAttribute attr)
@@ -222,10 +289,8 @@ namespace AMDES_KBS
                 {
                     if (attr.getAttributeTypeENUM()==critAttr.getAttributeTypeENUM())
                     {
-                        if (attr.AttributeValue==critAttr.AttributeValue)
-                        {
-                            return true;
-                        }
+                        critAttr.AttributeValue = attr.AttributeValue;
+                        return true;
                     }
                 }
             }
@@ -296,15 +361,23 @@ namespace AMDES_KBS
 
         private void loadExistingAttribute(NaviChildCritAttribute attribute)
         {
-            if (attribute.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+            if (attribute.AttributeName == "AGE")
             {
-                radMoreEqual.IsChecked = true;
+                if (attribute.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                {
+                    radMoreEqual.IsChecked = true;
+                }
+                else
+                {
+                    radless.IsChecked = true;
+                }
+                txtAge.Text = attribute.AttributeValue;
+                tcAttribute.SelectedIndex = 0;
             }
             else
             {
-                radless.IsChecked = true;
+
             }
-            txtAge.Text = attribute.AttributeValue;
         }
 
         private void lstCriteriaList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -506,6 +579,38 @@ namespace AMDES_KBS
         {
             stkpnlSectionDestination.Visibility = Visibility.Visible;
             stkpnlDiagnosis.Visibility = Visibility.Collapsed;
+        }
+
+        private void cboAttrList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int sidx = cboAttrList.SelectedIndex;
+            if (sidx==-1)
+            {
+                return;
+            }
+            PatAttribute Attr = (PatAttribute)cboAttrList.Items[sidx];
+            txtAttrNumMinValue.Text = "";
+            txtAttrNumMaxValue.Text = "";
+            cboAttrCatValue.Items.Clear();
+            if (Attr.getAttributeTypeNUM()==PatAttribute.AttributeType.NUMERIC)
+            {
+                stkpnlNum.Visibility = Visibility.Visible;
+                cboAttrCatValue.Visibility = Visibility.Collapsed;
+            }
+            else if (Attr.getAttributeTypeNUM()==PatAttribute.AttributeType.CATEGORICAL)
+            {
+                stkpnlNum.Visibility = Visibility.Collapsed;
+                cboAttrCatValue.Visibility = Visibility.Visible;
+                foreach (string value in Attr.CategoricalVals)
+                {
+                    cboAttrCatValue.Items.Add(value);
+                }
+            }
+        }
+
+        private void txtAttrNumValue_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = App.NumberValidationTextBox(e.Text);
         }
     }
 }

@@ -9,6 +9,8 @@ using AMDES_KBS.Entity;
 using System.Windows.Input;
 using System.Globalization;
 using System.Threading;
+using System.Text.RegularExpressions;
+using System.Windows.Media;
 
 namespace AMDES_KBS
 {
@@ -36,6 +38,67 @@ namespace AMDES_KBS
             ci.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
             ci.DateTimeFormat.DateSeparator = "/";
             Thread.CurrentThread.CurrentCulture = ci;
+            loadAdditionalAttribute();
+        }
+
+        private void loadAdditionalAttribute()
+        {
+            foreach (PatAttribute Attr in PatAttributeController.getAllAttributes())
+            {
+                StackPanel stkpnl = new StackPanel();
+                stkpnl.Orientation = Orientation.Horizontal;
+                stkpnl.Margin = new Thickness(0, 5, 0, 5);
+
+                Label lbl = new Label();
+                lbl.Width = 150;
+                lbl.HorizontalContentAlignment = HorizontalAlignment.Right;
+                lbl.FontWeight = FontWeights.Bold;
+                lbl.FontSize = 14;
+                lbl.Content = Attr.AttributeName + ":";
+
+                stkpnl.Children.Add(lbl);
+                
+                if (Attr.getAttributeTypeNUM()==PatAttribute.AttributeType.NUMERIC)
+                {
+                    TextBox txt = new TextBox();
+                    txt.Tag = Attr.AttributeName;
+                    txt.Width = 200;
+                    txt.Height = 30;
+                    txt.FontSize = 14;
+                    txt.PreviewTextInput += new TextCompositionEventHandler(txt_PreviewTextInput);
+                    stkpnl.Children.Add(txt);
+                }
+                else if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.CATEGORICAL)
+                {
+                    ComboBox cbo = new ComboBox();
+                    cbo.Width = 200;
+                    cbo.Height = 30;
+                    cbo.FontSize = 14;
+
+                    foreach (string value in Attr.CategoricalVals)
+                    {
+                        cbo.Items.Add(value);
+                    }
+                    cbo.SelectedIndex = 0;
+                    stkpnl.Children.Add(cbo);
+                }
+                else
+                {
+                }
+
+                stkpnlPatientDetails.Children.Add(stkpnl);
+            }
+
+            //<StackPanel Orientation="Horizontal" Name="stknric" Margin="0,5,0,5">
+            //        <Label  Width="150" Content="Identification no.:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+            //        <TextBox Width="200" Height="30" Name="txtNRIC" FontSize="14"/>
+            //    </StackPanel>
+                
+        }
+
+        void txt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = App.NumberValidationTextBox(e.Text);
         }
 
         //private void loadEnthicGrp()
@@ -102,6 +165,20 @@ namespace AMDES_KBS
         {
             try
             {
+                foreach (TextBox txt in App.FindVisualChildren<TextBox>(stkpnlPatientDetails))
+                {
+                    StackPanel stkpnlParent;
+                    if (txt.Parent is StackPanel)
+                    {
+                        stkpnlParent = (StackPanel)txt.Parent;
+                        if (txt.Text.Trim() == "" && stkpnlParent.Visibility == Visibility.Visible)
+                        {
+                            MessageBox.Show(txt.Tag + " cannot be empty!");
+                            return false;
+                        }                        
+                    }
+                }
+
                 if (CLIPSController.savePatient == true)
                 {
                     if (txtNRIC.Text.Trim().Length == 0)
@@ -203,5 +280,11 @@ namespace AMDES_KBS
         //        //CLIPSController.???
         //    }
         //}
+
+        private static bool NumberValidationTextBox(String text)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            return regex.IsMatch(text);
+        }
     }
 }

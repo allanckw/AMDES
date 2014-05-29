@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
+using System;
 
 namespace AMDES_KBS
 {
@@ -55,6 +56,17 @@ namespace AMDES_KBS
             }
         }
 
+        private void getAllCompareType()
+        {
+            Array values = Enum.GetValues(typeof(NaviChildCritAttribute.AttributeCmpType));
+
+            foreach(Enum val in values )
+            {
+                cboCompareType.Items.Add(val.ToString());
+            }
+            cboCompareType.SelectedIndex = 0;
+        }
+
         public void getAnswer()
         {
             naviChildCriteriaGroup = new NaviChildCriteriaQuestion();
@@ -76,14 +88,16 @@ namespace AMDES_KBS
                             attr.GroupID = currGrpID;
                             attr.AttributeValue = txtAge.Text;
                             //attr.Ans = ageResult;
-                            if (radMoreEqual.IsChecked == true)
-                            {
-                                attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
-                            }
-                            else
-                            {
-                                attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-                            }
+                            attr.setRuleType(cboCompareType.SelectedIndex);
+
+                            //if (radMoreEqual.IsChecked == true)
+                            //{
+                            //    attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
+                            //}
+                            //else
+                            //{
+                            //    attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                            //}
                         }
                         break;
                     default:
@@ -98,15 +112,16 @@ namespace AMDES_KBS
                 ageAttr.GroupID = currGrpID;
                 ageAttr.AttributeValue = txtAge.Text;
                 ageAttr.AttributeName = "AGE";
-                //ageAttr.Ans = ageResult;
-                if (radMoreEqual.IsChecked == true)
-                {
-                    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
-                }
-                else
-                {
-                    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-                }
+
+                ageAttr.setRuleType(cboCompareType.SelectedIndex);
+                //if (radMoreEqual.IsChecked == true)
+                //{
+                //    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
+                //}
+                //else
+                //{
+                //    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                //}
                 naviChildAttrGroupList.Add(ageAttr);
             }
         }
@@ -177,17 +192,19 @@ namespace AMDES_KBS
                             {
                                 chkRequireAge.IsChecked = true;
                                 txtAge.Text = naviAttr.AttributeValue;
+                                cboCompareType.SelectedIndex = naviAttr.getCompareType();
+                                ageCompareResult = naviAttr.getCompareType();
                                 //ageResult = naviAttr.Ans;
-                                if (naviAttr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
-                                {
-                                    radMoreEqual.IsChecked = true;
-                                    ageCompareResult = 1;
-                                }
-                                else
-                                {
-                                    this.radlessThaneqal.IsChecked = true;
-                                    ageCompareResult = 0;
-                                }
+                                //if (naviAttr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                                //{
+                                //    radMoreEqual.IsChecked = true;
+                                //    ageCompareResult = 1;
+                                //}
+                                //else
+                                //{
+                                //    this.radlessThaneqal.IsChecked = true;
+                                //    ageCompareResult = 0;
+                                //}
                             }
                             break;
                         default:
@@ -214,6 +231,7 @@ namespace AMDES_KBS
         public void loadDistinct()
         {
             cboGroupList.ItemsSource = QuestionController.getAllQuestionGroup();
+            getAllCompareType();
         }
 
         private void chkRequireAge_Checked(object sender, RoutedEventArgs e)
@@ -267,14 +285,15 @@ namespace AMDES_KBS
 
         public void loadCheckedAgeMoreOrLess()
         {
-            if (ageCompareResult == 0)
-            {
-                this.radlessThaneqal.IsChecked = true;
-            }
-            else
-            {
-                radMoreEqual.IsChecked = true;
-            }
+            cboCompareType.SelectedIndex = ageCompareResult;
+            //if (ageCompareResult == 0)
+            //{
+            //    this.radlessThaneqal.IsChecked = true;
+            //}
+            //else
+            //{
+            //    radMoreEqual.IsChecked = true;
+            //}
         }
 
         public void loadIsConclusive()

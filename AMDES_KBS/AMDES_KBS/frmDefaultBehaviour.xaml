@@ -49,10 +49,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="stkpnlRightDiv" Width="430" Margin="5,0,0,0">
-                <StackPanel>
-                    <StackPanel x:Name="stkpnlMainPanel" Height="320" Width="430" >
-                        
-                        <StackPanel x:Name="stkpnlSteps" Height="320" Margin="0,0,0,0">
+                        <StackPanel x:Name="stkpnlSteps" Height="360" Margin="0,0,0,0">
                             <Label FontWeight="Bold" Height="35" FontSize="20">Behaviour Details</Label>
                             <StackPanel x:Name="stkpnlcriteria" Orientation="Horizontal">
                                 <StackPanel>
@@ -88,69 +85,110 @@
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel x:Name="stkpnlAttribute" Orientation="Horizontal" Margin="0,10,0,0">
-                                <StackPanel>
-                                    <Label FontWeight="Bold" Height="30" FontSize="14">List of Attribute</Label>
-                                    <ListBox x:Name="lstAttributeList" Margin="1,1,0,0"  FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" SelectionChanged="lstAttributeList_SelectionChanged">
-                                    
-                                    </ListBox>
-                                </StackPanel>
-                                <StackPanel>
-                                    <Label Content="Age Attribute" FontWeight="Bold" />
-                                    <StackPanel x:Name="stkpnlAgeSetting" Orientation="Horizontal" Margin="10,0,0,0" >
-                                        <StackPanel x:Name="stkpnlAgeCriteria">
-                                            <RadioButton x:Name="radless" GroupName="checkAge" Content="Less than or Equal" Height="20" IsChecked="True"  />
-                                            <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than" Height="20" Width="125" />
-                                        </StackPanel>
-                                        <StackPanel Width="75" Height="40">
-                                            <TextBox x:Name="txtAge" Width="40" Height="30" Margin="5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
-                                                <TextBox.Style>
-                                                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                                        <Style.Resources>
-                                                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                                                <VisualBrush.Visual>
-                                                                    <Label Content="Age" Foreground="DimGray" />
-                                                                </VisualBrush.Visual>
-                                                            </VisualBrush>
-                                                        </Style.Resources>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                                            </Trigger>
-                                                            <Trigger Property="Text" Value="{x:Null}">
-                                                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                                            </Trigger>
-                                                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                                                <Setter Property="Background" Value="White" />
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBox.Style>
-                                            </TextBox>
-                                        </StackPanel>
-                                        <!--<StackPanel VerticalAlignment="Center" Height="40" Width="50">
+                    <StackPanel x:Name="stkpnlAttribute" Orientation="Horizontal" Margin="0,10,0,0">
+                        <StackPanel>
+                            <Label FontWeight="Bold" Height="30" FontSize="14">List of Attribute</Label>
+                            <ListBox x:Name="lstAttributeList" Margin="1,1,0,0"  FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="145" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" >
+
+                            </ListBox>
+                        </StackPanel>
+                        <StackPanel Margin="5,0,0,0">
+                            <TabControl x:Name="tcAttribute" Width="215" Background="Transparent">
+                                <TabItem Header="AGE">
+                                    <StackPanel>
+                                        <Label Content="Age Attribute" FontWeight="Bold" />
+                                        <StackPanel x:Name="stkpnlAgeSetting" Orientation="Horizontal" Margin="10,0,0,0" >
+                                            <StackPanel x:Name="stkpnlAgeCriteria">
+                                                <RadioButton x:Name="radless" GroupName="checkAge" Content="Less than or Equal" Height="20" IsChecked="True"  />
+                                                <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than" Height="20" Width="125" />
+                                            </StackPanel>
+                                            <StackPanel Width="75" Height="40">
+                                                <TextBox x:Name="txtAge" Width="40" Height="30" Margin="5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
+                                                    <TextBox.Style>
+                                                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                                            <Style.Resources>
+                                                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                                                    <VisualBrush.Visual>
+                                                                        <Label Content="Age" Foreground="DimGray" />
+                                                                    </VisualBrush.Visual>
+                                                                </VisualBrush>
+                                                            </Style.Resources>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                                </Trigger>
+                                                                <Trigger Property="Text" Value="{x:Null}">
+                                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                                </Trigger>
+                                                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                                                    <Setter Property="Background" Value="White" />
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBox.Style>
+                                                </TextBox>
+                                            </StackPanel>
+                                            <!--<StackPanel VerticalAlignment="Center" Height="40" Width="50">
                             <RadioButton x:Name="radAgeTrue" IsChecked="True" GroupName="ageTF" Content="True" FontSize="12" Margin="0,2,0,6" Checked="radAgeTrue_Checked" />
                             <RadioButton x:Name="radAgeFalse" GroupName="ageTF" Content="False" FontSize="12" Checked="radAgeFalse_Checked" />
                         </StackPanel>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                        <Button x:Name="btnAddAttribute" Content="Add" Width="60" Margin="5,0,0,0" Click="btnAddAttribute_Click"></Button>
-                                        <Button x:Name="btnDeleteAttribute" Content="Delete" Width="60" Margin="5,0,0,0" Click="btnDeleteAttribute_Click"></Button>
-                                        <Button x:Name="btnModifyAttribute" Content="Modify" Width="60" Margin="5,0,0,0" Click="btnModifyAttribute_Click"></Button>
-                                    </StackPanel>
-                                </StackPanel>
+                                        </StackPanel>
 
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem Header="Others">
+                                    <StackPanel>
+                                        <Label Content="Choose Attribute" FontWeight="Bold" />
+                                        <ComboBox x:Name="cboAttrList" Margin="0,0,0,5"  FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboAttrList_SelectionChanged">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                                        <WrapPanel Orientation="Horizontal" >
+                                                            <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                                            <TextBlock Text="{Binding AttributeName}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                                        </WrapPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <ComboBox x:Name="cboAttrCatValue" Margin="1,1,0,0"  FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                                        <WrapPanel Orientation="Horizontal" >
+                                                            <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                                            <TextBlock Text="{Binding}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                                        </WrapPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <StackPanel x:Name="stkpnlNum" Visibility="Collapsed" Orientation="Horizontal">
+                                            <Label>Min</Label>
+                                            <TextBox x:Name="txtAttrNumMinValue" PreviewTextInput="txtAttrNumValue_PreviewTextInput"  FontSize="12" Width="60" Height="30" HorizontalAlignment="Left" />
+                                            <Label>Max</Label>
+                                            <TextBox x:Name="txtAttrNumMaxValue" PreviewTextInput="txtAttrNumValue_PreviewTextInput"  FontSize="12" Width="60" Height="30" HorizontalAlignment="Left" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </TabItem>
+                            </TabControl>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Button x:Name="btnAddAttribute" Content="Add" Width="60" Margin="5,0,0,0" Click="btnAddAttribute_Click"></Button>
+                                <Button x:Name="btnDeleteAttribute" Content="Delete" Width="60" Margin="5,0,0,0" Click="btnDeleteAttribute_Click"></Button>
+                                <Button x:Name="btnModifyAttribute" Content="Modify" Width="60" Margin="5,0,0,0" Click="btnModifyAttribute_Click" Visibility="Collapsed"></Button>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel x:Name="stkpnlBUtton" Orientation="Horizontal" Height="30" Width="430" Margin="0,20,0,0">
+                        </StackPanel>
+                    <StackPanel x:Name="stkpnlBUtton" Orientation="Horizontal" Height="30" Width="430" Margin="0,0,0,0">
                         <Button x:Name="btnNew" Content="New" Width="75" Margin="105,0,5,0" Click="btnNew_Click"></Button>
                         <Button x:Name="btnSave" Content="Save" Width="75" Margin="0,0,5,0" Click="btnSave_Click"></Button>
                         <Button x:Name="btnDelete" Content="Delete" Width="75" Margin="0,0,5,0" Click="btnDelete_Click"></Button>
                         <Button x:Name="btnCancel" Content="Cancel" Width="75" Click="btnCancel_Click"></Button>
                     </StackPanel>
-                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

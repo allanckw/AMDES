@@ -56,7 +56,7 @@
                 <StackPanel>
                     <StackPanel x:Name="stkpnlMainPanel" Height="300" Width="430" >
                        
-                        <StackPanel x:Name="stkpnlSteps" Height="220" Margin="0,0,0,0">
+                        <StackPanel x:Name="stkpnlSteps" Height="260" Margin="0,0,0,0">
 
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

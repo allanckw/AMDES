@@ -27,15 +27,15 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Name="stknric" Margin="0,5,0,5">
                     <Label  Width="150" Content="Identification no.:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Width="200" Height="30" Name="txtNRIC" FontSize="14"/>
+                    <TextBox Width="200" Height="30" Name="txtNRIC" FontSize="14" Tag="Identification No"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Name="stksurname" Margin="0,5,0,5" >
                     <Label Width="150"  Content="Surname:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Width="200" Height="30" Name="txtLastName" FontSize="14" />
+                    <TextBox Width="200" Height="30" Name="txtLastName" FontSize="14" Tag="Surname" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Name="stkfirstname" Margin="0,5,0,5">
                     <Label Width="150"  Content="First name:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Width="200" Height="30" Name="txtFirstName" FontSize="14"/>
+                    <TextBox Width="200" Height="30" Name="txtFirstName" FontSize="14" Tag="Surname"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
                     <Label Width="150"  Content="Date of Birth:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14" />
