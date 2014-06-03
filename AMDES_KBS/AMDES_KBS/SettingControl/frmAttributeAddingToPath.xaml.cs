@@ -28,6 +28,7 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             loadAllAttribute();
+            getAllCompareType();
         }
 
         public frmAttributeAddingToPath(List<NaviChildCritAttribute> otherAttribute)
@@ -43,7 +44,20 @@ namespace AMDES_KBS
             }
             loadAllAttribute();
             reloadAttribute();
+            getAllCompareType();
         }
+
+        private void getAllCompareType()
+        {
+            Array values = Enum.GetValues(typeof(NaviChildCritAttribute.AttributeCmpType));
+
+            foreach (Enum val in values)
+            {
+                cboCompareType.Items.Add(App.processEnumStringForDataBind(val.ToString()));
+            }
+            cboCompareType.SelectedIndex = 0;
+        }
+
 
         private void loadAllAttribute()
         {
@@ -75,7 +89,15 @@ namespace AMDES_KBS
                     s = ">";
                 }
 
-                lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
+                if (!isAttrCompareNumerical(attr.AttributeName))
+                {
+                    PatAttribute attrCat = PatAttributeController.searchPatientAttribute(attr.AttributeName);
+                    lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attrCat.CategoricalVals[int.Parse(attr.AttributeValue)]);
+                }
+                else
+                {
+                    lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
+                }
             }
         }
 
@@ -83,6 +105,19 @@ namespace AMDES_KBS
         {
             NaviChildCritAttribute newAttribute = new NaviChildCritAttribute();
 
+            if (tcAttribute.SelectedIndex == 0)
+            {
+                int sidx = cboCompareType.SelectedIndex;
+                if (sidx == -1)
+                {
+                    return;
+                }
+                newAttribute.AttributeName = "AGE";
+                newAttribute.setRuleType(sidx);
+                newAttribute.AttributeValue = txtAttrAgeValue.Text;
+            }
+            else
+            {
                 int sidx = cboAttrList.SelectedIndex;
                 if (sidx == -1)
                 {
@@ -93,7 +128,7 @@ namespace AMDES_KBS
 
                 if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.CATEGORICAL)
                 {
-                    newAttribute.AttributeValue = cboAttrCatValue.Items[cboAttrCatValue.SelectedIndex].ToString();
+                    newAttribute.AttributeValue = cboAttrCatValue.SelectedIndex.ToString();
                     newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.Equal);
                 }
                 else if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.NUMERIC)
@@ -125,7 +160,7 @@ namespace AMDES_KBS
                         }
                     }
                 }
-
+            }
             if (!checkDuplicateAttribute(newAttribute))
             {
                 naviChildAttribute.Add(newAttribute);

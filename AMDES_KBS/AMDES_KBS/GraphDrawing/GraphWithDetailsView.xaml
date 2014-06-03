@@ -19,7 +19,7 @@
         x:Name="cntCtrl3D" 
         CameraZoomDestination="2,  1,0"
         EasingMode="None" 
-        Width="660" Height="330" VerticalAlignment="Bottom" >
+        Width="700" Height="330" VerticalAlignment="Bottom" >
                 <thriple:ContentControl3D.CameraPrototype>
                     <!--<PerspectiveCamera Position="0,0.5,1.2" LookDirection="0,0,-2" FieldOfView="79" />-->
                     <PerspectiveCamera Position="0,0.5,1.2" LookDirection="0,0,-2" FieldOfView="79" />

@@ -17,6 +17,7 @@ namespace AMDES_KBS
     {
 
         int currIdx = -1;
+        List<NaviChildCritAttribute> naviChildAttribute;
 
         public frmDiagnosisSetting()
         {
@@ -125,7 +126,7 @@ namespace AMDES_KBS
                 {
                     qgGrpList.Add(QuestionController.getGroupByID(d.RetrievalIDList[i]));
                 }
-                chkAge.IsChecked = d.AgeBelow65;
+                //chkAge.IsChecked = d.AgeBelow65;
 
             }
 
@@ -180,7 +181,8 @@ namespace AMDES_KBS
 
             sDiagnosis.RetrieveSym = chkSym.IsChecked.Value;
             sDiagnosis.RetrievalIDList = getSymptonsForDiagnosis();
-            sDiagnosis.AgeBelow65 = chkAge.IsChecked.Value;
+            //sDiagnosis.AgeBelow65 = chkAge.IsChecked.Value;
+            
             sDiagnosis.IsResource = chkRes.IsChecked.Value;
             if (!SaveDiagnosis(sDiagnosis))
             {
@@ -370,7 +372,7 @@ namespace AMDES_KBS
             //txtLink.IsEnabled = !sym;
 
             stkpnlSymtomsSection.Visibility = Visibility.Visible;
-
+            stkpnlAttribute.Visibility = Visibility.Visible;
 
         }
 
@@ -378,6 +380,9 @@ namespace AMDES_KBS
         {
             stkpnlSymtomsSection.Visibility = Visibility.Hidden;
             lstGroupList.ItemsSource = null;
+            stkpnlAttribute.Visibility = Visibility.Visible;
+            lstAttributeList.ItemsSource = null;
+            naviChildAttribute = new List<NaviChildCritAttribute>();
         }
 
         private void chkLink_Checked(object sender, RoutedEventArgs e)
@@ -448,5 +453,58 @@ namespace AMDES_KBS
 
             }
         }
+
+        private void btnOtherAttr_Click(object sender, RoutedEventArgs e)
+        {
+            frmAttributeAddingToPath cAttribute = new frmAttributeAddingToPath(naviChildAttribute);
+
+            if (cAttribute.ShowDialog() == true)
+            {
+                naviChildAttribute = cAttribute.getOtherAttribute();
+                reloadAttribute(naviChildAttribute);
+            }
+            //  cAttribute = new frmAttributeSetting(naviChildOtherAttrGroupList);
+
+            //if (cAttribute.ShowDialog() == true)
+            //{
+            //    naviChildOtherAttrGroupList.
+            //}
+        }
+
+        private void reloadAttribute(List<NaviChildCritAttribute> otherAttr)
+        {
+            lstAttributeList.Items.Clear();
+            foreach (NaviChildCritAttribute attr in otherAttr)
+            {
+                string s = "";
+                if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThanEqual)
+                {
+                    s = "<=";
+                }
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
+                {
+                    s = "<";
+                }
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+                {
+                    s = ">=";
+                }
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                {
+                    s = ">";
+                }
+
+                if (!App.isAttrCompareNumerical(attr.AttributeName))
+                {
+                    PatAttribute attrCat = PatAttributeController.searchPatientAttribute(attr.AttributeName);
+                    lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attrCat.CategoricalVals[int.Parse(attr.AttributeValue)]);
+                }
+                else
+                {
+                    lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
+                }
+            }
+        }
+
     }
 }

@@ -108,7 +108,6 @@ namespace AMDES_KBS
             stepControl.chkConclusive.Unchecked += new RoutedEventHandler(chk_UnChecked);
             //stepControl
             stepControl.loadIsConclusive();
-            stepControl.loadCheckedAgeMoreOrLess();
             stepControl.loadCheckedYN();
             return stepControl;
             //stkpnlSteps.Children.Add(stepControl);
@@ -464,7 +463,6 @@ namespace AMDES_KBS
 
             stkpnlSteps.Children.Clear();
             lstStep[currStep - 1].loadCheckedYN();
-            lstStep[currStep - 1].loadCheckedAgeMoreOrLess();
             
             disableNextButton(lstStep[currStep - 1]);
                         

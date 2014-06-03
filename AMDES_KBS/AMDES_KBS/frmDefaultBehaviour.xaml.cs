@@ -18,25 +18,12 @@ namespace AMDES_KBS
         List<NaviChildCriteriaQuestion> naviChildQuestion;
         List<NaviChildCritAttribute> naviChildAttribute;
         List<Navigation> AllBehaviour;
+
         public frmDefaultBehaviour()
         {
             InitializeComponent();
             newForm();
             loadQuestionGroup();
-            loadAllAttribute();
-            getAllCompareType();
-         //   loadAllBehaviour();
-        }
-
-        private void getAllCompareType()
-        {
-            Array values = Enum.GetValues(typeof(NaviChildCritAttribute.AttributeCmpType));
-
-            foreach (Enum val in values)
-            {
-                cboCompareType.Items.Add(App.processEnumStringForDataBind(val.ToString()));
-            }
-            cboCompareType.SelectedIndex = 0;
         }
 
         private void loadAllBehaviour()
@@ -66,12 +53,6 @@ namespace AMDES_KBS
                 cboBehaviourList.Items.Add(s);
             }
         }
-        private void loadAllAttribute()
-        {
-            cboAttrList.ItemsSource = null;
-            cboAttrList.ItemsSource = PatAttributeController.getAllAttributes();
-            cboAttrList.SelectedIndex = 0;
-        }
 
         private void newForm()
         {
@@ -80,12 +61,13 @@ namespace AMDES_KBS
             naviChildAttribute = new List<NaviChildCritAttribute>();
             cboBehaviourList.SelectedIndex = -1;
             cboGroupList.SelectedIndex = -1;
+            cboDestination.SelectedIndex = -1;
             chkConclusive.IsChecked = false;
             stkpnlDiagnosis.Visibility = Visibility.Collapsed;
             stkpnlSectionDestination.Visibility = Visibility.Visible;
             lstDiagnosisList.ItemsSource = new List<Diagnosis>();
             //txtDescription.Text = "";
-            reloadAttribute();
+            reloadAttribute(naviChildAttribute);
             reloadCriteria();
             loadAllBehaviour();
         }
@@ -101,32 +83,41 @@ namespace AMDES_KBS
             }
         }
 
-        private void reloadAttribute()
+        private void reloadAttribute(List<NaviChildCritAttribute> otherAttr)
         {
             lstAttributeList.Items.Clear();
-            foreach (NaviChildCritAttribute attr in naviChildAttribute)
+            foreach (NaviChildCritAttribute attr in otherAttr)
             {
                 string s = "";
                 if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThanEqual)
                 {
                     s = "<=";
                 }
-                else if(attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
                 {
                     s = "<";
                 }
-                else if(attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
                 {
                     s = ">=";
                 }
-                else if(attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
                 {
                     s = ">";
                 }
 
-                lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
+                if (!App.isAttrCompareNumerical(attr.AttributeName))
+                {
+                    PatAttribute attrCat = PatAttributeController.searchPatientAttribute(attr.AttributeName);
+                    lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attrCat.CategoricalVals[int.Parse(attr.AttributeValue)]);
+                }
+                else
+                {
+                    lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
+                }
             }
         }
+
 
         private void loadQuestionGroup()
         {
@@ -222,128 +213,6 @@ namespace AMDES_KBS
             reloadCriteria();
         }
 
-        private void btnAddAttribute_Click(object sender, RoutedEventArgs e)
-        {
-            NaviChildCritAttribute newAttribute = new NaviChildCritAttribute();
-
-            if (tcAttribute.SelectedIndex==0)
-            {
-                newAttribute.AttributeName = "AGE";
-                newAttribute.AttributeValue = txtAge.Text;
-                newAttribute.setRuleType(cboCompareType.SelectedIndex);
-                //if (radless.IsChecked == true)
-                //{
-                //    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-                //}
-                //else
-                //{
-                //    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
-                //}
-                
-            }
-            else
-            {
-                int sidx = cboAttrList.SelectedIndex;
-                if (sidx==-1)
-                {
-                    return;
-                }
-                PatAttribute Attr = (PatAttribute) cboAttrList.Items[sidx];
-                newAttribute.AttributeName = Attr.AttributeName;
-
-                if (Attr.getAttributeTypeNUM()==PatAttribute.AttributeType.CATEGORICAL)
-                {
-                    newAttribute.AttributeValue = cboAttrCatValue.Items[cboAttrCatValue.SelectedIndex].ToString();
-                    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.Equal);
-                }
-                else if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.NUMERIC)
-                {
-                    if (txtAttrNumMinValue.Text.Trim() != "" && txtAttrNumMaxValue.Text.Trim() != "")
-                    {
-                        newAttribute.AttributeValue = txtAttrNumMinValue.Text;
-                        newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
-                        if (!checkDuplicateAttribute(newAttribute))
-                        {
-                            naviChildAttribute.Add(newAttribute);
-                        }
-                        newAttribute = new NaviChildCritAttribute();
-                        newAttribute.AttributeName = Attr.AttributeName;
-                        newAttribute.AttributeValue = txtAttrNumMaxValue.Text;
-                        newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-                    }
-                    else
-                    {
-                        if (txtAttrNumMinValue.Text.Trim() != "" && txtAttrNumMaxValue.Text.Trim() == "")
-                        {
-                            newAttribute.AttributeValue = txtAttrNumMinValue.Text;
-                            newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
-                        }
-                        else
-                        {
-                            newAttribute.AttributeValue = txtAttrNumMaxValue.Text;
-                            newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-                        }
-                    }
-                }
-            }
-
-            if (!checkDuplicateAttribute(newAttribute))
-            {
-                naviChildAttribute.Add(newAttribute);
-            }
-            reloadAttribute();
-        }
-
-        private bool checkDuplicateAttribute(NaviChildCritAttribute attr)
-        {
-            foreach (NaviChildCritAttribute critAttr in this.naviChildAttribute)
-            {
-                if (attr.AttributeName == critAttr.AttributeName)
-                {
-                    if (attr.getAttributeTypeENUM() == critAttr.getAttributeTypeENUM())
-                    {
-                        if (!isAttrCompareNumerical(attr.AttributeName))
-                        {
-                            if (attr.AttributeValue == critAttr.AttributeValue)
-                            {
-                                return true;
-                            }
-                        }
-                        else
-                        {
-                            critAttr.AttributeValue = attr.AttributeValue;
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
-        private bool isAttrCompareNumerical(String attrName)
-        {
-            if (attrName == "AGE")
-            {
-                return true;
-            }
-
-            try
-            {
-                if (PatAttributeController.searchPatientAttribute(attrName).getAttributeTypeNUM() == PatAttribute.AttributeType.NUMERIC)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
         private void btnAddDiagnosis_Click(object sender, RoutedEventArgs e)
         {
             List<Diagnosis> dList = (List<Diagnosis>)lstDiagnosisList.ItemsSource;
@@ -353,40 +222,6 @@ namespace AMDES_KBS
                 lstDiagnosisList.ItemsSource = null;
                 lstDiagnosisList.ItemsSource = cDiagnosis.getAddedDiagnosis();
             }
-        }
-
-        private void btnDeleteAttribute_Click(object sender, RoutedEventArgs e)
-        {
-            int sIdx = lstAttributeList.SelectedIndex;
-            if (sIdx == -1)
-            {
-                return;
-            }
-            naviChildAttribute.RemoveAt(sIdx);
-            reloadAttribute();
-        }
-
-        private void btnModifyAttribute_Click(object sender, RoutedEventArgs e)
-        {
-            int sIdx = lstAttributeList.SelectedIndex;
-            if (sIdx == -1)
-            {
-                return;
-            }
-            NaviChildCritAttribute oldAttribute = naviChildAttribute[sIdx];
-            oldAttribute.AttributeName = "AGE";
-            oldAttribute.AttributeValue = txtAge.Text;
-            oldAttribute.setRuleType(cboCompareType.SelectedIndex);
-            //if (radless.IsChecked == true)
-            //{
-            //    oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-            //}
-            //else
-            //{
-            //    oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
-            //}
-
-            reloadAttribute();
         }
 
         private void loadExistingCriteria(NaviChildCriteriaQuestion criteria)
@@ -406,28 +241,6 @@ namespace AMDES_KBS
             radN.IsChecked = !criteria.Ans;
         }
 
-        private void loadExistingAttribute(NaviChildCritAttribute attribute)
-        {
-            if (attribute.AttributeName == "AGE")
-            {
-                cboCompareType.SelectedIndex = attribute.getCompareType();
-                //if (attribute.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
-                //{
-                //    radMoreEqual.IsChecked = true;
-                //}
-                //else
-                //{
-                //    radless.IsChecked = true;
-                //}
-                txtAge.Text = attribute.AttributeValue;
-                tcAttribute.SelectedIndex = 0;
-            }
-            else
-            {
-
-            }
-        }
-
         private void lstCriteriaList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int sIdx = lstCriteriaList.SelectedIndex;
@@ -437,17 +250,6 @@ namespace AMDES_KBS
             }
             NaviChildCriteriaQuestion existingCriteria = naviChildQuestion[sIdx];
             loadExistingCriteria(existingCriteria);
-        }
-
-        private void lstAttributeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int sIdx = lstAttributeList.SelectedIndex;
-            if (sIdx == -1)
-            {
-                return;
-            }
-            NaviChildCritAttribute existingAttribute = naviChildAttribute[sIdx];
-            loadExistingAttribute(existingAttribute);
         }
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
@@ -613,7 +415,7 @@ namespace AMDES_KBS
             }
 
             reloadCriteria();
-            reloadAttribute();
+            reloadAttribute(naviChildAttribute);
         }
 
         private void chkConclusive_Checked(object sender, RoutedEventArgs e)
@@ -629,36 +431,27 @@ namespace AMDES_KBS
             stkpnlDiagnosis.Visibility = Visibility.Collapsed;
         }
 
-        private void cboAttrList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int sidx = cboAttrList.SelectedIndex;
-            if (sidx==-1)
-            {
-                return;
-            }
-            PatAttribute Attr = (PatAttribute)cboAttrList.Items[sidx];
-            txtAttrNumMinValue.Text = "";
-            txtAttrNumMaxValue.Text = "";
-            cboAttrCatValue.Items.Clear();
-            if (Attr.getAttributeTypeNUM()==PatAttribute.AttributeType.NUMERIC)
-            {
-                stkpnlNum.Visibility = Visibility.Visible;
-                cboAttrCatValue.Visibility = Visibility.Collapsed;
-            }
-            else if (Attr.getAttributeTypeNUM()==PatAttribute.AttributeType.CATEGORICAL)
-            {
-                stkpnlNum.Visibility = Visibility.Collapsed;
-                cboAttrCatValue.Visibility = Visibility.Visible;
-                foreach (string value in Attr.CategoricalVals)
-                {
-                    cboAttrCatValue.Items.Add(value);
-                }
-            }
-        }
-
         private void txtAttrNumValue_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             e.Handled = App.NumberValidationTextBox(e.Text);
         }
+
+        private void btnOtherAttr_Click(object sender, RoutedEventArgs e)
+        {
+            frmAttributeAddingToPath cAttribute = new frmAttributeAddingToPath(naviChildAttribute);
+
+            if (cAttribute.ShowDialog() == true)
+            {
+                naviChildAttribute = cAttribute.getOtherAttribute();
+                reloadAttribute(naviChildAttribute);
+            }
+            //  cAttribute = new frmAttributeSetting(naviChildOtherAttrGroupList);
+
+            //if (cAttribute.ShowDialog() == true)
+            //{
+            //    naviChildOtherAttrGroupList.
+            //}
+        }
+
     }
 }

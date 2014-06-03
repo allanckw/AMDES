@@ -5,6 +5,9 @@ using System.Windows.Input;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Windows.Media;
+using AMDES_KBS.Controllers;
+using System;
+using AMDES_KBS.Entity;
 
 namespace AMDES_KBS
 {
@@ -42,6 +45,30 @@ namespace AMDES_KBS
                         yield return childOfChild;
                     }
                 }
+            }
+        }
+
+        public static bool isAttrCompareNumerical(string attrName)
+        {
+            if (attrName == "AGE")
+            {
+                return true;
+            }
+
+            try
+            {
+                if (PatAttributeController.searchPatientAttribute(attrName).getAttributeTypeNUM() == PatAttribute.AttributeType.NUMERIC)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 

@@ -87,110 +87,14 @@
                             </StackPanel>
                     <StackPanel x:Name="stkpnlAttribute" Orientation="Horizontal" Margin="0,10,0,0">
                         <StackPanel>
-                            <Label FontWeight="Bold" Height="30" FontSize="14">List of Attribute</Label>
+                            <StackPanel Orientation="Horizontal">
+                                <Label FontWeight="Bold" Height="30" FontSize="14">List of Attribute</Label>
+                                <Button x:Name="btnOtherAttr" Content="Select" Margin="255,0,0,0" Width="50" Click="btnOtherAttr_Click"></Button>
+                            </StackPanel>
                             <ListBox x:Name="lstAttributeList" Margin="1,1,0,0"  FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="145" Width="195" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" >
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="145" Width="420" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" >
 
                             </ListBox>
-                        </StackPanel>
-                        <StackPanel Margin="5,0,0,0">
-                            <TabControl x:Name="tcAttribute" Width="215" Background="Transparent">
-                                <TabItem Header="AGE">
-                                    <StackPanel>
-                                        <Label Content="Age Attribute" FontWeight="Bold" />
-                                        <StackPanel x:Name="stkpnlAgeSetting" Orientation="Horizontal" Margin="0,0,0,0" >
-                                            <StackPanel x:Name="stkpnlAgeCriteria">
-                                                <ComboBox x:Name="cboCompareType" Margin="0,5,0,0"  FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="35" Width="160" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                                    <ComboBox.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <StackPanel Orientation="Vertical" Margin="0,5,0,5">
-                                                                <WrapPanel Orientation="Horizontal" >
-                                                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                                                    <TextBlock Text="{Binding}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                                                </WrapPanel>
-                                                            </StackPanel>
-                                                        </DataTemplate>
-                                                    </ComboBox.ItemTemplate>
-                                                </ComboBox>
-                                            </StackPanel>
-                                            <StackPanel>
-                                                <TextBox x:Name="txtAge" Width="40" Height="35" Margin="5,5,0,5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
-                                                    <TextBox.Style>
-                                                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                                            <Style.Resources>
-                                                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                                                    <VisualBrush.Visual>
-                                                                        <Label Content="Age" Foreground="DimGray" />
-                                                                    </VisualBrush.Visual>
-                                                                </VisualBrush>
-                                                            </Style.Resources>
-                                                            <Style.Triggers>
-                                                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                                                </Trigger>
-                                                                <Trigger Property="Text" Value="{x:Null}">
-                                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                                                </Trigger>
-                                                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                                                    <Setter Property="Background" Value="White" />
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </TextBox.Style>
-                                                </TextBox>
-                                            </StackPanel>
-                                            <!--<StackPanel VerticalAlignment="Center" Height="40" Width="50">
-                            <RadioButton x:Name="radAgeTrue" IsChecked="True" GroupName="ageTF" Content="True" FontSize="12" Margin="0,2,0,6" Checked="radAgeTrue_Checked" />
-                            <RadioButton x:Name="radAgeFalse" GroupName="ageTF" Content="False" FontSize="12" Checked="radAgeFalse_Checked" />
-                        </StackPanel>-->
-                                        </StackPanel>
-
-                                    </StackPanel>
-                                </TabItem>
-                                <TabItem Header="Others">
-                                    <StackPanel>
-                                        <Label Content="Choose Attribute" FontWeight="Bold" />
-                                        <ComboBox x:Name="cboAttrList" Margin="0,0,0,5"  FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboAttrList_SelectionChanged">
-                                            <ComboBox.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Vertical" Margin="0,5,0,5">
-                                                        <WrapPanel Orientation="Horizontal" >
-                                                            <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                                            <TextBlock Text="{Binding AttributeName}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                                        </WrapPanel>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </ComboBox.ItemTemplate>
-                                        </ComboBox>
-                                        <ComboBox x:Name="cboAttrCatValue" Margin="1,1,0,0"  FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" >
-                                            <ComboBox.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Vertical" Margin="0,5,0,5">
-                                                        <WrapPanel Orientation="Horizontal" >
-                                                            <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                                            <TextBlock Text="{Binding}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                                        </WrapPanel>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </ComboBox.ItemTemplate>
-                                        </ComboBox>
-                                        <StackPanel x:Name="stkpnlNum" Visibility="Collapsed" Orientation="Horizontal">
-                                            <Label>Min</Label>
-                                            <TextBox x:Name="txtAttrNumMinValue" PreviewTextInput="txtAttrNumValue_PreviewTextInput"  FontSize="12" Width="60" Height="30" HorizontalAlignment="Left" />
-                                            <Label>Max</Label>
-                                            <TextBox x:Name="txtAttrNumMaxValue" PreviewTextInput="txtAttrNumValue_PreviewTextInput"  FontSize="12" Width="60" Height="30" HorizontalAlignment="Left" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                </TabItem>
-                            </TabControl>
-                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <Button x:Name="btnAddAttribute" Content="Add" Width="60" Margin="5,0,0,0" Click="btnAddAttribute_Click"></Button>
-                                <Button x:Name="btnDeleteAttribute" Content="Delete" Width="60" Margin="5,0,0,0" Click="btnDeleteAttribute_Click"></Button>
-                                <Button x:Name="btnModifyAttribute" Content="Modify" Width="60" Margin="5,0,0,0" Click="btnModifyAttribute_Click" Visibility="Collapsed"></Button>
-                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                         </StackPanel>

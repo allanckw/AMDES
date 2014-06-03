@@ -12,63 +12,8 @@
                 <CheckBox x:Name="chkConclusive" Content="Is Conclusive?(Uncheck to add steps)" FontSize="16" FontWeight="Bold" Height="20" Margin="0,5,0,0" />
             </StackPanel>
             <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox x:Name="chkRequireAge" Content="Required Age?" Height="20" Checked="chkRequireAge_Checked" Unchecked="chkRequireAge_Unchecked" />
-                        <StackPanel x:Name="stkpnlAgeSetting" Visibility="Hidden" Orientation="Horizontal" Margin="10,0,0,0" >
-                            <StackPanel x:Name="stkpnlAgeCriteria">
-                                <!-- change to combo box -->
-                                <ComboBox x:Name="cboCompareType" Margin="0,5,0,0"  FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="35" Width="160" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Vertical" Margin="0,5,0,5">
-                                                <WrapPanel Orientation="Horizontal" >
-                                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                                    <TextBlock Text="{Binding}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                                </WrapPanel>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                                <!--<RadioButton x:Name="radlessThaneqal" GroupName="checkAge" Content="Less than or equal" Height="20" IsChecked="True" Checked="radless_Checked" />
-                            <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than" Height="20" Width="125" Checked="radMoreEqual_Checked" />-->
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBox x:Name="txtAge" Width="40" Height="35" Margin="5,5,0,0" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
-                                    <TextBox.Style>
-                                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                            <Style.Resources>
-                                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                                    <VisualBrush.Visual>
-                                                        <Label Content="Age" Foreground="DimGray" />
-                                                    </VisualBrush.Visual>
-                                                </VisualBrush>
-                                            </Style.Resources>
-                                            <Style.Triggers>
-                                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                                </Trigger>
-                                                <Trigger Property="Text" Value="{x:Null}">
-                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                                </Trigger>
-                                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                                    <Setter Property="Background" Value="White" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBox.Style>
-                                </TextBox>
-                            </StackPanel>
-                            <!--<StackPanel VerticalAlignment="Center" Height="40" Width="50">
-                            <RadioButton x:Name="radAgeTrue" IsChecked="True" GroupName="ageTF" Content="True" FontSize="12" Margin="0,2,0,6" Checked="radAgeTrue_Checked" />
-                            <RadioButton x:Name="radAgeFalse" GroupName="ageTF" Content="False" FontSize="12" Checked="radAgeFalse_Checked" />
-                        </StackPanel>-->
-                        </StackPanel>
 
-                    </StackPanel>
-                </StackPanel>
-                <CheckBox x:Name="chkOtherAttr" Content="Require Other Attribute?" Checked="chkOtherAttr_Checked" Unchecked="chkOtherAttr_Unchecked" />
+                <CheckBox x:Name="chkOtherAttr" Content="Require Attribute?" Checked="chkOtherAttr_Checked" Unchecked="chkOtherAttr_Unchecked" />
 
             </StackPanel>
             <StackPanel x:Name="stkpnlDetail" Orientation="Horizontal">

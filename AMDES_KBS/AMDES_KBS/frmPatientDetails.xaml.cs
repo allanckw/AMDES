@@ -74,7 +74,7 @@ namespace AMDES_KBS
                     cbo.Width = 200;
                     cbo.Height = 30;
                     cbo.FontSize = 14;
-
+                    cbo.Tag = Attr.AttributeName;
                     foreach (string value in Attr.CategoricalVals)
                     {
                         cbo.Items.Add(value);
@@ -165,19 +165,6 @@ namespace AMDES_KBS
         {
             try
             {
-                foreach (TextBox txt in App.FindVisualChildren<TextBox>(stkpnlPatientDetails))
-                {
-                    StackPanel stkpnlParent;
-                    if (txt.Parent is StackPanel)
-                    {
-                        stkpnlParent = (StackPanel)txt.Parent;
-                        if (txt.Text.Trim() == "" && stkpnlParent.Visibility == Visibility.Visible)
-                        {
-                            MessageBox.Show(txt.Tag + " cannot be empty!");
-                            return false;
-                        }                        
-                    }
-                }
 
                 if (CLIPSController.savePatient == true)
                 {
@@ -209,6 +196,48 @@ namespace AMDES_KBS
                     {
                         Patient p = new Patient(a, txtNRIC.Text.Trim(), txtFirstName.Text.Trim(),
                                             txtLastName.Text.Trim(), (DateTime)dtpDOB.SelectedDate);
+                        foreach (TextBox txt in App.FindVisualChildren<TextBox>(stkpnlPatientDetails))
+                        {
+                            StackPanel stkpnlParent;
+                            if (txt.Parent is StackPanel)
+                            {
+                                stkpnlParent = (StackPanel)txt.Parent;
+                                if (txt.Text.Trim() == "" && stkpnlParent.Visibility == Visibility.Visible)
+                                {
+                                    MessageBox.Show(txt.Tag + " cannot be empty!");
+                                    return false;
+                                }
+                                else
+                                {
+                                    if (PatAttributeController.searchPatientAttribute(txt.Tag.ToString())!=null)
+                                    {
+                                        p.createAttribute(txt.Tag.ToString(), int.Parse(txt.Text.ToString()));                                        
+                                    }
+                                }
+                            }
+                        }
+
+                        foreach (ComboBox cbo in App.FindVisualChildren<ComboBox>(stkpnlPatientDetails))
+                        {
+                            StackPanel stkpnlParent;
+                            if (cbo.Parent is StackPanel)
+                            {
+                                stkpnlParent = (StackPanel)cbo.Parent;
+                                if (cbo.SelectedIndex == -1 && stkpnlParent.Visibility == Visibility.Visible)
+                                {
+                                    MessageBox.Show(cbo.Tag + " must be selected!");
+                                    return false;
+                                }
+                                else
+                                {
+                                    if (PatAttributeController.searchPatientAttribute(cbo.Tag.ToString()) != null)
+                                    {
+                                        p.createAttribute(cbo.Tag.ToString(), cbo.SelectedIndex);
+                                    }
+                                }
+                            }
+                        }
+                        p.getAttributes();
 
                         PatientController.updatePatient(p);
 
@@ -231,6 +260,49 @@ namespace AMDES_KBS
                         
                         p.NRIC = "ANON";
 
+                        foreach (TextBox txt in App.FindVisualChildren<TextBox>(stkpnlPatientDetails))
+                        {
+                            StackPanel stkpnlParent;
+                            if (txt.Parent is StackPanel)
+                            {
+                                stkpnlParent = (StackPanel)txt.Parent;
+                                if (txt.Text.Trim() == "" && stkpnlParent.Visibility == Visibility.Visible)
+                                {
+                                    MessageBox.Show(txt.Tag + " cannot be empty!");
+                                    return false;
+                                }
+                                else
+                                {
+                                    if (PatAttributeController.searchPatientAttribute(txt.Tag.ToString()) != null)
+                                    {
+                                        p.createAttribute(txt.Tag.ToString(), int.Parse(txt.Text.ToString()));
+                                    }
+                                }
+                            }
+                        }
+
+                        foreach (ComboBox cbo in App.FindVisualChildren<ComboBox>(stkpnlPatientDetails))
+                        {
+                            StackPanel stkpnlParent;
+                            if (cbo.Parent is StackPanel)
+                            {
+                                stkpnlParent = (StackPanel)cbo.Parent;
+                                if (cbo.SelectedIndex == -1 && stkpnlParent.Visibility == Visibility.Visible)
+                                {
+                                    MessageBox.Show(cbo.Tag + " must be selected!");
+                                    return false;
+                                }
+                                else
+                                {
+                                    if (PatAttributeController.searchPatientAttribute(cbo.Tag.ToString()) != null)
+                                    {
+                                        p.createAttribute(cbo.Tag.ToString(), cbo.SelectedIndex);
+                                    }
+                                }
+                            }
+                        }
+                        p.getAttributes();
+                        
                         CLIPSController.CurrentPatient = p;
                         return true;
                     }
@@ -241,7 +313,6 @@ namespace AMDES_KBS
                 MessageBox.Show(ex.Message.ToString());
                 return false;
             }
-
 
         }
 

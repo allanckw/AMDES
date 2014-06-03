@@ -44,4 +44,51 @@
       <DiagnosisID>20</DiagnosisID>
     </Diagnoses>
   </Navex>
+  <Navex NavID="5">
+    <Destination>7</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>true</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes>
+      <ChildCriteriaAttribute>
+        <AttributeName>AGE</AttributeName>
+        <AttributeValue>65</AttributeValue>
+        <CompareType>3</CompareType>
+      </ChildCriteriaAttribute>
+      <ChildCriteriaAttribute>
+        <AttributeName>BLOOD SUGAR</AttributeName>
+        <AttributeValue>110</AttributeValue>
+        <CompareType>1</CompareType>
+      </ChildCriteriaAttribute>
+      <ChildCriteriaAttribute>
+        <AttributeName>BLOOD SUGAR</AttributeName>
+        <AttributeValue>140</AttributeValue>
+        <CompareType>3</CompareType>
+      </ChildCriteriaAttribute>
+      <ChildCriteriaAttribute>
+        <AttributeName>BLOOD TYPE</AttributeName>
+        <AttributeValue>0</AttributeValue>
+        <CompareType>0</CompareType>
+      </ChildCriteriaAttribute>
+      <ChildCriteriaAttribute>
+        <AttributeName>BLOOD TYPE</AttributeName>
+        <AttributeValue>1</AttributeValue>
+        <CompareType>0</CompareType>
+      </ChildCriteriaAttribute>
+      <ChildCriteriaAttribute>
+        <AttributeName>BLOOD TYPE</AttributeName>
+        <AttributeValue>2</AttributeValue>
+        <CompareType>0</CompareType>
+      </ChildCriteriaAttribute>
+      <ChildCriteriaAttribute>
+        <AttributeName>BLOOD TYPE</AttributeName>
+        <AttributeValue>3</AttributeValue>
+        <CompareType>0</CompareType>
+      </ChildCriteriaAttribute>
+    </NavigationChildAttributes>
+    <Diagnoses />
+  </Navex>
 </Navigations>
