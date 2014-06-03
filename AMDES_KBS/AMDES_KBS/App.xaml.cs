@@ -45,6 +45,24 @@ namespace AMDES_KBS
             }
         }
 
+        public static string processEnumStringForDataBind(string value)
+        {
+            string str2display = "";
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (char.IsUpper(value[i]) && i != 0)
+                {
+                    str2display += " " + value[i];
+                }
+                else
+                {
+                    str2display += value[i];
+                }
+            }
+
+            return str2display;
+        }
 
         // \u2023 (TRIANGULAR BULLET)
         // \u25E6 (WHITE BULLET)

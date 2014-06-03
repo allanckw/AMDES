@@ -95,6 +95,7 @@ namespace AMDES_KBS
             //lstStep[0].loadCheckedYN();
 
             stkpnlSteps.Children.Add(lstStep[0]);
+
             btnNextStep.Visibility = Visibility.Visible;
             btnPrevStep.Visibility = Visibility.Hidden;
         }
@@ -193,9 +194,11 @@ namespace AMDES_KBS
         {
             while (currStep < lstStep.Count)
             {
-                currStep++;
                 loadSteps();
+                currStep++;
             }
+
+            loadSteps();
 
             g = new Graph("RuleID: " + rule.RuleID + ", " + rule.Description);
             Navigation nav = rule.Navigations[rule.Navigations.Count - 1];
@@ -462,7 +465,9 @@ namespace AMDES_KBS
             stkpnlSteps.Children.Clear();
             lstStep[currStep - 1].loadCheckedYN();
             lstStep[currStep - 1].loadCheckedAgeMoreOrLess();
+            
             disableNextButton(lstStep[currStep - 1]);
+                        
             stkpnlSteps.Children.Add(lstStep[currStep - 1]);
 
         }

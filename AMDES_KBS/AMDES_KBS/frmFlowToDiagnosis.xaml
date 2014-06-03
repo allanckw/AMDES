@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:amdes="clr-namespace:AMDES_KBS"
           xmlns:local="clr-namespace:CircularDependencyTool"
-        Title="Flow to Diagnosis" Height="720" Width="660" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Flow to Diagnosis" Height="720" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="{x:Type local:NodeConnector}">
             <Setter Property="ArrowLength" Value="12" />
@@ -52,11 +52,11 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="stkpnlRightDiv" Width="430" Margin="5,0,0,0">
+            <StackPanel x:Name="stkpnlRightDiv" Width="470" Margin="5,0,0,0">
                 <StackPanel>
-                    <StackPanel x:Name="stkpnlMainPanel" Height="300" Width="430" >
+                    <StackPanel x:Name="stkpnlMainPanel" Height="315" Width="470" >
                        
-                        <StackPanel x:Name="stkpnlSteps" Height="260" Margin="0,0,0,0">
+                        <StackPanel x:Name="stkpnlSteps" Height="285" Margin="0,0,0,0">
 
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -64,8 +64,8 @@
                             <Button x:Name="btnNextStep" Width="100" Height="25" Margin="0,0,1,0" Visibility="Hidden" Click="btnNextStep_Click">Next Step</Button>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel x:Name="stkpnlBUtton" Orientation="Horizontal" Height="30" Width="430" Margin="0,10,0,0">
-                        <Button x:Name="btnNew" Content="New" Width="75" Margin="35,0,5,0" Click="btnNew_Click"></Button>
+                    <StackPanel x:Name="stkpnlBUtton" Orientation="Horizontal" Height="30" Width="470" Margin="0,0,0,0">
+                        <Button x:Name="btnNew" Content="New" Width="75" Margin="75,0,5,0" Click="btnNew_Click"></Button>
                         <Button Content="Duplicate" Name="btnDuplicate" Width="75" Margin="0,0,5,0" Click="btnDuplicate_Click" />
                         <Button x:Name="btnSave" Content="Save" Width="75" Margin="0,0,5,0" Click="btnSave_Click"></Button>
                         <Button x:Name="btnDelete" Content="Delete" Width="75" Margin="0,0,5,0" Click="btnDelete_Click"></Button>

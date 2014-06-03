@@ -98,13 +98,24 @@
                                 <TabItem Header="AGE">
                                     <StackPanel>
                                         <Label Content="Age Attribute" FontWeight="Bold" />
-                                        <StackPanel x:Name="stkpnlAgeSetting" Orientation="Horizontal" Margin="10,0,0,0" >
+                                        <StackPanel x:Name="stkpnlAgeSetting" Orientation="Horizontal" Margin="0,0,0,0" >
                                             <StackPanel x:Name="stkpnlAgeCriteria">
-                                                <RadioButton x:Name="radless" GroupName="checkAge" Content="Less than or Equal" Height="20" IsChecked="True"  />
-                                                <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than" Height="20" Width="125" />
+                                                <ComboBox x:Name="cboCompareType" Margin="0,5,0,0"  FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="35" Width="160" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                                                <WrapPanel Orientation="Horizontal" >
+                                                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                                                    <TextBlock Text="{Binding}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                                                </WrapPanel>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
                                             </StackPanel>
-                                            <StackPanel Width="75" Height="40">
-                                                <TextBox x:Name="txtAge" Width="40" Height="30" Margin="5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
+                                            <StackPanel>
+                                                <TextBox x:Name="txtAge" Width="40" Height="35" Margin="5,5,0,5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
                                                     <TextBox.Style>
                                                         <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                                                             <Style.Resources>

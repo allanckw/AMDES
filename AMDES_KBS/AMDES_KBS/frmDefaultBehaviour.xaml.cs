@@ -24,7 +24,19 @@ namespace AMDES_KBS
             newForm();
             loadQuestionGroup();
             loadAllAttribute();
+            getAllCompareType();
          //   loadAllBehaviour();
+        }
+
+        private void getAllCompareType()
+        {
+            Array values = Enum.GetValues(typeof(NaviChildCritAttribute.AttributeCmpType));
+
+            foreach (Enum val in values)
+            {
+                cboCompareType.Items.Add(App.processEnumStringForDataBind(val.ToString()));
+            }
+            cboCompareType.SelectedIndex = 0;
         }
 
         private void loadAllBehaviour()
@@ -218,14 +230,15 @@ namespace AMDES_KBS
             {
                 newAttribute.AttributeName = "AGE";
                 newAttribute.AttributeValue = txtAge.Text;
-                if (radless.IsChecked == true)
-                {
-                    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-                }
-                else
-                {
-                    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
-                }
+                newAttribute.setRuleType(cboCompareType.SelectedIndex);
+                //if (radless.IsChecked == true)
+                //{
+                //    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                //}
+                //else
+                //{
+                //    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
+                //}
                 
             }
             else
@@ -285,17 +298,50 @@ namespace AMDES_KBS
         {
             foreach (NaviChildCritAttribute critAttr in this.naviChildAttribute)
             {
-                if (attr.AttributeName==critAttr.AttributeName)
+                if (attr.AttributeName == critAttr.AttributeName)
                 {
-                    if (attr.getAttributeTypeENUM()==critAttr.getAttributeTypeENUM())
+                    if (attr.getAttributeTypeENUM() == critAttr.getAttributeTypeENUM())
                     {
-                        critAttr.AttributeValue = attr.AttributeValue;
-                        return true;
+                        if (!isAttrCompareNumerical(attr.AttributeName))
+                        {
+                            if (attr.AttributeValue == critAttr.AttributeValue)
+                            {
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            critAttr.AttributeValue = attr.AttributeValue;
+                            return true;
+                        }
                     }
                 }
             }
-
             return false;
+        }
+
+        private bool isAttrCompareNumerical(String attrName)
+        {
+            if (attrName == "AGE")
+            {
+                return true;
+            }
+
+            try
+            {
+                if (PatAttributeController.searchPatientAttribute(attrName).getAttributeTypeNUM() == PatAttribute.AttributeType.NUMERIC)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private void btnAddDiagnosis_Click(object sender, RoutedEventArgs e)
@@ -330,14 +376,15 @@ namespace AMDES_KBS
             NaviChildCritAttribute oldAttribute = naviChildAttribute[sIdx];
             oldAttribute.AttributeName = "AGE";
             oldAttribute.AttributeValue = txtAge.Text;
-            if (radless.IsChecked == true)
-            {
-                oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-            }
-            else
-            {
-                oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
-            }
+            oldAttribute.setRuleType(cboCompareType.SelectedIndex);
+            //if (radless.IsChecked == true)
+            //{
+            //    oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+            //}
+            //else
+            //{
+            //    oldAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
+            //}
 
             reloadAttribute();
         }
@@ -363,14 +410,15 @@ namespace AMDES_KBS
         {
             if (attribute.AttributeName == "AGE")
             {
-                if (attribute.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
-                {
-                    radMoreEqual.IsChecked = true;
-                }
-                else
-                {
-                    radless.IsChecked = true;
-                }
+                cboCompareType.SelectedIndex = attribute.getCompareType();
+                //if (attribute.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                //{
+                //    radMoreEqual.IsChecked = true;
+                //}
+                //else
+                //{
+                //    radless.IsChecked = true;
+                //}
                 txtAge.Text = attribute.AttributeValue;
                 tcAttribute.SelectedIndex = 0;
             }

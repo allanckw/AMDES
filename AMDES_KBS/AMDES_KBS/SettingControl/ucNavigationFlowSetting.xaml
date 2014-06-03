@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="260" d:DesignWidth="410">
+             d:DesignHeight="280" d:DesignWidth="470">
     <Grid>
         <StackPanel>
             <Label Height="40" x:Name="lblCurrStep" FontSize="24" FontWeight="Bold">Step X</Label>
@@ -13,64 +13,81 @@
             </StackPanel>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox x:Name="chkRequireAge" Content="Required Age?" Height="20" Checked="chkRequireAge_Checked" Unchecked="chkRequireAge_Unchecked" />
-                    <StackPanel x:Name="stkpnlAgeSetting" Visibility="Hidden" Orientation="Horizontal" Margin="10,0,0,0" >
-                        <StackPanel x:Name="stkpnlAgeCriteria">
-                            <!-- change to combo box -->
-                            <ComboBox x:Name="cboCompareType" Margin="0,5,0,0"  FontSize="12" 
-        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Vertical" Margin="0,5,0,5">
-                                            <WrapPanel Orientation="Horizontal" >
-                                                <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
-                                                <TextBlock Text="{Binding}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
-                                            </WrapPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <!--<RadioButton x:Name="radlessThaneqal" GroupName="checkAge" Content="Less than or equal" Height="20" IsChecked="True" Checked="radless_Checked" />
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="chkRequireAge" Content="Required Age?" Height="20" Checked="chkRequireAge_Checked" Unchecked="chkRequireAge_Unchecked" />
+                        <StackPanel x:Name="stkpnlAgeSetting" Visibility="Hidden" Orientation="Horizontal" Margin="10,0,0,0" >
+                            <StackPanel x:Name="stkpnlAgeCriteria">
+                                <!-- change to combo box -->
+                                <ComboBox x:Name="cboCompareType" Margin="0,5,0,0"  FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="35" Width="160" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                                <WrapPanel Orientation="Horizontal" >
+                                                    <TextBlock Text="" Foreground="DarkBlue" FontWeight="Bold"/>
+                                                    <TextBlock Text="{Binding}" TextWrapping="Wrap"  Foreground="DarkBlue" FontWeight="Bold"/>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <!--<RadioButton x:Name="radlessThaneqal" GroupName="checkAge" Content="Less than or equal" Height="20" IsChecked="True" Checked="radless_Checked" />
                             <RadioButton x:Name="radMoreEqual" GroupName="checkAge" IsChecked="False" Content="More than" Height="20" Width="125" Checked="radMoreEqual_Checked" />-->
-                        </StackPanel>
-                        <StackPanel Width="75" Height="40">
-                            <TextBox x:Name="txtAge" Width="40" Height="30" Margin="5" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                        <Style.Resources>
-                                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                                <VisualBrush.Visual>
-                                                    <Label Content="Age" Foreground="DimGray" />
-                                                </VisualBrush.Visual>
-                                            </VisualBrush>
-                                        </Style.Resources>
-                                        <Style.Triggers>
-                                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                            </Trigger>
-                                            <Trigger Property="Text" Value="{x:Null}">
-                                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                            </Trigger>
-                                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                                <Setter Property="Background" Value="White" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
-                        </StackPanel>
-                        <!--<StackPanel VerticalAlignment="Center" Height="40" Width="50">
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBox x:Name="txtAge" Width="40" Height="35" Margin="5,5,0,0" TextAlignment="Center" ToolTip="Input the Age" FontSize="20" Text="65">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                            <Style.Resources>
+                                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                                    <VisualBrush.Visual>
+                                                        <Label Content="Age" Foreground="DimGray" />
+                                                    </VisualBrush.Visual>
+                                                </VisualBrush>
+                                            </Style.Resources>
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="{x:Null}">
+                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                </Trigger>
+                                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                                    <Setter Property="Background" Value="White" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </StackPanel>
+                            <!--<StackPanel VerticalAlignment="Center" Height="40" Width="50">
                             <RadioButton x:Name="radAgeTrue" IsChecked="True" GroupName="ageTF" Content="True" FontSize="12" Margin="0,2,0,6" Checked="radAgeTrue_Checked" />
                             <RadioButton x:Name="radAgeFalse" GroupName="ageTF" Content="False" FontSize="12" Checked="radAgeFalse_Checked" />
                         </StackPanel>-->
+                        </StackPanel>
+
                     </StackPanel>
                 </StackPanel>
+                <CheckBox x:Name="chkOtherAttr" Content="Require Other Attribute?" Checked="chkOtherAttr_Checked" Unchecked="chkOtherAttr_Unchecked" />
 
             </StackPanel>
             <StackPanel x:Name="stkpnlDetail" Orientation="Horizontal">
+                <StackPanel x:Name="stkpnlOtherAttribute" Orientation="Vertical" Visibility="Collapsed">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label FontWeight="Bold" Height="30" FontSize="14">List of Attribute</Label>
+                            <Button x:Name="btnOtherAttr" Content="Select" Margin="85,0,0,0" Width="50" Click="btnOtherAttr_Click"></Button>
+                        </StackPanel>
+                        <ListBox x:Name="lstAttributeList" Margin="1,1,0,0"  FontSize="12" 
+        				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="130" Width="250" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" >
+
+                        </ListBox>
+                    </StackPanel>
+                </StackPanel>
                 <StackPanel x:Name="stkpnlNotConclusive" Orientation="Horizontal">
+                    <GroupBox x:Name="gbSection" Header="Choose Section" FontWeight="Bold">
                     <StackPanel x:Name="stkpnlGroupList">
-                        <Label Content="Choose Section" FontWeight="Bold" Width="405" />
+                        
                         <ComboBox x:Name="cboGroupList" Margin="1,1,0,0"  FontSize="12" 
         				FontWeight="Normal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <ComboBox.ItemTemplate>
@@ -84,12 +101,13 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <Label FontWeight="Bold" Margin="0,10,0,0">Condition</Label>
+                        <Label FontWeight="Bold" Margin="0,0,0,0">Condition</Label>
                         <StackPanel x:Name="stkpnlTF" Orientation="Horizontal" Margin="0,0,0,0">
                             <RadioButton x:Name="radY" GroupName="checkTF" Content="Yes" Height="20" Width="100" IsChecked="True" Checked="radY_Checked" />
                             <RadioButton x:Name="radN" GroupName="checkTF" Content="No" Height="20" Width="100" IsChecked="False" Checked="radN_Checked" />
                         </StackPanel>
                     </StackPanel>
+                    </GroupBox>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

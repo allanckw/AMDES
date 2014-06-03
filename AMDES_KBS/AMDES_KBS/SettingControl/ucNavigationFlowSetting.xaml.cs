@@ -19,12 +19,14 @@ namespace AMDES_KBS
         bool isConclusive = false;
         NaviChildCriteriaQuestion naviChildCriteriaGroup;
         List<NaviChildCritAttribute> naviChildAttrGroupList;
+        List<NaviChildCritAttribute> naviChildOtherAttrGroupList;
 
         public ucNavigationFlowSetting()
         {
             InitializeComponent();
             loadDistinct();
             lblCurrStep.Content = "Step " + 1;
+            naviChildOtherAttrGroupList = new List<NaviChildCritAttribute>();
         }
 
         public ucNavigationFlowSetting(int step)
@@ -62,50 +64,25 @@ namespace AMDES_KBS
 
             foreach(Enum val in values )
             {
-                cboCompareType.Items.Add(val.ToString());
+                cboCompareType.Items.Add(App.processEnumStringForDataBind(val.ToString()));
             }
             cboCompareType.SelectedIndex = 0;
         }
+
+
 
         public void getAnswer()
         {
             naviChildCriteriaGroup = new NaviChildCriteriaQuestion();
             naviChildAttrGroupList = new List<NaviChildCritAttribute>();
-
             int selectedIdx = cboGroupList.SelectedIndex;
             int currGrpID = ((QuestionGroup)cboGroupList.Items[selectedIdx]).GroupID;
             naviChildCriteriaGroup.CriteriaGrpID = currGrpID;
             naviChildCriteriaGroup.Ans = Result;
 
-            bool ageExists = false;
-            foreach (NaviChildCritAttribute attr in naviChildAttrGroupList)
-            {
-                switch (attr.AttributeName)
-                {
-                    case "AGE":
-                        {
-                            ageExists = true;
-                            attr.GroupID = currGrpID;
-                            attr.AttributeValue = txtAge.Text;
-                            //attr.Ans = ageResult;
-                            attr.setRuleType(cboCompareType.SelectedIndex);
+            //bool ageExists = false;
 
-                            //if (radMoreEqual.IsChecked == true)
-                            //{
-                            //    attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThan);
-                            //}
-                            //else
-                            //{
-                            //    attr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
-                            //}
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            if (!ageExists && this.chkRequireAge.IsChecked == true)
+            if (this.chkRequireAge.IsChecked == true)
             {
                 NaviChildCritAttribute ageAttr = new NaviChildCritAttribute();
                 //ageExists = true;
@@ -123,6 +100,18 @@ namespace AMDES_KBS
                 //    ageAttr.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
                 //}
                 naviChildAttrGroupList.Add(ageAttr);
+            }
+
+            if (this.chkOtherAttr.IsChecked==true)
+            {
+                if (naviChildOtherAttrGroupList.Count > 0)
+                {
+                    foreach (NaviChildCritAttribute attr in naviChildOtherAttrGroupList)
+                    {
+                        attr.GroupID = currGrpID;
+                        naviChildAttrGroupList.Add(attr);
+                    }
+                }                
             }
         }
 
@@ -153,6 +142,7 @@ namespace AMDES_KBS
         {
             naviChildCriteriaGroup = navi.ChildCriteriaQuestion[step - 1];
             naviChildAttrGroupList = new List<NaviChildCritAttribute>();
+
             int grpID = naviChildCriteriaGroup.CriteriaGrpID;
             //int destGRP = navi.DestGrpID;
             int selectedIdx = -1;
@@ -179,6 +169,8 @@ namespace AMDES_KBS
             }
 
             List<NaviChildCritAttribute> navigroupList = new List<NaviChildCritAttribute>();
+            naviChildOtherAttrGroupList = new List<NaviChildCritAttribute>();
+
             foreach (NaviChildCritAttribute naviAttr in navi.ChildCriteriaAttributes)
             {
                 if (naviAttr.GroupID == grpID)
@@ -208,6 +200,9 @@ namespace AMDES_KBS
                             }
                             break;
                         default:
+                            {
+                                naviChildOtherAttrGroupList.Add(naviAttr);
+                            }
                             break;
                     }
                 }
@@ -216,6 +211,16 @@ namespace AMDES_KBS
            
             loadCheckedAgeMoreOrLess();
             loadCheckedYN();
+
+            if (naviChildOtherAttrGroupList.Count > 0)
+            {
+                chkOtherAttr.IsChecked = true;
+                reloadAttribute(naviChildOtherAttrGroupList);
+            }
+            else
+            {
+                chkOtherAttr.IsChecked = false;
+            }
             //loadCheckedAgeTF();
             //loadCheckedAgeTF();
             //loadCheckedAgeMoreOrLess();
@@ -227,6 +232,35 @@ namespace AMDES_KBS
 
             //}
         }
+
+        private void reloadAttribute(List<NaviChildCritAttribute> otherAttr)
+        {
+            lstAttributeList.Items.Clear();
+            foreach (NaviChildCritAttribute attr in otherAttr)
+            {
+                string s = "";
+                if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThanEqual)
+                {
+                    s = "<=";
+                }
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
+                {
+                    s = "<";
+                }
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+                {
+                    s = ">=";
+                }
+                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                {
+                    s = ">";
+                }
+
+                lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
+            }
+        }
+
+
 
         public void loadDistinct()
         {
@@ -309,6 +343,33 @@ namespace AMDES_KBS
         private void radMoreEqual_Checked(object sender, RoutedEventArgs e)
         {
             ageCompareResult = 1;
+        }
+
+        private void chkOtherAttr_Checked(object sender, RoutedEventArgs e)
+        {
+            stkpnlOtherAttribute.Visibility = Visibility.Visible;
+        }
+
+        private void chkOtherAttr_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stkpnlOtherAttribute.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnOtherAttr_Click(object sender, RoutedEventArgs e)
+        {
+            frmAttributeAddingToPath cAttribute = new frmAttributeAddingToPath(naviChildOtherAttrGroupList);
+
+            if (cAttribute.ShowDialog()==true)
+            {
+                naviChildOtherAttrGroupList = cAttribute.getOtherAttribute();
+                reloadAttribute(naviChildOtherAttrGroupList);
+            }
+            //  cAttribute = new frmAttributeSetting(naviChildOtherAttrGroupList);
+
+            //if (cAttribute.ShowDialog() == true)
+            //{
+            //    naviChildOtherAttrGroupList.
+            //}
         }
 
         //private void radAgeTrue_Checked(object sender, RoutedEventArgs e)

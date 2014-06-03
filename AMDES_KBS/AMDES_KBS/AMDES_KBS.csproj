@@ -144,6 +144,9 @@
     <Compile Include="RecommendataionUserControl\ucDiagnosisResource.xaml.cs">
       <DependentUpon>ucDiagnosisResource.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingControl\frmAttributeAddingToPath.xaml.cs">
+      <DependentUpon>frmAttributeAddingToPath.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewOnlyPurpose\ucQuestionViewOnly.xaml.cs">
       <DependentUpon>ucQuestionViewOnly.xaml</DependentUpon>
     </Compile>
@@ -249,6 +252,10 @@
     <Page Include="RecommendataionUserControl\ucDiagnosisResource.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingControl\frmAttributeAddingToPath.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewOnlyPurpose\ucQuestionViewOnly.xaml">
       <Generator>MSBuild:Compile</Generator>
