@@ -548,7 +548,7 @@ namespace AMDES_KBS.Controllers
                                             {
                                                 d.Comment += System.Environment.NewLine;
                                             }
-                                            d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " is of " + ca.Value.ToString();
+                                            d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " is of " + pa.getCategoryByID(ca.Value);
                                         }
                                     }
                                     else if (pa.AttrType == PatAttribute.AttributeType.NUMERIC)
