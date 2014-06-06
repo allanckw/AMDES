@@ -130,7 +130,7 @@ namespace AMDES_KBS.Entity
             set { this.link = value; }
         }
 
-        public void createAttribute(CmpAttribute value)
+        public void addAttribute(CmpAttribute value)
         {
             attributes.Add(value);
         }
@@ -141,6 +141,13 @@ namespace AMDES_KBS.Entity
                 return attributes[i];
             else
                 return null;
+        }
+
+        public void removeAttributeAt(int i)
+        {
+            if (i > 0 && i < attributes.Count)
+                attributes.RemoveAt(i);
+            
         }
 
 

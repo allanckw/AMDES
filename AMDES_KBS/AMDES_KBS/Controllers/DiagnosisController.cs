@@ -150,7 +150,7 @@ namespace AMDES_KBS.Controllers
                     foreach (var g in attr)
                     {
                         CmpAttribute ca = new CmpAttribute(g.Element("Name").Value.ToUpper(),int.Parse(g.Element("Type").Value),int.Parse(g.Element("Value").Value));
-                        d.createAttribute(ca);
+                        d.addAttribute(ca);
                     }
                 }
 
