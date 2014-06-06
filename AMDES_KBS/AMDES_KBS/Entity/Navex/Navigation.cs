@@ -70,7 +70,7 @@ namespace AMDES_KBS.Entity
             childCriteriaQn.Add(new NaviChildCriteriaQuestion(this.NavID, grpID, ans));
         }
 
-        public void addNavCriteriaAttribute(string attrName, string attrVal, bool attrAns, NaviChildCritAttribute.AttributeCmpType type)
+        public void addNavCriteriaAttribute(string attrName, string attrVal, bool attrAns, AttributeCmpType type)
         {
             childCriteriaAttr.Add(new NaviChildCritAttribute(this.NavID, attrName, attrVal, attrAns, type));
         }
@@ -162,7 +162,7 @@ namespace AMDES_KBS.Entity
             else
                 return -1;
 
-           
+
         }
 
         public bool Equals(Navigation n)
@@ -181,16 +181,10 @@ namespace AMDES_KBS.Entity
             else if (this.childCriteriaAttr.Count == n.ChildCriteriaAttributes.Count &&
                      this.ChildCriteriaQuestion.Count == n.ChildCriteriaQuestion.Count)
             {
-                //List<NaviChildCritAttribute> disAttrList = this.ChildCriteriaAttributes.Distinct<NaviChildCritAttribute>().ToList<NaviChildCritAttribute>();
-                //List<NaviChildCriteriaQuestion> disQnList = this.ChildCriteriaQuestion.Distinct<NaviChildCriteriaQuestion>().ToList<NaviChildCriteriaQuestion>();
-
-                //List<NaviChildCritAttribute> odisAttrList = n.ChildCriteriaAttributes.Distinct<NaviChildCritAttribute>().ToList<NaviChildCritAttribute>();
-                //List<NaviChildCriteriaQuestion> oodisQnList = n.ChildCriteriaQuestion.Distinct<NaviChildCriteriaQuestion>().ToList<NaviChildCriteriaQuestion>();
-                
 
                 for (int i = 0; i < this.ChildCriteriaQuestion.Count; i++)
                 {
-                    if(!this.ChildCriteriaQuestion.Contains(n.ChildCriteriaQuestion[i]))
+                    if (!this.ChildCriteriaQuestion.Contains(n.ChildCriteriaQuestion[i]))
                     {
                         dupe = false;
                         break;
@@ -235,8 +229,6 @@ namespace AMDES_KBS.Entity
                                 }
                             }
                         }
-
-
                     }
                 }
             }

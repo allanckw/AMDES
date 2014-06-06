@@ -111,7 +111,7 @@
 	(retract ?navQngrp))
    
 (defrule Initial_Question
-   ;;(mode 1)
+   
    (Navigation (NavigationID ?naviID) (DestinationGroupID ?z&~NIL) (RID NIL))
    (not (exists
              (NaviChildCritQuestion (NavigationID ?naviID))))
@@ -126,7 +126,7 @@
    (modify ?hist (ID $?x ?z END)))
 
 (defrule Go_To_Next_QuestionGrp
-   ;;(mode 1)
+   
    (not (exists
              (diagnosis)))
    ?rmv <- (Currentgroup (GroupID ?y))
@@ -251,7 +251,7 @@
    ?target <- (NaviChildCritAttribute (AttributeName ?attribu) (AttributeValue ?cvalue) (AttributeCompareType ?at) (Answer ?ans))
    =>
    (switch ?at
-      (case = then
+      (case == then
          (if (= ?cvalue ?value)
             then
             (switch ?ans
@@ -379,7 +379,7 @@
    ?nxt <- (next)
    (not (exists
              (diagnosis)))
-   ;;(mode 1)
+   
    ?rmv <- (Currentgroup (GroupID ?y))
    (Navigation (NavigationID ?naviID) (DestinationGroupID NIL) (RID $?diag))
    ?hist <- (NaviHistory (ID $?x END))
@@ -403,7 +403,8 @@
    (assert (diagnosis (RID $?diag)))
    (assert (Currentgroup (GroupID _RESULT) (answer Yes)))
    (modify ?hist (ID $?x _RESULT END)))
-
+   
+   
 (defrule print-R  ;;Print Diagnosis 
 		(candidate-diagnosis (RID ?diag) (Header ?diag.h) (Comment ?diag.c) (Link ?diag.l))
 		(Conclusion ?diag)

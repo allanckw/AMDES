@@ -49,7 +49,7 @@ namespace AMDES_KBS
 
         private void getAllCompareType()
         {
-            Array values = Enum.GetValues(typeof(NaviChildCritAttribute.AttributeCmpType));
+            Array values = Enum.GetValues(typeof(AttributeCmpType));
 
             foreach (Enum val in values)
             {
@@ -72,21 +72,25 @@ namespace AMDES_KBS
             foreach (NaviChildCritAttribute attr in naviChildAttribute)
             {
                 string s = "";
-                if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThanEqual)
+                if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThanEqual)
                 {
                     s = "<=";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThan)
                 {
                     s = "<";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.MoreThanEqual)
                 {
                     s = ">=";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.MoreThan)
                 {
                     s = ">";
+                }
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.Equal)
+                {
+                    s = "=";
                 }
 
                 if (!isAttrCompareNumerical(attr.AttributeName))
@@ -129,14 +133,25 @@ namespace AMDES_KBS
                 if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.CATEGORICAL)
                 {
                     newAttribute.AttributeValue = cboAttrCatValue.SelectedIndex.ToString();
-                    newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.Equal);
+                    newAttribute.setRuleType((int)AttributeCmpType.Equal);
                 }
                 else if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.NUMERIC)
                 {
-                    if (txtAttrNumMinValue.Text.Trim() != "" && txtAttrNumMaxValue.Text.Trim() != "")
+                    if (txtAttrNumMinValue.Text.Trim().Length == 0 && txtAttrNumMaxValue.Text.Trim().Length == 0)
+                    {
+                        MessageBox.Show("Please enter the values before adding!", "Invalid inputs", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                    else if (txtAttrNumMinValue.Text.Trim().CompareTo(txtAttrNumMaxValue.Text.Trim()) == 0)
+                    {
+                        newAttribute = new NaviChildCritAttribute();
+                        newAttribute.AttributeName = Attr.AttributeName;
+                        newAttribute.AttributeValue = txtAttrNumMaxValue.Text;
+                        newAttribute.setRuleType((int)AttributeCmpType.Equal);
+                    }
+                    else if (txtAttrNumMinValue.Text.Trim() != "" && txtAttrNumMaxValue.Text.Trim() != "")
                     {
                         newAttribute.AttributeValue = txtAttrNumMinValue.Text;
-                        newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
+                        newAttribute.setRuleType((int)AttributeCmpType.MoreThanEqual);
                         if (!checkDuplicateAttribute(newAttribute))
                         {
                             naviChildAttribute.Add(newAttribute);
@@ -144,19 +159,19 @@ namespace AMDES_KBS
                         newAttribute = new NaviChildCritAttribute();
                         newAttribute.AttributeName = Attr.AttributeName;
                         newAttribute.AttributeValue = txtAttrNumMaxValue.Text;
-                        newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                        newAttribute.setRuleType((int)AttributeCmpType.LessThanEqual);
                     }
                     else
                     {
                         if (txtAttrNumMinValue.Text.Trim() != "" && txtAttrNumMaxValue.Text.Trim() == "")
                         {
                             newAttribute.AttributeValue = txtAttrNumMinValue.Text;
-                            newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.MoreThanEqual);
+                            newAttribute.setRuleType((int)AttributeCmpType.MoreThanEqual);
                         }
                         else
                         {
                             newAttribute.AttributeValue = txtAttrNumMaxValue.Text;
-                            newAttribute.setRuleType((int)NaviChildCritAttribute.AttributeCmpType.LessThanEqual);
+                            newAttribute.setRuleType((int)AttributeCmpType.LessThanEqual);
                         }
                     }
                 }

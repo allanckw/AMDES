@@ -54,8 +54,6 @@ namespace AMDES_KBS.Controllers
         private static void addDiagnosis(Diagnosis d)
         {
             XDocument document = XDocument.Load(Diagnosis.dataPath);
-
-
             document.Element("Diagnoses").Add(convertToXML(d));
             document.Save(Diagnosis.dataPath);
         }
@@ -69,7 +67,7 @@ namespace AMDES_KBS.Controllers
                              new XElement("LinkDesc", d.LinkDesc),
                              new XElement("RetrieveSymptom", d.RetrieveSym),
                              new XElement("RetrieveFrom"),
-                             new XElement("RetrieveBelow65", d.AgeBelow65),
+                             new XElement("Attributes"), //new XElement("RetrieveBelow65", d.AgeBelow65),
                              new XElement("isRes", d.IsResource)
 
                              );
@@ -81,6 +79,18 @@ namespace AMDES_KBS.Controllers
 
                     XElement ccq = new XElement("QGrpID", d.RetrievalIDList[i]);
                     x.Element("RetrieveFrom").Add(ccq);
+                }
+
+
+                foreach (CmpAttribute kvp in d.getAttributes())
+                {
+                    //Console.WriteLine("Key : " + kvp.Key.ToString() + ", Value : " + kvp.Value);
+                    XElement attr = new XElement("Attribute");
+                    attr.Add(new XElement("Name", kvp.Key.ToUpper()));
+                    attr.Add(new XElement("Value", kvp.Value));
+                    attr.Add(new XElement("Type", kvp.getCompareType()));
+
+                    x.Element("Attributes").Add(attr);
                 }
 
             }
@@ -110,7 +120,7 @@ namespace AMDES_KBS.Controllers
                     }
                 }
 
-                return pList.OrderBy(x => x.Header).ToList(); 
+                return pList.OrderBy(x => x.Header).ToList();
             }
             else
             {
@@ -130,10 +140,19 @@ namespace AMDES_KBS.Controllers
                 d.Link = x.Element("Link").Value;
                 d.LinkDesc = x.Element("LinkDesc").Value;
 
-                //RetrieveBelow65
-                d.AgeBelow65 = bool.Parse(x.Element("RetrieveBelow65").Value);
-
                 d.RetrieveSym = bool.Parse(x.Element("RetrieveSymptom").Value);
+
+                if (d.RetrieveSym)
+                {
+                    var attr = (from pa in x.Descendants("Attribute")
+                                select pa).ToList();
+
+                    foreach (var g in attr)
+                    {
+                        CmpAttribute ca = new CmpAttribute(g.Element("Name").Value.ToUpper(),int.Parse(g.Element("Type").Value),int.Parse(g.Element("Value").Value));
+                        d.createAttribute(ca);
+                    }
+                }
 
                 d.IsResource = bool.Parse(x.Element("isRes").Value);
 
@@ -181,7 +200,7 @@ namespace AMDES_KBS.Controllers
             try
             {
                 var res = (from pa in document.Descendants("Diagnosis")
-                            where bool.Parse(pa.Element("isRes").Value) == true
+                           where bool.Parse(pa.Element("isRes").Value) == true
                            select pa).ToList();
 
                 foreach (var x in res)

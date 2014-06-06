@@ -30,19 +30,6 @@ namespace AMDES_KBS.Controllers
         //http://www.dotnetcurry.com/showarticle.aspx?ID=564
         //http://msdn.microsoft.com/en-us/library/bb387089.aspx
 
-        private static void updatePatientStatus(string id, PatientStatus s)
-        {
-            XDocument document = XDocument.Load(Patient.dataPath);
-            if (PatientController.searchPatientByID(id) != null)
-            {
-                (from pa in document.Descendants("Patient")
-                 where pa.Attribute("id").Value.ToUpper().CompareTo(id.ToUpper()) == 0
-                 select pa).Select(e => e.Element("Status")).Single().SetValue(s);
-
-                document.Save(Patient.dataPath);
-            }
-        }
-
         private static void addPatient(Patient p)
         {
             XDocument document = XDocument.Load(Patient.dataPath);

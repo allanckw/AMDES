@@ -69,8 +69,6 @@ namespace AMDES_KBS
                 txtComment.Text = "";
                 txtLink.Text = "";
 
-
-
                 return;
             }
 
@@ -90,7 +88,6 @@ namespace AMDES_KBS
            
             chkSym.IsChecked = d.RetrieveSym;
             chkLink.IsChecked = d.Link.Length > 0;
-
 
             if (chkLink.IsChecked == true)
             {
@@ -127,9 +124,7 @@ namespace AMDES_KBS
                     qgGrpList.Add(QuestionController.getGroupByID(d.RetrievalIDList[i]));
                 }
                 //chkAge.IsChecked = d.AgeBelow65;
-
             }
-
             lstGroupList.ItemsSource = qgGrpList;
         }
 
@@ -141,7 +136,6 @@ namespace AMDES_KBS
             {
                 lstGroupList.Items.Add(qgItem);
             }
-
         }
 
         private void btnDeleteComment_Click(object sender, RoutedEventArgs e)
@@ -360,27 +354,19 @@ namespace AMDES_KBS
                     break;
                 }
             }
-
         }
 
         private void chkSym_Checked(object sender, RoutedEventArgs e)
         {
-            //@Allan - I think he still want to have comment and link if i'm not wrong
-            //bool sym = chkSym.IsChecked.Value;
-
-            //txtComment.IsEnabled = !sym;
-            //txtLink.IsEnabled = !sym;
-
             stkpnlSymtomsSection.Visibility = Visibility.Visible;
             stkpnlAttribute.Visibility = Visibility.Visible;
-
         }
 
         private void chkSym_Unchecked(object sender, RoutedEventArgs e)
         {
             stkpnlSymtomsSection.Visibility = Visibility.Hidden;
             lstGroupList.ItemsSource = null;
-            stkpnlAttribute.Visibility = Visibility.Visible;
+            stkpnlAttribute.Visibility = Visibility.Hidden;
             lstAttributeList.ItemsSource = null;
             naviChildAttribute = new List<NaviChildCritAttribute>();
         }
@@ -463,12 +449,6 @@ namespace AMDES_KBS
                 naviChildAttribute = cAttribute.getOtherAttribute();
                 reloadAttribute(naviChildAttribute);
             }
-            //  cAttribute = new frmAttributeSetting(naviChildOtherAttrGroupList);
-
-            //if (cAttribute.ShowDialog() == true)
-            //{
-            //    naviChildOtherAttrGroupList.
-            //}
         }
 
         private void reloadAttribute(List<NaviChildCritAttribute> otherAttr)
@@ -477,19 +457,19 @@ namespace AMDES_KBS
             foreach (NaviChildCritAttribute attr in otherAttr)
             {
                 string s = "";
-                if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThanEqual)
+                if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThanEqual)
                 {
                     s = "<=";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThan)
                 {
                     s = "<";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.MoreThanEqual)
                 {
                     s = ">=";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.MoreThan)
                 {
                     s = ">";
                 }

@@ -4,38 +4,6 @@
   <History pid="ANON" AssessmentDate="0">
     <Group histID="6">
       <Question GrpID="6">
-        <QID>1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>7</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>8</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
         <QID>9</QID>
         <Answer>false</Answer>
       </Question>
@@ -43,80 +11,52 @@
         <QID>10</QID>
         <Answer>false</Answer>
       </Question>
-    </Group>
-    <Group histID="1">
-      <Question GrpID="1">
+      <Question GrpID="6">
         <QID>1</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
-    </Group>
-    <Group histID="2">
-      <Question GrpID="2">
-        <QID>1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="2">
+      <Question GrpID="6">
         <QID>2</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
-      <Question GrpID="2">
+      <Question GrpID="6">
         <QID>3</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
-      <Question GrpID="2">
+      <Question GrpID="6">
         <QID>4</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
-    </Group>
-    <Group histID="5">
-      <Question GrpID="5">
-        <QID>1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="5">
-        <QID>2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="5">
-        <QID>3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="5">
-        <QID>4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="5">
+      <Question GrpID="6">
         <QID>5</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
-      <Question GrpID="5">
+      <Question GrpID="6">
         <QID>6</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>true</Answer>
       </Question>
     </Group>
-    <Symptoms>
-      <Symptom>
-        <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
-        <DiagnosisDate>635369366811521805</DiagnosisDate>
-        <DiagnosedByID>6</DiagnosedByID>
-      </Symptom>
-    </Symptoms>
     <Diagnoses>
-      <Diagnosis diagID="30">
-        <Comment>Patient failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.
-   ✓ Failed AMT - Patient's Score: 0, Normal Score: 8 or more</Comment>
-        <Header>R22 - Patient failed AMT, retake history and refer if dementia suspicion is high</Header>
+      <Diagnosis diagID="8">
+        <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria.</Comment>
+        <Header>R01 - Patient has high likelihood of Dementia by DSM4 criteria</Header>
         <Link></Link>
         <LinkDesc></LinkDesc>
-        <RetrieveSymptom>true</RetrieveSymptom>
-        <RetrieveFrom>
-          <QGrpID>6</QGrpID>
-        </RetrieveFrom>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
         <RetrieveBelow65>false</RetrieveBelow65>
         <isRes>false</isRes>
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635369184000000000</CompletedDate>
+    <CompletedDate>635376096000000000</CompletedDate>
   </History>
 </Histories>

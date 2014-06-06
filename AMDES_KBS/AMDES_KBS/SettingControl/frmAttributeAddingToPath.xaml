@@ -86,13 +86,13 @@
             </StackPanel>
         </StackPanel>
             <StackPanel x:Name="Instruction">
-                <Label Foreground="Red">For age, choose either one of the compare type and enter the value</Label>
-                <Label Foreground="Red">For other attribute - categorical, choose the value from the combobox</Label>
-                <Label Foreground="Red">For other attribute - numerical, Either enter the min or max</Label>
-                <Label Foreground="Red">Eg. Value must be 120-140, Enter 120 at the min textbox and 140 at the max textbox</Label>
-                <Label Foreground="Red">Eg. Value must be 120, Enter 120 at the min textbox and 120 at the max textbox</Label>
-                <Label Foreground="Red">Eg. Value must be less than 120, Enter 119 at the max textbox</Label>
-                <Label Foreground="Red">Eg. Value must be more than 120, Enter 121 at the min textbox</Label>
+                <Label Foreground="Blue">For age, choose either one of the compare type and enter the value</Label>
+                <Label Foreground="Blue">For other attribute - categorical, choose the value from the combobox</Label>
+                <Label Foreground="Blue">For other attribute - numerical, Either enter the min or max</Label>
+                <Label Foreground="Blue">E.g. Value must be 120-140, Enter 120 at the min textbox and 140 at the max textbox</Label>
+                <Label Foreground="Blue">E.g. Value must be 120, Enter 120 at the min textbox and 120 at the max textbox</Label>
+                <Label Foreground="Blue">E.g. Value must be less than 120, Enter 119 at the max textbox</Label>
+                <Label Foreground="Blue">E.g. Value must be more than 120, Enter 121 at the min textbox</Label>
             </StackPanel>
         </StackPanel>
     </Grid>

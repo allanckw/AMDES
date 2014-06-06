@@ -89,19 +89,19 @@ namespace AMDES_KBS
             foreach (NaviChildCritAttribute attr in otherAttr)
             {
                 string s = "";
-                if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThanEqual)
+                if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThanEqual)
                 {
                     s = "<=";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.LessThan)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThan)
                 {
                     s = "<";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThanEqual)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.MoreThanEqual)
                 {
                     s = ">=";
                 }
-                else if (attr.getAttributeTypeENUM() == NaviChildCritAttribute.AttributeCmpType.MoreThan)
+                else if (attr.getAttributeTypeENUM() == AttributeCmpType.MoreThan)
                 {
                     s = ">";
                 }

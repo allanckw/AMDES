@@ -14,6 +14,8 @@ namespace AMDES_KBS.Entity
         private string link;
         private string linkDesc;
 
+        private List<CmpAttribute> attributes;
+
         public string LinkDesc
         {
             get { return linkDesc; }
@@ -24,8 +26,6 @@ namespace AMDES_KBS.Entity
 
         private bool retrieveSym;
 
-        private bool ageBelow65;
-
         //res
         private bool isResource;
 
@@ -35,17 +35,12 @@ namespace AMDES_KBS.Entity
             set { isResource = value; }
         }
 
-        public bool AgeBelow65
-        {
-            get { return ageBelow65; }
-            set { ageBelow65 = value; }
-        }
-
         private List<int> retrievalIDList;
 
         public Diagnosis()
         {
             retrievalIDList = new List<int>();
+            attributes = new List<CmpAttribute>();
         }
 
         public Diagnosis(int rid, string comment, string header, bool retrieveSym = false)
@@ -55,6 +50,8 @@ namespace AMDES_KBS.Entity
             this.header = header;
             this.retrieveSym = retrieveSym;
             retrievalIDList = new List<int>();
+
+            attributes = new List<CmpAttribute>();
         }
 
         public bool RetrieveSym
@@ -133,6 +130,23 @@ namespace AMDES_KBS.Entity
             set { this.link = value; }
         }
 
+        public void createAttribute(CmpAttribute value)
+        {
+            attributes.Add(value);
+        }
 
+        public CmpAttribute retrieveAttributeAt(int i)
+        {
+            if (i > 0 && i < attributes.Count)
+                return attributes[i];
+            else
+                return null;
+        }
+
+
+        public List<CmpAttribute> getAttributes()
+        {
+            return this.attributes;
+        }
     }
 }

@@ -88,7 +88,7 @@ namespace AMDES_KBS.Controllers
 
         public static PatAttribute searchPatientAttribute(string name)
         {
-
+            createDataFile();
             XDocument document = XDocument.Load(PatAttribute.dataPath);
 
             try

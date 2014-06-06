@@ -127,25 +127,10 @@ namespace AMDES_KBS.Controllers
                 }
                 else
                 {
-                    //Parallel.Invoke(
-                    //    () =>
-                    //    {
-                    //Console.WriteLine("Begin first task...");
                     loadQuestions(grps);
-                    //    },  // close first Action
 
-                    //    () =>
-                    //     {
-                    //Console.WriteLine("Begin second task...");
                     loadDiagnosis();
-                    //     }//, //close second Action
 
-                    //() =>
-                    //{
-                    //    //Console.WriteLine("Begin third task...");
-
-                    //} //close third Action
-                    //  ); //close parallel.invoke
                     loadNavex(fq, rList, defBehavior);
                     saveAssertLog();
                     assertAllAttributes();
@@ -188,7 +173,7 @@ namespace AMDES_KBS.Controllers
 
             foreach (KeyValuePair<string, int> kvp in CurrentPatient.getAttributes())
             {
-                assert(new StringBuilder("(attribute " + kvp.Key.ToUpper() + " " + kvp.Value.ToString() + ")"), false);
+                assert(new StringBuilder("(attribute " + kvp.Key.ToUpper().Replace(" ", "_") + " " + kvp.Value.ToString() + ")"), false);
             }
         }
 
@@ -380,9 +365,9 @@ namespace AMDES_KBS.Controllers
                 sb = new StringBuilder();
                 //(NaviChildCritA (NavigationID GO_C) (AttributeName Age) (AttributeValue 50) (AttributeCompareType <) )
                 sb.Append("(NaviChildCritAttribute (NavigationID N" + n.NavID + ") ");
-                sb.Append("(AttributeName " + nca.AttributeName + ") ");
+                sb.Append("(AttributeName " + nca.AttributeName.ToUpper().Replace(" ", "_") + ") ");
                 sb.Append("(AttributeValue " + nca.AttributeValue + ") ");
-                sb.Append("(AttributeCompareType " + nca.getCompareTypeString() + ") ");
+                sb.Append("(AttributeCompareType " + NaviChildCritAttribute.getCompareTypeString(nca.getAttributeTypeENUM()) + ") ");
                 sb.Append(")");
 
                 assert(sb);
@@ -478,15 +463,160 @@ namespace AMDES_KBS.Controllers
                     {
                         Diagnosis d = DiagnosisController.getDiagnosisByID(diagID);
 
-                        if (d.RetrieveSym && d.AgeBelow65)
+                        if (d.RetrieveSym)
                         {
-                            if (CurrentPatient.getAge() <= 65)
+
+                            foreach (CmpAttribute kvp in d.getAttributes())
                             {
-                                if (d.Comment.Trim().Length > 0)
+                                if (kvp.Key.ToUpper().CompareTo("AGE") == 0)
                                 {
-                                    d.Comment += System.Environment.NewLine;
+                                    switch (kvp.Type)
+                                    {
+                                        case AttributeCmpType.Equal:
+                                            if (CurrentPatient.getAge() == kvp.Value)
+                                            {
+                                                if (d.Comment.Trim().Length > 0)
+                                                {
+                                                    d.Comment += System.Environment.NewLine;
+                                                }
+                                                d.Comment += "   " + App.bulletForm() + " Age "
+                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
+                                            }
+                                            break;
+                                        case AttributeCmpType.LessThan:
+                                            if (CurrentPatient.getAge() < kvp.Value)
+                                            {
+                                                if (d.Comment.Trim().Length > 0)
+                                                {
+                                                    d.Comment += System.Environment.NewLine;
+                                                }
+                                                d.Comment += "   " + App.bulletForm() + " Age "
+                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
+                                            }
+                                            break;
+
+                                        case AttributeCmpType.LessThanEqual:
+                                            if (CurrentPatient.getAge() <= kvp.Value)
+                                            {
+                                                if (d.Comment.Trim().Length > 0)
+                                                {
+                                                    d.Comment += System.Environment.NewLine;
+                                                }
+                                                d.Comment += "   " + App.bulletForm() + " Age "
+                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
+                                            }
+                                            break;
+
+                                        case AttributeCmpType.MoreThan:
+                                            if (CurrentPatient.getAge() > kvp.Value)
+                                            {
+                                                if (d.Comment.Trim().Length > 0)
+                                                {
+                                                    d.Comment += System.Environment.NewLine;
+                                                }
+                                                d.Comment += "   " + App.bulletForm() + " Age "
+                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
+                                            }
+                                            break;
+
+                                        case AttributeCmpType.MoreThanEqual:
+                                            if (CurrentPatient.getAge() >= kvp.Value)
+                                            {
+                                                if (d.Comment.Trim().Length > 0)
+                                                {
+                                                    d.Comment += System.Environment.NewLine;
+                                                }
+                                                d.Comment += "   " + App.bulletForm() + " Age "
+                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
+                                            }
+                                            break;
+
+                                    }
+
                                 }
-                                d.Comment += "   " + App.bulletForm() + " Age ≤ 65";
+                                else
+                                {
+                                    //Get the key value from CurrentPatient.
+                                    PatAttribute pa = PatAttributeController.searchPatientAttribute(kvp.Key.ToUpper());
+                                    CmpAttribute ca = kvp;
+
+                                    if (pa.AttrType == PatAttribute.AttributeType.CATEGORICAL)
+                                    {
+                                        if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
+                                        {
+                                            if (d.Comment.Trim().Length > 0)
+                                            {
+                                                d.Comment += System.Environment.NewLine;
+                                            }
+                                            d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " is of " + ca.Value.ToString();
+                                        }
+                                    }
+                                    else if (pa.AttrType == PatAttribute.AttributeType.NUMERIC)
+                                    {
+                                        switch (ca.Type)
+                                        {
+                                            case AttributeCmpType.Equal:
+                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
+                                                {
+                                                    if (d.Comment.Trim().Length > 0)
+                                                    {
+                                                        d.Comment += System.Environment.NewLine;
+                                                    }
+                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
+                                                        + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
+                                                }
+                                                break;
+                                            case AttributeCmpType.LessThan:
+                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) < ca.Value)
+                                                {
+                                                    if (d.Comment.Trim().Length > 0)
+                                                    {
+                                                        d.Comment += System.Environment.NewLine;
+                                                    }
+                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
+                                                        + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
+                                                }
+                                                break;
+
+                                            case AttributeCmpType.LessThanEqual:
+                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) <= ca.Value)
+                                                {
+                                                    if (d.Comment.Trim().Length > 0)
+                                                    {
+                                                        d.Comment += System.Environment.NewLine;
+                                                    }
+                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
+                                                        + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
+                                                }
+                                                break;
+
+                                            case AttributeCmpType.MoreThan:
+                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) > ca.Value)
+                                                {
+                                                    if (d.Comment.Trim().Length > 0)
+                                                    {
+                                                        d.Comment += System.Environment.NewLine;
+                                                    }
+                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
+                                                        + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
+                                                }
+                                                break;
+
+                                            case AttributeCmpType.MoreThanEqual:
+                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) >= ca.Value)
+                                                {
+                                                    if (d.Comment.Trim().Length > 0)
+                                                    {
+                                                        d.Comment += System.Environment.NewLine;
+                                                    }
+                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key
+                                                        + " " + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
+                                                }
+                                                break;
+
+                                        }
+                                    }
+                                }
                             }
                         }
 

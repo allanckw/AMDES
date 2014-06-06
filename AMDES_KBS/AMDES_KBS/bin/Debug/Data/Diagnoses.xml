@@ -30,7 +30,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="28">
@@ -42,7 +42,13 @@
     <RetrieveFrom>
       <QGrpID>7</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>true</RetrieveBelow65>
+	<Attributes>
+		<Attribute>
+			<Name>AGE</Name>
+			<Value>65</Value>
+			<Type>3</Type>
+		</Attribute>
+	</Attributes>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="14">
@@ -54,7 +60,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="12">
@@ -66,7 +72,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="13">
@@ -78,7 +84,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="15">
@@ -90,7 +96,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="16">
@@ -102,7 +108,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="17">
@@ -114,7 +120,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="18">
@@ -124,7 +130,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="19">
@@ -134,7 +140,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="21">
@@ -144,7 +150,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="22">
@@ -154,7 +160,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="23">
@@ -164,7 +170,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="24">
@@ -174,7 +180,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="25">
@@ -184,7 +190,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="26">
@@ -194,7 +200,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="27">
@@ -204,7 +210,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="29">
@@ -214,7 +220,13 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>true</RetrieveBelow65>
+    <Attributes>
+		<Attribute>
+			<Name>AGE</Name>
+			<Value>65</Value>
+			<Type>3</Type>
+		</Attribute>
+	</Attributes>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="32">
@@ -224,7 +236,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>true</isRes>
   </Diagnosis>
   <Diagnosis diagID="10">
@@ -236,7 +248,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="30">
@@ -248,7 +260,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="7">
@@ -260,7 +272,7 @@
     <RetrieveFrom>
       <QGrpID>5</QGrpID>
     </RetrieveFrom>
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="9">
@@ -270,7 +282,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="8">
@@ -280,7 +292,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="20">
@@ -290,7 +302,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <RetrieveBelow65>false</RetrieveBelow65>
+    <Attributes/>
     <isRes>false</isRes>
   </Diagnosis>
 </Diagnoses>

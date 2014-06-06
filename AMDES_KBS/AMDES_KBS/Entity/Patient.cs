@@ -139,7 +139,14 @@ namespace AMDES_KBS.Entity
 
         public void createAttribute(string attrName, int value)
         {
-            attributes.Add(attrName, value);
+            if (attributes.ContainsKey(attrName))
+            {
+                attributes[attrName] = value;
+            }
+            else
+            {
+                attributes.Add(attrName, value);
+            }
         }
 
         public int retrieveAttribute(string attrName)

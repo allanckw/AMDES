@@ -134,10 +134,11 @@
     <Compile Include="Controllers\Printer.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Entity\Attributes\CmpAttribute.cs" />
     <Compile Include="frmAttributeSetting.xaml.cs">
       <DependentUpon>frmAttributeSetting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Entity\PatAttribute.cs" />
+    <Compile Include="Entity\Attributes\PatAttribute.cs" />
     <Compile Include="frmP2.xaml.cs">
       <DependentUpon>frmP2.xaml</DependentUpon>
     </Compile>
@@ -336,7 +337,6 @@
     <Compile Include="Entity\Patient.cs" />
     <Compile Include="Entity\Groups\Question.cs" />
     <Compile Include="Entity\Symptom.cs" />
-    <Compile Include="Entity\Test.cs" />
     <Compile Include="frmMain.xaml.cs">
       <DependentUpon>frmMain.xaml</DependentUpon>
     </Compile>
