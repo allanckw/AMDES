@@ -302,13 +302,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <Attributes>
-      <Attribute>
-        <Name>BLOOD TYPE</Name>
-        <Value>7</Value>
-        <Type>0</Type>
-      </Attribute>
-    </Attributes>
+    <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
 </Diagnoses>

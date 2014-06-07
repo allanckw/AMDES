@@ -266,7 +266,6 @@ namespace AMDES_KBS.Controllers
 
         private static void loadNavex(FirstQuestion fq, List<Rules> rList, List<Navigation> defBehavior)
         {
-
             //1st navex point
             assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID _0) )"));
 
@@ -289,6 +288,7 @@ namespace AMDES_KBS.Controllers
             Navigation.CriteriaSortingComparer comparer = new Navigation.CriteriaSortingComparer();
             nList.Sort(comparer);
 
+          
             foreach (Navigation n in nList)
             {
                 createNavigationAssertion(n);
