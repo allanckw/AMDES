@@ -18,7 +18,7 @@ namespace AMDES_KBS.Entity
             set { key = value; }
         }
 
-        public AttributeCmpType Type
+        public AttributeCmpType CompareType
         {
             get { return type; }
             set { type = value; }

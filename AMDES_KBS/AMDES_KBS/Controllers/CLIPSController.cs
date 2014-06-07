@@ -470,67 +470,42 @@ namespace AMDES_KBS.Controllers
                             {
                                 if (kvp.Key.ToUpper().CompareTo("AGE") == 0)
                                 {
-                                    switch (kvp.Type)
+                                    bool match = false;
+                                    switch (kvp.CompareType)
                                     {
                                         case AttributeCmpType.Equal:
                                             if (CurrentPatient.getAge() == kvp.Value)
-                                            {
-                                                if (d.Comment.Trim().Length > 0)
-                                                {
-                                                    d.Comment += System.Environment.NewLine;
-                                                }
-                                                d.Comment += "   " + App.bulletForm() + " Age "
-                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
-                                            }
+                                                match = true;
                                             break;
                                         case AttributeCmpType.LessThan:
                                             if (CurrentPatient.getAge() < kvp.Value)
-                                            {
-                                                if (d.Comment.Trim().Length > 0)
-                                                {
-                                                    d.Comment += System.Environment.NewLine;
-                                                }
-                                                d.Comment += "   " + App.bulletForm() + " Age "
-                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
-                                            }
+                                                match = true;
                                             break;
 
                                         case AttributeCmpType.LessThanEqual:
                                             if (CurrentPatient.getAge() <= kvp.Value)
-                                            {
-                                                if (d.Comment.Trim().Length > 0)
-                                                {
-                                                    d.Comment += System.Environment.NewLine;
-                                                }
-                                                d.Comment += "   " + App.bulletForm() + " Age "
-                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
-                                            }
+                                                match = true;
                                             break;
 
                                         case AttributeCmpType.MoreThan:
                                             if (CurrentPatient.getAge() > kvp.Value)
-                                            {
-                                                if (d.Comment.Trim().Length > 0)
-                                                {
-                                                    d.Comment += System.Environment.NewLine;
-                                                }
-                                                d.Comment += "   " + App.bulletForm() + " Age "
-                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
-                                            }
+                                                match = true;
                                             break;
 
                                         case AttributeCmpType.MoreThanEqual:
                                             if (CurrentPatient.getAge() >= kvp.Value)
-                                            {
-                                                if (d.Comment.Trim().Length > 0)
-                                                {
-                                                    d.Comment += System.Environment.NewLine;
-                                                }
-                                                d.Comment += "   " + App.bulletForm() + " Age "
-                                                    + NaviChildCritAttribute.getCompareTypeString(kvp.Type) + " " + kvp.Value.ToString();
-                                            }
+                                                match = true;
                                             break;
 
+                                    }
+                                    if (match == true)
+                                    {
+                                        if (d.Comment.Trim().Length > 0)
+                                        {
+                                            d.Comment += System.Environment.NewLine;
+                                        }
+                                        d.Comment += "   " + App.bulletForm() + " Age "
+                                            + NaviChildCritAttribute.getCompareTypeString(kvp.CompareType) + " " + kvp.Value.ToString();
                                     }
 
                                 }
@@ -548,72 +523,47 @@ namespace AMDES_KBS.Controllers
                                             {
                                                 d.Comment += System.Environment.NewLine;
                                             }
-                                            d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " is of " + pa.getCategoryByID(ca.Value);
+                                            d.Comment += "   " + App.bulletForm() + " "
+                                                + kvp.Key + " is of " + pa.getCategoryByID(ca.Value);
                                         }
                                     }
                                     else if (pa.AttrType == PatAttribute.AttributeType.NUMERIC)
                                     {
-                                        switch (ca.Type)
+                                        bool match = false;
+                                        switch (ca.CompareType)
                                         {
                                             case AttributeCmpType.Equal:
                                                 if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
-                                                {
-                                                    if (d.Comment.Trim().Length > 0)
-                                                    {
-                                                        d.Comment += System.Environment.NewLine;
-                                                    }
-                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
-                                                        + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
-                                                }
+                                                    match = true;
                                                 break;
                                             case AttributeCmpType.LessThan:
                                                 if (CurrentPatient.retrieveAttribute(pa.AttributeName) < ca.Value)
-                                                {
-                                                    if (d.Comment.Trim().Length > 0)
-                                                    {
-                                                        d.Comment += System.Environment.NewLine;
-                                                    }
-                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
-                                                        + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
-                                                }
+                                                    match = true;
                                                 break;
 
                                             case AttributeCmpType.LessThanEqual:
                                                 if (CurrentPatient.retrieveAttribute(pa.AttributeName) <= ca.Value)
-                                                {
-                                                    if (d.Comment.Trim().Length > 0)
-                                                    {
-                                                        d.Comment += System.Environment.NewLine;
-                                                    }
-                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
-                                                        + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
-                                                }
+                                                    match = true;
                                                 break;
 
                                             case AttributeCmpType.MoreThan:
                                                 if (CurrentPatient.retrieveAttribute(pa.AttributeName) > ca.Value)
-                                                {
-                                                    if (d.Comment.Trim().Length > 0)
-                                                    {
-                                                        d.Comment += System.Environment.NewLine;
-                                                    }
-                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
-                                                        + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
-                                                }
+                                                    match = true;
                                                 break;
 
                                             case AttributeCmpType.MoreThanEqual:
                                                 if (CurrentPatient.retrieveAttribute(pa.AttributeName) >= ca.Value)
-                                                {
-                                                    if (d.Comment.Trim().Length > 0)
-                                                    {
-                                                        d.Comment += System.Environment.NewLine;
-                                                    }
-                                                    d.Comment += "   " + App.bulletForm() + " " + kvp.Key
-                                                        + " " + NaviChildCritAttribute.getCompareTypeString(ca.Type) + " " + ca.Value.ToString();
-                                                }
+                                                    match = true;
                                                 break;
-
+                                        }
+                                        if (match == true)
+                                        {
+                                            if (d.Comment.Trim().Length > 0)
+                                            {
+                                                d.Comment += System.Environment.NewLine;
+                                            }
+                                            d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
+                                                + NaviChildCritAttribute.getCompareTypeString(ca.CompareType) + " " + ca.Value.ToString();
                                         }
                                     }
                                 }
@@ -650,9 +600,7 @@ namespace AMDES_KBS.Controllers
             h = getCurrentPatientSymptom(h);
             h.setCompleted();
 
-
             HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
-
         }
 
         public static void saveCurrentNavex()
@@ -663,7 +611,6 @@ namespace AMDES_KBS.Controllers
             //String evalStr = "(find-all-facts ((?f NaviHistory)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
 
-
             foreach (FactAddressValue fv in mv)
             {
                 //multi field need to use array choices
@@ -671,7 +618,6 @@ namespace AMDES_KBS.Controllers
 
                 for (int i = 0; i < ArrayChoices.Count(); i++)
                 {
-
                     string x = ArrayChoices[i].ToString().Remove(0, 1);
                     int diagID = int.Parse(x);
                     if (diagID == -99)
@@ -712,13 +658,11 @@ namespace AMDES_KBS.Controllers
 
             h = getCurrentPatientSymptom(h);
             if (savePatient.Value)
-            {
                 HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
-            }
+
             else
-            {
                 HistoryController.updatePatientNavigationHistory(h, new DateTime(0));
-            }
+
         }
 
         private static List<int> getNaviHistory()
@@ -761,8 +705,7 @@ namespace AMDES_KBS.Controllers
 
                 if (result && qgID == y)
                 {
-                    Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '),
-                                            grpID.ToString());
+                    Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '), grpID.ToString());
 
                     QuestionGroup qg = QuestionController.getGroupByID(y);
                     if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
@@ -790,8 +733,6 @@ namespace AMDES_KBS.Controllers
 
         private static History getCurrentPatientSymptom(History h)
         {
-            //List<Symptom> sList = new List<Symptom>();
-
             String evalStr = "(find-all-facts((?s symptoms)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
 
@@ -875,8 +816,6 @@ namespace AMDES_KBS.Controllers
                 }
             }
             return history;
-
         }
-
     }
 }
