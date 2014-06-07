@@ -88,7 +88,7 @@ namespace AMDES_KBS
             lstAttributeList.Items.Clear();
             foreach (NaviChildCritAttribute attr in otherAttr)
             {
-                string s = "";
+                string s = "=";
                 if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThanEqual)
                 {
                     s = "<=";
@@ -123,6 +123,8 @@ namespace AMDES_KBS
         {
             cboGroupList.ItemsSource = QuestionController.getAllQuestionGroup();
             cboDestination.ItemsSource = QuestionController.getAllQuestionGroup();
+            cboGroupList.SelectedIndex = 0;
+            cboDestination.SelectedIndex = 0;
         }
 
         private void btnAddCriteria_Click(object sender, RoutedEventArgs e)
@@ -268,21 +270,24 @@ namespace AMDES_KBS
 
         private bool saveBehaviour()
         {
+            List<int> RIDList = new List<int>();
+            if (navi.DiagnosesID.Count > 0)
+            {
+                foreach (int diaID in navi.DiagnosesID)
+                {
+                    RIDList.Add(diaID);
+                }
+            }
+
+            for (int i = 0; i < RIDList.Count; i++)
+            {
+                navi.removeDiagnosisID(RIDList[i]);
+            }
+
+            navi.DestGrpID = -1;
+
             if (chkConclusive.IsChecked == true)
             {
-                List<int> RIDList = new List<int>();
-                if (navi.DiagnosesID.Count > 0)
-                {
-                    foreach (int diaID in navi.DiagnosesID)
-                    {
-                        RIDList.Add(diaID);
-                    }
-                }
-
-                for (int i = 0; i < RIDList.Count; i++)
-                {
-                    navi.removeDiagnosisID(RIDList[i]);
-                }
 
                 for (int i = 0; i < lstDiagnosisList.Items.Count; i++)
                 {
@@ -422,12 +427,14 @@ namespace AMDES_KBS
         {
             stkpnlSectionDestination.Visibility = Visibility.Collapsed;
             stkpnlDiagnosis.Visibility = Visibility.Visible;
+            stkpnlDiagnosisRule.Visibility = Visibility.Visible;
             lstDiagnosisList.Visibility = Visibility.Visible;
         }
 
         private void chkConclusive_Unchecked(object sender, RoutedEventArgs e)
         {
             stkpnlSectionDestination.Visibility = Visibility.Visible;
+            stkpnlDiagnosisRule.Visibility = Visibility.Collapsed;
             stkpnlDiagnosis.Visibility = Visibility.Collapsed;
         }
 

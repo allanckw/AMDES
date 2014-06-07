@@ -42,6 +42,12 @@ namespace AMDES_KBS
             loadAnswer(step, navi);
         }
 
+        private void LoadUpVariable()
+        {
+            naviChildCriteriaGroup = new NaviChildCriteriaQuestion();
+            naviChildAttrGroupList = new List<NaviChildCritAttribute>();
+        }
+
         public void setGroupBox(int grpID)
         {
             QuestionGroup qg = QuestionController.getGroupByID(grpID);
@@ -163,7 +169,7 @@ namespace AMDES_KBS
             lstAttributeList.Items.Clear();
             foreach (NaviChildCritAttribute attr in otherAttr)
             {
-                string s = "";
+                string s = "=";
                 if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThanEqual)
                 {
                     s = "<=";
@@ -197,6 +203,7 @@ namespace AMDES_KBS
 
         public void loadDistinct()
         {
+            LoadUpVariable();
             cboGroupList.ItemsSource = QuestionController.getAllQuestionGroup();
         }
 

@@ -32,14 +32,19 @@ namespace AMDES_KBS
         {
             cboGroupList.ItemsSource = null;
             cboGroupList.ItemsSource = QuestionController.getAllQuestionGroup();
+            cboGroupList.SelectedIndex = 0;
         }
 
         private void loadALLDiagnosis()
         {
             lstGroupList.ItemsSource = null;
             lstGroupList.ItemsSource = new List<QuestionGroup>();
+            lstAttributeList.ItemsSource = null;
+            naviChildAttribute = new List<NaviChildCritAttribute>();
+            reloadAttribute(naviChildAttribute);
             lstDiagnosisList.ItemsSource = DiagnosisController.getAllDiagnosis();
             lstDiagnosisList.SelectedIndex = currIdx;
+
         }
 
         private void btnAddNew_Click(object sender, RoutedEventArgs e)
@@ -48,9 +53,19 @@ namespace AMDES_KBS
             newDiagnosis.RID = DiagnosisController.getNextDiagnosisID();
             newDiagnosis.Header = txtHeader.Text.Trim();
             newDiagnosis.Comment = txtComment.Text.Replace(Environment.NewLine, "~~");
+            newDiagnosis.LinkDesc = txtLinkDesc.Text.Trim();
             newDiagnosis.Link = txtLink.Text.Trim();
             newDiagnosis.RetrieveSym = chkSym.IsChecked.Value;
             newDiagnosis.RetrievalIDList = getSymptonsForDiagnosis();
+
+            if (chkHavAttribute.IsChecked==true)
+            {
+                foreach (NaviChildCritAttribute attr in naviChildAttribute)
+                {
+                    CmpAttribute cAttr = new CmpAttribute(attr.AttributeName, attr.getAttributeTypeENUM(), int.Parse(attr.AttributeValue));
+                    newDiagnosis.addAttribute(cAttr);
+                }                
+            }
 
             if (!SaveDiagnosis(newDiagnosis))
             {
@@ -68,6 +83,8 @@ namespace AMDES_KBS
                 txtHeader.Text = "";
                 txtComment.Text = "";
                 txtLink.Text = "";
+
+
 
                 return;
             }
@@ -88,6 +105,29 @@ namespace AMDES_KBS
            
             chkSym.IsChecked = d.RetrieveSym;
             chkLink.IsChecked = d.Link.Length > 0;
+
+            naviChildAttribute = new List<NaviChildCritAttribute>();
+
+            foreach (CmpAttribute cAttr in d.getAttributes())
+            {
+                NaviChildCritAttribute attr = new NaviChildCritAttribute();
+                attr.AttributeName = cAttr.Key;
+                attr.AttributeValue = cAttr.Value.ToString();
+                attr.setRuleType(cAttr.getCompareType());
+
+                naviChildAttribute.Add(attr);
+            }
+
+            if (naviChildAttribute.Count > 0)
+            {
+                chkHavAttribute.IsChecked = true;
+            }
+            else
+            {
+                chkHavAttribute.IsChecked = false;
+            }
+
+            reloadAttribute(naviChildAttribute);
 
             if (chkLink.IsChecked == true)
             {
@@ -112,9 +152,9 @@ namespace AMDES_KBS
             lstGroupList.ItemsSource = null;
             List<QuestionGroup> qgGrpList = new List<QuestionGroup>();
 
-            if (!d.RetrieveSym)
+            if (chkSym.IsChecked==false)
             {
-                stkpnlSymtomsSection.Visibility = Visibility.Hidden;
+                stkpnlSymtomsSection.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -125,6 +165,7 @@ namespace AMDES_KBS
                 }
                 //chkAge.IsChecked = d.AgeBelow65;
             }
+
             lstGroupList.ItemsSource = qgGrpList;
         }
 
@@ -136,6 +177,7 @@ namespace AMDES_KBS
             {
                 lstGroupList.Items.Add(qgItem);
             }
+
         }
 
         private void btnDeleteComment_Click(object sender, RoutedEventArgs e)
@@ -172,12 +214,28 @@ namespace AMDES_KBS
                 sDiagnosis.LinkDesc = "";
             }
 
-
+            
             sDiagnosis.RetrieveSym = chkSym.IsChecked.Value;
-            sDiagnosis.RetrievalIDList = getSymptonsForDiagnosis();
+            sDiagnosis.RetrievalIDList.Clear();
+            if (sDiagnosis.RetrieveSym)
+            {
+                sDiagnosis.RetrievalIDList = getSymptonsForDiagnosis();
+            }
+
             //sDiagnosis.AgeBelow65 = chkAge.IsChecked.Value;
             
             sDiagnosis.IsResource = chkRes.IsChecked.Value;
+
+            sDiagnosis.getAttributes().Clear();            
+            if (chkHavAttribute.IsChecked == true)
+            {
+                foreach (NaviChildCritAttribute attr in naviChildAttribute)
+                {
+                    CmpAttribute cAttr = new CmpAttribute(attr.AttributeName, attr.getAttributeTypeENUM(), int.Parse(attr.AttributeValue));
+                    sDiagnosis.addAttribute(cAttr);
+                }
+            }
+
             if (!SaveDiagnosis(sDiagnosis))
             {
                 return;
@@ -359,16 +417,11 @@ namespace AMDES_KBS
         private void chkSym_Checked(object sender, RoutedEventArgs e)
         {
             stkpnlSymtomsSection.Visibility = Visibility.Visible;
-            stkpnlAttribute.Visibility = Visibility.Visible;
         }
 
         private void chkSym_Unchecked(object sender, RoutedEventArgs e)
         {
-            stkpnlSymtomsSection.Visibility = Visibility.Hidden;
-            lstGroupList.ItemsSource = null;
-            stkpnlAttribute.Visibility = Visibility.Hidden;
-            lstAttributeList.ItemsSource = null;
-            naviChildAttribute = new List<NaviChildCritAttribute>();
+            stkpnlSymtomsSection.Visibility = Visibility.Collapsed;
         }
 
         private void chkLink_Checked(object sender, RoutedEventArgs e)
@@ -456,7 +509,7 @@ namespace AMDES_KBS
             lstAttributeList.Items.Clear();
             foreach (NaviChildCritAttribute attr in otherAttr)
             {
-                string s = "";
+                string s = "=";
                 if (attr.getAttributeTypeENUM() == AttributeCmpType.LessThanEqual)
                 {
                     s = "<=";
@@ -484,6 +537,16 @@ namespace AMDES_KBS
                     lstAttributeList.Items.Add(attr.AttributeName + " " + s + " " + attr.AttributeValue);
                 }
             }
+        }
+
+        private void chkHavAttribute_Checked(object sender, RoutedEventArgs e)
+        {
+            stkpnlAttribute.Visibility = Visibility.Visible;
+        }
+
+        private void chkHavAttribute_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stkpnlAttribute.Visibility = Visibility.Collapsed;
         }
 
     }
