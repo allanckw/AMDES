@@ -71,7 +71,7 @@ namespace AMDES_KBS.Entity
         {
             if (this.attrType == AttributeType.CATEGORICAL)
             {
-                if (i > 0 && categoricalVals.Count > 0 && categoricalVals.Count < i)
+                if (i > 0 && categoricalVals.Count > 0 && i < categoricalVals.Count)
                 {
                     return categoricalVals[i];
                 }

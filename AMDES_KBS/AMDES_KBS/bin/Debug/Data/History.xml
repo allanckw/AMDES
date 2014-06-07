@@ -47,22 +47,26 @@
     <Symptoms>
       <Symptom>
         <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
-        <DiagnosisDate>635377438262823666</DiagnosisDate>
+        <DiagnosisDate>635377446810772581</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
-      <Diagnosis diagID="10">
-        <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.
-   ✓ Failed AMT - Patient's Score: 0, Normal Score: 8 or more</Comment>
-        <Header>R03 - Patient failed AMT with cognitive deficits other than amnesia, re-take History and refer if dementia suspicion is high</Header>
+      <Diagnosis diagID="8">
+        <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria.
+   ✓ BLOOD TYPE is of AB-</Comment>
+        <Header>R01 - Patient has high likelihood of Dementia by DSM4 criteria</Header>
         <Link></Link>
         <LinkDesc></LinkDesc>
-        <RetrieveSymptom>true</RetrieveSymptom>
-        <RetrieveFrom>
-          <QGrpID>6</QGrpID>
-        </RetrieveFrom>
-        <Attributes />
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+        <Attributes>
+          <Attribute>
+            <Name>BLOOD TYPE</Name>
+            <Value>7</Value>
+            <Type>0</Type>
+          </Attribute>
+        </Attributes>
         <isRes>false</isRes>
       </Diagnosis>
     </Diagnoses>

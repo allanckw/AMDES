@@ -280,23 +280,15 @@ namespace AMDES_KBS.Controllers
             foreach (Rules r in rList)
             {
                 foreach (Navigation n in r.Navigations)
-                //Parallel.ForEach(r.Navigations, n =>
                 {
-
                     if (n != null && !nList.Contains(n))
                         nList.Add(n);
-
-                    //Console.WriteLine("Processing {0} {1} on thread {2}",  r, n,
-                    //               Thread.CurrentThread.ManagedThreadId);
-                }//);
+                }
 
             }
-            //Console.WriteLine(i);
-
             Navigation.CriteriaSortingComparer comparer = new Navigation.CriteriaSortingComparer();
             nList.Sort(comparer);
 
-            //Cannot parallel here, must be sequential
             foreach (Navigation n in nList)
             {
                 createNavigationAssertion(n);
