@@ -191,24 +191,15 @@ namespace AMDES_KBS.Controllers
 
         private static void assert(StringBuilder sb, bool init = true)
         {
-            //Parallel.Invoke(
-            //    () =>
-            //    {
             String a = sb.ToString().Trim();
             env.AssertString(a);
             assertLog.Add(a);
 
-            //},  // close first Action
-            //() =>
-            //{
+
             if (!init)
                 saveAssertLog();
 
             count++;
-            //    }//, //close second Action
-
-            //); //close parallel.invoke
-
 
         }
 
@@ -463,40 +454,96 @@ namespace AMDES_KBS.Controllers
                     {
                         Diagnosis d = DiagnosisController.getDiagnosisByID(diagID);
 
-                        if (d.RetrieveSym)
+                        foreach (CmpAttribute kvp in d.getAttributes())
                         {
-
-                            foreach (CmpAttribute kvp in d.getAttributes())
+                            if (kvp.Key.ToUpper().CompareTo("AGE") == 0)
                             {
-                                if (kvp.Key.ToUpper().CompareTo("AGE") == 0)
+                                bool match = false;
+                                switch (kvp.CompareType)
+                                {
+                                    case AttributeCmpType.Equal:
+                                        if (CurrentPatient.getAge() == kvp.Value)
+                                            match = true;
+                                        break;
+                                    case AttributeCmpType.LessThan:
+                                        if (CurrentPatient.getAge() < kvp.Value)
+                                            match = true;
+                                        break;
+
+                                    case AttributeCmpType.LessThanEqual:
+                                        if (CurrentPatient.getAge() <= kvp.Value)
+                                            match = true;
+                                        break;
+
+                                    case AttributeCmpType.MoreThan:
+                                        if (CurrentPatient.getAge() > kvp.Value)
+                                            match = true;
+                                        break;
+
+                                    case AttributeCmpType.MoreThanEqual:
+                                        if (CurrentPatient.getAge() >= kvp.Value)
+                                            match = true;
+                                        break;
+
+                                }
+                                if (match == true)
+                                {
+                                    if (d.Comment.Trim().Length > 0)
+                                    {
+                                        d.Comment += System.Environment.NewLine;
+                                    }
+                                    d.Comment += "   " + App.bulletForm() + " Age "
+                                        + NaviChildCritAttribute.getCompareTypeString(kvp.CompareType) + " " + kvp.Value.ToString();
+                                }
+
+                            }
+                            else
+                            {
+                                //Get the key value from CurrentPatient.
+                                PatAttribute pa = PatAttributeController.searchPatientAttribute(kvp.Key.ToUpper());
+                                CmpAttribute ca = kvp;
+
+                                if (pa.AttrType == PatAttribute.AttributeType.CATEGORICAL)
+                                {
+                                    if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
+                                    {
+                                        if (d.Comment.Trim().Length > 0)
+                                        {
+                                            d.Comment += System.Environment.NewLine;
+                                        }
+                                        d.Comment += "   " + App.bulletForm() + " "
+                                            + kvp.Key + " is of " + pa.getCategoryByID(ca.Value);
+                                    }
+                                }
+                                else if (pa.AttrType == PatAttribute.AttributeType.NUMERIC)
                                 {
                                     bool match = false;
-                                    switch (kvp.CompareType)
+                                    switch (ca.CompareType)
                                     {
                                         case AttributeCmpType.Equal:
-                                            if (CurrentPatient.getAge() == kvp.Value)
+                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
                                                 match = true;
                                             break;
+
                                         case AttributeCmpType.LessThan:
-                                            if (CurrentPatient.getAge() < kvp.Value)
+                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) < ca.Value)
                                                 match = true;
                                             break;
 
                                         case AttributeCmpType.LessThanEqual:
-                                            if (CurrentPatient.getAge() <= kvp.Value)
+                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) <= ca.Value)
                                                 match = true;
                                             break;
 
                                         case AttributeCmpType.MoreThan:
-                                            if (CurrentPatient.getAge() > kvp.Value)
+                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) > ca.Value)
                                                 match = true;
                                             break;
 
                                         case AttributeCmpType.MoreThanEqual:
-                                            if (CurrentPatient.getAge() >= kvp.Value)
+                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) >= ca.Value)
                                                 match = true;
                                             break;
-
                                     }
                                     if (match == true)
                                     {
@@ -504,71 +551,13 @@ namespace AMDES_KBS.Controllers
                                         {
                                             d.Comment += System.Environment.NewLine;
                                         }
-                                        d.Comment += "   " + App.bulletForm() + " Age "
-                                            + NaviChildCritAttribute.getCompareTypeString(kvp.CompareType) + " " + kvp.Value.ToString();
-                                    }
-
-                                }
-                                else
-                                {
-                                    //Get the key value from CurrentPatient.
-                                    PatAttribute pa = PatAttributeController.searchPatientAttribute(kvp.Key.ToUpper());
-                                    CmpAttribute ca = kvp;
-
-                                    if (pa.AttrType == PatAttribute.AttributeType.CATEGORICAL)
-                                    {
-                                        if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
-                                        {
-                                            if (d.Comment.Trim().Length > 0)
-                                            {
-                                                d.Comment += System.Environment.NewLine;
-                                            }
-                                            d.Comment += "   " + App.bulletForm() + " "
-                                                + kvp.Key + " is of " + pa.getCategoryByID(ca.Value);
-                                        }
-                                    }
-                                    else if (pa.AttrType == PatAttribute.AttributeType.NUMERIC)
-                                    {
-                                        bool match = false;
-                                        switch (ca.CompareType)
-                                        {
-                                            case AttributeCmpType.Equal:
-                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
-                                                    match = true;
-                                                break;
-                                            case AttributeCmpType.LessThan:
-                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) < ca.Value)
-                                                    match = true;
-                                                break;
-
-                                            case AttributeCmpType.LessThanEqual:
-                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) <= ca.Value)
-                                                    match = true;
-                                                break;
-
-                                            case AttributeCmpType.MoreThan:
-                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) > ca.Value)
-                                                    match = true;
-                                                break;
-
-                                            case AttributeCmpType.MoreThanEqual:
-                                                if (CurrentPatient.retrieveAttribute(pa.AttributeName) >= ca.Value)
-                                                    match = true;
-                                                break;
-                                        }
-                                        if (match == true)
-                                        {
-                                            if (d.Comment.Trim().Length > 0)
-                                            {
-                                                d.Comment += System.Environment.NewLine;
-                                            }
-                                            d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
-                                                + NaviChildCritAttribute.getCompareTypeString(ca.CompareType) + " " + ca.Value.ToString();
-                                        }
+                                        d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
+                                            + NaviChildCritAttribute.getCompareTypeString(ca.CompareType) + " " + ca.Value.ToString();
                                     }
                                 }
                             }
                         }
+
 
                         if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
                         {
