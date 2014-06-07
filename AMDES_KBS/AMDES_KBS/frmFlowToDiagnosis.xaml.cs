@@ -46,7 +46,7 @@ namespace AMDES_KBS
             }
 
             LoadAllRule();
-
+            newFlowDetail();
             //newFlowDetail();
         }
 
@@ -395,7 +395,6 @@ namespace AMDES_KBS
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
             newFlowDetail();
-
         }
 
         private void chk_Checked(object sender, RoutedEventArgs e)

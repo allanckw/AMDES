@@ -80,19 +80,16 @@ namespace AMDES_KBS.Controllers
                     XElement ccq = new XElement("QGrpID", d.RetrievalIDList[i]);
                     x.Element("RetrieveFrom").Add(ccq);
                 }
+            }
+            foreach (CmpAttribute kvp in d.getAttributes())
+            {
+                //Console.WriteLine("Key : " + kvp.Key.ToString() + ", Value : " + kvp.Value);
+                XElement attr = new XElement("Attribute");
+                attr.Add(new XElement("Name", kvp.Key.ToUpper()));
+                attr.Add(new XElement("Value", kvp.Value));
+                attr.Add(new XElement("Type", kvp.getCompareType()));
 
-
-                foreach (CmpAttribute kvp in d.getAttributes())
-                {
-                    //Console.WriteLine("Key : " + kvp.Key.ToString() + ", Value : " + kvp.Value);
-                    XElement attr = new XElement("Attribute");
-                    attr.Add(new XElement("Name", kvp.Key.ToUpper()));
-                    attr.Add(new XElement("Value", kvp.Value));
-                    attr.Add(new XElement("Type", kvp.getCompareType()));
-
-                    x.Element("Attributes").Add(attr);
-                }
-
+                x.Element("Attributes").Add(attr);
             }
 
             return x;
@@ -144,25 +141,26 @@ namespace AMDES_KBS.Controllers
 
                 if (d.RetrieveSym)
                 {
-                    var attr = (from pa in x.Descendants("Attribute")
-                                select pa).ToList();
+                    var cq = (from pa in x.Descendants("RetrieveFrom").Descendants("QGrpID")
+                              select pa).ToList();
 
-                    foreach (var g in attr)
+                    foreach (var cq1 in cq)
                     {
-                        CmpAttribute ca = new CmpAttribute(g.Element("Name").Value.ToUpper(),int.Parse(g.Element("Type").Value),int.Parse(g.Element("Value").Value));
-                        d.addAttribute(ca);
+                        d.addRetrievalID(int.Parse(cq1.Value));
                     }
+                }
+
+                var attr = (from pa in x.Descendants("Attribute")
+                            select pa).ToList();
+
+                foreach (var g in attr)
+                {
+                    CmpAttribute ca = new CmpAttribute(g.Element("Name").Value.ToUpper(), int.Parse(g.Element("Type").Value), int.Parse(g.Element("Value").Value));
+                    d.addAttribute(ca);
                 }
 
                 d.IsResource = bool.Parse(x.Element("isRes").Value);
 
-                var cq = (from pa in x.Descendants("RetrieveFrom").Descendants("QGrpID")
-                          select pa).ToList();
-
-                foreach (var cq1 in cq)
-                {
-                    d.addRetrievalID(int.Parse(cq1.Value));
-                }
 
                 return d;
             }
