@@ -1,0 +1,317 @@
+@import url(aspComponents.css);
+@import url(menu.css);
+@import url(login-box.css);
+
+body
+{
+    font: 90%/1.6em 'Ubuntu' , arial, serif;
+    color: #888;
+    margin: 0;
+    background: url(../images/body.jpg) top repeat-x #121212;
+    background-attachment: fixed;
+    width: 100%;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+div.fluid
+{
+    width: 90% !important;
+}
+
+/* This controls the width of the fixed width layouts */
+
+#wrapper1
+{
+    background: #1e1e1e;
+    padding: 0 0 0 0;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-color: white;
+    overflow: hidden;
+}
+
+#wrapper2
+{
+    width: 100%;
+    background: url(../images/wrapper2.jpg) bottom repeat-x #fff;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 0 0 0 0;
+}
+
+#nav
+{
+    float: right;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav li
+{
+    float: left;
+    list-style: none;
+    margin: 0 4px 0 0;
+    padding: 0;
+}
+
+#nav li a
+{
+    display: block;
+    padding: 40px 10px 21px 10px;
+    background: #fff;
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 1px 0 0;
+}
+#header h1
+{
+    font: 1.9em 'Ubuntu' , arial, serif;
+    letter-spacing: -1px;
+    color: Black;
+    float: left;
+    padding: 30px 20px 14px 45px;
+    background: url(../images/h1.gif) left bottom no-repeat;
+}
+#header h1 a
+{
+    color: #222;
+    text-decoration: none;
+    border: none;
+}
+#header h1 a:hover
+{
+    color: #000;
+}
+#header h1 span
+{
+    font-size: .8em;
+    color: #ccc;
+    text-transform: uppercase;
+}
+
+#container
+{
+    clear: both;
+    padding: 0 0 0 0;
+}
+
+p.description
+{
+    background: url(../images/description.jpg) right bottom no-repeat #005A97;
+    padding: 10px 10px 40px 10px;
+    color: #fff;
+    font-size: 1.5em;
+    line-height: 25px;
+    border-top: 4px solid #003C64;
+    height: 100px;
+}
+p.description a
+{
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dotted #8CD1FF;
+}
+p.description a:hover
+{
+    border-bottom: 1px solid #8CD1FF;
+}
+
+/* remove side bar
+#sidebar
+{
+	width: 280px;
+	float: right;
+	background: url(../images/sidebar.jpg) top right no-repeat #fff;
+	padding: 0 0 0 0;
+	margin: -30px 0 0 0;
+	font-size:0.9em;
+}
+*/
+
+#content
+{
+    padding: 0 0 0 0;
+    background: url(../images/content.jpg) top right no-repeat;
+    min-height: 750px;
+    float: left;
+    width: 100%; /* 750px; */
+}
+
+#content2
+{
+    padding: 0 0 0 0;
+    background: url(../images/content.jpg) top right no-repeat;
+    min-height: 700px;
+    float: left;
+    width: 90%;
+}
+
+#content h2
+{
+    font: 1.6em 'Ubuntu' , arial, serif;
+    color: #121212;
+    letter-spacing: -1px;
+    margin: 10px 0;
+    border-bottom: 2px solid #eee;
+    background: url(../images/h2.jpg) bottom left no-repeat;
+    clear: left;
+}
+#content h2 a
+{
+    color: #121212;
+    text-decoration: none;
+}
+#content p
+{
+    margin: 15px 0;
+    font-size: 110%;
+    line-height: 21px;
+}
+
+ol.subnav li
+{
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ol.subnav a
+{
+    font-weight: bold;
+    color: #0066dd;
+    text-decoration: underline;
+    border-top: 2px solid #fff;
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    margin: 0 5px 0 0;
+    border-bottom: none;
+}
+ol.subnav a:hover
+{
+    border-top: 2px solid #005A97;
+     color: #0033aa;
+    border-bottom: none;
+}
+
+#sidebar h2
+{
+    color: #333;
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+p.news
+{
+    background: #f4f4f4;
+    margin: 0 0 10px 0;
+    border-left: 5px solid #f0f0f0;
+    font-size: small;
+}
+
+p.news a.more, .more
+{
+    display: block;
+    color: #333;
+    text-decoration: none;
+    text-align: right;
+    border: none;
+    font-size: 0.85em;
+}
+
+#sidebar ul
+{
+    list-style: none;
+    border-top: 1px solid #eee;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+#sidebar ul li
+{
+    border-bottom: 1px solid #eee;
+    padding: 5px;
+    margin: 0;
+}
+#sidebar ul li a
+{
+    color: #0066dd;
+    text-decoration: underline;
+}
+#sidebar ul li a:hover
+{
+    color: #0033aa;
+}
+
+input
+{
+    padding: 5px;
+    border: 1px solid #eee;
+    color: #555;
+}
+
+#content h3
+{
+    font: 1.3em Trebuchet MS;
+    color: #555;
+    margin: 10px 0;
+}
+blockquote
+{
+    padding: 0 0 0 10px;
+    border-left: 5px solid #eee;
+}
+
+ul
+{
+    margin: 10px 10px 10px 0;
+    padding: 0 0 0 15px;
+    border: 1px solid #eee;
+}
+li
+{
+    margin: 0 0 0 10px;
+    padding: 5px;
+}
+#content img
+{
+    padding: 5px;
+    border: none;
+}
+a
+{
+    color: #222;
+    border-bottom: none;
+    text-decoration: none;
+}
+a:hover
+{
+    border-bottom: 1px solid #ccc;
+}
+#footer
+{
+    text-align: center;
+   
+    padding: 10px;
+    margin: 30px 0 0 0;
+    color: #ccc;
+    width: 99%;
+    margin: 0 auto;
+    font-size: 8pt;
+   
+}
+#footer a
+{
+    color: #eee;
+}
+
+

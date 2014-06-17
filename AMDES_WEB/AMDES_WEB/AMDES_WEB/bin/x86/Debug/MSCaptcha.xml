@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MSCaptcha</name>
+    </assembly>
+    <members>
+        <member name="T:MSCaptcha.CaptchaControl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.System#Web#UI#IValidator#Validate">
+            <summary>
+            When implemented by a class, evaluates the condition it checks and updates the <see cref="P:System.Web.UI.IValidator.IsValid"/> property.
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.CheckCaptcha(System.String)">
+            <summary>
+            Returns True if user's input is valid, False otherwise
+            </summary>
+            <param name="userEntry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.ValidateCaptcha(System.String)">
+            <summary>
+            Validate the user's text against the CAPTCHA text
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.HtmlColor(System.Drawing.Color)">
+            <summary>
+            returns HTML-ized color strings
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.CssStyle">
+            <summary>
+            returns css "style=" tag for this control
+            based on standard control visual properties
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.Render(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            render raw control HTML to the page
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.GenerateNewCaptcha">
+            <summary>
+            generate a new captcha and store it in the ASP.NET Cache by unique GUID
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaControl.System#Web#UI#IPostBackDataHandler#LoadPostData(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Retrieve the user's CAPTCHA input from the posted data
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.ErrorInputTooFast">
+            <summary>
+            Error message to show when user entered response too fast.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.ErrorInputTooSlow">
+            <summary>
+            Error message to show when user entered response too late.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.ClientKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.ClientHashMethod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.ImageTag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CustomValidatorErrorMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.ValidationGroup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.Arithmetic">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.System#Web#UI#IValidator#IsValid">
+            <summary>
+            When implemented by a class, gets or sets a value indicating whether the user-entered content in the specified control passes validation.
+            </summary>
+            <returns>
+            true if the content is valid; otherwise, false.
+            </returns>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CacheStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.UserValidated">
+            <summary>
+            Returns True if the user was CAPTCHA validated after a postback.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CaptchaFont">
+            <summary>
+            Font used to render CAPTCHA text. If font name is blank, a random font will be chosen.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CaptchaChars">
+            <summary>
+            Characters used to render CAPTCHA text. A character will be picked randomly from the string.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CaptchaLength">
+            <summary>
+            Number of CaptchaChars used in the CAPTCHA text
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CaptchaMinTimeout">
+            <summary>
+            Minimum number of seconds CAPTCHA must be displayed before it is valid. If you're too fast, you must be a robot. Set to zero to disable.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CaptchaMaxTimeout">
+            <summary>
+            Maximum number of seconds CAPTCHA will be cached and valid. If you're too slow, you may be a CAPTCHA hack attempt. Set to zero to disable.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CaptchaBackgroundNoise">
+            <summary />
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.CaptchaLineNoise">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.ArithmeticFunction">
+            <summary>
+            Specifies arithmetic operation to use when generating a new captcha
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.BackColor">
+            <summary>
+            Background color for the captcha image
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.FontColor">
+            <summary>
+            Color of captcha text
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.NoiseColor">
+            <summary>
+            Color for dots in the background noise 
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.LineColor">
+            <summary>
+            Color for the background lines of the captcha image
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaControl.IsDesignMode">
+            <summary>
+            are we in design mode?
+            </summary>
+        </member>
+        <member name="T:MSCaptcha.CaptchaControl.cacheType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MSCaptcha.CaptchaControl.arithmeticOperation">
+            <summary>
+            Arithmetic operation to perform in formula. Users must enter the result of arithmetic operation, not what they see in Captcha image.
+            </summary>
+        </member>
+        <member name="F:MSCaptcha.CaptchaControl.arithmeticOperation.Random">
+            <summary>
+            Will result in unpredictable operation selected as ArithmeticOperation. This should harden the work for bots.
+            </summary>
+        </member>
+        <member name="T:MSCaptcha.CaptchaControl.clientHashingAlgorithm">
+            <summary>
+            Hashing algorithm used for Captcha value. MD5 is a recommended value.
+            </summary>
+        </member>
+        <member name="F:MSCaptcha.CaptchaControl.clientHashingAlgorithm.MD5">
+            <summary>
+            While broken, MD5 is the fastest method. It is impossible to crack MD5 during the normal lifetime of Captcha.
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.RenderImage">
+            <summary>
+            Forces a new Captcha image to be generated using current property value settings.
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.RandomFontFamily">
+            <summary>
+            Returns a random font family from the font whitelist
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.GenerateRandomText">
+            <summary>
+            generate random text for the CAPTCHA
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.RandomPoint(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a random point within the specified x and y ranges
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.RandomPoint(System.Drawing.Rectangle)">
+            <summary>
+            Returns a random point within the specified rectangle
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.TextPath(System.String,System.Drawing.Font,System.Drawing.Rectangle)">
+            <summary>
+            Returns a GraphicsPath containing the specified string and font
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.GetFont">
+            <summary>
+            Returns the CAPTCHA font in an appropriate size 
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.GenerateImagePrivate">
+            <summary>
+            Renders the CAPTCHA image
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.WarpText(System.Drawing.Drawing2D.GraphicsPath,System.Drawing.Rectangle)">
+            <summary>
+            Warp the provided text GraphicsPath by a variable amount
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.AddNoise(System.Drawing.Graphics,System.Drawing.Rectangle)">
+            <summary>
+            Add a variable level of graphic noise to the image
+            </summary>
+        </member>
+        <member name="M:MSCaptcha.CaptchaImage.AddLine(System.Drawing.Graphics,System.Drawing.Rectangle)">
+            <summary>
+            Add variable level of curved lines to the image
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.UniqueId">
+            <summary>
+            Returns a GUID that uniquely identifies this Captcha
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.RenderedAt">
+            <summary>
+            Returns the date and time this image was last rendered
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.Font">
+            <summary>
+            Font family to use when drawing the Captcha text. If no font is provided, a random font will be chosen from the font whitelist for each character.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.FontWarp">
+            <summary>
+            Amount of random warping to apply to the Captcha text.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.BackgroundNoise">
+            <summary>
+            Amount of background noise to apply to the Captcha image.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.TextChars">
+            <summary>
+            A string of valid characters to use in the Captcha text. 
+            A random character will be selected from this string for each character.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.TextLength">
+            <summary>
+            Number of characters to use in the Captcha text. 
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.Text">
+            <summary>
+            Returns the randomly generated Captcha text.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.Width">
+            <summary>
+            Width of Captcha image to generate, in pixels 
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.Height">
+            <summary>
+            Height of Captcha image to generate, in pixels 
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.FontWhitelist">
+            <summary>
+            A semicolon-delimited list of valid fonts to use when no font is provided.
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.BackColor">
+            <summary>
+            Background color for the captcha image
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.FontColor">
+            <summary>
+            Color of captcha text
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.NoiseColor">
+            <summary>
+            Color for dots in the background noise 
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.LineColor">
+            <summary>
+            Color for the background lines of the captcha image
+            </summary>
+        </member>
+        <member name="P:MSCaptcha.CaptchaImage.ArithmeticFunction">
+            <summary>
+            Specifies arithmetic operation to use when generating a new captcha
+            </summary>
+        </member>
+        <member name="T:MSCaptcha.CaptchaImage.fontWarpFactor">
+            <summary>
+            Amount of random font warping to apply to rendered text
+            </summary>
+        </member>
+        <member name="T:MSCaptcha.CaptchaImage.backgroundNoiseLevel">
+            <summary>
+            Amount of background noise to add to rendered image
+            </summary>
+        </member>
+        <member name="T:MSCaptcha.CaptchaImage.lineNoiseLevel">
+            <summary>
+            Amount of curved line noise to add to rendered image
+            </summary>
+        </member>
+        <member name="T:MSCaptcha.CaptchaImage.arithmeticOperation">
+            <summary>
+            Arithmetic operation to perform in formula
+            </summary>
+        </member>
+    </members>
+</doc>

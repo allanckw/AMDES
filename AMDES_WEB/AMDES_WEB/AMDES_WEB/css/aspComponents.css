@@ -1,0 +1,144 @@
+﻿/* Rating */
+.ratingStar
+{
+	font-size: 0pt;
+	width: 25px;
+	height: 25px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	display: block;
+}
+
+.filledRatingStar
+{
+	background-image: url(../images/FilledStar.gif);
+}
+
+.emptyRatingStar
+{
+	background-image: url(../images/EmptyStar.gif);
+}
+
+.waitingRatingStar
+{
+	background-image: url(../images/WaitingStar.gif);
+}
+
+/* Entre Center Profile */
+.profile
+{
+	background-color: #E5E5E5;
+	margin-bottom: 5px;
+	min-height: 90px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+
+.profileDetails
+{
+	background-color: #ffffff;
+	clear: both;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+
+/* Calendar Control */
+.calTitle
+{
+	background-color: #cccccc;
+	color: black;
+	width: 90px;
+}
+.calBody
+{
+	border-width: 10px;
+}
+
+.staticMenuItemStyle
+{
+	text-align: center;
+	display: block;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-left: 0;
+}
+
+.staticMenuItemSelectedStyle
+{
+	border: solid 1px #000;
+}
+
+.menuItem
+{
+	display: block;
+}
+
+.dynamicMenuItemStyle
+{
+	border: solid 1px #000;
+	background-image: url(images/btn3.jpg);
+	color: Red;
+	z-index: 200;
+	position: relative;
+}
+
+.background
+{
+	border: solid 1px #000;
+	background-image: url(images/btn3.jpg);
+}
+
+.NavigationMenu
+{
+	font-family: Verdana;
+	font-size: 10pt;
+	color: #FFF;
+	font-weight: 600;
+	z-index: 101;
+	background-image: url(images/btn3.jpg);
+}
+
+
+.menuItemMouseOver, .menuItemSelected
+{
+	border: solid 1px Navy;
+	background-image: url(images/btn4.jpg);
+}
+
+.NavigationMenu A:link, .NavigationMenu A:visited, .NavigationMenu A:active
+{
+	text-decoration: none;
+	color: #FFF;
+	display: block;
+}
+
+.currentNodeStyle, .nodeStyle, .rootNodeStyle, a.siteMapPath
+{
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 10pt;
+}
+.HeaderAccordian
+{
+	border: 1px solid #2F4F4F;
+	color: white;
+	background-color: #2E4d7B;
+	font-weight: bold;
+	padding: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	height: 50px;
+}
+.ContentAccordian
+{
+	background-color: #D3DEEF;
+	border: 1px dashed #2F4F4F;
+	border-top: none;
+	padding: 5px;
+	padding-top: 10px;
+}

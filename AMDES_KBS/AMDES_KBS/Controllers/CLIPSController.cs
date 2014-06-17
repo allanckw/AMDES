@@ -171,7 +171,7 @@ namespace AMDES_KBS.Controllers
         {
             assert(new StringBuilder("(attribute AGE " + CurrentPatient.getAge() + ")"), false);
 
-            foreach (KeyValuePair<string, int> kvp in CurrentPatient.getAttributes())
+            foreach (KeyValuePair<string, double> kvp in CurrentPatient.getAttributes())
             {
                 assert(new StringBuilder("(attribute " + kvp.Key.ToUpper().Replace(" ", "_") + " " + kvp.Value.ToString() + ")"), false);
             }

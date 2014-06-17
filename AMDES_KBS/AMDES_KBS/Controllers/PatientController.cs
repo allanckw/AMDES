@@ -47,7 +47,7 @@ namespace AMDES_KBS.Controllers
                                     new XElement("AssessLocation", p.Doctor.ClinicName))
                                     );
 
-            foreach (KeyValuePair<string, int> kvp in p.getAttributes())
+            foreach (KeyValuePair<string, double> kvp in p.getAttributes())
             {
                 //Console.WriteLine("Key : " + kvp.Key.ToString() + ", Value : " + kvp.Value);
                 XElement attr = new XElement("Attribute");

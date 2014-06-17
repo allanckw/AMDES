@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Rules xml-->
+<Navigations>
+  <Navex NavID="1">
+    <Destination>1</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>true</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes />
+    <Diagnoses />
+  </Navex>
+  <Navex NavID="3">
+    <Destination>1</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes />
+    <Diagnoses />
+  </Navex>
+  <Navex NavID="4">
+    <Destination>-1</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>true</Answer>
+      </ChildCriteriaQuestionGroup>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>1</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>2</CriteriaGrpID>
+        <Answer>false</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes />
+    <Diagnoses>
+      <DiagnosisID>20</DiagnosisID>
+    </Diagnoses>
+  </Navex>
+  <Navex NavID="6">
+    <Destination>7</Destination>
+    <NavigationChildCriterias>
+      <ChildCriteriaQuestionGroup>
+        <CriteriaGrpID>6</CriteriaGrpID>
+        <Answer>true</Answer>
+      </ChildCriteriaQuestionGroup>
+    </NavigationChildCriterias>
+    <NavigationChildAttributes>
+      <ChildCriteriaAttribute>
+        <AttributeName>AGE</AttributeName>
+        <AttributeValue>65</AttributeValue>
+        <CompareType>3</CompareType>
+      </ChildCriteriaAttribute>
+    </NavigationChildAttributes>
+    <Diagnoses />
+  </Navex>
+</Navigations>

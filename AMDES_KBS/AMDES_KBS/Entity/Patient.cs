@@ -14,7 +14,7 @@ namespace AMDES_KBS.Entity
 
         private DateTime dAssessment, dob;
 
-        Dictionary<string, int> attributes;
+        Dictionary<string, double> attributes;
 
         private string nric = "", firstname = "", lastname = "";
 
@@ -30,14 +30,14 @@ namespace AMDES_KBS.Entity
                 throw new InvalidOperationException("Age cannot be from the future!!");
             }
             dAssessment = DateTime.Today;
-            attributes = new Dictionary<string, int>();
+            attributes = new Dictionary<string, double>();
             //status = PatientStatus.DRAFT;
         }
 
         public Patient()
         {
             dAssessment = DateTime.Today;
-            attributes = new Dictionary<string, int>();
+            attributes = new Dictionary<string, double>();
             //status = PatientStatus.DRAFT;
         }
 
@@ -58,7 +58,7 @@ namespace AMDES_KBS.Entity
             }
 
             dAssessment = DateTime.Today;
-            attributes = new Dictionary<string, int>();
+            attributes = new Dictionary<string, double>();
             //status = PatientStatus.DRAFT;
         }
 
@@ -101,7 +101,7 @@ namespace AMDES_KBS.Entity
             get { return this.doctor; }
             set { this.doctor = value; }
         }
-      
+
         public DateTime AssessmentDate
         {
             get { return dAssessment; }
@@ -137,7 +137,7 @@ namespace AMDES_KBS.Entity
             return HistoryController.getHistoryByID(this.nric);
         }
 
-        public void createAttribute(string attrName, int value)
+        public void createAttribute(string attrName, double value)
         {
             if (attributes.ContainsKey(attrName))
             {
@@ -149,9 +149,9 @@ namespace AMDES_KBS.Entity
             }
         }
 
-        public int retrieveAttribute(string attrName)
+        public double retrieveAttribute(string attrName)
         {
-            int h;
+            double h;
             if (attributes.TryGetValue(attrName, out h))
             {
                 return attributes[attrName];
@@ -159,7 +159,7 @@ namespace AMDES_KBS.Entity
             return -1;
         }
 
-        public Dictionary<string, int> getAttributes()
+        public Dictionary<string, double> getAttributes()
         {
             return this.attributes;
         }
