@@ -265,6 +265,24 @@ input
     color: #555;
     margin: 10px 0;
 }
+#content h4
+{
+    font: 1.2em Trebuchet MS;
+    color: #555;
+    margin: 10px 0;
+}
+#content h5
+{
+    font: 1.1em Trebuchet MS;
+    color: #555;
+    margin: 10px 0;
+}
+#content h6
+{
+    font: 1.0em Trebuchet MS;
+    color: #555;
+    margin: 10px 0;
+}
 blockquote
 {
     padding: 0 0 0 10px;

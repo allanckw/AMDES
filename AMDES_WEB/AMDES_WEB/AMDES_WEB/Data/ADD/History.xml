@@ -73,4 +73,514 @@
     <Status>0</Status>
     <CompletedDate>635376960000000000</CompletedDate>
   </History>
+  <History pid="ANON635391495613006494" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Status>1</Status>
+    <CompletedDate>0</CompletedDate>
+  </History>
+  <History pid="ANON_635391496794804089" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Status>1</Status>
+    <CompletedDate>0</CompletedDate>
+  </History>
+  <History pid="ANON_635391497520555600" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Diagnoses>
+      <Diagnosis diagID="20">
+        <Comment>The patient has passed Abbreviated Mental Test with no significant cognitive deficits and hence does not satisfy the DSM4 criteria for Dementia.</Comment>
+        <Header>R13 - Patient is unlikely to have Dementia</Header>
+        <Link></Link>
+        <LinkDesc></LinkDesc>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+        <Attributes />
+        <isRes>false</isRes>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>1</Status>
+    <CompletedDate>0</CompletedDate>
+  </History>
+  <History pid="ANON_635391498239856742" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635391498516072540</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Status>1</Status>
+    <CompletedDate>0</CompletedDate>
+  </History>
+  <History pid="ANON_635391731760743372" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
+        <DiagnosisDate>635391731840267921</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Status>1</Status>
+    <CompletedDate>0</CompletedDate>
+  </History>
+  <History pid="ANON_635391733474901416" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
+        <DiagnosisDate>635391733567176694</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Status>1</Status>
+    <CompletedDate>0</CompletedDate>
+  </History>
+  <History pid="ANON_635391733922076993" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
+        <DiagnosisDate>635391734239905172</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="30">
+        <Comment>Patient failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high., Failed AMT - Patient's Score: 0, Normal Score: 8 or more</Comment>
+        <Header>R22 - Patient failed AMT, retake history and refer if dementia suspicion is high</Header>
+        <Link></Link>
+        <LinkDesc></LinkDesc>
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>6</QGrpID>
+        </RetrieveFrom>
+        <Attributes />
+        <isRes>false</isRes>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>1</Status>
+    <CompletedDate>0</CompletedDate>
+  </History>
 </Histories>

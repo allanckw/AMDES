@@ -32,12 +32,14 @@ namespace AMDES_WEB.CustomControls
             get
             {
                 return this.regRange.Enabled;
+               
             }
             set
             {
                 this.regRange.Enabled = value;
                 this.ddlSelections.Visible = !value;
                 this.txtFieldResult.Visible = value;
+                regRange.ErrorMessage = "Number out of range, must be between " + MinValue + " and " + MaxValue;
             }
         }
 
@@ -54,6 +56,7 @@ namespace AMDES_WEB.CustomControls
             set
             {
                 regRange.MinimumValue = value;
+                regRange.ErrorMessage = "Number out of range, must be between " + MinValue + " and " + MaxValue;
             }
         }
 
@@ -70,6 +73,7 @@ namespace AMDES_WEB.CustomControls
             set
             {
                 regRange.MaximumValue = value;
+                regRange.ErrorMessage = "Number out of range, must be between " + MinValue + " and " + MaxValue;
             }
         }
 
