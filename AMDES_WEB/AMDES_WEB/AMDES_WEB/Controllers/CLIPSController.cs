@@ -9,16 +9,32 @@ using AMDES_KBS.Entity;
 using Mommosoft.ExpertSystem;
 using AMDES_WEB;
 
+/* Application Scope: The variables that have application scope are available throughout the application,
+ * i.e to all users of the applications across all pages.
+
+ * Session Scope: When many users connect to your site, each of them will have a separate session 
+ * (tied to the identity of the user that is recognized by the application.) 
+ * When the variable has session scope it will have new instance for each session, even though the users are accessing the same page. 
+ * The session variable instance is available across all pages for that session.
+
+ * Page Scope: When you have a instance variable on a Page it is specific to that page only and that session only.
+
+ * Static variables have Application scope. All users of the application will share the same variable instance in your case.
+
+ * For windows application can use static, because it is only 1 user as it is a standalone application, however when converted to web, 
+ * static variables cannot be used anymore as it is application scope.
+ */
+
 namespace AMDES_KBS.Controllers
 {
-    class CLIPSController
+    public class CLIPSController
     {
         public static bool ExpertUser;
         public static bool enableSavePatient;
         public static bool enablePrev;
         public static bool enableStats;
 
-        private static Patient pat;
+
         public static bool? savePatient = false;
         private List<History> hyList = new List<History>();
 
@@ -27,45 +43,61 @@ namespace AMDES_KBS.Controllers
         //all other tests are readonly, do not call clips controller!
 
         //for debug purpose, to pull out to test on clips, and to pull out to assert for restore patient
-        private static List<string> assertLog = new List<string>();
+        private List<string> assertLog = new List<string>();
 
         static int count = 0; //just a counter to check the number of assertions... 
 
+        private Patient pat;
         //WARNING MOMOSOFT CLIPS REQUIRED x86 MODE ONLY, ALL OTHER MODE WILL FAIL
-        private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
+        private Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
 
-        private static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Logs\");
+        private string logPath;
         public static string clpPath = System.Web.HttpContext.Current.Server.MapPath(@"engine\dementia.clp");
 
-        public static Patient CurrentPatient
+        private string appName;
+
+        public string ApplicationName
         {
             get
             {
-                return CLIPSController.pat;
+                return appName;
+            }
+            set
+            {
+                this.appName = value;
+                logPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\" + appName + @"\Logs\");
+            }
+        }
+
+        public Patient CurrentPatient
+        {
+            get
+            {
+                return pat;
             }
             set
             {
                 if (value != null)
-                    CLIPSController.pat = value;
+                    pat = value;
                 else
-                    throw new NullReferenceException("Current Patient is NULL!");
+                    pat = new Patient();
             }
         }
 
-        public static void saveAssertLog()
+        public void saveAssertLog()
         {
             StringBuilder sb = new StringBuilder();
             foreach (String s in assertLog)
             {
                 sb.AppendLine(s);
             }
-            string filePath = dataPath + CurrentPatient.NRIC + ".log";
+            string filePath = logPath + pat.NRIC + ".log";
             File.WriteAllText(filePath, sb.ToString());
         }
 
-        public static History loadSavedAssertions()
+        public History loadSavedAssertions()
         {
-            //CurrentPatient.SymptomsList.Clear();
+            //pat.SymptomsList.Clear();
             //call this f(x) everytime u click a new patient
             env.Clear();
             assertLog.Clear();
@@ -74,11 +106,11 @@ namespace AMDES_KBS.Controllers
             env.Load(clpPath);
             reset();
 
-            if (File.Exists(dataPath) && HistoryController.isHistoryExist(pat.NRIC))
+            if (File.Exists(logPath) && HistoryController.isHistoryExist(pat.NRIC))
             {
                 //File Ops here
                 string line;
-                StreamReader file = new System.IO.StreamReader(dataPath);
+                StreamReader file = new System.IO.StreamReader(logPath);
 
                 while ((line = file.ReadLine()) != null)
                 {
@@ -90,7 +122,7 @@ namespace AMDES_KBS.Controllers
                 saveAssertLog();
                 //End File Op
                 run();
-                return CurrentPatient.getLatestHistory();
+                return pat.getLatestHistory();
             }
             else
             {
@@ -99,11 +131,11 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void clearAndLoadNew()
+        public void clearAndLoadNew()
         {
-            if (CurrentPatient != null)
+            if (pat != null)
             {
-                //CurrentPatient.SymptomsList.Clear();
+                //pat.SymptomsList.Clear();
                 //call this f(x) everytime u click a new patient
                 env.Clear();
                 assertLog.Clear();
@@ -141,13 +173,13 @@ namespace AMDES_KBS.Controllers
             }
             else
             {
-                throw new NullReferenceException("Current Patient is Null!, please set CurrentPatient before loading.");
+                throw new NullReferenceException("Current Patient is Null!, please set pat before loading.");
             }
         }
 
 
 
-        private static void loadDiagnosis()
+        private void loadDiagnosis()
         {
             List<Diagnosis> diagList = DiagnosisController.getAllDiagnosis();
             StringBuilder sb;
@@ -168,29 +200,29 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        private static void assertAllAttributes()
+        private void assertAllAttributes()
         {
-            assert(new StringBuilder("(attribute AGE " + CurrentPatient.getAge() + ")"), false);
+            assert(new StringBuilder("(attribute AGE " + pat.getAge() + ")"), false);
 
-            foreach (KeyValuePair<string, double> kvp in CurrentPatient.getAttributes())
+            foreach (KeyValuePair<string, double> kvp in pat.getAttributes())
             {
                 assert(new StringBuilder("(attribute " + kvp.Key.ToUpper().Replace(" ", "_") + " " + kvp.Value.ToString() + ")"), false);
             }
         }
 
-        private static void run()
+        private void run()
         {
             env.Run();
             //assertLog.Add("(run)");
         }
 
-        public static void reset()
+        public void reset()
         {
             env.Reset();
             assertLog.Add("(reset)");
         }
 
-        private static void assert(StringBuilder sb, bool init = true)
+        private void assert(StringBuilder sb, bool init = true)
         {
             String a = sb.ToString().Trim();
             env.AssertString(a);
@@ -206,7 +238,7 @@ namespace AMDES_KBS.Controllers
 
         //Clear
         //http://msdn.microsoft.com/en-us/library/dd460713(v=vs.100).aspx
-        private static void loadQuestions(List<QuestionGroup> grps)
+        private void loadQuestions(List<QuestionGroup> grps)
         {
             StringBuilder sb;
 
@@ -265,7 +297,7 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        private static void loadNavex(FirstQuestion fq, List<Rules> rList, List<Navigation> defBehavior)
+        private void loadNavex(FirstQuestion fq, List<Rules> rList, List<Navigation> defBehavior)
         {
             //1st navex point
             assert(new StringBuilder("(Navigation  (DestinationGroupID _" + fq.GrpID + ") (NavigationID _0) )"));
@@ -289,7 +321,7 @@ namespace AMDES_KBS.Controllers
             Navigation.CriteriaSortingComparer comparer = new Navigation.CriteriaSortingComparer();
             nList.Sort(comparer);
 
-          
+
             foreach (Navigation n in nList)
             {
                 createNavigationAssertion(n);
@@ -298,7 +330,7 @@ namespace AMDES_KBS.Controllers
 
 
 
-        private static void createNavigationAssertion(Navigation n)
+        private void createNavigationAssertion(Navigation n)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -360,7 +392,7 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void assertQuestion(int grpID, int id, bool answer)
+        public void assertQuestion(int grpID, int id, bool answer)
         {
             //to paste to load questions
             StringBuilder sb = new StringBuilder("(choice _" + grpID + "." + id + " ");
@@ -378,24 +410,24 @@ namespace AMDES_KBS.Controllers
             run();
         }
 
-        public static void assertNextSection()
+        public void assertNextSection()
         {
             assert(new StringBuilder("(next)"), false);
             run();
         }
 
-        public static void assertPrevSection()
+        public void assertPrevSection()
         {
             assert(new StringBuilder("(previous)"), false);
             run();
         }
 
-        public static void retractDiagnosis()
+        public void retractDiagnosis()
         {
             assertPrevSection();
         }
 
-        public static int getCurrentQnGroupID()
+        public int getCurrentQnGroupID()
         {
             //WARNING: Require Navigation to be SETUP OR INSTANT FAIL!
 
@@ -419,9 +451,9 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void getResultingDiagnosis()
+        public void getResultingDiagnosis()
         {
-            History h = getCurrentPatientHistory();
+            History h = getpatHistory();
 
             String evalStr = "(find-all-facts ((?f diagnosis)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
             //String evalStr = "(find-all-facts ((?f NaviHistory)) TRUE)";
@@ -455,26 +487,26 @@ namespace AMDES_KBS.Controllers
                                 switch (kvp.CompareType)
                                 {
                                     case AttributeCmpType.Equal:
-                                        if (CurrentPatient.getAge() == kvp.Value)
+                                        if (pat.getAge() == kvp.Value)
                                             match = true;
                                         break;
                                     case AttributeCmpType.LessThan:
-                                        if (CurrentPatient.getAge() < kvp.Value)
+                                        if (pat.getAge() < kvp.Value)
                                             match = true;
                                         break;
 
                                     case AttributeCmpType.LessThanEqual:
-                                        if (CurrentPatient.getAge() <= kvp.Value)
+                                        if (pat.getAge() <= kvp.Value)
                                             match = true;
                                         break;
 
                                     case AttributeCmpType.MoreThan:
-                                        if (CurrentPatient.getAge() > kvp.Value)
+                                        if (pat.getAge() > kvp.Value)
                                             match = true;
                                         break;
 
                                     case AttributeCmpType.MoreThanEqual:
-                                        if (CurrentPatient.getAge() >= kvp.Value)
+                                        if (pat.getAge() >= kvp.Value)
                                             match = true;
                                         break;
 
@@ -492,13 +524,13 @@ namespace AMDES_KBS.Controllers
                             }
                             else
                             {
-                                //Get the key value from CurrentPatient.
+                                //Get the key value from pat.
                                 PatAttribute pa = PatAttributeController.searchPatientAttribute(kvp.Key.ToUpper());
                                 CmpAttribute ca = kvp;
 
                                 if (pa.AttrType == PatAttribute.AttributeType.CATEGORICAL)
                                 {
-                                    if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
+                                    if (pat.retrieveAttribute(pa.AttributeName) == ca.Value)
                                     {
                                         if (d.Comment.Trim().Length > 0)
                                         {
@@ -514,27 +546,27 @@ namespace AMDES_KBS.Controllers
                                     switch (ca.CompareType)
                                     {
                                         case AttributeCmpType.Equal:
-                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) == ca.Value)
+                                            if (pat.retrieveAttribute(pa.AttributeName) == ca.Value)
                                                 match = true;
                                             break;
 
                                         case AttributeCmpType.LessThan:
-                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) < ca.Value)
+                                            if (pat.retrieveAttribute(pa.AttributeName) < ca.Value)
                                                 match = true;
                                             break;
 
                                         case AttributeCmpType.LessThanEqual:
-                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) <= ca.Value)
+                                            if (pat.retrieveAttribute(pa.AttributeName) <= ca.Value)
                                                 match = true;
                                             break;
 
                                         case AttributeCmpType.MoreThan:
-                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) > ca.Value)
+                                            if (pat.retrieveAttribute(pa.AttributeName) > ca.Value)
                                                 match = true;
                                             break;
 
                                         case AttributeCmpType.MoreThanEqual:
-                                            if (CurrentPatient.retrieveAttribute(pa.AttributeName) >= ca.Value)
+                                            if (pat.retrieveAttribute(pa.AttributeName) >= ca.Value)
                                                 match = true;
                                             break;
                                     }
@@ -579,15 +611,15 @@ namespace AMDES_KBS.Controllers
 
             }
 
-            h = getCurrentPatientSymptom(h);
+            h = getpatSymptom(h);
             h.setCompleted();
 
-            HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+            HistoryController.updatePatientNavigationHistory(h, pat.AssessmentDate.Date);
         }
 
-        public static void saveCurrentNavex()
+        public void saveCurrentNavex()
         {
-            History h = getCurrentPatientHistory();
+            History h = getpatHistory();
 
             String evalStr = "(find-all-facts ((?f diagnosis)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
             //String evalStr = "(find-all-facts ((?f NaviHistory)) TRUE)";
@@ -638,16 +670,16 @@ namespace AMDES_KBS.Controllers
 
             }
 
-            h = getCurrentPatientSymptom(h);
+            h = getpatSymptom(h);
             if (savePatient.Value)
-                HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+                HistoryController.updatePatientNavigationHistory(h, pat.AssessmentDate.Date);
 
             else
                 HistoryController.updatePatientNavigationHistory(h, new DateTime(0));
 
         }
 
-        private static List<int> getNaviHistory()
+        private List<int> getNaviHistory()
         {
             List<int> naviHistory = new List<int>();
             String evalStr = "(find-all-facts((?a NaviHistory)) TRUE)";
@@ -671,7 +703,7 @@ namespace AMDES_KBS.Controllers
             return naviHistory;
         }
 
-        private static List<Symptom> getPatientSymptomByQG(int qgID)
+        private List<Symptom> getPatientSymptomByQG(int qgID)
         {
             List<Symptom> sList = new List<Symptom>();
 
@@ -713,7 +745,7 @@ namespace AMDES_KBS.Controllers
             return sList;
         }
 
-        private static History getCurrentPatientSymptom(History h)
+        private History getpatSymptom(History h)
         {
             String evalStr = "(find-all-facts((?s symptoms)) TRUE)";
             MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
@@ -755,17 +787,17 @@ namespace AMDES_KBS.Controllers
             return h;
         }
 
-        private static History getCurrentPatientHistory()
+        private History getpatHistory()
         {
             History history;
             List<int> navHistory = getNaviHistory();
             if (savePatient.Value)
             {
-                history = new History(CurrentPatient.NRIC, CurrentPatient.AssessmentDate);
+                history = new History(pat.NRIC, pat.AssessmentDate);
             }
             else
             {
-                history = new History(CurrentPatient.NRIC, new DateTime(0));
+                history = new History(pat.NRIC, new DateTime(0));
             }
 
             String evalStr = " (find-all-facts((?a question)) TRUE)";

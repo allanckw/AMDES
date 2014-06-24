@@ -3,7 +3,7 @@
 
 <%@ Register Assembly="MSCaptcha" Namespace="MSCaptcha" TagPrefix="cc1" %>
 <%@ Register Src="~/CustomControls/DatePicker.ascx" TagName="DatePicker" TagPrefix="AOS" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cphCENTER" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="cphCENTER" runat="server" >
     <h2>
         New Patient</h2>
     <h3>

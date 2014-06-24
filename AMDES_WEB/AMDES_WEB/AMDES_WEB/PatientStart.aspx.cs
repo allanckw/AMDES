@@ -13,6 +13,11 @@ namespace AMDES_WEB
 {
     public partial class patienttStart : System.Web.UI.Page
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            this.Form.DefaultButton = this.btnStart.UniqueID;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             AddRegistrationField();
@@ -119,12 +124,13 @@ namespace AMDES_WEB
             ccJoin.ValidateCaptcha(txtCaptcha.Text.Trim());
             if (ccJoin.UserValidated)
             {
-                CLIPSController.CurrentPatient = new Patient();
 
-                CLIPSController.CurrentPatient.AssessmentDate = DateTime.Today;
-                CLIPSController.CurrentPatient.DOB = dpFrom.Date;
-                CLIPSController.CurrentPatient.NRIC = "ANON_" + DateTime.Now.Ticks.ToString(); //Unique Identfier based on time
-                CLIPSController.CurrentPatient.Doctor = new Assessor("Doctor", "Clinic");
+                Patient p = new Patient();
+
+                p.AssessmentDate = DateTime.Today;
+                p.DOB = dpFrom.Date;
+                p.NRIC = "ANON_" + DateTime.Now.Ticks.ToString(); //Unique Identfier based on time
+                p.Doctor = new Assessor("Doctor", "Clinic");
 
                 foreach (Control c in this.phRegister.Controls)
                 {
@@ -133,19 +139,22 @@ namespace AMDES_WEB
                         PatAttributeUC regField = ((PatAttributeUC)c);
                         if (regField.isNumeric)
                         {
-                            CLIPSController.CurrentPatient.createAttribute(regField.FieldLabelString, regField.Value);
+                            p.createAttribute(regField.FieldLabelString, regField.Value);
                         }
                         else
                         {
-                            CLIPSController.CurrentPatient.createAttribute(regField.FieldLabelString, regField.Value);
+                            p.createAttribute(regField.FieldLabelString, regField.Value);
                         }
                     }
 
                 }
 
-                CLIPSController.clearAndLoadNew();
-                Session["pat"] = CLIPSController.CurrentPatient;
-                Session["CurGrp"] = CLIPSController.getCurrentQnGroupID();
+                CLIPSController clp = new CLIPSController();
+                clp.CurrentPatient = p;
+                clp.clearAndLoadNew();
+                clp.ApplicationName = Request.QueryString["appID"];
+
+                Session["clp"] = clp;
                 
                 txtCaptcha.Text = "";
                 Response.Redirect("~/Questionnaire.aspx");
@@ -155,6 +164,7 @@ namespace AMDES_WEB
             {
                 Alert.Show("Invalid Captcha, please try again!");
                 txtCaptcha.Text = "";
+                txtCaptcha.Focus();
             }
         }
     }

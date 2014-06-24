@@ -26,6 +26,18 @@ namespace AMDES_WEB.CustomControls
             }
         }
 
+        public CLIPSController CLIPSCtrl
+        {
+            set
+            {
+                Session["clp"] = value;
+            }
+            get
+            {
+                return (CLIPSController)Session["clp"];
+            }
+        }
+
         private void loadQuestions()
         {
             Control c = GetPostBackControl(Page);
@@ -83,26 +95,27 @@ namespace AMDES_WEB.CustomControls
             }
             return control;
         }
-        
+
         //http://www.vbforums.com/showthread.php?649132-Preventing-an-asp-CheckBox-from-losing-it-s-checked-value
         protected void Page_Init(object sender, EventArgs e)
         {
-            CLIPSController.CurrentPatient = (Patient)Session["pat"];
+           
 
-            if (CLIPSController.CurrentPatient.getLatestHistory() == null)
+            if (CLIPSCtrl.CurrentPatient.getLatestHistory() == null)
                 btnPrevious.Visible = false;
 
             try
             {
-                int grpID = int.Parse(Session["CurGrp"].ToString());
-                this.SectionID = grpID;
+                this.SectionID = CLIPSCtrl.getCurrentQnGroupID();
             }
             catch (Exception ex)
             {
-                Response.Redirect("~/PatientStart.aspx");
+                Alert.Show(this.SectionID.ToString() + Environment.NewLine + ex.Message);
+               
+                //Response.Redirect("~/PatientStart.aspx");
             }
 
-            
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -126,34 +139,35 @@ namespace AMDES_WEB.CustomControls
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
+            CLIPSController clp = CLIPSCtrl;
+
             foreach (Control c in phRegister.Controls)
             {
                 if (c is QuestionsUC)
                 {
                     QuestionsUC quc = (QuestionsUC)c;
                     if (quc.isYes)
-                        CLIPSController.assertQuestion(section.GroupID, quc.QID, true);
+                        clp.assertQuestion(section.GroupID, quc.QID, true);
                 }
             }
-            CLIPSController.CurrentPatient = (Patient)Session["pat"];
-            CLIPSController.assertNextSection();
-            CLIPSController.saveAssertLog();
-            CLIPSController.saveCurrentNavex();
+            
+            clp.assertNextSection();
+            clp.saveAssertLog();
+            clp.saveCurrentNavex();
 
-            Session["pat"] = CLIPSController.CurrentPatient;
-            Session["CurGrp"] = CLIPSController.getCurrentQnGroupID();
+            CLIPSCtrl = clp;
             Response.Redirect("~/Questionnaire.aspx");
         }
 
         protected void btnPrevious_Click(object sender, EventArgs e)
         {
+            CLIPSController clp = CLIPSCtrl;
 
-            CLIPSController.assertPrevSection();
-            CLIPSController.saveAssertLog();
-            CLIPSController.saveCurrentNavex();
+            clp.assertPrevSection();
+            clp.saveAssertLog();
+            clp.saveCurrentNavex();
 
-            Session["pat"] = CLIPSController.CurrentPatient;
-            Session["CurGrp"] = CLIPSController.getCurrentQnGroupID();
+            CLIPSCtrl = clp;
             Response.Redirect("~/Questionnaire.aspx");
         }
 

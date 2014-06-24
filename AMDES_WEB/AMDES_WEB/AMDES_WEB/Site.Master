@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AMDES_WEB.SiteMaster" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head runat="server">
     <title>ADD - Aid for Dementia Diagnosis </title>
     <!-- Metadata -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,13 +12,9 @@
     <meta name="rating" content="Safe for Kids" />
     <meta name="robots" content="index, follow" />
     <meta name="revisit-after" content="7 days" />
-    <!-- Favicon -->
-    <!--<link rel="shortcut icon" href="<%=ResolveClientUrl("~/images/favicon.ico")%>" type="image/x-icon" />-->
-    <!-- my style -->
-    <!-- <link rel="stylesheet" href="<%=ResolveClientUrl("~/css/style3.css")%>" type="text/css" />-->
+
     <link rel="stylesheet" href="css/style3.css" type="text/css" />
-    <!-- google font -->
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css' />
+
     <!-- Sharing -->
     <script type="text/javascript">        var switchTo5x = true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -115,7 +111,7 @@
                     </div>
                     <br />
                     <br />
-                    <div style="margin-left: 100px;">
+                    <div style="margin-left: 10%; width: 80%; max-width: 80%; min-width: 80%;">
                         <asp:ContentPlaceHolder ID="cphCENTER" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>

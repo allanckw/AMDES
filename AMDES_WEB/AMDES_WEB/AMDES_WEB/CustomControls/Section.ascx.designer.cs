@@ -31,15 +31,6 @@ namespace AMDES_WEB.CustomControls {
         protected global::System.Web.UI.WebControls.Label lblHeader;
         
         /// <summary>
-        /// phRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phRegister;
-        
-        /// <summary>
         /// lbl1 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace AMDES_WEB.CustomControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMax;
+        
+        /// <summary>
+        /// phRegister control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phRegister;
         
         /// <summary>
         /// btnPrevious control.
