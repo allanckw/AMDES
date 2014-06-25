@@ -16,7 +16,6 @@
     font-size: 13px;
     font-weight: bold;
     color: #000;
-   
     font-family: sans-serif;
 }
 .fancy .ajax__tab_active .ajax__tab_outer, .fancy .ajax__tab_header .ajax__tab_outer, .fancy .ajax__tab_hover .ajax__tab_outer
@@ -38,8 +37,10 @@
 }
 .fancy .ajax__tab_body
 {
-     border-top: 0;
+    border-top: 0;
     border: 1px solid #999999;
     padding: 8px;
     background-color: #ffffff;
+    min-height: 90%;
+    max-width: 100%;
 }

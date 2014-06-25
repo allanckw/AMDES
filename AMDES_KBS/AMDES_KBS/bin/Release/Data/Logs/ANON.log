@@ -1300,3 +1300,7 @@
 (NaviChildCritQuestion (NavigationID N66.7) (CriteriaGroupID _7) (CriteriaAnswer No))
 (NaviChildCritAttribute (NavigationID N66.7) (AttributeName AGE) (AttributeValue 65) (AttributeCompareType <=) )
 (attribute AGE 0)
+(next)
+(next)
+(next)
+(next)

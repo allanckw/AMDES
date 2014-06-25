@@ -6,7 +6,7 @@
 body
 {
     font: 90%/1.6em 'Ubuntu' , arial, serif;
-    color: #888;
+    color: Black;
     margin: 0;
     background: url(../images/body.jpg) top repeat-x #121212;
     background-attachment: fixed;
@@ -200,7 +200,7 @@ ol.subnav a
 ol.subnav a:hover
 {
     border-top: 2px solid #005A97;
-     color: #0033aa;
+    color: #0033aa;
     border-bottom: none;
 }
 
@@ -308,25 +308,24 @@ li
 }
 a
 {
-    color: #222;
-    border-bottom: none;
+    color: Black;
+    border-bottom: 1px solid;
     text-decoration: none;
 }
 a:hover
 {
+    color: Blue;
     border-bottom: 1px solid #ccc;
 }
 #footer
 {
     text-align: center;
-   
     padding: 10px;
     margin: 30px 0 0 0;
     color: #ccc;
     width: 99%;
     margin: 0 auto;
     font-size: 8pt;
-   
 }
 #footer a
 {

@@ -5,26 +5,46 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCENTER" runat="server">
     <h2>
         Results</h2>
-    <br />
+    <div style="text-align: right;">
+        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/ResultsPrintFriendly.aspx" Target="_blank"
+            runat="server">Printer Friendly Report <img src="https://cdn1.iconfinder.com/data/icons/nuvola2/128x128/devices/print_printer.png" width="16" height="16" /></asp:HyperLink>
+    </div>
     <h4>
         Patient's Age:
-        <asp:Label ID="lblAge" runat="server" Text="999"></asp:Label></h4>
-    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" OnDemand="true"
+        <asp:Label ID="lblAge" runat="server" Text=""></asp:Label>
+        &nbsp; &nbsp; &nbsp;<br />
+    </h4>
+    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" OnDemand="false"
         AutoPostBack="false" TabStripPlacement="Top" CssClass="fancy fancy-green" ScrollBars="Auto">
-        <ajaxToolkit:TabPanel ID="findings" runat="server" HeaderText="Findings" ScrollBars="Auto"
-            Height="60" OnDemandMode="None">
+        <ajaxToolkit:TabPanel ID="findings" runat="server" HeaderText="Findings" ScrollBars="Vertical"
+            OnDemandMode="None">
             <ContentTemplate>
+                <h3>
+                    <asp:Label ID="lblHeader" runat="server" Text="Label"></asp:Label>
+                </h3>
+                <h5>
+                    <asp:PlaceHolder ID="phFindings" runat="server"></asp:PlaceHolder>
+                </h5>
             </ContentTemplate>
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="Recommendations" runat="server" HeaderText="Recommendations"
-            Height="60" ScrollBars="Auto" OnDemandMode="None">
+            ScrollBars="Vertical" OnDemandMode="None">
             <ContentTemplate>
+                <asp:PlaceHolder ID="phRecommendations" runat="server"></asp:PlaceHolder>
             </ContentTemplate>
         </ajaxToolkit:TabPanel>
-        <ajaxToolkit:TabPanel ID="Resources" runat="server" HeaderText="Resources" ScrollBars="Auto"
-            Height="60" OnDemandMode="None">
+        <ajaxToolkit:TabPanel ID="Resources" runat="server" HeaderText="Resources" ScrollBars="Vertical"
+            OnDemandMode="None">
             <ContentTemplate>
+                <asp:PlaceHolder ID="phResources" runat="server"></asp:PlaceHolder>
             </ContentTemplate>
         </ajaxToolkit:TabPanel>
     </ajaxToolkit:TabContainer>
+    <h6>
+        Disclaimer:
+        <asp:Label ID="lblApp" runat="server" Text="Label"></asp:Label>
+        serves primarily as a diagnostic aid, the physician should always exercise clinical
+        judgment with respect to the conclusions and recommendations offered by the system.
+        The developers of ADD shall not be liable for any damages arising from using the
+        application.</h6>
 </asp:Content>

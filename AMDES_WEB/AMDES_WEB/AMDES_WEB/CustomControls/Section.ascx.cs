@@ -15,14 +15,18 @@ namespace AMDES_WEB.CustomControls
         private int sectionID;
         private QuestionGroup section;
 
+
         public int SectionID
         {
             get { return sectionID; }
             set
             {
-                sectionID = value;
-                section = QuestionController.getGroupByID(value);
-                loadQuestions();
+                if (value > 0)
+                {
+                    sectionID = value;
+                    section = QuestionController.getGroupByID(value);
+                    loadQuestions();
+                }
             }
         }
 
@@ -99,19 +103,30 @@ namespace AMDES_WEB.CustomControls
         //http://www.vbforums.com/showthread.php?649132-Preventing-an-asp-CheckBox-from-losing-it-s-checked-value
         protected void Page_Init(object sender, EventArgs e)
         {
-           
-
-            if (CLIPSCtrl.CurrentPatient.getLatestHistory() == null)
-                btnPrevious.Visible = false;
 
             try
             {
                 this.SectionID = CLIPSCtrl.getCurrentQnGroupID();
+
+                if (this.SectionID == FirstQuestionController.readFirstQuestion().GrpID)
+                    btnPrevious.Visible = false; //if 1st question, previous button removed
+
+                if (CLIPSCtrl.getCurrentQnGroupID() == -1)
+                {
+                    this.SectionID = CLIPSCtrl.getCurrentQnGroupID();
+                    CLIPSCtrl.getResultingDiagnosis();
+                    Session["Result"] = true;
+                    Response.Redirect("~/Results.aspx");
+                }
+                else
+                {
+                    Session["Result"] = false;
+                }
             }
             catch (Exception ex)
             {
                 Alert.Show(this.SectionID.ToString() + Environment.NewLine + ex.Message);
-               
+
                 //Response.Redirect("~/PatientStart.aspx");
             }
 
@@ -120,7 +135,7 @@ namespace AMDES_WEB.CustomControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
+            if (Page.IsPostBack && lblScore.Visible)
             {
                 int count = 0;
                 foreach (Control c in phRegister.Controls)
@@ -150,7 +165,7 @@ namespace AMDES_WEB.CustomControls
                         clp.assertQuestion(section.GroupID, quc.QID, true);
                 }
             }
-            
+
             clp.assertNextSection();
             clp.saveAssertLog();
             clp.saveCurrentNavex();

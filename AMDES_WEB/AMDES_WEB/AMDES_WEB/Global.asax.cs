@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Timers;
 using System.IO;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_WEB
 {
@@ -52,7 +53,7 @@ namespace AMDES_WEB
                     sw.WriteLine(DateTime.Now.Ticks);
                     sw.Close();
                     pruneOldLogs(filepath);
-
+                    
                 }
             }
             else
@@ -81,6 +82,7 @@ namespace AMDES_WEB
                     if (ts.Hours > 1)
                     {
                         File.Delete(log.FullName);
+                        PatientController.deletePatient(log.Name.Replace(".log", ""));
                     }
                 }
             }

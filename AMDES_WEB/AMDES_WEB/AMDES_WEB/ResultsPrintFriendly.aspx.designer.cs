@@ -10,16 +10,25 @@
 namespace AMDES_WEB {
     
     
-    public partial class Results {
+    public partial class WebForm1 {
         
         /// <summary>
-        /// HyperLink1 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// lblDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDate;
         
         /// <summary>
         /// lblAge control.
@@ -29,24 +38,6 @@ namespace AMDES_WEB {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAge;
-        
-        /// <summary>
-        /// TabContainer1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer TabContainer1;
-        
-        /// <summary>
-        /// findings control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel findings;
         
         /// <summary>
         /// lblHeader control.
@@ -67,15 +58,6 @@ namespace AMDES_WEB {
         protected global::System.Web.UI.WebControls.PlaceHolder phFindings;
         
         /// <summary>
-        /// Recommendations control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel Recommendations;
-        
-        /// <summary>
         /// phRecommendations control.
         /// </summary>
         /// <remarks>
@@ -83,24 +65,6 @@ namespace AMDES_WEB {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder phRecommendations;
-        
-        /// <summary>
-        /// Resources control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel Resources;
-        
-        /// <summary>
-        /// phResources control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phResources;
         
         /// <summary>
         /// lblApp control.

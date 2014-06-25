@@ -10,9 +10,8 @@ using AMDES_WEB.CustomControls;
 
 namespace AMDES_WEB
 {
-    public partial class Results : System.Web.UI.Page
+    public partial class WebForm1 : System.Web.UI.Page
     {
-
         public CLIPSController CLIPSCtrl
         {
             set
@@ -29,18 +28,17 @@ namespace AMDES_WEB
         {
             if (!Page.IsPostBack)
             {
-                lblApp.Text = CLIPSCtrl.ApplicationName;
+                lblDate.Text = DateTime.Now.ToString("dd MMM yyyy");
                 lblAge.Text = CLIPSCtrl.CurrentPatient.getAge().ToString();
+                lblApp.Text = CLIPSCtrl.ApplicationName;
 
                 bool result;
-
                 bool.TryParse(Session["Result"].ToString(), out result);
 
                 if (result)
                 {
                     loadFindings();
                     loadRecommendations();
-                    loadResources();
                 }
                 else
                 {
@@ -57,7 +55,6 @@ namespace AMDES_WEB
                 Label lblSymptons = new Label();
 
                 lblSymptons.Text = "&emsp;&emsp;" + App.bulletForm() + sym.SymptomName + "<br>";
-                
                 phFindings.Controls.Add(lblSymptons);
 
             }
@@ -82,20 +79,10 @@ namespace AMDES_WEB
                 DiagnosisUC diagUC = (DiagnosisUC)LoadControl(@"~/CustomControls\DiagnosisUC.ascx");
                 diagUC.Recommendation = diag;
                 phRecommendations.Controls.Add(diagUC);
-
-
+                phRecommendations.Controls.Add(new LiteralControl("<br>"));
             }
         }
 
-        private void loadResources()
-        {
-            List<Diagnosis> resources = DiagnosisController.getResourceRules();
-            foreach (Diagnosis diag in resources)
-            {
-                DiagnosisUC diagUC = (DiagnosisUC)LoadControl(@"~/CustomControls\DiagnosisUC.ascx");
-                diagUC.Recommendation = diag;
-                phResources.Controls.Add(diagUC);
-            }
-        }
+      
     }
 }

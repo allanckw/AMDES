@@ -194,6 +194,7 @@ namespace AMDES_KBS.Controllers
 
                 if (d.Link.Length > 0)
                     sb.Append("(Link " + "\"" + d.Link + "\"" + ")");
+
                 sb.Append(") ");
                 assert(sb);
             }
@@ -515,9 +516,9 @@ namespace AMDES_KBS.Controllers
                                 {
                                     if (d.Comment.Trim().Length > 0)
                                     {
-                                        d.Comment += System.Environment.NewLine;
+                                        d.Comment += "~~";
                                     }
-                                    d.Comment += "   " + App.bulletForm() + " Age "
+                                    d.Comment += "&emsp;&emsp;" + App.bulletForm() + " Age "
                                         + NaviChildCritAttribute.getCompareTypeString(kvp.CompareType) + " " + kvp.Value.ToString();
                                 }
 
@@ -534,7 +535,7 @@ namespace AMDES_KBS.Controllers
                                     {
                                         if (d.Comment.Trim().Length > 0)
                                         {
-                                            d.Comment += System.Environment.NewLine;
+                                            d.Comment += d.Comment += "~~";
                                         }
                                         d.Comment += "   " + App.bulletForm() + " "
                                             + kvp.Key + " is of " + pa.getCategoryByID(ca.Value);
@@ -574,9 +575,9 @@ namespace AMDES_KBS.Controllers
                                     {
                                         if (d.Comment.Trim().Length > 0)
                                         {
-                                            d.Comment += System.Environment.NewLine;
+                                            d.Comment += "~~";
                                         }
-                                        d.Comment += "   " + App.bulletForm() + " " + kvp.Key + " "
+                                        d.Comment += "&emsp;&emsp;" + App.bulletForm() + " " + kvp.Key + " "
                                             + NaviChildCritAttribute.getCompareTypeString(ca.CompareType) + " " + ca.Value.ToString();
                                     }
                                 }
@@ -594,11 +595,11 @@ namespace AMDES_KBS.Controllers
                                     Symptom s = grpSymptoms[j];
                                     if (d.Comment.Trim().Length == 0)
                                     {
-                                        d.Comment += "   " + App.bulletForm() + " " + s.SymptomName.Trim();
+                                        d.Comment += "&emsp;&emsp;" + App.bulletForm() + " " + s.SymptomName.Trim();
                                     }
                                     else
                                     {
-                                        d.Comment += System.Environment.NewLine + "   " + App.bulletForm() + " " + s.SymptomName.Trim();
+                                        d.Comment += "~~&emsp;&emsp;" + App.bulletForm() + " " + s.SymptomName.Trim();
                                     }
                                 }
                             }
