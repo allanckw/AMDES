@@ -71,6 +71,7 @@ namespace AMDES_WEB.CustomControls
                 qnCtrl.QuestionNo = i + 1;
                 qnCtrl.QuestionText = q.Name;
                 qnCtrl.QID = q.ID;
+                qnCtrl.ID = "qnCtrl" + q.ID;
                 this.phRegister.Controls.Add(qnCtrl);
                 ControlID += 1;
             }
@@ -120,6 +121,39 @@ namespace AMDES_WEB.CustomControls
                 }
                 else
                 {
+                    if (CLIPSCtrl.CurrentPatient.getLatestHistory() != null)
+                    {
+                        List<QnHistory> qnHistory = CLIPSCtrl.CurrentPatient.getLatestHistory().retrieveHistoryList(this.sectionID);
+                        if (qnHistory.Count > 0)
+                        {
+                            foreach (QnHistory h in qnHistory)
+                            {
+                                Control c = phRegister.FindControl("qnCtrl" + h.QuestionID.ToString());
+                                if (c is QuestionsUC)
+                                {
+                                    QuestionsUC quc = (QuestionsUC)c;
+                                    quc.isYes = h.Answer;
+                                }
+
+                            }
+                        }
+                    }
+
+                    if (lblScore.Visible)
+                    {
+                        int count = 0;
+                        foreach (Control c in phRegister.Controls)
+                        {
+                            if (c is QuestionsUC)
+                            {
+                                QuestionsUC quc = (QuestionsUC)c;
+                                if (quc.isYes)
+                                    count += 1;
+                            }
+                        }
+                        lblScore.Text = count.ToString();
+
+                    }
                     Session["Result"] = false;
                 }
             }
@@ -135,21 +169,7 @@ namespace AMDES_WEB.CustomControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack && lblScore.Visible)
-            {
-                int count = 0;
-                foreach (Control c in phRegister.Controls)
-                {
-                    if (c is QuestionsUC)
-                    {
-                        QuestionsUC quc = (QuestionsUC)c;
-                        if (quc.isYes)
-                            count += 1;
-                    }
-                }
-
-                lblScore.Text = count.ToString();
-            }
+            
         }
 
         protected void btnNext_Click(object sender, EventArgs e)
@@ -177,6 +197,16 @@ namespace AMDES_WEB.CustomControls
         protected void btnPrevious_Click(object sender, EventArgs e)
         {
             CLIPSController clp = CLIPSCtrl;
+
+            foreach (Control c in phRegister.Controls)
+            {
+                if (c is QuestionsUC) //reset on previous
+                {
+                    QuestionsUC quc = (QuestionsUC)c;
+                    if (quc.isYes)
+                        clp.assertQuestion(section.GroupID, quc.QID, false);
+                }
+            }
 
             clp.assertPrevSection();
             clp.saveAssertLog();

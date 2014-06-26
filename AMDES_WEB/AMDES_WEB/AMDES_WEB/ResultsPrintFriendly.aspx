@@ -7,7 +7,7 @@
     <title>Aid for Dementia Diagnosis (ADD) - Patient Report</title>
     <link rel="stylesheet" href="css/style3.css" type="text/css" />
 </head>
-<body style="background-color: White; color: Black;">
+<body style="background-color: White; color: Black; font: Times New Roman, serif;">
     <form id="form1" runat="server">
     <div style="background-color: White; color: Black;">
         <h2 style="color: Blue">
