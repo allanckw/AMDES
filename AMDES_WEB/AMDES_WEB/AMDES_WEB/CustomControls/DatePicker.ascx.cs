@@ -25,7 +25,7 @@ namespace AMDES_WEB.CustomControls
                 string[] d = txtDate.Text.Trim().Split('/');
                 if (d.Length == 3)
                 {
-                    return new DateTime(int.Parse(d[2]),int.Parse(d[1]),int.Parse(d[0]));
+                    return new DateTime(int.Parse(d[2]), int.Parse(d[1]), int.Parse(d[0]));
                 }
                 else
                 {
@@ -81,7 +81,15 @@ namespace AMDES_WEB.CustomControls
         public int MaximumYear
         {
             get { return this.maxYear; }
-            set { this.maxYear = value; }
+            set
+            {
+                if (this.DisplayFutureDate)
+                    this.maxYear = value;
+                else
+                {
+                    this.maxYear = DateTime.Now.Year;
+                }
+            }
         }
 
         public bool DisplayFutureDate
@@ -114,7 +122,7 @@ namespace AMDES_WEB.CustomControls
 
         protected void Populate_MonthList()
         {
-            if (DisplayFutureDate)
+            if (DisplayFutureDate || int.Parse(drpCalYear.SelectedValue) != DateTime.Now.Year)
             {
                 for (int i = 0; i <= 11; i++)
                 {
@@ -130,13 +138,17 @@ namespace AMDES_WEB.CustomControls
                 }
             }
             drpCalMonth.SelectedIndex = DateTime.Now.Month - 1;
+            Set_Calendar();
         }
 
         protected void Calendar1_DayRender(object sender, System.Web.UI.WebControls.DayRenderEventArgs e)
         {
             if (!DisplayFutureDate)
             {
-                e.Day.IsSelectable = e.Day.Date <= DateTime.Now;
+                if (e.Day.Date <= DateTime.Now.Date)
+                    e.Day.IsSelectable = true;
+                else
+                    e.Day.IsSelectable = false;
             }
         }
 
@@ -145,12 +157,20 @@ namespace AMDES_WEB.CustomControls
         {
             //Year list can be extended
             int year = 0;
-
-            for (year = MinimumYear; year <= MaximumYear; year++)
+            if (DisplayFutureDate)
             {
-                drpCalYear.Items.Add(year.ToString());
+                for (year = MinimumYear; year <= MaximumYear; year++)
+                {
+                    drpCalYear.Items.Add(year.ToString());
+                }
             }
-
+            else
+            {
+                for (year = MinimumYear; year <= DateTime.Now.Year; year++)
+                {
+                    drpCalYear.Items.Add(year.ToString());
+                }
+            }
             drpCalYear.Items.FindByValue(DateTime.Now.Year.ToString()).Selected = true;
 
         }
@@ -163,10 +183,13 @@ namespace AMDES_WEB.CustomControls
         protected void drpCalYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             Set_Calendar();
-            if (!fDate)
+            if (!DisplayFutureDate)
             {
                 drpCalMonth.Items.Clear();
                 Populate_MonthList();
+
+                if (DateTime.Now.Year == int.Parse(drpCalYear.SelectedValue))
+                    drpCalMonth.SelectedIndex = drpCalMonth.Items.Count - 1;
             }
         }
 

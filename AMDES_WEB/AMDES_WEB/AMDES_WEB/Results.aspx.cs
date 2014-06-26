@@ -41,6 +41,9 @@ namespace AMDES_WEB
                     loadFindings();
                     loadRecommendations();
                     loadResources();
+
+                    Session["CurrSection"] = 0;
+                    Session["History"] = CLIPSCtrl.CurrentPatient.getLatestHistory();
                 }
                 else
                 {
@@ -57,7 +60,7 @@ namespace AMDES_WEB
                 Label lblSymptons = new Label();
 
                 lblSymptons.Text = "&emsp;&emsp;" + App.bulletForm() + sym.SymptomName + "<br>";
-                
+
                 phFindings.Controls.Add(lblSymptons);
 
             }

@@ -161,7 +161,8 @@ p.description a:hover
     font: 1.6em 'Ubuntu' , arial, serif;
     color: #121212;
     letter-spacing: -1px;
-    margin: 10px 0;
+    margin-top: 2px;
+    margin-bottom: 2px;
     border-bottom: 2px solid #eee;
     background: url(../images/h2.jpg) bottom left no-repeat;
     clear: left;

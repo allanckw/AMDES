@@ -111,7 +111,7 @@
                     </div>
                     <br />
                     <br />
-                    <div style="margin-left: 10%; width: 80%; max-width: 80%; min-width: 80%;">
+                    <div style="margin-left: 10%; margin-top:1%; width: 80%; max-width: 80%; min-width: 80%;">
                         <asp:ContentPlaceHolder ID="cphCENTER" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>

@@ -5,10 +5,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCENTER" runat="server">
     <h2>
         Results</h2>
-    <div style="text-align: right;">
-        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/ResultsPrintFriendly.aspx" Target="_blank"
-            runat="server">Printer Friendly Report <img src="https://cdn1.iconfinder.com/data/icons/nuvola2/128x128/devices/print_printer.png" width="16" height="16" /></asp:HyperLink>
-    </div>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/History.aspx">View Selections to Result </asp:HyperLink>
+                &nbsp;&nbsp;
+                <asp:HyperLink ID="HyperLink2" NavigateUrl="~/PatientStart.aspx?appID=ADD" runat="server">Try Again </asp:HyperLink>
+                &nbsp;&nbsp;
+            </td>
+            <td style="text-align: right;">
+                <asp:HyperLink ID="HyperLink3" NavigateUrl="~/ResultsPrintFriendly.aspx" Target="_blank"
+                    runat="server">Printer Friendly Report <img src="https://cdn1.iconfinder.com/data/icons/nuvola2/128x128/devices/print_printer.png" width="16" height="16" /></asp:HyperLink>
+            </td>
+        </tr>
+    </table>
     <h4>
         Patient's Age:
         <asp:Label ID="lblAge" runat="server" Text=""></asp:Label>

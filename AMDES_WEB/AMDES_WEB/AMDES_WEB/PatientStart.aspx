@@ -18,7 +18,7 @@
                 Date of birth
             </td>
             <td>
-                <AOS:datepicker id="dpFrom" runat="server" displayfuturedate="false" visible="true" />
+                <AOS:datepicker id="dpFrom" runat="server" displayfuturedate="false" visible="true" MinimumYear="1900" />
             </td>
         </tr>
         <tr>

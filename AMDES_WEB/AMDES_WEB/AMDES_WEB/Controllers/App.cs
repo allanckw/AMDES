@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.IO;
 
-namespace AMDES_WEB
+namespace AMDES_KBS.Controllers
 {
     public class App
     {

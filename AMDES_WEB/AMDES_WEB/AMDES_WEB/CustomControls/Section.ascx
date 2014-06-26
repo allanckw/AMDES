@@ -6,13 +6,10 @@
 <table style="table-layout: fixed; width: 100%; word-wrap: break-word;">
     <tr style="min-height: 0px; max-height: 0px; height: 0px;">
         <td style="vertical-align: top; width: 5%;">
-            &nbsp;
         </td>
         <td style="vertical-align: top; width: 80%;">
-            &nbsp;
         </td>
         <td style="min-width: 10%; max-width: 60px">
-            &nbsp;
         </td>
     </tr>
     <tr>

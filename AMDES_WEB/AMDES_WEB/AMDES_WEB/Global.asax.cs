@@ -15,14 +15,9 @@ namespace AMDES_WEB
         private void scheduler()
         {
             Timer t = new Timer();
-
-
-            t.Interval = 5;
-
+            t.Interval = 600000;
             t.AutoReset = true;
-
             t.Enabled = true;
-
             t.Elapsed += new ElapsedEventHandler(timer_Elapsed);
         }
 
@@ -41,7 +36,7 @@ namespace AMDES_WEB
                     DateTime current = DateTime.Now;
                     DateTime saved = new DateTime(long.Parse(d));
                     TimeSpan ts = current - saved;
-                    if (ts.Hours > 1)
+                    if (ts.Minutes > 30)
                     {
                         pruneOldLogs(filepath);
                     }
@@ -53,7 +48,7 @@ namespace AMDES_WEB
                     sw.WriteLine(DateTime.Now.Ticks);
                     sw.Close();
                     pruneOldLogs(filepath);
-                    
+
                 }
             }
             else
@@ -79,7 +74,7 @@ namespace AMDES_WEB
 
                     TimeSpan ts = DateTime.Now - log.LastWriteTime;
 
-                    if (ts.Hours > 1)
+                    if (ts.Minutes > 30)
                     {
                         File.Delete(log.FullName);
                         PatientController.deletePatient(log.Name.Replace(".log", ""));

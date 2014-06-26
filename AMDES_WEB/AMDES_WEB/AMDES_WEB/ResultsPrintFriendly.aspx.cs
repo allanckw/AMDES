@@ -61,7 +61,7 @@ namespace AMDES_WEB
 
             if (phFindings.Controls.Count == 0)
             {
-                lblHeader.Text = "The evaluation does not suggest dementia in this patient";
+                lblHeader.Text = "The evaluation does not suggest Dementia in this patient";
             }
             else
             {

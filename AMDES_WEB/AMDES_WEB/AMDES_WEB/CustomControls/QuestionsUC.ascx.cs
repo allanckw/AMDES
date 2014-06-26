@@ -24,8 +24,8 @@ namespace AMDES_WEB.CustomControls
             get { return lblQn.Text.Trim(); }
             set
             {
-                lblQn.Text = value.Replace("~~", "<br />");
-                
+                lblQn.Text = value.Replace("~~", "<br />");//.Replace("   ", "&emsp;");
+
             }
 
         }
@@ -42,14 +42,25 @@ namespace AMDES_WEB.CustomControls
                 qid = value;
             }
         }
-      
+
 
         public bool isYes
         {
             get { return chkAns.Checked; }
-            set { chkAns.Checked = value; } 
+            set { chkAns.Checked = value; }
         }
-        
+
+        public bool isEnabled
+        {
+            get
+            {
+                return chkAns.Enabled;
+            }
+            set
+            {
+                chkAns.Enabled = value;
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -58,7 +69,7 @@ namespace AMDES_WEB.CustomControls
 
         protected void chkAns_CheckedChanged(object sender, EventArgs e)
         {
-          
+
         }
     }
 }
