@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Timers;
 using System.IO;
 using AMDES_KBS.Controllers;
+using AMDES_KBS.Entity;
 
 namespace AMDES_WEB
 {
@@ -15,7 +15,7 @@ namespace AMDES_WEB
         private void scheduler()
         {
             Timer t = new Timer();
-            t.Interval = 600000;
+            t.Interval = 30 * 60 * 1000; //min * s * ms
             t.AutoReset = true;
             t.Enabled = true;
             t.Elapsed += new ElapsedEventHandler(timer_Elapsed);
@@ -36,7 +36,7 @@ namespace AMDES_WEB
                     DateTime current = DateTime.Now;
                     DateTime saved = new DateTime(long.Parse(d));
                     TimeSpan ts = current - saved;
-                    if (ts.Minutes > 30)
+                    if (ts.Minutes > 60)
                     {
                         pruneOldLogs(filepath);
                     }
@@ -68,16 +68,28 @@ namespace AMDES_WEB
                 string dir = app + @"\Logs";
                 DirectoryInfo d = new DirectoryInfo(dir);
 
-                foreach (FileInfo log in d.GetFiles("*.log"))
+                //foreach (FileInfo log in d.GetFiles("*.log"))
+                //{
+                //    string timeStamp = log.Name.Split('_')[1].Replace(".log", "");
+
+                //    TimeSpan ts = DateTime.Now - log.LastWriteTime;
+
+                //    if (ts.Minutes > 30)
+                //    {
+                //        File.Delete(log.FullName);
+                //        PatientController.deletePatient(log.Name.Replace(".log", ""));
+                //    }
+                //}
+
+                List<AMDES_KBS.Entity.History> patList = HistoryController.getAllHistory();
+                foreach (AMDES_KBS.Entity.History p in patList)
                 {
-                    string timeStamp = log.Name.Split('_')[1].Replace(".log", "");
-
-                    TimeSpan ts = DateTime.Now - log.LastWriteTime;
-
-                    if (ts.Minutes > 30)
+                    string createdTime = p.PatientID.Split('_')[1];
+                    DateTime cd = new DateTime(long.Parse(createdTime));
+                    TimeSpan ts = DateTime.Now - cd;
+                    if (ts.Minutes > 60)
                     {
-                        File.Delete(log.FullName);
-                        PatientController.deletePatient(log.Name.Replace(".log", ""));
+                        HistoryController.deletePatientNavigationHistory(p.PatientID);
                     }
                 }
             }

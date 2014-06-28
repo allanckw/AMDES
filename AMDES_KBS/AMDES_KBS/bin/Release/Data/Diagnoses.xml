@@ -10,7 +10,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <Attributes/>
+    <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="11">
@@ -22,7 +22,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <Attributes/>
+    <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="12">
@@ -184,7 +184,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <Attributes/>
+    <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="28">
@@ -197,12 +197,12 @@
       <QGrpID>7</QGrpID>
     </RetrieveFrom>
     <Attributes>
-		<Attribute>
-			<Name>AGE</Name>
-			<Value>65</Value>
-			<Type>3</Type>
-		</Attribute>
-	</Attributes>
+      <Attribute>
+        <Name>AGE</Name>
+        <Value>65</Value>
+        <Type>3</Type>
+      </Attribute>
+    </Attributes>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="29">
@@ -213,12 +213,12 @@
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
     <Attributes>
-		<Attribute>
-			<Name>AGE</Name>
-			<Value>65</Value>
-			<Type>3</Type>
-		</Attribute>
-	</Attributes>
+      <Attribute>
+        <Name>AGE</Name>
+        <Value>65</Value>
+        <Type>3</Type>
+      </Attribute>
+    </Attributes>
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="30">
@@ -230,7 +230,7 @@
     <RetrieveFrom>
       <QGrpID>6</QGrpID>
     </RetrieveFrom>
-    <Attributes/>
+    <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="7">
@@ -242,7 +242,7 @@
     <RetrieveFrom>
       <QGrpID>5</QGrpID>
     </RetrieveFrom>
-    <Attributes/>
+    <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="31">
@@ -252,7 +252,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <Attributes/>
+    <Attributes />
     <isRes>true</isRes>
   </Diagnosis>
   <Diagnosis diagID="32">
@@ -262,7 +262,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <Attributes/>
+    <Attributes />
     <isRes>true</isRes>
   </Diagnosis>
   <Diagnosis diagID="33">
@@ -272,7 +272,7 @@
     <LinkDesc>Read the paper from PubMed</LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <Attributes/>
+    <Attributes />
     <isRes>true</isRes>
   </Diagnosis>
   <Diagnosis diagID="9">
@@ -282,17 +282,7 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <Attributes/>
-    <isRes>false</isRes>
-  </Diagnosis>
-  <Diagnosis diagID="8">
-    <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria.</Comment>
-    <Header>Patient has high likelihood of Dementia by DSM4 criteria</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <Attributes/>
+    <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="20">
@@ -302,7 +292,17 @@
     <LinkDesc></LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
-    <Attributes/>
+    <Attributes />
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="8">
+    <Comment>Please manage the patient accordingly.</Comment>
+    <Header>Patient has high likelihood of Dementia by DSM4 criteria</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
 </Diagnoses>

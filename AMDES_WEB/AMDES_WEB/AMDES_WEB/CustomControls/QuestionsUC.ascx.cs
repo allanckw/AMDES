@@ -67,9 +67,5 @@ namespace AMDES_WEB.CustomControls
 
         }
 
-        protected void chkAns_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

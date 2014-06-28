@@ -83,7 +83,7 @@ namespace AMDES_WEB.CustomControls
             lblHeader.Text = section.Description.Replace("~~", " <br />");
             lblSection.Text = section.Header;
 
-            
+
 
             this.phRegister.Controls.Clear();
             int ControlID = 0;
@@ -132,10 +132,9 @@ namespace AMDES_WEB.CustomControls
         {
             if (this.Enabled)
                 loadEnabledControls();
-            else
-                if (this.sectionID == 0)
-                    loadReadOnlyControls();
 
+            if (!this.Enabled && this.sectionID == 0)
+                loadReadOnlyControls();
         }
 
         private void loadReadOnlyControls()
@@ -230,49 +229,31 @@ namespace AMDES_WEB.CustomControls
             {
                 QuestionCountGroup qcg = (QuestionCountGroup)section;
                 lbl1.Visible = lblMax.Visible = lblScore.Visible = true;
+                
                 lblScore.Text = "0";
                 lblMax.Text = " / " + qcg.MaxQuestions.ToString();
+
+                int count = 0;
+                foreach (Control c in phRegister.Controls)
+                {
+                    if (c is QuestionsUC)
+                    {
+                        QuestionsUC quc = (QuestionsUC)c;
+                        if (quc.isYes)
+                            count += 1;
+                    }
+                }
+                lblScore.Text = count.ToString();
             }
             else
             {
                 lbl1.Visible = lblMax.Visible = lblScore.Visible = false;
             }
-
-            if (lblScore.Visible)
-            {
-                int count = 0;
-                foreach (Control c in phRegister.Controls)
-                {
-                    if (c is QuestionsUC)
-                    {
-                        QuestionsUC quc = (QuestionsUC)c;
-                        if (quc.isYes)
-                            count += 1;
-                    }
-                }
-                lblScore.Text = count.ToString();
-
-            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack && lblScore.Visible)
-            {
-                int count = 0;
-                foreach (Control c in phRegister.Controls)
-                {
-                    if (c is QuestionsUC)
-                    {
-                        QuestionsUC quc = (QuestionsUC)c;
-                        if (quc.isYes)
-                            count += 1;
-                    }
-                }
-
-                lblScore.Text = count.ToString();
-            }
-
+            computeScore();
         }
 
         protected void btnNext_Click(object sender, EventArgs e)
@@ -292,7 +273,7 @@ namespace AMDES_WEB.CustomControls
                 }
 
                 clp.assertNextSection();
-                clp.saveAssertLog();
+                //clp.saveAssertLog();
                 clp.saveCurrentNavex();
 
                 CLIPSCtrl = clp;
@@ -334,10 +315,11 @@ namespace AMDES_WEB.CustomControls
                 }
 
                 clp.assertPrevSection();
-                clp.saveAssertLog();
+                //clp.saveAssertLog();
                 clp.saveCurrentNavex();
 
                 CLIPSCtrl = clp;
+
                 Response.Redirect("~/Questionnaire.aspx");
             }
             else

@@ -5,6 +5,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCENTER" runat="server">
     <h2>
         Results</h2>
+    <h6>
+        Disclaimer:
+        <asp:Label ID="lblApp" runat="server" Text="Label"></asp:Label>
+        serves primarily as a diagnostic aid, the physician should always exercise clinical
+        judgment with respect to the conclusions and recommendations offered by the system.
+        The developers of ADD shall not be liable for any damages arising from using the
+        application.</h6>
     <table style="width: 100%;">
         <tr>
             <td>
@@ -50,11 +57,5 @@
             </ContentTemplate>
         </ajaxToolkit:TabPanel>
     </ajaxToolkit:TabContainer>
-    <h6>
-        Disclaimer:
-        <asp:Label ID="lblApp" runat="server" Text="Label"></asp:Label>
-        serves primarily as a diagnostic aid, the physician should always exercise clinical
-        judgment with respect to the conclusions and recommendations offered by the system.
-        The developers of ADD shall not be liable for any damages arising from using the
-        application.</h6>
+    
 </asp:Content>

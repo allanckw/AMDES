@@ -296,7 +296,7 @@
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="8">
-    <Comment>The patient has a high likelihood of Dementia by the DSM4 criteria.</Comment>
+    <Comment>Please manage the patient accordingly.</Comment>
     <Header>R01 - Patient has high likelihood of Dementia by DSM4 criteria</Header>
     <Link></Link>
     <LinkDesc></LinkDesc>

@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AMDES_WEB.SiteMaster" %>
+
 <!DOCTYPE html>
 <html>
 <head runat="server">
@@ -12,9 +13,7 @@
     <meta name="rating" content="Safe for Kids" />
     <meta name="robots" content="index, follow" />
     <meta name="revisit-after" content="7 days" />
-
     <link rel="stylesheet" href="css/style3.css" type="text/css" />
-
     <!-- Sharing -->
     <script type="text/javascript">        var switchTo5x = true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -36,7 +35,7 @@
                 <asp:HyperLink NavigateUrl="~/default.aspx" runat="server" ID="hyperlink30"><h1>
                    &nbsp;&nbsp;&nbsp;&nbsp; <!-- AMDES (Adaptive Medical Diagnosis Expert System) -->
                      Aid for Dementia Diagnosis  <sup>Beta</sup></h1></asp:HyperLink>
-               <%-- <asp:PlaceHolder ID="pnl2" runat="server">
+                <%-- <asp:PlaceHolder ID="pnl2" runat="server">
                     <ul id="nav">
                         <li><a href="#intro">Welcome
                             <asp:LoginName ID="LoginName1" runat="server"></asp:LoginName>
@@ -45,7 +44,7 @@
                             <asp:LinkButton ID="LinkButton1" runat="server" ValidationGroup="sign0ut" OnClick="Signout_Click">Sign out</asp:LinkButton></li>
                     </ul>
                 </asp:PlaceHolder>--%>
-               <%-- <asp:PlaceHolder ID="pnl1" runat="server">
+                <%-- <asp:PlaceHolder ID="pnl1" runat="server">
                     <ul id="nav">
                         <li><a href="#intro">Welcome Guest</a></li>
                         <li>
@@ -55,7 +54,6 @@
             </div>
             <div id="container">
                 <p class="description">
-                    
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
                 </p>
@@ -93,7 +91,8 @@
                                 </li>
                             </asp:PlaceHolder>--%>
                             <li>
-                                <asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/PatientStart.aspx?appID=ADD" class="parent"><span>Start Test</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/PatientStart.aspx?appID=ADD"
+                                    class="parent"><span>Start Test</span></asp:HyperLink>
                                 <%--<div>
                                     <ul>
                                         <li>
@@ -103,47 +102,46 @@
                                     </ul>
                                 </div>--%>
                             </li>
-                           <li>
+                            <li>
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Downloads.aspx" class="last"><span>Downloads</span></asp:HyperLink>
-                               
                             </li>
                         </ul>
                     </div>
                     <br />
                     <br />
-                    <div style="margin-left: 10%; margin-top:1%; width: 80%; max-width: 80%; min-width: 80%;">
+                    <div style="margin-left: 10%; margin-top: 1%; width: 80%; max-width: 80%; min-width: 80%;">
+                    
                         <asp:ContentPlaceHolder ID="cphCENTER" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
+                    <div style="margin-bottom: 3%;">
+                        &nbsp;</div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="footer" >
+    <div id="footer">
         <div style="float: left;">
-            &copy; 2014 Copyright AMDES. 
-            
-            A joint project between National University of Singapore, School of Computing and Khoo Teck Puat Hospital
+            &copy; 2014 Copyright AMDES. A joint project between National University of Singapore,
+            School of Computing and Khoo Teck Puat Hospital
         </div>
-        <div style="float: right; ">
-                    <div style="float: right;">
-            <table>
-                <tr>
-                    <td>
-                        <img style="border: 0; height: 75px" src="http://www.comp.nus.edu.sg/~cs5247/resources/nusLogo.jpg"
-                            alt="Valid CSS!" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                    <td>
-                        <img style="border: 0; height: 75px" src="http://upload.wikimedia.org/wikipedia/en/6/65/KTPH_Logo.jpg"
-                            alt="Valid CSS!" />
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <div style="float: right;">
+            <div style="float: right;">
+                <table>
+                    <tr>
+                        <td>
+                            <img style="border: 0; height: 75px" src="http://www.comp.nus.edu.sg/~cs5247/resources/nusLogo.jpg" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <img style="border: 0; height: 75px" src="http://upload.wikimedia.org/wikipedia/en/6/65/KTPH_Logo.jpg" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <!-- End Footer -->
     </form>
 </body>
 </html>
-

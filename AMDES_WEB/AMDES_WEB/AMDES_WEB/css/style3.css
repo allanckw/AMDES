@@ -142,7 +142,7 @@ p.description a:hover
 {
     padding: 0 0 0 0;
     background: url(../images/content.jpg) top right no-repeat;
-    min-height: 750px;
+    min-height:700px;
     float: left;
     width: 100%; /* 750px; */
 }

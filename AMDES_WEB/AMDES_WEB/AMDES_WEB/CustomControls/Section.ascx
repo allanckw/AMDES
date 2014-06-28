@@ -16,14 +16,16 @@
         <td colspan="3" style="text-align: right; margin-right: 10%">
             <div style="margin-right: 10%">
                 <h4>
-                    <asp:Label ID="lbl1" runat="server" Text="">Score: </asp:Label>
-                    <asp:Label ID="lblScore" runat="server" Text=""></asp:Label>
-                    <asp:Label ID="lblMax" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lbl1" runat="server" Text="" Visible="false">Score: </asp:Label>
+                    <asp:Label ID="lblScore" runat="server" Text="" Visible="false"></asp:Label>
+                    <asp:Label ID="lblMax" runat="server" Text="" Visible="false"></asp:Label>
                 </h4>
             </div>
         </td>
     </tr>
-    <asp:PlaceHolder ID="phRegister" runat="server"></asp:PlaceHolder>
+   
+            <asp:PlaceHolder ID="phRegister" runat="server"></asp:PlaceHolder>
+       
     <tr>
         <td colspan="3" style="text-align: right;">
             <div style="margin-right: 10%">

@@ -121,50 +121,57 @@ namespace AMDES_WEB
 
         protected void btnStart_Click(object sender, EventArgs e)
         {
-            ccJoin.ValidateCaptcha(txtCaptcha.Text.Trim());
-            if (ccJoin.UserValidated)
+            try
             {
-
-                Patient p = new Patient();
-
-                p.AssessmentDate = DateTime.Today;
-                p.DOB = dpFrom.Date;
-                p.NRIC = "ANON_" + DateTime.Now.Ticks.ToString(); //Unique Identfier based on time
-                p.Doctor = new Assessor("Doctor", "Clinic");
-
-                foreach (Control c in this.phRegister.Controls)
+                ccJoin.ValidateCaptcha(txtCaptcha.Text.Trim());
+                if (ccJoin.UserValidated)
                 {
-                    if (c is PatAttributeUC)
+
+                    Patient p = new Patient();
+
+                    p.AssessmentDate = DateTime.Today;
+                    p.DOB = dpFrom.Date;
+                    p.NRIC = "ANON_" + DateTime.Now.Ticks.ToString(); //Unique Identfier based on time
+                    p.Doctor = new Assessor("Doctor", "Clinic");
+
+                    foreach (Control c in this.phRegister.Controls)
                     {
-                        PatAttributeUC regField = ((PatAttributeUC)c);
-                        if (regField.isNumeric)
+                        if (c is PatAttributeUC)
                         {
-                            p.createAttribute(regField.FieldLabelString, regField.Value);
+                            PatAttributeUC regField = ((PatAttributeUC)c);
+                            if (regField.isNumeric)
+                            {
+                                p.createAttribute(regField.FieldLabelString, regField.Value);
+                            }
+                            else
+                            {
+                                p.createAttribute(regField.FieldLabelString, regField.Value);
+                            }
                         }
-                        else
-                        {
-                            p.createAttribute(regField.FieldLabelString, regField.Value);
-                        }
+
                     }
 
+                    CLIPSController clp = new CLIPSController();
+                    clp.CurrentPatient = p;
+                    clp.clearAndLoadNew();
+                    clp.ApplicationName = Request.QueryString["appID"];
+
+                    Session["clp"] = clp;
+
+                    txtCaptcha.Text = "";
+                    Response.Redirect("~/Questionnaire.aspx");
+
                 }
-
-                CLIPSController clp = new CLIPSController();
-                clp.CurrentPatient = p;
-                clp.clearAndLoadNew();
-                clp.ApplicationName = Request.QueryString["appID"];
-
-                Session["clp"] = clp;
-                
-                txtCaptcha.Text = "";
-                Response.Redirect("~/Questionnaire.aspx");
-
+                else
+                {
+                    Alert.Show("Invalid Captcha, please try again!");
+                    txtCaptcha.Text = "";
+                    txtCaptcha.Focus();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Alert.Show("Invalid Captcha, please try again!");
-                txtCaptcha.Text = "";
-                txtCaptcha.Focus();
+                Alert.Show(ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
     }

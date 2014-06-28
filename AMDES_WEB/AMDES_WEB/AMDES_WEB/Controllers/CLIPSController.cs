@@ -119,7 +119,7 @@ namespace AMDES_KBS.Controllers
                 }
 
                 file.Close();
-                saveAssertLog();
+                //saveAssertLog();
                 //End File Op
                 run();
                 return pat.getLatestHistory();
@@ -165,7 +165,7 @@ namespace AMDES_KBS.Controllers
                     loadDiagnosis();
 
                     loadNavex(fq, rList, defBehavior);
-                    saveAssertLog();
+                    //saveAssertLog();
                     assertAllAttributes();
                     run();
                 }
@@ -231,7 +231,7 @@ namespace AMDES_KBS.Controllers
 
 
             if (!init)
-                saveAssertLog();
+                //saveAssertLog();
 
             count++;
 
