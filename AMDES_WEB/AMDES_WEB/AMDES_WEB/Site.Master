@@ -23,9 +23,9 @@
     <!-- End Sharing -->
     <!-- Place this tag in your head or just before your close body tag -->
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-    <script type="text/javascript">
+    <!--    <script type="text/javascript">
         jQuery.noConflict();
-    </script>
+    </script>-->
 </head>
 <body>
     <form id="form1" runat="server">
@@ -110,7 +110,6 @@
                     <br />
                     <br />
                     <div style="margin-left: 10%; margin-top: 1%; width: 80%; max-width: 80%; min-width: 80%;">
-                    
                         <asp:ContentPlaceHolder ID="cphCENTER" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
@@ -130,11 +129,11 @@
                 <table>
                     <tr>
                         <td>
-                            <img style="border: 0; height: 75px" src="http://www.comp.nus.edu.sg/~cs5247/resources/nusLogo.jpg" />
+                            <img style="border: 0; height: 75px" alt="NUS SOC" src="http://www.comp.nus.edu.sg/~cs5247/resources/nusLogo.jpg" />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>
-                            <img style="border: 0; height: 75px" src="http://upload.wikimedia.org/wikipedia/en/6/65/KTPH_Logo.jpg" />
+                            <img style="border: 0; height: 75px" alt="Khoo Teck Puat Hospital" src="http://upload.wikimedia.org/wikipedia/en/6/65/KTPH_Logo.jpg" />
                         </td>
                     </tr>
                 </table>

@@ -29,11 +29,11 @@ div#menu
     font-family: "Trebuchet MS" , Verdana, Arial, Helvetica, sans-serif;
     font-size: 11pt;
     line-height: 150%;
-    margin-top: -50px;
     width: 100%;
-
-    margin-left: 40%;
-    
+    margin-left: 40%; 
+    /* Fix for negative margin not working with some IE version */
+    position: relative;
+    top: -50px; /*margin-top: -50px;*/
 }
 
 ul.menu
