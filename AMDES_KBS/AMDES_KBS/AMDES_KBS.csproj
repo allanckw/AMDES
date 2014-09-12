@@ -87,9 +87,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Mommosoft.ExpertSystem.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmFoundation.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\MvvmFoundation.Wpf.dll</HintPath>
+    <Reference Include="MvvmFoundation.Wpf">
+      <HintPath>lib\MvvmFoundation.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />

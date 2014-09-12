@@ -47,12 +47,16 @@
     <Group histID="1">
       <Question GrpID="1">
         <QID>1</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
     </Group>
     <Group histID="2">
       <Question GrpID="2">
         <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
         <Answer>false</Answer>
       </Question>
       <Question GrpID="2">
@@ -62,22 +66,6 @@
       <Question GrpID="2">
         <QID>4</QID>
         <Answer>false</Answer>
-      </Question>
-      <Question GrpID="2">
-        <QID>2</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="3">
-      <Question GrpID="3">
-        <QID>1</QID>
-        <Answer>true</Answer>
-      </Question>
-    </Group>
-    <Group histID="4">
-      <Question GrpID="4">
-        <QID>1</QID>
-        <Answer>true</Answer>
       </Question>
     </Group>
     <Group histID="5">
@@ -94,107 +82,41 @@
         <Answer>false</Answer>
       </Question>
       <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
         <QID>5</QID>
         <Answer>false</Answer>
       </Question>
       <Question GrpID="5">
         <QID>6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="5">
-        <QID>4</QID>
-        <Answer>false</Answer>
-      </Question>
-    </Group>
-    <Group histID="7">
-      <Question GrpID="7">
-        <QID>1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>5</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>6</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="7">
-        <QID>7</QID>
         <Answer>false</Answer>
       </Question>
     </Group>
     <Symptoms>
       <Symptom>
         <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
-        <DiagnosisDate>635455227852583191</DiagnosisDate>
+        <DiagnosisDate>635393196293970463</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Amnesia </SymptomName>
-        <DiagnosisDate>635455227852603191</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Apraxia </SymptomName>
-        <DiagnosisDate>635455227852603191</DiagnosisDate>
-        <DiagnosedByID>2</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Significant decline in function </SymptomName>
-        <DiagnosisDate>635455227852613191</DiagnosisDate>
-        <DiagnosedByID>3</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Gradual cognitive decline  </SymptomName>
-        <DiagnosisDate>635455227852613191</DiagnosisDate>
-        <DiagnosedByID>4</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
-      <Diagnosis diagID="8">
-        <Comment>Please manage the patient accordingly.</Comment>
-        <Header>R01 - Patient has high likelihood of Dementia by DSM4 criteria</Header>
-        <Link></Link>
-        <LinkDesc></LinkDesc>
-        <RetrieveSymptom>false</RetrieveSymptom>
-        <RetrieveFrom />
-        <Attributes />
-        <isRes>false</isRes>
-      </Diagnosis>
-      <Diagnosis diagID="28">
-        <Comment>Brain imaging and referral to a tertiary center is recommended due to the following conditions: 
-   ✓ Age &lt;= 65</Comment>
-        <Header>R21a - Patient require brain imaging and referral</Header>
+      <Diagnosis diagID="30">
+        <Comment>Patient failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.
+   ✓ Failed AMT - Patient's Score: 0, Normal Score: 8 or more</Comment>
+        <Header>R22 - Patient failed AMT, retake history and refer if dementia suspicion is high</Header>
         <Link></Link>
         <LinkDesc></LinkDesc>
         <RetrieveSymptom>true</RetrieveSymptom>
         <RetrieveFrom>
-          <QGrpID>7</QGrpID>
+          <QGrpID>6</QGrpID>
         </RetrieveFrom>
-        <Attributes>
-          <Attribute>
-            <Name>AGE</Name>
-            <Value>65</Value>
-            <Type>3</Type>
-          </Attribute>
-        </Attributes>
+        <Attributes />
         <isRes>false</isRes>
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635454720000000000</CompletedDate>
+    <CompletedDate>635392512000000000</CompletedDate>
   </History>
 </Histories>
