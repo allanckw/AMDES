@@ -2485,4 +2485,63 @@
     <Status>0</Status>
     <CompletedDate>635395104000000000</CompletedDate>
   </History>
+  <History pid="ANON_635466331032251990" AssessmentDate="0">
+    <Group histID="6">
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>8</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>9</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
+        <DiagnosisDate>635466331064665231</DiagnosisDate>
+        <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Status>1</Status>
+    <CompletedDate>0</CompletedDate>
+  </History>
 </Histories>

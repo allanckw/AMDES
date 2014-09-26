@@ -79,7 +79,8 @@ div.fluid
     color: Black;
     float: left;
     padding: 30px 20px 14px 45px;
-    background: url(../images/h1.gif) left bottom no-repeat;
+    background-position: 10px 10px;
+    background: url(../images/h1.jpg) left bottom no-repeat;
 }
 #header h1 a
 {
@@ -142,7 +143,7 @@ p.description a:hover
 {
     padding: 0 0 0 0;
     background: url(../images/content.jpg) top right no-repeat;
-    min-height:700px;
+    min-height: 700px;
     float: left;
     width: 100%; /* 750px; */
 }

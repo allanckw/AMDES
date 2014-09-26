@@ -31,26 +31,11 @@
     <form id="form1" runat="server">
     <div id="wrapper1">
         <div id="wrapper2">
-            <div id="header">
+           <div id="header">
                 <asp:HyperLink NavigateUrl="~/default.aspx" runat="server" ID="hyperlink30"><h1>
-                   &nbsp;&nbsp;&nbsp;&nbsp; <!-- AMDES (Adaptive Medical Diagnosis Expert System) -->
-                     Aid for Dementia Diagnosis  <sup>Beta</sup></h1></asp:HyperLink>
-                <%-- <asp:PlaceHolder ID="pnl2" runat="server">
-                    <ul id="nav">
-                        <li><a href="#intro">Welcome
-                            <asp:LoginName ID="LoginName1" runat="server"></asp:LoginName>
-                        </a></li>
-                        <li>
-                            <asp:LinkButton ID="LinkButton1" runat="server" ValidationGroup="sign0ut" OnClick="Signout_Click">Sign out</asp:LinkButton></li>
-                    </ul>
-                </asp:PlaceHolder>--%>
-                <%-- <asp:PlaceHolder ID="pnl1" runat="server">
-                    <ul id="nav">
-                        <li><a href="#intro">Welcome Guest</a></li>
-                        <li>
-                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/SignIn.aspx" ValidationGroup="sign1n">Sign in</asp:HyperLink></li>
-                    </ul>
-                </asp:PlaceHolder>--%>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- AMDES (Adaptive Medical Diagnosis Expert System) -->
+                     Aid for Dementia Diagnosis  <!--<sup>Beta</sup>--></h1></asp:HyperLink>
+               
             </div>
             <div id="container">
                 <p class="description">
@@ -102,9 +87,9 @@
                                     </ul>
                                 </div>--%>
                             </li>
-                            <li>
+                            <%--<li>
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Downloads.aspx" class="last"><span>Downloads</span></asp:HyperLink>
-                            </li>
+                            </li>--%>
                         </ul>
                     </div>
                     <br />
