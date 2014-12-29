@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6BB77080-74BB-4A38-B1D5-D4D0B1B54E87}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AMDES_WEB</RootNamespace>
+    <AssemblyName>AMDES_WEB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>css\tab.css</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mommosoft.ExpertSystem, Version=0.3.0.2, Culture=neutral, PublicKeyToken=20382083c6694bdc, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Mommosoft.ExpertSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="MSCaptcha, Version=4.0.4250.31585, Culture=neutral, PublicKeyToken=b9ff12f28cdcf412, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MSCaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\Alert.cs" />
+    <Compile Include="Controllers\App.cs" />
+    <Compile Include="Controllers\AssessorController.cs" />
+    <Compile Include="Controllers\CLIPSController.cs" />
+    <Compile Include="Controllers\DefaultBehaviorController.cs" />
+    <Compile Include="Controllers\DiagnosisController.cs" />
+    <Compile Include="Controllers\FirstQuestionController.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\PatAttributeController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\SymptomController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="CustomControls\DatePicker.ascx.cs">
+      <DependentUpon>DatePicker.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\DatePicker.ascx.designer.cs">
+      <DependentUpon>DatePicker.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\DiagnosisUC.ascx.cs">
+      <DependentUpon>DiagnosisUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\DiagnosisUC.ascx.designer.cs">
+      <DependentUpon>DiagnosisUC.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PatAttributeUC.ascx.cs">
+      <DependentUpon>PatAttributeUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PatAttributeUC.ascx.designer.cs">
+      <DependentUpon>PatAttributeUC.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\QuestionsUC.ascx.cs">
+      <DependentUpon>QuestionsUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\QuestionsUC.ascx.designer.cs">
+      <DependentUpon>QuestionsUC.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Section.ascx.cs">
+      <DependentUpon>Section.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Section.ascx.designer.cs">
+      <DependentUpon>Section.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Assessor.cs" />
+    <Compile Include="Entity\Attributes\CmpAttribute.cs" />
+    <Compile Include="Entity\Attributes\PatAttribute.cs" />
+    <Compile Include="Entity\Diagnosis.cs" />
+    <Compile Include="Entity\Groups\Question.cs" />
+    <Compile Include="Entity\Groups\QuestionCountGroup.cs" />
+    <Compile Include="Entity\Groups\QuestionGroup.cs" />
+    <Compile Include="Entity\History\History.cs" />
+    <Compile Include="Entity\History\QnHistory.cs" />
+    <Compile Include="Entity\Navex\FirstQuestion.cs" />
+    <Compile Include="Entity\Navex\NaviChildCritAttribute.cs" />
+    <Compile Include="Entity\Navex\NaviChildCriteriaQuestion.cs" />
+    <Compile Include="Entity\Navex\Navigation.cs" />
+    <Compile Include="Entity\Navex\Rules.cs" />
+    <Compile Include="Entity\Patient.cs" />
+    <Compile Include="Entity\Symptom.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="History.aspx.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="History.aspx.designer.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientStart.aspx.cs">
+      <DependentUpon>PatientStart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientStart.aspx.designer.cs">
+      <DependentUpon>PatientStart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Questionnaire.aspx.cs">
+      <DependentUpon>Questionnaire.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Questionnaire.aspx.designer.cs">
+      <DependentUpon>Questionnaire.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Results.aspx.cs">
+      <DependentUpon>Results.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Results.aspx.designer.cs">
+      <DependentUpon>Results.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ResultsPrintFriendly.aspx.cs">
+      <DependentUpon>ResultsPrintFriendly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultsPrintFriendly.aspx.designer.cs">
+      <DependentUpon>ResultsPrintFriendly.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Data\ADD\Logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\aspComponents.css" />
+    <Content Include="css\login-box.css" />
+    <Content Include="css\menu.css" />
+    <Content Include="css\style3.css" />
+    <Content Include="css\tab.css" />
+    <Content Include="CustomControls\DatePicker.ascx" />
+    <Content Include="CustomControls\DiagnosisUC.ascx" />
+    <Content Include="Global.asax" />
+    <Content Include="History.aspx" />
+    <Content Include="images\ToggleButton_Checked.png" />
+    <Content Include="images\ToggleButton_Unchecked.png" />
+    <Content Include="CustomControls\PatAttributeUC.ascx" />
+    <Content Include="CustomControls\QuestionsUC.ascx" />
+    <Content Include="CustomControls\Section.ascx" />
+    <Content Include="Data\ADD\Assessor.xml" />
+    <Content Include="Data\ADD\DefRules.xml" />
+    <Content Include="Data\ADD\Diagnoses.xml" />
+    <Content Include="Data\ADD\FirstQn.xml" />
+    <Content Include="Data\ADD\History.xml" />
+    <Content Include="Data\ADD\name.txt" />
+    <Content Include="Data\ADD\PatAttributes.xml" />
+    <Content Include="Data\ADD\Questions.xml" />
+    <Content Include="Data\ADD\Rules.xml" />
+    <Content Include="Default.aspx" />
+    <Content Include="images\body.jpg" />
+    <Content Include="images\class.gif" />
+    <Content Include="images\description.jpg" />
+    <Content Include="images\EmptyStar.gif" />
+    <Content Include="images\FilledStar.gif" />
+    <Content Include="images\folder.gif" />
+    <Content Include="images\folders.gif" />
+    <Content Include="images\h1.gif" />
+    <Content Include="images\h2.jpg" />
+    <Content Include="images\login-box-backg.png" />
+    <Content Include="images\login-btn.png" />
+    <Content Include="images\menu_dropdown_bg.gif" />
+    <Content Include="images\menu_dropdown_bg.png" />
+    <Content Include="images\menu_l.png" />
+    <Content Include="images\menu_level1_item.png" />
+    <Content Include="images\menu_level2_item.gif" />
+    <Content Include="images\menu_level2_item_parent.gif" />
+    <Content Include="images\menu_m.png" />
+    <Content Include="images\menu_r.png" />
+    <Content Include="images\nav_a_hover.jpg" />
+    <Content Include="images\pp.gif" />
+    <Content Include="images\select.jpg" />
+    <Content Include="images\sidebar.jpg" />
+    <Content Include="images\trash.png" />
+    <Content Include="images\viewcart.jpeg" />
+    <Content Include="images\wrapper2.jpg" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\menu.js" />
+    <Content Include="PatientStart.aspx" />
+    <Content Include="Questionnaire.aspx" />
+    <Content Include="ResultsPrintFriendly.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\lastSent.scd" />
+    <None Include="Engine\dementia.CLP" />
+    <None Include="images\Thumbs.db" />
+    <Content Include="Results.aspx" />
+    <Content Include="Site.Master" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>1611</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
