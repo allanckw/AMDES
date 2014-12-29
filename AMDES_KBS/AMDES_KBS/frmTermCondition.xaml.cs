@@ -35,6 +35,17 @@ namespace AMDES_KBS
                 txtLocation.Text = a.ClinicName;
             }
 
+            EngineFile ef = EnginePathController.readEngineFileName();
+
+            if (ef == null)
+            {
+                new frmEngineFile().ShowDialog();
+            }
+            else
+            {
+                CLIPSController.setCLPPath(ef);
+            }
+
             CLIPSController.ExpertUser = File.Exists(@"Data\e.miao");
             CLIPSController.enablePrev = File.Exists(@"Data\e.prev");
             CLIPSController.enableSavePatient = File.Exists(@"Data\e.spat");

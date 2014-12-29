@@ -16,8 +16,11 @@ namespace AMDES_KBS.Entity
         protected string header;
         protected QuestionType qType;
         protected List<Question> qns;
+       
+
         private string desc;
         private string symptom;
+
 
         protected Navigation nextTrueLink, nextFalseLink; //the next group that will make the decision
 

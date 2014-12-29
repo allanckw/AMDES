@@ -8,29 +8,27 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <Label Width="100" Content="Header" FontSize="16" FontWeight="Bold" />
-                <Label Width="15" Content=":" />
-                <TextBox x:Name="txtHeader" Width="200" Text="" Height="25" BorderThickness="2" MaxLength="30" />
-                <StackPanel x:Name="stkpnlCOUNT" Orientation="Horizontal" Visibility="Collapsed">
-                    <Label Width="90" Content="Threshold" FontSize="16" FontWeight="Bold" />
-                    <Label Width="15" Content=":" />
-                    <TextBox x:Name="txtThreshold" Width="40" Text="7" PreviewTextInput="NumberValidationTextBox" Height="25" BorderThickness="2" />
-                    <Label Width="80" Content="Max Qn" FontSize="16" FontWeight="Bold" />
-                    <Label Width="15" Content=":" />
-                    <TextBox x:Name="txtMaxQn" Width="40" Text="10" PreviewTextInput="NumberValidationTextBox" Height="25" BorderThickness="2" />
-                </StackPanel>
+                <Label Content="Header:" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Right" Margin="30,0,0,0" />
+                <TextBox x:Name="txtHeader" Width="518" Text="" Height="25" BorderThickness="2" MaxLength="30" />
+              
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <Label Width="100" Content="Description" FontSize="16" FontWeight="Bold" />
-                <Label Width="15" Content=":" />
+                <Label Width="100" Content="Description:" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Right"  />
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <TextBox x:Name="txtDesc" Width="450" TextWrapping="Wrap" AcceptsReturn="True" Height="60" MaxHeight="60" Text="" BorderThickness="1" MaxLength="200" />
+                    <TextBox x:Name="txtDesc" Width="516" TextWrapping="Wrap" AcceptsReturn="True" Height="60" MaxHeight="60" Text="" BorderThickness="1" MaxLength="200" />
                 </ScrollViewer>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <Label Width="100" Content="Symptom" FontSize="16" FontWeight="Bold" />
-                <Label Width="15" Content=":" />
-                <TextBox x:Name="txtSymptom" Width="450" Height="25" Text="" BorderThickness="1" MaxLength="200" />
+                <Label  Content="Symptom:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" Margin="12,0,0,0" />
+                <TextBox x:Name="txtSymptom" Width="150" Height="25" Text="" BorderThickness="1" MaxLength="200" />
+                <StackPanel x:Name="stkpnlCOUNT" Orientation="Horizontal" >
+                    <Label Content="Passing Score:" FontSize="16" FontWeight="Bold" />
+
+                    <TextBox x:Name="txtThreshold" Width="60" Text="7" PreviewTextInput="NumberValidationTextBox" Height="25" BorderThickness="2" />
+                    <Label  Content="Max No. of Qns:" FontSize="16" FontWeight="Bold" />
+
+                    <TextBox x:Name="txtMaxQn" Width="60" Text="10" PreviewTextInput="NumberValidationTextBox" Height="25" BorderThickness="2" />
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

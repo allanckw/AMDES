@@ -122,22 +122,6 @@
   <History pid="ANON" AssessmentDate="0">
     <Group histID="6">
       <Question GrpID="6">
-        <QID>1</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>2</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>3</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
-        <QID>4</QID>
-        <Answer>false</Answer>
-      </Question>
-      <Question GrpID="6">
         <QID>5</QID>
         <Answer>false</Answer>
       </Question>
@@ -161,11 +145,27 @@
         <QID>10</QID>
         <Answer>false</Answer>
       </Question>
+      <Question GrpID="6">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="6">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
     </Group>
     <Group histID="1">
       <Question GrpID="1">
         <QID>1</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
     </Group>
     <Group histID="2">
@@ -174,15 +174,27 @@
         <Answer>false</Answer>
       </Question>
       <Question GrpID="2">
-        <QID>2</QID>
+        <QID>4</QID>
         <Answer>false</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="2">
         <QID>3</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
-      <Question GrpID="2">
-        <QID>4</QID>
+    </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="4">
+      <Question GrpID="4">
+        <QID>1</QID>
         <Answer>false</Answer>
       </Question>
     </Group>
@@ -212,18 +224,68 @@
         <Answer>false</Answer>
       </Question>
     </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
     <Symptoms>
       <Symptom>
-        <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
-        <DiagnosisDate>635393226422543719</DiagnosisDate>
+        <SymptomName> Failed AMT - Patient's Score: 4, Normal Score: 8 or more</SymptomName>
+        <DiagnosisDate>635554820081710098</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635554820081730099</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Apraxia </SymptomName>
+        <DiagnosisDate>635554820081730099</DiagnosisDate>
+        <DiagnosedByID>2</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635554820081740100</DiagnosisDate>
+        <DiagnosedByID>2</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Significant decline in function </SymptomName>
+        <DiagnosisDate>635554820081740100</DiagnosisDate>
+        <DiagnosedByID>3</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
-      <Diagnosis diagID="30">
-        <Comment>Patient failed Abbreviated Mental Test but asymptomatic otherwise - re-take a more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.
-   ✓ Failed AMT - Patient's Score: 0, Normal Score: 8 or more</Comment>
-        <Header>Patient failed AMT, retake history and refer if dementia suspicion is high</Header>
+      <Diagnosis diagID="13">
+        <Comment>Patient failed Abbreviated Mental Test with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation.
+   ✓ Failed AMT - Patient's Score: 4, Normal Score: 8 or more</Comment>
+        <Header>Patient failed AMT with Amnestic symptoms, refer patient</Header>
         <Link></Link>
         <LinkDesc></LinkDesc>
         <RetrieveSymptom>true</RetrieveSymptom>
@@ -233,8 +295,25 @@
         <Attributes />
         <isRes>false</isRes>
       </Diagnosis>
+      <Diagnosis diagID="29">
+        <Comment>Brain imaging and referral to a tertiary center is recommended due to rapid decline of function.
+   ✓ Age &lt;= 65</Comment>
+        <Header>Patient require brain imaging and referral due to rapid decline of function</Header>
+        <Link></Link>
+        <LinkDesc></LinkDesc>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+        <Attributes>
+          <Attribute>
+            <Name>AGE</Name>
+            <Value>65</Value>
+            <Type>3</Type>
+          </Attribute>
+        </Attributes>
+        <isRes>false</isRes>
+      </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635392512000000000</CompletedDate>
+    <CompletedDate>635554080000000000</CompletedDate>
   </History>
 </Histories>

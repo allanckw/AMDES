@@ -90,5 +90,10 @@ namespace AMDES_KBS
         {
             SettingFrame.Navigate(new frmAttributeSetting());
         }
+
+        private void btnEngineFile_Click(object sender, RoutedEventArgs e)
+        {
+            new frmEngineFile().ShowDialog();
+        }
     }
 }

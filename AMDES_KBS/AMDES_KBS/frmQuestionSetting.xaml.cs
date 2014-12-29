@@ -17,12 +17,6 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             loadAllSection();
-            //loadSectionA();
-            //loadSectionB();
-            //loadSectionC();
-            //loadSectionC2();
-            //loadSectionC3();
-            //loadSectionD();
         }
 
         private void loadAllSection()
@@ -51,26 +45,29 @@ namespace AMDES_KBS
 
             StackPanel stkpnlSection = new StackPanel();
 
-            foreach (Question q in qg.Questions)
-            {
-                ucQuestionSetting question = new ucQuestionSetting(q);
-                //question.Margin = new Thickness(0, 0, 0, 5);
-                stkpnlSection.Children.Add(question);
-            }
             sv.Content = stkpnlSection;
             section.Content = sv;
             tcQuestionSetting.Items.Add(section);
+            bool isScoreType = false;
 
             ucQuestionGroup ucQG;
             if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
             {
                 QuestionCountGroup qcg = (QuestionCountGroup)qg;
                 ucQG = new ucQuestionGroup(qcg);
-            }//new ucQuestionGroup(qg);
+                isScoreType = true;
+            }
             else
             {
                 ucQG = new ucQuestionGroup(qg);
             }
+
+            foreach (Question q in qg.Questions)
+            {
+                ucQuestionSetting question = new ucQuestionSetting(q, isScoreType);
+                stkpnlSection.Children.Add(question);
+            }
+
             TabItem groupSection = new TabItem();
             groupSection.Visibility = Visibility.Collapsed;
             groupSection.Header = qg.Header;
@@ -84,6 +81,8 @@ namespace AMDES_KBS
         {
             try
             {
+                bool isScoreType = false;
+
                 int selectedidx = tcQuestionSetting.SelectedIndex;
                 TabItem sectionTab = (TabItem)tcQuestionSetting.Items.GetItemAt(selectedidx);
 
@@ -96,6 +95,7 @@ namespace AMDES_KBS
 
                     if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
                     {
+                        isScoreType = true;
                         QuestionCountGroup qcg = (QuestionCountGroup)qg;
                         if (NoOfQuestion(sectionTab) >= qcg.MaxQuestions)
                         {
@@ -109,6 +109,7 @@ namespace AMDES_KBS
 
                     if (ucControlGroup.stkpnlCOUNT.Visibility==Visibility.Visible)
                     {
+                        isScoreType = true;
                         int NoOfQuestionAllowed = int.Parse(ucControlGroup.txtMaxQn.Text.Trim());
                         if (NoOfQuestion(sectionTab) >= NoOfQuestionAllowed)
                         {
@@ -120,7 +121,7 @@ namespace AMDES_KBS
                 
                 ScrollViewer sv = (ScrollViewer)sectionTab.Content;
                 StackPanel stkpnl = (StackPanel)sv.Content;
-                ucQuestionSetting newQuestion = new ucQuestionSetting();
+                ucQuestionSetting newQuestion = new ucQuestionSetting(isScoreType);
                 newQuestion.Margin = new Thickness(0, 0, 0, 5);
                 stkpnl.Children.Add(newQuestion);
                 sv.ScrollToEnd();

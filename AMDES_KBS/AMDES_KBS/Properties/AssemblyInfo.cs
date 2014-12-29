@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("ADD")]
 [assembly: AssemblyDescription("ADD - Aid for Dementia Diagnosis")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ADD - Aid for Dementia Diagnosis")]
+[assembly: AssemblyCompany("NUS & AHS")]
 [assembly: AssemblyProduct("ADD - Aid for Dementia Diagnosis By AMDES")]
-[assembly: AssemblyCopyright("Copyright AMDES© 2014")]
+[assembly: AssemblyCopyright("AMDES© 2014-2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.6.1.1")]
-[assembly: AssemblyFileVersion("1.6.1.1")]
+[assembly: AssemblyVersion("20.14.12.29")]
+[assembly: AssemblyFileVersion("20.14.12.29")]

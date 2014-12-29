@@ -34,7 +34,17 @@ namespace AMDES_KBS.Controllers
         private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
 
         private static string dataPath = @"Data\Logs\";
-        public static string clpPath = @"engine\dementia.clp";
+        private static string clpPath = "";// = @"engine\" + EnginePathController.readEngineFileName().FileName; //dementia.clp";
+
+        public static void setCLPPath(EngineFile ef)
+        {
+            clpPath =  @"engine\" +ef.FileName; //dementia.clp";
+        }
+
+        public static string getCLPPath()
+        {
+            return clpPath;
+        }
 
         public static Patient CurrentPatient
         {
@@ -69,7 +79,7 @@ namespace AMDES_KBS.Controllers
             env.Clear();
             assertLog.Clear();
             count = 0;
-
+           
             env.Load(clpPath);
             reset();
 
@@ -247,7 +257,7 @@ namespace AMDES_KBS.Controllers
 
                     sb.Append("(QuestionText " + "\"" + q.Name + "\"" + ") ");
                     //irrelevant to dump to clips required only when doing on command prompt
-
+                    sb.Append("(Score " + q.Score + ") ");
                     sb.Append(")");
                     assert(sb);
 

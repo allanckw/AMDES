@@ -7,14 +7,15 @@
             <GroupBox x:Name="gbSettings" Header="Configurations: Click on the buttons to start configuring." FontSize="15" FontWeight="Bold">
                 <StackPanel x:Name="stkpnlDivider" Orientation="Horizontal">
                     <StackPanel x:Name="stkpnlSettingMenu" Width="150">
-                        <Button x:Name="btnQuestion" Width="150" Content="Define Questions" Margin="0,0,0,5" Click="btnQuestion_Click" />
-                        <Button x:Name="btnDiagnosis" Width="150" Content="Define Diagnoses" Margin="0,0,0,5" Click="btnDiagnosis_Click" />
-                        <Button x:Name="btnStartPage" Width="150" Content="Define Start Page" Margin="0,0,0,5" Click="btnStartPage_Click" />
-                        <Button x:Name="btnAttribute" Width="150" Content="Define Attribute" Margin="0,0,0,5" Click="btnAttribute_Click" />
-                        <Button x:Name="btnDefaultBehaviour" Width="150" Content="Default Behaviour" Margin="0,0,0,5" Click="btnDefaultBehaviour_Click" />
-                        <Button x:Name="btnNavigation" Width="150" Content="Define Navigations" Margin="0,0,0,5" Click="btnNavigation_Click" />
-                        <Button x:Name="btnGenerate" Width="150" Content="Generate ARFF" Margin="0,0,0,5" Click="btnGenerate_Click" />
-                        <Button x:Name="btnExitSetting" Width="150" Content="Exit" Margin="0,0,0,5" Click="btnExitSetting_Click" />
+                        <Button x:Name="btnQuestion" Width="150" Content="Define Questions" Margin="0,0,0,10" Click="btnQuestion_Click" />
+                        <Button x:Name="btnDiagnosis" Width="150" Content="Define Diagnoses" Margin="0,0,0,10" Click="btnDiagnosis_Click" />
+                        <Button x:Name="btnStartPage" Width="150" Content="Define Start Page" Margin="0,0,0,10" Click="btnStartPage_Click" />
+                        <Button x:Name="btnAttribute" Width="150" Content="Define Attribute" Margin="0,0,0,10" Click="btnAttribute_Click" />
+                        <Button x:Name="btnDefaultBehaviour" Width="150" Content="Default Behaviour" Margin="0,0,0,10" Click="btnDefaultBehaviour_Click" />
+                        <Button x:Name="btnNavigation" Width="150" Content="Define Navigations" Margin="0,0,0,10" Click="btnNavigation_Click" />
+                        <Button x:Name="btnGenerate" Width="150" Content="Generate ARFF" Margin="0,0,0,10" Click="btnGenerate_Click" />
+                        <Button x:Name="btnEngineFile" Width="150" Content="Engine File Name" Margin="0,0,0,10" Click="btnEngineFile_Click" />
+                        <!--<Button x:Name="btnExitSetting" Width="150" Content="Exit" Margin="0,0,0,10" Click="btnExitSetting_Click" /> -->
                     </StackPanel>
                     <Frame x:Name="SettingFrame" NavigationUIVisibility="Hidden" Width="711" Height="580" Margin="10,0,0,0" ></Frame>
                 </StackPanel>

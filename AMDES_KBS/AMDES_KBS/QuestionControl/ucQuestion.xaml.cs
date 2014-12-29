@@ -35,12 +35,12 @@ namespace AMDES_KBS
             var desiredSizeOld = txtQuestion.DesiredSize;
             txtQuestion.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
             var desiredSizeNew = txtQuestion.DesiredSize;
-            txtQuestion.Height = desiredSizeNew.Height+10;
+            txtQuestion.Height = desiredSizeNew.Height + 10;
             if (lblscore != null)
             {
                 scoringData = lblscore;
             }
-           
+
         }
 
         public void setAnswer(bool answer)
@@ -53,7 +53,7 @@ namespace AMDES_KBS
                 if (scoringData != null)
                 {
                     int score = int.Parse(scoringData.Content.ToString());
-                    score++;
+                    score += question.Score;
                     scoringData.Content = score;
                 }
             }
@@ -69,7 +69,7 @@ namespace AMDES_KBS
                 if (scoringData != null)
                 {
                     int score = int.Parse(scoringData.Content.ToString());
-                    score++;
+                    score += question.Score;
                     scoringData.Content = score;
                 }
                 questionAnswer = true;
@@ -83,14 +83,14 @@ namespace AMDES_KBS
                     int score = int.Parse(scoringData.Content.ToString());
                     if (questionAnswer)
                     {
-                        score--;
+                        score -= question.Score;
                         scoringData.Content = score;
                     }
                     questionAnswer = false;
                     Thread.Sleep(100);
                 }
             }
-           
+
         }
 
         public bool getAnswer()

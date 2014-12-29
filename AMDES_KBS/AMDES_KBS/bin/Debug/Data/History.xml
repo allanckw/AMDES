@@ -97,7 +97,7 @@
     <Symptoms>
       <Symptom>
         <SymptomName> Failed AMT - Patient's Score: 0, Normal Score: 8 or more</SymptomName>
-        <DiagnosisDate>635393196293970463</DiagnosisDate>
+        <DiagnosisDate>635554585390596534</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
       </Symptom>
     </Symptoms>
@@ -117,6 +117,6 @@
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635392512000000000</CompletedDate>
+    <CompletedDate>635554080000000000</CompletedDate>
   </History>
 </Histories>

@@ -5,11 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignWidth="660">
-    <Grid x:Name="gridQuestion" Height="auto">    
-    <StackPanel x:Name="stkpnlQuestion" HorizontalAlignment="left" Margin="0,0,0,5">
+    <Grid x:Name="gridQuestion">
+        <StackPanel x:Name="stkpnlQuestion" HorizontalAlignment="left" Margin="0,0,0,5" Width="650">
             <StackPanel x:Name="stkpnlQuestionHeader" Orientation="Horizontal" Margin="5">
                 <Label x:Name="lblQuestion" Width="40" Content="A10" FontWeight="Bold" FontSize="14" Margin="5,-5,0,0" />
-                <TextBox x:Name="txtSymptom" BorderThickness="1" Background="Transparent" Width="135" Margin="20,0,0,0">
+                <Label x:Name="lblSym" Width="80" Content="Symptom:" FontWeight="Bold" FontSize="14" Margin="5,-5,0,0" />
+                <TextBox x:Name="txtSymptom" Width="380" BorderThickness="1" Background="Transparent"  Margin="0,0,0,0">
                     <TextBox.Style>
                         <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                             <Style.Resources>
@@ -42,13 +43,22 @@
                         </Style>
                     </TextBox.Style>
                 </TextBox>
-                <Button x:Name="btnDeleteQuestion" Width="150" Content="Delete the Question" Margin="20,0,0,0" Click="btnDeleteQuestion_Click" />
-            </StackPanel>
-            <StackPanel>
-                
-            </StackPanel>
-                <TextBox x:Name="txtQuestion" TextWrapping="Wrap" BorderThickness="1" AcceptsReturn="True" Background="Transparent" Width="460" Margin="0,0,0,0"/>
+                <Label x:Name="lblScore" Width="50" Content="Score:" FontWeight="Bold" FontSize="14" Margin="5,-5,0,0" />
+                <TextBox x:Name="txtScore" BorderThickness="1" Background="Transparent" Width="60" Height="25" Margin="0,0,0,0" PreviewTextInput="NumberValidationTextBox" />
 
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="left">
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="lblQN" Width="80" Content="Question:" FontWeight="Bold" FontSize="14" Margin="5,-5,0,0" />
+                    <TextBox x:Name="txtQuestion" TextWrapping="Wrap" BorderThickness="1" AcceptsReturn="True" Background="Transparent" Width="545" Margin="0,0,0,0"/>
+
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="right">
+                    <Button x:Name="btnDeleteQuestion" Content=" Delete Question " Height="25"  Margin="5,0,0,0" Click="btnDeleteQuestion_Click"  FontSize="14"/>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

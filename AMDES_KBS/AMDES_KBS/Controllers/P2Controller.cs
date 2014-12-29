@@ -13,7 +13,7 @@ namespace AMDES_KBS.Controllers
 
         private string rule_path; //rule path in txt
 
-        private string CLP_FILE = CLIPSController.clpPath;
+        private string CLP_FILE = CLIPSController.getCLPPath();
 
         public string File_Name;
 

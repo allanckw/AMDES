@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using AMDES_KBS.Entity;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 namespace AMDES_KBS
 {
@@ -12,16 +14,26 @@ namespace AMDES_KBS
     {
         Question question;
 
-        public ucQuestionSetting()
+        public ucQuestionSetting(bool isScoreType)
         {
             InitializeComponent();
             lblQuestion.Content = "New";
             question = new Question();
+
+            if (!isScoreType)
+                lblScore.Visibility = Visibility.Collapsed;
+
+            txtScore.Visibility = lblScore.Visibility;
         }
 
-        public ucQuestionSetting(Question q)
+        public ucQuestionSetting(Question q, bool isScoreType )
         {
             InitializeComponent();
+            
+            if (!isScoreType)
+                lblScore.Visibility = Visibility.Collapsed;
+
+            txtScore.Visibility = lblScore.Visibility;
             loadQuestion(q);
         }
 
@@ -31,7 +43,8 @@ namespace AMDES_KBS
             string questionText = q.Name.Replace("~~", Environment.NewLine);
             lblQuestion.Content = q.ID;
             txtSymptom.Text = q.Symptom;
-            txtQuestion.Text = questionText;            
+            txtQuestion.Text = questionText;
+            txtScore.Text = q.Score.ToString();
         }
 
         private void btnDeleteQuestion_Click(object sender, RoutedEventArgs e)
@@ -43,6 +56,7 @@ namespace AMDES_KBS
         {
             question.Name = txtQuestion.Text.Replace(Environment.NewLine, "~~");
             question.Symptom = txtSymptom.Text;
+            question.Score = int.Parse(txtScore.Text.Trim());
             return question;
         }
 
@@ -58,6 +72,12 @@ namespace AMDES_KBS
                 return false;
 
             return true;
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

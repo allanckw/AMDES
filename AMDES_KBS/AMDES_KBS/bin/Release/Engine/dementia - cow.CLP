@@ -14,7 +14,7 @@
 
 (deftemplate Currentgroup
    (slot GroupID (type SYMBOL))
-   (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT = SCORE
+   (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT
    (slot SuccessArg (type INTEGER))
    (slot TrueCount (type INTEGER) (default 0))
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
@@ -23,7 +23,6 @@
    (slot GroupID (type SYMBOL))
    (slot ID (type SYMBOL))
    (slot QuestionText (type STRING))
-   (slot Score (type INTEGER) (default 1))
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 ;; Final Diagnosis
@@ -34,9 +33,9 @@
 ;; A Group has many questions
 (deftemplate group
    (slot GroupID (type SYMBOL))
-   (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT = Score
+   (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT
    (slot SuccessArg (type INTEGER))
-   (slot TrueCount (type INTEGER) (default 0)) ;;True Count = Score
+   (slot TrueCount (type INTEGER) (default 0))
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 ;;A Group has a symptom
@@ -47,7 +46,6 @@
 (deftemplate question
    (slot ID (type SYMBOL))
    (slot QuestionText (type STRING))
-   (slot Score (type INTEGER) (default 1))
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No))
    (slot GroupID (type SYMBOL)))
 
@@ -188,24 +186,24 @@
 
 (defrule Change-Answer
    ?f1 <- (choice ?ID ?x)
-   ?f2 <- (question (ID ?ID) (answer ?y) (GroupID ?z) (Score ?s))
+   ?f2 <- (question (ID ?ID) (answer ?y) (GroupID ?z))
    ?f3 <- (group (GroupID ?z) (TrueCount ?count))
    =>
    (switch ?y
       (case NIL then
          (if (eq Yes ?x)
             then
-            (modify ?f3 (TrueCount (+ ?count ?s)))
+            (modify ?f3 (TrueCount (+ ?count 1)))
             else))
       (case Yes then
          (if (eq Yes ?x)
             then
             else
-            (modify ?f3 (TrueCount (- ?count ?s)))))
+            (modify ?f3 (TrueCount (- ?count 1)))))
       (case No then
          (if (eq Yes ?x)
             then
-            (modify ?f3 (TrueCount (+ ?count ?s)))
+            (modify ?f3 (TrueCount (+ ?count 1)))
             else)))
    (retract ?f1)
    (modify ?f2 (answer ?x)))

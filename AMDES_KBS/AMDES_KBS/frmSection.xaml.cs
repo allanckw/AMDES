@@ -112,7 +112,7 @@ namespace AMDES_KBS
                 QuestionCountGroup QCG = (QuestionCountGroup)QG;
                 lblCurrScore.Content = 0;
                 lblCurrScore.Tag = QCG.Threshold;
-                lblTotalScore.Content = QCG.MaxQuestions;
+                lblTotalScore.Content = QCG.MaximumScore;
                 heightLimit -= 11;
             }
 

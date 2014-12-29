@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
-        Title="frmSetting" Height="530" Width="650">
+        Title="frmSetting" >
     
     <src:AMDESPage.Resources>
             <ControlTemplate x:Key="HorizontalScrollBarTemplate" TargetType="{x:Type ScrollBar}">
@@ -125,7 +125,7 @@
     </src:AMDESPage.Resources>
     <Grid>
         <StackPanel>
-            <TabControl x:Name="tcQuestionSetting" Template="{DynamicResource ScrollableTabControlTemplate}" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="650" Height="330" SelectionChanged="tcQuestionSetting_SelectionChanged" OverridesDefaultStyle="False">
+            <TabControl x:Name="tcQuestionSetting" Template="{DynamicResource ScrollableTabControlTemplate}" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="670" Height="330" SelectionChanged="tcQuestionSetting_SelectionChanged" OverridesDefaultStyle="False">
 
             </TabControl>
             <StackPanel x:Name="stkpnlQGProperties" Height="165">

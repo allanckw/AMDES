@@ -7,7 +7,9 @@ namespace AMDES_KBS.Entity
     {
         private int maxQuestions = 10; //max no. of question in group
 
-        private int threshold = 7; // < threshold returns false in clips
+        private int threshold = 8; // < threshold returns false in clips = 
+
+        private int maxScore = -1;
 
         public QuestionCountGroup(string header, int groupID)
             : base()
@@ -25,21 +27,34 @@ namespace AMDES_KBS.Entity
         public int Threshold
         {
             get { return threshold; }
-            set { 
-                if (this.MaxQuestions >= value )
-                {
-                    threshold = value;
-                }else{
-                    throw new InvalidOperationException("Threshold cannot exceed maximum no. of questions!!!");
-                }
-            }
-            
+            set { threshold = value; }
         }
 
         public int MaxQuestions
         {
             get { return maxQuestions; }
             set { maxQuestions = value; }
+        }
+
+        public int MaximumScore
+        {
+            get
+            {
+                if (this.maxScore == -1)
+                {
+                    this.maxScore = 0;
+                    foreach(Question q in qns)
+                    {
+                        this.maxScore += q.Score;
+                    }
+                    return this.maxScore;
+                }
+                else
+                {
+                    return this.maxScore;
+                }
+
+            }
         }
 
         public override void addQuestion(string q, string sym = "")

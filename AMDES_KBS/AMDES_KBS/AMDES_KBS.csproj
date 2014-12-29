@@ -80,8 +80,9 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Devcom-Medical-Stethoscope.ico</ApplicationIcon>
+    <ApplicationIcon>AMDES.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Mommosoft.ExpertSystem, Version=0.3.0.2, Culture=neutral, PublicKeyToken=20382083c6694bdc, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -126,6 +127,7 @@
     <Compile Include="Controllers\CLIPSController.cs" />
     <Compile Include="Controllers\DefaultBehaviorController.cs" />
     <Compile Include="Controllers\DiagnosisController.cs" />
+    <Compile Include="Controllers\EnginePathController.cs" />
     <Compile Include="Controllers\FirstQuestionController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
@@ -135,14 +137,18 @@
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Entity\Attributes\CmpAttribute.cs" />
+    <Compile Include="Entity\EngineFile.cs" />
     <Compile Include="frmAttributeSetting.xaml.cs">
       <DependentUpon>frmAttributeSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entity\Attributes\PatAttribute.cs" />
+    <Compile Include="frmEngineFile.xaml.cs">
+      <DependentUpon>frmEngineFile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmP2.xaml.cs">
       <DependentUpon>frmP2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RecommendataionUserControl\ucDiagnosisResource.xaml.cs">
+    <Compile Include="RecommendationUserControl\ucDiagnosisResource.xaml.cs">
       <DependentUpon>ucDiagnosisResource.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingControl\frmAttributeAddingToPath.xaml.cs">
@@ -226,7 +232,7 @@
     <Compile Include="QuestionControl\ucQuestionSetting.xaml.cs">
       <DependentUpon>ucQuestionSetting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RecommendataionUserControl\ucDiagnosis.xaml.cs">
+    <Compile Include="RecommendationUserControl\ucDiagnosis.xaml.cs">
       <DependentUpon>ucDiagnosis.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingControl\ucNavigationFlowSetting.xaml.cs">
@@ -246,11 +252,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="frmEngineFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="frmP2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="RecommendataionUserControl\ucDiagnosisResource.xaml">
+    <Page Include="RecommendationUserControl\ucDiagnosisResource.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -382,7 +392,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="RecommendataionUserControl\ucDiagnosis.xaml">
+    <Page Include="RecommendationUserControl\ucDiagnosis.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -450,7 +460,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Devcom-Medical-Stethoscope.ico" />
+    <Resource Include="Resource\h1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AMDES.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

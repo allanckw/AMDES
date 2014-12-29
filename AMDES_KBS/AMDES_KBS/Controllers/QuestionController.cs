@@ -90,9 +90,11 @@ namespace AMDES_KBS.Controllers
                     Question q = p.Questions.ElementAt(j);
                     newGRP.Element("Questions").Add(
                                         new XElement("Question", new XAttribute("QID", (j + 1)),
-                                            new XElement("Name", q.Name),
-                                            new XElement("Symptom", q.Symptom))
-                                  );
+                                        new XElement("Name", q.Name),
+                                        new XElement("Symptom", q.Symptom),
+                                        new XElement("Score", q.Score)
+                                        )
+                                    );
                     //What does it assert about the patient if this is true? (i need this value in patient));
                 }
             }
@@ -130,7 +132,7 @@ namespace AMDES_KBS.Controllers
                     }
                 }
 
-                return pList;
+                return pList.OrderBy(x => x.Header).ToList<QuestionGroup>();
             }
             else
             {
@@ -187,7 +189,7 @@ namespace AMDES_KBS.Controllers
                 p.Header = x.Element("Header").Value;
                 p.Description = x.Element("Description").Value;
                 p.Symptom = x.Element("Symptom").Value;
-
+                
                 var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                            select pa).ToList();
 
@@ -215,6 +217,14 @@ namespace AMDES_KBS.Controllers
                 q.ID = int.Parse(x.Attribute("QID").Value);
                 q.Name = x.Element("Name").Value;
                 q.Symptom = x.Element("Symptom").Value;
+                if (x.Element("Score") != null)
+                {
+                    q.Score = int.Parse(x.Element("Score").Value);
+                }
+                else
+                {
+                    q.Score = 1;
+                }
                 return q;
             }
             else
