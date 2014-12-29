@@ -52,8 +52,13 @@ namespace AMDES_KBS.Controllers
         private Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
 
         private string logPath;
-        public static string clpPath = System.Web.HttpContext.Current.Server.MapPath(@"engine\dementia.clp");
+        //public static string clpPath = System.Web.HttpContext.Current.Server.MapPath(@"engine\dementia.clp");
 
+        public static string getCLPPath()
+        {
+            EngineFile ef = EnginePathController.readEngineFileName();
+            return System.Web.HttpContext.Current.Server.MapPath(@"engine\" + ef.FileName); 
+        }
         private string appName;
 
         public string ApplicationName
@@ -103,7 +108,7 @@ namespace AMDES_KBS.Controllers
             assertLog.Clear();
             count = 0;
 
-            env.Load(clpPath);
+            env.Load(getCLPPath());
             reset();
 
             if (File.Exists(logPath) && HistoryController.isHistoryExist(pat.NRIC))
@@ -141,7 +146,7 @@ namespace AMDES_KBS.Controllers
                 assertLog.Clear();
                 count = 0;
 
-                env.Load(clpPath);
+                env.Load(getCLPPath());
                 reset();
                 run();
 

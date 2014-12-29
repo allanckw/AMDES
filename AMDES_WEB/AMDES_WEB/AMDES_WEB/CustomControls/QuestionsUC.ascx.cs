@@ -31,6 +31,20 @@ namespace AMDES_WEB.CustomControls
         }
 
         private int qid;
+        private int score;
+        
+        public int Score
+        {
+            get
+            {
+                return score;
+            }
+            set
+            {
+                score = value;
+            }
+        }
+
         public int QID
         {
             get
@@ -61,6 +75,8 @@ namespace AMDES_WEB.CustomControls
                 chkAns.Enabled = value;
             }
         }
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {

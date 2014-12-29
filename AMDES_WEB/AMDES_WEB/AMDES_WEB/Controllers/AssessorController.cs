@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
 using AMDES_KBS.Entity;
+using System.IO;
 
 namespace AMDES_KBS.Controllers
 {
-    class AssessorController
+    public class AssessorController
     {
         public static void writeAssessor(Assessor a)
         {
@@ -28,15 +29,22 @@ namespace AMDES_KBS.Controllers
 
         public static Assessor readAssessor()
         {
-            XElement xelement = XElement.Load(Assessor.dataPath);
-            IEnumerable<XElement> assessors = xelement.Elements();
+            if (File.Exists(Assessor.dataPath))
+            {
+                XElement xelement = XElement.Load(Assessor.dataPath);
+                IEnumerable<XElement> assessors = xelement.Elements();
 
-            Assessor a = new Assessor();
+                Assessor a = new Assessor();
 
-            a.Name = xelement.Element("Name").Value.ToString();
-            a.ClinicName = xelement.Element("Location").Value.ToString();
+                a.Name = xelement.Element("Name").Value.ToString();
+                a.ClinicName = xelement.Element("Location").Value.ToString();
 
-            return a;
+                return a;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public static Assessor readAssessor(XElement x)

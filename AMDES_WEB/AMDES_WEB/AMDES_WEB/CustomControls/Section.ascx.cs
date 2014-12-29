@@ -95,6 +95,7 @@ namespace AMDES_WEB.CustomControls
                 qnCtrl.QuestionNo = i + 1;
                 qnCtrl.QuestionText = q.Name;
                 qnCtrl.QID = q.ID;
+                qnCtrl.Score = q.Score;
                 qnCtrl.ID = "qnCtrl" + q.ID;
                 qnCtrl.isEnabled = this.Enabled;
 
@@ -231,7 +232,7 @@ namespace AMDES_WEB.CustomControls
                 lbl1.Visible = lblMax.Visible = lblScore.Visible = true;
                 
                 lblScore.Text = "0";
-                lblMax.Text = " / " + qcg.MaxQuestions.ToString();
+                lblMax.Text = " / " + qcg.MaximumScore.ToString();
 
                 int count = 0;
                 foreach (Control c in phRegister.Controls)
@@ -240,7 +241,7 @@ namespace AMDES_WEB.CustomControls
                     {
                         QuestionsUC quc = (QuestionsUC)c;
                         if (quc.isYes)
-                            count += 1;
+                            count += quc.Score;
                     }
                 }
                 lblScore.Text = count.ToString();

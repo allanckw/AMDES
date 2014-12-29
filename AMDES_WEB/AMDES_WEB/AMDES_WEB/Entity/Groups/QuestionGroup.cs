@@ -16,13 +16,16 @@ namespace AMDES_KBS.Entity
         protected string header;
         protected QuestionType qType;
         protected List<Question> qns;
+
+
         private string desc;
         private string symptom;
+
 
         protected Navigation nextTrueLink, nextFalseLink; //the next group that will make the decision
 
 
-        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Questions.xml");
+        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\ADD\Questions.xml");
 
         public string Symptom
         {
@@ -87,7 +90,7 @@ namespace AMDES_KBS.Entity
 
         public virtual void addQuestion(string q, string sym = "")
         {
-            Question qn = new Question( q, sym);
+            Question qn = new Question(q, sym);
 
             if (q != null)
             {

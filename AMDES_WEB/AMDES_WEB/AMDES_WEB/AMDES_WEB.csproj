@@ -36,30 +36,9 @@
   <PropertyGroup>
     <ApplicationManifest>css\tab.css</ApplicationManifest>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
-    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit">
-      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    <Reference Include="AjaxControlToolkit, Version=4.1.7.607, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mommosoft.ExpertSystem, Version=0.3.0.2, Culture=neutral, PublicKeyToken=20382083c6694bdc, processorArchitecture=x86">
@@ -93,6 +72,7 @@
     <Compile Include="Controllers\CLIPSController.cs" />
     <Compile Include="Controllers\DefaultBehaviorController.cs" />
     <Compile Include="Controllers\DiagnosisController.cs" />
+    <Compile Include="Controllers\EnginePathController.cs" />
     <Compile Include="Controllers\FirstQuestionController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
@@ -143,10 +123,18 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Downloads.aspx.cs">
+      <DependentUpon>Downloads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Downloads.aspx.designer.cs">
+      <DependentUpon>Downloads.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Assessor.cs" />
     <Compile Include="Entity\Attributes\CmpAttribute.cs" />
     <Compile Include="Entity\Attributes\PatAttribute.cs" />
     <Compile Include="Entity\Diagnosis.cs" />
+    <Compile Include="Entity\EngineFile.cs" />
     <Compile Include="Entity\Groups\Question.cs" />
     <Compile Include="Entity\Groups\QuestionCountGroup.cs" />
     <Compile Include="Entity\Groups\QuestionGroup.cs" />
@@ -218,6 +206,7 @@
     <Content Include="css\tab.css" />
     <Content Include="CustomControls\DatePicker.ascx" />
     <Content Include="CustomControls\DiagnosisUC.ascx" />
+    <Content Include="Data\ADD\Engine.xml" />
     <Content Include="Global.asax" />
     <Content Include="History.aspx" />
     <Content Include="images\ToggleButton_Checked.png" />
@@ -235,6 +224,7 @@
     <Content Include="Data\ADD\Questions.xml" />
     <Content Include="Data\ADD\Rules.xml" />
     <Content Include="Default.aspx" />
+    <Content Include="Downloads.aspx" />
     <Content Include="images\body.jpg" />
     <Content Include="images\class.gif" />
     <Content Include="images\description.jpg" />
