@@ -124,6 +124,7 @@
     <Compile Include="Barchart\ucChart.xaml.cs">
       <DependentUpon>ucChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ApplicationContextController.cs" />
     <Compile Include="Controllers\CLIPSController.cs" />
     <Compile Include="Controllers\DefaultBehaviorController.cs" />
     <Compile Include="Controllers\DiagnosisController.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Controllers\Printer.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Entity\ApplicationContext.cs" />
     <Compile Include="Entity\Attributes\CmpAttribute.cs" />
     <Compile Include="Entity\EngineFile.cs" />
     <Compile Include="frmAttributeSetting.xaml.cs">
@@ -464,6 +466,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AMDES.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\AMDES.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -152,20 +152,28 @@ namespace AMDES_KBS
             step.chkConclusive.Checked += new RoutedEventHandler(chk_Checked);
             step.chkConclusive.Unchecked += new RoutedEventHandler(chk_UnChecked);
 
-            if (currStep == 1)
+            FirstQuestion fq = FirstQuestionController.readFirstQuestion();
+            if (fq != null)
             {
-                step.setGroupBox(FirstQuestionController.readFirstQuestion().GrpID);
-            }
+                if (currStep == 1)
+                {
+                    step.setGroupBox(fq.GrpID);
+                }
 
-            lstStep.Add(step);
-            stkpnlSteps.Children.Add(step);
-            if (currStep == 1)
-            {
-                btnPrevStep.Visibility = Visibility.Hidden;
+                lstStep.Add(step);
+                stkpnlSteps.Children.Add(step);
+                if (currStep == 1)
+                {
+                    btnPrevStep.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    btnPrevStep.Visibility = Visibility.Visible;
+                }
             }
             else
             {
-                btnPrevStep.Visibility = Visibility.Visible;
+                MessageBox.Show("Please set your first section before proceeding to this screen!", "First Section Does Not Exist", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -222,7 +230,7 @@ namespace AMDES_KBS
             currNewStep.getAnswer();
             NaviChildCriteriaQuestion newCriteria = currNewStep.getCriteria();
 
-            if (oldCriteria !=null)
+            if (oldCriteria != null)
             {
                 if (oldCriteria.CriteriaGrpID != newCriteria.CriteriaGrpID || oldCriteria.Ans != newCriteria.Ans)
                 {
@@ -462,9 +470,9 @@ namespace AMDES_KBS
 
             stkpnlSteps.Children.Clear();
             lstStep[currStep - 1].loadCheckedYN();
-            
+
             disableNextButton(lstStep[currStep - 1]);
-                        
+
             stkpnlSteps.Children.Add(lstStep[currStep - 1]);
 
         }
@@ -621,7 +629,7 @@ namespace AMDES_KBS
             for (int i = 0; i < cboDiagnosisList.Items.Count; i++)
             {
                 Rules sRule = (Rules)cboDiagnosisList.Items[i];
-                if (sRule.RuleID==ruleID)
+                if (sRule.RuleID == ruleID)
                 {
                     cboDiagnosisList.SelectedIndex = i;
                     break;

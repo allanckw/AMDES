@@ -32,7 +32,7 @@ namespace AMDES_KBS
             else
             {
                 txtFileName.Text = ef.FileName;
-               
+
             }
         }
 
@@ -46,7 +46,11 @@ namespace AMDES_KBS
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (txtFileName.Text.Trim().Length > 0)
+                this.Close();
+            else
+                MessageBox.Show("Please enter the engine path or the system cannot be started!", 
+                    "Invalid Engine Path", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
     }
 }

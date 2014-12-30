@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
     public class Navigation : IComparable<Navigation>, IEquatable<Navigation>
     {
-        public static string dataPath = @"data\Navex.xml";
+        public static string dataPath;
 
         private string navID = "-1";
         private int destGrpID = -1;

@@ -10,9 +10,14 @@ namespace AMDES_KBS
     /// </summary>
     public partial class frmSetting : Window
     {
+        private bool initialLoad = true;
+
         public frmSetting()
         {
             InitializeComponent();
+            this.cboAppContexts.ItemsSource = CLIPSController.AllAppContexts;
+            this.cboAppContexts.SelectedIndex = 0;
+            initialLoad = false;
         }
 
         private void btnQuestion_Click(object sender, RoutedEventArgs e)
@@ -29,11 +34,11 @@ namespace AMDES_KBS
         {
             //SettingFrame.Navigate(new frmNavigation());
             FirstQuestion fq = FirstQuestionController.readFirstQuestion();
-            if (fq==null)
+            if (fq == null)
             {
                 //MessageBox.Show("Please define first setting!");
                 frmFirstPageSetting firstPageSetting = new frmFirstPageSetting();
-                if (firstPageSetting.DialogResult==false)
+                if (firstPageSetting.DialogResult == false)
                 {
                     //new frmFlowToDiagnosis().ShowDialog();
                     MessageBox.Show("Please define first setting!");
@@ -94,6 +99,23 @@ namespace AMDES_KBS
         private void btnEngineFile_Click(object sender, RoutedEventArgs e)
         {
             new frmEngineFile().ShowDialog();
+        }
+
+        private void cboAppContexts_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (!initialLoad)
+            {
+                try
+                {
+                    ApplicationContext app = (ApplicationContext)cboAppContexts.SelectedItem;
+                    ApplicationContextController.setApplicationContext(app);
+                    ApplicationContextController.GetAllApplications();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

@@ -209,10 +209,15 @@ namespace AMDES_KBS
             loadAttrData(attr);
         }
 
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        private void txtMinValue_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            e.Handled = App.NumberValidationTextBox(e.Text);
         }
+
+        private void txtMaxValue_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = App.NumberValidationTextBox(e.Text);
+        }
+
     }
 }

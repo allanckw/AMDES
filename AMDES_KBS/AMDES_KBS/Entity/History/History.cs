@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
@@ -14,7 +15,7 @@ namespace AMDES_KBS.Entity
     {
         private PatientStatus status;
 
-        public static string dataPath = @"data\History.xml";
+        public static string dataPath;
 
         private string patientID;
 

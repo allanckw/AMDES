@@ -74,10 +74,10 @@ namespace AMDES_KBS
             return true;
         }
 
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        private void txtScore_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            e.Handled = App.NumberValidationTextBox(e.Text);
         }
+
     }
 }

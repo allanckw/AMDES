@@ -11,50 +11,26 @@ namespace AMDES_KBS
     /// </summary>
     public partial class frmTermCondition : Window
     {
-
         public frmTermCondition()
         {
             this.InitializeComponent();
 
             // Insert code required on object creation below this point.
-
-            if (!Directory.Exists("Data"))
-            {
-                Directory.CreateDirectory("Data");
-            }
-
-            if (!Directory.Exists(@"Data\Logs"))
-            {
-                Directory.CreateDirectory(@"Data\Logs");
-            }
-
-            if (File.Exists(Assessor.dataPath))
-            {
-                Assessor a = AssessorController.readAssessor();
-                txtName.Text = a.Name;
-                txtLocation.Text = a.ClinicName;
-            }
-
-            EngineFile ef = EnginePathController.readEngineFileName();
-
-            if (ef == null)
-            {
-                new frmEngineFile().ShowDialog();
-            }
-            else
-            {
-                CLIPSController.setCLPPath(ef);
-            }
-
-            CLIPSController.ExpertUser = File.Exists(@"Data\e.miao");
-            CLIPSController.enablePrev = File.Exists(@"Data\e.prev");
-            CLIPSController.enableSavePatient = File.Exists(@"Data\e.spat");
-            CLIPSController.enableStats = File.Exists(@"Data\e.stats");
+            App.LoadCFGs();
+                        
+            //title = App.readAppTitle();
+            lblTitle.Content = CLIPSController.selectedAppContext.Name;
+            txtTnC.AppendText(CLIPSController.selectedAppContext.Description);
 
             if (!CLIPSController.enableSavePatient)
                 chkSavePat.Visibility = Visibility.Hidden;
             else
                 chkSavePat.Visibility = Visibility.Visible;
+
+            if (!CLIPSController.secretUser)
+                btnAdminCFG.IsEnabled = false;
+
+           
         }
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
@@ -73,10 +49,12 @@ namespace AMDES_KBS
             {
                 Assessor a = new Assessor(txtName.Text.Trim(), txtLocation.Text.Trim());
                 AssessorController.writeAssessor(a);
-                
+
                 var admForm = new frmMain(chkSavePat.IsChecked);
                 this.Visibility = Visibility.Collapsed;
                 Application.Current.MainWindow = admForm;
+                admForm.Title = lblTitle.Content.ToString();
+                
                 admForm.Show();
             }
         }
@@ -87,7 +65,23 @@ namespace AMDES_KBS
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        { 
+        {
+            if (File.Exists(Assessor.dataPath))
+            {
+                Assessor a = AssessorController.readAssessor();
+                txtName.Text = a.Name;
+                txtLocation.Text = a.ClinicName;
+            }
+
         }
+
+        private void btnAdminCFG_Click(object sender, RoutedEventArgs e)
+        {
+            if (CLIPSController.secretUser)
+            {
+                new frmSetting().ShowDialog();
+            }
+        }
+
     }
 }

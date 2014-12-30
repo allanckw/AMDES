@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
@@ -12,20 +13,15 @@ namespace AMDES_KBS.Entity
 
     public class QuestionGroup
     {
+        public static string dataPath;
+
         protected int groupID;
         protected string header;
         protected QuestionType qType;
         protected List<Question> qns;
-       
-
         private string desc;
         private string symptom;
-
-
         protected Navigation nextTrueLink, nextFalseLink; //the next group that will make the decision
-
-
-        public static string dataPath = @"data\Questions.xml";
 
         public string Symptom
         {

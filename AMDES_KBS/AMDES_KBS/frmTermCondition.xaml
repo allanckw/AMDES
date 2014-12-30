@@ -3,14 +3,16 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="AMDES_KBS.frmTermCondition"
 	x:Name="Window"
-	Title="Welcome to ADD - Aid for Dementia Diagnosis"
+	Title=""
 	Width="540" Height="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
 
     <Grid x:Name="LayoutRoot">
-        <StackPanel HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto" >
-            <StackPanel x:Name="welcome" Height="40" Width="450" Margin="0,10,0,0" Orientation="Horizontal" >
-                <Image Source="/ADD;component/Resource/h1.jpg" Height="35" />
-                <Label VerticalAlignment="Center" Content="Welcome to ADD - Aid for Dementia Diagnosis" FontSize="18" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FF210FEB" />
+        <StackPanel  Height="auto" VerticalAlignment="Top" Width="auto" >
+            <StackPanel x:Name="welcome" Height="40" Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button x:Name="btnAdminCFG" Click="btnAdminCFG_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/ADD;component/Resource/h1.jpg" Height="35" /> <!-- The Secret Button to Config Tools :3-->
+                </Button>
+                <Label x:Name="lblTitle" VerticalAlignment="Center" HorizontalAlignment="Center"  Content="" FontSize="18"  FontWeight="Bold" Foreground="#FF210FEB" />
                
             </StackPanel>
             <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Collapsed">
@@ -25,26 +27,8 @@
             </StackPanel>
             <StackPanel x:Name="stkpnlTermCondition" Height="365" Width="530">
                 <TextBlock TextWrapping="Wrap" Text="Terms and Conditions" FontSize="16"  Margin="10,10,10,10"/>
-                <RichTextBox Height="300" Width="500" VerticalScrollBarVisibility="Auto"  FontSize="13" IsReadOnly="True">
-                    <FlowDocument>
-
-                        <Paragraph  FontWeight="Bold" FontSize="15">
-                            <Run Text="Aid for Dementia Diagnosis (ADD)" />
-                        </Paragraph>
-                        <Paragraph>
-                            <Run Text="This is an expert system designed to facilitate the diagnosis of Dementia." />
-                        </Paragraph>
-                        <Paragraph>
-                            <Run Text="As ADD serves primarily as a diagnostic aid, the physician should always exercise clinical judgment with respect to the conclusions and recommendations offered by the system. The developers of ADD shall not be liable for any damages arising from using the application." />
-                        </Paragraph>
-                        <Paragraph>
-                            <Run Text="We would appreciate your feedback, you may send them to amdes_nus_soc@googlegroups.com. " />
-                        </Paragraph>
-                        <Paragraph>
-                            <Run Text="Credits: Geriatric Centre and Department of Medical Informatics from Khoo Teck Puat Hospital and National University of Singapore, School of Computing."/>
-                        </Paragraph>
-                       
-                    </FlowDocument>
+                <RichTextBox x:Name="txtTnC" Height="300" Width="500" VerticalScrollBarVisibility="Auto"  FontSize="13" IsReadOnly="True">
+                   
                 </RichTextBox>
             </StackPanel>
             <StackPanel x:Name="stkpnlAcceptDecline" Height="47" Width="512">

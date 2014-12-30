@@ -89,10 +89,6 @@ namespace AMDES_KBS
                 stkpnlPatientDetails.Children.Add(stkpnl);
             }
 
-            //<StackPanel Orientation="Horizontal" Name="stknric" Margin="0,5,0,5">
-            //        <Label  Width="150" Content="Identification no.:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-            //        <TextBox Width="200" Height="30" Name="txtNRIC" FontSize="14"/>
-            //    </StackPanel>
                 
         }
 
@@ -101,18 +97,6 @@ namespace AMDES_KBS
             e.Handled = App.NumberValidationTextBox(e.Text);
         }
 
-        //private void loadEnthicGrp()
-        //{
-        //    // Obtain the string names of all the elements within myEnum 
-        //    List<string> enthic = Enum.GetNames(typeof(PatientEthnicGrp)).ToList<String>();
-
-        //    for (int i = 0; i < enthic.Count; i++)
-        //    {
-        //        string s = enthic[i];
-        //        cboEthnicGrp.Items.Add(s);
-        //    }
-        //    cboEthnicGrp.SelectedIndex = -1;
-        //}
 
         private void turnOffPatientDetails()
         {
@@ -334,28 +318,5 @@ namespace AMDES_KBS
             CLIPSController.clearAndLoadNew();
         }
 
-        //private void btnStats_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //This data is based on patient's history that have been extracted
-        //    //Just a POC that it works, not saying doctors are racist!!
-        //    if (radFemale.IsChecked == false && radMale.IsChecked == false)
-        //    {
-        //        MessageBox.Show("Please select the patient's gender before viewing statistics");
-        //    }
-        //    else if (cboEthnicGrp.SelectedIndex == -1)
-        //    {
-        //        MessageBox.Show("Please select the patient's Ethnic Group before viewing statistics");
-        //    }
-        //    else
-        //    {
-        //        //CLIPSController.???
-        //    }
-        //}
-
-        private static bool NumberValidationTextBox(String text)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            return regex.IsMatch(text);
-        }
     }
 }

@@ -1,9 +1,10 @@
 ﻿
+using AMDES_KBS.Controllers;
 namespace AMDES_KBS.Entity
 {
     public class FirstQuestion
     {
-        public static string dataPath = @"data\FirstQn.xml";
+        public static string dataPath;
 
         private int grpID;
 

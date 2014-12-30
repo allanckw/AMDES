@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
     public class Diagnosis
     {
 
-        public static string dataPath = @"Data\Diagnoses.xml";
+        public static string dataPath;
 
         private int rid;
         private string comment;

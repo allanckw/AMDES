@@ -16,6 +16,11 @@ namespace AMDES_KBS.Controllers
         public static bool enableSavePatient;
         public static bool enablePrev;
         public static bool enableStats;
+        public static bool secretUser;
+
+        public static ApplicationContext selectedAppContext;
+
+        public static List<ApplicationContext> AllAppContexts;
 
         private static Patient pat;
         public static bool? savePatient = false;
@@ -33,7 +38,7 @@ namespace AMDES_KBS.Controllers
         //WARNING MOMOSOFT CLIPS REQUIRED x86 MODE ONLY, ALL OTHER MODE WILL FAIL
         private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
 
-        private static string dataPath = @"Data\Logs\";
+        public static string dataPath = "";
         private static string clpPath = "";// = @"engine\" + EnginePathController.readEngineFileName().FileName; //dementia.clp";
 
         public static void setCLPPath(EngineFile ef)

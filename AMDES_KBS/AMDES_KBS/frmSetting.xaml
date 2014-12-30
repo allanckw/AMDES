@@ -1,12 +1,25 @@
 ﻿<Window x:Class="AMDES_KBS.frmSetting"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AMDES System Configuration View" FontSize="18" Height="620" Width="906" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="AMDES System Configurations" FontSize="18" Height="620" Width="910" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
-            <GroupBox x:Name="gbSettings" Header="Configurations: Click on the buttons to start configuring." FontSize="15" FontWeight="Bold">
+            <GroupBox x:Name="gbSettings" Header="AMDES Configurator: Select the Desired Application and click on the buttons to start configuring." FontSize="15" FontWeight="Bold">
                 <StackPanel x:Name="stkpnlDivider" Orientation="Horizontal">
                     <StackPanel x:Name="stkpnlSettingMenu" Width="150">
+                        <Label Content="Select Application:" HorizontalAlignment="Center"/>
+                        <ComboBox Margin="-0,-5,0,10" x:Name="cboAppContexts" SelectionChanged="cboAppContexts_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                        <TextBlock FontSize="12" FontWeight="Bold" Foreground="DarkBlue" Text="{Binding FolderName}" TextWrapping="Wrap" />
+                                        <WrapPanel Orientation="Horizontal">
+                                            <TextBlock FontSize="12" FontWeight="Normal"  Foreground="Black" Text="{Binding Name}" TextWrapping="Wrap" />
+                                        </WrapPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                         <Button x:Name="btnQuestion" Width="150" Content="Define Questions" Margin="0,0,0,10" Click="btnQuestion_Click" />
                         <Button x:Name="btnDiagnosis" Width="150" Content="Define Diagnoses" Margin="0,0,0,10" Click="btnDiagnosis_Click" />
                         <Button x:Name="btnStartPage" Width="150" Content="Define Start Page" Margin="0,0,0,10" Click="btnStartPage_Click" />

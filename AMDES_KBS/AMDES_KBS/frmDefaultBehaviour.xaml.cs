@@ -452,12 +452,7 @@ namespace AMDES_KBS
                 naviChildAttribute = cAttribute.getOtherAttribute();
                 reloadAttribute(naviChildAttribute);
             }
-            //  cAttribute = new frmAttributeSetting(naviChildOtherAttrGroupList);
 
-            //if (cAttribute.ShowDialog() == true)
-            //{
-            //    naviChildOtherAttrGroupList.
-            //}
         }
 
     }

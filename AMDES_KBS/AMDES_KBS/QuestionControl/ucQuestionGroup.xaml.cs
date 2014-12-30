@@ -107,10 +107,16 @@ namespace AMDES_KBS
             return qType;
         }
 
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        private void txtMaxQn_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            e.Handled = App.NumberValidationTextBox(e.Text);
         }
+
+        private void txtThreshold_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = App.NumberValidationTextBox(e.Text);
+        }
+
+
     }
 }

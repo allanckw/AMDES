@@ -1,12 +1,10 @@
-﻿using System.Windows;
-using System.Globalization;
-using System.Threading;
-using System.Windows.Input;
-using System.Text.RegularExpressions;
+﻿using System;
+using System.IO;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Media;
 using AMDES_KBS.Controllers;
-using System;
 using AMDES_KBS.Entity;
 
 namespace AMDES_KBS
@@ -20,6 +18,41 @@ namespace AMDES_KBS
         {
             return "\u2713";
         }
+
+        public static void LoadCFGs()
+        {
+
+            if (!Directory.Exists("Data"))
+                Directory.CreateDirectory("Data");
+
+            ApplicationContextController.GetAllApplications();
+
+            EngineFile ef = EnginePathController.readEngineFileName();
+
+            if (ef == null)
+                new frmEngineFile().ShowDialog();
+            else
+                CLIPSController.setCLPPath(ef);
+
+            CLIPSController.ExpertUser = File.Exists(@"Data\e.miao");
+            CLIPSController.enablePrev = File.Exists(@"Data\e.prev");
+            CLIPSController.enableSavePatient = File.Exists(@"Data\e.spat");
+            CLIPSController.enableStats = File.Exists(@"Data\e.stats");
+            CLIPSController.secretUser = isSecretUser();
+
+            if (!Directory.Exists(CLIPSController.selectedAppContext.FolderPath + @"\Logs"))
+                Directory.CreateDirectory(CLIPSController.selectedAppContext.FolderPath + @"\Logs");
+
+            CLIPSController.dataPath = CLIPSController.selectedAppContext.FolderPath + @"\Logs\";
+            
+        }
+
+        private static bool isSecretUser()
+        {
+            return File.Exists(@"AMDES.ico");
+        }
+
+
 
         public static bool NumberValidationTextBox(string text)
         {

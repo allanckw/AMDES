@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
-    class PatAttribute : IEquatable<PatAttribute>, IComparable<PatAttribute>
+    public class PatAttribute : IEquatable<PatAttribute>, IComparable<PatAttribute>
     {
-        public static string dataPath = @"Data\PatAttributes.xml";
+        public static string dataPath;
 
         public enum AttributeType
         {
