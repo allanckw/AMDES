@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Questions xml-->
+<QuestionGroups>
+  <QuestionGroup id="1">
+    <Header>Section A</Header>
+    <Description>Compared to before, does the patient have the following problems?</Description>
+    <QnType>0</QnType>
+    <Symptom></Symptom>
+    <Questions>
+      <Question QID="1">
+        <Name>AMNESIA~~Problems remembering things or events that happened recently~~~~Compared to before, does the patient have the following symptoms:~~     1. Frequently misplacing his/her personal belongings?~~     2. Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~     3. Forget where he/she keeps his/her things?~~     4. Forget what he/she has come to do?~~     5. Have problems finding his/her way around?~~     6. Ask repeated questions or repeat himself/herself often?</Name>
+        <Symptom>Amnesia</Symptom>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="6">
+    <Header>Section AMT</Header>
+    <Description>Ask the patient these questions, a correct answer to each question scores one point.~~Start by asking the patient to remember a Memory Phrase (e.g. address “37 Bukit Timah Road”)</Description>
+    <QnType>2</QnType>
+    <Symptom>Failed AMT</Symptom>
+    <Questions>
+      <Question QID="1">
+        <Name>What is the year now?</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="2">
+        <Name>What is the time to the nearest hour? </Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="3">
+        <Name>What is your age?</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="4">
+        <Name>When is your date of birth?</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="5">
+        <Name>What is your home address?</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="6">
+        <Name>Where are we now?</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="7">
+        <Name>What is my/his/her job? (Show an image to the patient if possible)</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="8">
+        <Name>Count backwards from 20 to 1</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="9">
+        <Name>Who is the country's current Prime minister?</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="10">
+        <Name>Ask the patient to recall the Memory Phrase</Name>
+        <Symptom></Symptom>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+    <MaxQuestions>10</MaxQuestions>
+    <Threshold>8</Threshold>
+  </QuestionGroup>
+  <QuestionGroup id="2">
+    <Header>Section B</Header>
+    <Description>Compared to before, does the patient have the following problems?</Description>
+    <QnType>0</QnType>
+    <Symptom></Symptom>
+    <Questions>
+      <Question QID="1">
+        <Name>APHASIA~~Disturbance of language function (receptive and/or expressive)~~~~Compared to before, does the patient have the following symptoms:~~     1. Problems finding words to express his/herself in a conversation?~~     2. Problems understanding what others say?~~     3. Does the resident have problems naming objects or persons?</Name>
+        <Symptom>Aphasia</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="2">
+        <Name>APRAXIA~~Impaired ability to execute motor activities despite intact motor abilities, sensory function and comprehension of the required task~~~~Compared to before, does the patient have the following symptoms:~~     1. Problems performing familiar tasks or basic ADLs well? E.g. dressing, bathing~~     2. Appear to be clumsier or appear to drop things more frequently?~~     3. Problems using simple gadgets or  appliances?</Name>
+        <Symptom>Apraxia</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="3">
+        <Name>AGNOSIA~~Failure to recognise or identify objects despite intact sensory function~~~~Compared to before, does the patient have the following symptoms:~~     1. Can’t recall or recognize familiar places?~~     2. Have difficulties recognising the faces of people they know well? ~~     3. Mistake familiar objects for something else? E.g. a toothbrush or comb for a shaver</Name>
+        <Symptom>Agnosia</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="4">
+        <Name>EXECUTIVE DYSFUNCTION~~Impairment in ability to think abstractly, plan, initiate ,sequence, monitor and stop complex behaviour~~~~Compared to before, does the patient have the following symptoms:~~     1. Does the resident have problems with simple math?~~     2. Does the resident have problems initiating or performing his/her usual activities (iADLs) or planning what to do?~~     3. Does the resident have problems getting started to do things~~     4. Does the resident have problems controlling his/her behaviour?~~     5. Does the resident have problems making decisions or making a choice?</Name>
+        <Symptom>Executive dysfunction</Symptom>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="3">
+    <Header>Section C2</Header>
+    <Description></Description>
+    <QnType>0</QnType>
+    <Symptom></Symptom>
+    <Questions>
+      <Question QID="1">
+        <Name>Is there a significant decline in functioning as compared to previous level?</Name>
+        <Symptom>Significant decline in function</Symptom>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="4">
+    <Header>Section C3</Header>
+    <Description></Description>
+    <QnType>0</QnType>
+    <Symptom></Symptom>
+    <Questions>
+      <Question QID="1">
+        <Name>Is the course of the cognitive decline gradual? (i.e. More than 6 months) </Name>
+        <Symptom>Gradual cognitive decline </Symptom>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="7">
+    <Header>Section C4,C5,C12-C16</Header>
+    <Description>Does the patient have ANY of the following issues?</Description>
+    <QnType>0</QnType>
+    <Symptom></Symptom>
+    <Questions>
+      <Question QID="1">
+        <Name>Signs of acute stroke eg.one-sided weakness, babinski’s sign</Name>
+        <Symptom>Acute stroke</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="2">
+        <Name>Recent head trauma with  headache, loss of consciousness, vomiting (subdural hematoma)</Name>
+        <Symptom>Recent head trauma</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="3">
+        <Name>Unexplained neurological symptoms eg. new onset of severe headaches or seizures</Name>
+        <Symptom>Unexplained neurological symptoms</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="4">
+        <Name>History of cancer, especially of a type or at a site associated with brain metastasis</Name>
+        <Symptom>History associated with brain metastasis</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="5">
+        <Name>Use of anticoagulants or history of bleeding disorder</Name>
+        <Symptom>Bleeding disorder</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="6">
+        <Name>History of urinary incontinence and gait disturbance early in the disease </Name>
+        <Symptom>Urinary incontinence and gait disturbance early</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="7">
+        <Name>Acute onset of gait disturbance</Name>
+        <Symptom>Acute onset of gait disturbance</Symptom>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="5">
+    <Header>Section C6 - C11</Header>
+    <Description>Does the patient have ANY of the following background medical issues?</Description>
+    <QnType>0</QnType>
+    <Symptom></Symptom>
+    <Questions>
+      <Question QID="1">
+        <Name>Parkinson’s disease</Name>
+        <Symptom>Parkinson’s disease</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="2">
+        <Name>Thyroid disorders</Name>
+        <Symptom>Thyroid disorders</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="3">
+        <Name>Vit B12 / Folate deficiency </Name>
+        <Symptom>Folate deficiency</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="4">
+        <Name>Electrolyte imbalance – hypercalcemia, hyper/hyponatremia, advanced organ failure</Name>
+        <Symptom>Electrolyte imbalance</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="5">
+        <Name>Substance or drug induced condition</Name>
+        <Symptom>Drug induced condition</Symptom>
+        <Score>1</Score>
+      </Question>
+      <Question QID="6">
+        <Name>Psychiatric disorders – major depression, schzophrenia, acute delirium</Name>
+        <Symptom>Psychiatric disorders</Symptom>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+</QuestionGroups>
