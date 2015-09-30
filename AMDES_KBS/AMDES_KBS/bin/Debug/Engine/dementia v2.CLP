@@ -2,7 +2,7 @@
 ;; AMDES Rule Base MODEL
 ;; Ang Ji Kai (A0073896L)
 ;; Ang Nickolas (A0077307A)
-;; Allan Chong Kok Wei (A0073859M)
+;; Chong Kok Wei (A0073859M)
 
 
 (defmodule MAIN (export deftemplate initial-fact))
@@ -42,11 +42,7 @@
 ;;A Group has a symptom
 (deftemplate groupid-symptoms
    (slot GroupID (type SYMBOL))
-   (slot symptom (type STRING))
-   
-	;;20150930 - Negation of symptom (i.e. if the grp is AND False will assert)
-   (slot negation (type SYMBOL) (default No) (allowed-symbols Yes No)) 
-)
+   (slot symptom (type STRING)))
 
 (deftemplate question
    (slot ID (type SYMBOL))
@@ -59,10 +55,7 @@
 (deftemplate questionid-symptoms
 	(slot GroupID (type SYMBOL))
     (slot QuestionID (type SYMBOL))
-    (slot symptom (type STRING))
-	;;20150930 - Negation of symptom (i.e. if the qn is No will assert)
-	(slot negation (type SYMBOL) (default No) (allowed-symbols Yes No))
-)
+    (slot symptom (type STRING)))
 
 ;; navigation 
 ;; A navigation element has Destination OR Diagnosis ID (RID = RuleID for short)
@@ -217,8 +210,6 @@
    (retract ?f1)
    (modify ?f2 (answer ?x)))
 
-   
-;;Start symptoms Rules 20150930 - Symptoms Negation
 (defrule Add_Symptom_For_Group_Type_Count ;;for count type, only failing the threshold -> fail
    (group (answer No) (GroupID ?id) (SuccessType COUNT))
    (groupid-symptoms (GroupID ?id) (symptom ?sym))
@@ -235,14 +226,14 @@
    =>
    (assert (symptoms (symptom ?sym) (GroupID ?id))))
 
-(defrule Retract_Symptom_For_Group_Type_Count
+(defrule Retract-symptoms-groupid-count
    (group (answer Yes) (GroupID ?Noid) (SuccessType COUNT))
    (groupid-symptoms (GroupID ?Noid))
    ?sym <- (symptoms (GroupID ?Noid))
    =>
    (retract ?sym))
 
-(defrule Retract_Symptom_For_Group_Type_Normal
+(defrule Retract-symptoms-groupid-not-count
    (group (answer No) (GroupID ?Noid) (SuccessType OR|AND))
    (groupid-symptoms (GroupID ?Noid))
    ?sym <- (symptoms (GroupID ?Noid))
@@ -257,15 +248,6 @@
    =>
    (assert (symptoms (GroupID ?grp) (QuestionID ?id) (symptom ?sym))))
 
-   
-(defrule Retract_Symptom_For_Question
-   ?sym <- (symptoms (QuestionID ?Noid&~NIL) (GroupID ?grp))
-   (question (answer No) (ID ?Noid))
-   (questionid-symptoms (QuestionID ?Noid))
-   =>
-   (retract ?sym))
-;;END symptoms Rules
-   
 (defrule Next_Question_Attribute_Check
    (attribute ?attribu ?value)
    ?target <- (NaviChildCritAttribute (AttributeName ?attribu) (AttributeValue ?cvalue) (AttributeCompareType ?at) (Answer ?ans))
@@ -387,7 +369,12 @@
 
 
    
-
+(defrule Retract-symptoms-questionid
+   ?sym <- (symptoms (QuestionID ?Noid&~NIL) (GroupID ?grp))
+   (question (answer No) (ID ?Noid))
+   (questionid-symptoms (QuestionID ?Noid))
+   =>
+   (retract ?sym))
 
 (defrule Assert_Diagnosis
    (declare (salience 1))

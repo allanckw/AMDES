@@ -7,20 +7,22 @@ namespace AMDES_KBS.Entity
         {
         }
 
-
-        public Question(string qn, string sym = "")
-        {
-            this.name = qn;
-            this.symptom = sym;
-        }
-
-        public Question(string qn, string sym = "", int score = 1)
+        public Question(string qn, string sym = "", int score = 1, bool negation = false)
         {
             this.name = qn;
             this.symptom = sym;
             this.score = score;
+            this.isNegation = negation;
         }
 
+        //20150930 - Add Negative Scoring
+        private bool negativeScoring;
+        //20150930 - Add Negative Scoring
+        public bool isNegation
+        {
+            get { return negativeScoring; }
+            set { negativeScoring = value; }
+        }
 
         private int id;
         private string name;

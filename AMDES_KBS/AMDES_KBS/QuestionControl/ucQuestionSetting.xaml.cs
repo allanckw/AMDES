@@ -26,10 +26,10 @@ namespace AMDES_KBS
             txtScore.Visibility = lblScore.Visibility;
         }
 
-        public ucQuestionSetting(Question q, bool isScoreType )
+        public ucQuestionSetting(Question q, bool isScoreType)
         {
             InitializeComponent();
-            
+
             if (!isScoreType)
                 lblScore.Visibility = Visibility.Collapsed;
 
@@ -45,6 +45,7 @@ namespace AMDES_KBS
             txtSymptom.Text = q.Symptom;
             txtQuestion.Text = questionText;
             txtScore.Text = q.Score.ToString();
+            chkNegate.IsChecked = q.isNegation;
         }
 
         private void btnDeleteQuestion_Click(object sender, RoutedEventArgs e)
@@ -56,7 +57,13 @@ namespace AMDES_KBS
         {
             question.Name = txtQuestion.Text.Replace(Environment.NewLine, "~~");
             question.Symptom = txtSymptom.Text;
-            question.Score = int.Parse(txtScore.Text.Trim());
+            if (txtScore.Text.Trim().Length == 0)
+                question.Score = 1;
+            else
+                question.Score = int.Parse(txtScore.Text.Trim());
+
+            question.isNegation = chkNegate.IsChecked.Value;
+
             return question;
         }
 

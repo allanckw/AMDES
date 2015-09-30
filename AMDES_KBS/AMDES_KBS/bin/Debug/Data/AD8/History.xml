@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Histories xml-->
+<Histories>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>8</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>9</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>10</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>11</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>12</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Symptoms>
+      <Symptom>
+        <SymptomName> Problems with judgement - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898906686</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Reduced interest in hobbies/activities - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898936688</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Repeating questions, stories or statements - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898946688</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Trouble learning using tool, appliance or gadget - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898956689</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Forgetful - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898956689</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Difficulties when handling complicated financial affairs - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898966689</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Difficulty with remembering appointments - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898976690</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Consistent problems with thinking and/or memory - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898976690</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Failed MSME - Intersecting Pentagon - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898986690</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Failed MSME Recall - Key - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898996691</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Failed MSME Recall - Lemon - Patient's Score: 11, Normal Score: 9 or more</SymptomName>
+        <DiagnosisDate>635792557898996691</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+    </Symptoms>
+    <Diagnoses>
+      <Diagnosis diagID="34">
+        <Comment>Patient have passed the assessment, Patient is unlikely to have any form of cognitive impairment</Comment>
+        <Header>Improbable Cognitive Impairment</Header>
+        <Link></Link>
+        <LinkDesc></LinkDesc>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+        <Attributes />
+        <isRes>false</isRes>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635792544000000000</CompletedDate>
+  </History>
+</Histories>

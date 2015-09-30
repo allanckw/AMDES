@@ -43,7 +43,8 @@ namespace AMDES_KBS
             if (lblscore != null)
                 scoringData = lblscore;
 
-            if (qGrp.isNegation)
+            //if (qGrp.isNegation)
+            if (q.isNegation)
                 this.answer = true;
             else
                 this.answer = false;
@@ -60,13 +61,13 @@ namespace AMDES_KBS
                 score = int.Parse(scoringData.Content.ToString());
 
 
-                if (qGrp.isNegation && this.answer) //negation and answer = yes :-1
+                if (question.isNegation && this.answer) //negation and answer = yes :-1
                     score -= question.Score;
-                else if (qGrp.isNegation && !this.answer) //negation and answer = no :+1
+                else if (question.isNegation && !this.answer) //negation and answer = no :+1
                     score += question.Score;
-                else if (!qGrp.isNegation && this.answer) //no negation and answer = yes :+1
+                else if (!question.isNegation && this.answer) //no negation and answer = yes :+1
                     score += question.Score;
-                else if (!qGrp.isNegation && !this.answer) //no negation and answer = no :-1
+                else if (!question.isNegation && !this.answer) //no negation and answer = no :-1
                     score -= question.Score;
 
                 scoringData.Content = score;

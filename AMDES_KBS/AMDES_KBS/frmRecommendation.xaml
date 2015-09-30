@@ -52,7 +52,7 @@
 
                 <Button x:Name="btnPrev" Content="Go Back (z)" Height="30" Width="100" Margin="0,0,10,0" Click="btnPrev_Click" FontSize="14"  ToolTip="Go back to the previous section" />
                 <Button Content="Go Back" Height="30" Name="button1" Width="100" Margin="0,0,10,0" Click="button1_Click" ToolTip="Allows you to view the options that have selected to get to these results" FontSize="14" />
-                <Button x:Name="btnTestAgin" Content="Test Again" Height="30" Width="100" Margin="0,0,10,0" Click="btnTestAgin_Click" ToolTip="Restart the test" FontSize="14" />
+                <Button x:Name="btnTestAgin" Content="Retake Assessment" Height="30" Width="130" Margin="0,0,10,0" Click="btnTestAgin_Click" ToolTip="Restart the Assessment" FontSize="14" />
                 <Button x:Name="btnPrint" Content="Print" Height="30" Width="100" Margin="0,0,0,0" Click="btnPrint_Click" FontSize="14" ToolTip="Print the patient report" />
             </StackPanel>
 

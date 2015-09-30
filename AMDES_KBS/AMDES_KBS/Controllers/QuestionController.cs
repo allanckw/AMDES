@@ -94,6 +94,7 @@ namespace AMDES_KBS.Controllers
                                         new XElement("Question", new XAttribute("QID", (j + 1)),
                                         new XElement("Name", q.Name),
                                         new XElement("Symptom", q.Symptom),
+                                        new XElement("Negation", q.isNegation),
                                         new XElement("Score", q.Score)
                                         )
                                     );
@@ -161,11 +162,12 @@ namespace AMDES_KBS.Controllers
                     p.Header = x.Element("Header").Value;
                     p.Description = x.Element("Description").Value;
                     p.Symptom = x.Element("Symptom").Value;
-
+                    
                     if (x.Element("Negation") != null)
                         p.isNegation = bool.Parse(x.Element("Negation").Value);
                     else
                         p.isNegation = false;
+                    
 
                     var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                                select pa).ToList();
@@ -201,7 +203,7 @@ namespace AMDES_KBS.Controllers
                     p.isNegation = bool.Parse(x.Element("Negation").Value);
                 else
                     p.isNegation = false;
-                
+                               
                 var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                            select pa).ToList();
 
@@ -232,9 +234,14 @@ namespace AMDES_KBS.Controllers
 
                 if (x.Element("Score") != null)
                     q.Score = int.Parse(x.Element("Score").Value);
-                
                 else
                     q.Score = 1;
+
+
+                if (x.Element("Negation") != null)
+                    q.isNegation = bool.Parse(x.Element("Negation").Value);
+                else
+                    q.isNegation = false;
                 
                 return q;
             }

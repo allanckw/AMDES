@@ -23,7 +23,8 @@ namespace AMDES_KBS.Controllers
             p.FontWeight = FontWeights.Bold;
             SolidColorBrush brush = new SolidColorBrush(System.Windows.Media.Colors.Blue);
             p.Foreground = brush;
-            p.Inlines.Add(new Run("Aid for Dementia Diagnosis (ADD) - Patient Report"));
+            //p.Inlines.Add(new Run("Aid for Dementia Diagnosis (ADD) - Patient Report"));
+            p.Inlines.Add(new Run(CLIPSController.selectedAppContext.Name + " - Patient Report"));
             fdPrint.Blocks.Add(p);
 
             if (CLIPSController.savePatient == false)

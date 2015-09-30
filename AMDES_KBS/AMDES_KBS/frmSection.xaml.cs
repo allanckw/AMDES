@@ -282,7 +282,7 @@ namespace AMDES_KBS
         {
             foreach (ucQuestion qn in this.WholeContent)
             {
-                CLIPSController.assertQuestion(QG.GroupID, qn.getQuestion().ID, qn.getAnswer(), QG.isNegation);
+                CLIPSController.assertQuestion(QG.GroupID, qn.getQuestion().ID, qn.getAnswer(), qn.getQuestion().isNegation);
                 Thread.Sleep(50);
             }
 
@@ -323,7 +323,7 @@ namespace AMDES_KBS
             {
                 foreach (ucQuestion qn in this.WholeContent)
                 {
-                    CLIPSController.assertQuestion(QG.GroupID, qn.getQuestion().ID, false, QG.isNegation);
+                    CLIPSController.assertQuestion(QG.GroupID, qn.getQuestion().ID, false, qn.getQuestion().isNegation);
                     Thread.Sleep(50);
                 }
                 CLIPSController.assertPrevSection();

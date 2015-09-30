@@ -212,7 +212,6 @@ namespace AMDES_KBS.Controllers
             env.AssertString(a);
             assertLog.Add(a);
 
-
             if (!init)
                 saveAssertLog();
 
@@ -249,7 +248,11 @@ namespace AMDES_KBS.Controllers
                 //grp symptom assertion
                 if (qg.Symptom.Length > 0)
                 {
-                    sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (symptom " + "\"" + qg.Symptom + "\"" + ") )");
+                    //20150930 - Negation Logic
+                    if (qg.isNegation)
+                        sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (negation Yes) (symptom " + "\"" + qg.Symptom + "\"" + ") )");
+                    else
+                        sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (symptom " + "\"" + qg.Symptom + "\"" + ") )");
                     assert(sb);
                     sb.Clear();
                 }
@@ -272,7 +275,10 @@ namespace AMDES_KBS.Controllers
                     if (q.Symptom.Length > 0)
                     {
                         sb.Clear();
-                        sb.Append("(questionid-symptoms (GroupID _" + qg.GroupID + ") (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
+                        if (q.isNegation)
+                            sb.Append("(questionid-symptoms (GroupID _" + qg.GroupID + ") (negation Yes) (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
+                        else
+                            sb.Append("(questionid-symptoms (GroupID _" + qg.GroupID + ") (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
                         assert(sb);
                     }
                 }
@@ -395,11 +401,13 @@ namespace AMDES_KBS.Controllers
                 else
                     sb.Append("No");
             }
-            
+
             sb.Append(")");
 
             assert(sb, false);
             run();
+
+
         }
 
         public static void assertNextSection()
@@ -705,7 +713,7 @@ namespace AMDES_KBS.Controllers
             foreach (FactAddressValue fv in mv)
             {
                 string grpID = fv.GetFactSlot("GroupID").ToString().Remove(0, 1);
-                string qID = fv.GetFactSlot("QuestionID").ToString().Remove(0, 1);
+                //string qID = fv.GetFactSlot("QuestionID").ToString().Remove(0, 1);
                 int y;
                 bool result = int.TryParse(grpID, out y);
 
