@@ -9,8 +9,8 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <Label Content="Header:" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Right" Margin="30,0,0,0" />
-                <TextBox x:Name="txtHeader" Width="518" Text="" Height="25" BorderThickness="2" MaxLength="30" />
-              
+                <TextBox x:Name="txtHeader" Width="429" Text="" Height="25" BorderThickness="2" MaxLength="30" />
+                <CheckBox Content="Negation?" Height="16" Margin="10,0,0,0" Name="chkNegate" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <Label Width="100" Content="Description:" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Right"  />

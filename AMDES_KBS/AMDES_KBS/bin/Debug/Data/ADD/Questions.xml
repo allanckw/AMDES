@@ -6,6 +6,7 @@
     <Description>Compared to before, does the patient have the following problems?</Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
+    <Negation>false</Negation>
     <Questions>
       <Question QID="1">
         <Name>AMNESIA~~Problems remembering things or events that happened recently~~~~Compared to before, does the patient have the following symptoms:~~     1. Frequently misplacing his/her personal belongings?~~     2. Forget how to carry out basic tasks? (such as turning off the lights/fan, making a drink, how to get assistance, etc) ~~     3. Forget where he/she keeps his/her things?~~     4. Forget what he/she has come to do?~~     5. Have problems finding his/her way around?~~     6. Ask repeated questions or repeat himself/herself often?</Name>
@@ -19,6 +20,7 @@
     <Description>Ask the patient these questions, a correct answer to each question scores one point.~~Start by asking the patient to remember a Memory Phrase (e.g. address “37 Bukit Timah Road”)</Description>
     <QnType>2</QnType>
     <Symptom>Failed AMT</Symptom>
+    <Negation>false</Negation>
     <Questions>
       <Question QID="1">
         <Name>What is the year now?</Name>
@@ -79,6 +81,7 @@
     <Description>Compared to before, does the patient have the following problems?</Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
+    <Negation>false</Negation>
     <Questions>
       <Question QID="1">
         <Name>APHASIA~~Disturbance of language function (receptive and/or expressive)~~~~Compared to before, does the patient have the following symptoms:~~     1. Problems finding words to express his/herself in a conversation?~~     2. Problems understanding what others say?~~     3. Does the resident have problems naming objects or persons?</Name>
@@ -107,6 +110,7 @@
     <Description></Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
+    <Negation>false</Negation>
     <Questions>
       <Question QID="1">
         <Name>Is there a significant decline in functioning as compared to previous level?</Name>
@@ -120,6 +124,7 @@
     <Description></Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
+    <Negation>false</Negation>
     <Questions>
       <Question QID="1">
         <Name>Is the course of the cognitive decline gradual? (i.e. More than 6 months) </Name>
@@ -133,6 +138,7 @@
     <Description>Does the patient have ANY of the following issues?</Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
+    <Negation>false</Negation>
     <Questions>
       <Question QID="1">
         <Name>Signs of acute stroke eg.one-sided weakness, babinski’s sign</Name>
@@ -176,6 +182,7 @@
     <Description>Does the patient have ANY of the following background medical issues?</Description>
     <QnType>0</QnType>
     <Symptom></Symptom>
+    <Negation>false</Negation>
     <Questions>
       <Question QID="1">
         <Name>Parkinson’s disease</Name>

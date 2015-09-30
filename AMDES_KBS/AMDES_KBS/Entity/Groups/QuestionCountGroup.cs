@@ -11,11 +11,14 @@ namespace AMDES_KBS.Entity
 
         private int maxScore = -1;
 
+
+
         public QuestionCountGroup(string header, int groupID)
             : base()
         {
             this.header = header;
             this.groupID = groupID;
+           
         }
 
         public QuestionCountGroup()

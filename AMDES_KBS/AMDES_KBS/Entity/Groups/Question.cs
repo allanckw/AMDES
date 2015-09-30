@@ -27,6 +27,16 @@ namespace AMDES_KBS.Entity
         private string symptom;
         private int score;
 
+        //20150930 - Add Image Path
+        private string imgPath;
+
+        public string ImagePath
+        {
+            get { return imgPath; }
+            set { imgPath = value; }
+        }
+
+
         public int Score
         {
             get { return score; }

@@ -62,6 +62,7 @@ namespace AMDES_KBS
                 txtHeader.Text = qcgData.Header;
                 txtDesc.Text = qcgData.Description.Replace("~~",Environment.NewLine);
                 txtSymptom.Text = qcgData.Symptom;
+                chkNegate.IsChecked = qcgData.isNegation;
                 txtThreshold.Text = qcgData.Threshold.ToString();
                 txtMaxQn.Text = qcgData.MaxQuestions.ToString();
             }
@@ -70,6 +71,7 @@ namespace AMDES_KBS
                 txtHeader.Text = qgData.Header;
                 txtDesc.Text = qgData.Description.Replace("~~", Environment.NewLine);
                 txtSymptom.Text = qgData.Symptom;
+                chkNegate.IsChecked = qgData.isNegation;
             }
         }
 
@@ -83,7 +85,7 @@ namespace AMDES_KBS
             qgData.Header = txtHeader.Text;
             qgData.Description = txtDesc.Text.Replace(Environment.NewLine, "~~");
             qgData.Symptom = txtSymptom.Text;
-
+            qgData.isNegation = chkNegate.IsChecked.Value;
             return qgData;
         }
 
@@ -99,6 +101,8 @@ namespace AMDES_KBS
             qcgData.Symptom = txtSymptom.Text;
             qcgData.Threshold = int.Parse(txtThreshold.Text.ToString());
             qcgData.MaxQuestions = int.Parse(this.txtMaxQn.Text.Trim());
+
+            qcgData.isNegation = chkNegate.IsChecked.Value;
             return qcgData;
         }
 

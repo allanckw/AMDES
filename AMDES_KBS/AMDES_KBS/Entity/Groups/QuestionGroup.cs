@@ -23,6 +23,15 @@ namespace AMDES_KBS.Entity
         private string symptom;
         protected Navigation nextTrueLink, nextFalseLink; //the next group that will make the decision
 
+        //20150930 - Add Negative Scoring
+        private bool negativeScoring;
+        //20150930 - Add Negative Scoring
+        public bool isNegation
+        {
+            get { return negativeScoring; }
+            set { negativeScoring = value; }
+        }
+
         public string Symptom
         {
             get { return symptom; }
@@ -41,11 +50,14 @@ namespace AMDES_KBS.Entity
             {
                 throw new InvalidOperationException("Invalid Question Type");
             }
+
+            this.isNegation = false;
         }
 
         public QuestionGroup()
         {
             qns = new List<Question>();
+            this.isNegation = false;
         }
 
         public List<Question> Questions { get { return qns; } }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+ ﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -38,12 +39,13 @@ namespace AMDES_KBS.Controllers
         //WARNING MOMOSOFT CLIPS REQUIRED x86 MODE ONLY, ALL OTHER MODE WILL FAIL
         private static Mommosoft.ExpertSystem.Environment env = new Mommosoft.ExpertSystem.Environment();
 
+
         public static string dataPath = "";
         private static string clpPath = "";// = @"engine\" + EnginePathController.readEngineFileName().FileName; //dementia.clp";
 
         public static void setCLPPath(EngineFile ef)
         {
-            clpPath =  @"engine\" +ef.FileName; //dementia.clp";
+            clpPath = @"engine\" + ef.FileName; //dementia.clp";
         }
 
         public static string getCLPPath()
@@ -84,7 +86,7 @@ namespace AMDES_KBS.Controllers
             env.Clear();
             assertLog.Clear();
             count = 0;
-           
+
             env.Load(clpPath);
             reset();
 
@@ -303,7 +305,7 @@ namespace AMDES_KBS.Controllers
             Navigation.CriteriaSortingComparer comparer = new Navigation.CriteriaSortingComparer();
             nList.Sort(comparer);
 
-          
+
             foreach (Navigation n in nList)
             {
                 createNavigationAssertion(n);
@@ -374,18 +376,26 @@ namespace AMDES_KBS.Controllers
             }
         }
 
-        public static void assertQuestion(int grpID, int id, bool answer)
+        public static void assertQuestion(int grpID, int id, bool answer, bool isNegation)
         {
             //to paste to load questions
             StringBuilder sb = new StringBuilder("(choice _" + grpID + "." + id + " ");
-            if (answer)
+
+            if (isNegation)
             {
-                sb.Append("Yes");
+                if (answer)
+                    sb.Append("No");
+                else
+                    sb.Append("Yes");
             }
             else
             {
-                sb.Append("No");
+                if (answer)
+                    sb.Append("Yes");
+                else
+                    sb.Append("No");
             }
+            
             sb.Append(")");
 
             assert(sb, false);
@@ -815,3 +825,4 @@ namespace AMDES_KBS.Controllers
         }
     }
 }
+

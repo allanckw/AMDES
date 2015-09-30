@@ -13,8 +13,9 @@ namespace AMDES_KBS
     /// </summary>
     public partial class ucQuestion : UserControl
     {
-        bool questionAnswer = false;
+        bool answer;
         int gid;
+        QuestionGroup qGrp;
         Question question;
         Label scoringData;
 
@@ -27,6 +28,8 @@ namespace AMDES_KBS
         {
             question = q;
             this.gid = gid;
+            this.qGrp = QuestionController.getGroupByID(gid);
+
             string questionText = q.Name.Replace("~~", Environment.NewLine);
 
             lblQuestion.Content = q.ID + ".";
@@ -36,26 +39,37 @@ namespace AMDES_KBS
             txtQuestion.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
             var desiredSizeNew = txtQuestion.DesiredSize;
             txtQuestion.Height = desiredSizeNew.Height + 10;
-            if (lblscore != null)
-            {
-                scoringData = lblscore;
-            }
 
+            if (lblscore != null)
+                scoringData = lblscore;
+
+            if (qGrp.isNegation)
+                this.answer = true;
+            else
+                this.answer = false;
+
+            btnYes.IsChecked = this.answer;
         }
 
         public void setAnswer(bool answer)
         {
-            questionAnswer = answer;
-            btnYes.IsChecked = answer;
-            CLIPSController.assertQuestion(gid, question.ID, answer);
-            if (answer)
+            this.answer = answer;
+            int score = 0;
+            if (scoringData != null)
             {
-                if (scoringData != null)
-                {
-                    int score = int.Parse(scoringData.Content.ToString());
+                score = int.Parse(scoringData.Content.ToString());
+
+
+                if (qGrp.isNegation && this.answer) //negation and answer = yes :-1
+                    score -= question.Score;
+                else if (qGrp.isNegation && !this.answer) //negation and answer = no :+1
                     score += question.Score;
-                    scoringData.Content = score;
-                }
+                else if (!qGrp.isNegation && this.answer) //no negation and answer = yes :+1
+                    score += question.Score;
+                else if (!qGrp.isNegation && !this.answer) //no negation and answer = no :-1
+                    score -= question.Score;
+
+                scoringData.Content = score;
             }
         }
 
@@ -65,37 +79,17 @@ namespace AMDES_KBS
             // TODO: Add event handler implementation here.
             if ((sender as ToggleButton).IsChecked == true)
             {
-                CLIPSController.assertQuestion(gid, question.ID, true);
-                if (scoringData != null)
-                {
-                    int score = int.Parse(scoringData.Content.ToString());
-                    score += question.Score;
-                    scoringData.Content = score;
-                }
-                questionAnswer = true;
-                Thread.Sleep(100);
+                setAnswer(true);
             }
             else
             {
-                CLIPSController.assertQuestion(gid, question.ID, false);
-                if (scoringData != null)
-                {
-                    int score = int.Parse(scoringData.Content.ToString());
-                    if (questionAnswer)
-                    {
-                        score -= question.Score;
-                        scoringData.Content = score;
-                    }
-                    questionAnswer = false;
-                    Thread.Sleep(100);
-                }
+                setAnswer(false);
             }
-
         }
 
         public bool getAnswer()
         {
-            return questionAnswer;
+            return answer;
         }
 
         public Question getQuestion()

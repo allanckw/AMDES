@@ -78,8 +78,10 @@ namespace AMDES_KBS.Controllers
                 //description of the Question QuestionGroup, for example in Decision Point D, need to tell user that he need to give the user a memory phrase
                                 new XElement("QnType", p.getQuestionType()), //type, AND / OR / COUNT
                                 new XElement("Symptom", p.Symptom),
+                                new XElement("Negation", p.isNegation),
                 //What does it assert about the patient if this is true? (i need this value in patient));
                                 new XElement("Questions") //questions to ask
+
                                 );
 
 
@@ -160,6 +162,11 @@ namespace AMDES_KBS.Controllers
                     p.Description = x.Element("Description").Value;
                     p.Symptom = x.Element("Symptom").Value;
 
+                    if (x.Element("Negation") != null)
+                        p.isNegation = bool.Parse(x.Element("Negation").Value);
+                    else
+                        p.isNegation = false;
+
                     var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                                select pa).ToList();
 
@@ -189,6 +196,11 @@ namespace AMDES_KBS.Controllers
                 p.Header = x.Element("Header").Value;
                 p.Description = x.Element("Description").Value;
                 p.Symptom = x.Element("Symptom").Value;
+
+                if (x.Element("Negation") != null)
+                    p.isNegation = bool.Parse(x.Element("Negation").Value);
+                else
+                    p.isNegation = false;
                 
                 var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                            select pa).ToList();
@@ -217,14 +229,13 @@ namespace AMDES_KBS.Controllers
                 q.ID = int.Parse(x.Attribute("QID").Value);
                 q.Name = x.Element("Name").Value;
                 q.Symptom = x.Element("Symptom").Value;
+
                 if (x.Element("Score") != null)
-                {
                     q.Score = int.Parse(x.Element("Score").Value);
-                }
+                
                 else
-                {
                     q.Score = 1;
-                }
+                
                 return q;
             }
             else

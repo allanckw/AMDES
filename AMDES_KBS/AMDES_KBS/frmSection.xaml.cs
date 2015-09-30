@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -59,7 +60,7 @@ namespace AMDES_KBS
             else
                 btnPrev.Visibility = Visibility.Visible;
         }
-            
+
 
         public frmSection(Frame amdesFrame, int sectionID, frmSection prevSection)
         {
@@ -96,7 +97,7 @@ namespace AMDES_KBS
 
             }
 
-           this.Cursor = Cursors.Pen;
+            this.Cursor = Cursors.Pen;
         }
 
         public void loadSection(int sectionID)
@@ -110,6 +111,7 @@ namespace AMDES_KBS
             {
                 stkpnlScore.Visibility = Visibility.Visible;
                 QuestionCountGroup QCG = (QuestionCountGroup)QG;
+
                 lblCurrScore.Content = 0;
                 lblCurrScore.Tag = QCG.Threshold;
                 lblTotalScore.Content = QCG.MaximumScore;
@@ -267,7 +269,6 @@ namespace AMDES_KBS
                 if (prevPage == null)
                 {
                     btnPrev.Visibility = Visibility.Hidden;
-
                 }
                 else
                 {
@@ -279,6 +280,12 @@ namespace AMDES_KBS
 
         private void NavigationNext()
         {
+            foreach (ucQuestion qn in this.WholeContent)
+            {
+                CLIPSController.assertQuestion(QG.GroupID, qn.getQuestion().ID, qn.getAnswer(), QG.isNegation);
+                Thread.Sleep(50);
+            }
+
             CLIPSController.assertNextSection();
 
             int sectionID = CLIPSController.getCurrentQnGroupID();
@@ -316,7 +323,8 @@ namespace AMDES_KBS
             {
                 foreach (ucQuestion qn in this.WholeContent)
                 {
-                    CLIPSController.assertQuestion(QG.GroupID, qn.getQuestion().ID, false);
+                    CLIPSController.assertQuestion(QG.GroupID, qn.getQuestion().ID, false, QG.isNegation);
+                    Thread.Sleep(50);
                 }
                 CLIPSController.assertPrevSection();
                 int sectionID = CLIPSController.getCurrentQnGroupID();
