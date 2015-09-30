@@ -15,15 +15,17 @@ namespace AMDES_KBS.Controllers
 
             string[] dirs = Directory.GetDirectories(Path.GetFullPath(@"Data\"));
 
-            foreach (string s in dirs)
+            //foreach (string s in dirs)
+            for (int i = 0; i < dirs.Length; i++)
             {
                 ApplicationContext app = new ApplicationContext();
-                app.FolderPath = s;
+                app.FolderPath = dirs[i];
 
 
-                if (File.Exists(s + @"\NAME.CONF") && File.Exists(s + @"\WOT.CONF"))
+                if (File.Exists(app.FolderPath + @"\NAME.CONF")
+                    && File.Exists(app.FolderPath + @"\WOT.CONF"))
                 {
-                    string[] files = Directory.GetFiles(s, "*.conf");
+                    string[] files = Directory.GetFiles(app.FolderPath, "*.conf");
                     foreach (string f in files)
                     {
                         if (f.ToUpper().Contains("NAME.CONF"))
@@ -36,7 +38,7 @@ namespace AMDES_KBS.Controllers
                 }
                 else
                 {
-                    app.Name = s.Substring(s.LastIndexOf(@"\"), s.Length - s.LastIndexOf(@"\")) + " NOT CONFIGURED ";
+                    app.Name = app.FolderPath.Substring(app.FolderPath.LastIndexOf(@"\"), app.FolderPath.Length - app.FolderPath.LastIndexOf(@"\")) + " NOT CONFIGURED ";
                     app.IsConfiguredCorrectly = false;
                 }
 
@@ -51,9 +53,10 @@ namespace AMDES_KBS.Controllers
             app.IsSelected = File.Exists(app.FolderPath + @"\X.CONF");
 
             if (app.IsSelected)
+            {
                 CLIPSController.selectedAppContext = app;
-
-            setEntitiesPath();
+                setEntitiesPath();
+            }
 
             return app;
         }
