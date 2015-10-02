@@ -95,6 +95,7 @@ namespace AMDES_KBS.Controllers
                                         new XElement("Name", q.Name),
                                         new XElement("Symptom", q.Symptom),
                                         new XElement("Negation", q.isNegation),
+                                        new XElement("ImageURL"), q.ImagePath,
                                         new XElement("Score", q.Score)
                                         )
                                     );
@@ -237,6 +238,10 @@ namespace AMDES_KBS.Controllers
                 else
                     q.Score = 1;
 
+                if (x.Element("ImageURL") != null)
+                    q.ImagePath = x.Element("ImageURL").Value;
+                else
+                    q.ImagePath = "";
 
                 if (x.Element("Negation") != null)
                     q.isNegation = bool.Parse(x.Element("Negation").Value);

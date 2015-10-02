@@ -46,6 +46,7 @@ namespace AMDES_KBS
             txtQuestion.Text = questionText;
             txtScore.Text = q.Score.ToString();
             chkNegate.IsChecked = q.isNegation;
+            txtImgURL.Text = q.ImagePath;
         }
 
         private void btnDeleteQuestion_Click(object sender, RoutedEventArgs e)
@@ -63,7 +64,7 @@ namespace AMDES_KBS
                 question.Score = int.Parse(txtScore.Text.Trim());
 
             question.isNegation = chkNegate.IsChecked.Value;
-
+            question.ImagePath = txtImgURL.Text.Trim();
             return question;
         }
 

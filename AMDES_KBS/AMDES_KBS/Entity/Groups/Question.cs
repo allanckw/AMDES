@@ -31,13 +31,19 @@ namespace AMDES_KBS.Entity
 
         //20150930 - Add Image Path
         private string imgPath;
+        private bool isExistImg;
+
+        public bool IsExistImage
+        {
+            get { return imgPath.Length > 0; }
+
+        }
 
         public string ImagePath
         {
             get { return imgPath; }
             set { imgPath = value; }
         }
-
 
         public int Score
         {
