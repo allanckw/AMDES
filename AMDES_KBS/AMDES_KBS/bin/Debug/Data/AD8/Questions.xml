@@ -12,82 +12,84 @@
         <Name>Patient have problems with judgment (e.g. falls for scams, bad financial decisions, buys gifts inappropriate for recipients)</Name>
         <Symptom>Problems with judgement</Symptom>
         <Negation>true</Negation>
-        <ImageURL />..<Score>1</Score></Question>
+        <ImageURL>zzz</ImageURL>
+        <Score>1</Score>
+      </Question>
       <Question QID="2">
         <Name>Patient has reduced interest in hobbies/activities</Name>
         <Symptom>Reduced interest in hobbies/activities</Symptom>
         <Negation>true</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="3">
         <Name>Patient often repeats questions, stories or statements</Name>
         <Symptom>Repeating questions, stories or statements</Symptom>
         <Negation>true</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="4">
         <Name>Patient has trouble learning how to use a tool, appliance or gadget (e.g. VCR, computer, microwave, remote control)</Name>
         <Symptom>Trouble learning using tool, appliance or gadget</Symptom>
         <Negation>true</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="5">
         <Name>Patient often forgets correct month or year</Name>
         <Symptom>Forgetful</Symptom>
         <Negation>true</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="6">
         <Name>Patient has difficulties when handling complicated financial affairs (e.g. balancing checkbook, income taxes, paying bills)</Name>
         <Symptom>Difficulties when handling complicated financial affairs</Symptom>
         <Negation>true</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="7">
         <Name>Patient has difficulty with remembering appointments</Name>
         <Symptom>Difficulty with remembering appointments</Symptom>
         <Negation>true</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="8">
         <Name>Patient encounters consistent problems with thinking and/or memory</Name>
         <Symptom>Consistent problems with thinking and/or memory</Symptom>
         <Negation>true</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="9">
-        <Name>Cam the patient copy the intersecting pentagon as shown below</Name>
+        <Name>Can the patient copy the intersecting pentagon as shown below</Name>
         <Symptom>Failed MSME - Intersecting Pentagon</Symptom>
         <Negation>false</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="10">
         <Name>Can the patient recall the word Key?</Name>
         <Symptom>Failed MSME Recall - Key</Symptom>
         <Negation>false</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="11">
         <Name>Can the patient recall the word Lemon</Name>
         <Symptom>Failed MSME Recall - Lemon</Symptom>
         <Negation>false</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="12">
         <Name>Can the patient recall the word Balloon</Name>
         <Symptom>Failed MSME Recall - Balloon</Symptom>
         <Negation>false</Negation>
-        <ImageURL />
+        <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
     </Questions>

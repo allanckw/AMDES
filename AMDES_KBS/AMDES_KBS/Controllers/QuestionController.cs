@@ -95,7 +95,7 @@ namespace AMDES_KBS.Controllers
                                         new XElement("Name", q.Name),
                                         new XElement("Symptom", q.Symptom),
                                         new XElement("Negation", q.isNegation),
-                                        new XElement("ImageURL"), q.ImagePath,
+                                        new XElement("ImageURL", q.ImagePath),
                                         new XElement("Score", q.Score)
                                         )
                                     );
@@ -204,6 +204,9 @@ namespace AMDES_KBS.Controllers
                     p.isNegation = bool.Parse(x.Element("Negation").Value);
                 else
                     p.isNegation = false;
+
+
+                
                                
                 var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                            select pa).ToList();

@@ -72,7 +72,7 @@ namespace AMDES_KBS
             txtDesc.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
             var desiredSizeNew = txtDesc.DesiredSize;
             txtDesc.Height = desiredSizeNew.Height;
-
+            
             //MessageBox.Show(txtDesc.Height.ToString());
             heightLimit += (60 - txtDesc.Height);
             QuestionFrame.Height = heightLimit;
@@ -132,12 +132,50 @@ namespace AMDES_KBS
 
         private void sortPageAndShowLast()
         {
+            int test = 0; //for forcing qn 3 to have image
             currHeight = 0;
+            bool singlePage = false;
+
             List<ucQuestionViewOnly> QuestionPerPage = new List<ucQuestionViewOnly>();
             foreach (ucQuestionViewOnly item in QuestionFrame.Children)
             {
+                test++;
+                //Force Set Question 3
+                if (test == 3)
+                {
+                    //loading image
+                    item.loadImage("D:\\Users\\sisajk\\Desktop\\2015-09-23_233400.jpg");
+                }
+
                 string temp = item.Name;
                 currHeight += Math.Ceiling(item.getHeight());
+
+                //to make it single page
+                if (singlePage)
+                {
+                    currHeight = 0;
+                    PageContent.Add(QuestionPerPage);
+                    //QuestionPerPage.Add(QuestionPerPage);
+                    QuestionPerPage = new List<ucQuestionViewOnly>();
+                    if (collapseRest == false)
+                    {
+                        collapseRest = true;
+                    }
+                    singlePage = false;
+                }
+
+                //check for image to set single page
+                if (item.getHaveImage())//Image - single page
+                {
+                    currHeight = 0;
+                    PageContent.Add(QuestionPerPage);
+                    QuestionPerPage = new List<ucQuestionViewOnly>();
+                    if (collapseRest == false)
+                    {
+                        collapseRest = true;
+                    }
+                    singlePage = true;
+                }
 
                 if (currHeight >= heightLimit)
                 {
@@ -165,6 +203,7 @@ namespace AMDES_KBS
             }
 
             TotalPageNo = PageContent.Count;
+            //CurrPageNo = TotalPageNo;
             lblTotalPage.Content = PageContent.Count.ToString("D2");
             while (CurrPageNo < TotalPageNo)
             {
@@ -179,6 +218,10 @@ namespace AMDES_KBS
                     item.setVisibility(Visibility.Visible);
                 }
                 lblCurrPage.Content = CurrPageNo.ToString("D2");
+            }
+            if (CurrPageNo > 1)
+            {
+                btnPrev.Visibility = Visibility.Visible;
             }
         }
 
@@ -204,6 +247,8 @@ namespace AMDES_KBS
                 {
                     item.setVisibility(Visibility.Visible);
                 }
+                //JK changes
+                btnPrev.Visibility = Visibility.Visible;
                 lblCurrPage.Content = CurrPageNo.ToString("D2");
             }
             else
@@ -214,6 +259,8 @@ namespace AMDES_KBS
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
+            btnPrev.Visibility = Visibility.Visible;
+
             if (CurrPageNo != 1)
             {
                 foreach (ucQuestionViewOnly item in PageContent.ElementAt(CurrPageNo - 1))
@@ -249,6 +296,11 @@ namespace AMDES_KBS
                     btnPrev.Visibility = Visibility.Visible;
                     offCommands(390);
                 }
+            }
+            else
+            {
+                btnPrev.Visibility = Visibility.Visible;
+                offCommands(390);
             }
         }
 

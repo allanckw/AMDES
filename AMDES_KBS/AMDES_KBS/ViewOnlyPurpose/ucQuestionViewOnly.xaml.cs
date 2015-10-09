@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using AMDES_KBS.Entity;
+using System.Windows.Media.Imaging;
 
 namespace AMDES_KBS
 {
@@ -15,10 +16,23 @@ namespace AMDES_KBS
         int gid;
         Question question;
         Label scoringData;
+        bool havImage = false;
 
         public ucQuestionViewOnly()
         {
             InitializeComponent();
+        }
+
+        public void loadImage(String url)
+        {
+            havImage = true;
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(url);
+            image.EndInit();
+            imgPicture.Source = image;
+            imgPicture.Stretch = System.Windows.Media.Stretch.Fill;
+            imgPicture.Visibility = Visibility.Visible;
         }
 
         public void loadQuestion(Question q, int gid, Label lblscore)
@@ -102,6 +116,11 @@ namespace AMDES_KBS
         public void setVisibility(Visibility v)
         {
             stkpnlQuestion.Visibility = v;
+        }
+
+        public bool getHaveImage()
+        {
+            return havImage;
         }
     }
 }

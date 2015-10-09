@@ -135,6 +135,7 @@
     <Compile Include="Controllers\P2Controller.cs" />
     <Compile Include="Controllers\PatAttributeController.cs" />
     <Compile Include="Controllers\Printer.cs" />
+    <Compile Include="Controllers\QuestionImageController.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Entity\ApplicationContext.cs" />

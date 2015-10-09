@@ -5,16 +5,19 @@ using System.Text;
 using System.IO;
 using AMDES_KBS.Entity;
 
+
+
 namespace AMDES_KBS.Controllers
 {
     public class ApplicationContextController
     {
+       
         public static void GetAllApplications()
         {
             CLIPSController.AllAppContexts = new List<ApplicationContext>();
 
             string[] dirs = Directory.GetDirectories(Path.GetFullPath(@"Data\"));
-
+            
             //foreach (string s in dirs)
             for (int i = 0; i < dirs.Length; i++)
             {
