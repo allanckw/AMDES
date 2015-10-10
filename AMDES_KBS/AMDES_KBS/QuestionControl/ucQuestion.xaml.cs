@@ -26,7 +26,7 @@ namespace AMDES_KBS
             InitializeComponent();
         }
 
-        public void loadImage(String url)
+        private void loadImage(String url)
         {
             havImage = true;
             BitmapImage image = new BitmapImage();
@@ -34,7 +34,7 @@ namespace AMDES_KBS
             image.UriSource = new Uri(url);
             image.EndInit();
             imgPicture.Source = image;
-            imgPicture.Stretch = System.Windows.Media.Stretch.Fill;
+            imgPicture.Stretch = System.Windows.Media.Stretch.None;
             imgPicture.Visibility = Visibility.Visible;
         }
 
@@ -64,6 +64,9 @@ namespace AMDES_KBS
                 this.answer = false;
 
             btnYes.IsChecked = this.answer;
+
+            if (q.hasImage)
+                this.loadImage(QuestionImageController.getImage(q.ImagePath));
         }
 
         public void setAnswer(bool answer)

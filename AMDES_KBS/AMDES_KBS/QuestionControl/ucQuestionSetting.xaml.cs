@@ -4,7 +4,8 @@ using System.Windows.Controls;
 using AMDES_KBS.Entity;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-
+using System.IO;
+using AMDES_KBS.Controllers;
 namespace AMDES_KBS
 {
     /// <summary>
@@ -68,8 +69,12 @@ namespace AMDES_KBS
             if (result == true)
             {
                 // Open document 
-                string filename = dlg.FileName;
-                txtImgURL.Text = filename;
+                string filePath = dlg.FileName;
+                string fileName = Path.GetFileName(filePath);
+
+                txtImgURL.Text = QuestionImageController.processImage(filePath, fileName); 
+                
+
             }
         }
 

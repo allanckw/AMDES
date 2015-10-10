@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.IO;
 
-namespace ADD.Controllers
+namespace AMDES_KBS.Controllers
 {
     public class QuestionImageController
     {
-        public static string appStartUpPath = AppDomain.CurrentDomain.BaseDirectory;
+        private static string imagePath = AppDomain.CurrentDomain.BaseDirectory + @"img";
 
-        public void processImage(string clientFilePath, int maxWidth, int maxheight, string saveFilePath)
+        public static string getImage(string saveFilePath)
         {
-            string sPath = saveFilePath + ".jpg";
+            return  imagePath +  "\\" + saveFilePath;
+        }
+
+        public static string processImage(string clientFilePath, string saveFilePath,
+                                            int maxWidth = 400, int maxheight = 400)
+        {
+            if (!Directory.Exists(imagePath))
+                Directory.CreateDirectory(imagePath);
+            //Jasmine Lovv
+
+            string sPath = imagePath + "\\" +saveFilePath;
+
             if (System.IO.File.Exists(sPath))
             {
                 System.IO.File.Delete(sPath);
@@ -48,7 +60,7 @@ namespace ADD.Controllers
             tmpPhoto.Dispose();
             selectedImage.Dispose();
 
-
+            return saveFilePath;
         }
 
     }

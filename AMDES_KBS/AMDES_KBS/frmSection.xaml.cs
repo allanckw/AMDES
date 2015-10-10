@@ -155,20 +155,12 @@ namespace AMDES_KBS
 
         private void sortPage()
         {
-            int test = 0; //for forcing qn 3 to have image
+           
             currHeight = 0;
             bool singlePage = false;
             List<ucQuestion> QuestionPerPage = new List<ucQuestion>();
             foreach (ucQuestion item in QuestionFrame.Children)
             {
-                test++;
-                //Force Set Question 3
-                if (test==3)
-                {
-                    //loading image
-                    item.loadImage("D:\\Users\\sisajk\\Desktop\\2015-09-23_233400.jpg");
-                }
-
                 string temp = item.Name;
                 currHeight += Math.Ceiling(item.getHeight());
 
@@ -197,6 +189,7 @@ namespace AMDES_KBS
                         collapseRest = true;
                     }
                     singlePage = true;
+                    
                 }
 
                 if (currHeight >= heightLimit)

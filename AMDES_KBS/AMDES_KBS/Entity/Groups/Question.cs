@@ -33,7 +33,7 @@ namespace AMDES_KBS.Entity
         private string imgPath;
         private bool isExistImg;
 
-        public bool IsExistImage
+        public bool hasImage
         {
             get { return imgPath.Length > 0; }
 
