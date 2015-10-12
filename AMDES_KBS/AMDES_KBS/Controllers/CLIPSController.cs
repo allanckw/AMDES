@@ -609,7 +609,7 @@ namespace AMDES_KBS.Controllers
 
                                     if (j == 0 && qg.getQuestionTypeENUM() == QuestionType.COUNT)
                                     {
-                                        d.Header += System.Environment.NewLine + s.ScoreString;
+                                        d.Header += System.Environment.NewLine + qg.Header + " - " + s.ScoreString;
                                     }
                                 }
                             }
@@ -684,7 +684,7 @@ namespace AMDES_KBS.Controllers
 
                                     if (j == 0 && qg.getQuestionTypeENUM() == QuestionType.COUNT)
                                     {
-                                        d.Header += System.Environment.NewLine + s.ScoreString;
+                                        d.Header += System.Environment.NewLine + qg.Header + " - " + s.ScoreString;
                                     }
                                 }
                             }

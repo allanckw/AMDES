@@ -18,10 +18,10 @@
     </Questions>
   </QuestionGroup>
   <QuestionGroup id="6">
-    <Header>Section AMT Test</Header>
+    <Header>Section AMT </Header>
     <Description>Ask the patient these questions, a correct answer to each question scores one point.~~Start by asking the patient to remember a Memory Phrase (e.g. address “37 Bukit Timah Road”)</Description>
     <QnType>2</QnType>
-    <Symptom>Failed AMT Test</Symptom>
+    <Symptom>Failed Abbreviated Mental Test</Symptom>
     <Negation>false</Negation>
     <Questions>
       <Question QID="1">
