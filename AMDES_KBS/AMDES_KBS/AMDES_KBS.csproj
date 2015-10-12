@@ -345,10 +345,10 @@
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Entity\Assessor.cs" />
     <Compile Include="Entity\Diagnosis.cs" />
-    <Compile Include="Entity\Groups\QuestionCountGroup.cs" />
-    <Compile Include="Entity\Groups\QuestionGroup.cs" />
+    <Compile Include="Entity\Question\QuestionCountGroup.cs" />
+    <Compile Include="Entity\Question\QuestionGroup.cs" />
     <Compile Include="Entity\Patient.cs" />
-    <Compile Include="Entity\Groups\Question.cs" />
+    <Compile Include="Entity\Question\Question.cs" />
     <Compile Include="Entity\Symptom.cs" />
     <Compile Include="frmMain.xaml.cs">
       <DependentUpon>frmMain.xaml</DependentUpon>

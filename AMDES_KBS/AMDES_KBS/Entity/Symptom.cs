@@ -4,6 +4,12 @@ namespace AMDES_KBS.Entity
 {
     public class Symptom : IComparable<Symptom>
     {
+
+        private string name;
+        private string diagnosedByID;
+        private DateTime diaDate;
+        private string scoreString;
+
         public Symptom()
         {
         }
@@ -13,19 +19,21 @@ namespace AMDES_KBS.Entity
             this.name = name;
             this.diagnosedByID = diagID;
             this.diaDate = DateTime.Now;
+            this.scoreString = "";
         }
 
-        private string diagnosedByID;
+
+        public string ScoreString
+        {
+            get { return scoreString; }
+            set { scoreString = value; }
+        }
 
         public string DiagnosedByID
         {
             get { return diagnosedByID; }
             set { diagnosedByID = value; }
         }
-
-        private string name;
-
-        private DateTime diaDate;
 
         public string SymptomName
         {
@@ -41,7 +49,6 @@ namespace AMDES_KBS.Entity
 
         public int CompareTo(Symptom s)
         {
-
             return this.name.ToUpper().CompareTo(s.SymptomName.ToUpper());
         }
     }

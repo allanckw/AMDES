@@ -52,7 +52,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Label x:Name="lblQN" Width="80" Content="Question:" FontWeight="Bold" FontSize="14" Margin="5,-5,0,0" />
                     <TextBox x:Name="txtQuestion" TextWrapping="Wrap" BorderThickness="1" AcceptsReturn="True" Background="Transparent" Width="430" Margin="-5,0,0,0"/>
-                    <CheckBox Content="Negation?" Height="16" Margin="10,0,0,0" Name="chkNegate" />
+                    <CheckBox Content="Negate Symptom" Height="16" Margin="10,0,0,0" Name="chkNegate" />
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
                     <Label x:Name="lblIMG" Width="57" Content="Image:" FontWeight="Bold" FontSize="14" Margin="25,0,0,0" HorizontalAlignment="Right" />

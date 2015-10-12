@@ -252,7 +252,7 @@ namespace AMDES_KBS.Controllers
                     if (qg.isNegation)
                         sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (negation Yes) (symptom " + "\"" + qg.Symptom + "\"" + ") )");
                     else
-                        sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (symptom " + "\"" + qg.Symptom + "\"" + ") )");
+                        sb.Append("(groupid-symptoms (GroupID _" + qg.GroupID + ") (negation No) (symptom " + "\"" + qg.Symptom + "\"" + ") )");
                     assert(sb);
                     sb.Clear();
                 }
@@ -278,7 +278,7 @@ namespace AMDES_KBS.Controllers
                         if (q.isNegation)
                             sb.Append("(questionid-symptoms (GroupID _" + qg.GroupID + ") (negation Yes) (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
                         else
-                            sb.Append("(questionid-symptoms (GroupID _" + qg.GroupID + ") (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
+                            sb.Append("(questionid-symptoms (GroupID _" + qg.GroupID + ") (negation No) (QuestionID _" + qg.GroupID + "." + q.ID + ") (symptom " + "\"" + q.Symptom + "\"" + ") )");
                         assert(sb);
                     }
                 }
@@ -586,8 +586,14 @@ namespace AMDES_KBS.Controllers
 
                         if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
                         {
-                            foreach (int qgID in d.RetrievalIDList)
+                            //foreach (int qgID in d.RetrievalIDList)
+                            for (int k = 0; k < d.RetrievalIDList.Count; k++)
                             {
+                                int qgID = d.RetrievalIDList[k];
+
+                                QuestionGroup qg = QuestionController.getGroupByID(qgID);
+
+                                //List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
                                 List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
                                 for (int j = 0; j < grpSymptoms.Count; j++)
                                 {
@@ -600,11 +606,17 @@ namespace AMDES_KBS.Controllers
                                     {
                                         d.Comment += System.Environment.NewLine + "   " + App.bulletForm() + " " + s.SymptomName.Trim();
                                     }
+
+                                    if (j == 0 && qg.getQuestionTypeENUM() == QuestionType.COUNT)
+                                    {
+                                        d.Header += System.Environment.NewLine + s.ScoreString;
+                                    }
                                 }
                             }
 
                         }
                         d.Comment = d.Comment.Trim();
+
                         h.addDiagnosis(d);
                     }
                 }
@@ -645,11 +657,20 @@ namespace AMDES_KBS.Controllers
                         Diagnosis d = DiagnosisController.getDiagnosisByID(diagID);
                         if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
                         {
-                            foreach (int k in d.RetrievalIDList)
+                            //foreach (int k in d.RetrievalIDList)
+                            for (int k = 0; k<d.RetrievalIDList.Count; k++)
                             {
-                                List<Symptom> grpSymptoms = getPatientSymptomByQG(k);
-                                foreach (Symptom s in grpSymptoms)
+                                int qgID = d.RetrievalIDList[k];
+
+                                QuestionGroup qg = QuestionController.getGroupByID(qgID);
+
+                                //List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
+                                List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
+                                //foreach (Symptom s in grpSymptoms)
+                                for (int j = 0; j < grpSymptoms.Count; j++)
                                 {
+                                    Symptom s = grpSymptoms[j];
+
                                     if (d.Comment.Trim().Length == 0)
                                     {
                                         d.Comment += s.SymptomName.Trim();
@@ -660,6 +681,11 @@ namespace AMDES_KBS.Controllers
                                     }
 
                                     d.Comment = d.Comment.Trim();
+
+                                    if (j == 0 && qg.getQuestionTypeENUM() == QuestionType.COUNT)
+                                    {
+                                        d.Header += System.Environment.NewLine + s.ScoreString;
+                                    }
                                 }
                             }
                         }
@@ -733,7 +759,9 @@ namespace AMDES_KBS.Controllers
                             {
                                 int succArg = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
                                 int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
-                                s.SymptomName += "- Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
+                                //20151012 - Bug here should not be tagged to individual symptom
+                                // s.SymptomName += "Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
+                                s.ScoreString = "Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
                                 break;
                             }
                         }
@@ -774,7 +802,9 @@ namespace AMDES_KBS.Controllers
                             {
                                 int succArg = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
                                 int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
-                                s.SymptomName += "- Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
+                                //20151012 - Bug here should not be tagged to individual symptom
+                                //s.SymptomName += "- Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
+                                s.ScoreString = "Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
                                 break;
                             }
                         }

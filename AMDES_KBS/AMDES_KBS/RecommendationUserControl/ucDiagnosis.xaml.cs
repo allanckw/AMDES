@@ -17,55 +17,11 @@ namespace AMDES_KBS
         {
             InitializeComponent();
             DiaRule = Rule;
-            lblRuleID.Content = DiaRule.Header;
+            lblRuleID.Text = DiaRule.Header;
             loadComment();
             loadLink();
-            addSymptons();
         }
-
-        public void addSymptons()
-        {
-            if (DiaRule.RetrieveSym)
-            {
-                foreach (int groupId in DiaRule.RetrievalIDList)
-                {
-                    List<String> SymptomsListOfQuestionGroup = getSymptomsFromQuestionGroup(groupId);
-                    foreach (String symptoms in SymptomsListOfQuestionGroup)
-                    {
-                        Label lblSymptons = new Label();
-                        lblSymptons.FontSize = 14;
-                        lblSymptons.Content = App.bulletForm() + symptoms;
-                    }
-                }
-            }
-
-        }
-
-        private List<String> getSymptomsFromQuestionGroup(int groupID)
-        {
-            List<String> SymptomsList = new List<String>();
-
-            QuestionGroup qg = QuestionController.getGroupByID(groupID);
-            if (qg.Symptom.Trim() != "")
-            {
-                SymptomsList.Add(qg.Symptom.Trim());
-            }
-
-            foreach (Question q in qg.Questions)
-            {
-                String symptom = q.Symptom.Trim();
-                if (symptom.Length > 0)
-                {
-                    if (!SymptomsList.Contains(symptom))
-                    {
-                        SymptomsList.Add(symptom);
-                    }
-                }
-            }
-
-            return SymptomsList;
-        }
-
+               
         private void loadComment()
         {
             this.txtDiagnosisMessage.Text = DiaRule.Comment.Replace("~~", Environment.NewLine);
@@ -80,7 +36,6 @@ namespace AMDES_KBS
                 return;
             }
             //http://www.blagoev.com/blog/post/building-a-wpf-linklabel-control.aspx
-            //this.lblLink.Url = new System.Uri(linkString);
             hlDesc.Text = DiaRule.LinkDesc;
             txtLink.Tag = linkString;
             stkpnlDiagnosisLink.Visibility = Visibility.Visible;

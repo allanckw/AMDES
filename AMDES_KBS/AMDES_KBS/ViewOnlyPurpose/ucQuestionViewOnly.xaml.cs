@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using AMDES_KBS.Entity;
 using System.Windows.Media.Imaging;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS
 {
@@ -23,7 +24,7 @@ namespace AMDES_KBS
             InitializeComponent();
         }
 
-        public void loadImage(String url)
+        private void loadImage(String url)
         {
             havImage = true;
             BitmapImage image = new BitmapImage();
@@ -55,6 +56,9 @@ namespace AMDES_KBS
                 setAnswer(true);
             else
                 setAnswer(false);
+
+            if (q.hasImage)
+                this.loadImage(QuestionImageController.getImage(q.ImagePath));
         }
 
         public void setAnswer(bool answer)
