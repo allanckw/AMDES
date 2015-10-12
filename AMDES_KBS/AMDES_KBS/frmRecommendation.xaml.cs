@@ -137,7 +137,7 @@ namespace AMDES_KBS
 
             if (stkpnlSymptons.Children.Count == 0)
             {
-                header.Content = "The evaluation does not suggest dementia in this patient";
+                header.Content = "The evaluation does not suggest dementia in this patient"; //remove hardcode of disease name 20151012
             }
             //<ScrollViewer x:Name="svS" VerticalScrollBarVisibility="auto" Height="160" Width="960" HorizontalAlignment="Left">
             //ScrollViewer sv = new ScrollViewer();

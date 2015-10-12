@@ -57,7 +57,7 @@ namespace AMDES_KBS.Controllers
                 p = new Paragraph();
                 p.FontSize = 16;
                 p.FontWeight = FontWeights.Bold;
-                p.Inlines.Add(new Run("The evaluation does not suggest dementia in this patient"));
+                p.Inlines.Add(new Run("The evaluation does not suggest dementia in this patient")); //remove hardcode of disease name 20151012
                 fdPrint.Blocks.Add(p);
             }
             else
