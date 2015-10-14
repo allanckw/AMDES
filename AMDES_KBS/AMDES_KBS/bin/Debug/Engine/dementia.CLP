@@ -264,6 +264,54 @@
    (questionid-symptoms (QuestionID ?Noid) (negation No))
    =>
    (retract ?sym))
+;;END symptoms Rules   
+
+;;Start symptoms Rules 20150930 - Symptoms Negation
+(defrule Add_Symptom_For_Group_Type_Count_Negate ;;for count type, only failing the threshold -> fail
+   (group (answer Yes) (GroupID ?id) (SuccessType COUNT))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation Yes))
+   (not (exists
+             (symptoms (GroupID ?id))))
+   =>
+   (assert (symptoms (symptom ?sym) (GroupID ?id))))
+
+(defrule Retract_Symptom_For_Group_Type_Count_Negate
+   (group (answer No) (GroupID ?Noid) (SuccessType COUNT))
+   (groupid-symptoms (GroupID ?Noid) (negation Yes))
+   ?sym <- (symptoms (GroupID ?Noid))
+   =>
+   (retract ?sym))
+   
+(defrule Add_Symptom_For_Group_Type_Normal_Negate
+   (group (answer No) (GroupID ?id) (SuccessType AND|OR))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation Yes))
+   (not (exists
+             (symptoms (GroupID ?id))))
+   =>
+   (assert (symptoms (symptom ?sym) (GroupID ?id))))
+
+(defrule Retract_Symptom_For_Group_Type_Normal_Negate
+   (group (answer Yes) (GroupID ?Noid) (SuccessType OR|AND))
+   (groupid-symptoms (GroupID ?Noid) (negation Yes))
+   ?sym <- (symptoms (GroupID ?Noid))
+   =>
+   (retract ?sym))
+   
+(defrule Add_Symptom_For_Question_Negate
+   (question (answer No) (ID ?id))
+   (questionid-symptoms  (symptom ?sym) (GroupID ?grp) (QuestionID ?id) (negation Yes))
+   (not (exists
+             (symptoms (GroupID ?grp) (QuestionID ?id))))
+   =>
+   (assert (symptoms (GroupID ?grp) (QuestionID ?id) (symptom ?sym))))
+
+   
+(defrule Retract_Symptom_For_Question_Negate
+   ?sym <- (symptoms (QuestionID ?Noid&~NIL) (GroupID ?grp))
+   (question (answer Yes) (ID ?Noid))
+   (questionid-symptoms (QuestionID ?Noid) (negation Yes))
+   =>
+   (retract ?sym))
 ;;END symptoms Rules
    
 (defrule Next_Question_Attribute_Check
