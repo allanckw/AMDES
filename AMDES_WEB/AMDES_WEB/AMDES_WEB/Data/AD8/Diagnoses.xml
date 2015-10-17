@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Diagnoses xml-->
+<Diagnoses>
+  <Diagnosis diagID="2">
+    <Comment>Patient failed the AD8 and MSME partial test, There is significant cognitive decline and there is probable cognitive impairment, please proceed to use Aid for Dementia Diagnosis for a detailed assessment</Comment>
+    <Header>Sig. Cognitive Decline, Probable Cognitive Impairment</Header>
+    <Link>http://add.ktph.com.sg</Link>
+    <LinkDesc>Aid for Dementia Diagnosis</LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>1</QGrpID>
+    </RetrieveFrom>
+    <Attributes />
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="34">
+    <Comment>Patient have passed the assessment, Patient is unlikely to have any form of cognitive impairment</Comment>
+    <Header>Improbable Cognitive Impairment</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <Attributes />
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="1">
+    <Comment>The development of an effective brief dementia test will help in the early identification~~of dementia. ~~Aim: This study investigates the diagnostic utility of a brief cognitive test for dementia which combines a short subjective informant-rated questionnaire (AD8) with an objective cognitive measure (Mini-Mental State Examination, MMSE) or its subcomponents.</Comment>
+    <Header>A Brief Dementia Test with Subjective</Header>
+    <Link>http://www.karger.com/Article/FullText/438455</Link>
+    <LinkDesc>Read the paper from Karger</LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <Attributes />
+    <isRes>true</isRes>
+  </Diagnosis>
+</Diagnoses>

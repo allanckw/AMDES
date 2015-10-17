@@ -123,11 +123,11 @@
     <Group histID="6">
       <Question GrpID="6">
         <QID>1</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="6">
         <QID>2</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="6">
         <QID>3</QID>
@@ -147,19 +147,19 @@
       </Question>
       <Question GrpID="6">
         <QID>7</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
         <QID>8</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
         <QID>9</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
         <QID>10</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
     </Group>
     <Group histID="1">
@@ -179,33 +179,123 @@
       </Question>
       <Question GrpID="2">
         <QID>3</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="2">
         <QID>4</QID>
         <Answer>false</Answer>
       </Question>
     </Group>
+    <Group histID="3">
+      <Question GrpID="3">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="5">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="7">
+      <Question GrpID="7">
+        <QID>1</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>3</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>4</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>5</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>6</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="7">
+        <QID>7</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
     <Symptoms>
       <Symptom>
         <SymptomName> Failed Abbreviated Mental Test </SymptomName>
-        <DiagnosisDate>635804595470528972</DiagnosisDate>
+        <DiagnosisDate>635806955447785129</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Agnosia </SymptomName>
+        <DiagnosisDate>635806955447805130</DiagnosisDate>
+        <DiagnosedByID>2</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
-      <Diagnosis diagID="20">
-        <Comment>The patient has passed Abbreviated Mental Test with no significant cognitive deficits and hence does not satisfy the DSM4 criteria for Dementia.</Comment>
-        <Header>Patient is unlikely to have Dementia</Header>
+      <Diagnosis diagID="10">
+        <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.
+   ✓ Failed Abbreviated Mental Test</Comment>
+        <Header>Patient failed AMT with cognitive deficits other than amnesia, re-take History and refer if dementia suspicion is high
+Section AMT  - Patient's Score: 6, Normal Score: 8 or more</Header>
         <Link></Link>
         <LinkDesc></LinkDesc>
-        <RetrieveSymptom>false</RetrieveSymptom>
-        <RetrieveFrom />
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>6</QGrpID>
+        </RetrieveFrom>
         <Attributes />
+        <isRes>false</isRes>
+      </Diagnosis>
+      <Diagnosis diagID="28">
+        <Comment>Brain imaging and referral to a tertiary center is recommended due to the following conditions: 
+   ✓ Age &lt;= 65</Comment>
+        <Header>Patient require brain imaging and referral</Header>
+        <Link></Link>
+        <LinkDesc></LinkDesc>
+        <RetrieveSymptom>true</RetrieveSymptom>
+        <RetrieveFrom>
+          <QGrpID>7</QGrpID>
+        </RetrieveFrom>
+        <Attributes>
+          <Attribute>
+            <Name>AGE</Name>
+            <Value>65</Value>
+            <Type>3</Type>
+          </Attribute>
+        </Attributes>
         <isRes>false</isRes>
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635803776000000000</CompletedDate>
+    <CompletedDate>635806368000000000</CompletedDate>
   </History>
 </Histories>

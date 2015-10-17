@@ -9,11 +9,11 @@
       </Question>
       <Question GrpID="1">
         <QID>2</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="1">
         <QID>3</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="1">
         <QID>4</QID>
@@ -33,7 +33,7 @@
       </Question>
       <Question GrpID="1">
         <QID>8</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="1">
         <QID>9</QID>
@@ -49,20 +49,26 @@
       </Question>
       <Question GrpID="1">
         <QID>12</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
     </Group>
     <Symptoms>
       <Symptom>
-        <SymptomName> Consistent problems with thinking and/or memory </SymptomName>
-        <DiagnosisDate>635804591084269236</DiagnosisDate>
+        <SymptomName> Repeating questions, stories or statements </SymptomName>
+        <DiagnosisDate>635806956710597358</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Reduced interest in hobbies/activities </SymptomName>
+        <DiagnosisDate>635806956710607358</DiagnosisDate>
         <DiagnosedByID>1</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
       <Diagnosis diagID="2">
         <Comment>Patient failed the AD8 and MSME partial test, There is significant cognitive decline and there is probable cognitive impairment, please proceed to use Aid for Dementia Diagnosis for a detailed assessment
-   ✓ Consistent problems with thinking and/or memory</Comment>
+   ✓ Repeating questions, stories or statements
+   ✓ Reduced interest in hobbies/activities</Comment>
         <Header>Sig. Cognitive Decline, Probable Cognitive Impairment
 AD8 with MSME - Patient's Score: 8, Normal Score: 9 or more</Header>
         <Link>http://add.ktph.com.sg</Link>
@@ -76,6 +82,6 @@ AD8 with MSME - Patient's Score: 8, Normal Score: 9 or more</Header>
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635803776000000000</CompletedDate>
+    <CompletedDate>635806368000000000</CompletedDate>
   </History>
 </Histories>

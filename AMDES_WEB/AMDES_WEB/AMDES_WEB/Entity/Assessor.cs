@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Xml.Linq;
+using AMDES_KBS.Entity;
+using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
    public class Assessor
     {
-        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Assessor.xml");
+       public static string dataPath;
 
         private string name;
 

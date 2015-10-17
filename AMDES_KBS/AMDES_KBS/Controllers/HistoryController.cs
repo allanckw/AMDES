@@ -127,6 +127,21 @@ namespace AMDES_KBS.Controllers
             }
         }
 
+        public static void deletePatientNavigationHistory(string pid)
+        {
+
+            XDocument document = XDocument.Load(History.dataPath);
+
+            if (getHistoryByID(pid) != null)
+            {
+                (from pa in document.Descendants("History")
+                 where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
+                 select pa).SingleOrDefault().Remove();
+
+                document.Save(History.dataPath);
+            }
+        }
+
         public static bool checkForDraft(string pid)
         {
             XDocument document = XDocument.Load(History.dataPath);
@@ -158,6 +173,34 @@ namespace AMDES_KBS.Controllers
                 }
 
                 return hList.OrderBy(x => x.AssessmentDate).ToList();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+
+        }
+
+        public static List<History> getAllHistory()
+        {
+            createDataFile();
+            XDocument document = XDocument.Load(History.dataPath);
+            List<History> hList = new List<History>();
+
+            try
+            {
+                var hist = (from pa in document.Descendants("History")
+                            select pa).ToList();
+
+                foreach (var h in hist)
+                {
+                    History hy = readHistoryData(h);
+                    if (hy != null)
+                        hList.Add(hy);
+                }
+
+                return hList.OrderBy(x => x.PatientID).ToList();
             }
             catch (InvalidOperationException ex)
             {

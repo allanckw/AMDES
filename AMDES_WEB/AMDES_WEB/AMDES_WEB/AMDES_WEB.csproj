@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Controllers\Alert.cs" />
     <Compile Include="Controllers\App.cs" />
+    <Compile Include="Controllers\ApplicationContextController.cs" />
     <Compile Include="Controllers\AssessorController.cs" />
     <Compile Include="Controllers\CLIPSController.cs" />
     <Compile Include="Controllers\DefaultBehaviorController.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Controllers\PatAttributeController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\QuestionImageController.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="CustomControls\DatePicker.ascx.cs">
@@ -130,14 +132,12 @@
     <Compile Include="Downloads.aspx.designer.cs">
       <DependentUpon>Downloads.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entity\ApplicationContext.cs" />
     <Compile Include="Entity\Assessor.cs" />
     <Compile Include="Entity\Attributes\CmpAttribute.cs" />
     <Compile Include="Entity\Attributes\PatAttribute.cs" />
     <Compile Include="Entity\Diagnosis.cs" />
     <Compile Include="Entity\EngineFile.cs" />
-    <Compile Include="Entity\Groups\Question.cs" />
-    <Compile Include="Entity\Groups\QuestionCountGroup.cs" />
-    <Compile Include="Entity\Groups\QuestionGroup.cs" />
     <Compile Include="Entity\History\History.cs" />
     <Compile Include="Entity\History\QnHistory.cs" />
     <Compile Include="Entity\Navex\FirstQuestion.cs" />
@@ -146,6 +146,9 @@
     <Compile Include="Entity\Navex\Navigation.cs" />
     <Compile Include="Entity\Navex\Rules.cs" />
     <Compile Include="Entity\Patient.cs" />
+    <Compile Include="Entity\Question\Question.cs" />
+    <Compile Include="Entity\Question\QuestionCountGroup.cs" />
+    <Compile Include="Entity\Question\QuestionGroup.cs" />
     <Compile Include="Entity\Symptom.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -206,6 +209,14 @@
     <Content Include="css\tab.css" />
     <Content Include="CustomControls\DatePicker.ascx" />
     <Content Include="CustomControls\DiagnosisUC.ascx" />
+    <Content Include="Data\AD8\Assessor.xml" />
+    <Content Include="Data\AD8\DefRules.xml" />
+    <Content Include="Data\AD8\Diagnoses.xml" />
+    <Content Include="Data\AD8\FirstQn.xml" />
+    <Content Include="Data\AD8\History.xml" />
+    <Content Include="Data\AD8\PatAttributes.xml" />
+    <Content Include="Data\AD8\Questions.xml" />
+    <Content Include="Data\AD8\Rules.xml" />
     <Content Include="Data\ADD\Engine.xml" />
     <Content Include="Global.asax" />
     <Content Include="History.aspx" />
@@ -258,6 +269,9 @@
     <Content Include="ResultsPrintFriendly.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\AD8\Logs\ANON.log" />
+    <None Include="Data\AD8\name.conf" />
+    <None Include="Data\AD8\WOT.conf" />
     <None Include="Data\lastSent.scd" />
     <None Include="Engine\dementia.CLP" />
     <None Include="images\Thumbs.db" />

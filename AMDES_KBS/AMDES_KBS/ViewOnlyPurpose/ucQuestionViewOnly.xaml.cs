@@ -32,7 +32,7 @@ namespace AMDES_KBS
             image.UriSource = new Uri(url);
             image.EndInit();
             imgPicture.Source = image;
-            imgPicture.Stretch = System.Windows.Media.Stretch.Fill;
+            imgPicture.Stretch = System.Windows.Media.Stretch.None;
             imgPicture.Visibility = Visibility.Visible;
         }
 

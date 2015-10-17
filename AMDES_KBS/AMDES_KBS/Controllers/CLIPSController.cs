@@ -11,7 +11,7 @@ using Mommosoft.ExpertSystem;
 
 namespace AMDES_KBS.Controllers
 {
-    class CLIPSController
+    public class CLIPSController
     {
         public static bool ExpertUser;
         public static bool enableSavePatient;
