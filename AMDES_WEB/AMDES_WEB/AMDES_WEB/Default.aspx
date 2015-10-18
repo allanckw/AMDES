@@ -19,7 +19,7 @@
                 We recommend you start with the AD8 with partial MSME test, before proceeding to
                 complete the full ADD questionaire as the former is easier and takes a shorter time
                 to administer. The system will advise you if the patient will require the more comprehensive
-                ADD
+                ADD questionaire.
                 <br />
                 <br />
                 <i>Begin by hovering over Start Assessment on the top of the page to select the appropriate

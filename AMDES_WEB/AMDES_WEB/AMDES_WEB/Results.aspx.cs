@@ -31,6 +31,8 @@ namespace AMDES_WEB
             {
                 lblApp.Text = CLIPSCtrl.ApplicationContext.Description;
                 lblAge.Text = CLIPSCtrl.CurrentPatient.getAge().ToString();
+                string appName = CLIPSCtrl.ApplicationContext.Name;
+                hypRetake.NavigateUrl = "~/PatientStart.aspx?appID=" + appName;
 
                 bool result;
 
@@ -47,7 +49,7 @@ namespace AMDES_WEB
                 }
                 else
                 {
-                    Response.Redirect("~/PatientStart.aspx");
+                    Response.Redirect("~/PatientStart.aspx?appID=" + appName);
                 }
             }
         }

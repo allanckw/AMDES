@@ -479,6 +479,23 @@ namespace AMDES_KBS.Controllers
             }
         }
 
+        public int getCurrentQnGroupScore()
+        {
+            //WARNING: Require Navigation to be SETUP OR INSTANT FAIL!
+
+            String evalStr = "(find-all-facts ((?f Currentgroup)) TRUE)"; //" (find-all-facts((?a Currentgroup)) TRUE)";
+            MultifieldValue mv = ((MultifieldValue)env.Eval(evalStr));
+
+            string x = "-1";
+            foreach (FactAddressValue fv in mv)
+            {
+                x = fv.GetFactSlot("TrueCount").ToString();
+            }
+
+            return int.Parse(x);
+
+        }
+
         public void getResultingDiagnosis()
         {
             History h = getCurrentPatientHistory();
@@ -505,7 +522,7 @@ namespace AMDES_KBS.Controllers
                     }
                     else
                     {
-                        Diagnosis d = DiagnosisController.getDiagnosisByID(diagID,selectedAppContext);
+                        Diagnosis d = DiagnosisController.getDiagnosisByID(diagID, selectedAppContext);
 
                         foreach (CmpAttribute kvp in d.getAttributes())
                         {
@@ -619,7 +636,7 @@ namespace AMDES_KBS.Controllers
                             {
                                 int qgID = d.RetrievalIDList[k];
 
-                                QuestionGroup qg = QuestionController.getGroupByID(qgID,selectedAppContext);
+                                QuestionGroup qg = QuestionController.getGroupByID(qgID, selectedAppContext);
 
                                 //List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
                                 List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
@@ -682,7 +699,7 @@ namespace AMDES_KBS.Controllers
                     }
                     else
                     {
-                        Diagnosis d = DiagnosisController.getDiagnosisByID(diagID,selectedAppContext);
+                        Diagnosis d = DiagnosisController.getDiagnosisByID(diagID, selectedAppContext);
                         if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
                         {
                             //foreach (int k in d.RetrievalIDList)
@@ -690,7 +707,7 @@ namespace AMDES_KBS.Controllers
                             {
                                 int qgID = d.RetrievalIDList[k];
 
-                                QuestionGroup qg = QuestionController.getGroupByID(qgID,selectedAppContext);
+                                QuestionGroup qg = QuestionController.getGroupByID(qgID, selectedAppContext);
 
                                 //List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
                                 List<Symptom> grpSymptoms = getPatientSymptomByQG(qgID);
@@ -775,7 +792,7 @@ namespace AMDES_KBS.Controllers
                 {
                     Symptom s = new Symptom(fv.GetFactSlot("symptom").ToString().Replace('"', ' '), grpID.ToString());
 
-                    QuestionGroup qg = QuestionController.getGroupByID(y,selectedAppContext);
+                    QuestionGroup qg = QuestionController.getGroupByID(y, selectedAppContext);
                     if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
                     {
                         evalStr = "(find-all-facts((?g group)) TRUE)";
@@ -818,7 +835,7 @@ namespace AMDES_KBS.Controllers
                                         grpID.ToString());
                 if (result)
                 {
-                    QuestionGroup qg = QuestionController.getGroupByID(y,selectedAppContext);
+                    QuestionGroup qg = QuestionController.getGroupByID(y, selectedAppContext);
                     if (qg.getQuestionTypeENUM() == QuestionType.COUNT)
                     {
                         evalStr = "(find-all-facts((?g group)) TRUE)";

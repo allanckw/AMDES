@@ -118,6 +118,7 @@
     <Compile Include="CustomControls\Section.ascx.designer.cs">
       <DependentUpon>Section.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\SectionPage.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

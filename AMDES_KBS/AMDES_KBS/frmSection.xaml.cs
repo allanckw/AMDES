@@ -168,7 +168,8 @@ namespace AMDES_KBS
                 if (singlePage)
                 {
                     currHeight = 0;
-                    PageContent.Add(QuestionPerPage);
+                    if (QuestionPerPage.Count > 0)
+                        PageContent.Add(QuestionPerPage);
                     //QuestionPerPage.Add(QuestionPerPage);
                     QuestionPerPage = new List<ucQuestion>();
                     if (collapseRest == false)
@@ -182,7 +183,10 @@ namespace AMDES_KBS
                 if (item.getHaveImage())//Image - single page
                 {
                     currHeight = 0;
-                    PageContent.Add(QuestionPerPage);
+
+                    if (QuestionPerPage.Count > 0)
+                        PageContent.Add(QuestionPerPage);
+
                     QuestionPerPage = new List<ucQuestion>();
                     if (collapseRest == false)
                     {
@@ -196,7 +200,10 @@ namespace AMDES_KBS
                 {
                     currHeight = 0;
                     currHeight += Math.Ceiling(item.getHeight());
-                    PageContent.Add(QuestionPerPage);
+
+                    if (QuestionPerPage.Count > 0)
+                        PageContent.Add(QuestionPerPage);
+
                     QuestionPerPage = new List<ucQuestion>();
                     if (collapseRest == false)
                     {

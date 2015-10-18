@@ -20,6 +20,13 @@ namespace AMDES_WEB
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["dicSectionPage"] = null;
+            Session["MPScore"] = 0;
+
+            Session["DoubleCount"] = 0;
+            Session["PrevClicked"] = false;
+            Session["PrevHit"] = false;
+
             CLIPSWebController clp = new CLIPSWebController();
             clp.ApplicationContext = WebApplicationContextController.setApplicationContext(Request.QueryString["appID"]);
             Session["clp"] = clp;
@@ -130,8 +137,9 @@ namespace AMDES_WEB
         {
             try
             {
-                ccJoin.ValidateCaptcha(txtCaptcha.Text.Trim());
-                if (ccJoin.UserValidated)
+                //ccJoin.ValidateCaptcha(txtCaptcha.Text.Trim());
+                //if (ccJoin.UserValidated) turn off for debug purpose
+                if (true)
                 {
 
                     Patient p = new Patient();
