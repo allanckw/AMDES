@@ -204,9 +204,6 @@ namespace AMDES_KBS.Controllers
                     p.isNegation = bool.Parse(x.Element("Negation").Value);
                 else
                     p.isNegation = false;
-
-
-                
                                
                 var qns = (from pa in x.Descendants("Questions").Descendants("Question")
                            select pa).ToList();

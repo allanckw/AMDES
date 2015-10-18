@@ -78,13 +78,13 @@ namespace AMDES_KBS
                 score = int.Parse(scoringData.Content.ToString());
 
 
-                if (question.isNegation && this.answer) //negation and answer = yes :-1
+                if (question.isNegation && this.answer) //negation and answer = yes :-Score
                     score -= question.Score;
-                else if (question.isNegation && !this.answer) //negation and answer = no :+1
+                else if (question.isNegation && !this.answer) //negation and answer = no :+Score
                     score += question.Score;
-                else if (!question.isNegation && this.answer) //no negation and answer = yes :+1
+                else if (!question.isNegation && this.answer) //no negation and answer = yes :+Score
                     score += question.Score;
-                else if (!question.isNegation && !this.answer) //no negation and answer = no :-1
+                else if (!question.isNegation && !this.answer) //no negation and answer = no :-Score
                     score -= question.Score;
 
                 scoringData.Content = score;

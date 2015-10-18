@@ -12,7 +12,7 @@ namespace AMDES_WEB
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        public CLIPSController CLIPSCtrl
+        public CLIPSWebController CLIPSCtrl
         {
             set
             {
@@ -20,7 +20,7 @@ namespace AMDES_WEB
             }
             get
             {
-                return (CLIPSController)Session["clp"];
+                return (CLIPSWebController)Session["clp"];
             }
         }
 
@@ -30,7 +30,7 @@ namespace AMDES_WEB
             {
                 lblDate.Text = DateTime.Now.ToString("dd MMM yyyy");
                 lblAge.Text = CLIPSCtrl.CurrentPatient.getAge().ToString();
-                lblApp.Text = CLIPSCtrl.ApplicationName;
+                lblApp.Text = CLIPSCtrl.ApplicationContext.Name ;
 
                 bool result;
                 bool.TryParse(Session["Result"].ToString(), out result);

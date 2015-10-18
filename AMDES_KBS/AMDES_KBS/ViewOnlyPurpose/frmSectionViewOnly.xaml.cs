@@ -220,6 +220,7 @@ namespace AMDES_KBS
         {
             for (int i = 0; i < WholeContent.Count; i++)
             {
+                
                 WholeContent[i].setAnswer(hisList[i].Answer);
             }
         }

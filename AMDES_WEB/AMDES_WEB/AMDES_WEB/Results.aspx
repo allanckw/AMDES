@@ -17,7 +17,7 @@
             <td>
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/History.aspx">View Selections to Result </asp:HyperLink>
                 &nbsp;&nbsp;
-                <asp:HyperLink ID="HyperLink2" NavigateUrl="~/PatientStart.aspx?appID=ADD" runat="server">Try Again </asp:HyperLink>
+                <asp:HyperLink ID="HyperLink2" NavigateUrl="~/PatientStart.aspx?appID=ADD" runat="server">Retake Assessment </asp:HyperLink>
                 &nbsp;&nbsp;
             </td>
             <td style="text-align: right;">

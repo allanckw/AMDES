@@ -39,6 +39,25 @@ namespace AMDES_KBS.Controllers
 
         }
 
+        public static FirstQuestion readFirstQuestion(WebApplicationContext app)
+        {
+            string dataPath = app.FolderPath + FirstQuestion.dataPath;
+            if (File.Exists(dataPath))
+            {
+                XDocument document = XDocument.Load(dataPath);
+                FirstQuestion fq = new FirstQuestion();
+
+                fq.GrpID = int.Parse(document.Descendants("InitialGrpID").ElementAt(0).Value);
+                //fq.NextGrpID = int.Parse(document.Descendants("DestinationGrpID").ElementAt(0).Value);
+                return fq;
+            }
+            else
+            {
+                return null; //when null, prompt user to add first question
+            }
+
+        }
+
         public static bool checkFirstQuestion()
         {
             FirstQuestion fq;

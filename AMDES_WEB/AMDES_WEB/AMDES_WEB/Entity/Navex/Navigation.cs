@@ -6,7 +6,8 @@ namespace AMDES_KBS.Entity
 {
     public class Navigation : IComparable<Navigation>, IEquatable<Navigation>
     {
-        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Navex.xml");
+        public static string dataPath = @"\Navex.xml";
+        //System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Navex.xml");
 
         private string navID = "-1";
         private int destGrpID = -1;

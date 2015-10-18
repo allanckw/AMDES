@@ -5,9 +5,11 @@ namespace AMDES_KBS.Entity
 {
     public class Rules
     {
-        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Rules.xml");
+        public static string dataPath = @"\Rules.xml";
+            //System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Rules.xml");
 
-        public static string defaultRulesPath =System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\DefRules.xml");
+        public static string defaultRulesPath = @"\DefRules.xml";
+            //System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\DefRules.xml");
 
         private List<Navigation> navList;
 

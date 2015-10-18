@@ -217,7 +217,7 @@ namespace AMDES_KBS.Controllers
 
             try
             {
-                if (CLIPSController.savePatient == false)
+                if (CLIPSWebController.savePatient == false)
                 {
                     var h = (from pa in document.Descendants("History")
                              where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&

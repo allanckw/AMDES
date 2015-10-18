@@ -9,7 +9,8 @@ namespace AMDES_KBS.Entity
     public class Patient : IComparable<Patient>
     {
         //public static string dataPath = @"Data\Patients.xml";
-        public static string dataPath =System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Patients.xml");
+        public static string dataPath = @"\Patients.xml";
+            //System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Patients.xml");
 
         private Assessor doctor;
 

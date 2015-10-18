@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AMDES_KBS.Entity
 {
-    public class ApplicationContext
+    public class WebApplicationContext
     {
         private string desc;
         private string name;

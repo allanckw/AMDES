@@ -5,7 +5,7 @@
     <Group histID="1">
       <Question GrpID="1">
         <QID>1</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="1">
         <QID>2</QID>
@@ -17,7 +17,7 @@
       </Question>
       <Question GrpID="1">
         <QID>4</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="1">
         <QID>5</QID>
@@ -25,11 +25,11 @@
       </Question>
       <Question GrpID="1">
         <QID>6</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="1">
         <QID>7</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="1">
         <QID>8</QID>
@@ -49,28 +49,52 @@
       </Question>
       <Question GrpID="1">
         <QID>12</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
     </Group>
     <Symptoms>
       <Symptom>
+        <SymptomName> Difficulty with remembering appointments </SymptomName>
+        <DiagnosisDate>635807380439196611</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Difficulties when handling complicated financial affairs </SymptomName>
+        <DiagnosisDate>635807380439216612</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Trouble learning using tool, appliance or gadget </SymptomName>
+        <DiagnosisDate>635807380439216612</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
         <SymptomName> Repeating questions, stories or statements </SymptomName>
-        <DiagnosisDate>635806956710597358</DiagnosisDate>
+        <DiagnosisDate>635807380439226612</DiagnosisDate>
         <DiagnosedByID>1</DiagnosedByID>
       </Symptom>
       <Symptom>
         <SymptomName> Reduced interest in hobbies/activities </SymptomName>
-        <DiagnosisDate>635806956710607358</DiagnosisDate>
+        <DiagnosisDate>635807380439236613</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
+      </Symptom>
+      <Symptom>
+        <SymptomName> Problems with judgement </SymptomName>
+        <DiagnosisDate>635807380439246613</DiagnosisDate>
         <DiagnosedByID>1</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
       <Diagnosis diagID="2">
         <Comment>Patient failed the AD8 and MSME partial test, There is significant cognitive decline and there is probable cognitive impairment, please proceed to use Aid for Dementia Diagnosis for a detailed assessment
+   ✓ Difficulty with remembering appointments
+   ✓ Difficulties when handling complicated financial affairs
+   ✓ Trouble learning using tool, appliance or gadget
    ✓ Repeating questions, stories or statements
-   ✓ Reduced interest in hobbies/activities</Comment>
+   ✓ Reduced interest in hobbies/activities
+   ✓ Problems with judgement</Comment>
         <Header>Sig. Cognitive Decline, Probable Cognitive Impairment
-AD8 with MSME - Patient's Score: 8, Normal Score: 9 or more</Header>
+AD8 with MSME - Patient's Score: 3, Normal Score: 9 or more</Header>
         <Link>http://add.ktph.com.sg</Link>
         <LinkDesc>Aid for Dementia Diagnosis</LinkDesc>
         <RetrieveSymptom>true</RetrieveSymptom>
@@ -82,6 +106,6 @@ AD8 with MSME - Patient's Score: 8, Normal Score: 9 or more</Header>
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635806368000000000</CompletedDate>
+    <CompletedDate>635807232000000000</CompletedDate>
   </History>
 </Histories>

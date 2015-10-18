@@ -96,6 +96,36 @@ namespace AMDES_KBS.Controllers
 
         }
 
+        public static List<Diagnosis> getAllDiagnosis(WebApplicationContext app) //call this on form onload in settings
+        {
+            List<Diagnosis> pList = new List<Diagnosis>();
+            string dataPath = app.FolderPath + Diagnosis.dataPath;
+            if (File.Exists(dataPath))
+            {
+                XDocument document = XDocument.Load(dataPath);
+
+                var diags = (from pa in document.Descendants("Diagnosis")
+                             select pa).ToList();
+
+                foreach (var x in diags)
+                {
+                    Diagnosis d = readDiagnosis(x);
+                    pList.Add(d);
+                    if (groupIDCounter <= d.RID)
+                    {
+                        groupIDCounter = d.RID + 1;
+                    }
+                }
+
+                return pList.OrderBy(x => x.Header).ToList();
+            }
+            else
+            {
+                createDataFile();
+                return pList; // return empty list
+            }
+        }
+
         public static List<Diagnosis> getAllDiagnosis() //call this on form onload in settings
         {
             List<Diagnosis> pList = new List<Diagnosis>();
@@ -172,7 +202,35 @@ namespace AMDES_KBS.Controllers
 
         public static Diagnosis getDiagnosisByID(int id)
         {
-            XDocument document = XDocument.Load(Diagnosis.dataPath);
+
+            if (File.Exists(Diagnosis.dataPath))
+            {
+                XDocument document = XDocument.Load(Diagnosis.dataPath);
+                try
+                {
+                    var diag = (from pa in document.Descendants("Diagnosis")
+                                where int.Parse(pa.Attribute("diagID").Value) == id
+                                select pa).SingleOrDefault();
+
+                    return readDiagnosis(diag);
+
+                }
+                catch (InvalidOperationException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public static Diagnosis getDiagnosisByID(int id,WebApplicationContext app)
+        {
+            XDocument document = XDocument.Load(app.FolderPath + Diagnosis.dataPath);
 
             try
             {
@@ -219,7 +277,40 @@ namespace AMDES_KBS.Controllers
                 return null;
             }
 
+
         }
+
+        public static List<Diagnosis> getResourceRules(WebApplicationContext app)
+        {
+            XDocument document = XDocument.Load(app.FolderPath + Diagnosis.dataPath);
+            List<Diagnosis> resList = new List<Diagnosis>();
+            try
+            {
+                var res = (from pa in document.Descendants("Diagnosis")
+                           where bool.Parse(pa.Element("isRes").Value) == true
+                           select pa).ToList();
+
+                foreach (var x in res)
+                {
+                    Diagnosis d = readDiagnosis(x);
+                    if (!resList.Contains(d))
+                    {
+                        resList.Add(d);
+                    }
+                }
+
+                return resList.OrderBy(x => x.RID).ToList();
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+
+        }
+
+        
 
         public static void deleteDiagnosis(int id, bool update = false)
         {

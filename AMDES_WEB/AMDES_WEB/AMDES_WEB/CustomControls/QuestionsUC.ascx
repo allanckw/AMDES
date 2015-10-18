@@ -11,6 +11,8 @@
     <td style="vertical-align: top; width: 80%;">
         <h4>
             <asp:Label ID="lblQn" runat="server" Text=""></asp:Label></h4>
+        <br />
+        <asp:Image ID="imgQn" runat="server" Visible="false" />
     </td>
     <td style="min-width: 10%; max-width: 60px">
         <asp:CheckBox ID="chkAns" runat="server" AutoPostBack="True" />

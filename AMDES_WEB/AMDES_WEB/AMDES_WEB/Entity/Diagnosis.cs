@@ -6,7 +6,8 @@ namespace AMDES_KBS.Entity
     public class Diagnosis
     {
 
-        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Diagnoses.xml");
+        public static string dataPath = @"\Diagnoses.xml";
+                //System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Diagnoses.xml");
 
         private int rid;
         private string comment;

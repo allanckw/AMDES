@@ -108,10 +108,35 @@ namespace AMDES_KBS.Controllers
 
         }
 
+        public static List<PatAttribute> getAllAttributes(WebApplicationContext app)
+        {
+            List<PatAttribute> pList = new List<PatAttribute>();
+            string dataPath = app.FolderPath + PatAttribute.dataPath;
+
+            if (File.Exists(dataPath))
+            {
+                XDocument document = XDocument.Load(dataPath);
+
+                var attr = (from pa in document.Descendants("PatAttr")
+                            select pa).ToList();
+
+                foreach (var x in attr)
+                {
+                    PatAttribute p = readPatAttribute(x);
+                    if (p != null)
+                    {
+                        pList.Add(p);
+                    }
+                }
+            }
+
+            return pList.OrderBy(x => x.AttributeName).ToList();
+        }
 
         public static List<PatAttribute> getAllAttributes()
         {
             List<PatAttribute> pList = new List<PatAttribute>();
+
             if (File.Exists(PatAttribute.dataPath))
             {
                 XDocument document = XDocument.Load(PatAttribute.dataPath);

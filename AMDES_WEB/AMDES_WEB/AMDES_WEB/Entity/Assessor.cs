@@ -8,7 +8,7 @@ namespace AMDES_KBS.Entity
 {
    public class Assessor
     {
-       public static string dataPath;
+       public static string dataPath = @"\Assessor.xml";
 
         private string name;
 

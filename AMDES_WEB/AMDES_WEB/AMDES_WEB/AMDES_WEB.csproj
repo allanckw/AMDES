@@ -68,9 +68,9 @@
   <ItemGroup>
     <Compile Include="Controllers\Alert.cs" />
     <Compile Include="Controllers\App.cs" />
-    <Compile Include="Controllers\ApplicationContextController.cs" />
+    <Compile Include="Controllers\WebApplicationContextController.cs" />
     <Compile Include="Controllers\AssessorController.cs" />
-    <Compile Include="Controllers\CLIPSController.cs" />
+    <Compile Include="Controllers\CLIPSWebController.cs" />
     <Compile Include="Controllers\DefaultBehaviorController.cs" />
     <Compile Include="Controllers\DiagnosisController.cs" />
     <Compile Include="Controllers\EnginePathController.cs" />
@@ -132,7 +132,7 @@
     <Compile Include="Downloads.aspx.designer.cs">
       <DependentUpon>Downloads.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Entity\ApplicationContext.cs" />
+    <Compile Include="Entity\WebApplicationContext.cs" />
     <Compile Include="Entity\Assessor.cs" />
     <Compile Include="Entity\Attributes\CmpAttribute.cs" />
     <Compile Include="Entity\Attributes\PatAttribute.cs" />
@@ -287,7 +287,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
-          <DevelopmentServerPort>1611</DevelopmentServerPort>
+          <DevelopmentServerPort>1004</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

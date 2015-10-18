@@ -20,6 +20,10 @@ namespace AMDES_WEB
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CLIPSWebController clp = new CLIPSWebController();
+            clp.ApplicationContext = WebApplicationContextController.setApplicationContext(Request.QueryString["appID"]);
+            Session["clp"] = clp;
+
             AddRegistrationField();
         }
 
@@ -71,7 +75,10 @@ namespace AMDES_WEB
                 l1.Text = "<table>";
                 this.phRegister.Controls.Add(l1);
                 ControlID += 1;
-                List<PatAttribute> attrList = PatAttributeController.getAllAttributes();
+
+                CLIPSWebController clp = (CLIPSWebController)Session["clp"];
+
+                List<PatAttribute> attrList = PatAttributeController.getAllAttributes(clp.ApplicationContext);
 
                 for (int i = 0; i < attrList.Count; i++)
                 {
@@ -151,10 +158,9 @@ namespace AMDES_WEB
 
                     }
 
-                    CLIPSController clp = new CLIPSController();
+                    CLIPSWebController clp = (CLIPSWebController)Session["clp"];
                     clp.CurrentPatient = p;
                     clp.clearAndLoadNew();
-                    clp.ApplicationName = Request.QueryString["appID"];
 
                     Session["clp"] = clp;
 

@@ -132,10 +132,39 @@ namespace AMDES_KBS.Controllers
             document.Save(Rules.dataPath);
         }
 
+        public static List<Rules> getAllRules(WebApplicationContext app) //call this on form onload in settings
+        {
+            List<Rules> rList = new List<Rules>();
+            string dataPath = app.FolderPath + Rules.dataPath;
+            if (File.Exists(dataPath))
+            {
+                XDocument document = XDocument.Load(dataPath);
+
+                var rules = (from pa in document.Descendants("Rule")
+                             select pa).ToList();
+
+                foreach (var x in rules)
+                {
+                    Rules rule = readRulesData(x);
+                    rList.Add(rule);
+                    if (rulesRIDCounter <= rule.RuleID)
+                    {
+                        rulesRIDCounter = rule.RuleID + 1;
+                    }
+                }
+
+                return rList.OrderBy(x => x.Description).ToList(); ;
+            }
+            else
+            {
+                return rList; // return empty list
+            }
+        }
+
         public static List<Rules> getAllRules() //call this on form onload in settings
         {
             List<Rules> rList = new List<Rules>();
-
+            
             if (File.Exists(Rules.dataPath))
             {
                 XDocument document = XDocument.Load(Rules.dataPath);

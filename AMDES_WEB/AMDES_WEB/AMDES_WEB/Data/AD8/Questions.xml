@@ -3,7 +3,7 @@
 <QuestionGroups>
   <QuestionGroup id="1">
     <Header>AD8 with MSME</Header>
-    <Description>Before you start, get the patient to remember the following 3 objects: Key, Lemon, Balloon~~Ask the patient the following questions:</Description>
+    <Description>Before you start, ask the patient to remember the following 3 objects: Key, Lemon, Balloon~~Ask the patient the following questions:</Description>
     <QnType>2</QnType>
     <Symptom></Symptom>
     <Negation>false</Negation>

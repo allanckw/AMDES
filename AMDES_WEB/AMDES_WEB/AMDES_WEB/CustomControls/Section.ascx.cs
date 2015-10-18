@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
+using System.Threading;
 
 namespace AMDES_WEB.CustomControls
 {
@@ -15,6 +16,9 @@ namespace AMDES_WEB.CustomControls
         private int sectionID;
         private QuestionGroup section;
         private AMDES_KBS.Entity.History hist;
+
+        //20151018 - Multipage enhancement...
+        private bool multiPage;
 
         public bool Enabled
         {
@@ -58,13 +62,13 @@ namespace AMDES_WEB.CustomControls
                 if (value > 0)
                 {
                     sectionID = value;
-                    section = QuestionController.getGroupByID(value);
+                    section = QuestionController.getGroupByID(value, CLIPSCtrl.ApplicationContext);
                     loadQuestions();
                 }
             }
         }
 
-        public CLIPSController CLIPSCtrl
+        public CLIPSWebController CLIPSCtrl
         {
             set
             {
@@ -72,8 +76,23 @@ namespace AMDES_WEB.CustomControls
             }
             get
             {
-                return (CLIPSController)Session["clp"];
+                return (CLIPSWebController)Session["clp"];
             }
+        }
+
+        //http://www.vbforums.com/showthread.php?649132-Preventing-an-asp-CheckBox-from-losing-it-s-checked-value
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (this.Enabled)
+                loadEnabledControls();
+
+            if (!this.Enabled && this.sectionID == 0)
+                loadReadOnlyControls();
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            computeScore();
         }
 
         private void loadQuestions()
@@ -83,8 +102,6 @@ namespace AMDES_WEB.CustomControls
             lblHeader.Text = section.Description.Replace("~~", " <br />");
             lblSection.Text = section.Header;
 
-
-
             this.phRegister.Controls.Clear();
             int ControlID = 0;
 
@@ -92,10 +109,10 @@ namespace AMDES_WEB.CustomControls
             {
                 Question q = section.Questions[i];
                 QuestionsUC qnCtrl = (QuestionsUC)LoadControl(@"~/CustomControls\QuestionsUC.ascx");
+                qnCtrl.Qn = q;
+
                 qnCtrl.QuestionNo = i + 1;
-                qnCtrl.QuestionText = q.Name;
-                qnCtrl.QID = q.ID;
-                qnCtrl.Score = q.Score;
+
                 qnCtrl.ID = "qnCtrl" + q.ID;
                 qnCtrl.isEnabled = this.Enabled;
 
@@ -128,15 +145,7 @@ namespace AMDES_WEB.CustomControls
             return control;
         }
 
-        //http://www.vbforums.com/showthread.php?649132-Preventing-an-asp-CheckBox-from-losing-it-s-checked-value
-        protected void Page_Init(object sender, EventArgs e)
-        {
-            if (this.Enabled)
-                loadEnabledControls();
 
-            if (!this.Enabled && this.sectionID == 0)
-                loadReadOnlyControls();
-        }
 
         private void loadReadOnlyControls()
         {
@@ -167,7 +176,10 @@ namespace AMDES_WEB.CustomControls
                         if (c is QuestionsUC)
                         {
                             QuestionsUC quc = (QuestionsUC)c;
-                            quc.isYes = h.Answer;
+                            if (quc.Qn.isNegation)
+                                quc.isYes = !h.Answer;
+                            else
+                                quc.isYes = h.Answer;
                         }
 
                     }
@@ -182,7 +194,7 @@ namespace AMDES_WEB.CustomControls
             {
                 this.SectionID = CLIPSCtrl.getCurrentQnGroupID();
 
-                if (this.SectionID == FirstQuestionController.readFirstQuestion().GrpID)
+                if (this.SectionID == FirstQuestionController.readFirstQuestion(CLIPSCtrl.ApplicationContext).GrpID)
                     btnPrevious.Visible = false; //if 1st question, previous button removed
 
                 if (CLIPSCtrl.getCurrentQnGroupID() == -1)
@@ -230,7 +242,7 @@ namespace AMDES_WEB.CustomControls
             {
                 QuestionCountGroup qcg = (QuestionCountGroup)section;
                 lbl1.Visible = lblMax.Visible = lblScore.Visible = true;
-                
+
                 lblScore.Text = "0";
                 lblMax.Text = " / " + qcg.MaximumScore.ToString();
 
@@ -240,8 +252,8 @@ namespace AMDES_WEB.CustomControls
                     if (c is QuestionsUC)
                     {
                         QuestionsUC quc = (QuestionsUC)c;
-                        if (quc.isYes)
-                            count += quc.Score;
+                        bool ans = quc.isYes;
+                        count += quc.Score;
                     }
                 }
                 lblScore.Text = count.ToString();
@@ -252,27 +264,27 @@ namespace AMDES_WEB.CustomControls
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            computeScore();
-        }
+
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
             if (this.Enabled)
             {
-                CLIPSController clp = CLIPSCtrl;
+                CLIPSWebController clp = CLIPSCtrl;
 
                 foreach (Control c in phRegister.Controls)
                 {
                     if (c is QuestionsUC)
                     {
                         QuestionsUC quc = (QuestionsUC)c;
-                        if (quc.isYes)
-                            clp.assertQuestion(section.GroupID, quc.QID, true);
+                        //if (quc.isYes)
+                        //     clp.assertQuestion(section.GroupID, quc.QID, true);
+                        clp.assertQuestion(section.GroupID, quc.QID, quc.isYes, quc.Qn.isNegation);
+                        Thread.Sleep(50);
                     }
                 }
-
+                //20151018 - Multipage enhancement 
+                //TODO: Must not assert next section if its multipage until last page is found
                 clp.assertNextSection();
                 //clp.saveAssertLog();
                 clp.saveCurrentNavex();
@@ -303,18 +315,23 @@ namespace AMDES_WEB.CustomControls
         {
             if (this.Enabled)
             {
-                CLIPSController clp = CLIPSCtrl;
+                CLIPSWebController clp = CLIPSCtrl;
 
                 foreach (Control c in phRegister.Controls)
                 {
                     if (c is QuestionsUC) //reset on previous
                     {
                         QuestionsUC quc = (QuestionsUC)c;
-                        if (quc.isYes)
-                            clp.assertQuestion(section.GroupID, quc.QID, false);
+
+                        //clp.assertQuestion(section.GroupID, quc.QID, false);
+
+                        clp.assertQuestion(section.GroupID, quc.QID, false, quc.Qn.isNegation);
+                        Thread.Sleep(50);
                     }
                 }
 
+                //20151018 - Multipage enhancement 
+                //TODO: Must not assert prev section if its multipage until 1st page is found
                 clp.assertPrevSection();
                 //clp.saveAssertLog();
                 clp.saveCurrentNavex();

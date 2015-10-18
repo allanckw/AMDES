@@ -13,7 +13,7 @@ namespace AMDES_WEB
     public partial class Results : System.Web.UI.Page
     {
 
-        public CLIPSController CLIPSCtrl
+        public CLIPSWebController CLIPSCtrl
         {
             set
             {
@@ -21,7 +21,7 @@ namespace AMDES_WEB
             }
             get
             {
-                return (CLIPSController)Session["clp"];
+                return (CLIPSWebController)Session["clp"];
             }
         }
 
@@ -29,7 +29,7 @@ namespace AMDES_WEB
         {
             if (!Page.IsPostBack)
             {
-                lblApp.Text = CLIPSCtrl.ApplicationName;
+                lblApp.Text = CLIPSCtrl.ApplicationContext.Description;
                 lblAge.Text = CLIPSCtrl.CurrentPatient.getAge().ToString();
 
                 bool result;
@@ -92,7 +92,7 @@ namespace AMDES_WEB
 
         private void loadResources()
         {
-            List<Diagnosis> resources = DiagnosisController.getResourceRules();
+            List<Diagnosis> resources = DiagnosisController.getResourceRules(CLIPSCtrl.ApplicationContext);
             foreach (Diagnosis diag in resources)
             {
                 DiagnosisUC diagUC = (DiagnosisUC)LoadControl(@"~/CustomControls\DiagnosisUC.ascx");

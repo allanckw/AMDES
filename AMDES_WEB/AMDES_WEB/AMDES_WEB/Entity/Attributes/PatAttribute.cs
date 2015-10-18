@@ -8,7 +8,7 @@ namespace AMDES_KBS.Entity
 {
     class PatAttribute : IEquatable<PatAttribute>, IComparable<PatAttribute>
     {
-        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\PatAttributes.xml");
+        public static string dataPath = @"\PatAttributes.xml";
 
         public enum AttributeType
         {

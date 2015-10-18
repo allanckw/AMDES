@@ -11,14 +11,32 @@ namespace AMDES_WEB.CustomControls
 {
     public partial class DiagnosisUC : System.Web.UI.UserControl
     {
+
+        public CLIPSWebController CLIPSCtrl
+        {
+            set
+            {
+                Session["clp"] = value;
+            }
+            get
+            {
+                return (CLIPSWebController)Session["clp"];
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public Diagnosis Recommendation
         {
             set
             {
-                lblHeader.Text = value.Header;
-                lblComment.Text = value.Comment.Replace("~~", "<br>");
+                lblHeader.Text = value.Header.Replace("\n", "<br>");
+                lblComment.Text = value.Comment.Replace("\n", "<br>").Replace("~~", "<br>") ;
 
-                if (value.hasResourceLink() == true)
+                if (value.hasResourceLink())
                 {
                     hypLink.Visible = true;
                     hypLink.NavigateUrl = value.Link;
@@ -41,8 +59,8 @@ namespace AMDES_WEB.CustomControls
                     foreach (String symptoms in SymptomsListOfQuestionGroup)
                     {
                         Label lblSymptons = new Label();
-                        
-                        lblSymptons.Text = "<br> &emsp;&emsp;" + App.bulletForm() + symptoms;
+
+                        lblSymptons.Text = "<br>" + App.bulletForm() + symptoms;
                     }
                 }
             }
@@ -53,7 +71,7 @@ namespace AMDES_WEB.CustomControls
         {
             List<String> SymptomsList = new List<String>();
 
-            QuestionGroup qg = QuestionController.getGroupByID(groupID);
+            QuestionGroup qg = QuestionController.getGroupByID(groupID, CLIPSCtrl.ApplicationContext);
             if (qg.Symptom.Trim() != "")
             {
                 SymptomsList.Add(qg.Symptom.Trim());
@@ -74,9 +92,6 @@ namespace AMDES_WEB.CustomControls
             return SymptomsList;
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

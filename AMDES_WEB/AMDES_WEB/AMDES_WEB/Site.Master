@@ -7,20 +7,13 @@
     <!-- Metadata -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="AMDES, ADD, Adaptive, Expert System, Dementia" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="Aid for Dementia Diagnosis" />
+    <meta name="keywords" content="AMDES, ADD, AD8, MSME, KTPH, YCH, AHS, AHPL, Geriatrics, Expert System, Dementia" />
+    <meta name="author" content="KTPH, NUS, Allan Chong, Ang Ji Kai, Ang Nickolas" />
     <meta name="rating" content="Safe for Kids" />
     <meta name="robots" content="index, follow" />
     <meta name="revisit-after" content="7 days" />
     <link rel="stylesheet" href="css/style3.css" type="text/css" />
-    <!-- Sharing -->
-    <script type="text/javascript">        var switchTo5x = true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">
-        stLight.options({ publisher: "ur-4cd48a5-e94f-78a3-875c-9727e5b09712" });
-    </script>
-    <!-- End Sharing -->
     <!-- Place this tag in your head or just before your close body tag -->
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <!--    <script type="text/javascript">
@@ -31,29 +24,16 @@
     <form id="form1" runat="server">
     <div id="wrapper1">
         <div id="wrapper2">
-           <div id="header">
+            <div id="header">
                 <asp:HyperLink NavigateUrl="~/default.aspx" runat="server" ID="hyperlink30"><h1>
                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- AMDES (Adaptive Medical Diagnosis Expert System) -->
                      Aid for Dementia Diagnosis  <!--<sup>Beta</sup>--></h1></asp:HyperLink>
-               
             </div>
             <div id="container">
                 <p class="description">
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
                 </p>
-                <%--<div id="sidebar">
-                    <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FGEMS.NUS&amp;width=250&amp;height=62&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=false&amp;header=false&amp;appId=166311660119083"
-                        scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 250px;
-                        height: 62px;"></iframe>
-                    <asp:PlaceHolder ID="phSideBar" runat="server">
-                        <p class="news" style="color: Blue; font-weight: bold;">
-                            Recommend on Google:
-                            <g:plusone></g:plusone>
-                        </p>
-                    </asp:PlaceHolder>
-                    <a href="http://apycom.com/" style="color: White; font-size: xx-small">&nbsp;</a>
-                </div>--%>
                 <div id="content">
                     <div id="menu">
                         <ul class="menu">
@@ -76,16 +56,16 @@
                                 </li>
                             </asp:PlaceHolder>--%>
                             <li>
-                                <asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/PatientStart.aspx?appID=ADD"
-                                    class="parent"><span>Start Test</span></asp:HyperLink>
-                                <%--<div>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="#" class="parent"><span>Start Assessment</span></asp:HyperLink>
+                                <div>
                                     <ul>
                                         <li>
-                                            <asp:HyperLink ID="HyperLink21" runat="server" NavigateUrl="~/patienttStart.aspx?appID=ADD"><span>Aid for Dementia Diagnosis (ADD)</span></asp:HyperLink></li>
+                                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/PatientStart.aspx?appID=AD8"><span>AD8 with partial MSME</span></asp:HyperLink></li>
                                         <li>
-                                            <asp:HyperLink ID="HyperLink23" runat="server" NavigateUrl="~/tos.aspx"><span>Terms of Service</span></asp:HyperLink></li>
+                                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/PatientStart.aspx?appID=ADD"><span>Aid for Dementia Diagnosis</span></asp:HyperLink>
+                                        </li>
                                     </ul>
-                                </div>--%>
+                                </div>
                             </li>
                             <%--<li>
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Downloads.aspx" class="last"><span>Downloads</span></asp:HyperLink>
@@ -106,7 +86,9 @@
     </div>
     <div id="footer">
         <div style="float: left;">
-            &copy; 2014 Copyright AMDES. A joint project between National University of Singapore,
+            &copy; 2014 - 
+            <asp:Label ID="lblYear" runat="server" Text="Label"></asp:Label> &nbsp;
+            Copyright AMDES. A joint project between National University of Singapore,
             School of Computing and Khoo Teck Puat Hospital
         </div>
         <div style="float: right;">

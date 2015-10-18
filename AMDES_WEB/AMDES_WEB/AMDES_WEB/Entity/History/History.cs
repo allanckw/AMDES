@@ -14,7 +14,8 @@ namespace AMDES_KBS.Entity
     {
         private PatientStatus status;
 
-        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\History.xml");
+        public static string dataPath = @"\History.xml";
+                    //System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\History.xml");
 
         private string patientID;
 

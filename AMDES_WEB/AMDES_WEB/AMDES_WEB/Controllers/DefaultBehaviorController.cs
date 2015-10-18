@@ -35,6 +35,36 @@ namespace AMDES_KBS.Controllers
             return rulesRIDCounter - 1;
         }
 
+        public static List<Navigation> getAllDefaultBehavior(WebApplicationContext app) //call this on form onload in settings
+        {
+            List<Navigation> rList = new List<Navigation>();
+            string dataPath = app.FolderPath + Rules.defaultRulesPath;
+
+            if (File.Exists(dataPath))
+            {
+                XDocument document = XDocument.Load(dataPath);
+
+                var rules = (from pa in document.Descendants("Navex")
+                             select pa).ToList();
+
+                foreach (var x in rules)
+                {
+                    Navigation rule = readNavigation(x);
+                    rList.Add(rule);
+                    if (rulesRIDCounter <= int.Parse(rule.NavID))
+                    {
+                        rulesRIDCounter = int.Parse(rule.NavID) + 1;
+                    }
+                }
+
+                return rList;
+            }
+            else
+            {
+                return rList; // return empty list
+            }
+        }
+
         public static List<Navigation> getAllDefaultBehavior() //call this on form onload in settings
         {
             List<Navigation> rList = new List<Navigation>();

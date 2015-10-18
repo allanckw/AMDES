@@ -13,7 +13,7 @@ namespace AMDES_KBS.Entity
 
     public class QuestionGroup
     {
-        public static string dataPath;
+        public static string dataPath = @"\Questions.xml";
 
         protected int groupID;
         protected string header;
