@@ -52,11 +52,6 @@ namespace AMDES_KBS
             if (lblscore != null)
                 scoringData = lblscore;
 
-            if (question.isNegation)
-                setAnswer(true);
-            else
-                setAnswer(false);
-
             if (q.hasImage)
                 this.loadImage(QuestionImageController.getImage(q.ImagePath));
         }
@@ -70,24 +65,15 @@ namespace AMDES_KBS
                 btnYes.IsChecked = !this.answer;
             else
                 btnYes.IsChecked = this.answer;
-
+          
             if (scoringData != null)
             {
                 score = int.Parse(scoringData.Content.ToString());
-
-                if (question.isNegation && this.answer) //negation and answer = yes :-Score
-                    score -= question.Score;
-                else if (question.isNegation && !this.answer) //negation and answer = no :+Score
-                    score += question.Score;
-                else if (!question.isNegation && this.answer) //no negation and answer = yes :+Score
-                    score += question.Score;
-                else if (!question.isNegation && !this.answer) //no negation and answer = no :-Score
-                    score -= question.Score;
+                if (answer)
+                    score++;
 
                 scoringData.Content = score;
             }
-
-
         }
 
         //Allan Note: ClipsController Point 1 Integration Done

@@ -132,9 +132,14 @@ namespace AMDES_KBS
 
         private void sortPageAndShowLast()
         {
+            sortPage();
+            ShowLastPage();
+        }
+
+        private void sortPage()
+        {
             currHeight = 0;
             bool singlePage = false;
-
             List<ucQuestionViewOnly> QuestionPerPage = new List<ucQuestionViewOnly>();
             foreach (ucQuestionViewOnly item in QuestionFrame.Children)
             {
@@ -145,7 +150,8 @@ namespace AMDES_KBS
                 if (singlePage)
                 {
                     currHeight = 0;
-                    PageContent.Add(QuestionPerPage);
+                    if (QuestionPerPage.Count > 0)
+                        PageContent.Add(QuestionPerPage);
                     //QuestionPerPage.Add(QuestionPerPage);
                     QuestionPerPage = new List<ucQuestionViewOnly>();
                     if (collapseRest == false)
@@ -159,20 +165,27 @@ namespace AMDES_KBS
                 if (item.getHaveImage())//Image - single page
                 {
                     currHeight = 0;
-                    PageContent.Add(QuestionPerPage);
+
+                    if (QuestionPerPage.Count > 0)
+                        PageContent.Add(QuestionPerPage);
+
                     QuestionPerPage = new List<ucQuestionViewOnly>();
                     if (collapseRest == false)
                     {
                         collapseRest = true;
                     }
                     singlePage = true;
+
                 }
 
                 if (currHeight >= heightLimit)
                 {
                     currHeight = 0;
                     currHeight += Math.Ceiling(item.getHeight());
-                    PageContent.Add(QuestionPerPage);
+
+                    if (QuestionPerPage.Count > 0)
+                        PageContent.Add(QuestionPerPage);
+
                     QuestionPerPage = new List<ucQuestionViewOnly>();
                     if (collapseRest == false)
                     {
@@ -186,6 +199,7 @@ namespace AMDES_KBS
                 }
 
                 QuestionPerPage.Add(item);
+
             }
 
             if (QuestionPerPage.Count > 0)
@@ -194,8 +208,11 @@ namespace AMDES_KBS
             }
 
             TotalPageNo = PageContent.Count;
-            //CurrPageNo = TotalPageNo;
             lblTotalPage.Content = PageContent.Count.ToString("D2");
+        }
+
+        private void ShowLastPage()
+        {
             while (CurrPageNo < TotalPageNo)
             {
                 foreach (ucQuestionViewOnly item in PageContent.ElementAt(CurrPageNo - 1))
@@ -214,7 +231,9 @@ namespace AMDES_KBS
             {
                 btnPrev.Visibility = Visibility.Visible;
             }
+
         }
+
 
         private void setAns(List<QnHistory> hisList)
         {
