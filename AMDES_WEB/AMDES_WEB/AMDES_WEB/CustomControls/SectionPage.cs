@@ -7,15 +7,17 @@ namespace AMDES_WEB.CustomControls
 {
     public class SectionPage
     {
-        private Dictionary<int, List<QuestionsUC>> questions;
+        private Dictionary<int, List<QuestionsUC>> questions; //key = page, value = uc
         private int sectionID;
         private bool multiPage;
         private int lastPage;
 
+        private Dictionary<int, int> pageScore; //key = page, value = score
+
         private int currentPage = 1;
 
-        private int pageScore;
-        public int PageScore
+
+        public Dictionary<int, int> PageScore
         {
             get { return pageScore; }
             set { pageScore = value; }
@@ -42,6 +44,7 @@ namespace AMDES_WEB.CustomControls
         {
             this.sectionID = sectionID;
             this.questions = new Dictionary<int, List<QuestionsUC>>();
+            this.pageScore = new Dictionary<int, int>();
             this.lastPage = 0;
         }
 
@@ -52,6 +55,8 @@ namespace AMDES_WEB.CustomControls
 
             if (lastPage > 1)
                 this.isMultiPage = true;
+
+            setPageScore(this.lastPage, 0);
         }
 
         public int getCurrentPage()
@@ -94,17 +99,20 @@ namespace AMDES_WEB.CustomControls
             get { return this.getCurrentPage() == this.getCurrentPage(); }
         }
 
-        public int getQuestionTotalScoreForPage(int page)
+        public void setPageScore(int page, int score)
         {
-            List<QuestionsUC> qnList;
-            questions.TryGetValue(page, out qnList);
-            int scoreToDeduct = 0;
-            foreach (QuestionsUC qnc in qnList)
-            {
-               scoreToDeduct += qnc.Qn.Score;
-            }
+            if (pageScore.Keys.Contains(page))
+                pageScore.Remove(page);
 
-            return scoreToDeduct;
+            pageScore.Add(page, score);
+        }
+
+        public int getPageScore(int page)
+        {
+            int score;
+            pageScore.TryGetValue(page, out score);
+
+            return score;
         }
     }
 }

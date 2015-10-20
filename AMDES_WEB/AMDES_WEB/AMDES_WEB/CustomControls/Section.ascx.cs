@@ -116,7 +116,7 @@ namespace AMDES_WEB.CustomControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            computeScore();
+            displayScore();
         }
 
         private void loadQuestions()
@@ -129,48 +129,62 @@ namespace AMDES_WEB.CustomControls
             this.phRegister.Controls.Clear();
             int ControlID = 0;
 
-            SectionPage sPage = new SectionPage(section.GroupID);
-            List<QuestionsUC> pageList = new List<QuestionsUC>();
+            SectionPage sPage;
+            bool exist = dicSectionPage.TryGetValue(sectionID, out sPage);
 
-            for (int i = 0; i < section.Questions.Count; i++)
+            if (!exist)
             {
-                Question q = section.Questions[i];
-                QuestionsUC qnCtrl = (QuestionsUC)LoadControl(@"~/CustomControls\QuestionsUC.ascx");
-                qnCtrl.Qn = q;
+                sPage = new SectionPage(section.GroupID);
 
-                qnCtrl.QuestionNo = i + 1;
+                List<QuestionsUC> pageList = new List<QuestionsUC>();
 
-                qnCtrl.ID = "qnCtrl" + q.ID;
-                qnCtrl.isEnabled = this.Enabled;
-                qnCtrl.SectionID = section.GroupID;
-
-                this.phRegister.Controls.Add(qnCtrl);
-                ControlID += 1;
-
-                if (q.hasImage) //if image on this qn, form a new page
+                for (int i = 0; i < section.Questions.Count; i++)
                 {
-                    sPage.addPage(pageList);
-                    pageList = new List<QuestionsUC>();
-                    pageList.Add(qnCtrl);
-                }
-                else if (i > 0 && section.Questions[i - 1].hasImage) //if image on prev qn form a new page
-                {
-                    sPage.addPage(pageList);
-                    pageList = new List<QuestionsUC>();
-                    pageList.Add(qnCtrl);
-                }
-                else
-                    pageList.Add(qnCtrl);
+                    Question q = section.Questions[i];
+                    QuestionsUC qnCtrl = (QuestionsUC)LoadControl(@"~/CustomControls\QuestionsUC.ascx");
+                    qnCtrl.Qn = q;
 
-                if (i == section.Questions.Count - 1)
-                    sPage.addPage(pageList);
+                    qnCtrl.QuestionNo = i + 1;
+
+                    qnCtrl.ID = "qnCtrl" + q.ID;
+                    qnCtrl.isEnabled = this.Enabled;
+                    qnCtrl.SectionID = section.GroupID;
+
+                    this.phRegister.Controls.Add(qnCtrl);
+                    ControlID += 1;
+
+                    if (q.hasImage) //if image on this qn, form a new page
+                    {
+                        sPage.addPage(pageList);
+                        pageList = new List<QuestionsUC>();
+                        pageList.Add(qnCtrl);
+                    }
+                    else if (i > 0 && section.Questions[i - 1].hasImage) //if image on prev qn form a new page
+                    {
+                        sPage.addPage(pageList);
+                        pageList = new List<QuestionsUC>();
+                        pageList.Add(qnCtrl);
+                    }
+                    else
+                        pageList.Add(qnCtrl);
+
+                    if (i == section.Questions.Count - 1)
+                        sPage.addPage(pageList);
+                }
             }
 
-            if (!dicSectionPage.Keys.Contains(section.GroupID))
-                dicSectionPage.Add(section.GroupID, sPage);
+            refreshSectionPage(section.GroupID, sPage);
 
             loadQuestionControls(section.GroupID);
 
+        }
+
+        private void refreshSectionPage(int grpID, SectionPage sPage)
+        {
+            if (dicSectionPage.Keys.Contains(grpID))
+                dicSectionPage.Remove(grpID);
+
+            dicSectionPage.Add(grpID, sPage);
         }
 
         private void loadQuestionControls(int sectionID)
@@ -268,7 +282,7 @@ namespace AMDES_WEB.CustomControls
 
                     }
                 }
-                computeScore();
+                displayScore();
             }
         }
 
@@ -313,7 +327,7 @@ namespace AMDES_WEB.CustomControls
                             }
                         }
                     }
-                    computeScore();
+                    displayScore();
 
                     Session["Result"] = false;
                 }
@@ -326,7 +340,24 @@ namespace AMDES_WEB.CustomControls
             }
         }
 
-        private void computeScore()
+        private int computeScore()
+        {
+            int count = 0;
+
+            foreach (Control c in phRegister.Controls)
+            {
+                if (c is QuestionsUC)
+                {
+                    QuestionsUC quc = (QuestionsUC)c;
+                    bool ans = quc.isYes;
+                    count += quc.Score;
+                }
+            }
+
+            return count;
+        }
+
+        private void displayScore()
         {
             if (section.getQuestionTypeENUM() == QuestionType.COUNT)
             {
@@ -335,17 +366,7 @@ namespace AMDES_WEB.CustomControls
 
                 lblScore.Text = "0";
                 lblMax.Text = " / " + qcg.MaximumScore.ToString();
-
-                int count = 0;
-                foreach (Control c in phRegister.Controls)
-                {
-                    if (c is QuestionsUC)
-                    {
-                        QuestionsUC quc = (QuestionsUC)c;
-                        bool ans = quc.isYes;
-                        count += quc.Score;
-                    }
-                }
+                int count = computeScore();
                 lblScore.Text = count.ToString();
             }
             else
@@ -372,11 +393,13 @@ namespace AMDES_WEB.CustomControls
                 //TODO: Must not assert next section if its multipage until last page is found
                 SectionPage sPage;
                 dicSectionPage.TryGetValue(sectionID, out sPage);
-
+                
+                sPage.setPageScore(sPage.getCurrentPage(), computeScore());
+                
                 if (!sPage.isMultiPage)
                 {   //if it is not a multipage simply assert next section
                     clp.assertNextSection();
-                   
+
                 }
                 else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getLastPage())
                 {   //Assert next section if current page = last page if it is a multipage
@@ -386,10 +409,13 @@ namespace AMDES_WEB.CustomControls
                 {
                     sPage.navigateNextPage();
                 }
-                //clp.saveAssertLog();
-                clp.saveCurrentNavex();
 
+                
+                
+                clp.saveCurrentNavex();
                 CLIPSCtrl = clp;
+
+                refreshSectionPage(section.GroupID, sPage);
                 Response.Redirect("~/Questionnaire.aspx");
             }
             else
@@ -428,6 +454,8 @@ namespace AMDES_WEB.CustomControls
                 SectionPage sPage;
                 dicSectionPage.TryGetValue(sectionID, out sPage);
 
+                sPage.setPageScore(sPage.getCurrentPage(), 0);
+                
                 if (!sPage.isMultiPage)
                 {   //if it is not a multipage simply assert prev section
                     clp.assertPrevSection();
@@ -441,7 +469,7 @@ namespace AMDES_WEB.CustomControls
                 {
                     sPage.navigatePreviousPage();
                 }
-              
+                 
                 clp.saveCurrentNavex();
 
                 CLIPSCtrl = clp;
