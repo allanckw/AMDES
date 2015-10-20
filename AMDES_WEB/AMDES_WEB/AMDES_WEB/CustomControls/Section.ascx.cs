@@ -278,8 +278,14 @@ namespace AMDES_WEB.CustomControls
             {
                 this.SectionID = CLIPSCtrl.getCurrentQnGroupID();
 
-                if (this.SectionID == FirstQuestionController.readFirstQuestion(CLIPSCtrl.ApplicationContext).GrpID)
-                    btnPrevious.Visible = false; //if 1st question, previous button removed
+                SectionPage sPage;
+                dicSectionPage.TryGetValue(sectionID, out sPage);
+
+                if (this.SectionID == FirstQuestionController.readFirstQuestion(CLIPSCtrl.ApplicationContext).GrpID
+                    && sPage.getCurrentPage() == sPage.getFirstPage())
+                {
+                    btnPrevious.Visible = false; //if 1st section, 1st page previous button removed
+                }
 
                 if (CLIPSCtrl.getCurrentQnGroupID() == -1)
                 {
@@ -367,7 +373,23 @@ namespace AMDES_WEB.CustomControls
                 }
                 //20151018 - Multipage enhancement 
                 //TODO: Must not assert next section if its multipage until last page is found
-                clp.assertNextSection();
+                SectionPage sPage;
+                dicSectionPage.TryGetValue(sectionID, out sPage);
+
+                if (!sPage.isMultiPage)
+                {   //if it is not a multipage simply assert next section
+                    clp.assertNextSection();
+                   
+                }
+                else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getLastPage())
+                {   //Assert next section if current page = last page if it is a multipage
+                    clp.assertNextSection();
+                    
+                }
+                else
+                {
+                    sPage.navigateNextPage();
+                }
                 //clp.saveAssertLog();
                 clp.saveCurrentNavex();
 
@@ -411,11 +433,26 @@ namespace AMDES_WEB.CustomControls
                         Thread.Sleep(50);
                     }
                 }
+                SectionPage sPage;
+                dicSectionPage.TryGetValue(sectionID, out sPage);
 
+                if (!sPage.isMultiPage)
                 //20151018 - Multipage enhancement 
                 //TODO: Must not assert prev section if its multipage until 1st page is found
-                clp.assertPrevSection();
-                //clp.saveAssertLog();
+                if (!sPage.isMultiPage)
+                {//if it is not a multipage simply assert prev section
+                    clp.assertPrevSection();
+                }
+                else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getFirstPage())
+                {//Assert prev section if current page = 1st page if it is a multipage
+                    //TODO: Test This Scenario, in both Desktop and web app
+                    clp.assertPrevSection();
+                }
+                else
+                {
+                    sPage.navigatePreviousPage();
+                }
+              
                 clp.saveCurrentNavex();
 
                 CLIPSCtrl = clp;
