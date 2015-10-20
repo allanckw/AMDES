@@ -14,8 +14,6 @@
     <meta name="robots" content="index, follow" />
     <meta name="revisit-after" content="7 days" />
     <link rel="stylesheet" href="css/style3.css" type="text/css" />
-    <!-- Place this tag in your head or just before your close body tag -->
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <!--    <script type="text/javascript">
         jQuery.noConflict();
     </script>-->

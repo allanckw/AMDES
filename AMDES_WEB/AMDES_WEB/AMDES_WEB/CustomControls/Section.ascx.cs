@@ -1,5 +1,4 @@
-﻿﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -7,6 +6,7 @@ using System.Web.UI.WebControls;
 using AMDES_KBS.Entity;
 using AMDES_KBS.Controllers;
 using System.Threading;
+using System;
 
 namespace AMDES_WEB.CustomControls
 {
@@ -17,11 +17,12 @@ namespace AMDES_WEB.CustomControls
         private QuestionGroup section;
         private AMDES_KBS.Entity.History hist;
 
-        //20151018 - Multipage enhancement...
         public bool Enabled
         {
             set
-            { ViewState["isEnabled"] = value; }
+            {
+                ViewState["isEnabled"] = value;
+            }
             get
             {
                 bool enabled;
@@ -65,64 +66,16 @@ namespace AMDES_WEB.CustomControls
             }
         }
 
-        private int MultiPageScore
-        {
-            set { Session["MPScore"] = value; }
-            get
-            {
-                if (Session["MPScore"] == null)
-                    Session["MPScore"] = 0;
-
-                return int.Parse(Session["MPScore"].ToString());
-            }
-        }
-
-        private int DoubleCount
-        {
-            set { Session["DoubleCount"] = value; }
-            get
-            {
-                if (Session["DoubleCount"] == null)
-                    Session["DoubleCount"] = 0;
-
-                return int.Parse(Session["DoubleCount"].ToString());
-            }
-        }
-
-        private bool isPrevious
-        {
-            set { Session["PrevClicked"] = value; }
-            get
-            {
-                if (Session["PrevClicked"] == null)
-                    Session["PrevClicked"] = false;
-
-                return bool.Parse(Session["PrevClicked"].ToString());
-            }
-        }
-
-        private bool hasHitPrevious
-        {
-            set { Session["PrevHit"] = value; }
-            get
-            {
-                if (Session["PrevHit"] == null)
-                    Session["PrevHit"] = false;
-
-                return bool.Parse(Session["PrevHit"].ToString());
-            }
-        }
-
         private int CurrentSectionIndex
         {
             set
             {
                 Session["CurrSection"] = value;
-                hasHitPrevious = false;
-                isPrevious = false;
             }
-
-            get { return int.Parse(Session["CurrSection"].ToString()); }
+            get
+            {
+                return int.Parse(Session["CurrSection"].ToString());
+            }
         }
 
         public int SectionID
@@ -163,8 +116,7 @@ namespace AMDES_WEB.CustomControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-                computeScore();
+            computeScore();
         }
 
         private void loadQuestions()
@@ -174,18 +126,26 @@ namespace AMDES_WEB.CustomControls
             lblHeader.Text = section.Description.Replace("~~", " <br />");
             lblSection.Text = section.Header;
 
-            SectionPage sPage = new SectionPage(section.GroupID);
+            this.phRegister.Controls.Clear();
+            int ControlID = 0;
 
+            SectionPage sPage = new SectionPage(section.GroupID);
             List<QuestionsUC> pageList = new List<QuestionsUC>();
+
             for (int i = 0; i < section.Questions.Count; i++)
             {
                 Question q = section.Questions[i];
                 QuestionsUC qnCtrl = (QuestionsUC)LoadControl(@"~/CustomControls\QuestionsUC.ascx");
                 qnCtrl.Qn = q;
+
                 qnCtrl.QuestionNo = i + 1;
+
                 qnCtrl.ID = "qnCtrl" + q.ID;
                 qnCtrl.isEnabled = this.Enabled;
                 qnCtrl.SectionID = section.GroupID;
+
+                this.phRegister.Controls.Add(qnCtrl);
+                ControlID += 1;
 
                 if (q.hasImage) //if image on this qn, form a new page
                 {
@@ -210,6 +170,7 @@ namespace AMDES_WEB.CustomControls
                 dicSectionPage.Add(section.GroupID, sPage);
 
             loadQuestionControls(section.GroupID);
+
         }
 
         private void loadQuestionControls(int sectionID)
@@ -268,12 +229,16 @@ namespace AMDES_WEB.CustomControls
 
         private void loadReadOnlyControls()
         {
+
             hist = (AMDES_KBS.Entity.History)Session["History"];
+
+            if (this.SectionID == 0)
+                this.SectionID = this.hist.getHistory().Keys.ElementAt(CurrentSectionIndex);
 
             SectionPage sPage;
             dicSectionPage.TryGetValue(sectionID, out sPage);
 
-            if (CurrentSectionIndex == 0 && sPage.getCurrentPage() == sPage.getFirstPage())
+            if (CurrentSectionIndex == 0 && sPage.isFirstPage)
                 btnPrevious.Visible = false;
             else
                 btnPrevious.Visible = true;
@@ -284,9 +249,6 @@ namespace AMDES_WEB.CustomControls
 
         private void loadHistory()
         {
-            if (this.SectionID == 0)
-                this.SectionID = this.hist.getHistory().Keys.ElementAt(CurrentSectionIndex);
-
             if (CLIPSCtrl.CurrentPatient.getLatestHistory() != null)
             {
                 List<QnHistory> qnHistory = CLIPSCtrl.CurrentPatient.getLatestHistory().retrieveHistoryList(this.SectionID);
@@ -316,14 +278,8 @@ namespace AMDES_WEB.CustomControls
             {
                 this.SectionID = CLIPSCtrl.getCurrentQnGroupID();
 
-                SectionPage sPage;
-                dicSectionPage.TryGetValue(sectionID, out sPage);
-
-                if (this.SectionID == FirstQuestionController.readFirstQuestion(CLIPSCtrl.ApplicationContext).GrpID
-                    && sPage.getCurrentPage() == sPage.getFirstPage())
-                {//if 1st section, 1st page previous button removed
-                    btnPrevious.Visible = false;
-                }
+                if (this.SectionID == FirstQuestionController.readFirstQuestion(CLIPSCtrl.ApplicationContext).GrpID)
+                    btnPrevious.Visible = false; //if 1st question, previous button removed
 
                 if (CLIPSCtrl.getCurrentQnGroupID() == -1)
                 {
@@ -345,24 +301,22 @@ namespace AMDES_WEB.CustomControls
                                 if (c is QuestionsUC)
                                 {
                                     QuestionsUC quc = (QuestionsUC)c;
-
-                                    if (quc.Qn.isNegation)
-                                        quc.isYes = !h.Answer;
-                                    else
-                                        quc.isYes = h.Answer;
+                                    quc.isYes = h.Answer;
                                 }
 
                             }
                         }
                     }
+                    computeScore();
+
                     Session["Result"] = false;
                 }
-
-                computeScore();
             }
             catch (Exception ex)
             {
                 Alert.Show(this.SectionID.ToString() + Environment.NewLine + ex.Message);
+
+                //Response.Redirect("~/PatientStart.aspx");
             }
         }
 
@@ -376,48 +330,16 @@ namespace AMDES_WEB.CustomControls
                 lblScore.Text = "0";
                 lblMax.Text = " / " + qcg.MaximumScore.ToString();
 
-                int count = CLIPSCtrl.getCurrentQnGroupID();//CLIPSCtrl.getCurrentQnGroupScore();
-                //SectionPage sPage;
-                //dicSectionPage.TryGetValue(section.GroupID, out sPage);
-
-                //List<QuestionsUC> pageList;
-                //sPage.Questions.TryGetValue(sPage.getCurrentPage(), out pageList);
-                //int count = 0;
-
-                //if (sPage.isMultiPage && isPrevious)
-                //{
-                //    count = MultiPageScore;
-                //    isPrevious = false;
-                //}
-                //else if (sPage.isMultiPage && !isPrevious)
-                //{
-                //    //Double count here if prev clicked
-                //    count = MultiPageScore;
-                //    foreach (Control c in phRegister.Controls)
-                //    {
-                //        if (c is QuestionsUC)
-                //        {
-                //            QuestionsUC quc = (QuestionsUC)c;
-                //            bool ans = quc.isYes;
-                //            count += quc.Score;
-                //        }
-                //    }
-
-                //}
-                //else if (!sPage.isMultiPage) //Single Page, isPrev is a dont care just compute
-                //{
-                //    foreach (Control c in phRegister.Controls)
-                //    {
-                //        if (c is QuestionsUC)
-                //        {
-                //            QuestionsUC quc = (QuestionsUC)c;
-                //            bool ans = quc.isYes;
-                //            count += quc.Score;
-                //        }
-                //    }
-                //    isPrevious = false;
-                //}
-
+                int count = 0;
+                foreach (Control c in phRegister.Controls)
+                {
+                    if (c is QuestionsUC)
+                    {
+                        QuestionsUC quc = (QuestionsUC)c;
+                        bool ans = quc.isYes;
+                        count += quc.Score;
+                    }
+                }
                 lblScore.Text = count.ToString();
             }
             else
@@ -439,40 +361,13 @@ namespace AMDES_WEB.CustomControls
                         QuestionsUC quc = (QuestionsUC)c;
                         //if (quc.isYes)
                         //     clp.assertQuestion(section.GroupID, quc.QID, true);
-                        //
+                        clp.assertQuestion(section.GroupID, quc.QID, quc.isYes, quc.Qn.isNegation);
+                        Thread.Sleep(50);
                     }
                 }
-
                 //20151018 - Multipage enhancement 
-                SectionPage sPage;
-                dicSectionPage.TryGetValue(sectionID, out sPage);
-
-                if (!sPage.isMultiPage)
-                {//if it is not a multipage simply assert next section
-                    clp.assertNextSection();
-                    isPrevious = false;
-                }
-                else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getLastPage())
-                {//Assert next section if current page = last page if it is a multipage
-                    clp.assertNextSection();
-                    isPrevious = false;
-                }
-                else
-                {
-                    foreach (Control c in phRegister.Controls)
-                    {
-                        if (c is QuestionsUC)
-                        {
-                            QuestionsUC quc = (QuestionsUC)c;
-                            bool ans = quc.isYes;
-                            DoubleCount += quc.Score;
-                        }
-                    }
-                    sPage.navigateNextPage();
-                    MultiPageScore = int.Parse(lblScore.Text);
-                    isPrevious = false;
-                }
-
+                //TODO: Must not assert next section if its multipage until last page is found
+                clp.assertNextSection();
                 //clp.saveAssertLog();
                 clp.saveCurrentNavex();
 
@@ -511,43 +406,15 @@ namespace AMDES_WEB.CustomControls
                         QuestionsUC quc = (QuestionsUC)c;
 
                         //clp.assertQuestion(section.GroupID, quc.QID, false);
+
                         clp.assertQuestion(section.GroupID, quc.QID, false, quc.Qn.isNegation);
+                        Thread.Sleep(50);
                     }
                 }
 
                 //20151018 - Multipage enhancement 
-                SectionPage sPage;
-                dicSectionPage.TryGetValue(sectionID, out sPage);
-
-                if (!sPage.isMultiPage)
-                {//if it is not a multipage simply assert prev section
-                    clp.assertPrevSection();
-                    isPrevious = false;
-                }
-                else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getFirstPage())
-                {//Assert prev section if current page = 1st page if it is a multipage
-                    //TODO: Test This Scenario, in both Desktop and web app
-                    clp.assertPrevSection();
-                    isPrevious = false;
-                }
-                else
-                {
-                    int toDeduct = 0;
-                    foreach (Control c in phRegister.Controls)
-                    {
-                        if (c is QuestionsUC)
-                        {
-                            QuestionsUC quc = (QuestionsUC)c;
-                            bool ans = quc.isYes;
-                            toDeduct += quc.Score;
-                        }
-                    }
-                    isPrevious = true;
-                    hasHitPrevious = true;
-                    MultiPageScore = int.Parse(lblScore.Text) - toDeduct;
-                    sPage.navigatePreviousPage();
-                }
-
+                //TODO: Must not assert prev section if its multipage until 1st page is found
+                clp.assertPrevSection();
                 //clp.saveAssertLog();
                 clp.saveCurrentNavex();
 
@@ -568,3 +435,4 @@ namespace AMDES_WEB.CustomControls
 
     }
 }
+
