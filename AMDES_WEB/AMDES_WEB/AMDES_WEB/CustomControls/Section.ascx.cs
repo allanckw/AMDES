@@ -365,10 +365,7 @@ namespace AMDES_WEB.CustomControls
                     if (c is QuestionsUC)
                     {
                         QuestionsUC quc = (QuestionsUC)c;
-                        //if (quc.isYes)
-                        //     clp.assertQuestion(section.GroupID, quc.QID, true);
                         clp.assertQuestion(section.GroupID, quc.QID, quc.isYes, quc.Qn.isNegation);
-                        Thread.Sleep(50);
                     }
                 }
                 //20151018 - Multipage enhancement 
@@ -384,7 +381,6 @@ namespace AMDES_WEB.CustomControls
                 else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getLastPage())
                 {   //Assert next section if current page = last page if it is a multipage
                     clp.assertNextSection();
-                    
                 }
                 else
                 {
@@ -426,25 +422,18 @@ namespace AMDES_WEB.CustomControls
                     if (c is QuestionsUC) //reset on previous
                     {
                         QuestionsUC quc = (QuestionsUC)c;
-
-                        //clp.assertQuestion(section.GroupID, quc.QID, false);
-
                         clp.assertQuestion(section.GroupID, quc.QID, false, quc.Qn.isNegation);
-                        Thread.Sleep(50);
                     }
                 }
                 SectionPage sPage;
                 dicSectionPage.TryGetValue(sectionID, out sPage);
 
                 if (!sPage.isMultiPage)
-                //20151018 - Multipage enhancement 
-                //TODO: Must not assert prev section if its multipage until 1st page is found
-                if (!sPage.isMultiPage)
-                {//if it is not a multipage simply assert prev section
+                {   //if it is not a multipage simply assert prev section
                     clp.assertPrevSection();
                 }
                 else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getFirstPage())
-                {//Assert prev section if current page = 1st page if it is a multipage
+                {   //Assert prev section if current page = 1st page if it is a multipage
                     //TODO: Test This Scenario, in both Desktop and web app
                     clp.assertPrevSection();
                 }
