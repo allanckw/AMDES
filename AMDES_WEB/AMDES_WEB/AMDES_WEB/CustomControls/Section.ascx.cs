@@ -21,7 +21,16 @@ namespace AMDES_WEB.CustomControls
         {
             set
             {
-                ViewState["isEnabled"] = value;
+                if (Session["Result"] != null)
+                {
+                    bool hasResults = bool.Parse(Session["Result"].ToString());
+                    if (hasResults)
+                        ViewState["isEnabled"] = false;
+                    else
+                        ViewState["isEnabled"] = true;
+                }
+                else
+                    ViewState["isEnabled"] = true;
             }
             get
             {
@@ -118,7 +127,7 @@ namespace AMDES_WEB.CustomControls
         protected void Page_Load(object sender, EventArgs e)
         {
             displayScore();
-            
+
         }
 
         private void loadQuestions()
@@ -197,7 +206,7 @@ namespace AMDES_WEB.CustomControls
             dicSectionPage.TryGetValue(sectionID, out sPage);
 
             List<QuestionsUC> pageList;
-            sPage.Questions.TryGetValue(sPage.getCurrentPage(), out pageList);
+            sPage.Questions.TryGetValue(sPage.CurrentPage, out pageList);
 
             foreach (QuestionsUC qnCtrl in pageList)
             {
@@ -254,11 +263,15 @@ namespace AMDES_WEB.CustomControls
             SectionPage sPage;
             dicSectionPage.TryGetValue(sectionID, out sPage);
 
+            //bug here
             if (CurrentSectionIndex == 0 && sPage.isFirstPage)
+            {
                 btnPrevious.Visible = false;
+            }
             else
+            {
                 btnPrevious.Visible = true;
-
+            }
             loadHistory();
 
         }
@@ -298,7 +311,7 @@ namespace AMDES_WEB.CustomControls
                 dicSectionPage.TryGetValue(sectionID, out sPage);
 
                 if (this.SectionID == FirstQuestionController.readFirstQuestion(CLIPSCtrl.ApplicationContext).GrpID
-                    && sPage.getCurrentPage() == sPage.getFirstPage())
+                    && sPage.isFirstPage)
                 {
                     btnPrevious.Visible = false; //if 1st section, 1st page previous button removed
                 }
@@ -362,7 +375,7 @@ namespace AMDES_WEB.CustomControls
                 }
             }
 
-            sPage.setPageScore(sPage.getCurrentPage(), 0);
+            sPage.setPageScore(sPage.CurrentPage, 0);
             return count;
         }
 
@@ -384,7 +397,7 @@ namespace AMDES_WEB.CustomControls
                 }
             }
 
-          
+
             return count;
         }
 
@@ -408,6 +421,9 @@ namespace AMDES_WEB.CustomControls
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
+            SectionPage sPage;
+            dicSectionPage.TryGetValue(sectionID, out sPage);
+
             if (this.Enabled)
             {
                 CLIPSWebController clp = CLIPSCtrl;
@@ -420,19 +436,15 @@ namespace AMDES_WEB.CustomControls
                         clp.assertQuestion(section.GroupID, quc.QID, quc.isYes, quc.Qn.isNegation);
                     }
                 }
-                //20151018 - Multipage enhancement 
-                //TODO: Must not assert next section if its multipage until last page is found
-                SectionPage sPage;
-                dicSectionPage.TryGetValue(sectionID, out sPage);
 
-                sPage.setPageScore(sPage.getCurrentPage(), computePageScore());
+                sPage.setPageScore(sPage.CurrentPage, computePageScore());
 
                 if (!sPage.isMultiPage)
                 {   //if it is not a multipage simply assert next section
                     clp.assertNextSection();
 
                 }
-                else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getLastPage())
+                else if (sPage.isMultiPage && sPage.CurrentPage == sPage.LastPage)
                 {   //Assert next section if current page = last page if it is a multipage
                     clp.assertNextSection();
                 }
@@ -440,8 +452,6 @@ namespace AMDES_WEB.CustomControls
                 {
                     sPage.navigateNextPage();
                 }
-
-
 
                 clp.saveCurrentNavex();
                 CLIPSCtrl = clp;
@@ -461,15 +471,24 @@ namespace AMDES_WEB.CustomControls
                 else
                 {
                     CurrentSectionIndex = 0;
-                    CLIPSCtrl.getResultingDiagnosis();
-                    Session["Result"] = true;
-                    Response.Redirect("~/Results.aspx");
+
+                    if (sPage.isMultiPage && sPage.CurrentPage != sPage.LastPage)
+                        sPage.navigate(1);
+                    else
+                    {
+                        CLIPSCtrl.getResultingDiagnosis();
+                        Session["Result"] = true;
+                        Response.Redirect("~/Results.aspx");
+                    }
                 }
             }
         }
 
         protected void btnPrevious_Click(object sender, EventArgs e)
         {
+            SectionPage sPage;
+            dicSectionPage.TryGetValue(sectionID, out sPage);
+
             if (this.Enabled)
             {
                 CLIPSWebController clp = CLIPSCtrl;
@@ -482,16 +501,15 @@ namespace AMDES_WEB.CustomControls
                         clp.assertQuestion(section.GroupID, quc.QID, false, quc.Qn.isNegation);
                     }
                 }
-                SectionPage sPage;
-                dicSectionPage.TryGetValue(sectionID, out sPage);
 
-                sPage.setPageScore(sPage.getCurrentPage(), 0);
+
+                sPage.setPageScore(sPage.CurrentPage, 0);
 
                 if (!sPage.isMultiPage)
                 {   //if it is not a multipage simply assert prev section
                     clp.assertPrevSection();
                 }
-                else if (sPage.isMultiPage && sPage.getCurrentPage() == sPage.getFirstPage())
+                else if (sPage.isMultiPage && sPage.isFirstPage)
                 {   //Assert prev section if current page = 1st page if it is a multipage
                     //TODO: Test This Scenario, in both Desktop and web app
                     clp.assertPrevSection();
@@ -504,7 +522,7 @@ namespace AMDES_WEB.CustomControls
                 clp.saveCurrentNavex();
 
                 CLIPSCtrl = clp;
-               
+
                 Response.Redirect("~/Questionnaire.aspx");
             }
             else
@@ -512,9 +530,12 @@ namespace AMDES_WEB.CustomControls
                 if (CurrentSectionIndex > 0)
                 {
                     CurrentSectionIndex -= 1;
-                    this.SectionID = this.hist.getHistory().Keys.ElementAt(CurrentSectionIndex);
-                    loadReadOnlyControls();
                 }
+                if (sPage.isMultiPage)
+                    sPage.navigatePreviousPage();
+
+                this.SectionID = this.hist.getHistory().Keys.ElementAt(CurrentSectionIndex);
+                loadReadOnlyControls();
             }
         }
 

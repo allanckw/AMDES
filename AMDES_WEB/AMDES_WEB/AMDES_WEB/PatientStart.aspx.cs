@@ -21,6 +21,7 @@ namespace AMDES_WEB
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["dicSectionPage"] = null;
+            Session["Result"] = null;
             CLIPSWebController clp = new CLIPSWebController();
             clp.ApplicationContext = WebApplicationContextController.setApplicationContext(Request.QueryString["appID"]);
             Session["clp"] = clp;

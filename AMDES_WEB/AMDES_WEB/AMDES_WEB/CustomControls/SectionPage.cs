@@ -59,33 +59,42 @@ namespace AMDES_WEB.CustomControls
             setPageScore(this.lastPage, 0);
         }
 
-        public int getCurrentPage()
+        public int CurrentPage
         {
-            return this.currentPage;
+            get { return this.currentPage; }
         }
 
-        public int getFirstPage()
+        public int FirstPage
         {
-            return 1;
+            get { return 1; }
         }
 
-        public int getNextPage()
+        public int NextPage
         {
-            if (this.currentPage < this.lastPage)
-                return currentPage + 1;
-            else
-                return this.lastPage;
+            get
+            {
+                if (this.currentPage < this.lastPage)
+                    return currentPage + 1;
+                else
+                    return this.lastPage;
+            }
         }
 
-        public int getLastPage()
+        public int LastPage
         {
-            return this.lastPage;
+            get { return this.lastPage; }
         }
 
         public void navigateNextPage()
         {
             if (this.currentPage < this.lastPage)
                 this.currentPage++;
+        }
+
+        public void navigate(int page)
+        {
+            if (page < this.lastPage && this.currentPage > 0)
+                this.currentPage = page;
         }
 
         public void navigatePreviousPage()
@@ -96,7 +105,7 @@ namespace AMDES_WEB.CustomControls
 
         public bool isFirstPage
         {
-            get { return this.getCurrentPage() == this.getCurrentPage(); }
+            get { return this.CurrentPage == this.FirstPage; }
         }
 
         public void setPageScore(int page, int score)
