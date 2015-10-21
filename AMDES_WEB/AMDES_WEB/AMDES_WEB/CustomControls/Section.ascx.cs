@@ -114,9 +114,11 @@ namespace AMDES_WEB.CustomControls
                 loadReadOnlyControls();
         }
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             displayScore();
+            
         }
 
         private void loadQuestions()
@@ -321,7 +323,10 @@ namespace AMDES_WEB.CustomControls
                                 if (c is QuestionsUC)
                                 {
                                     QuestionsUC quc = (QuestionsUC)c;
-                                    quc.isYes = h.Answer;
+                                    if (quc.Qn.isNegation)
+                                        quc.isYes = !h.Answer;
+                                    else
+                                        quc.isYes = h.Answer;
                                 }
 
                             }
@@ -342,6 +347,31 @@ namespace AMDES_WEB.CustomControls
 
         private int computeScore()
         {
+            SectionPage sPage;
+            dicSectionPage.TryGetValue(sectionID, out sPage);
+
+            int count = sPage.getSectionScore();
+
+            foreach (Control c in phRegister.Controls)
+            {
+                if (c is QuestionsUC)
+                {
+                    QuestionsUC quc = (QuestionsUC)c;
+                    bool ans = quc.isYes;
+                    count += quc.Score;
+                }
+            }
+
+            sPage.setPageScore(sPage.getCurrentPage(), 0);
+            return count;
+        }
+
+
+        private int computePageScore()
+        {
+            SectionPage sPage;
+            dicSectionPage.TryGetValue(sectionID, out sPage);
+
             int count = 0;
 
             foreach (Control c in phRegister.Controls)
@@ -354,6 +384,7 @@ namespace AMDES_WEB.CustomControls
                 }
             }
 
+          
             return count;
         }
 
@@ -393,9 +424,9 @@ namespace AMDES_WEB.CustomControls
                 //TODO: Must not assert next section if its multipage until last page is found
                 SectionPage sPage;
                 dicSectionPage.TryGetValue(sectionID, out sPage);
-                
-                sPage.setPageScore(sPage.getCurrentPage(), computeScore());
-                
+
+                sPage.setPageScore(sPage.getCurrentPage(), computePageScore());
+
                 if (!sPage.isMultiPage)
                 {   //if it is not a multipage simply assert next section
                     clp.assertNextSection();
@@ -410,8 +441,8 @@ namespace AMDES_WEB.CustomControls
                     sPage.navigateNextPage();
                 }
 
-                
-                
+
+
                 clp.saveCurrentNavex();
                 CLIPSCtrl = clp;
 
@@ -455,7 +486,7 @@ namespace AMDES_WEB.CustomControls
                 dicSectionPage.TryGetValue(sectionID, out sPage);
 
                 sPage.setPageScore(sPage.getCurrentPage(), 0);
-                
+
                 if (!sPage.isMultiPage)
                 {   //if it is not a multipage simply assert prev section
                     clp.assertPrevSection();
@@ -469,11 +500,11 @@ namespace AMDES_WEB.CustomControls
                 {
                     sPage.navigatePreviousPage();
                 }
-                 
+
                 clp.saveCurrentNavex();
 
                 CLIPSCtrl = clp;
-
+               
                 Response.Redirect("~/Questionnaire.aspx");
             }
             else

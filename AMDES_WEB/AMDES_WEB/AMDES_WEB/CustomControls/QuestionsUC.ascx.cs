@@ -56,25 +56,14 @@ namespace AMDES_WEB.CustomControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private bool isPrevious
-        {
-            set { Session["PrevClicked"] = value; }
-            get
-            {
-                if (Session["PrevClicked"] == null)
-                    Session["PrevClicked"] = false;
-
-                return bool.Parse(Session["PrevClicked"].ToString());
-            }
+          
         }
 
         private void setAnswer(bool answer)
         {
             this.answer = answer;
 
+            
             if (question.isNegation && this.answer) //negation and answer = yes : 0
                 score = 0;
             else if (question.isNegation && !this.answer) //negation and answer = no :+
@@ -151,7 +140,7 @@ namespace AMDES_WEB.CustomControls
 
         protected void chkAns_CheckedChanged(object sender, EventArgs e)
         {
-            CLIPSCtrl.assertQuestion(sectionID, this.QID, chkAns.Checked, Qn.isNegation);
+           
         }
 
         

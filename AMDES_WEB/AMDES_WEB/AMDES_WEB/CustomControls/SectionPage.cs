@@ -114,5 +114,14 @@ namespace AMDES_WEB.CustomControls
 
             return score;
         }
+
+        public int getSectionScore()
+        {
+            int total = 0;
+            for (int i = 1; i <= lastPage; i++)
+                total += getPageScore(i);
+
+            return total;
+        }
     }
 }
