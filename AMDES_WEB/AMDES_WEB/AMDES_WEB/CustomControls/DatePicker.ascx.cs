@@ -38,7 +38,7 @@ namespace AMDES_WEB.CustomControls
             {
                 CultureInfo ci = CultureInfo.CreateSpecificCulture("en-US");
                 myCalendar.SelectedDate = value;
-                txtDate.Text = myCalendar.SelectedDate.ToString(@"dd/MM/yyyy", ci);
+                txtDate.Text = value.ToString(@"dd/MM/yyyy", ci);
                 dTable.Visible = false;
             }
         }
@@ -113,10 +113,12 @@ namespace AMDES_WEB.CustomControls
                 CultureInfo ci = CultureInfo.CreateSpecificCulture("en-US");
                 Populate_YearList();
                 Populate_MonthList();
-                myCalendar.SelectedDate = System.DateTime.Now.AddMonths(this.monthFromCurrent);
-                txtDate.Text = myCalendar.SelectedDate.ToString(@"dd/MM/yyyy", ci);
-                dTable.Visible = false;
-
+                if (txtDate.Text.Length == 0)
+                {
+                    //myCalendar.SelectedDate = System.DateTime.Now.AddMonths(this.monthFromCurrent);
+                    //txtDate.Text = myCalendar.SelectedDate.ToString(@"dd/MM/yyyy", ci);
+                    dTable.Visible = false;
+                }
             }
         }
 

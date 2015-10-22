@@ -31,7 +31,7 @@ namespace AMDES_WEB.CustomControls
                 this.question = value;
                 this.QuestionText = value.Name;
                 this.qid = value.ID;
-                
+
                 this.score = 0;
 
                 if (value.isNegation)
@@ -56,14 +56,28 @@ namespace AMDES_WEB.CustomControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            loadImage();
+        }
+
+        private void loadImage()
+        {
+            if (Qn.ImagePath.Length > 0)
+            {
+                var uri = HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "");
+                imgQn.ImageUrl = uri + "/data/" + CLIPSCtrl.ApplicationContext.FolderName + "/img/" + Qn.ImagePath;
+                imgQn.Visible = true;
+            }
+            else
+            {
+                imgQn.Visible = false;
+            }
         }
 
         private void setAnswer(bool answer)
         {
             this.answer = answer;
 
-            
+
             if (question.isNegation && this.answer) //negation and answer = yes : 0
                 score = 0;
             else if (question.isNegation && !this.answer) //negation and answer = no :+
@@ -140,9 +154,9 @@ namespace AMDES_WEB.CustomControls
 
         protected void chkAns_CheckedChanged(object sender, EventArgs e)
         {
-           
+
         }
 
-        
+
     }
 }

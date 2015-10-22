@@ -36,20 +36,23 @@ namespace AMDES_WEB.CustomControls
                 lblHeader.Text = value.Header.Replace("\n", "<br>");
                 lblComment.Text = value.Comment.Replace("\n", "<br>").Replace("~~", "<br>") ;
 
+                var uri = HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "");
+
                 if (value.hasResourceLink())
                 {
                     hypLink.Visible = true;
-                    hypLink.NavigateUrl = value.Link;
+                    hypLink.NavigateUrl = value.Link.Replace("http://~", uri);
+                    
                     hypLink.Text = value.LinkDesc;
                 }
 
-                addSymptons(value);
+                addSymptoms(value);
 
             }
         }
 
 
-        private void addSymptons(Diagnosis diag)
+        private void addSymptoms(Diagnosis diag)
         {
             if (diag.RetrieveSym)
             {

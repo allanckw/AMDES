@@ -80,7 +80,6 @@
     <Compile Include="Controllers\PatAttributeController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
-    <Compile Include="Controllers\QuestionImageController.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="CustomControls\DatePicker.ascx.cs">

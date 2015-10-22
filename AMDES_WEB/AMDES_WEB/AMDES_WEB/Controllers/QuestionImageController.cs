@@ -9,7 +9,7 @@ namespace AMDES_KBS.Controllers
 {
     public class QuestionImageController
     {
-        private static string imagePath = AppDomain.CurrentDomain.BaseDirectory + @"img";
+        private static string imagePath = app.FolderPath + @"img";
 
         public static string getImage(string saveFilePath)
         {
