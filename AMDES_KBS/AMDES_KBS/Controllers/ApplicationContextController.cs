@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using AMDES_KBS.Entity;
-
-
-
 namespace AMDES_KBS.Controllers
 {
     public class ApplicationContextController
