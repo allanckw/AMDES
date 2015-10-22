@@ -15,6 +15,14 @@ namespace AMDES_KBS.Entity
         private bool isSelected;
         private bool isConfiguredCorrectly;
 
+        private string noSymString;
+
+        public string NoSymptomString
+        {
+            get { return noSymString; }
+            set { noSymString = value; }
+        }
+
         public bool IsConfiguredCorrectly
         {
             get { return isConfiguredCorrectly; }

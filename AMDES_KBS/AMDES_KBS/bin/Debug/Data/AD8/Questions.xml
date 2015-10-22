@@ -5,7 +5,7 @@
     <Header>AD8 with MSME</Header>
     <Description>Before you start, ask the patient to remember the following 3 objects: Key, Lemon, Balloon~~Ask the patient the following questions:</Description>
     <QnType>2</QnType>
-    <Symptom></Symptom>
+    <Symptom>Fail AD8 with partial MSME</Symptom>
     <Negation>false</Negation>
     <Questions>
       <Question QID="1">
@@ -65,7 +65,7 @@
         <Score>1</Score>
       </Question>
       <Question QID="9">
-        <Name>Can the patient copy the intersecting pentagon as shown below</Name>
+        <Name>Can the patient copy the intersecting pentagon as shown below?</Name>
         <Symptom></Symptom>
         <Negation>false</Negation>
         <ImageURL>interPentagon.png</ImageURL>

@@ -33,6 +33,9 @@ namespace AMDES_KBS.Controllers
 
                         if (f.ToUpper().Contains("WOT.CONF"))
                             app.Description = readAppInfo(f);
+
+                        if (f.ToUpper().Contains("NOSYMPTOM.CONF"))
+                            app.NoSymptomString = readAppInfo(f);
                     }
                     app.IsConfiguredCorrectly = true;
                 }

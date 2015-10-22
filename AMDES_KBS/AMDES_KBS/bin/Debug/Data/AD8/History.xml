@@ -17,23 +17,23 @@
       </Question>
       <Question GrpID="1">
         <QID>4</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="1">
         <QID>5</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="1">
         <QID>6</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="1">
         <QID>7</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="1">
         <QID>8</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
       <Question GrpID="1">
         <QID>9</QID>
@@ -41,7 +41,7 @@
       </Question>
       <Question GrpID="1">
         <QID>10</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="1">
         <QID>11</QID>
@@ -54,41 +54,17 @@
     </Group>
     <Symptoms>
       <Symptom>
-        <SymptomName> Consistent problems with thinking and/or memory </SymptomName>
-        <DiagnosisDate>635808830042299705</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Difficulty with remembering appointments </SymptomName>
-        <DiagnosisDate>635808830042309706</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Difficulties when handling complicated financial affairs </SymptomName>
-        <DiagnosisDate>635808830042319707</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Forgetful </SymptomName>
-        <DiagnosisDate>635808830042319707</DiagnosisDate>
-        <DiagnosedByID>1</DiagnosedByID>
-      </Symptom>
-      <Symptom>
-        <SymptomName> Trouble learning using tool, appliance or gadget </SymptomName>
-        <DiagnosisDate>635808830042319707</DiagnosisDate>
+        <SymptomName> Fail AD8 with partial MSME </SymptomName>
+        <DiagnosisDate>635811467543677684</DiagnosisDate>
         <DiagnosedByID>1</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
       <Diagnosis diagID="2">
         <Comment>Patient failed the AD8 and MSME partial test, There is significant cognitive decline and there is probable cognitive impairment, please proceed to use Aid for Dementia Diagnosis for a detailed assessment
-   ✓ Consistent problems with thinking and/or memory
-   ✓ Difficulty with remembering appointments
-   ✓ Difficulties when handling complicated financial affairs
-   ✓ Forgetful
-   ✓ Trouble learning using tool, appliance or gadget</Comment>
+   ✓ Fail AD8 with partial MSME</Comment>
         <Header>Sig. Cognitive Decline, Probable Cognitive Impairment
-AD8 with MSME - Patient's Score: 4, Normal Score: 9 or more</Header>
+AD8 with MSME - Patient's Score: 8, Normal Score: 9 or more</Header>
         <Link>http://add.ktph.com.sg</Link>
         <LinkDesc>Aid for Dementia Diagnosis</LinkDesc>
         <RetrieveSymptom>true</RetrieveSymptom>
@@ -100,6 +76,6 @@ AD8 with MSME - Patient's Score: 4, Normal Score: 9 or more</Header>
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635808096000000000</CompletedDate>
+    <CompletedDate>635810688000000000</CompletedDate>
   </History>
 </Histories>

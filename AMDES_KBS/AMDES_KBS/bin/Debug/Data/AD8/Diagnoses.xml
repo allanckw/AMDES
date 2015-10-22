@@ -13,16 +13,6 @@
     <Attributes />
     <isRes>false</isRes>
   </Diagnosis>
-  <Diagnosis diagID="34">
-    <Comment>Patient have passed the assessment, Patient is unlikely to have any form of cognitive impairment</Comment>
-    <Header>Improbable Cognitive Impairment</Header>
-    <Link></Link>
-    <LinkDesc></LinkDesc>
-    <RetrieveSymptom>false</RetrieveSymptom>
-    <RetrieveFrom />
-    <Attributes />
-    <isRes>false</isRes>
-  </Diagnosis>
   <Diagnosis diagID="1">
     <Comment>The development of an effective brief dementia test will help in the early identification of dementia. ~~Aim: This study investigates the diagnostic utility of a brief cognitive test for dementia which combines a short subjective informant-rated questionnaire (AD8) with an objective cognitive measure (Mini-Mental State Examination, MMSE) or its subcomponents.</Comment>
     <Header>A Brief Dementia Test with Subjective and Objective Measures</Header>
@@ -32,5 +22,15 @@
     <RetrieveFrom />
     <Attributes />
     <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="34">
+    <Comment>Patient have passed the assessment, he/she is unlikely to have any form of cognitive impairment</Comment>
+    <Header>Improbable Cognitive Impairment</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <Attributes />
+    <isRes>false</isRes>
   </Diagnosis>
 </Diagnoses>
