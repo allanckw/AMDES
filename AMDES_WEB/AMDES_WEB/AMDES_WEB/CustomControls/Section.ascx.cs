@@ -164,7 +164,12 @@ namespace AMDES_WEB.CustomControls
                     this.phRegister.Controls.Add(qnCtrl);
                     ControlID += 1;
 
-                    if (q.hasImage) //if image on this qn, form a new page
+                    if (i == 0 && q.hasImage)
+                    {
+                        pageList = new List<QuestionsUC>();
+                        pageList.Add(qnCtrl);
+                    }
+                    else if (i > 0 && q.hasImage) //if image on this qn, form a new page
                     {
                         sPage.addPage(pageList);
                         pageList = new List<QuestionsUC>();
@@ -318,7 +323,6 @@ namespace AMDES_WEB.CustomControls
 
                 if (CLIPSCtrl.getCurrentQnGroupID() == -1)
                 {
-                    this.SectionID = CLIPSCtrl.getCurrentQnGroupID();
                     CLIPSCtrl.getResultingDiagnosis();
                     Session["Result"] = true;
                     Response.Redirect("~/Results.aspx");
@@ -358,7 +362,7 @@ namespace AMDES_WEB.CustomControls
             }
         }
 
-        private int computeScore()
+        private int computeSectionScore()
         {
             SectionPage sPage;
             dicSectionPage.TryGetValue(sectionID, out sPage);
@@ -410,7 +414,7 @@ namespace AMDES_WEB.CustomControls
 
                 lblScore.Text = "0";
                 lblMax.Text = " / " + qcg.MaximumScore.ToString();
-                int count = computeScore();
+                int count = computeSectionScore();
                 lblScore.Text = count.ToString();
             }
             else

@@ -4,7 +4,7 @@
   <Diagnosis diagID="2">
     <Comment>Patient failed the AD8 and MSME partial test, There is significant cognitive decline and there is probable cognitive impairment, please proceed to use Aid for Dementia Diagnosis for a detailed assessment</Comment>
     <Header>Sig. Cognitive Decline, Probable Cognitive Impairment</Header>
-    <Link>http://add.ktph.com.sg</Link>
+    <Link>~/PatientStart.aspx?appID=ADD</Link>
     <LinkDesc>Aid for Dementia Diagnosis</LinkDesc>
     <RetrieveSymptom>true</RetrieveSymptom>
     <RetrieveFrom>

@@ -4,14 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Aid for Dementia Diagnosis (ADD) - Patient Report</title>
+    <title>Patient Report</title>
     <link rel="stylesheet" href="css/style3.css" type="text/css" />
 </head>
-<body style="background-color: White; color: Black; font: Times New Roman, serif;" onload="window.print()">
+<body style="background-color: White; color: Black; font: Times New Roman, serif;"
+    onload="window.print()">
     <form id="form1" runat="server">
     <div style="background-color: White; color: Black;">
         <h2 style="color: Blue">
-            Aid for Dementia Diagnosis (ADD) - Patient Report</h2>
+            <asp:Label ID="lblTestName" runat="server" Text=""></asp:Label> - Patient Report</h2>
         <br />
         <br />
         <h3>

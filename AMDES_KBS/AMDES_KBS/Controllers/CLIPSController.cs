@@ -209,7 +209,15 @@ namespace AMDES_KBS.Controllers
         private static void assert(StringBuilder sb, bool init = true)
         {
             String a = sb.ToString().Trim();
-            env.AssertString(a);
+            try
+            {
+                env.AssertString(a);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } 
+            
             assertLog.Add(a);
 
             if (!init)

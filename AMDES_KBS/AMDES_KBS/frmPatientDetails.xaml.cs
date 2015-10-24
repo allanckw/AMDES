@@ -49,16 +49,17 @@ namespace AMDES_KBS
                 stkpnl.Orientation = Orientation.Horizontal;
                 stkpnl.Margin = new Thickness(0, 5, 0, 5);
 
-                Label lbl = new Label();
+                TextBlock lbl = new TextBlock();
                 lbl.Width = 150;
-                lbl.HorizontalContentAlignment = HorizontalAlignment.Right;
+                lbl.TextAlignment = TextAlignment.Right;
                 lbl.FontWeight = FontWeights.Bold;
                 lbl.FontSize = 14;
-                lbl.Content = Attr.AttributeName + ":";
-
+                lbl.TextWrapping = TextWrapping.Wrap;
+                lbl.Text = Attr.AttributeName + ": ";
+                lbl.Margin = new Thickness(0, 5, 5, 5);
                 stkpnl.Children.Add(lbl);
-                
-                if (Attr.getAttributeTypeNUM()==PatAttribute.AttributeType.NUMERIC)
+
+                if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.NUMERIC)
                 {
                     TextBox txt = new TextBox();
                     txt.Tag = Attr.AttributeName;
@@ -66,6 +67,7 @@ namespace AMDES_KBS
                     txt.Height = 30;
                     txt.FontSize = 14;
                     txt.PreviewTextInput += new TextCompositionEventHandler(txt_PreviewTextInput);
+                    txt.Margin = new Thickness(0, 5, 5, 5);
                     stkpnl.Children.Add(txt);
                 }
                 else if (Attr.getAttributeTypeNUM() == PatAttribute.AttributeType.CATEGORICAL)
@@ -80,6 +82,7 @@ namespace AMDES_KBS
                         cbo.Items.Add(value);
                     }
                     cbo.SelectedIndex = 0;
+                    cbo.Margin = new Thickness(0, 5, 5, 5);
                     stkpnl.Children.Add(cbo);
                 }
                 else
@@ -89,7 +92,7 @@ namespace AMDES_KBS
                 stkpnlPatientDetails.Children.Add(stkpnl);
             }
 
-                
+
         }
 
         void txt_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -193,9 +196,9 @@ namespace AMDES_KBS
                                 }
                                 else
                                 {
-                                    if (PatAttributeController.searchPatientAttribute(txt.Tag.ToString())!=null)
+                                    if (PatAttributeController.searchPatientAttribute(txt.Tag.ToString()) != null)
                                     {
-                                        p.createAttribute(txt.Tag.ToString(), int.Parse(txt.Text.ToString()));                                        
+                                        p.createAttribute(txt.Tag.ToString(), int.Parse(txt.Text.ToString()));
                                     }
                                 }
                             }
@@ -241,7 +244,7 @@ namespace AMDES_KBS
                     else
                     {
                         Patient p = new Patient(a, (DateTime)dtpDOB.SelectedDate);
-                        
+
                         p.NRIC = "ANON";
 
                         foreach (TextBox txt in App.FindVisualChildren<TextBox>(stkpnlPatientDetails))
@@ -286,7 +289,7 @@ namespace AMDES_KBS
                             }
                         }
                         p.getAttributes();
-                        
+
                         CLIPSController.CurrentPatient = p;
                         return true;
                     }

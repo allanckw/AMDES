@@ -26,9 +26,13 @@ namespace AMDES_WEB
             clp.ApplicationContext = WebApplicationContextController.setApplicationContext(Request.QueryString["appID"]);
             Session["clp"] = clp;
 
-            if (Session["dob"] != null)
-                dpFrom.Date = (DateTime)Session["dob"];
-
+            if (!Page.IsPostBack)
+            {
+                if (Session["dob"] != null)
+                    dpFrom.Date = (DateTime)Session["dob"];
+                else
+                    dpFrom.Date = DateTime.Now;
+            }
             AddRegistrationField();
         }
 

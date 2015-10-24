@@ -76,6 +76,9 @@ namespace AMDES_KBS.Entity
         public void createNewHistory(int groupID)
         {
             List<QnHistory> qnHistory = new List<QnHistory>();
+            if (history.Keys.Contains(groupID))
+                history.Remove(groupID);
+
             history.Add(groupID, qnHistory);
         }
 

@@ -31,7 +31,7 @@ namespace AMDES_WEB
                 lblDate.Text = DateTime.Now.ToString("dd MMM yyyy");
                 lblAge.Text = CLIPSCtrl.CurrentPatient.getAge().ToString();
                 lblApp.Text = CLIPSCtrl.ApplicationContext.Name ;
-
+                lblTestName.Text = App.readAppTitle(CLIPSCtrl.ApplicationContext.FolderName);
                 bool result;
                 bool.TryParse(Session["Result"].ToString(), out result);
 
@@ -61,7 +61,7 @@ namespace AMDES_WEB
 
             if (phFindings.Controls.Count == 0)
             {
-                lblHeader.Text = "The evaluation does not suggest Dementia in this patient";
+                lblHeader.Text = App.readNoSymptomString(CLIPSCtrl.ApplicationContext.FolderName);//"The evaluation does not suggest Dementia in this patient";
             }
             else
             {

@@ -39,6 +39,7 @@ namespace AMDES_KBS.Entity
         {
             return history;
         }
+
         public DateTime AssessmentDate
         {
             get { return assessmentDate; }
@@ -76,6 +77,10 @@ namespace AMDES_KBS.Entity
         public void createNewHistory(int groupID)
         {
             List<QnHistory> qnHistory = new List<QnHistory>();
+
+            if (history.Keys.Contains(groupID))
+                history.Remove(groupID);
+
             history.Add(groupID, qnHistory);
         }
 
@@ -133,7 +138,6 @@ namespace AMDES_KBS.Entity
             addHistoryItem(groupID, qid, ans);
         }
 
-
         public List<Symptom> SymptomsList
         {
             get { return this.sympsList; }
@@ -163,8 +167,6 @@ namespace AMDES_KBS.Entity
             if (sympsList.Count > 0 && i >= 0)
                 this.sympsList.RemoveAt(i);
         }
-
-
 
         public List<Diagnosis> Diagnoses
         {
@@ -224,11 +226,6 @@ namespace AMDES_KBS.Entity
             this.completedDate = DateTime.Now.Date;
         }
     }
-
-
-
-
-
 }
 
 

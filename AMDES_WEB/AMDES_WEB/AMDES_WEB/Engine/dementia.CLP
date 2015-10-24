@@ -43,7 +43,7 @@
 (deftemplate groupid-symptoms
    (slot GroupID (type SYMBOL))
    (slot symptom (type STRING))
-   
+   (slot QuestionID (type SYMBOL) (default _0))
 	;;20150930 - Negation of symptom (i.e. if the grp is AND False will assert)
    (slot negation (type SYMBOL) (default No) (allowed-symbols Yes No)) 
 )
@@ -218,34 +218,34 @@
    (modify ?f2 (answer ?x)))
 
    
-;;Start symptoms Rules 20150930 - Symptoms Negation
+;;Start symptoms Rules 20150930 - Symptoms 
 (defrule Add_Symptom_For_Group_Type_Count ;;for count type, only failing the threshold -> fail
    (group (answer No) (GroupID ?id) (SuccessType COUNT))
-   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation No))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation No) (QuestionID _0))
    (not (exists
-             (symptoms (GroupID ?id))))
+             (symptoms (GroupID ?id) (QuestionID _0)) ))
    =>
-   (assert (symptoms (symptom ?sym) (GroupID ?id))))
+   (assert (symptoms (symptom ?sym) (GroupID ?id) (QuestionID _0))))
 
 (defrule Add_Symptom_For_Group_Type_Normal
    (group (answer Yes) (GroupID ?id) (SuccessType AND|OR))
-   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation No))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation No) (QuestionID _0))
    (not (exists
-             (symptoms (GroupID ?id))))
+             (symptoms (GroupID ?id) (QuestionID _0))))
    =>
-   (assert (symptoms (symptom ?sym) (GroupID ?id))))
+   (assert (symptoms (symptom ?sym) (GroupID ?id) (QuestionID _0) )))
 
 (defrule Retract_Symptom_For_Group_Type_Count
    (group (answer Yes) (GroupID ?Noid) (SuccessType COUNT))
    (groupid-symptoms (GroupID ?Noid) (negation No))
-   ?sym <- (symptoms (GroupID ?Noid))
+   ?sym <- (symptoms (GroupID ?Noid) (QuestionID _0))
    =>
    (retract ?sym))
 
 (defrule Retract_Symptom_For_Group_Type_Normal
    (group (answer No) (GroupID ?Noid) (SuccessType OR|AND))
    (groupid-symptoms (GroupID ?Noid) (negation No))
-   ?sym <- (symptoms (GroupID ?Noid))
+   ?sym <- (symptoms (GroupID ?Noid) (QuestionID _0))
    =>
    (retract ?sym))
    
@@ -269,31 +269,31 @@
 ;;Start symptoms Rules 20150930 - Symptoms Negation
 (defrule Add_Symptom_For_Group_Type_Count_Negate ;;for count type, only failing the threshold -> fail
    (group (answer Yes) (GroupID ?id) (SuccessType COUNT))
-   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation Yes))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation Yes) (QuestionID _0))
    (not (exists
-             (symptoms (GroupID ?id))))
+             (symptoms (GroupID ?id) (QuestionID _0))))
    =>
-   (assert (symptoms (symptom ?sym) (GroupID ?id))))
+   (assert (symptoms (symptom ?sym) (GroupID ?id) (QuestionID _0))))
 
 (defrule Retract_Symptom_For_Group_Type_Count_Negate
    (group (answer No) (GroupID ?Noid) (SuccessType COUNT))
-   (groupid-symptoms (GroupID ?Noid) (negation Yes))
-   ?sym <- (symptoms (GroupID ?Noid))
+   (groupid-symptoms (GroupID ?Noid) (negation Yes) (QuestionID _0))
+   ?sym <- (symptoms (GroupID ?Noid) (QuestionID _0))
    =>
    (retract ?sym))
    
 (defrule Add_Symptom_For_Group_Type_Normal_Negate
    (group (answer No) (GroupID ?id) (SuccessType AND|OR))
-   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation Yes))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation Yes) (QuestionID _0))
    (not (exists
-             (symptoms (GroupID ?id))))
+             (symptoms (GroupID ?id) (QuestionID _0))))
    =>
-   (assert (symptoms (symptom ?sym) (GroupID ?id))))
+   (assert (symptoms (symptom ?sym) (GroupID ?id) (QuestionID _0))))
 
 (defrule Retract_Symptom_For_Group_Type_Normal_Negate
    (group (answer Yes) (GroupID ?Noid) (SuccessType OR|AND))
-   (groupid-symptoms (GroupID ?Noid) (negation Yes))
-   ?sym <- (symptoms (GroupID ?Noid))
+   (groupid-symptoms (GroupID ?Noid) (negation Yes) (QuestionID _0))
+   ?sym <- (symptoms (GroupID ?Noid) (QuestionID _0))
    =>
    (retract ?sym))
    

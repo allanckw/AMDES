@@ -21,7 +21,7 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <Label  Content="Symptom:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" Margin="12,0,0,0" />
                 <TextBox x:Name="txtSymptom" Width="150" Height="25" Text="" BorderThickness="1" MaxLength="200" />
-                <StackPanel x:Name="stkpnlCOUNT" Orientation="Horizontal" >
+                <StackPanel x:Name="stkpnlCOUNT" Orientation="Horizontal" Visibility="Hidden"  >
                     <Label Content="Passing Score:" FontSize="16" FontWeight="Bold" />
 
                     <TextBox x:Name="txtThreshold" Width="60" Text="7" PreviewTextInput="txtThreshold_PreviewTextInput"  Height="25" BorderThickness="2" />

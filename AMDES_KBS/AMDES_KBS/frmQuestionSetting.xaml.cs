@@ -41,7 +41,7 @@ namespace AMDES_KBS
             ScrollViewer sv = new ScrollViewer();
             sv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             sv.HorizontalAlignment = HorizontalAlignment.Left;
-            sv.Width = tcQuestionSetting.Width-10;
+            sv.Width = tcQuestionSetting.Width - 10;
 
             StackPanel stkpnlSection = new StackPanel();
 
@@ -107,7 +107,7 @@ namespace AMDES_KBS
                 else
                 {
 
-                    if (ucControlGroup.stkpnlCOUNT.Visibility==Visibility.Visible)
+                    if (ucControlGroup.stkpnlCOUNT.Visibility == Visibility.Visible)
                     {
                         isScoreType = true;
                         int NoOfQuestionAllowed = int.Parse(ucControlGroup.txtMaxQn.Text.Trim());
@@ -118,7 +118,7 @@ namespace AMDES_KBS
                         }
                     }
                 }
-                
+
                 ScrollViewer sv = (ScrollViewer)sectionTab.Content;
                 StackPanel stkpnl = (StackPanel)sv.Content;
                 ucQuestionSetting newQuestion = new ucQuestionSetting(isScoreType);
@@ -143,7 +143,7 @@ namespace AMDES_KBS
                 ScrollViewer sv = (ScrollViewer)sectionTab.Content;
                 StackPanel stkpnl = (StackPanel)sv.Content;
 
-                if (groupControl.txtHeader.Text.Trim().Length==0)
+                if (groupControl.txtHeader.Text.Trim().Length == 0)
                 {
                     //tcQuestionGroupSetting.SelectedIndex = i;
                     tcQuestionSetting.SelectedIndex = i;
@@ -194,13 +194,15 @@ namespace AMDES_KBS
             frmQuestionGroupSetting askGroupQuestionSetting = new frmQuestionGroupSetting();
             int questionType = -1;
             if (askGroupQuestionSetting.ShowDialog() == true)
+            {
                 questionType = askGroupQuestionSetting.getAnswer();
+            }
             else
             {
                 return;
             }
 
-            
+
             TabItem newSection = new TabItem();
             newSection.Tag = "";
             newSection.Header = "New";
@@ -245,7 +247,7 @@ namespace AMDES_KBS
 
         private void tcQuestionSetting_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (tcQuestionSetting.Items.Count>0)
+            if (tcQuestionSetting.Items.Count > 0)
             {
                 tcQuestionGroupSetting.SelectedIndex = tcQuestionSetting.SelectedIndex;
             }
@@ -255,7 +257,7 @@ namespace AMDES_KBS
         {
             try
             {
-                int selectedidx=tcQuestionSetting.SelectedIndex;
+                int selectedidx = tcQuestionSetting.SelectedIndex;
                 TabItem tbGroup = (TabItem)tcQuestionSetting.Items.GetItemAt(selectedidx);
                 if (tbGroup.Tag.ToString().Trim() != "")
                 {
@@ -269,7 +271,7 @@ namespace AMDES_KBS
             }
             catch (Exception ex)
             {
-                
+
                 throw;
             }
         }

@@ -62,7 +62,7 @@ namespace AMDES_KBS
                 lblCurrScore.Content = 0;
                 lblCurrScore.Tag = QCG.Threshold;
                 lblTotalScore.Content = QCG.MaxQuestions;
-                heightLimit -= 11;
+                heightLimit -= 30;
             }
 
             lblSection.Content = QG.Header.Trim();
@@ -141,8 +141,10 @@ namespace AMDES_KBS
             currHeight = 0;
             bool singlePage = false;
             List<ucQuestionViewOnly> QuestionPerPage = new List<ucQuestionViewOnly>();
-            foreach (ucQuestionViewOnly item in QuestionFrame.Children)
+            //foreach (ucQuestionViewOnly item in QuestionFrame.Children)
+            for (int i = 0; i < QuestionFrame.Children.Count; i++)
             {
+                ucQuestionViewOnly item = (ucQuestionViewOnly)QuestionFrame.Children[i];
                 string temp = item.Name;
                 currHeight += Math.Ceiling(item.getHeight());
 
@@ -150,14 +152,15 @@ namespace AMDES_KBS
                 if (singlePage)
                 {
                     currHeight = 0;
+
                     if (QuestionPerPage.Count > 0)
                         PageContent.Add(QuestionPerPage);
-                    //QuestionPerPage.Add(QuestionPerPage);
+
                     QuestionPerPage = new List<ucQuestionViewOnly>();
+                    
                     if (collapseRest == false)
-                    {
                         collapseRest = true;
-                    }
+                    
                     singlePage = false;
                 }
 
@@ -170,10 +173,10 @@ namespace AMDES_KBS
                         PageContent.Add(QuestionPerPage);
 
                     QuestionPerPage = new List<ucQuestionViewOnly>();
-                    if (collapseRest == false)
-                    {
+
+                    if (i > 0 && collapseRest == false)
                         collapseRest = true;
-                    }
+
                     singlePage = true;
 
                 }
@@ -187,10 +190,10 @@ namespace AMDES_KBS
                         PageContent.Add(QuestionPerPage);
 
                     QuestionPerPage = new List<ucQuestionViewOnly>();
+                   
                     if (collapseRest == false)
-                    {
                         collapseRest = true;
-                    }
+                    
                 }
 
                 if (collapseRest)
