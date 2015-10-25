@@ -220,6 +220,12 @@
     <Content Include="Data\ADD\Engine.xml" />
     <Content Include="Global.asax" />
     <Content Include="History.aspx" />
+    <Content Include="images\green_bg_Tab.gif" />
+    <Content Include="images\green_left_tab.gif" />
+    <Content Include="images\green_right_Tab.gif" />
+    <Content Include="images\h1.jpg" />
+    <Content Include="images\KTPH_Logo.jpg" />
+    <Content Include="images\nusLogo.jpg" />
     <Content Include="images\ToggleButton_Checked.png" />
     <Content Include="images\ToggleButton_Unchecked.png" />
     <Content Include="CustomControls\PatAttributeUC.ascx" />
@@ -243,7 +249,6 @@
     <Content Include="images\FilledStar.gif" />
     <Content Include="images\folder.gif" />
     <Content Include="images\folders.gif" />
-    <Content Include="images\h1.gif" />
     <Content Include="images\h2.jpg" />
     <Content Include="images\login-box-backg.png" />
     <Content Include="images\login-btn.png" />
@@ -256,11 +261,7 @@
     <Content Include="images\menu_m.png" />
     <Content Include="images\menu_r.png" />
     <Content Include="images\nav_a_hover.jpg" />
-    <Content Include="images\pp.gif" />
-    <Content Include="images\select.jpg" />
     <Content Include="images\sidebar.jpg" />
-    <Content Include="images\trash.png" />
-    <Content Include="images\viewcart.jpeg" />
     <Content Include="images\wrapper2.jpg" />
     <Content Include="js\jquery.js" />
     <Content Include="js\menu.js" />

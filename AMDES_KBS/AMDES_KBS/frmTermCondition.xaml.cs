@@ -3,6 +3,7 @@ using System.Windows;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
 using System.Collections.Generic;
+using System;
 
 namespace AMDES_KBS
 {
@@ -11,6 +12,8 @@ namespace AMDES_KBS
     /// </summary>
     public partial class frmTermCondition : Window
     {
+        private bool initialLoad = true;
+
         public frmTermCondition()
         {
             this.InitializeComponent();
@@ -19,7 +22,11 @@ namespace AMDES_KBS
             App.LoadCFGs();
                         
             //title = App.readAppTitle();
-            lblTitle.Content = CLIPSController.selectedAppContext.Name;
+            this.cboAppContexts.ItemsSource = CLIPSController.AllAppContexts;
+            this.cboAppContexts.SelectedIndex = 0;
+            initialLoad = false;
+
+            //lblTitle.Content = CLIPSController.selectedAppContext.Name;
             txtTnC.AppendText(CLIPSController.selectedAppContext.Description);
 
             if (!CLIPSController.enableSavePatient)
@@ -53,7 +60,7 @@ namespace AMDES_KBS
                 var admForm = new frmMain(chkSavePat.IsChecked);
                 this.Visibility = Visibility.Collapsed;
                 Application.Current.MainWindow = admForm;
-                admForm.Title = lblTitle.Content.ToString();
+                admForm.Title = cboAppContexts.SelectedValue.ToString();//lblTitle.Content.ToString();
                 
                 admForm.Show();
             }
@@ -83,5 +90,22 @@ namespace AMDES_KBS
             }
         }
 
+
+        private void cboAppContexts_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (!initialLoad)
+            {
+                try
+                {
+                    ApplicationContext app = (ApplicationContext)cboAppContexts.SelectedItem;
+                    ApplicationContextController.setApplicationContext(app);
+                    ApplicationContextController.GetAllApplications();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
 }

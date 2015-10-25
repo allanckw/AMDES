@@ -55,7 +55,7 @@ namespace AMDES_KBS
             if (!CLIPSController.enableStats)
             {
                 btnStats.Visibility = Visibility.Collapsed;
-                stkpnlSearchBox.Margin = new Thickness( stkpnlSearchBox.Margin.Left + btnStats.Width,0, 0, 0);
+                stkpnlSearchBox.Margin = new Thickness(stkpnlSearchBox.Margin.Left + btnStats.Width, 0, 0, 0);
             }
             else
                 btnStats.Visibility = Visibility.Visible;
@@ -85,7 +85,10 @@ namespace AMDES_KBS
             // if (result == MessageBoxResult.Yes)
             // {
             frmSetting SettingForm = new frmSetting();
+
             SettingForm.ShowDialog();
+
+
             //}
         }
 

@@ -49,6 +49,15 @@ namespace AMDES_WEB {
         protected global::System.Web.UI.WebControls.Label lblFieldName;
         
         /// <summary>
+        /// ccJoin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MSCaptcha.CaptchaControl ccJoin;
+        
+        /// <summary>
         /// txtCaptcha control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace AMDES_WEB {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCaptcha;
+        
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
         /// btnStart control.

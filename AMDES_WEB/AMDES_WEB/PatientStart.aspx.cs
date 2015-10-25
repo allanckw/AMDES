@@ -139,11 +139,9 @@ namespace AMDES_WEB
         {
             try
             {
-                //ccJoin.ValidateCaptcha(txtCaptcha.Text.Trim());
-                //if (ccJoin.UserValidated) turn off for debug purpose
-                if (true)
+                ccJoin.ValidateCaptcha(txtCaptcha.Text.Trim());
+                if (ccJoin.UserValidated) ////if (true) turn off for debug purpose
                 {
-
                     Patient p = new Patient();
 
                     p.AssessmentDate = DateTime.Today;

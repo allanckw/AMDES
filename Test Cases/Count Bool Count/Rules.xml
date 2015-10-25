@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Rules xml-->
+<Rules>
+  <Rule RID="2">
+    <Description>Test Count Bool Count</Description>
+    <Navigations>
+      <Navex NavID="2.1">
+        <Destination>1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>3</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="2.2">
+        <Destination>4</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>3</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses />
+      </Navex>
+      <Navex NavID="2.3">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>3</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>4</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses>
+          <DiagnosisID>1</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>1</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+</Rules>

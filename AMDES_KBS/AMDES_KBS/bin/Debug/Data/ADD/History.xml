@@ -139,7 +139,7 @@
       </Question>
       <Question GrpID="6">
         <QID>5</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="6">
         <QID>6</QID>
@@ -165,7 +165,7 @@
     <Group histID="1">
       <Question GrpID="1">
         <QID>1</QID>
-        <Answer>false</Answer>
+        <Answer>true</Answer>
       </Question>
     </Group>
     <Group histID="2">
@@ -179,7 +179,7 @@
       </Question>
       <Question GrpID="2">
         <QID>3</QID>
-        <Answer>true</Answer>
+        <Answer>false</Answer>
       </Question>
       <Question GrpID="2">
         <QID>4</QID>
@@ -251,21 +251,21 @@
     <Symptoms>
       <Symptom>
         <SymptomName> Failed Abbreviated Mental Test </SymptomName>
-        <DiagnosisDate>635806955447785129</DiagnosisDate>
+        <DiagnosisDate>635813419245640620</DiagnosisDate>
         <DiagnosedByID>6</DiagnosedByID>
       </Symptom>
       <Symptom>
-        <SymptomName> Agnosia </SymptomName>
-        <DiagnosisDate>635806955447805130</DiagnosisDate>
-        <DiagnosedByID>2</DiagnosedByID>
+        <SymptomName> Amnesia </SymptomName>
+        <DiagnosisDate>635813419245650621</DiagnosisDate>
+        <DiagnosedByID>1</DiagnosedByID>
       </Symptom>
     </Symptoms>
     <Diagnoses>
-      <Diagnosis diagID="10">
-        <Comment>Patient failed Abbreviated Mental Test with cognitive deficits other than amnesia - re-take more detailed history to elicit possible cognitive and functional deficits, refer the patient to a tertiary centre if dementia suspicion is high.
+      <Diagnosis diagID="13">
+        <Comment>Patient failed Abbreviated Mental Test with Amnestic symptoms - please refer the patient to a tertiary centre for further evaluation.
    ✓ Failed Abbreviated Mental Test</Comment>
-        <Header>Patient failed AMT with cognitive deficits other than amnesia, re-take History and refer if dementia suspicion is high
-Section AMT  - Patient's Score: 6, Normal Score: 8 or more</Header>
+        <Header>Patient failed AMT with Amnestic symptoms, refer patient
+Section AMT  - Patient's Score: 5, Normal Score: 8 or more</Header>
         <Link></Link>
         <LinkDesc></LinkDesc>
         <RetrieveSymptom>true</RetrieveSymptom>
@@ -296,6 +296,6 @@ Section AMT  - Patient's Score: 6, Normal Score: 8 or more</Header>
       </Diagnosis>
     </Diagnoses>
     <Status>0</Status>
-    <CompletedDate>635806368000000000</CompletedDate>
+    <CompletedDate>635813280000000000</CompletedDate>
   </History>
 </Histories>

@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Adaptive Medical Diagnosis Expert System")]
+[assembly: AssemblyTitle("AMDES")]
 [assembly: AssemblyDescription("Adaptive Medical Diagnosis Expert System")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NUS & AHS")]
-[assembly: AssemblyProduct("AMDES")]
-[assembly: AssemblyCopyright("AMDES© 2014-2015")]
+[assembly: AssemblyProduct("Adaptive Medical Diagnosis Expert System")]
+[assembly: AssemblyCopyright("AMDES© 2014-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("20.14.12.29")]
-[assembly: AssemblyFileVersion("20.14.12.29")]
+[assembly: AssemblyVersion("20.15.10.25")]
+[assembly: AssemblyFileVersion("20.15.10.25")]

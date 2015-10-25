@@ -53,7 +53,7 @@
                                     </div>
                                 </li>
                             </asp:PlaceHolder>--%>
-                            <li>
+                            <%-- <li>
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="#" class="parent"><span>Start Assessment</span></asp:HyperLink>
                                 <div>
                                     <ul>
@@ -64,7 +64,11 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li>--%>
+                            <li>
+                                <asp:HyperLink ID="hypAD8" runat="server" NavigateUrl="~/PatientStart.aspx?appID=AD8"><span>AD8 with partial MSME</span></asp:HyperLink></li>
+                            <li>
+                                <asp:HyperLink ID="hypADD" runat="server" NavigateUrl="~/PatientStart.aspx?appID=ADD"><span>Aid for Dementia Diagnosis</span></asp:HyperLink></li>
                             <%--<li>
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Downloads.aspx" class="last"><span>Downloads</span></asp:HyperLink>
                             </li>--%>
@@ -84,9 +88,9 @@
     </div>
     <div id="footer">
         <div style="float: left;">
-            &copy; 2014 - 
-            <asp:Label ID="lblYear" runat="server" Text="Label"></asp:Label> &nbsp;
-            Copyright AMDES. A joint project between National University of Singapore,
+            &copy; 2014 -
+            <asp:Label ID="lblYear" runat="server" Text="Label"></asp:Label>
+            &nbsp; Copyright AMDES. A joint project between National University of Singapore,
             School of Computing and Khoo Teck Puat Hospital
         </div>
         <div style="float: right;">
@@ -94,11 +98,15 @@
                 <table>
                     <tr>
                         <td>
-                            <img style="border: 0; height: 75px" alt="NUS SOC" src="http://www.comp.nus.edu.sg/~cs5247/resources/nusLogo.jpg" />
+                            <%--<img style="border: 0; height: 75px" alt="NUS SOC" src="http://www.comp.nus.edu.sg/~cs5247/resources/nusLogo.jpg" />--%>
+                            <asp:Image ID="Image1" runat="server" Style="border: 0; height: 75px" ImageUrl="~/images/nusLogo.jpg"
+                                AlternateText="NUS School Of Computing" />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>
-                            <img style="border: 0; height: 75px" alt="Khoo Teck Puat Hospital" src="http://upload.wikimedia.org/wikipedia/en/6/65/KTPH_Logo.jpg" />
+                            <%--<img style="border: 0; height: 75px" alt="Khoo Teck Puat Hospital" src="http://upload.wikimedia.org/wikipedia/en/6/65/KTPH_Logo.jpg" />--%>
+                            <asp:Image ID="Image2" runat="server" Style="border: 0; height: 75px" ImageUrl="~/images/KTPH_Logo.jpg"
+                                AlternateText="Khoo Teck Puat Hospital" />
                         </td>
                     </tr>
                 </table>

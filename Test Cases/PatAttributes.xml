@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Patient Attribute settings xml-->
+<PatientsAttributes>
+  <PatAttr name="AA">
+    <Type>0</Type>
+    <MinNumericValue>1</MinNumericValue>
+    <MaxNumericValue>5</MaxNumericValue>
+    <Categories />
+  </PatAttr>
+  <PatAttr name="BLOOD PRESSURE (SYSTOLIC)">
+    <Type>0</Type>
+    <MinNumericValue>0</MinNumericValue>
+    <MaxNumericValue>300</MaxNumericValue>
+    <Categories />
+  </PatAttr>
+  <PatAttr name="DO YOU LIKE JAS?">
+    <Type>1</Type>
+    <MinNumericValue>-1</MinNumericValue>
+    <MaxNumericValue>-1</MaxNumericValue>
+    <Categories>
+      <Category>SIGH PIE 1</Category>
+      <Category>YES</Category>
+      <Category>NO</Category>
+      <Category>NO, ITS MORE THAN LOVE</Category>
+    </Categories>
+  </PatAttr>
+  <PatAttr name="BB">
+    <Type>0</Type>
+    <MinNumericValue>1</MinNumericValue>
+    <MaxNumericValue>5</MaxNumericValue>
+    <Categories />
+  </PatAttr>
+  <PatAttr name="CC">
+    <Type>0</Type>
+    <MinNumericValue>1</MinNumericValue>
+    <MaxNumericValue>5</MaxNumericValue>
+    <Categories />
+  </PatAttr>
+  <PatAttr name="DD">
+    <Type>0</Type>
+    <MinNumericValue>1</MinNumericValue>
+    <MaxNumericValue>5</MaxNumericValue>
+    <Categories />
+  </PatAttr>
+  <PatAttr name="EE">
+    <Type>0</Type>
+    <MinNumericValue>1</MinNumericValue>
+    <MaxNumericValue>5</MaxNumericValue>
+    <Categories />
+  </PatAttr>
+  <PatAttr name="FF">
+    <Type>0</Type>
+    <MinNumericValue>1</MinNumericValue>
+    <MaxNumericValue>5</MaxNumericValue>
+    <Categories />
+  </PatAttr>
+  <PatAttr name="DO YOU LIKE TEST?">
+    <Type>1</Type>
+    <MinNumericValue>-1</MinNumericValue>
+    <MaxNumericValue>-1</MaxNumericValue>
+    <Categories>
+      <Category>SIGH PIE 1</Category>
+      <Category>YES</Category>
+      <Category>NO</Category>
+      <Category>NO, ITS MORE THAN LOVE</Category>
+    </Categories>
+  </PatAttr>
+</PatientsAttributes>

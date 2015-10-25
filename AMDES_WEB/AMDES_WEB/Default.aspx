@@ -7,7 +7,7 @@
             <h2>
                 Aid for Dementia Diagnosis (ADD)</h2>
             <h3>
-                This is an expert system designed to facilitate the diagnosis of Dementia.
+                This is an expert system designed to facilitate the early diagnosis of Dementia.
                 <br />
                 <br />
                 As ADD serves primarily as a diagnostic aid, the physician should always exercise
@@ -16,14 +16,12 @@
                 shall not be liable for any damages arising from the results given by the application.
                 <br />
                 <br />
-                We recommend you start with the AD8 with partial MSME test, before proceeding to
-                complete the full ADD questionaire as the former is easier and takes a shorter time
-                to administer. The system will advise you if the patient will require the more comprehensive
-                ADD questionaire.
-                <br />
-                <br />
-                <i>Begin by hovering over Start Assessment on the top of the page to select the appropriate
-                    test to administer. </i>
+                We recommend that the user start with the Eight-item Interview to Differentiate Aging and Dementia (AD8) 
+                with partial mini–mental state examination (MSME) test, before proceeding to
+                complete the full ADD questionaire based on the Diagnostic and Statistical Manual of Mental Disorders (DSM) IV Criteria
+                as the former is easier to administer. 
+                
+                The system will advise you if the patient require the more comprehensive ADD questionaire.
                 <br />
                 <br />
             </h3>

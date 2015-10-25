@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Questions xml-->
+<QuestionGroups>
+  <QuestionGroup id="1">
+    <Header>And Group 3</Header>
+    <Description>And Group 3</Description>
+    <QnType>1</QnType>
+    <Symptom></Symptom>
+    <Negation>false</Negation>
+    <Questions>
+      <Question QID="1">
+        <Name>And Grp Q1</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL>791375PCZ.jpg</ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="2">
+        <Name>And Grp Q2</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL>791375PCZ.jpg</ImageURL>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="5">
+    <Header>Bool Group 3</Header>
+    <Description>Bool Group</Description>
+    <QnType>1</QnType>
+    <Symptom></Symptom>
+    <Negation>false</Negation>
+    <Questions>
+      <Question QID="1">
+        <Name>aa</Name>
+        <Symptom>aa</Symptom>
+        <Negation>false</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="2">
+        <Name>bb</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+  <QuestionGroup id="3">
+    <Header>Count Group 1</Header>
+    <Description>Count Group 1</Description>
+    <QnType>2</QnType>
+    <Symptom></Symptom>
+    <Negation>false</Negation>
+    <Questions>
+      <Question QID="1">
+        <Name>Count grp Q1</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL>791375PCZ.jpg</ImageURL>
+        <Score>8</Score>
+      </Question>
+      <Question QID="2">
+        <Name>Count Grp Q2</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+    <MaxQuestions>2</MaxQuestions>
+    <Threshold>7</Threshold>
+  </QuestionGroup>
+  <QuestionGroup id="4">
+    <Header>Count Group 2</Header>
+    <Description>Count Group 2</Description>
+    <QnType>2</QnType>
+    <Symptom></Symptom>
+    <Negation>false</Negation>
+    <Questions>
+      <Question QID="1">
+        <Name>Count Group 2 Q1</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL>791375PCZ.jpg</ImageURL>
+        <Score>3</Score>
+      </Question>
+      <Question QID="2">
+        <Name>Count Group 2 Q2</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL></ImageURL>
+        <Score>2</Score>
+      </Question>
+    </Questions>
+    <MaxQuestions>2</MaxQuestions>
+    <Threshold>5</Threshold>
+  </QuestionGroup>
+  <QuestionGroup id="2">
+    <Header>Or Group 1</Header>
+    <Description>Or Group 1</Description>
+    <QnType>0</QnType>
+    <Symptom></Symptom>
+    <Negation>false</Negation>
+    <Questions>
+      <Question QID="1">
+        <Name>Or Grp Qn 1</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL>791375PCZ.jpg</ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="2">
+        <Name>Or Grp Qn 2</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+  </QuestionGroup>
+</QuestionGroups>

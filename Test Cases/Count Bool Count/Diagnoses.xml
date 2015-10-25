@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Diagnoses xml-->
+<Diagnoses>
+  <Diagnosis diagID="1">
+    <Comment>Test</Comment>
+    <Header>Test</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <Attributes />
+    <isRes>false</isRes>
+  </Diagnosis>
+</Diagnoses>

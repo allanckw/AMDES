@@ -1,0 +1,13 @@
+			DESKTOP	WEB
+
+Bool	Bool 	Bool 	P	P
+Bool 	Bool 	Count 	P	P
+Bool 	Count 	Bool 	P 	P
+Bool 	Count 	Count 	P	P
+
+Count 	Bool 	Bool 	P	P		
+Count 	Bool 	Count 	P	P
+Count 	Count 	Bool 	P	P
+Count 	Count 	Count 	P	P
+
+Paste img into the folder to display image

@@ -216,8 +216,8 @@ namespace AMDES_KBS.Controllers
             catch (Exception ex)
             {
                 throw ex;
-            } 
-            
+            }
+
             assertLog.Add(a);
 
             if (!init)
@@ -665,7 +665,7 @@ namespace AMDES_KBS.Controllers
                         if (d.RetrieveSym && d.RetrievalIDList.Count > 0)
                         {
                             //foreach (int k in d.RetrievalIDList)
-                            for (int k = 0; k<d.RetrievalIDList.Count; k++)
+                            for (int k = 0; k < d.RetrievalIDList.Count; k++)
                             {
                                 int qgID = d.RetrievalIDList[k];
 
@@ -849,21 +849,20 @@ namespace AMDES_KBS.Controllers
             foreach (FactAddressValue fv in mv)
             {
                 //question history YES ONLY
-                int x = int.Parse(fv.GetFactSlot("GroupID").ToString().Remove(0, 1));
-                //natalie :(
-                if (navHistory.Contains(x))
+                int qgID = int.Parse(fv.GetFactSlot("GroupID").ToString().Remove(0, 1));
+
+                if (navHistory.Contains(qgID))
                 {
-                    string qid = fv.GetFactSlot("ID").ToString().Remove(0, 1);
+                    string clpQID = fv.GetFactSlot("ID").ToString().Remove(0, 1);
+                    int realQID = int.Parse(clpQID.Split('.')[1]);
+
                     string answer = fv.GetFactSlot("answer").ToString();
+
                     if (answer.ToUpper().CompareTo("YES") == 0)
-                    {
-                        //add history item
-                        history.updateHistoryItem(x, int.Parse(qid.Split('.')[1]), true);
-                    }
+                        history.updateHistoryItem(qgID, realQID, true);
+
                     else
-                    {
-                        history.updateHistoryItem(x, int.Parse(qid.Split('.')[1]), false);
-                    }
+                        history.updateHistoryItem(qgID, realQID, false);
                 }
             }
             return history;

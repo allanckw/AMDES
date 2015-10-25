@@ -42,6 +42,17 @@ namespace AMDES_WEB.CustomControls
             }
         }
 
+        public bool DefaultAnswer
+        {
+            get 
+            {
+                if (this.question.isNegation)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
         public CLIPSWebController CLIPSCtrl
         {
             set
@@ -79,13 +90,25 @@ namespace AMDES_WEB.CustomControls
 
 
             if (question.isNegation && this.answer) //negation and answer = yes : 0
+            {
                 score = 0;
+                chkAns.Checked = true;
+            }
             else if (question.isNegation && !this.answer) //negation and answer = no :+
+            {
                 score = question.Score;
+                chkAns.Checked = false;
+            }
             else if (!question.isNegation && this.answer) //no negation and answer = yes :+
+            {
                 score = question.Score;
+                chkAns.Checked = true;
+            }
             else if (!question.isNegation && !this.answer) //no negation and answer = no : 0
+            {
                 score = 0;
+                chkAns.Checked = false;
+            }
         }
 
         public int QuestionNo
@@ -140,8 +163,7 @@ namespace AMDES_WEB.CustomControls
             }
             set
             {
-                chkAns.Checked = value;
-                setAnswer(chkAns.Checked);
+                setAnswer(value);
             }
         }
 

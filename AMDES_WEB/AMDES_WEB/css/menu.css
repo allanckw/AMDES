@@ -30,7 +30,7 @@ div#menu
     font-size: 11pt;
     line-height: 150%;
     width: 100%;
-    margin-left: 40%; 
+    margin-left: 30%; 
     /* Fix for negative margin not working with some IE version */
     position: relative;
     top: -50px; /*margin-top: -50px;*/

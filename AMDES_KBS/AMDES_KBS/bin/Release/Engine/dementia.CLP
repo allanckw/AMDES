@@ -2,7 +2,7 @@
 ;; AMDES Rule Base MODEL
 ;; Ang Ji Kai (A0073896L)
 ;; Ang Nickolas (A0077307A)
-;; Chong Kok Wei (A0073859M)
+;; Allan Chong Kok Wei (A0073859M)
 
 
 (defmodule MAIN (export deftemplate initial-fact))
@@ -42,7 +42,11 @@
 ;;A Group has a symptom
 (deftemplate groupid-symptoms
    (slot GroupID (type SYMBOL))
-   (slot symptom (type STRING)))
+   (slot symptom (type STRING))
+   (slot QuestionID (type SYMBOL) (default _0))
+	;;20150930 - Negation of symptom (i.e. if the grp is AND False will assert)
+   (slot negation (type SYMBOL) (default No) (allowed-symbols Yes No)) 
+)
 
 (deftemplate question
    (slot ID (type SYMBOL))
@@ -55,7 +59,10 @@
 (deftemplate questionid-symptoms
 	(slot GroupID (type SYMBOL))
     (slot QuestionID (type SYMBOL))
-    (slot symptom (type STRING)))
+    (slot symptom (type STRING))
+	;;20150930 - Negation of symptom (i.e. if the qn is No will assert)
+	(slot negation (type SYMBOL) (default No) (allowed-symbols Yes No))
+)
 
 ;; navigation 
 ;; A navigation element has Destination OR Diagnosis ID (RID = RuleID for short)
@@ -210,44 +217,103 @@
    (retract ?f1)
    (modify ?f2 (answer ?x)))
 
+   
+;;Start symptoms Rules 20150930 - Symptoms 
 (defrule Add_Symptom_For_Group_Type_Count ;;for count type, only failing the threshold -> fail
    (group (answer No) (GroupID ?id) (SuccessType COUNT))
-   (groupid-symptoms (GroupID ?id) (symptom ?sym))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation No) (QuestionID _0))
    (not (exists
-             (symptoms (GroupID ?id))))
+             (symptoms (GroupID ?id) (QuestionID _0)) ))
    =>
-   (assert (symptoms (symptom ?sym) (GroupID ?id))))
+   (assert (symptoms (symptom ?sym) (GroupID ?id) (QuestionID _0))))
 
 (defrule Add_Symptom_For_Group_Type_Normal
    (group (answer Yes) (GroupID ?id) (SuccessType AND|OR))
-   (groupid-symptoms (GroupID ?id) (symptom ?sym))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation No) (QuestionID _0))
    (not (exists
-             (symptoms (GroupID ?id))))
+             (symptoms (GroupID ?id) (QuestionID _0))))
    =>
-   (assert (symptoms (symptom ?sym) (GroupID ?id))))
+   (assert (symptoms (symptom ?sym) (GroupID ?id) (QuestionID _0) )))
 
-(defrule Retract-symptoms-groupid-count
+(defrule Retract_Symptom_For_Group_Type_Count
    (group (answer Yes) (GroupID ?Noid) (SuccessType COUNT))
-   (groupid-symptoms (GroupID ?Noid))
-   ?sym <- (symptoms (GroupID ?Noid))
+   (groupid-symptoms (GroupID ?Noid) (negation No))
+   ?sym <- (symptoms (GroupID ?Noid) (QuestionID _0))
    =>
    (retract ?sym))
 
-(defrule Retract-symptoms-groupid-not-count
+(defrule Retract_Symptom_For_Group_Type_Normal
    (group (answer No) (GroupID ?Noid) (SuccessType OR|AND))
-   (groupid-symptoms (GroupID ?Noid))
-   ?sym <- (symptoms (GroupID ?Noid))
+   (groupid-symptoms (GroupID ?Noid) (negation No))
+   ?sym <- (symptoms (GroupID ?Noid) (QuestionID _0))
    =>
    (retract ?sym))
    
 (defrule Add_Symptom_For_Question
    (question (answer Yes) (ID ?id))
-   (questionid-symptoms  (symptom ?sym) (GroupID ?grp) (QuestionID ?id))
+   (questionid-symptoms  (symptom ?sym) (GroupID ?grp) (QuestionID ?id) (negation No))
    (not (exists
              (symptoms (GroupID ?grp) (QuestionID ?id))))
    =>
    (assert (symptoms (GroupID ?grp) (QuestionID ?id) (symptom ?sym))))
 
+   
+(defrule Retract_Symptom_For_Question
+   ?sym <- (symptoms (QuestionID ?Noid&~NIL) (GroupID ?grp))
+   (question (answer No) (ID ?Noid))
+   (questionid-symptoms (QuestionID ?Noid) (negation No))
+   =>
+   (retract ?sym))
+;;END symptoms Rules   
+
+;;Start symptoms Rules 20150930 - Symptoms Negation
+(defrule Add_Symptom_For_Group_Type_Count_Negate ;;for count type, only failing the threshold -> fail
+   (group (answer Yes) (GroupID ?id) (SuccessType COUNT))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation Yes) (QuestionID _0))
+   (not (exists
+             (symptoms (GroupID ?id) (QuestionID _0))))
+   =>
+   (assert (symptoms (symptom ?sym) (GroupID ?id) (QuestionID _0))))
+
+(defrule Retract_Symptom_For_Group_Type_Count_Negate
+   (group (answer No) (GroupID ?Noid) (SuccessType COUNT))
+   (groupid-symptoms (GroupID ?Noid) (negation Yes) (QuestionID _0))
+   ?sym <- (symptoms (GroupID ?Noid) (QuestionID _0))
+   =>
+   (retract ?sym))
+   
+(defrule Add_Symptom_For_Group_Type_Normal_Negate
+   (group (answer No) (GroupID ?id) (SuccessType AND|OR))
+   (groupid-symptoms (GroupID ?id) (symptom ?sym) (negation Yes) (QuestionID _0))
+   (not (exists
+             (symptoms (GroupID ?id) (QuestionID _0))))
+   =>
+   (assert (symptoms (symptom ?sym) (GroupID ?id) (QuestionID _0))))
+
+(defrule Retract_Symptom_For_Group_Type_Normal_Negate
+   (group (answer Yes) (GroupID ?Noid) (SuccessType OR|AND))
+   (groupid-symptoms (GroupID ?Noid) (negation Yes) (QuestionID _0))
+   ?sym <- (symptoms (GroupID ?Noid) (QuestionID _0))
+   =>
+   (retract ?sym))
+   
+(defrule Add_Symptom_For_Question_Negate
+   (question (answer No) (ID ?id))
+   (questionid-symptoms  (symptom ?sym) (GroupID ?grp) (QuestionID ?id) (negation Yes))
+   (not (exists
+             (symptoms (GroupID ?grp) (QuestionID ?id))))
+   =>
+   (assert (symptoms (GroupID ?grp) (QuestionID ?id) (symptom ?sym))))
+
+   
+(defrule Retract_Symptom_For_Question_Negate
+   ?sym <- (symptoms (QuestionID ?Noid&~NIL) (GroupID ?grp))
+   (question (answer Yes) (ID ?Noid))
+   (questionid-symptoms (QuestionID ?Noid) (negation Yes))
+   =>
+   (retract ?sym))
+;;END symptoms Rules
+   
 (defrule Next_Question_Attribute_Check
    (attribute ?attribu ?value)
    ?target <- (NaviChildCritAttribute (AttributeName ?attribu) (AttributeValue ?cvalue) (AttributeCompareType ?at) (Answer ?ans))
@@ -369,12 +435,7 @@
 
 
    
-(defrule Retract-symptoms-questionid
-   ?sym <- (symptoms (QuestionID ?Noid&~NIL) (GroupID ?grp))
-   (question (answer No) (ID ?Noid))
-   (questionid-symptoms (QuestionID ?Noid))
-   =>
-   (retract ?sym))
+
 
 (defrule Assert_Diagnosis
    (declare (salience 1))

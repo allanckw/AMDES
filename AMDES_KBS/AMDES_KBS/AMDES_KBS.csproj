@@ -8,8 +8,8 @@
     <ProjectGuid>{9FEEFEF1-527A-4B82-A00A-94058985141E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ADD</RootNamespace>
-    <AssemblyName>ADD</AssemblyName>
+    <RootNamespace>AMDES</RootNamespace>
+    <AssemblyName>AMDES</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

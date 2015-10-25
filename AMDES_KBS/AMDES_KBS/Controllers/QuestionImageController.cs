@@ -9,11 +9,11 @@ namespace AMDES_KBS.Controllers
 {
     public class QuestionImageController
     {
-        private static string imagePath = AppDomain.CurrentDomain.BaseDirectory + @"img";
+        private static string imagePath = CLIPSController.selectedAppContext.FolderPath + @"\img";
 
         public static string getImage(string saveFilePath)
         {
-            return  imagePath +  "\\" + saveFilePath;
+            return imagePath + "\\" + saveFilePath;
         }
 
         public static string processImage(string clientFilePath, string saveFilePath,
@@ -21,9 +21,9 @@ namespace AMDES_KBS.Controllers
         {
             if (!Directory.Exists(imagePath))
                 Directory.CreateDirectory(imagePath);
-            //Jasmine Lovv
+            //Jasmine Low
 
-            string sPath = imagePath + "\\" +saveFilePath;
+            string sPath = imagePath + "\\" + saveFilePath;
 
             if (System.IO.File.Exists(sPath))
             {

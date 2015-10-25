@@ -224,12 +224,13 @@ namespace AMDES_WEB.CustomControls
             QuestionsUC newCtrl = (QuestionsUC)LoadControl(@"~/CustomControls\QuestionsUC.ascx");
             newCtrl.Qn = oldCtrl.Qn;
 
-            newCtrl.isYes = oldCtrl.isYes;
+            //newCtrl.isYes = oldCtrl.isYes;
             newCtrl.isEnabled = oldCtrl.isEnabled;
 
             newCtrl.QuestionNo = oldCtrl.QuestionNo;
             newCtrl.ID = oldCtrl.ID;
             newCtrl.SectionID = oldCtrl.SectionID;
+
             return newCtrl;
         }
 
@@ -367,17 +368,7 @@ namespace AMDES_WEB.CustomControls
             SectionPage sPage;
             dicSectionPage.TryGetValue(sectionID, out sPage);
 
-            int count = sPage.getSectionScore();
-
-            foreach (Control c in phRegister.Controls)
-            {
-                if (c is QuestionsUC)
-                {
-                    QuestionsUC quc = (QuestionsUC)c;
-                    bool ans = quc.isYes;
-                    count += quc.Score;
-                }
-            }
+            int count = sPage.getSectionScore() + computePageScore();
 
             sPage.setPageScore(sPage.CurrentPage, 0);
             return count;
@@ -502,7 +493,7 @@ namespace AMDES_WEB.CustomControls
                     if (c is QuestionsUC) //reset on previous
                     {
                         QuestionsUC quc = (QuestionsUC)c;
-                        clp.assertQuestion(section.GroupID, quc.QID, false, quc.Qn.isNegation);
+                        clp.assertQuestion(section.GroupID, quc.QID, quc.DefaultAnswer, quc.Qn.isNegation);
                     }
                 }
 

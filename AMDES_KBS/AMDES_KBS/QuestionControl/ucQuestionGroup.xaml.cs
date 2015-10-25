@@ -18,6 +18,12 @@ namespace AMDES_KBS
         QuestionType qType;
         bool newGroup = false;
 
+        public int MaxQuestions
+        {
+            get { return int.Parse(txtMaxQn.Text.Trim()); }
+        }
+  
+
         public ucQuestionGroup(int questionTypeENUM)
         {
             InitializeComponent();

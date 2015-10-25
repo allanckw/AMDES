@@ -23,12 +23,11 @@
             </div>
         </td>
     </tr>
-   
-            <asp:PlaceHolder ID="phRegister" runat="server"></asp:PlaceHolder>
-       
+    <asp:PlaceHolder ID="phRegister" runat="server"></asp:PlaceHolder>
     <tr>
         <td colspan="3" style="text-align: right;">
             <div style="margin-right: 10%">
+                <br />
                 <asp:Button ID="btnPrevious" runat="server" Text="Previous" Width="70" OnClick="btnPrevious_Click" />
                 <asp:Button ID="btnNext" runat="server" Text="Next" Width="70" OnClick="btnNext_Click" /></div>
         </td>

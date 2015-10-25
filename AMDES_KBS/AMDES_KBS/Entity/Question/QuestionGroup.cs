@@ -132,5 +132,19 @@ namespace AMDES_KBS.Entity
             return this.GroupID == qg.GroupID;
         }
 
+        public Question getQuestionByID(int qid)
+        {
+            Question qn = new Question();
+            foreach (Question q in this.qns)
+            {
+                if (q.ID == qid)
+                {
+                    qn = q;
+                    break;
+                }
+            }
+            return qn;
+        }
+
     }
 }

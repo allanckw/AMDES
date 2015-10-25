@@ -97,9 +97,10 @@ namespace AMDES_KBS
                     {
                         isScoreType = true;
                         QuestionCountGroup qcg = (QuestionCountGroup)qg;
-                        if (NoOfQuestion(sectionTab) >= qcg.MaxQuestions)
+                        if (NoOfQuestion(sectionTab) >= ucControlGroup.MaxQuestions)
                         {
-                            MessageBox.Show("You have reached the maximum number of question!");
+                            MessageBox.Show("You have reached the maximum number of questions, " +Environment.NewLine + "please redefine the maximum number in order to add more",
+                                "Max question reached", MessageBoxButton.OK,MessageBoxImage.Information);
                             return;
                         }
                     }
@@ -110,10 +111,11 @@ namespace AMDES_KBS
                     if (ucControlGroup.stkpnlCOUNT.Visibility == Visibility.Visible)
                     {
                         isScoreType = true;
-                        int NoOfQuestionAllowed = int.Parse(ucControlGroup.txtMaxQn.Text.Trim());
+                        int NoOfQuestionAllowed = ucControlGroup.MaxQuestions;
                         if (NoOfQuestion(sectionTab) >= NoOfQuestionAllowed)
                         {
-                            MessageBox.Show("You have reached the maximum number of question!");
+                            MessageBox.Show("You have reached the maximum number of questions, " + Environment.NewLine + "please redefine the maximum number in order to add more",
+                                 "Max question reached", MessageBoxButton.OK, MessageBoxImage.Information);
                             return;
                         }
                     }

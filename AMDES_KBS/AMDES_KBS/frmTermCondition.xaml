@@ -8,12 +8,23 @@
 
     <Grid x:Name="LayoutRoot">
         <StackPanel  Height="auto" VerticalAlignment="Top" Width="auto" >
-            <StackPanel x:Name="welcome" Height="40" Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <StackPanel x:Name="welcome" Height="60" Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center" >
                 <Button x:Name="btnAdminCFG" Click="btnAdminCFG_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Source="/ADD;component/Resource/h1.jpg" Height="35" /> <!-- The Secret Button to Config Tools :3-->
+                    <Image Source="/AMDES;component/Resource/h1.jpg" Height="50" /> <!-- The Secret Button to Config Tools :3-->
                 </Button>
-                <Label x:Name="lblTitle" VerticalAlignment="Center" HorizontalAlignment="Center"  Content="" FontSize="18"  FontWeight="Bold" Foreground="#FF210FEB" />
-               
+                <!--<Label x:Name="lblTitle" VerticalAlignment="Center" HorizontalAlignment="Center"  Content="" FontSize="18"  FontWeight="Bold" Foreground="#FF210FEB" />-->
+                <ComboBox Margin="10,5,5,5" x:Name="cboAppContexts" SelectionChanged="cboAppContexts_SelectionChanged" Width="400" Height="50">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Margin="0,5,0,5">
+                                <TextBlock FontSize="14" FontWeight="Bold" Foreground="DarkBlue" Text="{Binding FolderName}" TextWrapping="Wrap" />
+                                <WrapPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" FontWeight="Normal"  Foreground="Black" Text="{Binding Name}" TextWrapping="Wrap" />
+                                </WrapPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             <StackPanel x:Name="stkpnlAssessorDetail" Height="70" Width="450" Margin="0,10,0,0" Visibility="Collapsed">
                 <StackPanel x:Name="stkpnlName" Height="30" Orientation="Horizontal" Width="530" >

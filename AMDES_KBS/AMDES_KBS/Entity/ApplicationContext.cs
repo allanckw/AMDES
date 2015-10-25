@@ -68,6 +68,10 @@ namespace AMDES_KBS.Entity
             set { folderPath = value; }
         }
 
+        public override string ToString()
+        {
+            return FolderName + " - " + Name;
+        }
 
     }
 }

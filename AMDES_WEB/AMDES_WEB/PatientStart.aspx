@@ -27,12 +27,12 @@
                 &nbsp; &nbsp;
             </td>
             <td>
-             <%-- Turn Catpcha back on
+
                 <cc1:CaptchaControl ID="ccJoin" runat="server" Height="50px" CaptchaBackgroundNoise="Low"
-                    Width="180px" CaptchaLength="5" BackColor="White" EnableViewState="False" />--%>
+                    Width="180px" CaptchaLength="5" BackColor="White" EnableViewState="False" />
                 <asp:TextBox ID="txtCaptcha" runat="server" MaxLength="5"></asp:TextBox>
-               <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Verification Required"
-                    ControlToValidate="txtCaptcha" Display="Static" Visible="true">* </asp:RequiredFieldValidator>--%>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Verification Required"
+                    ControlToValidate="txtCaptcha" Display="Static" Visible="true">* </asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>

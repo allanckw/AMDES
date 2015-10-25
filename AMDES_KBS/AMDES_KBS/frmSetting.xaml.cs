@@ -41,12 +41,19 @@ namespace AMDES_KBS
                 if (firstPageSetting.DialogResult == false)
                 {
                     //new frmFlowToDiagnosis().ShowDialog();
-                    MessageBox.Show("Please define first setting!");
+                    MessageBox.Show("Please define the first section", "No first section found", MessageBoxButton.OK,MessageBoxImage.Information);
                     return;
                 }
             }
-
-            new frmFlowToDiagnosis().ShowDialog();
+            try
+            {
+                new frmFlowToDiagnosis().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                new frmFlowToDiagnosis().ShowDialog();
+            }
 
         }
 
@@ -70,7 +77,7 @@ namespace AMDES_KBS
                 if (firstPageSetting.DialogResult == false)
                 {
                     //new frmFlowToDiagnosis().ShowDialog();
-                    MessageBox.Show("Please define first setting!");
+                    MessageBox.Show("Please define the first section", "No first section found", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
             }

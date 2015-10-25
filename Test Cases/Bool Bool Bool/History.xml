@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Histories xml-->
+<Histories>
+  <History pid="ANON" AssessmentDate="0">
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Group histID="2">
+      <Question GrpID="2">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="2">
+        <QID>2</QID>
+        <Answer>false</Answer>
+      </Question>
+    </Group>
+    <Group histID="5">
+      <Question GrpID="5">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Diagnoses>
+      <Diagnosis diagID="1">
+        <Comment>Test</Comment>
+        <Header>Test</Header>
+        <Link></Link>
+        <LinkDesc></LinkDesc>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+        <Attributes />
+        <isRes>false</isRes>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635812416000000000</CompletedDate>
+  </History>
+</Histories>

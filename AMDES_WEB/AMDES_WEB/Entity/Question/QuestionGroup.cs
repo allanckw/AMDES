@@ -23,7 +23,7 @@ namespace AMDES_KBS.Entity
         private string symptom;
         protected Navigation nextTrueLink, nextFalseLink; //the next group that will make the decision
 
-        
+
         //20150930 - Add Negative Scoring
         private bool negativeScoring;
         //20150930 - Add Negative Scoring
@@ -32,7 +32,7 @@ namespace AMDES_KBS.Entity
             get { return negativeScoring; }
             set { negativeScoring = value; }
         }
-        
+
         public string Symptom
         {
             get { return symptom; }
@@ -99,7 +99,7 @@ namespace AMDES_KBS.Entity
 
         public virtual void addQuestion(string q, string sym = "")
         {
-            Question qn = new Question( q, sym);
+            Question qn = new Question(q, sym);
 
             if (q != null)
             {
@@ -130,6 +130,20 @@ namespace AMDES_KBS.Entity
         public bool Equals(QuestionGroup qg)
         {
             return this.GroupID == qg.GroupID;
+        }
+
+        public Question getQuestionByID(int qid)
+        {
+            Question qn = new Question();
+            foreach (Question q in this.qns)
+            {
+                if (q.ID == qid)
+                {
+                    qn = q;
+                    break;
+                }
+            }
+            return qn;
         }
 
     }
