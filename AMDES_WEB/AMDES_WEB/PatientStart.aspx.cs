@@ -170,6 +170,8 @@ namespace AMDES_WEB
                     clp.CurrentPatient = p;
                     clp.clearAndLoadNew();
 
+                    AMDES_KBS.Entity.History.dataPath = clp.ApplicationContext.FolderPath + AMDES_KBS.Entity.History.dataPath;
+
                     Session["clp"] = clp;
                     Session["dob"] = dpFrom.Date;
 

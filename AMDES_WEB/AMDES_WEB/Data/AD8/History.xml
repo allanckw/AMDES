@@ -119,4 +119,70 @@
     <Status>0</Status>
     <CompletedDate>635802048000000000</CompletedDate>
   </History>
+  <History pid="ANON_635814213145016388" AssessmentDate="0">
+    <Group histID="1">
+      <Question GrpID="1">
+        <QID>1</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>2</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>3</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>4</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>5</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>6</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>7</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>8</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>9</QID>
+        <Answer>true</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>10</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>11</QID>
+        <Answer>false</Answer>
+      </Question>
+      <Question GrpID="1">
+        <QID>12</QID>
+        <Answer>true</Answer>
+      </Question>
+    </Group>
+    <Diagnoses>
+      <Diagnosis diagID="34">
+        <Comment>Patient have passed the assessment, he/she is unlikely to have any form of cognitive impairment</Comment>
+        <Header>Improbable Cognitive Impairment</Header>
+        <Link></Link>
+        <LinkDesc></LinkDesc>
+        <RetrieveSymptom>false</RetrieveSymptom>
+        <RetrieveFrom />
+        <Attributes />
+        <isRes>false</isRes>
+      </Diagnosis>
+    </Diagnoses>
+    <Status>0</Status>
+    <CompletedDate>635814144000000000</CompletedDate>
+  </History>
 </Histories>
