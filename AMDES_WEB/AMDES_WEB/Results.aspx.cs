@@ -45,7 +45,7 @@ namespace AMDES_WEB
                     loadResources();
 
                     Session["CurrSection"] = 0;
-                    Session["History"] = CLIPSCtrl.CurrentPatient.getLatestHistory();
+                    Session["History"] = CLIPSCtrl.CurrentPatient.getLatestHistory(CLIPSCtrl.ApplicationContext.HistoryDataPath);
                 }
                 else
                 {
@@ -57,7 +57,7 @@ namespace AMDES_WEB
         private void loadFindings()
         {
 
-            foreach (Symptom sym in CLIPSCtrl.CurrentPatient.getLatestHistory().SymptomsList)
+            foreach (Symptom sym in CLIPSCtrl.CurrentPatient.getLatestHistory(CLIPSCtrl.ApplicationContext.HistoryDataPath).SymptomsList)
             {
                 Label lblSymptons = new Label();
 
@@ -80,7 +80,7 @@ namespace AMDES_WEB
         private void loadRecommendations()
         {
             CLIPSCtrl.getResultingDiagnosis();
-            List<Diagnosis> result = CLIPSCtrl.CurrentPatient.getLatestHistory().Diagnoses;
+            List<Diagnosis> result = CLIPSCtrl.CurrentPatient.getLatestHistory(CLIPSCtrl.ApplicationContext.HistoryDataPath).Diagnoses;
 
             foreach (Diagnosis diag in result)
             {

@@ -12,6 +12,7 @@ namespace AMDES_KBS.Entity
         private string folderPath;
         private string folderName = "";
 
+        private string historyDataPath;
         private bool isSelected;
         private bool isConfiguredCorrectly;
 
@@ -35,12 +36,17 @@ namespace AMDES_KBS.Entity
                 {
                     folderName = folderPath.Substring(folderPath.LastIndexOf(@"\"), folderPath.Length - folderPath.LastIndexOf(@"\"));
                     folderName = folderName.Replace(@"\", "");
+
                 }
                 return folderName;
             }
 
         }
 
+        public string HistoryDataPath
+        {
+            get { return historyDataPath; }
+        }
 
         public string Description
         {
@@ -57,7 +63,11 @@ namespace AMDES_KBS.Entity
         public string FolderPath
         {
             get { return folderPath; }
-            set { folderPath = value; }
+            set
+            {
+                this.folderPath = value;
+                this.historyDataPath = value + @"\History.xml";
+            }
         }
 
 

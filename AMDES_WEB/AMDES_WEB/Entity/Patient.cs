@@ -10,7 +10,7 @@ namespace AMDES_KBS.Entity
     {
         //public static string dataPath = @"Data\Patients.xml";
         public static string dataPath = @"\Patients.xml";
-            //System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Patients.xml");
+        //System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Patients.xml");
 
         private Assessor doctor;
 
@@ -103,7 +103,7 @@ namespace AMDES_KBS.Entity
             get { return this.doctor; }
             set { this.doctor = value; }
         }
-      
+
         public DateTime AssessmentDate
         {
             get { return dAssessment; }
@@ -125,18 +125,18 @@ namespace AMDES_KBS.Entity
             return (p.nric.CompareTo(this.nric));
         }
 
-        public History getLatestHistory()
+        public History getLatestHistory(string dataPath)
         {
-            List<History> hList = HistoryController.getHistoryByID(this.nric);
+            List<History> hList = HistoryController.getHistoryByID(this.nric, dataPath);
             if (hList.Count > 0)
                 return hList[hList.Count - 1];
             else
                 return null;
         }
 
-        public List<History> getAllPatientHistory()
+        public List<History> getAllPatientHistory(string dataPath)
         {
-            return HistoryController.getHistoryByID(this.nric);
+            return HistoryController.getHistoryByID(this.nric, dataPath);
         }
 
         public void createAttribute(string attrName, double value)
@@ -153,7 +153,7 @@ namespace AMDES_KBS.Entity
 
         public double retrieveAttribute(string attrName)
         {
-           double h;
+            double h;
             if (attributes.TryGetValue(attrName, out h))
             {
                 return attributes[attrName];

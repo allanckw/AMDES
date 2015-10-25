@@ -23,8 +23,8 @@ namespace AMDES_WEB
 
         private void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            string filepath = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data\");
-            string lastSent = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data\lastSent.scd");
+            string filepath = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/");
+            string lastSent = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/lastSent.scd");
             if (File.Exists(lastSent))
             {
                 StreamReader sr = new StreamReader(lastSent);
@@ -80,16 +80,23 @@ namespace AMDES_WEB
                 //        PatientController.deletePatient(log.Name.Replace(".log", ""));
                 //    }
                 //}
-
-                List<AMDES_KBS.Entity.History> patList = HistoryController.getAllHistory();
-                foreach (AMDES_KBS.Entity.History p in patList)
+                //20151026 - Bug here to Fix
+                string x = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/");
+                string[] dirs = System.IO.Directory.GetDirectories(x);
+                for (int i = 0; i < dirs.Length; i++)
                 {
-                    string createdTime = p.PatientID.Split('_')[1];
-                    DateTime cd = new DateTime(long.Parse(createdTime));
-                    TimeSpan ts = DateTime.Now - cd;
-                    if (ts.Minutes > 60)
+                    string filePath = dirs[i] + @"\History.xml";
+
+                    List<AMDES_KBS.Entity.History> patList = HistoryController.getAllHistory(filePath);
+                    foreach (AMDES_KBS.Entity.History p in patList)
                     {
-                        HistoryController.deletePatientNavigationHistory(p.PatientID);
+                        string createdTime = p.PatientID.Split('_')[1];
+                        DateTime cd = new DateTime(long.Parse(createdTime));
+                        TimeSpan ts = DateTime.Now - cd;
+                        if (ts.Minutes > 60)
+                        {
+                            HistoryController.deletePatientNavigationHistory(p.PatientID, filePath);
+                        }
                     }
                 }
             }

@@ -9,10 +9,10 @@ namespace AMDES_KBS.Controllers
 {
     public class HistoryController
     {
-        private static void createDataFile()
+        private static void createDataFile(string dataPath)
         {
             //create xml document from scratch
-            if (!File.Exists(History.dataPath))
+            if (!File.Exists(dataPath))
             {
                 XDocument document = new XDocument(
 
@@ -22,31 +22,31 @@ namespace AMDES_KBS.Controllers
                         new XElement("Histories")
                 );
 
-                document.Save(History.dataPath);
+                document.Save(dataPath);
             }
         }
 
-        public static void updatePatientNavigationHistory(History h, DateTime assDate)
+        public static void updatePatientNavigationHistory(History h, DateTime assDate, string dataPath)
         {
-            createDataFile();
+            createDataFile(dataPath);
 
-            if (getHistoryByID(h.PatientID, assDate) == null)
+            if (getHistoryByID(h.PatientID, assDate, dataPath) == null)
             {
-                addPatientNavigationHistory(h); //if id is not present, just add
+                addPatientNavigationHistory(h, dataPath); //if id is not present, just add
             }
             else
             {
-                deletePatientNavigationHistory(h.PatientID, h.AssessmentDate); //delete and add
-                addPatientNavigationHistory(h);
+                deletePatientNavigationHistory(h.PatientID, h.AssessmentDate, dataPath); //delete and add
+                addPatientNavigationHistory(h, dataPath);
             }
 
         }
 
-        private static void addPatientNavigationHistory(History h)
+        private static void addPatientNavigationHistory(History h, string dataPath)
         {
-            createDataFile();
+            createDataFile(dataPath);
 
-            XDocument document = XDocument.Load(History.dataPath);
+            XDocument document = XDocument.Load(dataPath);
 
             XElement newPat = new XElement("History", new XAttribute("pid", h.PatientID),
                                 new XAttribute("AssessmentDate", h.AssessmentDate.Date.Ticks));
@@ -108,43 +108,43 @@ namespace AMDES_KBS.Controllers
                 newPat.Add(new XElement("CompletedDate", 0));
             }
             document.Element("Histories").Add(newPat);
-            document.Save(History.dataPath);
+            document.Save(dataPath);
         }
 
-        private static void deletePatientNavigationHistory(string pid, DateTime assDate)
+        private static void deletePatientNavigationHistory(string pid, DateTime assDate, string dataPath)
         {
 
-            XDocument document = XDocument.Load(History.dataPath);
+            XDocument document = XDocument.Load(dataPath);
 
-            if (getHistoryByID(pid, assDate) != null)
+            if (getHistoryByID(pid, assDate, dataPath) != null)
             {
                 (from pa in document.Descendants("History")
                  where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
                  long.Parse(pa.Attribute("AssessmentDate").Value) == assDate.Date.Ticks
                  select pa).SingleOrDefault().Remove();
 
-                document.Save(History.dataPath);
+                document.Save(dataPath);
             }
         }
 
-        public static void deletePatientNavigationHistory(string pid)
+        public static void deletePatientNavigationHistory(string pid, string dataPath)
         {
 
-            XDocument document = XDocument.Load(History.dataPath);
+            XDocument document = XDocument.Load(dataPath);
 
-            if (getHistoryByID(pid) != null)
+            if (getHistoryByID(pid, dataPath) != null)
             {
                 (from pa in document.Descendants("History")
-                 where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 
+                 where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0
                  select pa).SingleOrDefault().Remove();
 
-                document.Save(History.dataPath);
+                document.Save(dataPath);
             }
         }
 
-        public static bool checkForDraft(string pid)
+        public static bool checkForDraft(string pid, string dataPath)
         {
-            XDocument document = XDocument.Load(History.dataPath);
+            XDocument document = XDocument.Load(dataPath);
             var hist = (from pa in document.Descendants("History")
                         where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0 &&
                         int.Parse(pa.Element("Status").Value) == (int)PatientStatus.DRAFT
@@ -153,10 +153,10 @@ namespace AMDES_KBS.Controllers
             return hist.Count > 0;
         }
 
-        public static List<History> getHistoryByID(string pid)
+        public static List<History> getHistoryByID(string pid, string dataPath)
         {
-            createDataFile();
-            XDocument document = XDocument.Load(History.dataPath);
+            createDataFile(dataPath);
+            XDocument document = XDocument.Load(dataPath);
             List<History> hList = new List<History>();
 
             try
@@ -182,10 +182,10 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        public static List<History> getAllHistory()
+        public static List<History> getAllHistory(string dataPath)
         {
-            createDataFile();
-            XDocument document = XDocument.Load(History.dataPath);
+            createDataFile(dataPath);
+            XDocument document = XDocument.Load(dataPath);
             List<History> hList = new List<History>();
 
             try
@@ -210,9 +210,9 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        public static History getHistoryByID(string pid, DateTime assDate)
+        public static History getHistoryByID(string pid, DateTime assDate, string dataPath)
         {
-            XDocument document = XDocument.Load(History.dataPath);
+            XDocument document = XDocument.Load(dataPath);
             List<History> hList = new List<History>();
 
             try
@@ -243,9 +243,9 @@ namespace AMDES_KBS.Controllers
 
         }
 
-        public static bool isHistoryExist(string pid)
+        public static bool isHistoryExist(string pid, string dataPath)
         {
-            XDocument document = XDocument.Load(History.dataPath);
+            XDocument document = XDocument.Load(dataPath);
 
             var hist = (from pa in document.Descendants("History")
                         where pa.Attribute("pid").Value.ToUpper().CompareTo(pid.ToUpper()) == 0

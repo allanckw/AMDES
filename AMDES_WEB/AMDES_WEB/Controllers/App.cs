@@ -10,7 +10,7 @@ namespace AMDES_KBS.Controllers
     {
         public static string readAppTitle(string app)
         {
-            string fileName = System.Web.HttpContext.Current.Server.MapPath(@"Data\" + app + @"\name.CONF");
+            string fileName = System.Web.HttpContext.Current.Server.MapPath(@"~/Data/" + app + @"\name.CONF");
             if (File.Exists(fileName))
             {
                 return File.ReadAllText(fileName);
@@ -25,7 +25,7 @@ namespace AMDES_KBS.Controllers
         public static string readNoSymptomString(string app)
         {
 
-            string fileName = System.Web.HttpContext.Current.Server.MapPath(@"Data\" + app + @"\NoSymptom.CONF");
+            string fileName = System.Web.HttpContext.Current.Server.MapPath(@"~/Data/" + app + @"\NoSymptom.CONF");
             if (File.Exists(fileName))
             {
                 return File.ReadAllText(fileName);

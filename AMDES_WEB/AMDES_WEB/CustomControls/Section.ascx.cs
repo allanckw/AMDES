@@ -284,9 +284,9 @@ namespace AMDES_WEB.CustomControls
 
         private void loadHistory()
         {
-            if (CLIPSCtrl.CurrentPatient.getLatestHistory() != null)
+            if (CLIPSCtrl.CurrentPatient.getLatestHistory(CLIPSCtrl.ApplicationContext.HistoryDataPath) != null)
             {
-                List<QnHistory> qnHistory = CLIPSCtrl.CurrentPatient.getLatestHistory().retrieveHistoryList(this.SectionID);
+                List<QnHistory> qnHistory = CLIPSCtrl.CurrentPatient.getLatestHistory(CLIPSCtrl.ApplicationContext.HistoryDataPath).retrieveHistoryList(this.SectionID);
                 if (qnHistory.Count > 0)
                 {
                     foreach (QnHistory h in qnHistory)
@@ -330,9 +330,9 @@ namespace AMDES_WEB.CustomControls
                 }
                 else
                 {
-                    if (CLIPSCtrl.CurrentPatient.getLatestHistory() != null)
+                    if (CLIPSCtrl.CurrentPatient.getLatestHistory(CLIPSCtrl.ApplicationContext.HistoryDataPath) != null)
                     {
-                        List<QnHistory> qnHistory = CLIPSCtrl.CurrentPatient.getLatestHistory().retrieveHistoryList(this.sectionID);
+                        List<QnHistory> qnHistory = CLIPSCtrl.CurrentPatient.getLatestHistory(CLIPSCtrl.ApplicationContext.HistoryDataPath).retrieveHistoryList(this.sectionID);
                         if (qnHistory.Count > 0)
                         {
                             foreach (QnHistory h in qnHistory)

@@ -33,8 +33,7 @@ namespace AMDES_WEB
                 else
                     dpFrom.Date = DateTime.Now;
 
-                if (!AMDES_KBS.Entity.History.dataPath.Contains(clp.ApplicationContext.FolderPath))
-                    AMDES_KBS.Entity.History.dataPath = clp.ApplicationContext.FolderPath + AMDES_KBS.Entity.History.dataPath;
+                
             }
             AddRegistrationField();
         }

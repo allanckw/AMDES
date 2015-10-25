@@ -117,7 +117,7 @@ namespace AMDES_KBS.Controllers
             env.Load(getCLPPath());
             reset();
 
-            if (File.Exists(logPath) && HistoryController.isHistoryExist(pat.NRIC))
+            if (File.Exists(logPath) && HistoryController.isHistoryExist(pat.NRIC, this.selectedAppContext.HistoryDataPath))
             {
                 //File Ops here
                 string line;
@@ -133,7 +133,7 @@ namespace AMDES_KBS.Controllers
                 //saveAssertLog();
                 //End File Op
                 run();
-                return pat.getLatestHistory();
+                return pat.getLatestHistory(this.selectedAppContext.HistoryDataPath);
             }
             else
             {
@@ -679,7 +679,7 @@ namespace AMDES_KBS.Controllers
             h = getCurrentPatientSymptom(h);
             h.setCompleted();
 
-            HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+            HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date, this.selectedAppContext.HistoryDataPath);
         }
 
         public void saveCurrentNavex()
@@ -751,10 +751,10 @@ namespace AMDES_KBS.Controllers
 
             h = getCurrentPatientSymptom(h);
             if (savePatient.Value)
-                HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date);
+                HistoryController.updatePatientNavigationHistory(h, CurrentPatient.AssessmentDate.Date, this.selectedAppContext.HistoryDataPath);
 
             else
-                HistoryController.updatePatientNavigationHistory(h, new DateTime(0));
+                HistoryController.updatePatientNavigationHistory(h, new DateTime(0), this.selectedAppContext.HistoryDataPath);
 
         }
 
