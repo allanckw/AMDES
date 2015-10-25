@@ -32,6 +32,9 @@ namespace AMDES_WEB
                     dpFrom.Date = (DateTime)Session["dob"];
                 else
                     dpFrom.Date = DateTime.Now;
+
+                if (!AMDES_KBS.Entity.History.dataPath.Contains(clp.ApplicationContext.FolderPath))
+                    AMDES_KBS.Entity.History.dataPath = clp.ApplicationContext.FolderPath + AMDES_KBS.Entity.History.dataPath;
             }
             AddRegistrationField();
         }
@@ -170,7 +173,7 @@ namespace AMDES_WEB
                     clp.CurrentPatient = p;
                     clp.clearAndLoadNew();
 
-                    AMDES_KBS.Entity.History.dataPath = clp.ApplicationContext.FolderPath + AMDES_KBS.Entity.History.dataPath;
+
 
                     Session["clp"] = clp;
                     Session["dob"] = dpFrom.Date;
