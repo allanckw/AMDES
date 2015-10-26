@@ -4,52 +4,52 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="510" d:DesignWidth="670"
+      d:DesignHeight="600" d:DesignWidth="9650"
 	Title="frmPatientDetails">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="600" />
+                <!--RowDefinition Height="0" /-->
+            </Grid.RowDefinitions>
+        <ScrollViewer x:Name="svP" VerticalScrollBarVisibility="auto" Height="600" Width="960" HorizontalAlignment="Left">
+            <StackPanel Grid.RowSpan="2">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="New Record" FontWeight="Bold" FontSize="20"  />
+                    <Label Content="Patient's Information" FontWeight="Bold" FontSize="16" />
+                </StackPanel>
+                <StackPanel x:Name="stkpnlPatientDetails">
 
-    <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="510*" />
-            <RowDefinition Height="0*" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.RowSpan="2">
-            <StackPanel Orientation="Vertical">
-                <Label Content="New Record" FontWeight="Bold" FontSize="20"  />
-                <Label Content="Patient's Information" FontWeight="Bold" FontSize="16" />
-            </StackPanel>
-            <StackPanel x:Name="stkpnlPatientDetails">
+                    <!-- Use ScrollViewer here DEFAULT ATTRIBUTES, EVERYONE WILL HAVE -->
 
-                <!-- Use ScrollViewer here DEFAULT ATTRIBUTES, EVERYONE WILL HAVE -->
-
-                <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                    <Label  Width="150" Content="Date of  Assessment:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                    <DatePicker Width="200" Name="dtpAss" IsEnabled="False" FontSize="14" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Name="stknric" Margin="0,5,0,5">
-                    <Label  Width="150" Content="Identification no.:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Width="200" Height="30" Name="txtNRIC" FontSize="14" Tag="Identification No"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Name="stksurname" Margin="0,5,0,5" >
-                    <Label Width="150"  Content="Surname:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Width="200" Height="30" Name="txtLastName" FontSize="14" Tag="Surname" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Name="stkfirstname" Margin="0,5,0,5">
-                    <Label Width="150"  Content="First name:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Width="200" Height="30" Name="txtFirstName" FontSize="14" Tag="Surname"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                    <Label Width="150"  Content="Date of Birth:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14" />
-                    <StackPanel>
-                        <DatePicker Width="200" Name="dtpDOB" FirstDayOfWeek="Monday" FontSize="14"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                        <Label  Width="150" Content="Date of  Assessment:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                        <DatePicker Width="200" Name="dtpAss" IsEnabled="False" FontSize="14" />
                     </StackPanel>
-                    <Label  Content=" (Format DD/MM/YYYY)" FontSize="14" />
-                    <Label  Content="e.g. 31/1/1970" FontSize="14" />
-                </StackPanel>
+                    <StackPanel Orientation="Horizontal" Name="stknric" Margin="0,5,0,5">
+                        <Label  Width="150" Content="Identification no.:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                        <TextBox Width="200" Height="30" Name="txtNRIC" FontSize="14" Tag="Identification No"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Name="stksurname" Margin="0,5,0,5" >
+                        <Label Width="150"  Content="Surname:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                        <TextBox Width="200" Height="30" Name="txtLastName" FontSize="14" Tag="Surname" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Name="stkfirstname" Margin="0,5,0,5">
+                        <Label Width="150"  Content="First name:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                        <TextBox Width="200" Height="30" Name="txtFirstName" FontSize="14" Tag="Surname"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                        <Label Width="150"  Content="Date of Birth:" HorizontalContentAlignment="Right" FontWeight="Bold" FontSize="14" />
+                        <StackPanel>
+                            <DatePicker Width="200" Name="dtpDOB" FirstDayOfWeek="Monday" FontSize="14"/>
+                        </StackPanel>
+                        <Label  Content=" (Format DD/MM/YYYY)" FontSize="14" />
+                        <Label  Content="e.g. 31/1/1970" FontSize="14" />
+                    </StackPanel>
 
-                <!-- END DEFAULT ATTRIBUTES, EVERYONE WILL HAVE -->
+                    <!-- END DEFAULT ATTRIBUTES, EVERYONE WILL HAVE -->
 
-                <!-- INSERT ADDITIONAL ATTRIBUTES HERE, no patattribute do not display, got attribute then display -->
-                <!-- Depending on the attribute type show the correct control
+                    <!-- INSERT ADDITIONAL ATTRIBUTES HERE, no patattribute do not display, got attribute then display -->
+                    <!-- Depending on the attribute type show the correct control
             if attribute type == categorical, display combobox
             if attribute type == numerical, display textbox (but must verify that it is a number!)
             
@@ -57,31 +57,30 @@
             
             -->
 
-            </StackPanel>
-
-            <StackPanel x:Name="stkpnlAssessorDetails" Visibility="Hidden">
-                <StackPanel Orientation="Horizontal">
-                    <Label  Width="200" Content="Assessor's Details" FontWeight="Bold" FontSize="16" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label  Width="150" Content="Assessor name:"/>
-                    <TextBox Width="200" Height="30" Name="txtAssessorName" IsReadOnly="True" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label  Width="150" Content="Clinic / Location:"/>
-                    <TextBox Width="200" Height="30" IsReadOnly="True" Name="txtAssessorLoc" />
                 </StackPanel>
 
+                <StackPanel x:Name="stkpnlAssessorDetails" Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Width="200" Content="Assessor's Details" FontWeight="Bold" FontSize="16" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Width="150" Content="Assessor name:"/>
+                        <TextBox Width="200" Height="30" Name="txtAssessorName" IsReadOnly="True" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Width="150" Content="Clinic / Location:"/>
+                        <TextBox Width="200" Height="30" IsReadOnly="True" Name="txtAssessorLoc" />
+                    </StackPanel>
 
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnStartTest" Width="126" Height="30" Margin="150,10,0,0" Content="Start Assessment" Click="btnStartTest_Click" FontSize="14" />
+
+                    <Button x:Name="btnSaveTest" Width="120" Height="30" Margin="10,10,0,0" Content="Save and Exit Test" Click="btnSaveTest_Click" FontSize="14" />
+                    <Button Content="Return to Main" Height="30" Margin="10,10,0,0" Name="btnQuit" Width="120" Click="btnQuit_Click" FontSize="14" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnStartTest" Width="126" Height="30" Margin="150,10,0,0" Content="Start Assessment" Click="btnStartTest_Click" FontSize="14" />
-
-                <Button x:Name="btnSaveTest" Width="120" Height="30" Margin="10,10,0,0" Content="Save and Exit Test" Click="btnSaveTest_Click" FontSize="14" />
-                <Button Content="Return to Main" Height="30" Margin="10,10,0,0" Name="btnQuit" Width="120" Click="btnQuit_Click" FontSize="14" />
-            </StackPanel>
-
-
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </src:AMDESPage>
