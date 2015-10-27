@@ -33,7 +33,7 @@ namespace AMDES_WEB
                 else
                     dpFrom.Date = DateTime.Now;
 
-                
+
             }
             AddRegistrationField();
         }
@@ -142,7 +142,7 @@ namespace AMDES_WEB
             try
             {
                 ccJoin.ValidateCaptcha(txtCaptcha.Text.Trim());
-                if (ccJoin.UserValidated) ////if (true) turn off for debug purpose
+                if (ccJoin.UserValidated) //if (true)// turn off for debug purpose
                 {
                     Patient p = new Patient();
 
@@ -172,14 +172,11 @@ namespace AMDES_WEB
                     clp.CurrentPatient = p;
                     clp.clearAndLoadNew();
 
-
-
                     Session["clp"] = clp;
                     Session["dob"] = dpFrom.Date;
 
                     txtCaptcha.Text = "";
                     Response.Redirect("~/Questionnaire.aspx");
-
                 }
                 else
                 {

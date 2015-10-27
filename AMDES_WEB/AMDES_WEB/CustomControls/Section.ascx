@@ -2,7 +2,8 @@
 <h2>
     <asp:Label ID="lblSection" runat="server" Text=""></asp:Label></h2>
 <h3>
-    <asp:Label ID="lblHeader" runat="server" Text=""></asp:Label></h3>
+    <asp:Literal ID="lblHeader" runat="server"></asp:Literal>
+  </h3>
 <table style="table-layout: fixed; width: 100%; word-wrap: break-word;">
     <tr style="min-height: 0px; max-height: 0px; height: 0px;">
         <td style="vertical-align: top; width: 5%;">

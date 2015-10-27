@@ -66,9 +66,9 @@
                                 </div>
                             </li>--%>
                             <li>
-                                <asp:HyperLink ID="hypAD8" runat="server" NavigateUrl="~/PatientStart.aspx?appID=AD8"><span>AD8 with partial MSME</span></asp:HyperLink></li>
+                                <asp:HyperLink ID="hypAD8" runat="server" NavigateUrl="~/PatientStart.aspx?appID=BDT"><span>Brief Dementia Test</span></asp:HyperLink></li>
                             <li>
-                                <asp:HyperLink ID="hypADD" runat="server" NavigateUrl="~/PatientStart.aspx?appID=ADD"><span>Aid for Dementia Diagnosis</span></asp:HyperLink></li>
+                                <asp:HyperLink ID="hypADD" runat="server" NavigateUrl="~/PatientStart.aspx?appID=DDT"><span>Dementia Diagnostic Test</span></asp:HyperLink></li>
                             <%--<li>
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Downloads.aspx" class="last"><span>Downloads</span></asp:HyperLink>
                             </li>--%>

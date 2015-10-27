@@ -16,13 +16,9 @@
                 shall not be liable for any damages arising from the results given by the application.
                 <br />
                 <br />
-                We recommend that the user start with the Eight-item Interview to Differentiate Aging and Dementia (AD8) 
-                with partial mini–mental state examination (MSME) test, before proceeding to
-                complete the full ADD questionaire based on the Diagnostic and Statistical Manual of Mental Disorders (DSM) IV Criteria
-                as the former is easier to administer. 
-                
-                The system will advise you if the patient require the more comprehensive ADD questionaire.
-                <br />
+                We recommend that the user start with the Brief Dementia Test (BDT), and if the result is positive,
+                to move on to the Dementia Diagnostic Test (DDT) which is based on the DSM IV Criteria
+                   <br />
                 <br />
             </h3>
             <h5>

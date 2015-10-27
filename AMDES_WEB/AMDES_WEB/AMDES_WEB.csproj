@@ -199,7 +199,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\ADD\Logs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\aspComponents.css" />
@@ -209,15 +208,23 @@
     <Content Include="css\tab.css" />
     <Content Include="CustomControls\DatePicker.ascx" />
     <Content Include="CustomControls\DiagnosisUC.ascx" />
-    <Content Include="Data\AD8\Assessor.xml" />
-    <Content Include="Data\AD8\DefRules.xml" />
-    <Content Include="Data\AD8\Diagnoses.xml" />
-    <Content Include="Data\AD8\FirstQn.xml" />
-    <Content Include="Data\AD8\History.xml" />
-    <Content Include="Data\AD8\PatAttributes.xml" />
-    <Content Include="Data\AD8\Questions.xml" />
-    <Content Include="Data\AD8\Rules.xml" />
-    <Content Include="Data\ADD\Engine.xml" />
+    <Content Include="Data\BDT\Assessor.xml" />
+    <Content Include="Data\BDT\DefRules.xml" />
+    <Content Include="Data\BDT\Diagnoses.xml" />
+    <Content Include="Data\BDT\FirstQn.xml" />
+    <Content Include="Data\BDT\History.xml" />
+    <Content Include="Data\BDT\img\interPentagon.png" />
+    <Content Include="Data\BDT\PatAttributes.xml" />
+    <Content Include="Data\BDT\Questions.xml" />
+    <Content Include="Data\BDT\Rules.xml" />
+    <Content Include="Data\DDT\Assessor.xml" />
+    <Content Include="Data\DDT\DefRules.xml" />
+    <Content Include="Data\DDT\Diagnoses.xml" />
+    <Content Include="Data\DDT\FirstQn.xml" />
+    <Content Include="Data\DDT\History.xml" />
+    <Content Include="Data\DDT\PatAttributes.xml" />
+    <Content Include="Data\DDT\Questions.xml" />
+    <Content Include="Data\DDT\Rules.xml" />
     <Content Include="Global.asax" />
     <Content Include="History.aspx" />
     <Content Include="images\green_bg_Tab.gif" />
@@ -231,15 +238,6 @@
     <Content Include="CustomControls\PatAttributeUC.ascx" />
     <Content Include="CustomControls\QuestionsUC.ascx" />
     <Content Include="CustomControls\Section.ascx" />
-    <Content Include="Data\ADD\Assessor.xml" />
-    <Content Include="Data\ADD\DefRules.xml" />
-    <Content Include="Data\ADD\Diagnoses.xml" />
-    <Content Include="Data\ADD\FirstQn.xml" />
-    <Content Include="Data\ADD\History.xml" />
-    <Content Include="Data\ADD\name.txt" />
-    <Content Include="Data\ADD\PatAttributes.xml" />
-    <Content Include="Data\ADD\Questions.xml" />
-    <Content Include="Data\ADD\Rules.xml" />
     <Content Include="Default.aspx" />
     <Content Include="Downloads.aspx" />
     <Content Include="images\body.jpg" />
@@ -270,9 +268,10 @@
     <Content Include="ResultsPrintFriendly.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\AD8\Logs\ANON.log" />
-    <None Include="Data\AD8\name.conf" />
-    <None Include="Data\AD8\WOT.conf" />
+    <None Include="Data\BDT\name.conf" />
+    <None Include="Data\BDT\NoSymptom.CONF" />
+    <None Include="Data\DDT\name.conf" />
+    <None Include="Data\DDT\NoSymptom.CONF" />
     <None Include="Data\lastSent.scd" />
     <None Include="Engine\dementia.CLP" />
     <None Include="images\Thumbs.db" />

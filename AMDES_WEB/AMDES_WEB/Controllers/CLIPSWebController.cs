@@ -334,7 +334,7 @@ namespace AMDES_KBS.Controllers
             }
 
             List<Navigation> nList = new List<Navigation>();
-            int i = 0;
+
             foreach (Rules r in rList)
             {
                 foreach (Navigation n in r.Navigations)

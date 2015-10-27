@@ -10,7 +10,7 @@
     </td>
     <td style="vertical-align: top; width: 80%;">
         <h4>
-            <asp:Label ID="lblQn" runat="server" Text=""></asp:Label></h4>
+            <asp:Literal ID="lblQn" runat="server"></asp:Literal></h4>
         <asp:Image ID="imgQn" runat="server" Visible="false" />
     </td>
     <td style="min-width: 10%; max-width: 60px">

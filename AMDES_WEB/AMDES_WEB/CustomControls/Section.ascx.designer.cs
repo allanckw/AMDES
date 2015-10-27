@@ -28,7 +28,7 @@ namespace AMDES_WEB.CustomControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeader;
+        protected global::System.Web.UI.WebControls.Literal lblHeader;
         
         /// <summary>
         /// lbl1 control.

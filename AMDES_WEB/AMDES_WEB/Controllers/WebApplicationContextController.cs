@@ -22,11 +22,6 @@ namespace AMDES_KBS.Controllers
             return sApp;
         }
 
-        public static string getSelectedAppContext()
-        {
-            return "";
-        }
-
         private static void setEntitiesPath()
         {
         //    PatAttribute.dataPath = CLIPSController.selectedAppContext.FolderPath + @"\PatAttributes.xml";

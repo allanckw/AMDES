@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Diagnoses xml-->
+<Diagnoses>
+  <Diagnosis diagID="34">
+    <Comment>Patient have passed the BDT assessment, hence the likelihood of Dementia is Low</Comment>
+    <Header>Likelihood of Dementia is Low</Header>
+    <Link></Link>
+    <LinkDesc></LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <Attributes />
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="2">
+    <Comment>Patient have failed the BDT, the likelihood of Dementia is high, please proceed with the Dementia Diagnostic Test</Comment>
+    <Header>Likelihood of Dementia is High</Header>
+    <Link>~/PatientStart.aspx?appID=DDT</Link>
+    <LinkDesc>Aid for Dementia Diagnosis</LinkDesc>
+    <RetrieveSymptom>true</RetrieveSymptom>
+    <RetrieveFrom>
+      <QGrpID>1</QGrpID>
+    </RetrieveFrom>
+    <Attributes />
+    <isRes>false</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="1">
+    <Comment>By: James E. Galvin, MD, MPH and Yael Zweig, MSN, ANP-BC, GNP-BC</Comment>
+    <Header>The AD8: The Washington University Dementia Screening Test, Eight-item Interview to Differentiate Aging and Dementia</Header>
+    <Link>http://consultgerirn.org/uploads/File/trythis/try_this_d14.pdf</Link>
+    <LinkDesc>Read the paper</LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <Attributes />
+    <isRes>true</isRes>
+  </Diagnosis>
+  <Diagnosis diagID="35">
+    <Comment>By: Tew CW, Ng TP, Cheong CY, Yap P</Comment>
+    <Header>A Brief Dementia Test with Subjective and Objective Measures</Header>
+    <Link>http://www.ncbi.nlm.nih.gov/pubmed/26483833</Link>
+    <LinkDesc>Read the paper from PubMed</LinkDesc>
+    <RetrieveSymptom>false</RetrieveSymptom>
+    <RetrieveFrom />
+    <Attributes />
+    <isRes>true</isRes>
+  </Diagnosis>
+</Diagnoses>

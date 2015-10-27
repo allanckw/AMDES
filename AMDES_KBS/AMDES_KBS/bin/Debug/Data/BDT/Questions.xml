@@ -2,29 +2,29 @@
 <!--AMDES Questions xml-->
 <QuestionGroups>
   <QuestionGroup id="1">
-    <Header>AD8 with MSME</Header>
-    <Description>Before you start, ask the patient to remember the following 3 objects: Key, Lemon, Balloon~~Ask the patient the following questions:</Description>
+    <Header>Brief Dementia Test</Header>
+    <Description>Before you start, ask the patient to remember the following 3 objects: [color=red]Key, Lemon, Balloon[/color]~~Then proceed with the following qns.</Description>
     <QnType>2</QnType>
-    <Symptom>Fail AD8 with partial MSME</Symptom>
+    <Symptom>Patient Failed Brief Dementia Test</Symptom>
     <Negation>false</Negation>
     <Questions>
       <Question QID="1">
         <Name>Patient have problems with judgment (e.g. falls for scams, bad financial decisions, buys gifts inappropriate for recipients)</Name>
-        <Symptom>Problems with judgement</Symptom>
+        <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="2">
         <Name>Patient has reduced interest in hobbies/activities</Name>
-        <Symptom>Reduced interest in hobbies/activities</Symptom>
+        <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="3">
         <Name>Patient often repeats questions, stories or statements</Name>
-        <Symptom>Repeating questions, stories or statements</Symptom>
+        <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
@@ -38,34 +38,34 @@
       </Question>
       <Question QID="5">
         <Name>Patient often forgets correct month or year</Name>
-        <Symptom>Forgetful</Symptom>
+        <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="6">
         <Name>Patient has difficulties when handling complicated financial affairs (e.g. balancing checkbook, income taxes, paying bills)</Name>
-        <Symptom>Difficulties when handling complicated financial affairs</Symptom>
+        <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="7">
         <Name>Patient has difficulty with remembering appointments</Name>
-        <Symptom>Difficulty with remembering appointments</Symptom>
+        <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="8">
-        <Name>Patient encounters consistent problems with thinking and/or memory</Name>
-        <Symptom>Consistent problems with thinking and/or memory</Symptom>
+        <Name>Patient encounters consistent problems with thinking and/or memory~~~~Section Adapted from AD8</Name>
+        <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="9">
-        <Name>Can the patient copy the intersecting pentagon as shown below?</Name>
+        <Name>Can the patient copy the figure below?</Name>
         <Symptom></Symptom>
         <Negation>false</Negation>
         <ImageURL>interPentagon.png</ImageURL>

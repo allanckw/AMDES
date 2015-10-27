@@ -7,7 +7,7 @@ namespace AMDES_KBS.Entity
 {
     public class EngineFile
     {
-        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Data\Add\Engine.xml");
+        public static string dataPath = System.Web.HttpContext.Current.Server.MapPath(@"Engine\Engine.xml");
 
         string path;
 

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--AMDES Rules xml-->
 <Rules>
-  <Rule RID="1">
+  <Rule RID="5">
     <Description>Pass Test</Description>
     <Navigations>
-      <Navex NavID="1.1">
+      <Navex NavID="5.1">
         <Destination>-1</Destination>
         <NavigationChildCriterias>
           <ChildCriteriaQuestionGroup>
@@ -22,10 +22,10 @@
       <RDiagnosisID>34</RDiagnosisID>
     </Diagnoses>
   </Rule>
-  <Rule RID="2">
+  <Rule RID="6">
     <Description>Fail Test</Description>
     <Navigations>
-      <Navex NavID="2.1">
+      <Navex NavID="6.1">
         <Destination>-1</Destination>
         <NavigationChildCriterias>
           <ChildCriteriaQuestionGroup>
