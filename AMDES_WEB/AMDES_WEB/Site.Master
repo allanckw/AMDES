@@ -13,7 +13,7 @@
     <meta name="rating" content="Safe for Kids" />
     <meta name="robots" content="index, follow" />
     <meta name="revisit-after" content="7 days" />
-    <link rel="stylesheet" href="css/style3.css" type="text/css" />
+    <link rel="stylesheet" href="cstyle/style3.css" type="text/css" />
     <!--    <script type="text/javascript">
         jQuery.noConflict();
     </script>-->
@@ -99,13 +99,13 @@
                     <tr>
                         <td>
                             <%--<img style="border: 0; height: 75px" alt="NUS SOC" src="http://www.comp.nus.edu.sg/~cs5247/resources/nusLogo.jpg" />--%>
-                            <asp:Image ID="Image1" runat="server" Style="border: 0; height: 75px" ImageUrl="~/images/nusLogo.jpg"
+                            <asp:Image ID="Image1" runat="server" Style="border: 0; height: 75px" ImageUrl="~/img/nusLogo.jpg"
                                 AlternateText="NUS School Of Computing" />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>
                             <%--<img style="border: 0; height: 75px" alt="Khoo Teck Puat Hospital" src="http://upload.wikimedia.org/wikipedia/en/6/65/KTPH_Logo.jpg" />--%>
-                            <asp:Image ID="Image2" runat="server" Style="border: 0; height: 75px" ImageUrl="~/images/KTPH_Logo.jpg"
+                            <asp:Image ID="Image2" runat="server" Style="border: 0; height: 75px" ImageUrl="~/img/KTPH_Logo.jpg"
                                 AlternateText="Khoo Teck Puat Hospital" />
                         </td>
                     </tr>

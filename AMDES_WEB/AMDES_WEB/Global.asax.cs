@@ -23,8 +23,8 @@ namespace AMDES_WEB
 
         private void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            string filepath = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/");
-            string lastSent = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/lastSent.scd");
+            string filepath = System.Web.Hosting.HostingEnvironment.MapPath(@"~/AppData/");
+            string lastSent = System.Web.Hosting.HostingEnvironment.MapPath(@"~/AppData/lastSent.scd");
             if (File.Exists(lastSent))
             {
                 StreamReader sr = new StreamReader(lastSent);
@@ -81,7 +81,7 @@ namespace AMDES_WEB
                 //    }
                 //}
                 //20151026 - Bug here to Fix
-                string x = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/");
+                string x = System.Web.Hosting.HostingEnvironment.MapPath(@"~/AppData/");
                 string[] dirs = System.IO.Directory.GetDirectories(x);
                 for (int i = 0; i < dirs.Length; i++)
                 {
@@ -114,9 +114,9 @@ namespace AMDES_WEB
 
         }
 
-        protected void Application_BeginRequest(object sender, EventArgs e)
+        void Application_BeginRequest(object sender, EventArgs e)
         {
-
+            System.Web.HttpContext.Current.Response.AddHeader("x-frame-options", "DENY");
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)

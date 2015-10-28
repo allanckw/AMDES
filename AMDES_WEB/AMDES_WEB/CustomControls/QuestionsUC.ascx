@@ -17,6 +17,6 @@
         <asp:CheckBox ID="chkAns" runat="server" AutoPostBack="True" OnCheckedChanged="chkAns_CheckedChanged" />
         <act:ToggleButtonExtender ID="ToggleEx" runat="server" TargetControlID="chkAns" ImageWidth="50"
             ImageHeight="25" CheckedImageAlternateText="Yes" UncheckedImageAlternateText="No"
-            UncheckedImageUrl="~/images/ToggleButton_Unchecked.png" CheckedImageUrl="~/images/ToggleButton_Checked.png" />
+            UncheckedImageUrl="~/img/ToggleButton_Unchecked.png" CheckedImageUrl="~/img/ToggleButton_Checked.png" />
     </td>
 </tr>

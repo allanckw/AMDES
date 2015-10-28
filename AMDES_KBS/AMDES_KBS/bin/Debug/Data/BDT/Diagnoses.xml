@@ -2,7 +2,7 @@
 <!--AMDES Diagnoses xml-->
 <Diagnoses>
   <Diagnosis diagID="34">
-    <Comment>Patient have passed the BDT assessment, hence the likelihood of Dementia is Low</Comment>
+    <Comment>Patient has passed the BDT assessment, hence the likelihood of Dementia is Low</Comment>
     <Header>Likelihood of Dementia is Low</Header>
     <Link></Link>
     <LinkDesc></LinkDesc>
@@ -12,10 +12,10 @@
     <isRes>false</isRes>
   </Diagnosis>
   <Diagnosis diagID="2">
-    <Comment>Patient have failed the BDT, the likelihood of Dementia is high, please proceed with the Dementia Diagnostic Test</Comment>
+    <Comment>Patient has failed the BDT assessment, the likelihood of Dementia is high, please proceed with the Dementia Diagnostic Test</Comment>
     <Header>Likelihood of Dementia is High</Header>
     <Link>~/PatientStart.aspx?appID=DDT</Link>
-    <LinkDesc>Aid for Dementia Diagnosis</LinkDesc>
+    <LinkDesc>Dementia Diagnostic Test</LinkDesc>
     <RetrieveSymptom>true</RetrieveSymptom>
     <RetrieveFrom>
       <QGrpID>1</QGrpID>
@@ -36,8 +36,8 @@
   <Diagnosis diagID="35">
     <Comment>By: Tew CW, Ng TP, Cheong CY, Yap P</Comment>
     <Header>A Brief Dementia Test with Subjective and Objective Measures</Header>
-    <Link>http://www.ncbi.nlm.nih.gov/pubmed/26483833</Link>
-    <LinkDesc>Read the paper from PubMed</LinkDesc>
+    <Link>http://www.ncbi.nlm.nih.gov/pubmed/16116116</Link>
+    <LinkDesc>PubMed</LinkDesc>
     <RetrieveSymptom>false</RetrieveSymptom>
     <RetrieveFrom />
     <Attributes />

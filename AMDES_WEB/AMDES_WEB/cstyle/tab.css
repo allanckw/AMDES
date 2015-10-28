@@ -1,15 +1,15 @@
 ﻿.fancy-green .ajax__tab_header
 {
-    background: url(../images/green_bg_Tab.gif) repeat-x;
+    background: url(../img/green_bg_Tab.gif) repeat-x;
     cursor: pointer;
 }
 .fancy-green .ajax__tab_hover .ajax__tab_outer, .fancy-green .ajax__tab_active .ajax__tab_outer
 {
-    background: url(../images/green_left_Tab.gif) no-repeat left top;
+    background: url(../img/green_left_Tab.gif) no-repeat left top;
 }
 .fancy-green .ajax__tab_hover .ajax__tab_inner, .fancy-green .ajax__tab_active .ajax__tab_inner
 {
-    background: url(../images/green_right_Tab.gif) no-repeat right top;
+    background: url(../img/green_right_Tab.gif) no-repeat right top;
 }
 .fancy .ajax__tab_header
 {

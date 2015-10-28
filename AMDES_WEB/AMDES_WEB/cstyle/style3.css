@@ -8,7 +8,7 @@ body
     font: 90%/1.6em 'Ubuntu' , arial, serif;
     color: Black;
     margin: 0;
-    background: url(../images/body.jpg) top repeat-x #121212;
+    background: url(../img/body.jpg) top repeat-x #121212;
     background-attachment: fixed;
     width: 100%;
 }
@@ -39,7 +39,7 @@ div.fluid
 #wrapper2
 {
     width: 100%;
-    background: url(../images/wrapper2.jpg) bottom repeat-x #fff;
+    background: url(../img/wrapper2.jpg) bottom repeat-x #fff;
     border-left: 1px solid #000;
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -80,7 +80,7 @@ div.fluid
     float: left;
     padding: 30px 20px 14px 45px;
     background-position: 10px 10px;
-    background: url(../images/h1.jpg) left bottom no-repeat;
+    background: url(../img/h1.jpg) left bottom no-repeat;
 }
 #header h1 a
 {
@@ -107,7 +107,7 @@ div.fluid
 
 p.description
 {
-    background: url(../images/description.jpg) right bottom no-repeat #005A97;
+    background: url(../img/description.jpg) right bottom no-repeat #005A97;
     padding: 10px 10px 40px 10px;
     color: #fff;
     font-size: 1.5em;
@@ -132,7 +132,7 @@ p.description a:hover
 {
 	width: 280px;
 	float: right;
-	background: url(../images/sidebar.jpg) top right no-repeat #fff;
+	background: url(../img/sidebar.jpg) top right no-repeat #fff;
 	padding: 0 0 0 0;
 	margin: -30px 0 0 0;
 	font-size:0.9em;
@@ -142,7 +142,7 @@ p.description a:hover
 #content
 {
     padding: 0 0 0 0;
-    background: url(../images/content.jpg) top right no-repeat;
+    background: url(../img/content.jpg) top right no-repeat;
     min-height: 700px;
     float: left;
     width: 100%; /* 750px; */
@@ -151,7 +151,7 @@ p.description a:hover
 #content2
 {
     padding: 0 0 0 0;
-    background: url(../images/content.jpg) top right no-repeat;
+    background: url(../img/content.jpg) top right no-repeat;
     min-height: 700px;
     float: left;
     width: 90%;
@@ -165,7 +165,7 @@ p.description a:hover
     margin-top: 2px;
     margin-bottom: 2px;
     border-bottom: 2px solid #eee;
-    background: url(../images/h2.jpg) bottom left no-repeat;
+    background: url(../img/h2.jpg) bottom left no-repeat;
     clear: left;
 }
 #content h2 a

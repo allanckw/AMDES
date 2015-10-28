@@ -5,14 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Patient Report</title>
-    <link rel="stylesheet" href="css/style3.css" type="text/css" />
+    <link rel="stylesheet" href="cstyle/style3.css" type="text/css" />
 </head>
 <body style="background-color: White; color: Black; font: Times New Roman, serif;"
     onload="window.print()">
     <form id="form1" runat="server">
     <div style="background-color: White; color: Black;">
         <h2 style="color: Blue">
-            <asp:Label ID="lblTestName" runat="server" Text=""></asp:Label> - Patient Report</h2>
+            <asp:Label ID="lblTestName" runat="server" Text=""></asp:Label>
+            - Patient Report</h2>
         <br />
         <br />
         <h3>

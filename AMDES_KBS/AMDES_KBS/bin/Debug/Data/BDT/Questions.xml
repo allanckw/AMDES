@@ -9,7 +9,7 @@
     <Negation>false</Negation>
     <Questions>
       <Question QID="1">
-        <Name>Patient have problems with judgment (e.g. falls for scams, bad financial decisions, buys gifts inappropriate for recipients)</Name>
+        <Name>Patient has problems with judgment (e.g. falls for scams, bad financial decisions, buys gifts inappropriate for recipients)</Name>
         <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>

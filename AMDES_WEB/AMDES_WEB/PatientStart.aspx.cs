@@ -76,7 +76,7 @@ namespace AMDES_WEB
 
             lblEventName.InnerText = App.readAppTitle(appID);
 
-            string dir = @"Data/" + appID;
+            string dir = @"AppData/" + appID;
 
 
             if (appID != null && appID.Length > 0 && Directory.Exists(Server.MapPath(dir)))

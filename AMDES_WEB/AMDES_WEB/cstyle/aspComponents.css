@@ -12,17 +12,17 @@
 
 .filledRatingStar
 {
-	background-image: url(../images/FilledStar.gif);
+	background-image: url(../img/FilledStar.gif);
 }
 
 .emptyRatingStar
 {
-	background-image: url(../images/EmptyStar.gif);
+	background-image: url(../img/EmptyStar.gif);
 }
 
 .waitingRatingStar
 {
-	background-image: url(../images/WaitingStar.gif);
+	background-image: url(../img/WaitingStar.gif);
 }
 
 /* Entre Center Profile */
@@ -81,7 +81,7 @@
 .dynamicMenuItemStyle
 {
 	border: solid 1px #000;
-	background-image: url(images/btn3.jpg);
+	background-image: url(img/btn3.jpg);
 	color: Red;
 	z-index: 200;
 	position: relative;
@@ -90,7 +90,7 @@
 .background
 {
 	border: solid 1px #000;
-	background-image: url(images/btn3.jpg);
+	background-image: url(img/btn3.jpg);
 }
 
 .NavigationMenu
@@ -100,14 +100,14 @@
 	color: #FFF;
 	font-weight: 600;
 	z-index: 101;
-	background-image: url(images/btn3.jpg);
+	background-image: url(img/btn3.jpg);
 }
 
 
 .menuItemMouseOver, .menuItemSelected
 {
 	border: solid 1px Navy;
-	background-image: url(images/btn4.jpg);
+	background-image: url(img/btn4.jpg);
 }
 
 .NavigationMenu A:link, .NavigationMenu A:visited, .NavigationMenu A:active

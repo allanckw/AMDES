@@ -134,7 +134,9 @@ namespace AMDES_WEB.CustomControls
         {
             Control c = GetPostBackControl(Page);
 
-            lblHeader.Text = section.Description.Replace("~~", " <br />");
+           
+            
+            
             lblSection.Text = section.Header;
 
             this.phRegister.Controls.Clear();
@@ -199,6 +201,16 @@ namespace AMDES_WEB.CustomControls
         {
             if (dicSectionPage.Keys.Contains(grpID))
                 dicSectionPage.Remove(grpID);
+
+            if (sPage.isFirstPage)
+            {
+                lblHeader.Text = section.Description.Replace("~~", " <br />");
+                lblHeader.Visible = true;
+            }
+            else
+            {
+                lblHeader.Visible = false;
+            }
 
             dicSectionPage.Add(grpID, sPage);
         }

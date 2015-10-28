@@ -17,7 +17,7 @@ namespace AMDES_KBS.Controllers
             sApp.Description = App.readAppTitle(appName);
             sApp.IsSelected = true;
             sApp.IsConfiguredCorrectly = true;
-            sApp.FolderPath = System.Web.HttpContext.Current.Server.MapPath(@"~/Data/" + appName);
+            sApp.FolderPath = System.Web.HttpContext.Current.Server.MapPath(@"~/AppData/" + appName);
            
             return sApp;
         }
