@@ -75,7 +75,7 @@ namespace AMDES_WEB.CustomControls
             if (Qn.ImagePath.Length > 0)
             {
                 var uri = HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "");
-                imgQn.ImageUrl = uri + "/data/" + CLIPSCtrl.ApplicationContext.FolderName + "/img/" + Qn.ImagePath;
+                imgQn.ImageUrl = uri + "/AppData/" + CLIPSCtrl.ApplicationContext.FolderName + "/img/" + Qn.ImagePath;
                 imgQn.Visible = true;
             }
             else
