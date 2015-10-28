@@ -31,7 +31,7 @@
       </Question>
       <Question QID="4">
         <Name>Patient has trouble learning how to use a tool, appliance or gadget (e.g. VCR, computer, microwave, remote control)</Name>
-        <Symptom>Trouble learning using tool, appliance or gadget</Symptom>
+        <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
@@ -58,7 +58,7 @@
         <Score>1</Score>
       </Question>
       <Question QID="8">
-        <Name>Patient encounters consistent problems with thinking and/or memory~~~~Section Adapted from AD8</Name>
+        <Name>Patient encounters consistent problems with thinking and/or memory~~~~Section Adapted from The AD8: a brief informant interview to detect dementia.</Name>
         <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>

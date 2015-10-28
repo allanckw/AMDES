@@ -58,7 +58,7 @@
         <Score>1</Score>
       </Question>
       <Question QID="8">
-        <Name>Patient encounters consistent problems with thinking and/or memory &lt;h6&gt;Section Adapted from The AD8: The Washington University Dementia Screening Test&lt;h6&gt;</Name>
+        <Name>Patient encounters consistent problems with thinking and/or memory &lt;h6&gt;Section adapted from The AD8: a brief informant interview to detect dementia.&lt;/h6&gt;</Name>
         <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
