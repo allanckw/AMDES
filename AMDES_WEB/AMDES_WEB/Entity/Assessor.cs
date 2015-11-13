@@ -6,18 +6,12 @@ using AMDES_KBS.Controllers;
 
 namespace AMDES_KBS.Entity
 {
-   public class Assessor
+    public class Assessor
     {
-       public static string dataPath = @"\Assessor.xml";
+        public static string dataPath = @"\Assessor.xml";
+
 
         private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
         private string clinicName;
 
         public string ClinicName
@@ -26,6 +20,12 @@ namespace AMDES_KBS.Entity
             set { clinicName = value; }
         }
 
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        
         public Assessor(string name, string location)
         {
             this.name = name;

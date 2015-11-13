@@ -33,7 +33,8 @@ namespace AMDES_WEB
                 else
                     dpFrom.Date = DateTime.Now;
 
-
+                lblTest.Text = clp.ApplicationContext.Name;
+                lblCount.Text = TestCountController.readCount(clp.ApplicationContext).ToString();
             }
             AddRegistrationField();
         }
@@ -169,6 +170,9 @@ namespace AMDES_WEB
                     }
 
                     CLIPSWebController clp = (CLIPSWebController)Session["clp"];
+
+                    TestCountController.addCount(clp.ApplicationContext);
+
                     clp.CurrentPatient = p;
                     clp.clearAndLoadNew();
 

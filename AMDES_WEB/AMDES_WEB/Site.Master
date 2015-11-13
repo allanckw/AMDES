@@ -8,8 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="Aid for Dementia Diagnosis" />
-    <meta name="keywords" content="AMDES, ADD, AD8, MSME, KTPH, YCH, AHS, AHPL, Geriatrics, Expert System, Dementia" />
-    <meta name="author" content="KTPH, NUS, Allan Chong, Ang Ji Kai, Ang Nickolas" />
+    <meta name="keywords" content="Aid for Dementia Diagnosis, ADD, AD8, DSM IV, DSM 4, DSM IV Criteria, DSM 4 Criteria, 
+                                    MSME, KTPH, YCH, AHS, AHPL, Geriatrics, Dementia" />
+    <meta name="author" content="KTPH, NUS, SOC, Khoo Teck Puat Hospital, National University of Singapore, School of Computing" />
     <meta name="rating" content="Safe for Kids" />
     <meta name="robots" content="index, follow" />
     <meta name="revisit-after" content="7 days" />
@@ -17,6 +18,8 @@
     <!--    <script type="text/javascript">
         jQuery.noConflict();
     </script>-->
+
+    <script src="js/GA.js" type="text/javascript" />
 </head>
 <body>
     <form id="form1" runat="server">

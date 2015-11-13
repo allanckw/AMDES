@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Controllers\Alert.cs" />
     <Compile Include="Controllers\App.cs" />
+    <Compile Include="Controllers\TestCountController.cs" />
     <Compile Include="Controllers\WebApplicationContextController.cs" />
     <Compile Include="Controllers\AssessorController.cs" />
     <Compile Include="Controllers\CLIPSWebController.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SymptomController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="CustomControls\DatePicker.ascx.cs">
       <DependentUpon>DatePicker.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -125,6 +125,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entity\TestCount.cs" />
     <Compile Include="Entity\WebApplicationContext.cs" />
     <Compile Include="Entity\Assessor.cs" />
     <Compile Include="Entity\Attributes\CmpAttribute.cs" />
@@ -285,6 +286,7 @@
     <Content Include="img\nav_a_hover.jpg" />
     <Content Include="img\sidebar.jpg" />
     <Content Include="img\wrapper2.jpg" />
+    <Content Include="js\GA.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\menu.js" />
     <Content Include="PatientStart.aspx" />
@@ -292,8 +294,10 @@
     <Content Include="ResultsPrintFriendly.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AppData\BDT\count.CONF" />
     <None Include="AppData\BDT\name.conf" />
     <None Include="AppData\BDT\NoSymptom.CONF" />
+    <None Include="AppData\DDT\count.CONF" />
     <None Include="AppData\DDT\name.conf" />
     <None Include="AppData\DDT\NoSymptom.CONF" />
     <None Include="AppData\lastSent.scd" />

@@ -3,7 +3,7 @@
 
 <%@ Register Assembly="MSCaptcha" Namespace="MSCaptcha" TagPrefix="cc1" %>
 <%@ Register Src="~/CustomControls/DatePicker.ascx" TagName="DatePicker" TagPrefix="AOS" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cphCENTER" runat="server" >
+<asp:Content ID="Content1" ContentPlaceHolderID="cphCENTER" runat="server">
     <h2>
         New Patient</h2>
     <h3>
@@ -18,7 +18,8 @@
                 Date of birth
             </td>
             <td>
-                <AOS:datepicker id="dpFrom" runat="server" displayfuturedate="false" visible="true" MinimumYear="1900" />
+                <AOS:DatePicker ID="dpFrom" runat="server" DisplayFutureDate="false" Visible="true"
+                    MinimumYear="1900" />
             </td>
         </tr>
         <tr>
@@ -27,7 +28,6 @@
                 &nbsp; &nbsp;
             </td>
             <td>
-
                 <cc1:CaptchaControl ID="ccJoin" runat="server" Height="50px" CaptchaBackgroundNoise="Low"
                     Width="180px" CaptchaLength="5" BackColor="White" EnableViewState="False" />
                 <asp:TextBox ID="txtCaptcha" runat="server" MaxLength="5"></asp:TextBox>
@@ -48,6 +48,24 @@
             </td>
             <td>
                 <asp:Button ID="btnStart" runat="server" Text="Start Test" OnClick="btnStart_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h6>
+                    <asp:Label ID="lblTest" runat="server" Text="Label"></asp:Label>
+                    has benefitted
+                    <asp:Label ID="lblCount" runat="server" Text="Label"></asp:Label>
+                    patients
+                </h6>
             </td>
         </tr>
     </table>
