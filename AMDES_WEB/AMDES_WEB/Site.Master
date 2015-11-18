@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head runat=server>
     <title>ADD - Aid for Dementia Diagnosis </title>
     <!-- Metadata -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,20 +19,7 @@
     <!-- End Metadata -->
     <link rel="stylesheet" href="cstyle/style3.css" type="text/css" />
     <!-- Google Analytics -->
-    <script type="text/javascript">
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        //UA-6576355-5 - UAT
-        //UA-6576355-4 - PROD
-        ga('create', 'UA-6576355-5', 'auto');
-
-        ga('send', 'pageview');
-
-    </script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -120,5 +107,19 @@ class="last"><span>Downloads</span></asp:HyperLink> </li>--%>
     </div>
     <!-- End Footer -->
     </form>
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        //UA-6576355-5 - UAT
+        //UA-6576355-4 - PROD
+        ga('create', 'UA-6576355-4', 'auto');
+
+        ga('send', 'pageview');
+
+    </script>
 </body>
 </html>
