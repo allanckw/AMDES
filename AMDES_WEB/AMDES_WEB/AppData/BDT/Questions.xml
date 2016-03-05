@@ -3,7 +3,7 @@
 <QuestionGroups>
   <QuestionGroup id="1">
     <Header>Brief Dementia Test</Header>
-    <Description>Before you start, ask the patient to remember the following 3 objects: &lt;font color=red&gt; Key, Lemon, Balloon&lt;/font&gt;~~Then proceed with the following qns.</Description>
+    <Description>Before you start, ask the patient to remember the following 3 objects: &lt;font color=red&gt; Key, Lemon, Balloon&lt;/font&gt;~~Then proceed with the following questions.</Description>
     <QnType>2</QnType>
     <Symptom>Patient Failed Brief Dementia Test</Symptom>
     <Negation>false</Negation>
@@ -37,14 +37,14 @@
         <Score>1</Score>
       </Question>
       <Question QID="5">
-        <Name>Patient often forgets correct month or year</Name>
+        <Name>Patient often forgets the correct month or year</Name>
         <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
         <Score>1</Score>
       </Question>
       <Question QID="6">
-        <Name>Patient has difficulties when handling complicated financial affairs (e.g. balancing checkbook, income taxes, paying bills)</Name>
+        <Name>Patient has difficulties handling complicated financial affairs (e.g. balancing checkbook, income taxes, paying bills)</Name>
         <Symptom></Symptom>
         <Negation>true</Negation>
         <ImageURL></ImageURL>
