@@ -375,24 +375,24 @@ namespace AMDES_WEB.CustomControls
             }
         }
 
-        private int computeSectionScore()
+        private float computeSectionScore()
         {
             SectionPage sPage;
             dicSectionPage.TryGetValue(sectionID, out sPage);
 
-            int count = sPage.getSectionScore() + computePageScore();
+            float count = sPage.getSectionScore() + computePageScore();
 
             sPage.setPageScore(sPage.CurrentPage, 0);
             return count;
         }
 
 
-        private int computePageScore()
+        private float computePageScore()
         {
             SectionPage sPage;
             dicSectionPage.TryGetValue(sectionID, out sPage);
 
-            int count = 0;
+            float count = 0;
 
             foreach (Control c in phRegister.Controls)
             {
@@ -417,7 +417,7 @@ namespace AMDES_WEB.CustomControls
 
                 lblScore.Text = "0";
                 lblMax.Text = " / " + qcg.MaximumScore.ToString();
-                int count = computeSectionScore();
+                float count = computeSectionScore();
                 lblScore.Text = count.ToString();
             }
             else

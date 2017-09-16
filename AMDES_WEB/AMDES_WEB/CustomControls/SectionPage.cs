@@ -12,12 +12,12 @@ namespace AMDES_WEB.CustomControls
         private bool multiPage;
         private int lastPage;
 
-        private Dictionary<int, int> pageScore; //key = page, value = score
+        private Dictionary<int, float> pageScore; //key = page, value = score
 
         private int currentPage = 1;
 
 
-        public Dictionary<int, int> PageScore
+        public Dictionary<int, float> PageScore
         {
             get { return pageScore; }
             set { pageScore = value; }
@@ -44,7 +44,7 @@ namespace AMDES_WEB.CustomControls
         {
             this.sectionID = sectionID;
             this.questions = new Dictionary<int, List<QuestionsUC>>();
-            this.pageScore = new Dictionary<int, int>();
+            this.pageScore = new Dictionary<int, float>();
             this.lastPage = 0;
         }
 
@@ -108,7 +108,7 @@ namespace AMDES_WEB.CustomControls
             get { return this.CurrentPage == this.FirstPage; }
         }
 
-        public void setPageScore(int page, int score)
+        public void setPageScore(int page, float score)
         {
             if (pageScore.Keys.Contains(page))
                 pageScore.Remove(page);
@@ -116,17 +116,17 @@ namespace AMDES_WEB.CustomControls
             pageScore.Add(page, score);
         }
 
-        public int getPageScore(int page)
+        public float getPageScore(int page)
         {
-            int score;
+            float score;
             pageScore.TryGetValue(page, out score);
 
             return score;
         }
 
-        public int getSectionScore()
+        public float getSectionScore()
         {
-            int total = 0;
+            float total = 0;
             for (int i = 1; i <= lastPage; i++)
                 total += getPageScore(i);
 

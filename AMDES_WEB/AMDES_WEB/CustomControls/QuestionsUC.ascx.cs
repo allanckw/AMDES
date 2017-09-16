@@ -12,7 +12,7 @@ namespace AMDES_WEB.CustomControls
     public partial class QuestionsUC : System.Web.UI.UserControl
     {
         private int qid;
-        private int score;
+        private float score;
         private Question question;
         private bool answer;
         private int sectionID;
@@ -129,7 +129,7 @@ namespace AMDES_WEB.CustomControls
             }
         }
 
-        public int Score
+        public float Score
         {
             get
             {
