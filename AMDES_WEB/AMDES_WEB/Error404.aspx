@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCENTER" runat="server">
     <h3>
-        We are unable to find the page, please contact us at amdes_nus_soc[at]googlegroups.com</h3>
+        We are unable to find the page, please contact us at ktph.memorycare[at]ktph.com.sg </h3>
     <br />
     <br />
     Try visiting the home page by clicking <a href="Default.aspx" style="text-decoration: underline">

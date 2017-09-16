@@ -27,7 +27,7 @@ namespace AMDES_KBS.Entity
         private int id;
         private string name;
         private string symptom;
-        private int score;
+        private float score;
 
         //20150930 - Add Image Path
         private string imgPath;
@@ -43,7 +43,7 @@ namespace AMDES_KBS.Entity
             set { imgPath = value; }
         }
 
-        public int Score
+        public float Score
         {
             get { return score; }
             set { score = value; }

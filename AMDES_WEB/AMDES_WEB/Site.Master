@@ -41,27 +41,13 @@
                             <li>
                                 <asp:HyperLink ID="hypHome" runat="server" NavigateUrl="~/default.aspx" class="parent"><span>Home</span></asp:HyperLink>
                             </li>
-                            <%--<asp:PlaceHolder ID="plcParti"
-runat="server"> <li> <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="#"
-class="parent"><span>Participants..</span></asp:HyperLink> <div> <ul> <li> <asp:HyperLink
-ID="HyperLink7" runat="server" NavigateUrl="~/ParticipantEvents.aspx"><span>View
-Registered Events </span></asp:HyperLink></li> <li> <asp:HyperLink ID="hypCart"
-runat="server" NavigateUrl="~/viewcart.aspx"><span>View Event Cart</span></asp:HyperLink></li>
-<li> <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/ViewPastTrans.aspx"><span>View
-Past Transactions</span></asp:HyperLink></li> </ul> </div> </li> </asp:PlaceHolder>--%>
-                            <%-- <li> <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="#" class="parent"><span>Start
-Assessment</span></asp:HyperLink> <div> <ul> <li> <asp:HyperLink ID="HyperLink2"
-runat="server" NavigateUrl="~/PatientStart.aspx?appID=AD8"><span>AD8 with partial
-MSME</span></asp:HyperLink></li> <li> <asp:HyperLink ID="HyperLink3" runat="server"
-NavigateUrl="~/PatientStart.aspx?appID=ADD"><span>Aid for Dementia Diagnosis</span></asp:HyperLink>
-</li> </ul> </div> </li>--%>
+
                             <li>
                                 <asp:HyperLink ID="hypAD8" runat="server" NavigateUrl="~/PatientStart.aspx?appID=BDT"><span>Brief
 Dementia Test</span></asp:HyperLink></li>
                             <li>
                                 <asp:HyperLink ID="hypADD" runat="server" NavigateUrl="~/PatientStart.aspx?appID=DDT"><span>Dementia Diagnostic Test</span></asp:HyperLink></li>
-                            <%--<li> <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Downloads.aspx"
-class="last"><span>Downloads</span></asp:HyperLink> </li>--%>
+
                         </ul>
                     </div>
                     <br />

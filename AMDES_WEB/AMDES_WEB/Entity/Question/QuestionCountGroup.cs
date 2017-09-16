@@ -7,9 +7,9 @@ namespace AMDES_KBS.Entity
     {
         private int maxQuestions = 10; //max no. of question in group
 
-        private int threshold = 8; // < threshold returns false in clips = 
+        private float threshold = 8; // < threshold returns false in clips = 
 
-        private int maxScore = -1;
+        private float maxScore = -1;
 
 
 
@@ -27,7 +27,7 @@ namespace AMDES_KBS.Entity
             this.qType = QuestionType.COUNT;
         }
 
-        public int Threshold
+        public float Threshold
         {
             get { return threshold; }
             set { threshold = value; }
@@ -39,7 +39,7 @@ namespace AMDES_KBS.Entity
             set { maxQuestions = value; }
         }
 
-        public int MaximumScore
+        public float MaximumScore
         {
             get
             {

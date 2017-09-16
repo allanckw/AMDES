@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Questions xml-->
+<QuestionGroups>
+  <QuestionGroup id="1">
+    <Header>Brief Dementia Test</Header>
+    <Description>Before you start, ask the patient to remember the following 3 objects: [color=red]Key, Lemon, Balloon[/color]~~Then proceed with the following qns.</Description>
+    <QnType>2</QnType>
+    <Symptom>Patient Failed Brief Dementia Test</Symptom>
+    <Negation>false</Negation>
+    <Questions>
+      <Question QID="1">
+        <Name>Patient has problems with judgment (e.g. falls for scams, bad financial decisions, buys gifts inappropriate for recipients)</Name>
+        <Symptom></Symptom>
+        <Negation>true</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="2">
+        <Name>Patient has reduced interest in hobbies/activities</Name>
+        <Symptom></Symptom>
+        <Negation>true</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="3">
+        <Name>Patient often repeats questions, stories or statements</Name>
+        <Symptom></Symptom>
+        <Negation>true</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="4">
+        <Name>Patient has trouble learning how to use a tool, appliance or gadget (e.g. VCR, computer, microwave, remote control)</Name>
+        <Symptom></Symptom>
+        <Negation>true</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="5">
+        <Name>Patient often forgets correct month or year</Name>
+        <Symptom></Symptom>
+        <Negation>true</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="6">
+        <Name>Patient has difficulties when handling complicated financial affairs (e.g. balancing checkbook, income taxes, paying bills)</Name>
+        <Symptom></Symptom>
+        <Negation>true</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="7">
+        <Name>Patient has difficulty with remembering appointments</Name>
+        <Symptom></Symptom>
+        <Negation>true</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="8">
+        <Name>Patient encounters consistent problems with thinking and/or memory~~~~Section Adapted from The AD8: a brief informant interview to detect dementia.</Name>
+        <Symptom></Symptom>
+        <Negation>true</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="9">
+        <Name>Can the patient copy the figure below?</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL>interPentagon.png</ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="10">
+        <Name>Can the patient recall the word Key?</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="11">
+        <Name>Can the patient recall the word Lemon?</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+      <Question QID="12">
+        <Name>Can the patient recall the word Balloon?</Name>
+        <Symptom></Symptom>
+        <Negation>false</Negation>
+        <ImageURL></ImageURL>
+        <Score>1</Score>
+      </Question>
+    </Questions>
+    <MaxQuestions>12</MaxQuestions>
+    <Threshold>9</Threshold>
+  </QuestionGroup>
+</QuestionGroups>

@@ -100,6 +100,9 @@ namespace AMDES_KBS
                     ApplicationContext app = (ApplicationContext)cboAppContexts.SelectedItem;
                     ApplicationContextController.setApplicationContext(app);
                     ApplicationContextController.GetAllApplications();
+
+                    txtTnC.Document.Blocks.Clear();
+                    txtTnC.AppendText(CLIPSController.selectedAppContext.Description);
                 }
                 catch (Exception ex)
                 {

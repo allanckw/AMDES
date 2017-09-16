@@ -7,7 +7,7 @@ namespace AMDES_KBS.Entity
         {
         }
 
-        public Question(string qn, string sym = "", int score = 1, bool negation = false)
+        public Question(string qn, string sym = "", float score = 1, bool negation = false)
         {
             this.name = qn;
             this.symptom = sym;
@@ -27,7 +27,7 @@ namespace AMDES_KBS.Entity
         private int id;
         private string name;
         private string symptom;
-        private int score;
+        private float score;
 
         //20150930 - Add Image Path
         private string imgPath;
@@ -43,7 +43,7 @@ namespace AMDES_KBS.Entity
             set { imgPath = value; }
         }
 
-        public int Score
+        public float Score
         {
             get { return score; }
             set { score = value; }

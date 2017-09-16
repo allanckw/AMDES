@@ -24,7 +24,7 @@
                 <StackPanel x:Name="stkpnlCOUNT" Orientation="Horizontal" Visibility="Hidden"  >
                     <Label Content="Passing Score:" FontSize="16" FontWeight="Bold" />
 
-                    <TextBox x:Name="txtThreshold" Width="60" Text="7" PreviewTextInput="txtThreshold_PreviewTextInput"  Height="25" BorderThickness="2" />
+                    <TextBox x:Name="txtThreshold" Width="60" Text="7" PreviewTextInput="txtThreshold_PreviewTextInput" TextChanged="textBox_TextChanged" Height="25" BorderThickness="2" />
                     <Label  Content="Max No. of Qns:" FontSize="16" FontWeight="Bold" />
 
                     <TextBox x:Name="txtMaxQn" Width="60" Text="10" PreviewTextInput="txtMaxQn_PreviewTextInput"  Height="25" BorderThickness="2" />

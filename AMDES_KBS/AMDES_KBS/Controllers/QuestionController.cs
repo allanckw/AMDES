@@ -214,7 +214,7 @@ namespace AMDES_KBS.Controllers
                 }
 
                 p.MaxQuestions = int.Parse(x.Element("MaxQuestions").Value);
-                p.Threshold = int.Parse(x.Element("Threshold").Value);
+                p.Threshold = float.Parse(x.Element("Threshold").Value);
 
                 return p;
             }
@@ -234,7 +234,7 @@ namespace AMDES_KBS.Controllers
                 q.Symptom = x.Element("Symptom").Value;
 
                 if (x.Element("Score") != null)
-                    q.Score = int.Parse(x.Element("Score").Value);
+                    q.Score = float.Parse(x.Element("Score").Value);
                 else
                     q.Score = 1;
 

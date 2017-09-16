@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--AMDES Rules xml-->
+<Rules>
+  <Rule RID="5">
+    <Description>Pass Test</Description>
+    <Navigations>
+      <Navex NavID="5.1">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>true</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses>
+          <DiagnosisID>34</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>34</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+  <Rule RID="6">
+    <Description>Fail Test</Description>
+    <Navigations>
+      <Navex NavID="6.1">
+        <Destination>-1</Destination>
+        <NavigationChildCriterias>
+          <ChildCriteriaQuestionGroup>
+            <CriteriaGrpID>1</CriteriaGrpID>
+            <Answer>false</Answer>
+          </ChildCriteriaQuestionGroup>
+        </NavigationChildCriterias>
+        <NavigationChildAttributes />
+        <Diagnoses>
+          <DiagnosisID>2</DiagnosisID>
+        </Diagnoses>
+      </Navex>
+    </Navigations>
+    <Diagnoses>
+      <RDiagnosisID>2</RDiagnosisID>
+    </Diagnoses>
+  </Rule>
+</Rules>

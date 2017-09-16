@@ -211,12 +211,12 @@ namespace AMDES_KBS
 
         private void txtMinValue_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = App.NumberValidationTextBox(e.Text);
+            e.Handled = App.NumericValidationTextBox(e.Text);
         }
 
         private void txtMaxValue_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = App.NumberValidationTextBox(e.Text);
+            e.Handled = App.NumericValidationTextBox(e.Text);
         }
 
     }

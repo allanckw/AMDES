@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.IO;
 using AMDES_KBS.Controllers;
+using System.Linq;
+
 namespace AMDES_KBS
 {
     /// <summary>
@@ -86,7 +88,7 @@ namespace AMDES_KBS
             if (txtScore.Text.Trim().Length == 0)
                 question.Score = 1;
             else
-                question.Score = int.Parse(txtScore.Text.Trim());
+                question.Score = float.Parse(txtScore.Text.Trim());
 
             question.isNegation = chkNegate.IsChecked.Value;
             question.ImagePath = txtImgURL.Text.Trim();
@@ -107,10 +109,35 @@ namespace AMDES_KBS
             return true;
         }
 
-        private void txtScore_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void txtScore_LostFocus(object sender, RoutedEventArgs e)
         {
-            e.Handled = App.NumberValidationTextBox(e.Text);
+            if (txtScore.Text.Trim().Length > 0)
+            {
+                bool isValid = App.NumericValidationTextBox(txtScore.Text.Trim());
+                if (!isValid)
+                {
+                    MessageBox.Show("Please enter a valid numeric value!", "Invalid value", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    txtScore.Clear();
+                    txtScore.Focus();
+                }
+            }
         }
 
+        private void txtScore_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+             e.Handled = App.NumericValidationTextBox(e.Text);
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox txtBx = (TextBox)sender;
+            float x = 0;
+            if (!float.TryParse(txtBx.Text.Trim(), out x))
+            {
+                int removeCount = e.Changes.First().AddedLength;
+                txtBx.Text = txtBx.Text.Substring(0, txtBx.Text.Length - removeCount);
+                txtBx.CaretIndex = txtBx.Text.Length;
+            }
+        }
     }
 }

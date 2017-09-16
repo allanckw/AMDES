@@ -15,15 +15,15 @@
 (deftemplate Currentgroup
    (slot GroupID (type SYMBOL))
    (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT = SCORE
-   (slot SuccessArg (type INTEGER))
-   (slot TrueCount (type INTEGER) (default 0))
+   (slot SuccessArg (type NUMBER))
+   (slot TrueCount (type NUMBER) (default 0))
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 (deftemplate Currentquestion
    (slot GroupID (type SYMBOL))
    (slot ID (type SYMBOL))
    (slot QuestionText (type STRING))
-   (slot Score (type INTEGER) (default 1))
+   (slot Score (type NUMBER) (default 1))
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 ;; Final Diagnosis
@@ -35,8 +35,8 @@
 (deftemplate group
    (slot GroupID (type SYMBOL))
    (slot SuccessType (type SYMBOL) (allowed-symbols AND OR COUNT)) ;;only 3 types, AND / OR / COUNT = Score
-   (slot SuccessArg (type INTEGER))
-   (slot TrueCount (type INTEGER) (default 0)) ;;True Count = Score
+   (slot SuccessArg (type NUMBER))
+   (slot TrueCount (type NUMBER) (default 0)) ;;True Count = Score
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No)))
 
 ;;A Group has a symptom
@@ -51,7 +51,7 @@
 (deftemplate question
    (slot ID (type SYMBOL))
    (slot QuestionText (type STRING))
-   (slot Score (type INTEGER) (default 1))
+   (slot Score (type NUMBER) (default 1))
    (slot answer (type SYMBOL) (default No) (allowed-symbols Yes No))
    (slot GroupID (type SYMBOL)))
 
@@ -561,7 +561,7 @@
 (deftemplate DecisionTree::LeafSet ;;conjunctive set of the disjunctive normal form
 (slot LeafID )
 (slot Result (type SYMBOL) (default NIL))
-(slot Total (type INTEGER) (default 0))
+(slot Total (type NUMBER) (default 0))
 
 )
 

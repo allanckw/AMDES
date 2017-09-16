@@ -440,7 +440,7 @@ namespace AMDES_KBS
 
         private void txtAttrNumValue_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            e.Handled = App.NumberValidationTextBox(e.Text);
+            e.Handled = App.NumericValidationTextBox(e.Text);
         }
 
         private void btnOtherAttr_Click(object sender, RoutedEventArgs e)

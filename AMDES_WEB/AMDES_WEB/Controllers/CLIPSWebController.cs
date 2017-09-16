@@ -810,8 +810,8 @@ namespace AMDES_KBS.Controllers
                             int id = int.Parse(fav.GetFactSlot("GroupID").ToString().Remove(0, 1));
                             if (id == y)
                             {
-                                int succArg = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
-                                int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
+                                float succArg = float.Parse(fav.GetFactSlot("SuccessArg").ToString());
+                                float trueCount = float.Parse(fav.GetFactSlot("TrueCount").ToString());
                                 //20151012 - Bug here should not be tagged to individual symptom
                                 // s.SymptomName += "Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
                                 s.ScoreString = "Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
@@ -853,8 +853,8 @@ namespace AMDES_KBS.Controllers
                             int id = int.Parse(fav.GetFactSlot("GroupID").ToString().Remove(0, 1));
                             if (id == y)
                             {
-                                int succArg = int.Parse(fav.GetFactSlot("SuccessArg").ToString());
-                                int trueCount = int.Parse(fav.GetFactSlot("TrueCount").ToString());
+                                float succArg = float.Parse(fav.GetFactSlot("SuccessArg").ToString());
+                                float trueCount = float.Parse(fav.GetFactSlot("TrueCount").ToString());
                                 //20151012 - Bug here should not be tagged to individual symptom
                                 //s.SymptomName += "- Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";
                                 s.ScoreString = "Patient's Score: " + trueCount + ", Normal Score: " + succArg + " or more";

@@ -22,7 +22,7 @@
                 <br />
             </h3>
             <h5>
-                Your feedback will be greatly appreciated, you may send them to amdes_nus_soc[at]googlegroups.com.
+                Your feedback will be greatly appreciated, you may send them to ktph.memorycare[at]ktph.com.sg 
                 <br />
                 <br />
                 Credits: Geriatric Centre and Department of Medical Informatics from Khoo Teck Puat

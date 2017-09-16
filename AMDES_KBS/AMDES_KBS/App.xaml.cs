@@ -54,11 +54,19 @@ namespace AMDES_KBS
 
 
 
-        public static bool NumberValidationTextBox(string text)
+        public static bool NumericValidationTextBox(string text)
         {
-            Regex regex = new Regex("[^0-9]+");
-            return regex.IsMatch(text);
+            if (text == ".")
+                return false;
+            else
+            {
+                //Regex regex = new Regex(@"[0-9]*\.?[0-9]+");
+                //return regex.IsMatch(text);
+                float x = 0;
+                return !float.TryParse(text, out x);
+            }
         }
+
 
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject

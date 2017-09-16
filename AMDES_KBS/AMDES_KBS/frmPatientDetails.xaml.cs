@@ -97,7 +97,7 @@ namespace AMDES_KBS
 
         void txt_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = App.NumberValidationTextBox(e.Text);
+            e.Handled = App.NumericValidationTextBox(e.Text);
         }
 
 

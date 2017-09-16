@@ -72,10 +72,10 @@ namespace AMDES_KBS
         public void setAnswer(bool answer)
         {
             this.answer = answer;
-            int score = 0;
+            float score = 0;
             if (scoringData != null)
             {
-                score = int.Parse(scoringData.Content.ToString());
+                score = float.Parse(scoringData.Content.ToString());
 
 
                 if (question.isNegation && this.answer) //negation and answer = yes :-Score

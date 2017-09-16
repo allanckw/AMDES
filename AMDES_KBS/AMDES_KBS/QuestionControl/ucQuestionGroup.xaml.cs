@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using AMDES_KBS.Controllers;
 using AMDES_KBS.Entity;
+using System.Linq;
 
 namespace AMDES_KBS
 {
@@ -105,7 +106,7 @@ namespace AMDES_KBS
             qcgData.Header = txtHeader.Text;
             qcgData.Description = txtDesc.Text.Replace(Environment.NewLine, "~~");
             qcgData.Symptom = txtSymptom.Text;
-            qcgData.Threshold = int.Parse(txtThreshold.Text.ToString());
+            qcgData.Threshold = float.Parse(txtThreshold.Text.ToString());
             qcgData.MaxQuestions = int.Parse(this.txtMaxQn.Text.Trim());
 
             qcgData.isNegation = chkNegate.IsChecked.Value;
@@ -120,12 +121,26 @@ namespace AMDES_KBS
 
         private void txtMaxQn_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = App.NumberValidationTextBox(e.Text);
+            bool isInteger =  App.NumericValidationTextBox(e.Text);
+            e.Handled = isInteger;
         }
 
         private void txtThreshold_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = App.NumberValidationTextBox(e.Text);
+            bool isInteger =  App.NumericValidationTextBox(e.Text);
+            e.Handled = isInteger;
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox txtBx = (TextBox)sender;
+            float x = 0;
+            if (!float.TryParse(txtBx.Text.Trim(), out x))
+            {
+                int removeCount = e.Changes.First().AddedLength;
+                txtBx.Text = txtBx.Text.Substring(0, txtBx.Text.Length - removeCount);
+                txtBx.CaretIndex = txtBx.Text.Length; 
+            }
         }
 
 
